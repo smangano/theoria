@@ -108,6 +108,16 @@ public:
     using iterator = Iter ;
     using const_iterator = ConstIter ;
 
+private:
+
+    inline
+    void _growFor(const key_type& k) 
+    {
+        _impl.resize(k + 50) ;
+    }
+
+public:
+
     densemap() : _impl(), _sz(0) {}
     explicit densemap(int n) : _impl(n), _sz(0) {}
     explicit densemap(allocator_type alloc) : _impl(alloc), _sz(0) {}
@@ -131,8 +141,8 @@ public:
     {
         for (auto iter = il.begin(), end = il.end(); iter != end; ++iter)
         {
-            if (iter->first >= _impl.size())
-                 _impl.resize(2 * std::max(static_cast<typename Impl::size_type>(iter->first),_impl.size())) ;    
+            if (static_cast<typename Impl::size_type>(iter->first) >= _impl.size())
+                 _growFor(iter->first) ;
             _impl[iter->first] = new value_type(iter->first, iter->second) ;
         }
         _sz = il.size() ; 
@@ -169,7 +179,7 @@ public:
 
     size_type bucket(const key_type& key) const noexcept {return key;}
 
-    size_type bucket_count() const noexcept {return _impl.size();}
+    size_type bucket_count() const noexcept {return static_cast<size_type>(_impl.size());}
 
     size_type bucket_size() const noexcept {return 1;}
 
@@ -186,13 +196,55 @@ public:
     void clear() noexcept {_impl.clear() ; _sz= 0 ;}
 
     size_t count(const key_type& k) const noexcept { return k < _sz && _impl[k] != nullptr;}
+
+    bool empty() const noexcept {return _sz == 0;}
+
+    iterator find(const key_type& k) {return k < _sz && _impl[k] ? iterator(_impl.begin() + k, _impl.end()) : iterator(_impl.end(), _impl.end()) ; }
+    const_iterator find(const key_type& k) const {return k < _sz && _impl[k] ? const_iterator(_impl.cbegin() + k, _impl.cend()) : const_iterator(_impl.cend(), _impl.cend()) ; }
+
+    std::pair<iterator, bool> insert(value_type& val) 
+    {
+        if (val.first >= _sz)
+            _growFor(val.first) ; 
+        bool stat = false ;
+        if (!_impl[val.first]) 
+        { 
+            stat = true ;
+            _impl[val.first] = new value_type(val) ;
+            _sz++ ;
+        } 
+        return std::make_pair(iterator(_impl.begin() + val.first, _impl.end()), stat) ;
+    }
     
-    size_t size() {return _sz;}
- 
+    size_t size() const noexcept {return _sz;}
+
+    mapped_type& operator[] (const key_type& k)
+    {
+        if (k >= _sz) _growFor(k) ;
+        if (!_impl[k]) 
+        {
+             _impl[k] = new value_type(k, mapped_type()) ;
+             _sz++ ;
+        }
+        return _impl[k]->second ;   
+    }  
+
+    mapped_type& operator[] (key_type&& k)
+    {
+        if (static_cast<size_type>(k) >= _sz) _growFor(k) ;
+        if (!_impl[k]) 
+        {
+             _impl[k] = new value_type(k, mapped_type()) ;
+             _sz++ ;
+        }
+        return _impl[k]->second ;   
+    }  
+
 private:
 
+
     Impl _impl ;
-    size_t _sz ;
+    size_type _sz ;
 } ;
 
 }} //theoria::util

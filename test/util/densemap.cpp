@@ -109,3 +109,47 @@ TEST_F(DensemapTest, TestConstIter) {
     ASSERT_TRUE(iter == end) ;
     ASSERT_TRUE(iter2 == end2) ;
 }
+
+TEST_F(DensemapTest, TestFind) {
+    ASSERT_EQ(_dmDefault->find(0), _dmDefault->end()) ;
+    ASSERT_EQ(_dmDefault->find(1), _dmDefault->end()) ;
+
+    auto iter = _dmFromIters->find(0) ;
+    ASSERT_NE(iter, _dmDefault->end()) ;
+    ASSERT_EQ(iter->second, _strings[0]) ;
+
+    iter = _dmFromIters->find(2) ;
+    ASSERT_NE(iter, _dmDefault->end()) ;
+    ASSERT_EQ(iter->second, _strings[2]) ;
+   
+    iter = _dmFromIters->find(3) ;
+    ASSERT_EQ(iter, _dmFromIters->end()) ;
+}
+
+TEST_F(DensemapTest, TestOperatorArrayAccess) {
+
+    ASSERT_EQ((*_dmDefault)[1], "") ;
+    ASSERT_EQ(_dmDefault->size(), 1) ;
+
+    ASSERT_EQ((*_dmFromIters)[0], _strings[0]) ;
+    ASSERT_EQ((*_dmFromIters)[1], _strings[1]) ;
+    ASSERT_EQ((*_dmFromIters)[2], _strings[2]) ;
+    ASSERT_EQ(_dmFromIters->size(), 3) ; 
+
+}
+
+TEST_F(DensemapTest, TestOperatorArrayAccessLValue) {
+
+    (*_dmDefault)[1] = "hello" ;
+    ASSERT_EQ((*_dmDefault)[1], "hello") ;
+    ASSERT_EQ(_dmDefault->size(), 1) ;
+
+    (*_dmFromIters)[0] = (*_dmFromIters)[1] = (*_dmFromIters)[2] ;
+    ASSERT_EQ((*_dmFromIters)[0], _strings[2]) ;
+    ASSERT_EQ((*_dmFromIters)[1], _strings[2]) ;
+    ASSERT_EQ((*_dmFromIters)[2], _strings[2]) ;
+    ASSERT_EQ(_dmFromIters->size(), 3) ; 
+    (*_dmFromIters)[100] = "wow" ;
+    ASSERT_EQ((*_dmFromIters)[100], "wow") ;
+    ASSERT_EQ(_dmFromIters->size(), 4) ;
+}

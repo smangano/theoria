@@ -2,3 +2,7 @@
 **/*.swp
 **/*.bak
 **/*.sav
+**/*.o
+**/*.so
+**/*.gcov
+testprog
