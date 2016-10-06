@@ -22,19 +22,22 @@ desc:  A component is always in some state or composition of states. CompState m
        state list where the primary state is on the the first and secondary states are later in the list. 
 **/
 
-const int    OKAY_STATE 						=  0 ;
-const int WARN_STATE 							=  1 ;
-const int ERROR_STATE 							=  2 ;
-const int DISABLED_STATE 						=  3 ;
-const int CONNECTED_STATE 						=  4 ;
-const int DISCONNECTED_STATE 					=  5 ;
-const int STARTED_STATE 						=  6 ;
-const int STOPPED_STATE 						=  7 ;
-const int INIT_STATE 							=  8 ;
-const int WAITING_STATE 						=  9;
-const int READY_STATE 							= 10 ;
-const int EXCEPTION_STATE   					= 11 ;
-const int USER_STATE_START  = 1000 ;
+//        STATE                                | Value     | Typical Usage
+//--------------------------------------------------------------------------------------------------------
+const int OKAY_STATE 						    =  0 ; //  | Everything is Okay
+const int WARN_STATE 							=  1 ; //  | Possible issue. Not critical
+const int ERROR_STATE 							=  2 ; //  | Component enccountered an error. Probably serious
+const int DISABLED_STATE 						=  3 ; //  | The component has been disabled
+const int CONNECTED_STATE 						=  4 ; //  | The component is connected to some external resource
+const int DISCONNECTED_STATE 					=  5 ; //  | The component is disconnected from an external resource
+const int STARTED_STATE 						=  6 ; //  | The component has started processing (may be used in assoc with threading)
+const int STOPPED_STATE 						=  7 ; //  | The component has stopped processing (may be used in assoc with threading)
+const int INIT_STATE 							=  8 ; //  | The component ititialized successfully
+const int WAITING_STATE 						=  9 ; //  | The component is waiting on something
+const int READY_STATE 							= 10 ; //  | The component is ready to perform its intended function
+const int EXCEPTION_STATE   					= 11 ; //  | The component raised an exception
+
+const int USER_STATE_START                      = 1000 ;
 
 /**
  * class CompState - component state managment. State management is an intergral aspect of component visualization
@@ -166,17 +169,17 @@ private:
 
 enum class AppLifeCycle
 {
-	INITITIALIZED, /* All Components Initialized. Nothing Finalized  yet.*/
+    INITITIALIZED, /* All Components Initialized. Nothing Finalized  yet.*/
     FINALIZED,     /* All Components Finalized. Feel free to interact */
     PRESHUTDOWN,   /* About to shutdown but all compoents are safe */
-	SHUTDOWN,      /* Last chance to perform shutdown actions. Your dependencies may be unsafe */
+    SHUTDOWN,      /* Last chance to perform shutdown actions. Your dependencies may be unsafe */
     FORCE_SHUTDOWN, /* All bets are off. User forced shutdown. Log some final state but don't do much else */
     DUMP,           /* User triggered App Dump. Log as much useful information as you can about yourself. Avoid interaction with others */
 } ;
 
 enum class CompLifeCycle
 {
-	FINALIZED, 		/* Dependent component finalized. You may not be */
+    INALIZED, 		/* Dependent component finalized. You may not be */
     DISABLED,  		/* Dependent component was disable */
     ENABLED,   		/* Dependent component was enabled after having been previously disabled */
     EXCEPTION, 		/* Dependent component raised an exception  with broacast */
