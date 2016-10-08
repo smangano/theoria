@@ -41,24 +41,6 @@ class ConfigVariableResolverBuilder : public CoreComponent
 //does not contain a value. This allows Theoria to document how variables were resolved
 //as a debugging aid
  
-class ConfigVariableResolver : public CoreComponent
-{
-public:
-
-    
-    std::string resolve(const std::string& var) const ;
-
-    virtual std::pair<std::string, std::string> lookup(const std::string& name) const = 0 ;
-
-private:
-
-    std::string resolveFirst(const std::string& name) const ;
-    std::string resolveLast(const std::string& name) const ;
-
-
-    ConfigVariableResolver* _next ;
-} ;
-
 
 class ConfigBuilder : public CoreComponent
 {
