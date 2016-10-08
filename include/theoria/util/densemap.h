@@ -240,6 +240,12 @@ public:
         return _impl[k]->second ;   
     }  
 
+    key_type add(mapped_type value){
+        key_type k = _sz++ ;
+        _impl.push_back(value_type(k,value)) ;
+        return k ;
+    }
+
 private:
 
 

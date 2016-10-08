@@ -2,34 +2,204 @@
 
 namespace theoria { namespace config {
  
-class Config
+
+////
+//T must be something that can be read from a stream or you will get a compile error
+template <typename T>
+T convert(const std::string & val)
+{
+    T val ;
+    std::istringstream iss(val) ;
+    iss >> val ;
+    return val ;  
+}
+
+/*
+"$var - is a first variable. It's value is taken from the first resolver that contains it
+"$$var - is a last variable. It's value can be overriden by later resolvers
+"$var=default is a first variable which gets a default value only if no resolver contains it
+$$var=default is a last variable which gets a default value only if no resolver contains it
+$var1=$var2, $$var1=$var2, $var1=$$var2, $$var1=$$var2 are all legal 
+$var and $$var can both appear in the same config because variable is only bound locally. In other words, every occurence is rebound.
+
+The following resolvers are provided. You can create new ones
+
+CmdLineResolver - resolves from values passed on cmd line in the form var1=val1, var2=val2, ...
+EnvVarResolver - resolves variables from the OS env 
+ConfigVariableResolver - resolves variables defined in the config file itself. 
+TomlResolver - resolves variables from external TOML file. This can be used even if you don't use TOML as your primary config syntax 
+*/
+
+
+//Builds a chain of reslovers. Used by Config Builder
+class ConfigVariableResolverBuilder : public CoreComponent
+{
+}
+
+//Base class of resolvers. An implementation implements lookup which is responsible
+//for locally resolving a variable and return <"resolver", "value"> or <"", ""> if it 
+//does not contain a value. This allows Theoria to document how variables were resolved
+//as a debugging aid
+ 
+class ConfigVariableResolver : public CoreComponent
 {
 public:
 
-    using ConfigList = std::vector<Config*> ;
+    
+    std::string resolve(const std::string& var) const ;
+
+    virtual std::pair<std::string, std::string> lookup(const std::string& name) const = 0 ;
+
+private:
+
+    std::string resolveFirst(const std::string& name) const ;
+    std::string resolveLast(const std::string& name) const ;
+
+
+    ConfigVariableResolver* _next ;
+} ;
+
+
+class ConfigBuilder : public CoreComponent
+{
+public:
+
+    void pushConfig(name, desc="") ;
+    void addAtrr() ;
+    void popAsChild(); 
+    void setName() ;
+    void setDesc() ;
+
+private:
+
+    std::stack<Config*> _stack;
+    ConfigVariableResolver* _resolverChain ;
+    
+}; 
+
+
+/*
+A data structure representing runtime configuration. Config is the result of 
+parsing a file in some format supprted by a config builder and resolving variable references
+using some chain of ConfigVariableResolvers. 
+
+Thus when a Config object arrives at a component's init it is fully specifified (variable free)
+provided the varibales could be resolved.
+*/
+
+class Config
+{
+private:
+
+    using Text = std::string ; //Placeholder for future Text class
+
+    struct Attr
+    {
+        Attr(const std::string& name_, const std::string& value_, const std::string& src_ = "literal"):
+            name(name), value(value), src(src) {}
+            
+        std::string name ;
+        std::string value ;
+        std::string source ;
+    } ;
+
+    using Attrs = std::vector<Attr>  ;
+    using Children = std::vector<Config*> ;
+
+ public:
+
+    Config() ;
+    ~Config() ; 
+    
+    using ConstConfigList = std::vector<const Config*> ;
     using ConfigPredicate = bool (*) (const Config& config) ;
 
-    Config* getParent() noexcept ;
-
-    ConfigList getChildren() ;
-    ConfigList getChildren(ConfigPredicate predicate) ;
-
-    ConfigList getSiblings() ;
-    ConfigList getSiblings(ConfigPredicate predicate)  ;
-
-    bool isRoot() const noexcept ;
-    bool isLeaf() const noexcept ;
     
-    std::string name() const noexcept ;
-    std::string desc() const noexcept ;
+    const Config* getParent() noexcept 
+    {
+        return _parent ;
+    }
+
+    ConstConfigList getChildren() {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
+    ConstConfigList getChildren(ConfigPredicate predicate) ;
+
+    ConstConfigList getSiblings() ;
+    ConstConfigList getSiblings(ConfigPredicate predicate)  ;
+
+    bool isRoot() const noexcept { return _parent == nullptr ; }
+    bool isLeaf() const noexcept { return _children.empty() ; }
+    
+    const std::string& name() const noexcept {return _name;}
+    std::string desc() const noexcept {return _desc; }
+    bool hasAttr(const std::string& name) const {return std::find_if(_attrs.begin(), _attrs.end(), [](x) { return x.name == name}) != _attrs.end() ;}
+    
+    template <class T>
+    T getAttr(const std::string& name) const 
+    {
+        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](auto x) { return x.name == name}) ; 
+        if (iter == _attrs.end()) 
+        {
+            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not found.") ;
+        }
+        return convert<T>(iter->name) ;
+    }
 
     template <class T>
-    T getAttr(const std::string& name) const ;
+    T getAttr(const std::string& name, const T& def) const noexcept
+    {
+        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](auto x) { return x.name == name}) ; 
+        return (iter != _attrs.end()) ?  convert<T>(iter->value) : def ;
+    }
 
-    template <class T>
-    T getAttr(const std::string& name, const T& def) const noexcept;
+    std::string getAttrAsStr(const std::string& name, const std::string& def = "") const noexcept
+    {
+        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        return (iter != _attrs.end()) ? iter->value :  def ;      
+    }
 
-    std::string getA
+    int getAttrAsInt(const std::string& name, int def = 0) const 
+    {
+        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        if (iter == _attrs.end()) 
+        {
+            return def;
+        }
+        char * err = 0 ;
+        int val = strtol(iter->value, &err, 10) ;
+        if (err && *err)
+            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not an integer.") ;
+        return val ;
+    }
+
+    double getAttrAsDbl(const std::string& name, double def = 0.0) const 
+    {
+        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        if (iter == _attrs.end()) 
+        {
+            return def;
+        }
+        char * err = 0 ;
+        int val = strtod(iter->value, &err) ;
+        if (err && *err)
+            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not a double.") ;
+        return val ;
+    }
+
+    void toTOML(std::ostream& out) const ;
+
+private:
+    
+    friend class ConfigBuilder ; 
+    Config(std::string name, std::string desc, Attrs attrs) ;
+ 
+
+   
+    std::string _name ;
+    Text _desc ; 
+    Config* _parent ;
+    Children _children ;
+    Attrs _attrs ;
+    
 } ;
 
 }} //namespace theoria::config
