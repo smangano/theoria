@@ -1,17 +1,29 @@
 #pragma once
 
+#include <theoria/except/except.h>
+
+#include <algorithm>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <stack>
+
+
 namespace theoria { namespace config {
- 
+
+class Config ;
+class ConfigBuilder ;
+class ConfigVariableResolver ;
 
 ////
 //T must be something that can be read from a stream or you will get a compile error
 template <typename T>
 T convert(const std::string & val)
 {
-    T val ;
+    T result ;
     std::istringstream iss(val) ;
-    iss >> val ;
-    return val ;  
+    iss >> result ;
+    return result ;  
 }
 
 /*
@@ -32,9 +44,9 @@ TomlResolver - resolves variables from external TOML file. This can be used even
 
 
 //Builds a chain of reslovers. Used by Config Builder
-class ConfigVariableResolverBuilder : public CoreComponent
+class ConfigVariableResolverBuilder 
 {
-}
+} ;
 
 //Base class of resolvers. An implementation implements lookup which is responsible
 //for locally resolving a variable and return <"resolver", "value"> or <"", ""> if it 
@@ -42,15 +54,15 @@ class ConfigVariableResolverBuilder : public CoreComponent
 //as a debugging aid
  
 
-class ConfigBuilder : public CoreComponent
+class ConfigBuilder 
 {
 public:
 
-    void pushConfig(name, desc="") ;
+    void pushConfig(const std::string& name, const std::string& desc="") ;
     void addAtrr() ;
     void popAsChild(); 
-    void setName() ;
-    void setDesc() ;
+    void setName(const std::string& name) ;
+    void setDesc(std::string& name) ;
 
 private:
 
@@ -78,7 +90,7 @@ private:
     struct Attr
     {
         Attr(const std::string& name_, const std::string& value_, const std::string& src_ = "literal"):
-            name(name), value(value), src(src) {}
+            name(name_), value(value_), source(src_) {}
             
         std::string name ;
         std::string value ;
@@ -95,6 +107,10 @@ private:
     
     using ConstConfigList = std::vector<const Config*> ;
     using ConfigPredicate = bool (*) (const Config& config) ;
+
+    Attrs::const_iterator findAttr(const std::string& name) const {
+        return std::find_if(_attrs.cbegin(), _attrs.cend(), [name](auto x) { return x.name == name; }) ;
+    }  
 
     
     const Config* getParent() noexcept 
@@ -113,57 +129,58 @@ private:
     
     const std::string& name() const noexcept {return _name;}
     std::string desc() const noexcept {return _desc; }
-    bool hasAttr(const std::string& name) const {return std::find_if(_attrs.begin(), _attrs.end(), [](x) { return x.name == name}) != _attrs.end() ;}
+    bool hasAttr(const std::string& name) const {return findAttr(name) != _attrs.cend() ;}
     
     template <class T>
     T getAttr(const std::string& name) const 
     {
-        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](auto x) { return x.name == name}) ; 
-        if (iter == _attrs.end()) 
+        auto iter = findAttr(name) ;
+        if (iter == _attrs.cend()) 
         {
-            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not found.") ;
+            throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not found.", this->name().c_str(), name.c_str()) ;
         }
+
         return convert<T>(iter->name) ;
     }
 
     template <class T>
     T getAttr(const std::string& name, const T& def) const noexcept
     {
-        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](auto x) { return x.name == name}) ; 
+        auto iter = findAttr(name) ;
         return (iter != _attrs.end()) ?  convert<T>(iter->value) : def ;
     }
 
     std::string getAttrAsStr(const std::string& name, const std::string& def = "") const noexcept
     {
-        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        auto iter = findAttr(name) ;
         return (iter != _attrs.end()) ? iter->value :  def ;      
     }
 
     int getAttrAsInt(const std::string& name, int def = 0) const 
     {
-        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        auto iter = findAttr(name) ;
         if (iter == _attrs.end()) 
         {
             return def;
         }
         char * err = 0 ;
-        int val = strtol(iter->value, &err, 10) ;
+        int val = strtol(iter->value.c_str(), &err, 10) ;
         if (err && *err)
-            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not an integer.") ;
+            throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not an integer.", this->name().c_str(), name.c_str()) ;
         return val ;
     }
 
     double getAttrAsDbl(const std::string& name, double def = 0.0) const 
     {
-        auto iter = std::find_if(_attrs.begin(), _attrs.end(), [](x) : x.name == name) ; 
+        auto iter = findAttr(name) ;
         if (iter == _attrs.end()) 
         {
             return def;
         }
         char * err = 0 ;
-        int val = strtod(iter->value, &err) ;
+        int val = strtod(iter->value.c_str(), &err) ;
         if (err && *err)
-            throw std::runtime_error("Config: " + name() + " Attr: " + name + " not a double.") ;
+            throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not a double.", this->name().c_str(), name.c_str()) ;
         return val ;
     }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 namespace theoria { namespace config {
 
@@ -33,13 +34,15 @@ class ConfigVariableResolver
 {
 public:
 
+    using Result = std::pair<const ConfigVariableResolver*, std::string> ;
+    using ResultVec = std::vector<Result> ;
    
     /*
      * Resolve variable
      * @var is the variable and it must begin with '$' character 
      *
      * @return the value of the variable.  If _var_ is not found then the _var_ itself is returned
-     *
+     */
     std::string resolve(const std::string& var) const ;
 
     /*
@@ -51,25 +54,47 @@ public:
      * @return vector of resolutions such that the first entry is the value that would have been resolved
      * the second is the alternative and so on. 
      */
-    std::vector<std::pair<std::string, std::string>> resolveAll(const std::string& var) const ;
+     ResultVec resolveAll(const std::string& var) const ;
 
  
     /*
      * Abstract method that implements local resolution for a specific type of resolver. 
      * @name is the name of the varaible (with no leading '$') 
      *
-     * @return std::pair<"'name of resolver'", "'value'"> if found or std::pair<"",""> if not found
-    virtual std::pair<std::string, std::string> lookup(const std::string& name) const = 0 ;
+     * @return std::pair<"'resolver'", "'value'"> if found or std::pair<"",""> if not found
+     */
+    virtual Result lookup(const std::string& name) const = 0 ;
 
     
     
 private:
 
-    std::string resolveFirst(const std::string& name) const ;
-    std::string resolveLast(const std::string& name) const ;
+    Result resolveFirst(const std::string& name) const ;
+    Result resolveLast(const std::string& name) const ;
 
 
     ConfigVariableResolver* _next ;
 } ;
 
+/*
+ * Resolves variables from the os environment
+ */
+class EnvVarResolver : public ConfigVariableResolver
+{
+public:
 
+    Result lookup(const std::string& name) const override ;
+
+} ;
+
+/*
+ * Resolves variables set from the theroia command line
+ */
+class CmdLineResolver : public ConfigVariableResolver
+{
+public:
+
+    Result lookup(const std::string& name) const override;
+} ;
+
+}} //namespace theoria::config
