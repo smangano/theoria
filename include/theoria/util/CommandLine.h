@@ -8,7 +8,7 @@ int main(int argc, const char ** argv) ;
 namespace theoria { namespace util {
 
 /*
- * Singleton that captures command line arguemenst of theoria applications
+ * Pseudo-Singleton that captures command line arguemenst of theoria applications
  *
  * CommandLine consists of:
  *
@@ -44,14 +44,17 @@ class CommandLine {
 
 public:
 
+    CommandLine(int argc, const char * argv[]) ;
+
     using const_iterator = SymbolTbl::const_iterator ;
 
     static const CommandLine& instance() ;
+    static void reset() ; 
 
     /* Find var if it exists
      * @return const_iterator to std::pair<var,value> else <endVars>
      */
-    const_iterator findVar(const std::string& var) const { return _settings.find(var) ; }
+    const_iterator findVar(const std::string& var) const { return _variables.find(var) ; }
 
     /* Test if variable exists
      * @var the variable
@@ -100,26 +103,28 @@ public:
      */
     bool variableAsBool(const std::string& name, bool def) const ;
 
+    int numVars() const {return _variables.size();} 
     
-    bool hasSetting(const std::string& name) const ;
-    const_iterator beginSettings() const ; 
-    const_iterator endSettings() const ; 
+    const_iterator findSetting(const std::string& name) const { return _settings.find(name) ; }
+    bool hasSetting(const std::string& name) const { return findSetting(name) != endSettings() ; }
+    const_iterator beginSettings() const {return _settings.cbegin(); }
+    const_iterator endSettings() const {return _settings.cend(); }
     const char * settingAsPtr(const std::string& name) const noexcept ;
     const std::string& settingAsStr(const std::string& name, const std::string& def) const ;
     int64_t settingAsInt(const std::string& name, int64_t def) const ;
     double settingAsDbl(const std::string& name, double def) const ;
     bool settingAsBool(const std::string& name, bool def) const ;
+    int numSettings() const {return _settings.size();} 
 
+    const std::string& configFilename() const {return _configFileName;}
 
 private:
 
-    friend int ::main(int argc, const char ** argv) ;
 
     CommandLine() ; 
     CommandLine(const CommandLine&) ;
     CommandLine& operator =(const CommandLine&) ;
 
-    CommandLine(int argc, const char * argv[]) ;
 
     SymbolTbl _settings ;
     SymbolTbl _variables ;
