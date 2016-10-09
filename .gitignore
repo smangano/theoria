@@ -6,4 +6,6 @@
 **/*.so
 **/*.gcov
 **/*.gcno
+**/*.gcda
+
 testprog
