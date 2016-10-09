@@ -2,6 +2,7 @@
 #include <theoria/except/except.h>
 
 #include <cstring>
+#include <boost/algorithm/string/predicate.hpp>
 
 using namespace theoria ;
 using namespace util ;
@@ -31,7 +32,7 @@ CommandLine::CommandLine(int argc, const char*argv[])
             value = argv[iSetting++] ;
         _settings[setting] = value ;
     }
-    
+   
     iSetting++ ; //eat potential trailing -- 
     if (iSetting >= argc)
         return ;
@@ -59,5 +60,64 @@ const CommandLine& CommandLine::instance()
 {
     //yes death will be swift if used before main initializes!
     return *__CommandLine ;
+}
+
+const char * CommandLine::variableAsPtr(const std::string& name) const noexcept 
+{
+    auto iter = findVar(name) ;
+    if (iter != endVars())
+        return iter->second.c_str() ;
+    return nullptr ;
+}
+
+const std::string& CommandLine::variableAsStr(const std::string& name, const std::string& def) const 
+{
+    auto iter = findVar(name) ;
+    if (iter != _variables.cend())
+        return iter->second ;
+    return def ;
+}
+
+int64_t CommandLine::variableAsInt(const std::string& name, int64_t def) const 
+{
+    auto iter = findVar(name) ;
+    if (iter != _variables.cend())
+    {
+        char * err = nullptr;
+        int64_t result = strtoll(iter->second.c_str(), &err, 10)  ;
+        if (err && *err)
+            throw RUNTIME_ERROR("variableAsInt(%s, %lld) %s is not an integer", name.c_str(), def, iter->second.c_str()) ;
+        return result ;
+    }
+    return def ;
+}
+
+double CommandLine::variableAsDbl(const std::string& name, double def) const 
+{
+    auto iter = findVar(name) ;
+    if (iter != _variables.cend())
+    {
+        char * err = nullptr;
+        double result = strtod(iter->second.c_str(), &err)  ;
+        if (err && *err)
+            throw RUNTIME_ERROR("variableAsDbl(%s, %g) %s is not a double", name.c_str(), def, iter->second.c_str()) ;
+        return result ;
+    }
+    return def ;
+}
+
+bool CommandLine::variableAsBool(const std::string& name, bool def) const 
+{
+    auto iter = findVar(name) ;
+    if (iter != _variables.cend())
+    {
+        const char * value = iter->second.c_str() ;
+        if ( boost::iequals(value, "false") || strcmp(value, "0") == 0 )
+            return false ;
+        if ( boost::iequals(value, "true") || strcmp(value, "1") == 0 )
+            return true ;
+        throw RUNTIME_ERROR("variableAsBool(%s, %s) %s is not a bool", name.c_str(), (def ? "true" : "false"), iter->second.c_str()) ;
+    }
+    return def ;
 }
 

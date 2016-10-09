@@ -8,7 +8,7 @@ using namespace theoria ;
 int main(int argc, const char ** argv) 
 {
     try {
-        util::CommandLine(argc, argv) ;
+        util::CommandLine(argc-1, &(argv[1])) ;
 
     }
 

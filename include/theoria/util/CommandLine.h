@@ -48,18 +48,23 @@ public:
 
     static const CommandLine& instance() ;
 
+    /* Find var if it exists
+     * @return const_iterator to std::pair<var,value> else <endVars>
+     */
+    const_iterator findVar(const std::string& var) const { return _settings.find(var) ; }
+
     /* Test if variable exists
      * @var the variable
      * @return true if exists
      */
-    bool hasVariable(const std::string& var) const ;
+    bool hasVariable(const std::string& var) const { return findVar(var) != endVars() ; }
 
     /*
      * Iterate over all variables
      * @return iterator to std::pair<name,value>  or end()
      */
-    const_iterator beginVars() const ; 
-    const_iterator endVars() const ; 
+    const_iterator beginVars() const { return _variables.cbegin(); } 
+    const_iterator endVars() const { return _variables.cend(); }
 
     /*
      * Get variable value or nullptr as const char *
@@ -76,6 +81,7 @@ public:
     /*
      * Get variable value as int64_t
      * @return value or def if not present
+     * @throw std::runtime_error if can't convert to an integer
      */
     int64_t variableAsInt(const std::string& name, int64_t def=0) const ;
 
@@ -83,9 +89,15 @@ public:
     /*
      * Get variable value as double
      * @return value or def if not present
+     * @throw std::runtime_error if can't convert to a double
      */
     double variableAsDbl(const std::string& name, double def = 0) const ;
 
+    /*
+     * Get variable value as bool
+     * @return value or def if not present
+     * @throw std::runtime_error if can't convert to a bool 
+     */
     bool variableAsBool(const std::string& name, bool def) const ;
 
     
