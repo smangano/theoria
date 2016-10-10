@@ -1,22 +1,65 @@
+#pragma once
+
+#include <core/primitives.h>
+
 #include <string>
 
-namespace theoria
-{
+namespace theoria { namespace core {
 
-using CompId = int ;
-
+/*
+ * Data associated with a component 
+ */
 class ComponentData
 {
+    using BaseList = std::vector<CompId> ;
+
+public:
+
+    using baseid_const_iterator = BaseList::const_iterator ;
+
+    /*
+     * Componets can be linked to base implementations to support
+     * the Theoria's concept of _dynamic inheritence_.
+     */*
+    baseid_const_iterator beginBaseId() const ;
+    baseid_const_iterator endBaseId() const ;
+
+    /*
+     * Component's id
+     */
+    CompId id() const {return  _id; }
+
+    /*
+     * Component's Type name
+     */
+    TypeName type() const {return _type;}
+
+    /*
+     * List of component's immediate base type names
+     */
+    TypeNameList baseTypes() const ;
+
+    /*
+     * List of all components ancestor types aquired using breadth first traversal with dupes
+     * eliminated
+     */
+    TypeNameList ancestorTypes() const ;
+
+    /*
+     * Component's description. May contain markdown (http://daringfireball.net/projects/markdown/).
+     */
+    Text desc() const {return _desc ;} 
+
 private:
 
 	CompId _id ;
-	CompId _base ;
+	BaseList _bases ;
 	std::string _type ;
-	std::string _desc ;
-        
+	std::string _name ;
+	Text _desc ;
 } ;
 
-/**
+/*
 class: CompState
 desc:  A component is always in some state or composition of states. CompState models a non-empty
        state list where the primary state is on the the first and secondary states are later in the list. 
@@ -133,8 +176,12 @@ class Dependencies
 {
 	struct Dependent
 	{
-		Dependent(const std::string& type_, const std::string& name_, bool optional_):
+		Dependent(const std::string& type_, const std::string& name_, bool optional_ = false):
         	: type(type_), name(name_), optional(optional_) {}
+
+        Dependent(const std::string& type_, optional_=false)
+            : type(type_), name(type_), optional(false) 
+
 
 		std::string type ;
 		std::string name ;
@@ -213,14 +260,14 @@ public:
 	/**
      * Initialize component from its configuration and return the Components dependencies
      */
-	virtual Dependencies init(Config config) ;
+	virtual Dependencies init(const Config& config) ;
 
 	/**
      * Recieve the componets you requried in init(). Optional components will be nullptrs.
      * All components received are itialized but not necessarily finalized so do not call 
      * into the component yet (unless you really know what you are doing but you are prob asking for trouble)
      */
-    virtual void finalize(std::vector<ComponentPtr> dependencies) ;
+    virtual void finalize(std::vector<Component*> dependencies) ;
 
 	/**
      * This is a place to take action on application lifecycle events. 
@@ -245,4 +292,4 @@ private:
 	CompId _id ;
 };
 
-} //namespace theoria	
+}} //namespace theoria::core	

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <theoria/except/except.h>
+#include <theoria/util/conversions.h>
 
 #include <algorithm>
 #include <string>
@@ -15,38 +16,7 @@ class Config ;
 class ConfigBuilder ;
 class ConfigVariableResolver ;
 
-////
-//T must be something that can be read from a stream or you will get a compile error
-template <typename T>
-T convert(const std::string & val)
-{
-    T result ;
-    std::istringstream iss(val) ;
-    iss >> result ;
-    return result ;  
-}
 
-/*
-"$var - is a first variable. It's value is taken from the first resolver that contains it
-"$$var - is a last variable. It's value can be overriden by later resolvers
-"$var=default is a first variable which gets a default value only if no resolver contains it
-$$var=default is a last variable which gets a default value only if no resolver contains it
-$var1=$var2, $$var1=$var2, $var1=$$var2, $$var1=$$var2 are all legal 
-$var and $$var can both appear in the same config because variable is only bound locally. In other words, every occurence is rebound.
-
-The following resolvers are provided. You can create new ones
-
-CmdLineResolver - resolves from values passed on cmd line in the form var1=val1, var2=val2, ...
-EnvVarResolver - resolves variables from the OS env 
-ConfigVariableResolver - resolves variables defined in the config file itself. 
-TomlResolver - resolves variables from external TOML file. This can be used even if you don't use TOML as your primary config syntax 
-*/
-
-
-//Builds a chain of reslovers. Used by Config Builder
-class ConfigVariableResolverBuilder 
-{
-} ;
 
 //Base class of resolvers. An implementation implements lookup which is responsible
 //for locally resolving a variable and return <"resolver", "value"> or <"", ""> if it 
@@ -140,14 +110,14 @@ private:
             throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not found.", this->name().c_str(), name.c_str()) ;
         }
 
-        return convert<T>(iter->name) ;
+        return util::convert<T>(iter->name) ;
     }
 
     template <class T>
     T getAttr(const std::string& name, const T& def) const noexcept
     {
         auto iter = findAttr(name) ;
-        return (iter != _attrs.end()) ?  convert<T>(iter->value) : def ;
+        return (iter != _attrs.end()) ?  util::convert<T>(iter->value) : def ;
     }
 
     std::string getAttrAsStr(const std::string& name, const std::string& def = "") const noexcept
@@ -158,30 +128,12 @@ private:
 
     int getAttrAsInt(const std::string& name, int def = 0) const 
     {
-        auto iter = findAttr(name) ;
-        if (iter == _attrs.end()) 
-        {
-            return def;
-        }
-        char * err = 0 ;
-        int val = strtol(iter->value.c_str(), &err, 10) ;
-        if (err && *err)
-            throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not an integer.", this->name().c_str(), name.c_str()) ;
-        return val ;
+        return util::convertToInt(findAttr(name), _attrs.end(), "getAttr", name, def) ;
     }
 
     double getAttrAsDbl(const std::string& name, double def = 0.0) const 
     {
-        auto iter = findAttr(name) ;
-        if (iter == _attrs.end()) 
-        {
-            return def;
-        }
-        char * err = 0 ;
-        int val = strtod(iter->value.c_str(), &err) ;
-        if (err && *err)
-            throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not a double.", this->name().c_str(), name.c_str()) ;
-        return val ;
+        return util::convertToDbl(findAttr(name), _attrs.end(), "getAttr", name, def) ;
     }
 
     void toTOML(std::ostream& out) const ;

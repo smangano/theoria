@@ -1,5 +1,5 @@
 env = Environment(CXXFLAGS='-Wall -std=c++14 -g -fprofile-arcs -ftest-coverage', CPPPATH=['./include'], LIBS=['gcov'])
-sources = Glob('src/config/*.cpp') + Glob('src/except/*.cpp') + Glob('src/util/*.cpp') 
+sources = Glob('src/config/*.cpp') + Glob('src/core/*.cpp') + Glob('src/except/*.cpp') + Glob('src/util/*.cpp') 
 env.SharedLibrary('theoria', sources)
 
 tests = Glob('test/*.cpp') + Glob('test/util/*.cpp')

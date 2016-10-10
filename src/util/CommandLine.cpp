@@ -1,8 +1,8 @@
 #include <theoria/util/CommandLine.h>
+#include <theoria/util/conversions.h>
 #include <theoria/except/except.h>
 
 #include <cstring>
-#include <boost/algorithm/string/predicate.hpp>
 
 using namespace theoria ;
 using namespace util ;
@@ -64,58 +64,6 @@ const CommandLine& CommandLine::instance()
     return *__CommandLine ;
 }
 
-
-int convertToInt(CommandLine::const_iterator target, 
-    CommandLine::const_iterator end, 
-    const char * context, 
-    const std::string& name, 
-    int def = 0 )
-{
-    if (target != end)
-    {
-        char * err = nullptr;
-        int64_t result = strtoll(target->second.c_str(), &err, 10)  ;
-        if (err && *err)
-            throw RUNTIME_ERROR("%sAsInt(%s, %lld) %s is not an integer", context, name.c_str(), def, target->second.c_str()) ;
-        return result ;
-    }
-    return def ;
-}
-
-double convertToDbl(CommandLine::const_iterator target, 
-    CommandLine::const_iterator end, 
-    const char * context, 
-    const std::string& name, 
-    double def = 0.0 )
-{
-    if (target != end)
-    {
-        char * err = nullptr;
-        double result = strtod(target->second.c_str(), &err)  ;
-        if (err && *err)
-            throw RUNTIME_ERROR("%sAsDbl(%s, %lld) %s is not a double", context, name.c_str(), def, target->second.c_str()) ;
-        return result ;
-    }
-    return def ;
-}
-
-bool convertToBool(CommandLine::const_iterator target, 
-    CommandLine::const_iterator end, 
-    const char * context, 
-    const std::string& name, 
-    bool def = false )
-{
-    if (target != end)
-    {
-        const char * value = target->second.c_str() ;
-        if ( boost::iequals(value, "false") || strcmp(value, "0") == 0 )
-            return false ;
-        if ( boost::iequals(value, "true") || strcmp(value, "1") == 0 )
-            return true ;
-        throw RUNTIME_ERROR("variableAsBool(%s, %s) %s is not a bool", name.c_str(), (def ? "true" : "false"), target->second.c_str()) ;
-    }
-    return def ;
-}
 
 const char * CommandLine::variableAsPtr(const std::string& name) const noexcept 
 {
