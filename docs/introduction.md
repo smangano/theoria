@@ -1,0 +1,4 @@
+#Introduction
+There is a tremendous chasm between software as code and software in execution. Software as code consists of source files in various programming languages, configuration files, make files, data files and so on. Software as code is visible. It maybe difficult to understand, especially if you are not the author (and sometimes even if you are) but there is really nothing hidden from you. 
+
+Software in execution is another story. Software in execution is opaque, incomprehensible, unpredictable and seemingly random. A modern software system in execution is a dynamic beast with many heads each moving in different directions and pursuing different goals. Modern software is multi-tasking, multi-threading, multi-processing, multi-cored and multi-user. Modern software deals with a multitude of inputs from keyboard, mouse, network ports, timers, disks, etc.  

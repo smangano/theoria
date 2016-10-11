@@ -1,0 +1,39 @@
+app = "AppTheGreat"                   #The name of the Theoria application
+appdesc="""
+This is the greatest application ever built. It dices, slices and chops meat.
+It is a floor wax and a desert topping
+"""
+
+#Some variable definitions
+var1 = 1
+var2 = 2
+numThreads = 5
+
+[ConfigVarResolverBuilder]                    #This is a core Theoria component for building resolution chain
+[ConfigVarResolverBuilder.CmdLineResolver]    #It contains an ordered list of component resolvers
+[ConfigVarResolverBuilder.EnvVarResolver]
+[ConfigVarResolverBuilder.ConfigVarResolver]
+
+
+[compType1]                    #This is a user component type
+name = "MyComp1"
+desc = """
+This is a description of MyComp
+It can contain **markdown**.
+"""
+
+
+[compType2]                    #This is another user type
+name = "MyComp2"
+baselist=["compType1"]         #This is a list of base components            
+desc = """
+This is a description of MyComp2
+It can contain **markdown**.
+"""
+[compType2.data]               #Some data required by this component
+threads="$numThreads"          #A variable. May be resolved by definitions above or may resolve based on resolvers
+
+
+
+
+
