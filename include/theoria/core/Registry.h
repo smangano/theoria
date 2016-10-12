@@ -2,13 +2,20 @@
 #include <theoria/util/densemap.h>
 
 #include <string>
-
-#include <unordered_map>
+#include <map>
 
 namespace theoria { namespace core {
 
 class Component ;
 
+/**
+ * Used to lock the Registry for iteration in a multi-threaded env
+ */
+struct RegistryLock
+{
+    RegistryLock() ;
+    ~RegistryLock() ;
+};
 
 class Registry
 {
@@ -23,6 +30,9 @@ private:
     void operator=(const Registry&) ;
 
 public:
+
+
+    using FactoryMap_iterator = FactoryMap::iterator;
 
     static Registry& instance() ;
 
@@ -64,10 +74,34 @@ public:
      */
     Component* createComponent(const TypeName& type, const SubTypeName& subtype) ;
 
-    FactoryMap::iterator beginFact() ;
-    FactoryMap::iterator endFact() ;
-    FactoryMap::iterator findFact(const TypeName& type) ;
-    FactoryMap::iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type& v))  ;
+    /* Begin iterator over factories.
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator beginFact() ;
+
+    /* End iterator over factories.
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator endFact() ;
+
+    /* Find factory by type.
+     * @type the type name to find
+     * @return first entry for type or endFact()
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator findFact(const TypeName& type) ;
+
+    /* Find factory by predicate.
+     * @start where to start searching
+     * @predicate test critera
+     * @return first entry aot or after start that satisfies predicate or endFact()
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type& v))  ;
 
     ComponentMap::iterator beginComp() ;
     ComponentMap::iterator endComp() ;
@@ -79,7 +113,7 @@ public:
      * Very dangerous. Only know use-case is unit-testing.
      * Wipes the entire state of the Registry
      */
-    static Registry& reset() ;
+    static void reset() ;
 
 private:
 
