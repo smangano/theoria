@@ -12,7 +12,6 @@ class CommandLineTest : public ::testing::Test
        tmpnam(config_file_name) ;
        config_file = fopen(config_file_name, "w+") ; 
     }
-
     virtual void TearDown() {
         CommandLine::reset() ;
         fclose(config_file) ;

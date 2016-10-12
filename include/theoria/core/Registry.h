@@ -25,6 +25,7 @@ private:
 public:
 
     static Registry& instance() ;
+
     
     /* Register the default factory for components of type
      * @type the type name
@@ -73,6 +74,12 @@ public:
 
     ComponentMap::const_iterator beginComp() const ;
     ComponentMap::const_iterator endComp() const ;
+
+    /*
+     * Very dangerous. Only know use-case is unit-testing.
+     * Wipes the entire state of the Registry
+     */
+    static Registry& reset() ;
 
 private:
 
