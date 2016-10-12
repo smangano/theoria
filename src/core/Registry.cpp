@@ -2,6 +2,7 @@
 #include <theoria/except/except.h>
 
 #include <algorithm>
+#include <iostream>
 #include <mutex>
 
 using namespace theoria ;
@@ -10,6 +11,12 @@ using namespace core ;
 using FactoryMap_iterator = Registry::FactoryMap_iterator ;
 
 static std::mutex registry_lock ;
+
+namespace 
+{
+    //For paractical purposes this should be fine as the upper bound of any reasonable name
+    const std::string _HIGHEST =  { '\xff', '\xff', '\xff' , '\xff', '\xff', '\xff', '\xff', '\xff', '\xff' } ;
+}
 
 RegistryLock::RegistryLock()
 {
@@ -69,11 +76,15 @@ FactoryMap_iterator Registry::findfact(FactoryMap_iterator start, bool (*predica
     return std::find_if(start, endFact(), predicate) ;
 }
 
-Component* Registry::createComponent(const std::string& type, bool allow_ambiguity) 
+Component* Registry::createComponent(const std::string& type, int allow_ambiguity) 
 {
     { //locked
         std::lock_guard<std::mutex> guard(registry_lock);
-        auto range = _factories.equal_range(std::make_pair(type, std::string())) ;
+        auto range = 
+            std::make_pair(
+                _factories.lower_bound(CompFactoryKey(type, std::string())),
+                _factories.upper_bound(CompFactoryKey(type, _HIGHEST))
+            ) ;
         if (range.first != range.second) {
             if (distance(range.first, range.second)  == 1)
             {
@@ -106,6 +117,26 @@ Component* Registry::createComponent(const std::string& type, bool allow_ambigui
     throw RUNTIME_ERROR("Registry failed to create component of type [%s] : Not Registered", type.c_str()) ;
 }
 
+Component* Registry::createComponent(const TypeName& type, const SubTypeName& subtype) 
+{
+    { //locked
+        std::lock_guard<std::mutex> guard(registry_lock);
+        auto iter = _factories.find(std::make_pair(type, subtype)) ;
+        std::cout << "----------------------------------------------------------------------------------------------\n"
+                  << "createComponent(" << type << "," << subtype << ") -> (" << iter->first.first << ","
+                  << iter->first.second << ")" 
+                  << "----------------------------------------------------------------------------------------------\n"
+                  << std::endl ;
+        if (iter != _factories.end())
+            return _createComponent(iter) ;
+    } //unlocked
+
+    throw RUNTIME_ERROR("Registry failed to create component of type [%s] and subtype [%s]: Not Registered",
+                        type.c_str(), 
+                        subtype.c_str()
+                       ) ;
+}
+
 Component* Registry::_createComponent(FactoryMap_iterator iter) 
 {
     Component* comp = iter->second(_nextId) ;
@@ -117,3 +148,19 @@ Component* Registry::_createComponent(FactoryMap_iterator iter)
     return comp ;
 }
 
+void Registry::dump(std::ostream& stream) const 
+{
+    stream << "Factories {\n" ;
+    for (auto f : _factories) {
+        stream << "(" << f.first.first << ", " << f.first.second <<  ") ->" << f.second << "\n" ;
+    }
+    stream << "}\n" ;
+
+    stream << "CompXRefs{\n" ;
+    for (auto f : _xref) {
+        stream << "(" << f.first.first << ", " << f.first.second <<  ") ->" << f.second << "\n" ;
+    }
+    stream << "}\n" ;
+
+    stream << std::endl ;
+}

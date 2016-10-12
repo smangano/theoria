@@ -66,7 +66,7 @@ public:
      *
      * @execept std::runtime_error if type not found
      */
-    Component* createComponent(const TypeName& type, bool allow_ambiguity = true) ;
+    Component* createComponent(const TypeName& type, int allow_ambiguity = true) ;
 
     /*
      * Create a component of the specified type and subtype. 
@@ -113,13 +113,16 @@ public:
     ComponentMap::const_iterator beginComp() const ;
     ComponentMap::const_iterator endComp() const ;
 
+    void dump(std::ostream& stream) const ;
+
     /*
      * Very dangerous. Only know use-case is unit-testing.
      * Wipes the entire state of the Registry
      */
-    static void reset() ;
+    void reset() ;
 
-private:
+    
+public: //TODO: private
 
     Component* _createComponent(FactoryMap_iterator iter) ;
 
