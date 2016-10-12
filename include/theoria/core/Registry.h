@@ -1,3 +1,5 @@
+#pragma once
+
 #include <theoria/core/primitives.h>
 #include <theoria/util/densemap.h>
 
@@ -55,14 +57,16 @@ public:
      * Create a component of the specified type. The following type resolution rules are used:
      * 1) If there is only one factory for the specified type, use that.
      * 2) If there are multiple factories and none has been used then use the default factory whose subtype==type
-     * 3) If there are multiple factories and none has been used and there is no default, use the first one
+     * 3) If there are multiple factories and none has been used and there is no default, use the first one (unless
+     *    allow_ambiguity is false)
      * 4) If there are multiple factories use the first one that has already been used
      *
      * @type the type name to use for look up
+     * @allow_ambiguity if false treat case (3) above as abiguous and raise an exception
      *
      * @execept std::runtime_error if type not found
      */
-    Component* createComponent(const TypeName& type) ;
+    Component* createComponent(const TypeName& type, bool allow_ambiguity = true) ;
 
     /*
      * Create a component of the specified type and subtype. 
@@ -117,6 +121,8 @@ public:
 
 private:
 
+    Component* _createComponent(FactoryMap_iterator iter) ;
+
     CompId _nextId ;
     FactoryMap _factories ; 
     ComponentMap _components ;
@@ -124,4 +130,4 @@ private:
 } ;
 
 
-}} ;
+}} 

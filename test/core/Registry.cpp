@@ -47,4 +47,17 @@ TEST_F(RegistryTest, RegisterFactoryByTypenameOnly)
 
 TEST_F(RegistryTest, RegisterFactoryByTypenameAndSubType) 
 {
+    Registry::instance().registerFactory("MockComponent", "MockComponent", MockComponent::factory) ; 
+    Registry::instance().registerFactory("MockComponent", "MockComponent2", MockComponent2::factory) ; 
+
+    ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;
+    ASSERT_NE(Registry::instance().findFact("MockComponent"), Registry::instance().endFact()) ;
+    auto iter = Registry::instance().findFact("MockComponent") ;
+    ASSERT_EQ(iter->first, 
+              std::make_pair(std::string("MockComponent"), std::string("MockComponent"))) ;
+    ASSERT_EQ(iter->second, MockComponent::factory) ;
+    ++iter ;
+    ASSERT_EQ(iter->first, 
+              std::make_pair(std::string("MockComponent"), std::string("MockComponent2"))) ;
+    ASSERT_EQ(iter->second, MockComponent2::factory) ;
 }

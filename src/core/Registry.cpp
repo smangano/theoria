@@ -1,4 +1,3 @@
-
 #include <theoria/core/Registry.h>
 #include <theoria/except/except.h>
 
@@ -70,27 +69,51 @@ FactoryMap_iterator Registry::findfact(FactoryMap_iterator start, bool (*predica
     return std::find_if(start, endFact(), predicate) ;
 }
 
-#if 0
-Component* Registry::createComponent(const std::string& type) 
+Component* Registry::createComponent(const std::string& type, bool allow_ambiguity) 
 {
-    Component* comp = nullptr ;
-
     { //locked
-        std::lock_guard<std::mutex> guard(lock);
-        FactoryMap::iterator iter = _factories.find(type) ;
-        if (iter != _factories.end()) {
-            CompId id = _nextId++ ;
-           _components[id] = comp = iter->second(id) ;
+        std::lock_guard<std::mutex> guard(registry_lock);
+        auto range = _factories.equal_range(std::make_pair(type, std::string())) ;
+        if (range.first != range.second) {
+            if (distance(range.first, range.second)  == 1)
+            {
+                return _createComponent(range.first) ;
+            }
+            else
+            {
+                //Check for usage
+                for (auto iter = range.first; iter != range.second; ++iter) {
+                    if (_xref.find(iter->first) != _xref.end()) {
+                        return _createComponent(iter) ;
+                    }
+                }
+                //No component's of type have been used so look for the default
+                auto def = _factories.find(std::make_pair(type, type)) ;
+                if (def != _factories.end()) {
+                    return _createComponent(def) ;
+                }
+                if (allow_ambiguity) {
+                    //No compelling reason to pick one so use first
+                    return _createComponent(range.first) ;
+                }
+                else {
+                    throw RUNTIME_ERROR("Registry failed to create component of type [%s] : Ambiguous: [%d] choices",
+                                         type.c_str(), std::distance(range.first,range.second)) ;
+                }
+            }
         } 
-        else {
-            throw RUNTIME_ERROR("Registry failed to create component of type [%s] : Not Registered", type.c_str()) ;
-        }
     } //unlocked
-    
-    if (!comp) {
-        throw RUNTIME_ERROR("Registry Failed to create component of type [%s]. Factory Failed", type.c_str()) ;
-    }
-   
-    return comp ;    
+    throw RUNTIME_ERROR("Registry failed to create component of type [%s] : Not Registered", type.c_str()) ;
 }
-#endif 
+
+Component* Registry::_createComponent(FactoryMap_iterator iter) 
+{
+    Component* comp = iter->second(_nextId) ;
+    if (!comp) 
+        throw RUNTIME_ERROR("Registry failed to create component of type [%s] subtype [%s] : Factory returned nullptr",
+                            iter->first.first.c_str(),
+                            iter->first.second.c_str()) ;
+    _xref.insert(std::make_pair(iter->first, _nextId++)) ;
+    return comp ;
+}
+
