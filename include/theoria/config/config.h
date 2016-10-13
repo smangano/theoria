@@ -7,7 +7,6 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <stack>
 
 
 namespace theoria { namespace config {
@@ -15,31 +14,6 @@ namespace theoria { namespace config {
 class Config ;
 class ConfigBuilder ;
 class ConfigVariableResolver ;
-
-
-
-//Base class of resolvers. An implementation implements lookup which is responsible
-//for locally resolving a variable and return <"resolver", "value"> or <"", ""> if it 
-//does not contain a value. This allows Theoria to document how variables were resolved
-//as a debugging aid
- 
-
-class ConfigBuilder 
-{
-public:
-
-    void pushConfig(const std::string& name, const std::string& desc="") ;
-    void addAtrr() ;
-    void popAsChild(); 
-    void setName(const std::string& name) ;
-    void setDesc(std::string& name) ;
-
-private:
-
-    std::stack<Config*> _stack;
-    ConfigVariableResolver* _resolverChain ;
-    
-}; 
 
 
 /*
@@ -62,9 +36,10 @@ private:
         Attr(const std::string& name_, const std::string& value_, const std::string& src_ = "literal"):
             name(name_), value(value_), source(src_) {}
             
-        std::string name ;
-        std::string value ;
-        std::string source ;
+        std::string name ;    
+        std::string value ;   
+        std::string source ;  //"literal" or if value was resolved from a variable then "variable[resolver]"
+        std::string type ;    //optiona indication of value's type
     } ;
 
     using Attrs = std::vector<Attr>  ;
@@ -142,9 +117,14 @@ private:
     
     friend class ConfigBuilder ; 
     Config(std::string name, std::string desc, Attrs attrs) ;
- 
+    Config(std::string name, std::string desc) ;
 
-   
+    void addAttr(const std::string& name, const std::string& value) ;
+
+    Attrs::iterator findAttr(const std::string& name) {
+        return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;
+    }  
+ 
     std::string _name ;
     Text _desc ; 
     Config* _parent ;
