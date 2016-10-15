@@ -33,13 +33,13 @@ private:
 
     struct Attr
     {
-        Attr(const std::string& name_, const std::string& value_, const std::string& src_ = "literal"):
-            name(name_), value(value_), source(src_) {}
+        Attr(const std::string& name_, const std::string& value_, const std::string& type_ ="", const std::string& src_ = "literal"):
+            name(name_), value(value_), type(type_), source(src_) {}
             
         std::string name ;    
         std::string value ;   
-        std::string source ;  //"literal" or if value was resolved from a variable then "variable[resolver]"
         std::string type ;    //optiona indication of value's type
+        std::string source ;  //"literal" or if value was resolved from a variable then "variable[resolver]"
     } ;
 
     using Attrs = std::vector<Attr>  ;
@@ -116,10 +116,9 @@ private:
 private:
     
     friend class ConfigBuilder ; 
-    Config(std::string name, std::string desc, Attrs attrs) ;
-    Config(std::string name, std::string desc) ;
+    Config(const std::string& name, const std::string& desc) ;
 
-    void addAttr(const std::string& name, const std::string& value) ;
+    void addAttr(const std::string& name, const std::string& value, const std::string& type="") ;
     void addChild(Config* child) ;
 
     Attrs::iterator findAttr(const std::string& name) {
@@ -129,6 +128,9 @@ private:
     Attrs::iterator endAttr() {
         return _attrs.end() ;
     }
+
+    void setName(const std::string& name) {_name = name;}
+    void setDesc(const std::string& desc) {_desc = desc;}
 
     std::string _name ;
     Text _desc ; 

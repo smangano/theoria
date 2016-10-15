@@ -1,8 +1,9 @@
-@pragma once
+#pragma once
 
 #include <theoria/core/primitives.h>
+#include <theoria/core/Registry.h>
 
-namespace theoria { namespace core
+namespace theoria { namespace core {
 
 /* Add a static instance of this class to your Component to cause it to register itself
    automatically. 
@@ -35,15 +36,16 @@ namespace theoria { namespace core
 template <typename TComp>
 class RegisterThis
 {
+public:
 
-    RegisterThis(const TypeName& type, int allow_ambiguity=true)
+    RegisterThis(const TypeName& type)
     {
-        Registry::instance().register(type, allow_ambiguity, T::factory) ;
+        Registry::instance().registerFactory(type, TComp::factory) ;
     }
 
     RegisterThis(const TypeName& type, const SubTypeName& subtype)
     {
-        Registry::instance().register(type, subtype, T::factory) ;
+        Registry::instance().registerFactory(type, subtype, TComp::factory) ;
     }
  
 };

@@ -1,4 +1,4 @@
-#include <theoria/core/Register.h>
+#include <theoria/core/RegisterThis.h>
 #include "theoria/core/Component.h"
 #include <gtest/gtest.h>
 
@@ -27,9 +27,9 @@ struct MockComponent : public Component
 
 } ;
 
-TEST_F(RegistryTest, RegisterFactoryByTypenameOnly) 
+TEST_F(RegisterThisTest, RegisterFactoryByTypenameOnly) 
 {
-    RegistryThis<MockComponent> rt {"MockComponent"} ;
+    RegisterThis<MockComponent> rt {"MockComponent"} ;
 
     ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;
     ASSERT_NE(Registry::instance().findFact("MockComponent"), Registry::instance().endFact()) ;
