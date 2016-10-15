@@ -1,8 +1,10 @@
 #pragma once
 
-#include <core/primitives.h>
+#include <theoria/core/primitives.h>
 
 #include <string>
+
+namespace theoria { namespace config { class Config ; }}
 
 namespace theoria { namespace core {
 
@@ -20,7 +22,7 @@ public:
     /*
      * Componets can be linked to base implementations to support
      * the Theoria's concept of _dynamic inheritence_.
-     */*
+     */
     baseid_const_iterator beginBaseId() const ;
     baseid_const_iterator endBaseId() const ;
 
@@ -107,7 +109,7 @@ class CompState
 	 * Pop and discard primary state. Then only if state vector is empty set
      * primary to 'state' (default OKAY) otherwise ignore 'state'
      */
-     void pop(state = OKAY_STATE) ;
+     void pop(int state = OKAY_STATE) ;
 
 	 /**
 	  * Get the 'index'th state. Default primary
@@ -128,7 +130,7 @@ class CompState
 	 /**
 	  * Return index of 'state' or -1 if no such state exists
       */
-	 int find(state) const ;
+	 int find(int state) const ;
 
 	 /**
       * Return true if any state in 'states' exists
@@ -176,11 +178,11 @@ class Dependencies
 {
 	struct Dependent
 	{
-		Dependent(const std::string& type_, const std::string& name_, bool optional_ = false):
+		Dependent(const std::string& type_, const std::string& name_, bool optional_ = false)
         	: type(type_), name(name_), optional(optional_) {}
 
-        Dependent(const std::string& type_, optional_=false)
-            : type(type_), name(type_), optional(false) 
+        Dependent(const std::string& type_, bool optional_=false)
+            : type(type_), name(type_), optional(false) {}
 
 
 		std::string type ;
@@ -188,25 +190,36 @@ class Dependencies
 		bool optional ;
 	} ;
 
+public:
+
 	Dependencies() {} 
 
 	/**
      * Add a dependent to a component of the given type. If there are multiple compnents of this type it will pick the first one that
      * has existing dependencies otherwise the first one it sees.
      */
-	Dependencies& loose(const std::string type, bool optional=false) {_deps.push_back(Dependent(type,"",optional)) ; return *this}
+	Dependencies& loose(const std::string type, bool optional=false) {
+        _deps.push_back(Dependent(type,"",optional)) ;
+        return *this;
+    }
 
 	/**
      * Add a dependent to a component of the given name such that the type matches it's name . Such a component can be thaought of as the default component of that
      * type and there can be only 0 or 1. 
      */
-    Dependencies& default(const std::string name, bool optional=false) {_deps.push_back(Dependent(name,name, optional)) ; return *this}
+    Dependencies& def(const std::string name, bool optional=false) {
+        _deps.push_back(Dependent(name,name, optional)) ;
+        return *this;
+    }
 
 	/**
 	 * Add a dependent with the specified name and type. There can be only 0 or 1. This is a strict dependency because the dependent is anouncing that one and only
      * one implementation will do
      */
-    Dependencies& strict(const std::string& type, const std::string& name, bool optional=false) {_deps.push_back(Dependent(type,name, optional)) ; return *this}
+    Dependencies& strict(const std::string& type, const std::string& name, bool optional=false) {
+        _deps.push_back(Dependent(type,name, optional)) ; 
+        return *this;
+    }
 
 	
 private:
@@ -236,7 +249,7 @@ enum class CompLifeCycle
 union MsgData
 {
 	const std::pair<int,int> d2 ;
-    cosnt long long          dl ;
+    const long long          dl ;
     const void *             dp ;
 } ;
 
@@ -256,11 +269,18 @@ class Component
 public:
 
 	Component() ;
+	Component(CompId id):
+        _id(id) {}
+
+	Component(CompId id, const std::string& name):
+        _id(id), _name(name) {}
+
+    virtual ~Component() ;
 
 	/**
      * Initialize component from its configuration and return the Components dependencies
      */
-	virtual Dependencies init(const Config& config) ;
+	virtual Dependencies init(const config::Config& config) ;
 
 	/**
      * Recieve the componets you requried in init(). Optional components will be nullptrs.
@@ -286,10 +306,10 @@ public:
 	void onMessage(Message msg) ;
 
 	
-private:
+protected:
 
-	std::string _name ;
 	CompId _id ;
+	std::string _name ;
 };
 
 }} //namespace theoria::core	

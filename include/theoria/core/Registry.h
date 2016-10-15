@@ -1,14 +1,23 @@
+#pragma once
+
 #include <theoria/core/primitives.h>
 #include <theoria/util/densemap.h>
 
 #include <string>
-
-#include <unordered_map>
+#include <map>
 
 namespace theoria { namespace core {
 
 class Component ;
 
+/**
+ * Used to lock the Registry for iteration in a multi-threaded env
+ */
+struct RegistryLock
+{
+    RegistryLock() ;
+    ~RegistryLock() ;
+};
 
 class Registry
 {
@@ -23,6 +32,9 @@ private:
     void operator=(const Registry&) ;
 
 public:
+
+
+    using FactoryMap_iterator = FactoryMap::iterator;
 
     static Registry& instance() ;
 
@@ -45,14 +57,16 @@ public:
      * Create a component of the specified type. The following type resolution rules are used:
      * 1) If there is only one factory for the specified type, use that.
      * 2) If there are multiple factories and none has been used then use the default factory whose subtype==type
-     * 3) If there are multiple factories and none has been used and there is no default, use the first one
+     * 3) If there are multiple factories and none has been used and there is no default, use the first one (unless
+     *    allow_ambiguity is false)
      * 4) If there are multiple factories use the first one that has already been used
      *
      * @type the type name to use for look up
+     * @allow_ambiguity if false treat case (3) above as abiguous and raise an exception
      *
      * @execept std::runtime_error if type not found
      */
-    Component* createComponent(const TypeName& type) ;
+    Component* createComponent(const TypeName& type, int allow_ambiguity = true) ;
 
     /*
      * Create a component of the specified type and subtype. 
@@ -64,10 +78,34 @@ public:
      */
     Component* createComponent(const TypeName& type, const SubTypeName& subtype) ;
 
-    FactoryMap::iterator beginFact() ;
-    FactoryMap::iterator endFact() ;
-    FactoryMap::iterator findFact(const TypeName& type) ;
-    FactoryMap::iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type& v))  ;
+    /* Begin iterator over factories.
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator beginFact() ;
+
+    /* End iterator over factories.
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator endFact() ;
+
+    /* Find factory by type.
+     * @type the type name to find
+     * @return first entry for type or endFact()
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator findFact(const TypeName& type) ;
+
+    /* Find factory by predicate.
+     * @start where to start searching
+     * @predicate test critera
+     * @return first entry aot or after start that satisfies predicate or endFact()
+     *
+     * Thread Safety: Requires RegistryLock()
+     */
+    FactoryMap_iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type& v))  ;
 
     ComponentMap::iterator beginComp() ;
     ComponentMap::iterator endComp() ;
@@ -75,13 +113,18 @@ public:
     ComponentMap::const_iterator beginComp() const ;
     ComponentMap::const_iterator endComp() const ;
 
+    void dump(std::ostream& stream) const ;
+
     /*
      * Very dangerous. Only know use-case is unit-testing.
      * Wipes the entire state of the Registry
      */
-    static Registry& reset() ;
+    void reset() ;
 
-private:
+    
+public: //TODO: private
+
+    Component* _createComponent(FactoryMap_iterator iter) ;
 
     CompId _nextId ;
     FactoryMap _factories ; 
@@ -90,4 +133,4 @@ private:
 } ;
 
 
-}} ;
+}} 
