@@ -120,11 +120,16 @@ private:
     Config(std::string name, std::string desc) ;
 
     void addAttr(const std::string& name, const std::string& value) ;
+    void addChild(Config* child) ;
 
     Attrs::iterator findAttr(const std::string& name) {
         return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;
     }  
  
+    Attrs::iterator endAttr() {
+        return _attrs.end() ;
+    }
+
     std::string _name ;
     Text _desc ; 
     Config* _parent ;

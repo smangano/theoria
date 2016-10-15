@@ -40,7 +40,11 @@ public:
 
     /* Change attributes type 
      */
-    void setAttrtype(const std::string& name, const std::string& newType) ;
+    void setAttrType(const std::string& name, const std::string& newType) ;
+
+    /* Change attribute's source to variable within resolver
+    */
+    void setAttrSource(const std::string& name, const std::string& variableName, const std::string& resolverName) ;
 
     /* Pop a node off the stack and attach it as a chile to the new top node
      */
