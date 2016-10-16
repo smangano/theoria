@@ -10,3 +10,4 @@
 **/*.gcda
 build/*
 tags
+.sconsign.dblite
