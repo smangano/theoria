@@ -1,5 +1,5 @@
-#include <theoria/config/builder.h>
-#include <theoria/config/config.h>
+#include <theoria/config/Builder.h>
+#include <theoria/config/Config.h>
 #include <memory>
 #include <string>
 
@@ -88,5 +88,19 @@ void ConfigBuilder::setDesc(std::string& name)
 ConfigPtr ConfigBuilder::top() 
 {
     return  _stack.top() ;
+}
+
+Config* ConfigBuilder::releaseAll() 
+{
+    if (_stack.empty())
+        return nullptr ;
+
+    while (_stack.size() > 1)
+        popAsChild() ;
+    ConfigPtr top = _stack.top() ;
+    _stack.pop() ;
+    std::shared_ptr<Config> release(nullptr, [](Config*) {}) ;
+    release.swap(top) ;
+    return release.get() ;
 }
 

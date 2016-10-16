@@ -1,4 +1,4 @@
-#include <theoria/config/resolve.h>
+#include <theoria/config/Resolve.h>
 #include <theoria/except/except.h>
 #include <theoria/util/CommandLine.h>
 

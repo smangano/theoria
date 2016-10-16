@@ -66,7 +66,8 @@ public:
      */
     ConfigPtr top() ;
 
-    
+    Config* releaseAll() ;
+
 private:
 
     std::stack<ConfigPtr> _stack;

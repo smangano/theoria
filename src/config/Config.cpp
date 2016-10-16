@@ -1,4 +1,4 @@
-#include <theoria/config/config.h>
+#include <theoria/config/Config.h>
 
 using namespace theoria;
 using namespace config ;
