@@ -8,5 +8,5 @@
 **/*.gcov
 **/*.gcno
 **/*.gcda
-
-testprog
+build/*
+tags
