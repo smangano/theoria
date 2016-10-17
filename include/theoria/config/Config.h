@@ -4,6 +4,7 @@
 #include <theoria/util/conversions.h>
 
 #include <algorithm>
+#include <functional>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -27,7 +28,7 @@ provided the varibales could be resolved.
 
 class Config
 {
-private:
+protected:
 
     using Text = std::string ; //Placeholder for future Text class
 
@@ -48,34 +49,38 @@ private:
  public:
 
     Config() ;
-    ~Config() ; 
+    virtual ~Config() ; 
     
     using ConstConfigList = std::vector<const Config*> ;
-    using ConfigPredicate = bool (*) (const Config& config) ;
+    using ConfigPredicate = std::function<bool (const Config *)> ;
 
     Attrs::const_iterator findAttr(const std::string& name) const {
         return std::find_if(_attrs.cbegin(), _attrs.cend(), [name](auto x) { return x.name == name; }) ;
     }  
 
     
-    const Config* getParent() noexcept 
+    const Config* getParent() const noexcept 
     {
         return _parent ;
     }
 
-    ConstConfigList getChildren() {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
-    ConstConfigList getChildren(ConfigPredicate predicate) ;
+    bool hasChild(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
+    int numChildren() const {return _children.size();}
+    ConstConfigList getChildren() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
+    ConstConfigList getChildren(const ConfigPredicate& predicate) const ;
 
-    ConstConfigList getSiblings() ;
-    ConstConfigList getSiblings(ConfigPredicate predicate)  ;
+    ConstConfigList getSiblings() const ;
+    ConstConfigList getSiblings(const ConfigPredicate& predicate) const  ;
 
     bool isRoot() const noexcept { return _parent == nullptr ; }
     bool isLeaf() const noexcept { return _children.empty() ; }
     
     const std::string& name() const noexcept {return _name;}
     std::string desc() const noexcept {return _desc; }
+
     bool hasAttr(const std::string& name) const {return findAttr(name) != _attrs.cend() ;}
-    
+    int numAttr() const {return _attrs.size();}
+
     template <class T>
     T getAttr(const std::string& name) const 
     {
@@ -85,7 +90,7 @@ private:
             throw RUNTIME_ERROR("Config: [%s] Attr: [%s] not found.", this->name().c_str(), name.c_str()) ;
         }
 
-        return util::convert<T>(iter->name) ;
+        return util::convert<T>(iter->value) ;
     }
 
     template <class T>
@@ -111,9 +116,10 @@ private:
         return util::convertToDbl(findAttr(name), _attrs.end(), "getAttr", name, def) ;
     }
 
-    void toTOML(std::ostream& out) const ;
+    virtual bool isArray() const ;
+    virtual void toTOML(std::ostream& out) const ;
 
-private:
+protected:
     
     friend class ConfigBuilder ; 
     Config(const std::string& name, const std::string& desc) ;
@@ -138,6 +144,31 @@ private:
     Children _children ;
     Attrs _attrs ;
     
+} ;
+
+/* An array of configs
+ * 
+ */
+class ConfigArray : public Config
+{
+public:
+    using const_iterator = Children::const_iterator ;
+
+    virtual void toTOML(std::ostream& out) const ;
+    virtual bool isArray() const ;
+    bool hasElement(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
+    int numElements() const {return _children.size();}
+    ConstConfigList getElements() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
+    ConstConfigList getElements(const ConfigPredicate& predicate) const {return getChildren(predicate);}
+    const Config* at(int index) const { return _children.at(index) ; }
+    const Config* operator[](int index) const { return _children[index] ; }
+    const_iterator begin() const {return _children.cbegin(); }
+    const_iterator end() const {return _children.cend(); }
+
+protected:
+    friend class ConfigBuilder ; 
+
+    ConfigArray(const std::string& name) ;
 } ;
 
 }} //namespace theoria::config

@@ -10,10 +10,15 @@ using ConfigPtr = ConfigBuilder::ConfigPtr ;
 
 void ConfigBuilder::pushConfig(const std::string& name, const std::string& desc) 
 {
-    _stack.push(std::shared_ptr<Config>(new Config(name, desc))) ;
+    _stack.push(ConfigPtr(new Config(name, desc))) ;
 }
 
-void ConfigBuilder::addAtrr(const std::string& name, const std::string value, const std::string type) 
+void ConfigBuilder::pushConfigArray(const std::string& name) 
+{
+    _stack.push(ConfigPtr(new ConfigArray(name))) ;
+}
+
+void ConfigBuilder::addAttr(const std::string& name, const std::string value, const std::string type) 
 {
     _stack.top()->addAttr(name, value, type) ;
 }
@@ -63,11 +68,10 @@ void ConfigBuilder::setAttrSource(const std::string& name, const std::string& va
 
 void ConfigBuilder::popAsChild() 
 {
-    ConfigPtr child = _stack.top() ;
+    ConfigPtr child;
+    child.swap(_stack.top()) ;
     _stack.pop() ;
-    std::shared_ptr<Config> release(nullptr, [](Config*) {}) ;
-    release.swap(child) ;
-    _stack.top()->addChild(release.get()) ;
+    _stack.top()->addChild(child.release()) ;
 }
 
 void ConfigBuilder::pop() 
@@ -80,12 +84,12 @@ void ConfigBuilder::setName(const std::string& name)
     _stack.top()->setName(name) ;
 }
 
-void ConfigBuilder::setDesc(std::string& name) 
+void ConfigBuilder::setDesc(const std::string& name) 
 {
    _stack.top()->setDesc(name) ;
 }
 
-ConfigPtr ConfigBuilder::top() 
+ConfigPtr& ConfigBuilder::top() 
 {
     return  _stack.top() ;
 }
@@ -97,10 +101,9 @@ Config* ConfigBuilder::releaseAll()
 
     while (_stack.size() > 1)
         popAsChild() ;
-    ConfigPtr top = _stack.top() ;
+    ConfigPtr top;
+    top.swap(_stack.top()) ;
     _stack.pop() ;
-    std::shared_ptr<Config> release(nullptr, [](Config*) {}) ;
-    release.swap(top) ;
-    return release.get() ;
+    return top.release() ;
 }
 

@@ -15,7 +15,7 @@ class ConfigBuilder
 {
 public:
 
-    using ConfigPtr = std::shared_ptr<Config> ;
+    using ConfigPtr = std::unique_ptr<Config> ;
 
     /* Create a config node with name and description and push on to the node stack
      * @name the name of the node
@@ -23,12 +23,17 @@ public:
      */
     void pushConfig(const std::string& name, const std::string& desc="") ;
 
+    /* Create a ConfigArray node with name and push on to the node stack
+     * @name the name of the array
+     */
+    void pushConfigArray(const std::string& name) ;
+
     /* Add a attribute to the config node on top of the stack
      * @name attribute name
      * @value attribute value
      * @type optional type hint
      */
-    void addAtrr(const std::string& name, const std::string value, const std::string type="") ;
+    void addAttr(const std::string& name, const std::string value, const std::string type="") ;
 
     /* Change attributes name
      */
@@ -60,11 +65,11 @@ public:
 
     /* Change the description of the node on the top of the stack
      */
-    void setDesc(std::string& name) ;
+    void setDesc(const std::string& name) ;
 
     /* The node on top of the stack
      */
-    ConfigPtr top() ;
+    ConfigPtr& top() ;
 
     Config* releaseAll() ;
 
@@ -75,14 +80,5 @@ private:
     ConfigVariableResolver* _resolverChain ;
     
 }; 
-
-class TOMLConfigBuilder : private ConfigBuilder
-{
-public:
-
-    TOMLConfigBuilder() ;
-
-    Config* parse(const std::string& filename) ; 
-} ;
 
 }}
