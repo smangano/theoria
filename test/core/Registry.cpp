@@ -72,6 +72,7 @@ TEST_F(RegistryTest, CreateByTypenameOnlyOneRegister)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
+    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault) 
@@ -85,6 +86,7 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault)
     ASSERT_NE(mock,nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_EQ(mock2,nullptr) ;
+    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed) 
@@ -97,12 +99,14 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
+    delete comp ;
 
     //Now this returns Mock2 becaused used one preferred
     comp =  Registry::instance().createComponent("MockComponent") ;
     ASSERT_NE(comp, nullptr) ;
     mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
+    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst) 
@@ -115,6 +119,7 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
+    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterErrorDueToNoAmbiguity) 

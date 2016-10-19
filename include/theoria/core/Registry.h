@@ -33,6 +33,7 @@ private:
 
 public:
 
+    ~Registry() ;
 
     using FactoryMap_iterator = FactoryMap::iterator;
 

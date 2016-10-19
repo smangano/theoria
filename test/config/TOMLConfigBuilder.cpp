@@ -29,7 +29,7 @@ d=true                                     \n\
 [[someConfig]]                             \n\
 a=17                                       \n\
 b=100.5                                    \n\
-c=2016-10-15T10:00:00                      \n\
+c=2016-10-15T10:00:00Z                     \n\
 d=false                                    \n\
 " ;
 
@@ -41,6 +41,7 @@ class TOMLConfigBuilderTest : public ::testing::Test
 
     virtual void TearDown() {
         delete _builder ;
+        delete config ;
     }
 
 protected:
@@ -48,12 +49,13 @@ protected:
     TOMLConfigBuilder& builder() {return *_builder;}
     
     TOMLConfigBuilder *_builder ;
+    const Config* config = nullptr ;
     
 } ;
 
 TEST_F(TOMLConfigBuilderTest, TestSimpleTOML) {
     std::istringstream iss(TEST1) ;
-   const Config* config =  builder().parse(iss) ;
+   config =  builder().parse(iss) ;
    ASSERT_EQ(config->name(), "Test1App") ;
    ASSERT_EQ(config->desc(), "A Test of TOML") ;
    ASSERT_EQ(config->getParent(), nullptr) ;
@@ -62,7 +64,7 @@ TEST_F(TOMLConfigBuilderTest, TestSimpleTOML) {
    Config::ConstConfigList children = config->getChildren() ;
    const Config* child = children[0] ;
    ASSERT_EQ(child->name(), "someConfig") ;
-   ASSERT_TRUE(child->isArray()) ;
+   ASSERT_FALSE(child->isArray()) ;
    ASSERT_EQ(child->getAttrAsInt("a"), 1) ;
    ASSERT_EQ(child->getAttrAsDbl("b"), 1.5) ;
    ASSERT_EQ(child->getAttrAsStr("c"), "1979-05-27T07:32:00-08:00") ;
@@ -71,15 +73,14 @@ TEST_F(TOMLConfigBuilderTest, TestSimpleTOML) {
 
 TEST_F(TOMLConfigBuilderTest, TestTOMLWithTableArray) {
    std::istringstream iss(TEST2) ;
-   std::cout << iss.str() << std::endl ;
-   const Config* config =  builder().parse(iss) ;
+   config =  builder().parse(iss) ;
    ASSERT_EQ(config->name(), "Test1App") ;
    ASSERT_EQ(config->desc(), "A Test of TOML") ;
    ASSERT_EQ(config->getParent(), nullptr) ;
    ASSERT_EQ(config->numChildren(), 1) ;
    Config::ConstConfigList children = config->getChildren() ;
    const Config* child = children[0] ;
-   ASSERT_EQ(child->name(), "someConfig") ;
+   ASSERT_EQ(child->name(), "someConfig_Array") ;
    ASSERT_TRUE(child->isArray()) ;
    const ConfigArray* array = static_cast<const ConfigArray*>(child) ;
    ASSERT_EQ(array->numElements(), 2) ;

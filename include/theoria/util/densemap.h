@@ -148,6 +148,8 @@ public:
         _sz = il.size() ; 
     }
 
+    ~densemap() ;
+
     mapped_type at(const key_type& key) 
     {
         auto p = _impl.at(key) ;
@@ -252,6 +254,14 @@ private:
     Impl _impl ;
     size_type _sz ;
 } ;
+
+template <typename KEY, typename T, typename Alloc>
+densemap<KEY,T,Alloc>::~densemap()
+{
+    const int size = _impl.size() ;
+    for (int i=0; i<size;++i)
+        delete _impl[i] ;
+}
 
 }} //theoria::util
 

@@ -64,6 +64,7 @@ class ConfigTest : public ::testing::Test
 
     virtual void TearDown() {
         delete _builder ;
+        delete config ;
     }
 
 protected:
@@ -71,11 +72,12 @@ protected:
     BuildTestConfig& builder() {return *_builder;}
     
     BuildTestConfig *_builder ;
+    const Config * config = nullptr ;
     
 } ;
 
 TEST_F(ConfigTest, SingleConfigTest) {
-    Config * config = builder().testSingleConfigNoAttr() ;
+    config = builder().testSingleConfigNoAttr() ;
     ASSERT_EQ(config->name(), "Test") ;
     ASSERT_EQ(config->desc(), "testSingleConfigNoAttr") ;
     ASSERT_EQ(config->getParent(), nullptr) ;
@@ -86,7 +88,7 @@ TEST_F(ConfigTest, SingleConfigTest) {
 }
 
 TEST_F(ConfigTest, SingleConfigWithAttrTest) {
-    Config * config = builder().testSingleConfigWithAttr() ;
+    config = builder().testSingleConfigWithAttr() ;
     ASSERT_EQ(config->name(), "Test") ;
     ASSERT_EQ(config->desc(), "testSingleConfigWithAttr") ;
     ASSERT_EQ(config->getParent(), nullptr) ;
@@ -102,7 +104,7 @@ TEST_F(ConfigTest, SingleConfigWithAttrTest) {
 }
 
 TEST_F(ConfigTest, SingleConfigWithOneChildTest) {
-    Config * config = builder().testConfigWithOneChild() ;
+    config = builder().testConfigWithOneChild() ;
     ASSERT_EQ(config->name(), "Test") ;
     ASSERT_EQ(config->desc(), "testConfigWithOneChild") ;
     ASSERT_EQ(config->getParent(), nullptr) ;
@@ -131,7 +133,7 @@ TEST_F(ConfigTest, SingleConfigWithOneChildTest) {
 }
 
 TEST_F(ConfigTest, SingleConfigWithMultipleChildrenTest) {
-    Config * config = builder().testConfigWithMultipleChildren() ;
+    config = builder().testConfigWithMultipleChildren() ;
     ASSERT_EQ(config->name(), "Test") ;
     ASSERT_EQ(config->desc(), "testConfigWithMultipleChildren") ;
     ASSERT_EQ(config->getParent(), nullptr) ;

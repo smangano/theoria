@@ -23,6 +23,7 @@ CommandLine::CommandLine(int argc, const char*argv[])
     FILE* f = fopen(config_file.c_str(), "r") ;
     if (!f)
         throw RUNTIME_ERROR("theoria could not open config %s", config_file.c_str()) ;
+    fclose(f) ;
     _configFileName = config_file ;
 
     //Second optional settings which may be terminated with --

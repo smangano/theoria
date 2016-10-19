@@ -62,13 +62,19 @@ void TOMLConfigBuilder::_recursive_build(cpptoml::table& table)
                 }
             }
         }
-        else
         if (iter->second->is_array())
         {
-            pushConfigArray(iter->first) ;
+            throw RUNTIME_ERROR("TOML array support not implemented yet") ;
+        }
+        else
+        if (iter->second->is_table_array())
+        {
+            pushConfigArray(iter->first + "_Array") ;
             auto tarr = table.get_table_array(iter->first);
             for (const auto& tableElem : *tarr) {
+                pushConfig(iter->first, iter->first) ;
                 _recursive_build(*tableElem) ;
+                popAsChild() ;
             }
             popAsChild() ;
         }
@@ -78,6 +84,9 @@ void TOMLConfigBuilder::_recursive_build(cpptoml::table& table)
             pushConfig(iter->first, iter->first) ;
             _recursive_build(*(iter->second->as_table())) ;
             popAsChild() ;
+        }
+        else 
+        {
         }
     }    
 }

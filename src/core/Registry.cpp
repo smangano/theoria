@@ -1,4 +1,5 @@
 #include <theoria/core/Registry.h>
+#include <theoria/core/Component.h>
 #include <theoria/except/except.h>
 
 #include <algorithm>
@@ -26,6 +27,13 @@ RegistryLock::RegistryLock()
 RegistryLock::~RegistryLock()
 {
     registry_lock.unlock();
+}
+
+Registry::~Registry()
+{
+    for (auto pair : _components) {
+        delete pair.second ;
+    }
 }
 
 Registry& Registry::instance() 
@@ -122,11 +130,6 @@ Component* Registry::createComponent(const TypeName& type, const SubTypeName& su
     { //locked
         std::lock_guard<std::mutex> guard(registry_lock);
         auto iter = _factories.find(std::make_pair(type, subtype)) ;
-        std::cout << "----------------------------------------------------------------------------------------------\n"
-                  << "createComponent(" << type << "," << subtype << ") -> (" << iter->first.first << ","
-                  << iter->first.second << ")" 
-                  << "----------------------------------------------------------------------------------------------\n"
-                  << std::endl ;
         if (iter != _factories.end())
             return _createComponent(iter) ;
     } //unlocked

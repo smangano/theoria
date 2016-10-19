@@ -19,7 +19,7 @@ std::string format_except(const char *file, int line, const char * fmt,  ...)
 {
     va_list args ;
     va_start(args, fmt) ;
-    int nestimate = strlen(file) + 8 + strlen(fmt) + (strcount(fmt,'%') * 20)  ;
+    int nestimate = strlen(file) + 8 + strlen(fmt) + (strcount(fmt,'%') * 20) + 512  ;
     std::string result(nestimate+1, '\0') ;
     int used = snprintf(const_cast<char *>(result.data()), nestimate, "%s:%d ", file, line) ;
     vsprintf(const_cast<char *>(result.data())+used, fmt, args) ;
