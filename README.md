@@ -1,3 +1,6 @@
+#NOTE: Theoria is in pre-release state. This document will be expanded when release 0.1 is ready
+
+
 # theoria
 Theoria is a C++ Framework for building highly configurable applications that can be monitored in Virtual Reality
 
