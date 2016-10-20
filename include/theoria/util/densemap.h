@@ -122,8 +122,9 @@ public:
     explicit densemap(int n) : _impl(n), _sz(0) {}
     explicit densemap(allocator_type alloc) : _impl(alloc), _sz(0) {}
 
-    densemap(const densemap& other) : _impl(other._impl), _sz(other._sz) {}
-    densemap(const densemap& other, allocator_type alloc) : _impl(other._impl, alloc), _sz(other._sz) {}
+    densemap(const densemap& other) : _impl(other._impl.size()), _sz(other._sz) {_copy(other._impl);}
+    densemap(const densemap& other, allocator_type alloc) : _impl(other._impl.size, alloc), _sz(other._sz)
+    {_copy(other._impl);}
 
     template <typename InputIter>
     densemap(InputIter first, InputIter last) 
@@ -250,6 +251,7 @@ public:
 
 private:
 
+    void _copy(const Impl& other) ;
 
     Impl _impl ;
     size_type _sz ;
@@ -262,6 +264,16 @@ densemap<KEY,T,Alloc>::~densemap()
     for (int i=0; i<size;++i)
         delete _impl[i] ;
 }
+
+template <typename KEY, typename T, typename Alloc>
+void densemap<KEY,T,Alloc>::_copy(const Impl& other)
+{
+    const int size = other.size() ;
+    for (int i=0; i<size;++i)
+        if (other[i])
+            _impl[i] = new value_type(*other[i]);
+}
+
 
 }} //theoria::util
 
