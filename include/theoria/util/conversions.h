@@ -50,7 +50,7 @@ double convertToDbl(TIter target, TIter end, const char * context, const std::st
         char * err = nullptr;
         double result = strtod(value(*target), &err)  ;
         if (err && *err)
-            throw RUNTIME_ERROR("%sAsDbl(%s, %lld) %s is not a double", context, name.c_str(), def, value(*target)) ;
+            throw RUNTIME_ERROR("%sAsDbl(%s, %g) %s is not a double", context, name.c_str(), def, value(*target)) ;
         return result ;
     }
     return def ;
