@@ -1,5 +1,6 @@
 #include <theoria/config/Builder.h>
 #include <theoria/config/Config.h>
+#include <theoria/config/Resolve.h>
 #include <memory>
 #include <string>
 
@@ -107,9 +108,9 @@ Config* ConfigBuilder::releaseAll()
     return top.release() ;
 }
 
-std::string resolve(const std::string& valueOrVar)
+std::string ConfigBuilder::resolve(const std::string& valueOrVar)
 {
-    if (valueOrVar.size() > 0 && valueOrVar[0] = '$')
+    if (valueOrVar.size() > 0 && valueOrVar[0] == '$')
         if (_resolverChain)
             return _resolverChain->resolve(valueOrVar) ; 
     return valueOrVar ;

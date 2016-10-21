@@ -83,6 +83,8 @@ public:
 
 private:
 
+    std::string resolve(const std::string& valueOrVar) ;
+
     std::stack<ConfigPtr> _stack;
 
     ConfigVariableResolver* _resolverChain ;
