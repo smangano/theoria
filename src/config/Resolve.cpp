@@ -72,8 +72,7 @@ Result CmdLineResolver::lookup(const std::string& name) const
 
 Result DisallowResolver::lookup(const std::string& name) const
 {
-    RUNTIME_ERROR("Resolving variables disallowed while trying to resolve variable with name: [%s]", name.c_str()) ;
-    return Result(nullptr, "") ;
+    throw RUNTIME_ERROR("Resolving variables disallowed while trying to resolve variable with name: [%s]", name.c_str()) ;
 }
 
 //////////////////////////
@@ -92,6 +91,7 @@ class TOMLResolver::TOMLResolverImpl :  public ConfigVariableResolver
 {
 public:
     TOMLResolverImpl(const std::string& tomlFilePath) ;
+    TOMLResolverImpl(std::istream& is) ;
     Result lookup(const std::string& name) const override ;
 
 private:
@@ -106,15 +106,40 @@ TOMLResolver::TOMLResolver(const std::string& tomlFilePath) :
 {
 }
 
+TOMLResolver::TOMLResolver(std::istream& iss) :
+    _impl(new TOMLResolver::TOMLResolverImpl(iss))
+{
+}
+
+
 Result TOMLResolver::lookup(const std::string& name) const 
 {
     return _impl->lookup(name) ;
 }
 
 TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(const std::string& tomlFilePath)
-    :_tomlFilePath(tomlFilePath), _tomlTable(cpptoml::parse_file(tomlFilePath))
+    :_tomlFilePath(tomlFilePath), _tomlTable()
 {
+    try {
+        _tomlTable = cpptoml::parse_file(tomlFilePath);
+    }
+    catch(const cpptoml::parse_exception& parseEx) {
+        throw RUNTIME_ERROR("Could not parse TOML: %s", parseEx.what()) ;
+    }
 }
+
+TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(std::istream& is)
+    :_tomlFilePath("<istream>"), _tomlTable()
+{
+    try {
+        cpptoml::parser parser_(is) ;
+        _tomlTable = parser_.parse() ;
+    } 
+    catch(const cpptoml::parse_exception& parseEx) {
+        throw RUNTIME_ERROR("Could not parse TOML: %s", parseEx.what()) ;
+    }
+}
+
 
 Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
 {
@@ -167,12 +192,10 @@ Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
             }
             return Result(this, oss.str()) ;
         }
-        RUNTIME_ERROR("TOMLResolver unknown value type found!") ;
-        return Result(nullptr, "") ;
+        throw RUNTIME_ERROR("TOMLResolver unknown value type found!") ;
     }
     std::string found = base->is_table() ? "table" :  
         base->is_table_array() ? "table_array" : 
             base->is_array() ? "array" : "UNKNOWN" ;
-    RUNTIME_ERROR("TOMLResolver can only resolve primitive values not [%s]", found.c_str()) ; 
-    return Result(nullptr, "") ;
+    throw RUNTIME_ERROR("TOMLResolver can only resolve primitive values not [%s]", found.c_str()) ; 
 }

@@ -129,6 +129,7 @@ class TOMLResolver : public ConfigVariableResolver
 public:
     
     TOMLResolver(const std::string& tomlFilePath) ;
+    TOMLResolver(std::istream& is) ;
 
     Result lookup(const std::string& name) const override;
 
