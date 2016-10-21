@@ -17,6 +17,14 @@ public:
 
     using ConfigPtr = std::unique_ptr<Config> ;
 
+    ConfigBuilder():
+        _resolverChain(nullptr) {}
+
+   ConfigBuilder(ConfigVariableResolver* pResolver):
+        _resolverChain(pResolver) {}
+
+    
+
     /* Create a config node with name and description and push on to the node stack
      * @name the name of the node
      * @desc the node descrition

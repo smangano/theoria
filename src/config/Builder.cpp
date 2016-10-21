@@ -20,7 +20,7 @@ void ConfigBuilder::pushConfigArray(const std::string& name)
 
 void ConfigBuilder::addAttr(const std::string& name, const std::string value, const std::string type) 
 {
-    _stack.top()->addAttr(name, value, type) ;
+    _stack.top()->addAttr(name, resolve(value), type) ;
 }
 
 void ConfigBuilder::setAttrName(const std::string& name, const std::string& newName) 
@@ -37,7 +37,7 @@ void ConfigBuilder::setAttrValue(const std::string& name, const std::string& new
 {
     auto iter =  _stack.top()->findAttr(name) ;
     if (iter !=  _stack.top()->endAttr()) {
-        iter->value = newValue ;
+        iter->value = resolve(newValue) ;
     }
     throw RUNTIME_ERROR("Could not setAttrValue [%s] value to [%s] in config [%s] as no attr found with name [%s]", 
                          name.c_str(), newValue.c_str(), _stack.top()->name().c_str(), name.c_str()) ;
@@ -105,5 +105,13 @@ Config* ConfigBuilder::releaseAll()
     top.swap(_stack.top()) ;
     _stack.pop() ;
     return top.release() ;
+}
+
+std::string resolve(const std::string& valueOrVar)
+{
+    if (valueOrVar.size() > 0 && valueOrVar[0] = '$')
+        if (_resolverChain)
+            return _resolverChain->resolve(valueOrVar) ; 
+    return valueOrVar ;
 }
 

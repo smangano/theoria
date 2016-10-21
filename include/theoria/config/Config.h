@@ -22,8 +22,8 @@ A data structure representing runtime configuration. Config is the result of
 parsing a file in some format supprted by a config builder and resolving variable references
 using some chain of ConfigVariableResolvers. 
 
-Thus when a Config object arrives at a component's init it is fully specifified (variable free)
-provided the varibales could be resolved.
+Thus when a Config object arrives at a component's init it is fully specified (variable free)
+provided the variables could be resolved.
 */
 
 class Config
@@ -39,7 +39,7 @@ protected:
             
         std::string name ;    
         std::string value ;   
-        std::string type ;    //optiona indication of value's type
+        std::string type ;    //optional indication of value's type
         std::string source ;  //"literal" or if value was resolved from a variable then "variable[resolver]"
     } ;
 

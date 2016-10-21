@@ -55,11 +55,7 @@ void TOMLConfigBuilder::_recursive_build(cpptoml::table& table)
                 auto val_type = _getValueAndTypeAsString(table, iter->first) ;
                 auto value = val_type.first ;
                 auto type = val_type.second ;
-                if (value != "" && value[0] == '$')
-                    _addAttrWithResolve(iter->first, value, type) ;
-                else {
-                    _addAttr(iter->first, value, type) ;
-                }
+                _addAttr(iter->first, value, type) ;
             }
         }
         if (iter->second->is_array())

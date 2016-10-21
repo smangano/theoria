@@ -97,4 +97,46 @@ public:
     Result lookup(const std::string& name) const override;
 } ;
 
+/*
+ * Raises runtime error "Variables have been disallowed"
+ */
+class DisallowResolver : public ConfigVariableResolver
+{
+public:
+
+    Result lookup(const std::string& name) const override;
+} ;
+
+/*
+ * Disables resolution by simply returning the variable name
+ */
+class DisableResolver : public ConfigVariableResolver
+{
+public:
+
+    Result lookup(const std::string& name) const override;
+
+} ;
+
+/* Resolves variables from a TOML file. Supports
+   nested access using dot notation: E.g., $a.b
+*/
+
+
+class TOMLResolver : public ConfigVariableResolver
+{
+public:
+    
+    TOMLResolver(const std::string& tomlFilePath) ;
+
+    Result lookup(const std::string& name) const override;
+
+private:
+
+    class TOMLResolverImpl ;
+    using ImplPtr = std::unique_ptr<TOMLResolverImpl>  ;
+    
+   ImplPtr _impl ;
+};
+
 }} //namespace theoria::config

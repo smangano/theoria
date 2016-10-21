@@ -67,4 +67,41 @@ Result CmdLineResolver::lookup(const std::string& name) const
 }
 
 //////////////////////////
-//
+//DisallowResolver 
+
+Result DisallowResolver::lookup(const std::string& name) const
+{
+    RUNTIME_ERROR("Resolving variables disallowed while trying to resolve variable with name: [%s]", name.c_str()) ;
+}
+
+//////////////////////////
+// DisableResolver
+
+Result DisableResolver::lookup(const std::string& name) const
+{
+    return Result(this, name) ;
+}
+
+
+/////////////////////////
+//TOMLResolver
+
+TOMLResolver(const std::string& tomlFilePath) :
+    _impl(new TOMLResolver::TOMLResolverImpl(tomlFilePath))
+{
+}
+
+Result TOMLResolver::lookup(const std::string& name) const override
+{
+    _impl->lookup(name) ;
+}
+
+TOMLResolver::TOMLResolverImpl::(const std::string& tomlFilePath)
+    :_tomlFilePath(tomlFilePath), _tomlTable(cpptoml::parse_file(tomlFilePath))
+{
+}
+
+TOMLResolver::TOMLResolverImpl::lookup(const std::string& name)
+{
+    _tomlTable.get_qualified(name) ;
+}
