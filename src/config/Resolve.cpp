@@ -10,6 +10,11 @@ using namespace config ;
 
 using Result = ConfigVariableResolver::Result ;
 
+ConfigVariableResolver::~ConfigVariableResolver() 
+{
+    delete _next ;
+}
+
 std::string ConfigVariableResolver::resolve(const std::string& var) const 
 {
     if (var.size() < 2 || var[0] != '$') 
@@ -27,10 +32,10 @@ Result ConfigVariableResolver::resolveFirst(const std::string& name) const
 {
     const ConfigVariableResolver* resolver = this ;
     while(resolver) {
-        Result result = lookup(name) ;
+        Result result = resolver->lookup(name) ;
         if (result.first != nullptr)
             return result ; 
-        resolver = _next ;
+        resolver = resolver->_next ;
     }
     return Result(nullptr, "") ;
 }
@@ -40,10 +45,10 @@ Result ConfigVariableResolver::resolveLast(const std::string& name) const
     Result result(nullptr, "") ;
     const ConfigVariableResolver* resolver = this ;
     while(resolver) {
-        Result temp = lookup(name) ;
+        Result temp = resolver->lookup(name) ;
         if (temp.first != nullptr)
             result = temp ;
-        resolver = _next ;
+        resolver = resolver->_next ;
     }
     return result ;
 }

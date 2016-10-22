@@ -41,7 +41,7 @@ public:
     ConfigVariableResolver() :
         _next(nullptr) {}
 
-    virtual ~ConfigVariableResolver() {} 
+    virtual ~ConfigVariableResolver() ; 
 
     /*
      * Resolve variable
