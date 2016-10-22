@@ -9,7 +9,7 @@ using namespace util ;
 
 static CommandLine*  __CommandLine = nullptr ;
 
-CommandLine::CommandLine(int argc, const char*argv[])
+CommandLine::CommandLine(int argc, const char*argv[], allowMissingConfig=false)
 {
     //The first one constructed is the global instance
     if (!__CommandLine) 
@@ -20,10 +20,12 @@ CommandLine::CommandLine(int argc, const char*argv[])
 
     //First the config file which is mandatory
     std::string config_file(argv[0]) ;
-    FILE* f = fopen(config_file.c_str(), "r") ;
-    if (!f)
-        throw RUNTIME_ERROR("theoria could not open config %s", config_file.c_str()) ;
-    fclose(f) ;
+    if (!allowMissingConfig) {
+        FILE* f = fopen(config_file.c_str(), "r") ;
+        if (!f)
+            throw RUNTIME_ERROR("theoria could not open config %s", config_file.c_str()) ;
+        fclose(f) ;
+    }
     _configFileName = config_file ;
 
     //Second optional settings which may be terminated with --

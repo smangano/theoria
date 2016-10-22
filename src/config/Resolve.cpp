@@ -48,6 +48,24 @@ Result ConfigVariableResolver::resolveLast(const std::string& name) const
     return result ;
 }
 
+void ConfigVariableResolver::append(ConfigVariableResolver* resolver)
+{
+    if (! resolver)
+        throw RUNTIME_ERROR("Can't append resolver to chain at [%s]: nullptr was provided in append!", name().c_str()) ;
+    if (resolver->_next)
+        throw RUNTIME_ERROR("Can't append resolver [%s] to chain at [%s]: appending resolver already part of a chain is not supported", resolver->name().c_str(), name().c_str()) ;
+
+    ConfigVariableResolver * p = this ;
+    ConfigVariableResolver * prev = null ;
+    while(p) {
+        if (p == resolver)
+            throw RUNTIME_ERROR("Can't append resolver [%s] to resolver chain: Already exists!", resolver->name().c_str()) ;
+        prev = p ;
+        p = p->_next ;
+    }
+    prev->_next = resolver ;
+}
+
 //////////////////////////
 //EnvVarResolver
 

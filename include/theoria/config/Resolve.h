@@ -66,8 +66,14 @@ public:
      */
     virtual Result lookup(const std::string& name) const = 0 ;
 
+    /*
+     * Return name of the resolver
+     */
+    virtual String name() const = 0 ;
+
     
-    
+    void append(ConfigVariableResolver* resolver) ;
+
 private:
 
     Result resolveFirst(const std::string& name) const ;
@@ -85,6 +91,7 @@ class EnvVarResolver : public ConfigVariableResolver
 public:
 
     Result lookup(const std::string& name) const override ;
+    virtual String name() const override ;
 
 } ;
 
@@ -96,6 +103,8 @@ class CmdLineResolver : public ConfigVariableResolver
 public:
 
     Result lookup(const std::string& name) const override;
+    virtual String name() const override ;
+
 } ;
 
 /*
@@ -106,6 +115,8 @@ class DisallowResolver : public ConfigVariableResolver
 public:
 
     Result lookup(const std::string& name) const override;
+    virtual String name() const override ;
+
 } ;
 
 /*
@@ -116,6 +127,7 @@ class DisableResolver : public ConfigVariableResolver
 public:
 
     Result lookup(const std::string& name) const override;
+    virtual String name() const override ;
 
 } ;
 
@@ -132,6 +144,8 @@ public:
     TOMLResolver(std::istream& is) ;
 
     Result lookup(const std::string& name) const override;
+    virtual String name() const override ;
+
 
 private:
 
