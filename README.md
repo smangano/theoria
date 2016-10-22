@@ -1,7 +1,10 @@
+<font size="16"> Theoria - A C++ Application Container for the Real and Virtual World </font>
+
 #NOTE: Theoria is in pre-release state. This document will be expanded when release 0.1 is ready
 
 
-# theoria
+# Theoria
+
 Theoria is a C++ Framework for building highly configurable applications that can be monitored in Virtual Reality
 
 ## Vision
