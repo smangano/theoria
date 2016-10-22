@@ -9,7 +9,7 @@ using namespace util ;
 
 static CommandLine*  __CommandLine = nullptr ;
 
-CommandLine::CommandLine(int argc, const char*argv[], allowMissingConfig=false)
+CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)
 {
     //The first one constructed is the global instance
     if (!__CommandLine) 

@@ -56,7 +56,7 @@ void ConfigVariableResolver::append(ConfigVariableResolver* resolver)
         throw RUNTIME_ERROR("Can't append resolver [%s] to chain at [%s]: appending resolver already part of a chain is not supported", resolver->name().c_str(), name().c_str()) ;
 
     ConfigVariableResolver * p = this ;
-    ConfigVariableResolver * prev = null ;
+    ConfigVariableResolver * prev = nullptr ;
     while(p) {
         if (p == resolver)
             throw RUNTIME_ERROR("Can't append resolver [%s] to resolver chain: Already exists!", resolver->name().c_str()) ;
@@ -76,6 +76,11 @@ Result EnvVarResolver::lookup(const std::string& name) const
     
 }
 
+std::string EnvVarResolver::name() const 
+{
+    return "EnvVarResolver" ;
+}
+
 //////////////////////////
 //CmdLineResolver
 
@@ -85,12 +90,22 @@ Result CmdLineResolver::lookup(const std::string& name) const
     return value != nullptr ?  Result(this, value) : Result(nullptr, "") ;
 }
 
+std::string CmdLineResolver::name() const 
+{
+    return "CmdLineResolver" ;
+}
+
 //////////////////////////
 //DisallowResolver 
 
 Result DisallowResolver::lookup(const std::string& name) const
 {
     throw RUNTIME_ERROR("Resolving variables disallowed while trying to resolve variable with name: [%s]", name.c_str()) ;
+}
+
+std::string DisallowResolver::name() const 
+{
+    return "DisallowResolver" ;
 }
 
 //////////////////////////
@@ -102,6 +117,11 @@ Result DisableResolver::lookup(const std::string& name) const
 }
 
 
+std::string DisableResolver::name() const 
+{
+    return "DisableResolver" ;
+}
+
 /////////////////////////
 //TOMLResolver
 
@@ -111,6 +131,7 @@ public:
     TOMLResolverImpl(const std::string& tomlFilePath) ;
     TOMLResolverImpl(std::istream& is) ;
     Result lookup(const std::string& name) const override ;
+    std::string name() const override ;
 
 private:
 
@@ -133,6 +154,11 @@ TOMLResolver::TOMLResolver(std::istream& iss) :
 Result TOMLResolver::lookup(const std::string& name) const 
 {
     return _impl->lookup(name) ;
+}
+
+std::string TOMLResolver::name() const 
+{
+    return "TOMLResolver:" ;
 }
 
 TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(const std::string& tomlFilePath)
@@ -217,3 +243,9 @@ Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
             base->is_array() ? "array" : "UNKNOWN" ;
     throw RUNTIME_ERROR("TOMLResolver can only resolve primitive values not [%s]", found.c_str()) ; 
 }
+
+std::string TOMLResolver::TOMLResolverImpl::name() const 
+{
+    return "TOMLResolver:" ;
+}
+

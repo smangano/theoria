@@ -44,7 +44,7 @@ class CommandLine {
 
 public:
 
-    CommandLine(int argc, const char * argv[]) ;
+    CommandLine(int argc, const char * argv[], bool allowMissingConfig=false) ;
 
     using const_iterator = SymbolTbl::const_iterator ;
 
