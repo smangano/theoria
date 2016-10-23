@@ -46,11 +46,8 @@ Registry& Registry::instance()
 
 void Registry::reset()
 {
-    Registry::instance()._nextId = 0 ;
-    Registry::instance()._factories.clear() ;
-    //TODO: delete!
-    Registry::instance()._components.clear() ;
-    Registry::instance()._xref.clear() ;
+    Registry::instance().~Registry() ;
+    new (&Registry::instance()) Registry ;
 }
 
 void Registry::registerFactory(const std::string& type, ComponentFactory factory) 

@@ -72,7 +72,6 @@ TEST_F(RegistryTest, CreateByTypenameOnlyOneRegister)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault) 
@@ -86,7 +85,6 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault)
     ASSERT_NE(mock,nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_EQ(mock2,nullptr) ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed) 
@@ -99,14 +97,12 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
-    delete comp ;
 
     //Now this returns Mock2 becaused used one preferred
     comp =  Registry::instance().createComponent("MockComponent") ;
     ASSERT_NE(comp, nullptr) ;
     mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst) 
@@ -119,7 +115,6 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst)
     ASSERT_NE(comp, nullptr) ;
     MockComponent2* mock2 = dynamic_cast<MockComponent2*>(comp) ;
     ASSERT_NE(mock2,nullptr) ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterErrorDueToNoAmbiguity) 
@@ -157,7 +152,6 @@ TEST_F(RegistryTest, CreateByDepOnlyOneRegister)
     Component *comp =  Registry::instance().createComponent(strict) ;
     ASSERT_NE(comp, nullptr) ;
     EXPECT_EQ(comp->name(), "MockComponent:MockComponent2") ;
-    delete comp ;
 
     Dependencies::Dependent defaulted("MockComponent") ;
     comp =  Registry::instance().createComponent(defaulted) ;
@@ -167,7 +161,6 @@ TEST_F(RegistryTest, CreateByDepOnlyOneRegister)
     comp =  Registry::instance().createComponent(loose) ;
     ASSERT_NE(comp, nullptr) ;
     EXPECT_EQ(comp->name(), "MockComponent:MockComponent2") ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, CreateByDepTwoRegistered) 
@@ -179,19 +172,16 @@ TEST_F(RegistryTest, CreateByDepTwoRegistered)
     Component *comp =  Registry::instance().createComponent(strict) ;
     ASSERT_NE(comp, nullptr) ;
     EXPECT_EQ(comp->name(), "MockComponent:MockComponent2") ;
-    delete comp ;
 
     Dependencies::Dependent defaulted("MockComponent") ;
     comp =  Registry::instance().createComponent(defaulted) ;
     ASSERT_NE(comp, nullptr) ;
     EXPECT_EQ(comp->name(), "MockComponent:MockComponent") ;
-    delete comp ;
 
     Dependencies::Dependent loose("MockComponent", "") ;
     comp =  Registry::instance().createComponent(loose) ;
     ASSERT_NE(comp, nullptr) ;
     EXPECT_EQ(comp->name(), "MockComponent:MockComponent") ;
-    delete comp ;
 }
 
 TEST_F(RegistryTest, ComponentById) 
