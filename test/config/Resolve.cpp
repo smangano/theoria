@@ -115,3 +115,33 @@ TEST_F(ChainedResolverTest, ResolveLastTest) {
     //This is key because testFoo is in both resolvers but EnvVarResolver is last in the chain
     EXPECT_EQ(resolver().resolve("$$testFoo"), "NotFoo");
 }
+
+TEST_F(ChainedResolverTest, ResolveFirstTestWithDissallow) {
+    resolver().append(new DisallowResolver()) ;
+    EXPECT_EQ(resolver().resolve("$EnvVarResolveTest_1"), "1");
+    EXPECT_EQ(resolver().resolve("$EnvVarResolveTest_2"), "Foo");
+    EXPECT_EQ(resolver().resolve("$test1"), "1");
+    //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
+    EXPECT_EQ(resolver().resolve("$testFoo"), "foo");
+}
+
+TEST_F(ChainedResolverTest, ResolveLastTestWithDisallow) {
+    resolver().append(new DisallowResolver()) ;
+    EXPECT_THROW(resolver().resolve("$$EnvVarResolveTest_1"), std::runtime_error);
+    EXPECT_THROW(resolver().resolve("$$testFoo"), std::runtime_error);
+}
+
+TEST_F(ChainedResolverTest, ResolveFirstTestWithDisable) {
+    resolver().append(new DisableResolver()) ;
+    EXPECT_EQ(resolver().resolve("$EnvVarResolveTest_1"), "1");
+    EXPECT_EQ(resolver().resolve("$EnvVarResolveTest_2"), "Foo");
+    EXPECT_EQ(resolver().resolve("$test1"), "1");
+    //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
+    EXPECT_EQ(resolver().resolve("$testFoo"), "foo");
+}
+
+TEST_F(ChainedResolverTest, ResolveLastTestWithDisable) {
+    resolver().append(new DisableResolver()) ;
+    EXPECT_EQ(resolver().resolve("$$EnvVarResolveTest_1"), "EnvVarResolveTest_1");
+    EXPECT_EQ(resolver().resolve("$$testFoo"), "testFoo");
+}

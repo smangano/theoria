@@ -1,5 +1,6 @@
 #include <theoria/core/Registry.h>
 #include <theoria/core/Component.h>
+#include <theoria/config/Config.h>
 #include <theoria/except/except.h>
 
 #include <algorithm>
@@ -167,3 +168,50 @@ void Registry::dump(std::ostream& stream) const
 
     stream << std::endl ;
 }
+
+void Registry::_setBootstrapConfig(std::unique_ptr<config::Config>& pBSConfig) 
+{
+    if (_bootstrapConfig)
+        throw RUNTIME_ERROR("Bootstrap Config already set.") ;
+    _bootstrapConfig = pBSConfig.release() ;
+}
+
+void Registry::_setAppConfig(std::unique_ptr<config::Config>& pAppConfig) 
+{
+    if (_appConfig)
+        throw RUNTIME_ERROR("App Config already set.") ;
+    _appConfig = pAppConfig.release() ;
+}
+
+const config::Config& Registry::bootConfig() const
+{
+    if (!_bootstrapConfig)
+        throw RUNTIME_ERROR("Bootstrap Config is not set.") ;
+
+    return *_bootstrapConfig ;
+}
+
+const config::Config& Registry::appConfig() const 
+{
+    if (!_appConfig)
+        throw RUNTIME_ERROR("App Config is not set.") ;
+    return *_appConfig ;
+}
+
+util::Maybe<Component>  Registry::component(const TypeName& type) 
+{
+    auto iter = _xref.lower_bound(CompFactoryKey(type, std::string())) ;
+    if (iter != _xref.end() && iter->first.first == type)
+        return util::Maybe<Component>(component(iter->second)) ;
+    return util::Maybe<Component>(nullptr) ;
+}
+
+util::Maybe<Component>  Registry::component(const TypeName& type, const SubTypeName& subtype) 
+{
+    auto iter = _xref.find(CompFactoryKey(type, subtype)) ;
+    if (iter != _xref.end())
+        return util::Maybe<Component>(component(iter->second)) ;
+    return util::Maybe<Component>(nullptr) ;
+}
+
+

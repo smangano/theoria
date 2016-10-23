@@ -1,4 +1,6 @@
 #include <theoria/util/CommandLine.h>
+#include <theoria/core/Theoria.h>
+#include <theoria/options.h>
 
 #include <iostream>
 #include <stdexcept>
@@ -8,8 +10,25 @@ using namespace theoria ;
 int main(int argc, const char ** argv) 
 {
     try {
-        util::CommandLine(argc-1, &(argv[1])) ;
 
+        core::Theoria theoria ;
+        util::CommandLine cmdline(argc-1, &(argv[1])) ;
+        theoria.init() ;
+
+        if (cmdline.hasSetting(OPTION_HELP)) 
+        {
+            theoria.help() ;
+        }
+        else
+        if (cmdline.hasSetting(OPTION_SHOW_CONFIG) || cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY)) 
+        {
+            theoria.show_config(cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY)) ;
+        }
+
+        if (!cmdline.hasSetting(OPTION_INIT_ONLY))
+        {
+            theoria.run() ;
+        }
     }
 
     catch (const std::runtime_error& ex) {

@@ -2,9 +2,11 @@
 
 #include <string>
 #include <sstream>
+#include <vector>
 
 namespace theoria { namespace util {
 
+std::vector<std::string> string_split(const std::string& string, char sep = ' ') ;
 
 inline std::string str() {return std::string(); }
 

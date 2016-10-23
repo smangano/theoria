@@ -2,13 +2,31 @@
 
 #include <theoria/core/primitives.h>
 #include <theoria/util/densemap.h>
+#include <theoria/util/Maybe.h>
 
 #include <string>
 #include <map>
+#include <memory>
 
-namespace theoria { namespace core {
+namespace theoria { 
 
+/*
+ * Theoria Forward Declarations
+ */
+namespace config {
+    
+    class Config ;
+
+} //namespace config
+
+
+namespace core {
+
+/*
+ * Forward Declarations
+ */
 class Component ;
+class Theoria ;
 
 /**
  * Used to lock the Registry for iteration in a multi-threaded env
@@ -122,8 +140,58 @@ public:
      */
     void reset() ;
 
+    /*
+     * If you know a component's id then this is the fastest and safest way to
+     * access the component
+     *
+     */
+    util::Maybe<Component> component(CompId id) 
+    {
+        try {
+            return util::Maybe<Component>(_components.at(id)) ;
+        }
+        catch (...) {
+            return util::Maybe<Component>(nullptr) ;
+        }
+    }
+
+    /* Return component with the specified type. If multiple subtypes exist it will return
+     * the first one it finds
+     *
+     * @type the type name of the component
+     * @return Option evaluates to true if found, false otherwsise.
+     *         Derfef *option returns a reference to component or raises exception
+     *         See Option.h for more behaviror
+     */
+    util::Maybe<Component> component(const TypeName& type) ;
+    util::Maybe<Component> component(const TypeName& type, const SubTypeName& subtype) ;
+   
+    template <typename T>
+    util::Maybe<T> componentAs(CompId id) {
+        return util::Maybe<T>(component(id).get()) ;
+    }
+
+    template <typename T>
+    util::Maybe<T> componentAs(const TypeName& type) {
+        return util::Maybe<T>(component(type).get()) ;
+    }
+
+    template <typename T>
+    util::Maybe<T> componentAs(const TypeName& type, const SubTypeName& subtype) {
+        return util::Maybe<T>(component(type, subtype).get()) ;
+    }
+
+
+    const config::Config& bootConfig() const ; 
+    const config::Config& appConfig() const ; 
     
-public: //TODO: private
+private:
+    
+    friend class Theoria ;
+    
+
+    void _setBootstrapConfig(std::unique_ptr<config::Config>& pBSConfig) ; 
+    void _setAppConfig(std::unique_ptr<config::Config>& pAppConfig) ;
 
     Component* _createComponent(FactoryMap_iterator iter) ;
 
@@ -131,7 +199,9 @@ public: //TODO: private
     FactoryMap _factories ; 
     ComponentMap _components ;
     ComponentXrefMap _xref ;
+    const config::Config * _bootstrapConfig ;
+    const config::Config * _appConfig ;
 } ;
 
 
-}} 
+}} //namespace theoria::core

@@ -1,11 +1,12 @@
 #pragma once
 
 #include <theoria/config/Builder.h>
+#include <theoria/config/Parser.h>
 #include <cpptoml.h>
 
 namespace theoria { namespace config {
 
-class TOMLConfigBuilder : private ConfigBuilder
+class TOMLConfigBuilder : public ConfigParser, private ConfigBuilder 
 {
 public:
 

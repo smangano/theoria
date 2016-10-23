@@ -20,7 +20,7 @@ public:
     ConfigBuilder():
         _resolverChain(nullptr) {}
 
-   ConfigBuilder(ConfigVariableResolver* pResolver):
+    ConfigBuilder(ConfigVariableResolver* pResolver):
         _resolverChain(pResolver) {}
 
     

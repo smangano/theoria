@@ -153,8 +153,8 @@ private:
 
 };
 
-/**
- * class Dependents
+/*
+ * class Dependencies
  * -----------------
  * Used by components during initialization to advertise there requirements for other components. 
  * Dependencies can be loose if they only require they conform to some type or tight if they name a specific implementation

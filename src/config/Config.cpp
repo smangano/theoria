@@ -69,6 +69,7 @@ bool Config::isArray() const
 
 void Config::toTOML(std::ostream& os) const
 {
+    os << "TODO: toTOML conversion" << std::endl ;
 }
 
 ////

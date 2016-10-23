@@ -223,12 +223,11 @@ public:
 
     mapped_type& operator[] (const key_type& k)
     {
-        if (k >= _sz) _growFor(k) ;
-        if (!_impl[k]) 
-        {
-             _impl[k] = new value_type(k, mapped_type()) ;
-             _sz++ ;
-        }
+        return _impl[k]->second ;   
+    }  
+
+    const mapped_type& operator[] (const key_type& k) const
+    {
         return _impl[k]->second ;   
     }  
 
