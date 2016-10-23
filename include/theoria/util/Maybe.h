@@ -50,8 +50,8 @@ public:
         throw RUNTIME_ERROR("Maybe not! Object was not bound at [%s]", where()) ;
     }
 
-    T* operator ->() {return &(*this);}
-    const T* operator ->() const {return &(*this);}
+    T* operator ->() {return &(**this);}
+    const T* operator ->() const {return &(**this);}
 
 
     T& valueOr(T& other) 
@@ -84,6 +84,8 @@ public:
 
     T* get() {return _obj;}
     const T* get() const {return _obj;}
+
+    void reset(T* obj) { _obj = obj;} 
 
 private:
 

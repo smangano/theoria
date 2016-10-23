@@ -14,3 +14,12 @@ void Component::finalize(std::vector<Component*> dependencies)
 {
 }
 
+void Component::appLifeCycle(AppLifeCycle state) 
+{
+}
+
+void Component::compLifeCycle(CompLifeCycle state, CompId id) 
+{
+}
+
+

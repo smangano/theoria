@@ -1,4 +1,6 @@
 #include <theoria/core/Bootstrap.h>
+#include <theoria/core/Registry.h>
+#include <theoria/core/Component.h>
 
 #include <theoria/envvars.h>
 #include <theoria/options.h>
@@ -41,8 +43,53 @@ std::string Bootstrap::findConfig() const
     return filename ;
 }
 
-void Bootstrap::boot()
+//shake Theoria's booty, shake it's booty...
+void Bootstrap::boot(config::Config& bootConfig)
 {
-    //TODO: shake Theoria's booty
+    using Config = config::Config ;
+
+    auto componentConfigs = 
+        bootConfig.getChildren( [] (const Config* child) {return child->getAttrAsStr("kind", "Component") == "Component";} ) ;
+
+    std::vector<Component*> coreComponents ;
+    std::unordered_map<CompId, Dependencies> coreCompDeps ;
+
+    //First create all core components
+    for (const Config* compConfig : componentConfigs) {
+        Component * comp =_createCoreComp(*compConfig) ;
+        coreComponents.push_back(comp) ;
+    }
+    
+    //Then initialize core components
+    int numComps = componentConfigs.size() ;
+    for (int i=0; i<numComps; ++i) {
+        Dependencies&& deps = coreComponents[i]->init(*componentConfigs[i]) ;
+        coreCompDeps[coreComponents[i]->id()] = std::move(deps) ;
+    }
+    //Fire INITITIALIZED AppLifeCycle  Event
+    for (Component* comp : coreComponents)
+        comp->appLifeCycle(AppLifeCycle::INITITIALIZED) ;
+
+    //Satisfy deps and finalize core components
+    for (auto& compId_deps : coreCompDeps) {
+        auto compDeps = Registry::instance().satisfy(compId_deps.second) ;
+        Registry::instance().component(compId_deps.first)->finalize(compDeps) ;
+    }
+    //Fire FINALIZED AppLifeCycle  Event
+    for (Component* comp : coreComponents)
+        comp->appLifeCycle(AppLifeCycle::FINALIZED) ;
 }
+
+Component *  Bootstrap::_createCoreComp(const config::Config& compConfig)
+{
+    TypeName compType = compConfig.getAttrAsStr("type", compConfig.name()) ;
+    SubTypeName compSubType = compConfig.getAttrAsStr("subtype", "") ;
+    Component * component = nullptr;
+    if (compSubType == "")
+        component = Registry::instance().createComponent(compType) ;
+    else
+        component = Registry::instance().createComponent(compType, compSubType) ; 
+    return component ;
+}
+
 

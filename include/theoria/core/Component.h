@@ -1,6 +1,7 @@
 #pragma once
 
 #include <theoria/core/primitives.h>
+#include <theoria/core/Dependencies.h>
 
 #include <string>
 
@@ -52,6 +53,7 @@ public:
      */
     Text desc() const {return _desc ;} 
 
+    
 private:
 
 	CompId _id ;
@@ -153,98 +155,6 @@ private:
 
 };
 
-/*
- * class Dependencies
- * -----------------
- * Used by components during initialization to advertise there requirements for other components. 
- * Dependencies can be loose if they only require they conform to some type or tight if they name a specific implementation
- * Dependicies can be optional if the component can ontinue (possibly in a reduced functional state) without the dependency being
- * satisfied. 
- * 
- * Usage Examples:
- *
- *       return Dependencies().loose("Type1").loose("Type2").default("TheFoo").strict("Type3", "ASpecificType3") 
- *
- * If you prefer a specific implementation but will settle for a generic one it is perfectly fine to do this:
- *
- *       return  Dependencies().strict("Type1", "Impl1",Dependent::optional).loose("Type1") ;
- * 
- * If you are willing to do all together without any:
- *  
- *       return  Dependencies().strict("Type1", "Impl1",Dependent::optional).loose("Type1",Dependent::optional) ;
- *        
- */
-class Dependencies
-{
-	struct Dependent
-	{
-		Dependent(const std::string& type_, const std::string& name_, bool optional_ = false)
-        	: type(type_), name(name_), optional(optional_) {}
-
-        Dependent(const std::string& type_, bool optional_=false)
-            : type(type_), name(type_), optional(false) {}
-
-
-		std::string type ;
-		std::string name ;
-		bool optional ;
-	} ;
-
-public:
-
-	Dependencies() {} 
-
-	/**
-     * Add a dependent to a component of the given type. If there are multiple compnents of this type it will pick the first one that
-     * has existing dependencies otherwise the first one it sees.
-     */
-	Dependencies& loose(const std::string type, bool optional=false) {
-        _deps.push_back(Dependent(type,"",optional)) ;
-        return *this;
-    }
-
-	/**
-     * Add a dependent to a component of the given name such that the type matches it's name . Such a component can be thaought of as the default component of that
-     * type and there can be only 0 or 1. 
-     */
-    Dependencies& def(const std::string name, bool optional=false) {
-        _deps.push_back(Dependent(name,name, optional)) ;
-        return *this;
-    }
-
-	/**
-	 * Add a dependent with the specified name and type. There can be only 0 or 1. This is a strict dependency because the dependent is anouncing that one and only
-     * one implementation will do
-     */
-    Dependencies& strict(const std::string& type, const std::string& name, bool optional=false) {
-        _deps.push_back(Dependent(type,name, optional)) ; 
-        return *this;
-    }
-
-	
-private:
-
-	std::vector<Dependent> _deps ;
-} ;
-
-enum class AppLifeCycle
-{
-    INITITIALIZED, /* All Components Initialized. Nothing Finalized  yet.*/
-    FINALIZED,     /* All Components Finalized. Feel free to interact */
-    PRESHUTDOWN,   /* About to shutdown but all compoents are safe */
-    SHUTDOWN,      /* Last chance to perform shutdown actions. Your dependencies may be unsafe */
-    FORCE_SHUTDOWN, /* All bets are off. User forced shutdown. Log some final state but don't do much else */
-    DUMP,           /* User triggered App Dump. Log as much useful information as you can about yourself. Avoid interaction with others */
-} ;
-
-enum class CompLifeCycle
-{
-    INALIZED, 		/* Dependent component finalized. You may not be */
-    DISABLED,  		/* Dependent component was disable */
-    ENABLED,   		/* Dependent component was enabled after having been previously disabled */
-    EXCEPTION, 		/* Dependent component raised an exception  with broacast */
-    STATE_CHANGE, 	/* Dependent component triggered a state change with broadcast */
-} ;
 
 union MsgData
 {
@@ -292,12 +202,12 @@ public:
 	/**
      * This is a place to take action on application lifecycle events. 
      */
-    void appLifeCycle(AppLifeCycle state) ;
+    virtual void appLifeCycle(AppLifeCycle state) ;
 
 	/**
      * This is a place to take action on events related to components you depend on
      */
-    void compLifeCycle(CompLifeCycle state, CompId id) ;
+    virtual void compLifeCycle(CompLifeCycle state, CompId id) ;
 
 
 	/**
@@ -305,6 +215,10 @@ public:
      */ 
 	void onMessage(Message msg) ;
 
+    CompId id() const {return _id;}
+
+    const std::string& name() const {return _name;}
+    void setName(const std::string& name) {_name = name;}
 	
 protected:
 

@@ -85,6 +85,29 @@ FactoryMap_iterator Registry::findfact(FactoryMap_iterator start, bool (*predica
     return std::find_if(start, endFact(), predicate) ;
 }
 
+Component* Registry::createComponent(const Dependencies::Dependent& dep) noexcept 
+{
+    try { //locked
+        std::lock_guard<std::mutex> guard(registry_lock);
+        auto range = 
+            std::make_pair(
+                _factories.lower_bound(CompFactoryKey(dep.type, dep.subtype)),
+                _factories.upper_bound(CompFactoryKey(dep.type, _HIGHEST))
+            ) ;
+        if (range.first == range.second)
+            return nullptr ; //No factory available to satisy dep
+        auto& iter = range.first ;
+        auto& key = iter->first ;
+        if (dep.subtype != "" && dep.subtype != key.second) {    
+            return nullptr ; //A default or strict dependency could not be satified
+        }
+        return _createComponent(range.first) ;
+    } //unlocked
+    catch (...) {
+        return nullptr ;
+    }
+}
+
 Component* Registry::createComponent(const std::string& type, int allow_ambiguity) 
 {
     { //locked
@@ -148,6 +171,8 @@ Component* Registry::_createComponent(FactoryMap_iterator iter)
         throw RUNTIME_ERROR("Registry failed to create component of type [%s] subtype [%s] : Factory returned nullptr",
                             iter->first.first.c_str(),
                             iter->first.second.c_str()) ;
+    comp->setName(iter->first.first + ":" + iter->first.second) ;
+    _components[comp->id()] = comp ;
     _xref.insert(std::make_pair(iter->first, _nextId++)) ;
     return comp ;
 }
@@ -214,4 +239,39 @@ util::Maybe<Component>  Registry::component(const TypeName& type, const SubTypeN
     return util::Maybe<Component>(nullptr) ;
 }
 
+util::Maybe<Component> Registry::component(const Dependencies::Dependent& dep)
+{
+    if (dep.subtype == "")
+        return component(dep.type) ;
+    else
+        return component(dep.type, dep.subtype) ;
+}
 
+std::vector<Component*> Registry::satisfy(const Dependencies& deps, CompId id) 
+{
+    std::vector<Component*> satisfaction ;
+    for(const Dependencies::Dependent& dep : deps) 
+    {
+        try
+        {
+            auto comp = component(dep) ;
+            if (!comp && dep.required()) {
+                //Attempt to satsify by creating it on the fly    
+                comp.reset(createComponent(dep)) ;  
+                *comp ; //May trigger exception as required dep could not be satisfied
+            }
+            satisfaction.push_back(comp.get()) ;
+        }
+        catch (const std::runtime_error& err) {
+            //"I can't get no satisfaction
+            // I can't get me no satisfaction
+            // And I try and I try and I try t-t-t-t-try try
+            // I can't get no I can't get me no"
+            //-- The Rolling Stones.
+            std::string name = id >= 0 ? component(id)->name() : std::string("Unknown") ;
+            throw RUNTIME_ERROR("Dependency  [%s] for component [%s#%d] could not be satisfied",
+                dep.str().c_str(), name.c_str(), id) ;
+        }
+    }
+    return satisfaction ;
+}

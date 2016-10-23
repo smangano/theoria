@@ -36,8 +36,8 @@ void Theoria::init()
 
     try {
         auto bsConfig = bs.loadConfig() ;
+        bs.boot(*bsConfig) ;
         Registry::instance()._setBootstrapConfig(bsConfig) ;
-        bs.boot() ;
     }
     catch (const std::runtime_error& err) {
         std::cerr << err.what() << std::endl ; 

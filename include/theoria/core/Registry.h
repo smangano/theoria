@@ -1,6 +1,7 @@
 #pragma once
 
 #include <theoria/core/primitives.h>
+#include <theoria/core/Dependencies.h>
 #include <theoria/util/densemap.h>
 #include <theoria/util/Maybe.h>
 
@@ -97,6 +98,13 @@ public:
      */
     Component* createComponent(const TypeName& type, const SubTypeName& subtype) ;
 
+    /* Create a component that could satify a dependency, if possible
+     *
+     * @dep the dependcy that needs to be satisfied
+     * @return the component or nullptr if could not satisfy or otherwise failed to create 
+     */
+    Component* createComponent(const Dependencies::Dependent& dep) noexcept ;
+
     /* Begin iterator over factories.
      *
      * Thread Safety: Requires RegistryLock()
@@ -165,7 +173,13 @@ public:
      */
     util::Maybe<Component> component(const TypeName& type) ;
     util::Maybe<Component> component(const TypeName& type, const SubTypeName& subtype) ;
-   
+ 
+    /* Get a component that is suitable for satisfying dep
+     *
+     * @dep a dependency
+     */
+    util::Maybe<Component> component(const Dependencies::Dependent& dep) ;
+
     template <typename T>
     util::Maybe<T> componentAs(CompId id) {
         return util::Maybe<T>(component(id).get()) ;
@@ -184,7 +198,16 @@ public:
 
     const config::Config& bootConfig() const ; 
     const config::Config& appConfig() const ; 
-    
+  
+    /* Satisfy dependencies as required by deps, creating components if necessary
+     *
+     * @deps  the dependencies to satisfy
+     * @compId optional compId of requesting component. Used for infomational purposes
+     * @return the vector components which satisfy (possibly nullptr if could not satisfy)
+     *
+     */
+    std::vector<Component*> satisfy(const Dependencies& deps, CompId compId=-1) ;
+
 private:
     
     friend class Theoria ;

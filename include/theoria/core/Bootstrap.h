@@ -1,5 +1,8 @@
 #pragma once
 
+#include <theoria/core/primitives.h>
+#include <theoria/core/Dependencies.h>
+
 #include <memory>
 #include <string>
 
@@ -38,7 +41,11 @@ public:
      * Bootstrap theoria by processing the boostrap config and
      * registering the required core components
      */
-    void boot() ;
+    void boot(config::Config& bootConfig) ;
+
+    Component *  _createCoreComp(const config::Config& compConfig) ;
+    Dependencies _initCoreComp(Component * component) ;
+
 } ;
 
 }} //namespace theoria::core
