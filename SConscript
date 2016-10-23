@@ -27,9 +27,17 @@ def valgrindTests(env,target,source):
     ret = 0 
     with open(target[0].path, 'w') as out:
         ret = subprocess.call(['valgrind', '--error-exitcode=1', '--tool=memcheck', source[0].children()[0].abspath], stderr=subprocess.STDOUT, stdout=out)
-    if ret:
-        with open(target[0].path, 'r') as input:
-            for line in input:
+    #Count lines of output    
+    count = 0
+    with open(target[0].path, 'r') as input:
+        for line in input:
+            count+=1
+    #output last 8 line or all if error ret
+    count2 = 0 
+    with open(target[0].path, 'r') as input:
+        for line in input:
+            count2+=1
+            if ret or count2+8 > count:
                 print line,
     sys.exit(ret) 
 
