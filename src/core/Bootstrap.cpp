@@ -27,7 +27,9 @@ std::unique_ptr<config::Config> Bootstrap::loadConfig() const
 
 std::string Bootstrap::findConfig() const
 {
-    std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH, ::getenv(ENV_BOOTSTRAP_CONFIG_PATH)) ; 
+    const char * envPath = ::getenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
+    envPath = envPath ? envPath : "" ;
+    std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH, envPath) ; 
     if (path == "")
         path = os::bootstrap_path() ;
 

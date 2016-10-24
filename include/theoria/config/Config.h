@@ -116,6 +116,11 @@ protected:
         return util::convertToDbl(findAttr(name), _attrs.end(), "getAttr", name, def) ;
     }
 
+    bool getAttrAsBool(const std::string& name, bool def = false) const 
+    {
+        return util::convertToBool(findAttr(name), _attrs.end(), "getAttr", name, def) ;
+    }
+
     virtual bool isArray() const ;
     virtual void toTOML(std::ostream& out) const ;
 

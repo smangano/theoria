@@ -208,6 +208,20 @@ public:
      */
     std::vector<Component*> satisfy(const Dependencies& deps, CompId compId=-1) ;
 
+    /*
+     * At the moment does nothing but reserved to allow resources
+     * to be freed when no longer needed
+     */
+    void release(Component* component) {};
+
+    /*
+     * At the moment does nothing but reserved to allow dynamic
+     * dependency tracking in cases where dependencies are not
+     * fully known after initialization. For example, 
+     * When builder components wire things up on their own
+     */
+    void addDep(Component* from, Component* to)  {} 
+
 private:
     
     friend class Theoria ;

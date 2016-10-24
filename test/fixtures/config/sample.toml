@@ -9,10 +9,20 @@ var1 = 1
 var2 = 2
 numThreads = 5
 
-[ConfigVarResolverBuilder]                    #This is a core Theoria component for building resolution chain
-[ConfigVarResolverBuilder.CmdLineResolver]    #It contains an ordered list of component resolvers
-[ConfigVarResolverBuilder.EnvVarResolver]
-[ConfigVarResolverBuilder.ConfigVarResolver]
+[ConfigVarResolverBuilder]                    
+desc="""
+      Creates the chain of ConfigVarResolver's used by the ConfigBuilder. The cofiguration specifies the ordered
+      list of resolvers to chain together.
+"""
+[[ConfigVarResolverBuilder.Resolver]]         
+type="ConfigVarResolver"
+subtype="CmdLineResolver"
+[[ConfigVarResolverBuilder.Resolver]]         
+type="ConfigVarResolver"
+subtype="EnvVarResolver"
+[[ConfigVarResolverBuilder.Resolver]]         
+type="ConfigVarResolver"
+subtype="ConfigResolver"
 
 
 [compType1]                    #This is a user component type
