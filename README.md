@@ -1,6 +1,10 @@
-<font size="20"> Theoria - A C++ Application Container for the Real and Virtual World </font>
+<font size="18"> Theoria - A C++ Application Container for the Real and Virtual World </font>
 
-#NOTE: Theoria is in pre-release state. This document will be expanded when release 0.1 is ready
+> Theoria is Greek for contemplation. It corresponds to the Latin word contemplatio, "looking at", "gazing at", "being
+> aware of," ...
+
+# NOTE: 
+## Theoria is in pre-release state. This document will be expanded when release 0.1 is ready
 
 
 # Theoria
