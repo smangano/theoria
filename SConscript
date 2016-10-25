@@ -26,7 +26,7 @@ def valgrindTests(env,target,source):
     import sys 
     ret = 0 
     with open(target[0].path, 'w') as out:
-        ret = subprocess.call(['valgrind', '--error-exitcode=1', '--tool=memcheck', source[0].children()[0].abspath], stderr=subprocess.STDOUT, stdout=out)
+        ret = subprocess.call(['valgrind', '--error-exitcode=1', '--tool=memcheck', source[0].children()[0].abspath], stderr=subprocess.STDOUT, stdout=out, env=env['ENV'])
     #Count lines of output    
     count = 0
     with open(target[0].path, 'r') as input:

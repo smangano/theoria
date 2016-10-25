@@ -249,7 +249,7 @@ public:
      *
      * Default impl sets *dest to nullptr and returns nullptr 
      */
-    Component* bind(const std::type_info& typeInfo, void** dest) ;
+    virtual Component* bind(const std::type_info& typeInfo, void** dest) ;
 
 protected:
 

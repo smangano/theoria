@@ -3,6 +3,11 @@
 using namespace theoria ;
 using namespace core ;
 
+Component::Component() 
+    : _id(-1), _name("")
+{
+}
+
 Component::~Component() {}
 
 Dependencies Component::init(const config::Config& config) 
