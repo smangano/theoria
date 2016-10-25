@@ -234,7 +234,7 @@ public:
             if (pT) //Okay I'm a T!
                 return pT ;
             //Otherwise maybe I own a T. My implentor is then responsible for providing
-            target = acquire(ti, reinterpret_cast<void **>(&pT)) ;
+            target = target->acquire(ti, reinterpret_cast<void **>(&pT)) ;
             if (pT) //Yay, i'm bound. 
                 return pT ;
         }

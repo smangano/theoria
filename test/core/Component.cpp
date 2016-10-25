@@ -121,6 +121,14 @@ core::Component* ComponentKnowsCalcInterfaceImpl::acquire(const std::type_info& 
     return &_impl ;
 }
 
+TEST(TestComponentKnowsCalcInterfaceImpl, TestCast) {
+   ComponentKnowsCalcInterfaceImpl comp ;
+
+   ASSERT_NE(comp.cast<CalcInterface>(), nullptr) ; 
+   EXPECT_EQ(comp.cast<CalcInterface>()->calc(2,3), 6) ;
+   EXPECT_THROW(comp.cast<CalcInterface2>(), std::runtime_error) ;
+}
+
 /////////////////////
 class ComponentKnowsCalcInterfaceOwn : public core::Component
 {
@@ -137,6 +145,14 @@ core::Component* ComponentKnowsCalcInterfaceOwn::acquire(const std::type_info& t
 {
     *dest = nullptr ;
     return &_impl ;
+}
+
+TEST(TestComponentKnowsCalcInterfaceOwn, TestCast) {
+   ComponentKnowsCalcInterfaceOwn comp ;
+
+   ASSERT_NE(comp.cast<CalcInterface>(), nullptr) ; 
+   EXPECT_EQ(comp.cast<CalcInterface>()->calc(2,3), 5) ;
+   EXPECT_THROW(comp.cast<CalcInterface2>(), std::runtime_error) ;
 }
 
 }
