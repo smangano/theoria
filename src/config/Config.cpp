@@ -67,10 +67,33 @@ bool Config::isArray() const
     return false ;
 }
 
+std::ostream& _tomlTableName(std::ostream& os, const Config* c) 
+{
+    if (c.getParen())
+         _tomlTableName(os, c.getParen()) << "." ;
+    os << c.name() ;
+    return os ;
+}
+
 void Config::toTOML(std::ostream& os) const
 {
-    os << "TODO: toTOML conversion" << std::endl ;
+    if (getParent() != nullptr)
+    {
+        if (getParent().isArray) os << "[" ;
+        os << "[" << _tomlTableName(os, this) << "]"
+        if (getParent().isArray) os << "]" ;
+        os << "\n" ;
+    }
+    for (auto attr = cbeginAtrr(), end = cendAttr(); attr != end ; ++attr)
+    {
+        attr->toTOML() ;
+    }
+    for (child : getChildren()) {
+        child->toTOML(os) ;    
+    }
+    
 }
+
 
 ////
 //ConfigArray
@@ -85,5 +108,9 @@ bool ConfigArray::isArray() const
 
 void ConfigArray::toTOML(std::ostream& os) const
 {
+    //pass through to elements
+    for (child : getChildren()) {
+        child->toTOML(os) ;    
+    }
 }
 
