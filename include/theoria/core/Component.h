@@ -223,7 +223,7 @@ public:
     void setName(const std::string& name) {_name = name;}
 
     template <class T>
-    T* bind(const std::string& requestor = "Unknown") 
+    T* cast(const std::string& requestor = "Unknown") 
     {
         const std::type_info& ti = typeid(T) ;
         Component * target = this ;
@@ -234,22 +234,22 @@ public:
             if (pT) //Okay I'm a T!
                 return pT ;
             //Otherwise maybe I own a T. My implentor is then responsible for providing
-            target = bind(ti, reinterpret_cast<void **>(&pT)) ;
+            target = acquire(ti, reinterpret_cast<void **>(&pT)) ;
             if (pT) //Yay, i'm bound. 
                 return pT ;
         }
-        throw RUNTIME_ERROR("Can't bind Component [%s] to type [%s] as required by [%s]", name().c_str(), ti.name(), requestor.c_str()) ; 
+        throw RUNTIME_ERROR("Can't cast Component [%s] to type [%s] as required by [%s]", name().c_str(), ti.name(), requestor.c_str()) ; 
     }
 
     /*
-     * Override in your component if you want to control how other components bind
-     * to you. Your are responsible for using the typeInfo to return a suitable object
+     * Override in your component if you want to control how other components acquire interfaces
+     * from you. Your are responsible for using the typeInfo to return a suitable object
      * in destination. If you can't do this you can optionally return another Component that
      * you think can.
      *
      * Default impl sets *dest to nullptr and returns nullptr 
      */
-    virtual Component* bind(const std::type_info& typeInfo, void** dest) ;
+    virtual Component* acquire(const std::type_info& typeInfo, void** dest) ;
 
 protected:
 

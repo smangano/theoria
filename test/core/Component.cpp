@@ -17,6 +17,19 @@ CalcInterface::~CalcInterface()
 {
 }
 
+class CalcInterface2 
+{
+public:
+
+    virtual ~CalcInterface2() ;
+
+    virtual int calc(int x, int y) const = 0 ;
+} ;
+
+CalcInterface2::~CalcInterface2()
+{
+}
+
 /////////////////////
 class ComponentImplCalcInterface : public CalcInterface, public core::Component
 {
@@ -28,6 +41,14 @@ public:
 int ComponentImplCalcInterface::calc(int x, int y) const
 {
     return x * y ;
+}
+
+TEST(TestComponentImplCalcInterface, TestCast) {
+   ComponentImplCalcInterface comp ;
+
+   ASSERT_NE(comp.cast<CalcInterface>(), nullptr) ; 
+   EXPECT_EQ(comp.cast<CalcInterface>()->calc(2,2), 4) ;
+   EXPECT_THROW(comp.cast<CalcInterface2>(), std::runtime_error) ;
 }
 
 /////////////////////
@@ -45,7 +66,7 @@ public:
 
     ComponentOwnsCalcInterface() ;
     
-    core::Component* bind(const std::type_info& type, void ** dest) override ;
+    core::Component* acquire(const std::type_info& type, void ** dest) override ;
 
 private:
 
@@ -65,7 +86,7 @@ ComponentOwnsCalcInterface::ComponentOwnsCalcInterface()
 
 
 
-core::Component* ComponentOwnsCalcInterface::bind(const std::type_info& type, void ** dest)  
+core::Component* ComponentOwnsCalcInterface::acquire(const std::type_info& type, void ** dest)  
 {
     *dest = nullptr ;
     if (type == typeid(CalcInterface)) {
@@ -74,19 +95,27 @@ core::Component* ComponentOwnsCalcInterface::bind(const std::type_info& type, vo
     return nullptr; 
 }
 
+TEST(TestComponentOwnsCalcInterface, TestCast) {
+   ComponentOwnsCalcInterface comp ;
+
+   ASSERT_NE(comp.cast<CalcInterface>(), nullptr) ; 
+   EXPECT_EQ(comp.cast<CalcInterface>()->calc(3,2), 5) ;
+   EXPECT_THROW(comp.cast<CalcInterface2>(), std::runtime_error) ;
+}
+
 /////////////////////
 class ComponentKnowsCalcInterfaceImpl : public core::Component
 {
 public:
 
-    core::Component* bind(const std::type_info& type, void ** dest) override ;
+    core::Component* acquire(const std::type_info& type, void ** dest) override ;
 
 private:
 
     ComponentImplCalcInterface _impl ;
 } ;
 
-core::Component* ComponentKnowsCalcInterfaceImpl::bind(const std::type_info& type, void ** dest) 
+core::Component* ComponentKnowsCalcInterfaceImpl::acquire(const std::type_info& type, void ** dest) 
 {
     *dest = nullptr ;
     return &_impl ;
@@ -97,14 +126,14 @@ class ComponentKnowsCalcInterfaceOwn : public core::Component
 {
 public:
 
-    core::Component* bind(const std::type_info& type, void ** dest) override ;
+    core::Component* acquire(const std::type_info& type, void ** dest) override ;
 
 private:
 
     ComponentOwnsCalcInterface _impl ;
 } ;
 
-core::Component* ComponentKnowsCalcInterfaceOwn::bind(const std::type_info& type, void ** dest) 
+core::Component* ComponentKnowsCalcInterfaceOwn::acquire(const std::type_info& type, void ** dest) 
 {
     *dest = nullptr ;
     return &_impl ;

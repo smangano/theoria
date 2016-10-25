@@ -27,7 +27,7 @@ void Component::compLifeCycle(CompLifeCycle state, CompId id)
 {
 }
 
-Component* Component::bind(const std::type_info& typeInfo, void** dest) 
+Component* Component::acquire(const std::type_info& typeInfo, void** dest) 
 {
     *dest = nullptr ;
     return nullptr ;

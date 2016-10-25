@@ -70,11 +70,11 @@ void ConfigVarResolverBuilderComp::finalize(std::vector<Component*>& dependencie
     using ConfigBuilder = config::ConfigBuilder ;
     using ConfigVariableResolver = config::ConfigVariableResolver ;
     std::string requestor = "ConfigVarResolverBuilderComp::finalize" ;
-    ConfigBuilder* builder = dependencies[0]->bind<ConfigBuilder>(requestor) ;
+    ConfigBuilder* builder = dependencies[0]->cast<ConfigBuilder>(requestor) ;
     int sz = dependencies.size() ;
     ConfigVariableResolver* prev = nullptr ;
     for (int i=1; i<sz; ++i) {
-        ConfigVariableResolver* resolver = dependencies[i]->bind<ConfigVariableResolver>(requestor) ;
+        ConfigVariableResolver* resolver = dependencies[i]->cast<ConfigVariableResolver>(requestor) ;
         if (!prev) {
             builder->setResolver(resolver) ;
         }
