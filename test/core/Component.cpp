@@ -1,8 +1,21 @@
 #include <theoria/core/Component.h>
+#include <theoria/config/Config.h>
 #include <gtest/gtest.h>
 #include <typeinfo>
 
 namespace theoria { 
+
+TEST(TestComponent, TestBasics) {
+
+    core::Component def ;
+    EXPECT_EQ(def.id(), -1) ;
+    EXPECT_EQ(def.name(), "") ;
+    def.setName("Default") ;
+    EXPECT_EQ(def.name(), "Default") ;
+    config::Config c ;
+    EXPECT_EQ(def.init(c), core::Dependencies()) ;
+}
+
 
 class CalcInterface 
 {

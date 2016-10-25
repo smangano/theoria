@@ -96,11 +96,22 @@ public:
     const_iterator begin() const {return _deps.begin();}
     const_iterator end() const {return _deps.end();}
     	
+    friend bool operator==(const Dependencies& a, const Dependencies& b) ;
+
 private:
 
 	DepsList _deps ;
 } ;
 
+inline bool operator==(const Dependencies::Dependent& a, const Dependencies::Dependent& b) 
+{
+    return a.type == b.type && a.subtype == b.subtype && a.optional == b.optional ; 
+}
+
+inline bool operator==(const Dependencies& a, const Dependencies& b) 
+{
+    return a._deps == b._deps ;
+}
 
 }} //namespace theoria::core
 

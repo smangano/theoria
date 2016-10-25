@@ -215,7 +215,7 @@ public:
 	/**
 	 * If your coponent is a member of a event loop, async messages arrive here 
      */ 
-	void onMessage(Message msg) ;
+	virtual void onMessage(Message msg) ;
 
     CompId id() const {return _id;}
 
