@@ -36,7 +36,14 @@ protected:
     {
         Attr(const std::string& name_, const std::string& value_, const std::string& type_ ="", const std::string& src_ = "literal"):
             name(name_), value(value_), type(type_), source(src_) {}
-            
+
+        void toTOML(std::ostream& os) const {
+            os << name  << " = " << value ;
+            if (source != "")
+                os << "# " << source ;
+            os << "\n" ;
+        }
+
         std::string name ;    
         std::string value ;   
         std::string type ;    //optional indication of value's type
@@ -123,6 +130,14 @@ protected:
 
     virtual bool isArray() const ;
     virtual void toTOML(std::ostream& out) const ;
+
+    Attrs::const_iterator beginAttr() const {
+        return _attrs.begin() ;
+    }
+
+    Attrs::const_iterator endAttr() const {
+        return _attrs.end() ;
+    }
 
 protected:
     

@@ -32,12 +32,12 @@ def valgrindTests(env,target,source):
     with open(target[0].path, 'r') as input:
         for line in input:
             count+=1
-    #output last 8 line or all if error ret
+    #output last 10 lines or all if error ret
     count2 = 0 
     with open(target[0].path, 'r') as input:
         for line in input:
             count2+=1
-            if ret or count2+8 > count:
+            if ret or count2+10 >= count:
                 print line,
     sys.exit(ret) 
 
