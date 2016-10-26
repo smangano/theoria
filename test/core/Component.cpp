@@ -1,6 +1,7 @@
 #include <theoria/core/Component.h>
 #include <theoria/config/Config.h>
 #include <gtest/gtest.h>
+#include <memory>
 #include <typeinfo>
 
 namespace theoria { 
@@ -75,6 +76,7 @@ class ComponentOwnsCalcInterface : public core::Component
         int calc(int x, int y) const override ;
     } ;
 
+
 public:
 
     ComponentOwnsCalcInterface() ;
@@ -83,7 +85,7 @@ public:
 
 private:
 
-    CalcInterface* p_impl ;
+    std::unique_ptr<CalcInterface> p_impl ;
     
 } ;
 
@@ -94,7 +96,7 @@ int ComponentOwnsCalcInterface::CalcInterfaceImpl::calc(int x, int y) const
 
 ComponentOwnsCalcInterface::ComponentOwnsCalcInterface()
 {
-    p_impl = new ComponentOwnsCalcInterface::CalcInterfaceImpl() ;
+    p_impl = std::make_unique<ComponentOwnsCalcInterface::CalcInterfaceImpl>() ;
 }
 
 
@@ -103,7 +105,7 @@ core::Component* ComponentOwnsCalcInterface::acquire(const std::type_info& type,
 {
     *dest = nullptr ;
     if (type == typeid(CalcInterface)) {
-        *dest = p_impl ;
+        *dest = p_impl.get() ;
     }    
     return nullptr; 
 }
