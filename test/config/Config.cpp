@@ -189,3 +189,16 @@ TEST_F(ConfigTest, SingleConfigWithMultipleChildrenTest) {
 
 
 }
+
+TEST_F(ConfigTest, SingleConfigWithOneChildTOMLTest) {
+    std::string expected ="\
+attr1 = 1 #literal\n\
+attr2 = \"foo\" #literal\n\
+[Child1]\n\
+attr1 = 2 #literal\n" ;
+
+    config = builder().testConfigWithOneChild() ;
+    std::ostringstream oss ;
+    config->toTOML(oss) ;
+    EXPECT_EQ(oss.str(), expected) ;
+}

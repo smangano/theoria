@@ -67,11 +67,17 @@ bool Config::isArray() const
     return false ;
 }
 
-std::ostream& _tomlTableName(std::ostream& os, const Config& c) 
+struct toTomlName
 {
-    if (c.getParent())
-         _tomlTableName(os, *c.getParent()) << "." ;
-    os << c.name() ;
+    toTomlName(const Config& c_) : c(c_) {}
+    const Config& c;
+} ;
+
+std::ostream& operator <<(std::ostream& os, const toTomlName& n) 
+{
+    if (n.c.getParent() && n.c.getParent()->getParent())
+        os << toTomlName(*n.c.getParent()) << "." ;
+    os << n.c.name() ;
     return os ;
 }
 
@@ -80,7 +86,7 @@ void Config::toTOML(std::ostream& os) const
     if (getParent() != nullptr)
     {
         if (getParent()->isArray()) os << "[" ;
-        os << "[" << _tomlTableName(os, *this) << "]" ;
+        os << "[" << toTomlName(*this) << "]" ;
         if (getParent()->isArray()) os << "]" ;
         os << "\n" ;
     }

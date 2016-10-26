@@ -37,10 +37,17 @@ protected:
         Attr(const std::string& name_, const std::string& value_, const std::string& type_ ="", const std::string& src_ = "literal"):
             name(name_), value(value_), type(type_), source(src_) {}
 
+        std::string decorated_val() const 
+        {
+            if (type == "string")
+                return "\"" + value + "\"" ;
+            return value ;
+        }
+
         void toTOML(std::ostream& os) const {
-            os << name  << " = " << value ;
+            os << name  << " = " << decorated_val() ;
             if (source != "")
-                os << "# " << source ;
+                os << " #" << source ;
             os << "\n" ;
         }
 
