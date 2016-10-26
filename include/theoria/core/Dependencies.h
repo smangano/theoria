@@ -11,7 +11,7 @@ namespace theoria { namespace core {
  * -----------------
  * Used by components during initialization to advertise there requirements for other components. 
  * Dependencies can be loose if they only require they conform to some type or tight if they name a specific implementation
- * Dependicies can be optional if the component can continue (possibly in a reduced functional state) without the dependency being
+ * Dependencies can be optional if the component can continue (possibly in a reduced functional state) without the dependency being
  * satisfied. 
  * 
  * Usage Examples:
@@ -67,7 +67,7 @@ public:
     Dependencies& operator = (Dependencies&& other) = default ;
 
 	/**
-     * Add a dependent to a component of the given type. If there are multiple compnents of this type it will pick the first one that
+     * Add a dependent to a component of the given type. If there are multiple components of this type it will pick the first one that
      * has existing dependencies otherwise the first one it sees.
      */
 	Dependencies& loose(const std::string type, bool optional=false) {
@@ -76,7 +76,7 @@ public:
     }
 
 	/**
-     * Add a dependent to a component of the given type  such that the type matches it's subtype . Such a component can be thaought of as the default component of that
+     * Add a dependent to a component of the given type  such that the type matches it's subtype . Such a component can be thought of as the default component of that
      * type and there can be only 0 or 1. 
      */
     Dependencies& def(const std::string name, bool optional=false) {

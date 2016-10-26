@@ -69,7 +69,7 @@ public:
      * Register the factory for components of type and subtype
      * @type the type name
      * @subtype the subtype name
-     * @factory the factory fuction
+     * @factory the factory function
      */
     void registerFactory(const TypeName& type, const SubTypeName& subtype, ComponentFactory factory) ;
 
@@ -82,7 +82,7 @@ public:
      * 4) If there are multiple factories use the first one that has already been used
      *
      * @type the type name to use for look up
-     * @allow_ambiguity if false treat case (3) above as abiguous and raise an exception
+     * @allow_ambiguity if false treat case (3) above as ambiguous and raise an exception
      *
      * @execept std::runtime_error if type not found
      */
@@ -98,9 +98,9 @@ public:
      */
     Component* createComponent(const TypeName& type, const SubTypeName& subtype) ;
 
-    /* Create a component that could satify a dependency, if possible
+    /* Create a component that could satisfy a dependency, if possible
      *
-     * @dep the dependcy that needs to be satisfied
+     * @dep the dependency that needs to be satisfied
      * @return the component or nullptr if could not satisfy or otherwise failed to create 
      */
     Component* createComponent(const Dependencies::Dependent& dep) noexcept ;
@@ -127,8 +127,8 @@ public:
 
     /* Find factory by predicate.
      * @start where to start searching
-     * @predicate test critera
-     * @return first entry aot or after start that satisfies predicate or endFact()
+     * @predicate test criteria
+     * @return first entry at or after start that satisfies predicate or endFact()
      *
      * Thread Safety: Requires RegistryLock()
      */
@@ -167,9 +167,9 @@ public:
      * the first one it finds
      *
      * @type the type name of the component
-     * @return Option evaluates to true if found, false otherwsise.
+     * @return Option evaluates to true if found, false otherwise.
      *         Derfef *option returns a reference to component or raises exception
-     *         See Option.h for more behaviror
+     *         See Option.h for more behavior
      */
     util::Maybe<Component> component(const TypeName& type) ;
     util::Maybe<Component> component(const TypeName& type, const SubTypeName& subtype) ;
@@ -202,7 +202,7 @@ public:
     /* Satisfy dependencies as required by deps, creating components if necessary
      *
      * @deps  the dependencies to satisfy
-     * @compId optional compId of requesting component. Used for infomational purposes
+     * @compId optional compId of requesting component. Used for informational purposes
      * @return the vector components which satisfy (possibly nullptr if could not satisfy)
      *
      */

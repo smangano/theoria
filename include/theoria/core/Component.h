@@ -23,8 +23,8 @@ public:
     using baseid_const_iterator = BaseList::const_iterator ;
 
     /*
-     * Componets can be linked to base implementations to support
-     * the Theoria's concept of _dynamic inheritence_.
+     * Components can be linked to base implementations to support
+     * the Theoria's concept of _dynamic inheritance_.
      */
     baseid_const_iterator beginBaseId() const ;
     baseid_const_iterator endBaseId() const ;
@@ -45,7 +45,7 @@ public:
     TypeNameList baseTypes() const ;
 
     /*
-     * List of all components ancestor types aquired using breadth first traversal with dupes
+     * List of all components ancestor types acquired using breadth first traversal with dupes
      * eliminated
      */
     TypeNameList ancestorTypes() const ;
@@ -75,13 +75,13 @@ desc:  A component is always in some state or composition of states. CompState m
 //--------------------------------------------------------------------------------------------------------
 const int OKAY_STATE 						    =  0 ; //  | Everything is Okay
 const int WARN_STATE 							=  1 ; //  | Possible issue. Not critical
-const int ERROR_STATE 							=  2 ; //  | Component enccountered an error. Probably serious
+const int ERROR_STATE 							=  2 ; //  | Component encountered an error. Probably serious
 const int DISABLED_STATE 						=  3 ; //  | The component has been disabled
 const int CONNECTED_STATE 						=  4 ; //  | The component is connected to some external resource
 const int DISCONNECTED_STATE 					=  5 ; //  | The component is disconnected from an external resource
 const int STARTED_STATE 						=  6 ; //  | The component has started processing (may be used in assoc with threading)
 const int STOPPED_STATE 						=  7 ; //  | The component has stopped processing (may be used in assoc with threading)
-const int INIT_STATE 							=  8 ; //  | The component ititialized successfully
+const int INIT_STATE 							=  8 ; //  | The component initialized successfully
 const int WAITING_STATE 						=  9 ; //  | The component is waiting on something
 const int READY_STATE 							= 10 ; //  | The component is ready to perform its intended function
 const int EXCEPTION_STATE   					= 11 ; //  | The component raised an exception
@@ -89,7 +89,7 @@ const int EXCEPTION_STATE   					= 11 ; //  | The component raised an exception
 const int USER_STATE_START                      = 1000 ;
 
 /**
- * class CompState - component state managment. State management is an intergral aspect of component visualization
+ * class CompState - component state management. State management is an integral aspect of component visualization
  */
 class CompState
 {
@@ -195,8 +195,8 @@ public:
 	virtual Dependencies init(const config::Config& config) ;
 
 	/**
-     * Recieve the componets you requried in init(). Optional components will be nullptrs.
-     * All components received are itialized but not necessarily finalized so do not call 
+     * Receive the components you required in init(). Optional components will be nullptrs.
+     * All components received are initialized but not necessarily finalized so do not call 
      * into the component yet (unless you really know what you are doing but you are prob asking for trouble)
      */
     virtual void finalize(std::vector<Component*>& dependencies) ;
@@ -227,13 +227,13 @@ public:
     {
         const std::type_info& ti = typeid(T) ;
         Component * target = this ;
-        //To avoid posibility of infinit loops we cap this protocol at two attemps
+        //To avoid possibility of infinite loops we cap this protocol at two attempts
         for (int iTry=0; iTry<2 && target; ++iTry) { 
             //First see if the Component is a T
             T* pT = dynamic_cast<T*>(target) ;
             if (pT) //Okay I'm a T!
                 return pT ;
-            //Otherwise maybe I own a T. My implentor is then responsible for providing
+            //Otherwise maybe I own a T. My implementor is then responsible for providing
             target = target->acquire(ti, reinterpret_cast<void **>(&pT)) ;
             if (pT) //Yay, i'm bound. 
                 return pT ;

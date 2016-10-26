@@ -14,7 +14,7 @@ public:
     virtual ~ConfigParser() {};
 
     /**
-     * Default implementation open's the file and calls
+     * Default implementation opens the file and calls
      * parse(with the file's std::ifstream)
      *
      * @filename the file to parse
@@ -23,8 +23,8 @@ public:
      * NOTE:: If you override parse_file in your derived 
      *        ConfigParser then you can optionally implement 
      *        parse or simply stub it out as Theoria will only call
-     *        parse_file directly. A streamr- based interface is useful
-     *        for writting unit tests using istringstream.
+     *        parse_file directly. A stream-based interface is useful
+     *        for writing unit tests using istringstream.
      */
     virtual Config* parse_file(const std::string& filename) ;
 

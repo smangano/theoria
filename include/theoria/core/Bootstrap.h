@@ -38,7 +38,7 @@ public:
     std::string findConfig() const ;
 
     /*
-     * Bootstrap theoria by processing the boostrap config and
+     * Bootstrap theoria by processing the bootstrap config and
      * registering the required core components
      */
     void boot(config::Config& bootConfig) ;

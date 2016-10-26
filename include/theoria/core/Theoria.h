@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2016 theoriaacpp.com
  * 
- * This librbary is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
  * or https://github.com/smangano/theoria/blob/master/LICENSE 
  */
 
@@ -29,7 +29,7 @@ public:
     void show_config(bool exit) ;
 
     /*
-     * Initialze the Theoria container by processing the bootstrap.toml file.
+     * Initialize the Theoria container by processing the bootstrap.toml file.
      */
     void init() ;
 

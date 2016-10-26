@@ -19,7 +19,7 @@ class ConfigVariableResolver ;
 
 /*
 A data structure representing runtime configuration. Config is the result of 
-parsing a file in some format supprted by a config builder and resolving variable references
+parsing a file in some format supported by a config builder and resolving variable references
 using some chain of ConfigVariableResolvers. 
 
 Thus when a Config object arrives at a component's init it is fully specified (variable free)

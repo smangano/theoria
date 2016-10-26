@@ -1,13 +1,13 @@
 
 
-//Builds a chain of reslovers. Used by Config Builder
+//Builds a chain of resolvers. Used by Config Builder
 class ConfigResolverBuilder : public core::Component 
 {
 public:
 
     ConfigResolverBuilder() {}
 
-    /* Reads list of <theoria::config::ConfigVariableResolver>'s to determin the 
+    /* Reads list of <theoria::config::ConfigVariableResolver>'s to determine the 
      * resolver list returned by <build>
      * @inherit
      */

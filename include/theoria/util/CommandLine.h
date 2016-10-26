@@ -8,7 +8,7 @@ int main(int argc, const char ** argv) ;
 namespace theoria { namespace util {
 
 /*
- * Pseudo-Singleton that captures command line arguemenst of theoria applications
+ * Pseudo-Singleton that captures command line arguments of Theoria applications
  *
  * CommandLine consists of:
  *
@@ -17,12 +17,12 @@ namespace theoria { namespace util {
  *      settings are terminated by optionak -- (mandatory if variables are specified)
  *      variables passed as: var1=value
  *
- *      Settings are usually predfined by theoria to change its behavior in some way specified by: theoria --help.
+ *      Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
  *      However, user defined settings are allowed. To avoid conflict with future extensions of theoria
- *      userdefined settings should conatin at least one capital letter (as theoria built-in settings are always lowere case)
+ *      user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
  *
  *
- *      Variables are typically user defined settings that paramterize the config file. 
+ *      Variables are typically user defined settings that parameterize the config file. 
  *      See <theoria::config::CmdLineResolver>
  *
  * Example legal command lines:

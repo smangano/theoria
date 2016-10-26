@@ -6,7 +6,7 @@
 namespace theoria { namespace os {
 
 /*
- * Split a seatch path into it's dir components (e.g. PATH env var)
+ * Split a search path into it's dir components (e.g. PATH env var)
  */
 std::vector<std::string> split_search_path(const std::string& path) ;
 
