@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/include/boost/algorithm/string/predicate.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">usr/include/boost/algorithm/string</a> - predicate.hpp<span style="font-size: 80%;"> (source / <a href="predicate.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //  Boost string_algo library predicate.hpp header file  ---------------------------//</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : //  Copyright Pavol Droba 2002-2003.
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : // Distributed under the Boost Software License, Version 1.0.
+<span class="lineNum">       6 </span>            : //    (See accompanying file LICENSE_1_0.txt or copy at
+<span class="lineNum">       7 </span>            : //          http://www.boost.org/LICENSE_1_0.txt)
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : //  See http://www.boost.org/ for updates, documentation, and revision history.
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #ifndef BOOST_STRING_PREDICATE_HPP
+<span class="lineNum">      12 </span>            : #define BOOST_STRING_PREDICATE_HPP
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #include &lt;boost/algorithm/string/config.hpp&gt;
+<span class="lineNum">      15 </span>            : #include &lt;boost/range/begin.hpp&gt;
+<span class="lineNum">      16 </span>            : #include &lt;boost/range/end.hpp&gt;
+<span class="lineNum">      17 </span>            : #include &lt;boost/range/iterator.hpp&gt;
+<span class="lineNum">      18 </span>            : #include &lt;boost/range/const_iterator.hpp&gt;
+<span class="lineNum">      19 </span>            : #include &lt;boost/range/as_literal.hpp&gt;
+<span class="lineNum">      20 </span>            : #include &lt;boost/range/iterator_range_core.hpp&gt;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : #include &lt;boost/algorithm/string/compare.hpp&gt;
+<span class="lineNum">      23 </span>            : #include &lt;boost/algorithm/string/find.hpp&gt;
+<span class="lineNum">      24 </span>            : #include &lt;boost/algorithm/string/detail/predicate.hpp&gt;
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : /*! \file boost/algorithm/string/predicate.hpp
+<span class="lineNum">      27 </span>            :     Defines string-related predicates. 
+<span class="lineNum">      28 </span>            :     The predicates determine whether a substring is contained in the input string 
+<span class="lineNum">      29 </span>            :     under various conditions: a string starts with the substring, ends with the 
+<span class="lineNum">      30 </span>            :     substring, simply contains the substring or if both strings are equal.
+<span class="lineNum">      31 </span>            :     Additionaly the algorithm \c all() checks all elements of a container to satisfy a 
+<span class="lineNum">      32 </span>            :     condition.
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            :     All predicates provide the strong exception guarantee.
+<span class="lineNum">      35 </span>            : */
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : namespace boost {
+<span class="lineNum">      38 </span>            :     namespace algorithm {
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : //  starts_with predicate  -----------------------------------------------//
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            :         //! 'Starts with' predicate
+<span class="lineNum">      43 </span>            :         /*!
+<span class="lineNum">      44 </span>            :             This predicate holds when the test string is a prefix of the Input.
+<span class="lineNum">      45 </span>            :             In other words, if the input starts with the test.
+<span class="lineNum">      46 </span>            :             When the optional predicate is specified, it is used for character-wise
+<span class="lineNum">      47 </span>            :             comparison.
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            :             \param Input An input sequence
+<span class="lineNum">      50 </span>            :             \param Test A test sequence
+<span class="lineNum">      51 </span>            :             \param Comp An element comparison predicate
+<span class="lineNum">      52 </span>            :             \return The result of the test
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            :               \note This function provides the strong exception-safety guarantee
+<span class="lineNum">      55 </span>            :         */
+<span class="lineNum">      56 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
+<span class="lineNum">      57 </span>            :             inline bool starts_with( 
+<span class="lineNum">      58 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">      59 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">      60 </span>            :             PredicateT Comp)
+<span class="lineNum">      61 </span>            :         {
+<span class="lineNum">      62 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));
+<span class="lineNum">      63 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">      66 </span>            :                 range_const_iterator&lt;Range1T&gt;::type Iterator1T;
+<span class="lineNum">      67 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">      68 </span>            :                 range_const_iterator&lt;Range2T&gt;::type Iterator2T;
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :             Iterator1T InputEnd=::boost::end(lit_input);
+<span class="lineNum">      71 </span>            :             Iterator2T TestEnd=::boost::end(lit_test);
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            :             Iterator1T it=::boost::begin(lit_input);
+<span class="lineNum">      74 </span>            :             Iterator2T pit=::boost::begin(lit_test);
+<span class="lineNum">      75 </span>            :             for(;
+<span class="lineNum">      76 </span>            :                 it!=InputEnd &amp;&amp; pit!=TestEnd;
+<span class="lineNum">      77 </span>            :                 ++it,++pit)
+<span class="lineNum">      78 </span>            :             {
+<span class="lineNum">      79 </span>            :                 if( !(Comp(*it,*pit)) )
+<span class="lineNum">      80 </span>            :                     return false;
+<span class="lineNum">      81 </span>            :             }
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            :             return pit==TestEnd;
+<span class="lineNum">      84 </span>            :         }
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            :         //! 'Starts with' predicate
+<span class="lineNum">      87 </span>            :         /*!
+<span class="lineNum">      88 </span>            :             \overload
+<span class="lineNum">      89 </span>            :         */
+<span class="lineNum">      90 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">      91 </span>            :         inline bool starts_with( 
+<span class="lineNum">      92 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">      93 </span>            :             const Range2T&amp; Test)
+<span class="lineNum">      94 </span>            :         {
+<span class="lineNum">      95 </span>            :             return ::boost::algorithm::starts_with(Input, Test, is_equal());
+<span class="lineNum">      96 </span>            :         }
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            :         //! 'Starts with' predicate ( case insensitive )
+<span class="lineNum">      99 </span>            :         /*!
+<span class="lineNum">     100 </span>            :             This predicate holds when the test string is a prefix of the Input.
+<span class="lineNum">     101 </span>            :             In other words, if the input starts with the test.
+<span class="lineNum">     102 </span>            :             Elements are compared case insensitively.
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            :             \param Input An input sequence
+<span class="lineNum">     105 </span>            :             \param Test A test sequence
+<span class="lineNum">     106 </span>            :             \param Loc A locale used for case insensitive comparison
+<span class="lineNum">     107 </span>            :             \return The result of the test
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            :             \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     110 </span>            :         */
+<span class="lineNum">     111 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     112 </span>            :         inline bool istarts_with( 
+<span class="lineNum">     113 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     114 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     115 </span>            :             const std::locale&amp; Loc=std::locale())
+<span class="lineNum">     116 </span>            :         {
+<span class="lineNum">     117 </span>            :             return ::boost::algorithm::starts_with(Input, Test, is_iequal(Loc));
+<span class="lineNum">     118 </span>            :         }
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : //  ends_with predicate  -----------------------------------------------//
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            :         //! 'Ends with' predicate
+<span class="lineNum">     124 </span>            :         /*!
+<span class="lineNum">     125 </span>            :             This predicate holds when the test string is a suffix of the Input.
+<span class="lineNum">     126 </span>            :             In other words, if the input ends with the test.
+<span class="lineNum">     127 </span>            :             When the optional predicate is specified, it is used for character-wise
+<span class="lineNum">     128 </span>            :             comparison.
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            :             \param Input An input sequence
+<span class="lineNum">     132 </span>            :             \param Test A test sequence
+<span class="lineNum">     133 </span>            :             \param Comp An element comparison predicate
+<span class="lineNum">     134 </span>            :             \return The result of the test
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            :               \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     137 </span>            :         */
+<span class="lineNum">     138 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
+<span class="lineNum">     139 </span>            :         inline bool ends_with( 
+<span class="lineNum">     140 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     141 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     142 </span>            :             PredicateT Comp)
+<span class="lineNum">     143 </span>            :         {
+<span class="lineNum">     144 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));
+<span class="lineNum">     145 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">     148 </span>            :                 range_const_iterator&lt;Range1T&gt;::type Iterator1T;
+<span class="lineNum">     149 </span>            :             typedef BOOST_STRING_TYPENAME boost::detail::
+<span class="lineNum">     150 </span>            :                 iterator_traits&lt;Iterator1T&gt;::iterator_category category;
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :             return detail::
+<span class="lineNum">     153 </span>            :                 ends_with_iter_select( 
+<span class="lineNum">     154 </span>            :                     ::boost::begin(lit_input), 
+<span class="lineNum">     155 </span>            :                     ::boost::end(lit_input), 
+<span class="lineNum">     156 </span>            :                     ::boost::begin(lit_test), 
+<span class="lineNum">     157 </span>            :                     ::boost::end(lit_test), 
+<span class="lineNum">     158 </span>            :                     Comp,
+<span class="lineNum">     159 </span>            :                     category());
+<span class="lineNum">     160 </span>            :         }
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            :         //! 'Ends with' predicate
+<span class="lineNum">     164 </span>            :         /*!
+<span class="lineNum">     165 </span>            :             \overload
+<span class="lineNum">     166 </span>            :         */
+<span class="lineNum">     167 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     168 </span>            :         inline bool ends_with( 
+<span class="lineNum">     169 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     170 </span>            :             const Range2T&amp; Test)
+<span class="lineNum">     171 </span>            :         {
+<span class="lineNum">     172 </span>            :             return ::boost::algorithm::ends_with(Input, Test, is_equal());
+<span class="lineNum">     173 </span>            :         }
+<span class="lineNum">     174 </span>            : 
+<span class="lineNum">     175 </span>            :         //! 'Ends with' predicate ( case insensitive )
+<span class="lineNum">     176 </span>            :         /*!
+<span class="lineNum">     177 </span>            :             This predicate holds when the test container is a suffix of the Input.
+<span class="lineNum">     178 </span>            :             In other words, if the input ends with the test.
+<span class="lineNum">     179 </span>            :             Elements are compared case insensitively.
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            :             \param Input An input sequence
+<span class="lineNum">     182 </span>            :             \param Test A test sequence
+<span class="lineNum">     183 </span>            :             \param Loc A locale used for case insensitive comparison
+<span class="lineNum">     184 </span>            :             \return The result of the test
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            :             \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     187 </span>            :         */
+<span class="lineNum">     188 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     189 </span>            :         inline bool iends_with( 
+<span class="lineNum">     190 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     191 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     192 </span>            :             const std::locale&amp; Loc=std::locale())
+<span class="lineNum">     193 </span>            :         {
+<span class="lineNum">     194 </span>            :             return ::boost::algorithm::ends_with(Input, Test, is_iequal(Loc));
+<span class="lineNum">     195 </span>            :         }
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            : //  contains predicate  -----------------------------------------------//
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            :         //! 'Contains' predicate
+<span class="lineNum">     200 </span>            :         /*!
+<span class="lineNum">     201 </span>            :             This predicate holds when the test container is contained in the Input.
+<span class="lineNum">     202 </span>            :             When the optional predicate is specified, it is used for character-wise
+<span class="lineNum">     203 </span>            :             comparison.
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            :             \param Input An input sequence
+<span class="lineNum">     206 </span>            :             \param Test A test sequence
+<span class="lineNum">     207 </span>            :             \param Comp An element comparison predicate
+<span class="lineNum">     208 </span>            :             \return The result of the test
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            :                \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     211 </span>            :         */
+<span class="lineNum">     212 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
+<span class="lineNum">     213 </span>            :         inline bool contains( 
+<span class="lineNum">     214 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     215 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     216 </span>            :             PredicateT Comp)
+<span class="lineNum">     217 </span>            :         {
+<span class="lineNum">     218 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));
+<span class="lineNum">     219 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));
+<span class="lineNum">     220 </span>            : 
+<span class="lineNum">     221 </span>            :             if (::boost::empty(lit_test))
+<span class="lineNum">     222 </span>            :             {
+<span class="lineNum">     223 </span>            :                 // Empty range is contained always
+<span class="lineNum">     224 </span>            :                 return true;
+<span class="lineNum">     225 </span>            :             }
+<span class="lineNum">     226 </span>            :             
+<span class="lineNum">     227 </span>            :             // Use the temporary variable to make VACPP happy
+<span class="lineNum">     228 </span>            :             bool bResult=(::boost::algorithm::first_finder(lit_test,Comp)(::boost::begin(lit_input), ::boost::end(lit_input)));
+<span class="lineNum">     229 </span>            :             return bResult;
+<span class="lineNum">     230 </span>            :         }
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span>            :         //! 'Contains' predicate
+<span class="lineNum">     233 </span>            :         /*!
+<span class="lineNum">     234 </span>            :             \overload
+<span class="lineNum">     235 </span>            :         */
+<span class="lineNum">     236 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     237 </span>            :         inline bool contains( 
+<span class="lineNum">     238 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     239 </span>            :             const Range2T&amp; Test)
+<span class="lineNum">     240 </span>            :         {
+<span class="lineNum">     241 </span>            :             return ::boost::algorithm::contains(Input, Test, is_equal());
+<span class="lineNum">     242 </span>            :         }
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            :         //! 'Contains' predicate ( case insensitive )
+<span class="lineNum">     245 </span>            :         /*!
+<span class="lineNum">     246 </span>            :             This predicate holds when the test container is contained in the Input.
+<span class="lineNum">     247 </span>            :             Elements are compared case insensitively.
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            :             \param Input An input sequence
+<span class="lineNum">     250 </span>            :             \param Test A test sequence
+<span class="lineNum">     251 </span>            :             \param Loc A locale used for case insensitive comparison
+<span class="lineNum">     252 </span>            :             \return The result of the test
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span>            :             \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     255 </span>            :         */
+<span class="lineNum">     256 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     257 </span>            :         inline bool icontains( 
+<span class="lineNum">     258 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     259 </span>            :             const Range2T&amp; Test, 
+<span class="lineNum">     260 </span>            :             const std::locale&amp; Loc=std::locale())
+<span class="lineNum">     261 </span>            :         {
+<span class="lineNum">     262 </span>            :             return ::boost::algorithm::contains(Input, Test, is_iequal(Loc));
+<span class="lineNum">     263 </span>            :         }
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            : //  equals predicate  -----------------------------------------------//
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span>            :         //! 'Equals' predicate
+<span class="lineNum">     268 </span>            :         /*!
+<span class="lineNum">     269 </span>            :             This predicate holds when the test container is equal to the
+<span class="lineNum">     270 </span>            :             input container i.e. all elements in both containers are same.
+<span class="lineNum">     271 </span>            :             When the optional predicate is specified, it is used for character-wise
+<span class="lineNum">     272 </span>            :             comparison.
+<span class="lineNum">     273 </span>            : 
+<span class="lineNum">     274 </span>            :             \param Input An input sequence
+<span class="lineNum">     275 </span>            :             \param Test A test sequence
+<span class="lineNum">     276 </span>            :             \param Comp An element comparison predicate
+<span class="lineNum">     277 </span>            :             \return The result of the test
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            :             \note This is a two-way version of \c std::equal algorithm
+<span class="lineNum">     280 </span>            : 
+<span class="lineNum">     281 </span>            :             \note This function provides the strong exception-safety guarantee
+<a name="282"><span class="lineNum">     282 </span>            :         */</a>
+<span class="lineNum">     283 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
+<span class="lineNum">     284 </span><span class="lineCov">         14 :         inline bool equals( </span>
+<span class="lineNum">     285 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     286 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     287 </span>            :             PredicateT Comp)
+<span class="lineNum">     288 </span>            :         {
+<span class="lineNum">     289 </span><span class="lineCov">         14 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));</span>
+<span class="lineNum">     290 </span><span class="lineCov">         14 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));</span>
+<span class="lineNum">     291 </span>            : 
+<span class="lineNum">     292 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">     293 </span>            :                 range_const_iterator&lt;Range1T&gt;::type Iterator1T;
+<span class="lineNum">     294 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">     295 </span>            :                 range_const_iterator&lt;Range2T&gt;::type Iterator2T;
+<span class="lineNum">     296 </span>            :                 
+<span class="lineNum">     297 </span><span class="lineCov">         14 :             Iterator1T InputEnd=::boost::end(lit_input);</span>
+<span class="lineNum">     298 </span><span class="lineCov">         14 :             Iterator2T TestEnd=::boost::end(lit_test);</span>
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span><span class="lineCov">         14 :             Iterator1T it=::boost::begin(lit_input);</span>
+<span class="lineNum">     301 </span><span class="lineCov">         14 :             Iterator2T pit=::boost::begin(lit_test);</span>
+<span class="lineNum">     302 </span><span class="lineCov">         35 :             for(;</span>
+<span class="lineNum">     303 </span>            :                 it!=InputEnd &amp;&amp; pit!=TestEnd;
+<span class="lineNum">     304 </span>            :                 ++it,++pit)
+<span class="lineNum">     305 </span>            :             {
+<span class="lineNum">     306 </span><span class="lineCov">         30 :                 if( !(Comp(*it,*pit)) )</span>
+<span class="lineNum">     307 </span><span class="lineCov">          9 :                     return false;</span>
+<span class="lineNum">     308 </span>            :             }
+<span class="lineNum">     309 </span>            : 
+<span class="lineNum">     310 </span><span class="lineCov">          5 :             return  (pit==TestEnd) &amp;&amp; (it==InputEnd);</span>
+<span class="lineNum">     311 </span>            :         }
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span>            :         //! 'Equals' predicate
+<span class="lineNum">     314 </span>            :         /*!
+<span class="lineNum">     315 </span>            :             \overload
+<span class="lineNum">     316 </span>            :         */
+<span class="lineNum">     317 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     318 </span>            :         inline bool equals( 
+<span class="lineNum">     319 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     320 </span>            :             const Range2T&amp; Test)
+<span class="lineNum">     321 </span>            :         {
+<span class="lineNum">     322 </span>            :             return ::boost::algorithm::equals(Input, Test, is_equal());
+<span class="lineNum">     323 </span>            :         }
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span>            :         //! 'Equals' predicate ( case insensitive )
+<span class="lineNum">     326 </span>            :         /*!
+<span class="lineNum">     327 </span>            :             This predicate holds when the test container is equal to the
+<span class="lineNum">     328 </span>            :             input container i.e. all elements in both containers are same.
+<span class="lineNum">     329 </span>            :             Elements are compared case insensitively.
+<span class="lineNum">     330 </span>            : 
+<span class="lineNum">     331 </span>            :             \param Input An input sequence
+<span class="lineNum">     332 </span>            :             \param Test A test sequence
+<span class="lineNum">     333 </span>            :             \param Loc A locale used for case insensitive comparison
+<span class="lineNum">     334 </span>            :             \return The result of the test
+<span class="lineNum">     335 </span>            : 
+<span class="lineNum">     336 </span>            :             \note This is a two-way version of \c std::equal algorithm
+<span class="lineNum">     337 </span>            : 
+<span class="lineNum">     338 </span>            :             \note This function provides the strong exception-safety guarantee
+<a name="339"><span class="lineNum">     339 </span>            :         */</a>
+<span class="lineNum">     340 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     341 </span><span class="lineCov">         14 :         inline bool iequals( </span>
+<span class="lineNum">     342 </span>            :             const Range1T&amp; Input, 
+<span class="lineNum">     343 </span>            :             const Range2T&amp; Test,
+<span class="lineNum">     344 </span>            :             const std::locale&amp; Loc=std::locale())
+<span class="lineNum">     345 </span>            :         {
+<span class="lineNum">     346 </span><span class="lineCov">         14 :             return ::boost::algorithm::equals(Input, Test, is_iequal(Loc));</span>
+<span class="lineNum">     347 </span>            :         }
+<span class="lineNum">     348 </span>            : 
+<span class="lineNum">     349 </span>            : // lexicographical_compare predicate -----------------------------//
+<span class="lineNum">     350 </span>            : 
+<span class="lineNum">     351 </span>            :         //! Lexicographical compare predicate
+<span class="lineNum">     352 </span>            :         /*!
+<span class="lineNum">     353 </span>            :              This predicate is an overload of std::lexicographical_compare
+<span class="lineNum">     354 </span>            :              for range arguments
+<span class="lineNum">     355 </span>            : 
+<span class="lineNum">     356 </span>            :              It check whether the first argument is lexicographically less
+<span class="lineNum">     357 </span>            :              then the second one.
+<span class="lineNum">     358 </span>            : 
+<span class="lineNum">     359 </span>            :              If the optional predicate is specified, it is used for character-wise
+<span class="lineNum">     360 </span>            :              comparison
+<span class="lineNum">     361 </span>            : 
+<span class="lineNum">     362 </span>            :              \param Arg1 First argument 
+<span class="lineNum">     363 </span>            :              \param Arg2 Second argument
+<span class="lineNum">     364 </span>            :              \param Pred Comparison predicate
+<span class="lineNum">     365 </span>            :              \return The result of the test
+<span class="lineNum">     366 </span>            : 
+<span class="lineNum">     367 </span>            :              \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     368 </span>            :          */
+<span class="lineNum">     369 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
+<span class="lineNum">     370 </span>            :         inline bool lexicographical_compare(
+<span class="lineNum">     371 </span>            :             const Range1T&amp; Arg1,
+<span class="lineNum">     372 </span>            :             const Range2T&amp; Arg2,
+<span class="lineNum">     373 </span>            :             PredicateT Pred)
+<span class="lineNum">     374 </span>            :         {
+<span class="lineNum">     375 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_arg1(::boost::as_literal(Arg1));
+<span class="lineNum">     376 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_arg2(::boost::as_literal(Arg2));
+<span class="lineNum">     377 </span>            : 
+<span class="lineNum">     378 </span>            :             return std::lexicographical_compare(
+<span class="lineNum">     379 </span>            :                 ::boost::begin(lit_arg1),
+<span class="lineNum">     380 </span>            :                 ::boost::end(lit_arg1),
+<span class="lineNum">     381 </span>            :                 ::boost::begin(lit_arg2),
+<span class="lineNum">     382 </span>            :                 ::boost::end(lit_arg2),
+<span class="lineNum">     383 </span>            :                 Pred);
+<span class="lineNum">     384 </span>            :         }
+<span class="lineNum">     385 </span>            : 
+<span class="lineNum">     386 </span>            :         //! Lexicographical compare predicate
+<span class="lineNum">     387 </span>            :         /*!
+<span class="lineNum">     388 </span>            :             \overload
+<span class="lineNum">     389 </span>            :          */
+<span class="lineNum">     390 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     391 </span>            :             inline bool lexicographical_compare(
+<span class="lineNum">     392 </span>            :             const Range1T&amp; Arg1,
+<span class="lineNum">     393 </span>            :             const Range2T&amp; Arg2)
+<span class="lineNum">     394 </span>            :         {
+<span class="lineNum">     395 </span>            :             return ::boost::algorithm::lexicographical_compare(Arg1, Arg2, is_less());
+<span class="lineNum">     396 </span>            :         }
+<span class="lineNum">     397 </span>            : 
+<span class="lineNum">     398 </span>            :         //! Lexicographical compare predicate (case-insensitive)
+<span class="lineNum">     399 </span>            :         /*!
+<span class="lineNum">     400 </span>            :             This predicate is an overload of std::lexicographical_compare
+<span class="lineNum">     401 </span>            :             for range arguments.
+<span class="lineNum">     402 </span>            :             It check whether the first argument is lexicographically less
+<span class="lineNum">     403 </span>            :             then the second one.
+<span class="lineNum">     404 </span>            :             Elements are compared case insensitively
+<span class="lineNum">     405 </span>            : 
+<span class="lineNum">     406 </span>            : 
+<span class="lineNum">     407 </span>            :              \param Arg1 First argument 
+<span class="lineNum">     408 </span>            :              \param Arg2 Second argument
+<span class="lineNum">     409 </span>            :              \param Loc A locale used for case insensitive comparison
+<span class="lineNum">     410 </span>            :              \return The result of the test
+<span class="lineNum">     411 </span>            : 
+<span class="lineNum">     412 </span>            :              \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     413 </span>            :          */
+<span class="lineNum">     414 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
+<span class="lineNum">     415 </span>            :         inline bool ilexicographical_compare(
+<span class="lineNum">     416 </span>            :             const Range1T&amp; Arg1,
+<span class="lineNum">     417 </span>            :             const Range2T&amp; Arg2,
+<span class="lineNum">     418 </span>            :             const std::locale&amp; Loc=std::locale())
+<span class="lineNum">     419 </span>            :         {
+<span class="lineNum">     420 </span>            :             return ::boost::algorithm::lexicographical_compare(Arg1, Arg2, is_iless(Loc));
+<span class="lineNum">     421 </span>            :         }
+<span class="lineNum">     422 </span>            :         
+<span class="lineNum">     423 </span>            : 
+<span class="lineNum">     424 </span>            : //  all predicate  -----------------------------------------------//
+<span class="lineNum">     425 </span>            : 
+<span class="lineNum">     426 </span>            :         //! 'All' predicate
+<span class="lineNum">     427 </span>            :         /*!
+<span class="lineNum">     428 </span>            :             This predicate holds it all its elements satisfy a given 
+<span class="lineNum">     429 </span>            :             condition, represented by the predicate.
+<span class="lineNum">     430 </span>            :             
+<span class="lineNum">     431 </span>            :             \param Input An input sequence
+<span class="lineNum">     432 </span>            :             \param Pred A predicate
+<span class="lineNum">     433 </span>            :             \return The result of the test
+<span class="lineNum">     434 </span>            : 
+<span class="lineNum">     435 </span>            :             \note This function provides the strong exception-safety guarantee
+<span class="lineNum">     436 </span>            :         */
+<span class="lineNum">     437 </span>            :         template&lt;typename RangeT, typename PredicateT&gt;
+<span class="lineNum">     438 </span>            :         inline bool all( 
+<span class="lineNum">     439 </span>            :             const RangeT&amp; Input, 
+<span class="lineNum">     440 </span>            :             PredicateT Pred)
+<span class="lineNum">     441 </span>            :         {
+<span class="lineNum">     442 </span>            :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;RangeT&gt;::type&gt; lit_input(::boost::as_literal(Input));
+<span class="lineNum">     443 </span>            : 
+<span class="lineNum">     444 </span>            :             typedef BOOST_STRING_TYPENAME 
+<span class="lineNum">     445 </span>            :                 range_const_iterator&lt;RangeT&gt;::type Iterator1T;
+<span class="lineNum">     446 </span>            : 
+<span class="lineNum">     447 </span>            :             Iterator1T InputEnd=::boost::end(lit_input);
+<span class="lineNum">     448 </span>            :             for( Iterator1T It=::boost::begin(lit_input); It!=InputEnd; ++It)
+<span class="lineNum">     449 </span>            :             {
+<span class="lineNum">     450 </span>            :                 if (!Pred(*It))
+<span class="lineNum">     451 </span>            :                     return false;
+<span class="lineNum">     452 </span>            :             }
+<span class="lineNum">     453 </span>            :             
+<span class="lineNum">     454 </span>            :             return true;
+<span class="lineNum">     455 </span>            :         }
+<span class="lineNum">     456 </span>            : 
+<span class="lineNum">     457 </span>            :     } // namespace algorithm
+<span class="lineNum">     458 </span>            : 
+<span class="lineNum">     459 </span>            :     // pull names to the boost namespace
+<span class="lineNum">     460 </span>            :     using algorithm::starts_with;
+<span class="lineNum">     461 </span>            :     using algorithm::istarts_with;
+<span class="lineNum">     462 </span>            :     using algorithm::ends_with;
+<span class="lineNum">     463 </span>            :     using algorithm::iends_with;
+<span class="lineNum">     464 </span>            :     using algorithm::contains;
+<span class="lineNum">     465 </span>            :     using algorithm::icontains;
+<span class="lineNum">     466 </span>            :     using algorithm::equals;
+<span class="lineNum">     467 </span>            :     using algorithm::iequals;
+<span class="lineNum">     468 </span>            :     using algorithm::all;
+<span class="lineNum">     469 </span>            :     using algorithm::lexicographical_compare;
+<span class="lineNum">     470 </span>            :     using algorithm::ilexicographical_compare;
+<span class="lineNum">     471 </span>            : 
+<span class="lineNum">     472 </span>            : } // namespace boost
+<span class="lineNum">     473 </span>            : 
+<span class="lineNum">     474 </span>            : 
+<span class="lineNum">     475 </span>            : #endif  // BOOST_STRING_PREDICATE_HPP
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

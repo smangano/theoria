@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - include/theoria/core/Registry.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">include/theoria/core</a> - Registry.h<span style="font-size: 80%;"> (source / <a href="Registry.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">71.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #pragma once</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;theoria/core/primitives.h&gt;
+<span class="lineNum">       4 </span>            : #include &lt;theoria/core/Dependencies.h&gt;
+<span class="lineNum">       5 </span>            : #include &lt;theoria/util/densemap.h&gt;
+<span class="lineNum">       6 </span>            : #include &lt;theoria/util/Maybe.h&gt;
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #include &lt;string&gt;
+<span class="lineNum">       9 </span>            : #include &lt;map&gt;
+<span class="lineNum">      10 </span>            : #include &lt;memory&gt;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : namespace theoria { 
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : /*
+<span class="lineNum">      15 </span>            :  * Theoria Forward Declarations
+<span class="lineNum">      16 </span>            :  */
+<span class="lineNum">      17 </span>            : namespace config {
+<span class="lineNum">      18 </span>            :     
+<span class="lineNum">      19 </span>            :     class Config ;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : } //namespace config
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : namespace core {
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : /*
+<span class="lineNum">      27 </span>            :  * Forward Declarations
+<span class="lineNum">      28 </span>            :  */
+<span class="lineNum">      29 </span>            : class Component ;
+<span class="lineNum">      30 </span>            : class Theoria ;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : /**
+<span class="lineNum">      33 </span>            :  * Used to lock the Registry for iteration in a multi-threaded env
+<span class="lineNum">      34 </span>            :  */
+<span class="lineNum">      35 </span>            : struct RegistryLock
+<span class="lineNum">      36 </span>            : {
+<span class="lineNum">      37 </span>            :     RegistryLock() ;
+<span class="lineNum">      38 </span>            :     ~RegistryLock() ;
+<span class="lineNum">      39 </span>            : };
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : class Registry
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span>            : private:
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            :     using FactoryMap = std::map&lt;CompFactoryKey, ComponentFactory&gt; ;
+<span class="lineNum">      46 </span>            :     using ComponentMap = util::densemap&lt;CompId, Component*&gt; ;
+<a name="47"><span class="lineNum">      47 </span>            :     using ComponentXrefMap = std::multimap&lt;CompFactoryKey, CompId&gt; ;</a>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         16 :     Registry() {}</span>
+<span class="lineNum">      50 </span>            :     Registry(const Registry&amp;) ;
+<span class="lineNum">      51 </span>            :     void operator=(const Registry&amp;) ;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : public:
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            :     ~Registry() ;
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :     using FactoryMap_iterator = FactoryMap::iterator;
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            :     static Registry&amp; instance() ;
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            :     
+<span class="lineNum">      62 </span>            :     /* Register the default factory for components of type
+<span class="lineNum">      63 </span>            :      * @type the type name
+<span class="lineNum">      64 </span>            :      * @factory the function for creating components
+<span class="lineNum">      65 </span>            :      */
+<span class="lineNum">      66 </span>            :     void registerFactory(const TypeName&amp; type, ComponentFactory factory) ;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            :     /*
+<span class="lineNum">      69 </span>            :      * Register the factory for components of type and subtype
+<span class="lineNum">      70 </span>            :      * @type the type name
+<span class="lineNum">      71 </span>            :      * @subtype the subtype name
+<span class="lineNum">      72 </span>            :      * @factory the factory function
+<span class="lineNum">      73 </span>            :      */
+<span class="lineNum">      74 </span>            :     void registerFactory(const TypeName&amp; type, const SubTypeName&amp; subtype, ComponentFactory factory) ;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :     /*
+<span class="lineNum">      77 </span>            :      * Create a component of the specified type. The following type resolution rules are used:
+<span class="lineNum">      78 </span>            :      * 1) If there is only one factory for the specified type, use that.
+<span class="lineNum">      79 </span>            :      * 2) If there are multiple factories and none has been used then use the default factory whose subtype==type
+<span class="lineNum">      80 </span>            :      * 3) If there are multiple factories and none has been used and there is no default, use the first one (unless
+<span class="lineNum">      81 </span>            :      *    allow_ambiguity is false)
+<span class="lineNum">      82 </span>            :      * 4) If there are multiple factories use the first one that has already been used
+<span class="lineNum">      83 </span>            :      *
+<span class="lineNum">      84 </span>            :      * @type the type name to use for look up
+<span class="lineNum">      85 </span>            :      * @allow_ambiguity if false treat case (3) above as ambiguous and raise an exception
+<span class="lineNum">      86 </span>            :      *
+<span class="lineNum">      87 </span>            :      * @execept std::runtime_error if type not found
+<span class="lineNum">      88 </span>            :      */
+<span class="lineNum">      89 </span>            :     Component* createComponent(const TypeName&amp; type, int allow_ambiguity = true) ;
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            :     /*
+<span class="lineNum">      92 </span>            :      * Create a component of the specified type and subtype. 
+<span class="lineNum">      93 </span>            :      *
+<span class="lineNum">      94 </span>            :      * @type the type name to use for look up (primary key)
+<span class="lineNum">      95 </span>            :      * @subtype the sub type name to use for look up (secondary key)
+<span class="lineNum">      96 </span>            :      *
+<span class="lineNum">      97 </span>            :      * @throw std::runtime_error if factory for both type and subtype does not exist
+<span class="lineNum">      98 </span>            :      */
+<span class="lineNum">      99 </span>            :     Component* createComponent(const TypeName&amp; type, const SubTypeName&amp; subtype) ;
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            :     /* Create a component that could satisfy a dependency, if possible
+<span class="lineNum">     102 </span>            :      *
+<span class="lineNum">     103 </span>            :      * @dep the dependency that needs to be satisfied
+<span class="lineNum">     104 </span>            :      * @return the component or nullptr if could not satisfy or otherwise failed to create 
+<span class="lineNum">     105 </span>            :      */
+<span class="lineNum">     106 </span>            :     Component* createComponent(const Dependencies::Dependent&amp; dep) noexcept ;
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span>            :     /* Begin iterator over factories.
+<span class="lineNum">     109 </span>            :      *
+<span class="lineNum">     110 </span>            :      * Thread Safety: Requires RegistryLock()
+<span class="lineNum">     111 </span>            :      */
+<span class="lineNum">     112 </span>            :     FactoryMap_iterator beginFact() ;
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            :     /* End iterator over factories.
+<span class="lineNum">     115 </span>            :      *
+<span class="lineNum">     116 </span>            :      * Thread Safety: Requires RegistryLock()
+<span class="lineNum">     117 </span>            :      */
+<span class="lineNum">     118 </span>            :     FactoryMap_iterator endFact() ;
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            :     /* Find factory by type.
+<span class="lineNum">     121 </span>            :      * @type the type name to find
+<span class="lineNum">     122 </span>            :      * @return first entry for type or endFact()
+<span class="lineNum">     123 </span>            :      *
+<span class="lineNum">     124 </span>            :      * Thread Safety: Requires RegistryLock()
+<span class="lineNum">     125 </span>            :      */
+<span class="lineNum">     126 </span>            :     FactoryMap_iterator findFact(const TypeName&amp; type) ;
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     /* Find factory by predicate.
+<span class="lineNum">     129 </span>            :      * @start where to start searching
+<span class="lineNum">     130 </span>            :      * @predicate test criteria
+<span class="lineNum">     131 </span>            :      * @return first entry at or after start that satisfies predicate or endFact()
+<span class="lineNum">     132 </span>            :      *
+<span class="lineNum">     133 </span>            :      * Thread Safety: Requires RegistryLock()
+<span class="lineNum">     134 </span>            :      */
+<span class="lineNum">     135 </span>            :     FactoryMap_iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type&amp; v))  ;
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span>            :     ComponentMap::iterator beginComp() ;
+<span class="lineNum">     138 </span>            :     ComponentMap::iterator endComp() ;
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            :     ComponentMap::const_iterator beginComp() const ;
+<span class="lineNum">     141 </span>            :     ComponentMap::const_iterator endComp() const ;
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            :     void dump(std::ostream&amp; stream) const ;
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            :     /*
+<span class="lineNum">     146 </span>            :      * Very dangerous. Only know use-case is unit-testing.
+<span class="lineNum">     147 </span>            :      * Wipes the entire state of the Registry
+<span class="lineNum">     148 </span>            :      */
+<span class="lineNum">     149 </span>            :     void reset() ;
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            :     /*
+<span class="lineNum">     152 </span>            :      * If you know a component's id then this is the fastest and safest way to
+<span class="lineNum">     153 </span>            :      * access the component
+<a name="154"><span class="lineNum">     154 </span>            :      *</a>
+<span class="lineNum">     155 </span>            :      */
+<span class="lineNum">     156 </span><span class="lineCov">          9 :     util::Maybe&lt;Component&gt; component(CompId id) </span>
+<span class="lineNum">     157 </span>            :     {
+<span class="lineNum">     158 </span>            :         try {
+<span class="lineNum">     159 </span><span class="lineCov">          9 :             return util::Maybe&lt;Component&gt;(_components.at(id)) ;</span>
+<span class="lineNum">     160 </span>            :         }
+<span class="lineNum">     161 </span><span class="lineCov">          2 :         catch (...) {</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :             return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<span class="lineNum">     163 </span>            :         }
+<span class="lineNum">     164 </span>            :     }
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            :     /* Return component with the specified type. If multiple subtypes exist it will return
+<span class="lineNum">     167 </span>            :      * the first one it finds
+<span class="lineNum">     168 </span>            :      *
+<span class="lineNum">     169 </span>            :      * @type the type name of the component
+<span class="lineNum">     170 </span>            :      * @return Option evaluates to true if found, false otherwise.
+<span class="lineNum">     171 </span>            :      *         Derfef *option returns a reference to component or raises exception
+<span class="lineNum">     172 </span>            :      *         See Option.h for more behavior
+<span class="lineNum">     173 </span>            :      */
+<span class="lineNum">     174 </span>            :     util::Maybe&lt;Component&gt; component(const TypeName&amp; type) ;
+<span class="lineNum">     175 </span>            :     util::Maybe&lt;Component&gt; component(const TypeName&amp; type, const SubTypeName&amp; subtype) ;
+<span class="lineNum">     176 </span>            :  
+<span class="lineNum">     177 </span>            :     /* Get a component that is suitable for satisfying dep
+<span class="lineNum">     178 </span>            :      *
+<span class="lineNum">     179 </span>            :      * @dep a dependency
+<span class="lineNum">     180 </span>            :      */
+<span class="lineNum">     181 </span>            :     util::Maybe&lt;Component&gt; component(const Dependencies::Dependent&amp; dep) ;
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span>            :     template &lt;typename T&gt;
+<span class="lineNum">     184 </span>            :     util::Maybe&lt;T&gt; componentAs(CompId id) {
+<span class="lineNum">     185 </span>            :         return util::Maybe&lt;T&gt;(component(id).get()) ;
+<span class="lineNum">     186 </span>            :     }
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            :     template &lt;typename T&gt;
+<span class="lineNum">     189 </span>            :     util::Maybe&lt;T&gt; componentAs(const TypeName&amp; type) {
+<span class="lineNum">     190 </span>            :         return util::Maybe&lt;T&gt;(component(type).get()) ;
+<span class="lineNum">     191 </span>            :     }
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span>            :     template &lt;typename T&gt;
+<span class="lineNum">     194 </span>            :     util::Maybe&lt;T&gt; componentAs(const TypeName&amp; type, const SubTypeName&amp; subtype) {
+<span class="lineNum">     195 </span>            :         return util::Maybe&lt;T&gt;(component(type, subtype).get()) ;
+<span class="lineNum">     196 </span>            :     }
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            :     const config::Config&amp; bootConfig() const ; 
+<span class="lineNum">     200 </span>            :     const config::Config&amp; appConfig() const ; 
+<span class="lineNum">     201 </span>            :   
+<span class="lineNum">     202 </span>            :     /* Satisfy dependencies as required by deps, creating components if necessary
+<span class="lineNum">     203 </span>            :      *
+<span class="lineNum">     204 </span>            :      * @deps  the dependencies to satisfy
+<span class="lineNum">     205 </span>            :      * @compId optional compId of requesting component. Used for informational purposes
+<span class="lineNum">     206 </span>            :      * @return the vector components which satisfy (possibly nullptr if could not satisfy)
+<span class="lineNum">     207 </span>            :      *
+<span class="lineNum">     208 </span>            :      */
+<span class="lineNum">     209 </span>            :     std::vector&lt;Component*&gt; satisfy(const Dependencies&amp; deps, CompId compId=-1) ;
+<span class="lineNum">     210 </span>            : 
+<span class="lineNum">     211 </span>            :     /*
+<span class="lineNum">     212 </span>            :      * At the moment does nothing but reserved to allow resources
+<a name="213"><span class="lineNum">     213 </span>            :      * to be freed when no longer needed</a>
+<span class="lineNum">     214 </span>            :      */
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     void release(Component* component) {};</span>
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            :     /*
+<span class="lineNum">     218 </span>            :      * At the moment does nothing but reserved to allow dynamic
+<span class="lineNum">     219 </span>            :      * dependency tracking in cases where dependencies are not
+<span class="lineNum">     220 </span>            :      * fully known after initialization. For example, 
+<a name="221"><span class="lineNum">     221 </span>            :      * When builder components wire things up on their own</a>
+<span class="lineNum">     222 </span>            :      */
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :     void addDep(Component* from, Component* to)  {} </span>
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : private:
+<span class="lineNum">     226 </span>            :     
+<span class="lineNum">     227 </span>            :     friend class Theoria ;
+<span class="lineNum">     228 </span>            :     
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            :     void _setBootstrapConfig(std::unique_ptr&lt;config::Config&gt;&amp; pBSConfig) ; 
+<span class="lineNum">     231 </span>            :     void _setAppConfig(std::unique_ptr&lt;config::Config&gt;&amp; pAppConfig) ;
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span>            :     Component* _createComponent(FactoryMap_iterator iter) ;
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span>            :     CompId _nextId ;
+<span class="lineNum">     236 </span>            :     FactoryMap _factories ; 
+<span class="lineNum">     237 </span>            :     ComponentMap _components ;
+<span class="lineNum">     238 </span>            :     ComponentXrefMap _xref ;
+<span class="lineNum">     239 </span>            :     const config::Config * _bootstrapConfig ;
+<span class="lineNum">     240 </span>            :     const config::Config * _appConfig ;
+<span class="lineNum">     241 </span>            : } ;
+<span class="lineNum">     242 </span>            : 
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            : }} //namespace theoria::core
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
