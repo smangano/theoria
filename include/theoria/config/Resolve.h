@@ -138,6 +138,8 @@ public:
 
 /* Resolves variables from a TOML file. Supports
    nested access using dot notation: E.g., $a.b
+   You can use this resolver even if your App's
+   config is not TOML
 */
 
 

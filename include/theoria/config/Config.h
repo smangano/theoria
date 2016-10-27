@@ -82,6 +82,7 @@ protected:
     int numChildren() const {return _children.size();}
     ConstConfigList getChildren() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
     ConstConfigList getChildren(const ConfigPredicate& predicate) const ;
+    const Config* getChild(const std::string& name) const ;
 
     ConstConfigList getSiblings() const ;
     ConstConfigList getSiblings(const ConfigPredicate& predicate) const  ;

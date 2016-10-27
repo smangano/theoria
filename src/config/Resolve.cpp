@@ -127,6 +127,8 @@ std::string DisableResolver::name() const
     return "DisableResolver" ;
 }
 
+
+
 /////////////////////////
 //TOMLResolver
 

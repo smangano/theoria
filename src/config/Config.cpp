@@ -48,6 +48,14 @@ ConstConfigList Config::getChildren(const ConfigPredicate& predicate) const
     return result ;
 }
 
+const Config* Config::getChild(const std::string& name) const
+{
+    auto iter = std::find_if(_children.cbegin(), _children.cend(), [name] (const Config* c) {return c->name() == name;}) ;
+    if (iter != _children.cend())
+        return *iter;
+    return nullptr ;        
+}
+
 ConstConfigList Config::getSiblings() const 
 {
     if (getParent() == nullptr)

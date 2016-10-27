@@ -1,211 +1,211 @@
-==21023== Memcheck, a memory error detector
-==21023== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==21023== Using Valgrind-3.10.0 and LibVEX; rerun with -h for copyright info
-==21023== Command: /home/smangano/dev/theoria/build/unittests
-==21023== 
+==24382== Memcheck, a memory error detector
+==24382== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==24382== Using Valgrind-3.10.0 and LibVEX; rerun with -h for copyright info
+==24382== Command: /home/smangano/dev/theoria/build/unittests
+==24382== 
 [==========] Running 72 tests from 16 test cases.
 [----------] Global test environment set-up.
 [----------] 5 tests from ConfigTest
 [ RUN      ] ConfigTest.SingleConfigTest
-[       OK ] ConfigTest.SingleConfigTest (109 ms)
+[       OK ] ConfigTest.SingleConfigTest (88 ms)
 [ RUN      ] ConfigTest.SingleConfigWithAttrTest
-[       OK ] ConfigTest.SingleConfigWithAttrTest (63 ms)
+[       OK ] ConfigTest.SingleConfigWithAttrTest (50 ms)
 [ RUN      ] ConfigTest.SingleConfigWithOneChildTest
-[       OK ] ConfigTest.SingleConfigWithOneChildTest (76 ms)
+[       OK ] ConfigTest.SingleConfigWithOneChildTest (62 ms)
 [ RUN      ] ConfigTest.SingleConfigWithMultipleChildrenTest
-[       OK ] ConfigTest.SingleConfigWithMultipleChildrenTest (92 ms)
+[       OK ] ConfigTest.SingleConfigWithMultipleChildrenTest (106 ms)
 [ RUN      ] ConfigTest.SingleConfigWithOneChildTOMLTest
 [       OK ] ConfigTest.SingleConfigWithOneChildTOMLTest (24 ms)
-[----------] 5 tests from ConfigTest (381 ms total)
+[----------] 5 tests from ConfigTest (347 ms total)
 
 [----------] 2 tests from EnvVarResolveTest
 [ RUN      ] EnvVarResolveTest.ResolveFirstTest
-[       OK ] EnvVarResolveTest.ResolveFirstTest (27 ms)
+[       OK ] EnvVarResolveTest.ResolveFirstTest (25 ms)
 [ RUN      ] EnvVarResolveTest.ResolveLastTest
-[       OK ] EnvVarResolveTest.ResolveLastTest (11 ms)
-[----------] 2 tests from EnvVarResolveTest (38 ms total)
+[       OK ] EnvVarResolveTest.ResolveLastTest (10 ms)
+[----------] 2 tests from EnvVarResolveTest (35 ms total)
 
 [----------] 2 tests from CmdLineResolverTest
 [ RUN      ] CmdLineResolverTest.ResolveFirstTest
-[       OK ] CmdLineResolverTest.ResolveFirstTest (81 ms)
+[       OK ] CmdLineResolverTest.ResolveFirstTest (63 ms)
 [ RUN      ] CmdLineResolverTest.ResolveLastTest
-[       OK ] CmdLineResolverTest.ResolveLastTest (5 ms)
-[----------] 2 tests from CmdLineResolverTest (86 ms total)
+[       OK ] CmdLineResolverTest.ResolveLastTest (4 ms)
+[----------] 2 tests from CmdLineResolverTest (67 ms total)
 
 [----------] 6 tests from ChainedResolverTest
 [ RUN      ] ChainedResolverTest.ResolveFirstTest
-[       OK ] ChainedResolverTest.ResolveFirstTest (14 ms)
+[       OK ] ChainedResolverTest.ResolveFirstTest (12 ms)
 [ RUN      ] ChainedResolverTest.ResolveLastTest
-[       OK ] ChainedResolverTest.ResolveLastTest (8 ms)
+[       OK ] ChainedResolverTest.ResolveLastTest (7 ms)
 [ RUN      ] ChainedResolverTest.ResolveFirstTestWithDissallow
-[       OK ] ChainedResolverTest.ResolveFirstTestWithDissallow (9 ms)
+[       OK ] ChainedResolverTest.ResolveFirstTestWithDissallow (8 ms)
 [ RUN      ] ChainedResolverTest.ResolveLastTestWithDisallow
-[       OK ] ChainedResolverTest.ResolveLastTestWithDisallow (68 ms)
+[       OK ] ChainedResolverTest.ResolveLastTestWithDisallow (66 ms)
 [ RUN      ] ChainedResolverTest.ResolveFirstTestWithDisable
-[       OK ] ChainedResolverTest.ResolveFirstTestWithDisable (10 ms)
+[       OK ] ChainedResolverTest.ResolveFirstTestWithDisable (8 ms)
 [ RUN      ] ChainedResolverTest.ResolveLastTestWithDisable
-[       OK ] ChainedResolverTest.ResolveLastTestWithDisable (9 ms)
-[----------] 6 tests from ChainedResolverTest (120 ms total)
+[       OK ] ChainedResolverTest.ResolveLastTestWithDisable (6 ms)
+[----------] 6 tests from ChainedResolverTest (108 ms total)
 
 [----------] 3 tests from TOMLConfigBuilderTest
 [ RUN      ] TOMLConfigBuilderTest.TestSimpleTOML
-[       OK ] TOMLConfigBuilderTest.TestSimpleTOML (478 ms)
+[       OK ] TOMLConfigBuilderTest.TestSimpleTOML (389 ms)
 [ RUN      ] TOMLConfigBuilderTest.TestTOMLWithTableArray
-[       OK ] TOMLConfigBuilderTest.TestTOMLWithTableArray (109 ms)
+[       OK ] TOMLConfigBuilderTest.TestTOMLWithTableArray (88 ms)
 [ RUN      ] TOMLConfigBuilderTest.TestTOMLWithNestedTables
-[       OK ] TOMLConfigBuilderTest.TestTOMLWithNestedTables (44 ms)
-[----------] 3 tests from TOMLConfigBuilderTest (631 ms total)
+[       OK ] TOMLConfigBuilderTest.TestTOMLWithNestedTables (37 ms)
+[----------] 3 tests from TOMLConfigBuilderTest (516 ms total)
 
 [----------] 1 test from TestComponent
 [ RUN      ] TestComponent.TestBasics
-[       OK ] TestComponent.TestBasics (20 ms)
-[----------] 1 test from TestComponent (21 ms total)
+[       OK ] TestComponent.TestBasics (16 ms)
+[----------] 1 test from TestComponent (16 ms total)
 
 [----------] 1 test from TestComponentImplCalcInterface
 [ RUN      ] TestComponentImplCalcInterface.TestCast
-[       OK ] TestComponentImplCalcInterface.TestCast (17 ms)
-[----------] 1 test from TestComponentImplCalcInterface (17 ms total)
+[       OK ] TestComponentImplCalcInterface.TestCast (14 ms)
+[----------] 1 test from TestComponentImplCalcInterface (14 ms total)
 
 [----------] 1 test from TestComponentOwnsCalcInterface
 [ RUN      ] TestComponentOwnsCalcInterface.TestCast
-[       OK ] TestComponentOwnsCalcInterface.TestCast (26 ms)
-[----------] 1 test from TestComponentOwnsCalcInterface (26 ms total)
+[       OK ] TestComponentOwnsCalcInterface.TestCast (20 ms)
+[----------] 1 test from TestComponentOwnsCalcInterface (20 ms total)
 
 [----------] 1 test from TestComponentKnowsCalcInterfaceImpl
 [ RUN      ] TestComponentKnowsCalcInterfaceImpl.TestCast
-[       OK ] TestComponentKnowsCalcInterfaceImpl.TestCast (9 ms)
-[----------] 1 test from TestComponentKnowsCalcInterfaceImpl (9 ms total)
+[       OK ] TestComponentKnowsCalcInterfaceImpl.TestCast (6 ms)
+[----------] 1 test from TestComponentKnowsCalcInterfaceImpl (6 ms total)
 
 [----------] 1 test from TestComponentKnowsCalcInterfaceOwn
 [ RUN      ] TestComponentKnowsCalcInterfaceOwn.TestCast
-[       OK ] TestComponentKnowsCalcInterfaceOwn.TestCast (9 ms)
-[----------] 1 test from TestComponentKnowsCalcInterfaceOwn (9 ms total)
+[       OK ] TestComponentKnowsCalcInterfaceOwn.TestCast (7 ms)
+[----------] 1 test from TestComponentKnowsCalcInterfaceOwn (7 ms total)
 
 [----------] 3 tests from DependentTest
 [ RUN      ] DependentTest.TestStr
-[       OK ] DependentTest.TestStr (19 ms)
+[       OK ] DependentTest.TestStr (16 ms)
 [ RUN      ] DependentTest.TestStrCast
-[       OK ] DependentTest.TestStrCast (8 ms)
+[       OK ] DependentTest.TestStrCast (7 ms)
 [ RUN      ] DependentTest.TestRequred
-[       OK ] DependentTest.TestRequred (3 ms)
-[----------] 3 tests from DependentTest (31 ms total)
+[       OK ] DependentTest.TestRequred (4 ms)
+[----------] 3 tests from DependentTest (27 ms total)
 
 [----------] 1 test from RegisterThisTest
 [ RUN      ] RegisterThisTest.RegisterFactoryByTypenameOnly
-[       OK ] RegisterThisTest.RegisterFactoryByTypenameOnly (38 ms)
-[----------] 1 test from RegisterThisTest (39 ms total)
+[       OK ] RegisterThisTest.RegisterFactoryByTypenameOnly (31 ms)
+[----------] 1 test from RegisterThisTest (31 ms total)
 
 [----------] 14 tests from RegistryTest
 [ RUN      ] RegistryTest.RegisterFactoryByTypenameOnly
-[       OK ] RegistryTest.RegisterFactoryByTypenameOnly (9 ms)
+[       OK ] RegistryTest.RegisterFactoryByTypenameOnly (6 ms)
 [ RUN      ] RegistryTest.RegisterFactoryByTypenameAndSubType
-[       OK ] RegistryTest.RegisterFactoryByTypenameAndSubType (14 ms)
+[       OK ] RegistryTest.RegisterFactoryByTypenameAndSubType (12 ms)
 [ RUN      ] RegistryTest.CreateByTypenameOnlyOneRegister
-[       OK ] RegistryTest.CreateByTypenameOnlyOneRegister (58 ms)
+[       OK ] RegistryTest.CreateByTypenameOnlyOneRegister (45 ms)
 [ RUN      ] RegistryTest.CreateByTypenameTwoRegisterUseDefault
-[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseDefault (19 ms)
+[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseDefault (15 ms)
 [ RUN      ] RegistryTest.CreateByTypenameTwoRegisterUseAlreadyUsed
-[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseAlreadyUsed (17 ms)
+[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseAlreadyUsed (14 ms)
 [ RUN      ] RegistryTest.CreateByTypenameTwoRegisterUseFirst
-[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseFirst (6 ms)
+[       OK ] RegistryTest.CreateByTypenameTwoRegisterUseFirst (5 ms)
 [ RUN      ] RegistryTest.CreateByTypenameTwoRegisterErrorDueToNoAmbiguity
-[       OK ] RegistryTest.CreateByTypenameTwoRegisterErrorDueToNoAmbiguity (6 ms)
+[       OK ] RegistryTest.CreateByTypenameTwoRegisterErrorDueToNoAmbiguity (5 ms)
 [ RUN      ] RegistryTest.CreateByDepNoMatching
-[       OK ] RegistryTest.CreateByDepNoMatching (10 ms)
+[       OK ] RegistryTest.CreateByDepNoMatching (7 ms)
 [ RUN      ] RegistryTest.CreateByDepOnlyOneRegister
-[       OK ] RegistryTest.CreateByDepOnlyOneRegister (13 ms)
+[       OK ] RegistryTest.CreateByDepOnlyOneRegister (10 ms)
 [ RUN      ] RegistryTest.CreateByDepTwoRegistered
-[       OK ] RegistryTest.CreateByDepTwoRegistered (16 ms)
+[       OK ] RegistryTest.CreateByDepTwoRegistered (12 ms)
 [ RUN      ] RegistryTest.ComponentById
-[       OK ] RegistryTest.ComponentById (22 ms)
+[       OK ] RegistryTest.ComponentById (18 ms)
 [ RUN      ] RegistryTest.ComponentByType
-[       OK ] RegistryTest.ComponentByType (17 ms)
+[       OK ] RegistryTest.ComponentByType (13 ms)
 [ RUN      ] RegistryTest.ComponentByTypeSubType
-[       OK ] RegistryTest.ComponentByTypeSubType (17 ms)
+[       OK ] RegistryTest.ComponentByTypeSubType (14 ms)
 [ RUN      ] RegistryTest.ComponentByDep
-[       OK ] RegistryTest.ComponentByDep (18 ms)
-[----------] 14 tests from RegistryTest (245 ms total)
+[       OK ] RegistryTest.ComponentByDep (15 ms)
+[----------] 14 tests from RegistryTest (195 ms total)
 
 [----------] 16 tests from CommandLineTest
 [ RUN      ] CommandLineTest.NoArgsThrows
-[       OK ] CommandLineTest.NoArgsThrows (23 ms)
+[       OK ] CommandLineTest.NoArgsThrows (22 ms)
 [ RUN      ] CommandLineTest.ConfigFileOnly
-[       OK ] CommandLineTest.ConfigFileOnly (11 ms)
+[       OK ] CommandLineTest.ConfigFileOnly (9 ms)
 [ RUN      ] CommandLineTest.ConfigFileOnlyDashDash
 [       OK ] CommandLineTest.ConfigFileOnlyDashDash (7 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndOneBareSetting
-[       OK ] CommandLineTest.ConfigFileAndOneBareSetting (21 ms)
+[       OK ] CommandLineTest.ConfigFileAndOneBareSetting (18 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndOneSetting
-[       OK ] CommandLineTest.ConfigFileAndOneSetting (14 ms)
+[       OK ] CommandLineTest.ConfigFileAndOneSetting (13 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndOneSettingDashDash
-[       OK ] CommandLineTest.ConfigFileAndOneSettingDashDash (10 ms)
+[       OK ] CommandLineTest.ConfigFileAndOneSettingDashDash (8 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndMixedSettings
-[       OK ] CommandLineTest.ConfigFileAndMixedSettings (31 ms)
+[       OK ] CommandLineTest.ConfigFileAndMixedSettings (24 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndMixedSettingsDashDash
-[       OK ] CommandLineTest.ConfigFileAndMixedSettingsDashDash (13 ms)
+[       OK ] CommandLineTest.ConfigFileAndMixedSettingsDashDash (11 ms)
 [ RUN      ] CommandLineTest.ConfigFileNoSettingsOneVar
-[       OK ] CommandLineTest.ConfigFileNoSettingsOneVar (9 ms)
+[       OK ] CommandLineTest.ConfigFileNoSettingsOneVar (8 ms)
 [ RUN      ] CommandLineTest.ConfigFileNoSettingsMixedVars
-[       OK ] CommandLineTest.ConfigFileNoSettingsMixedVars (13 ms)
+[       OK ] CommandLineTest.ConfigFileNoSettingsMixedVars (12 ms)
 [ RUN      ] CommandLineTest.ConfigFileAndMixedSettingsAndVariables
-[       OK ] CommandLineTest.ConfigFileAndMixedSettingsAndVariables (15 ms)
+[       OK ] CommandLineTest.ConfigFileAndMixedSettingsAndVariables (13 ms)
 [ RUN      ] CommandLineTest.SettingAsPtr
 [       OK ] CommandLineTest.SettingAsPtr (7 ms)
 [ RUN      ] CommandLineTest.SettingAsStr
-[       OK ] CommandLineTest.SettingAsStr (11 ms)
+[       OK ] CommandLineTest.SettingAsStr (5 ms)
 [ RUN      ] CommandLineTest.SettingAsInt
-[       OK ] CommandLineTest.SettingAsInt (11 ms)
+[       OK ] CommandLineTest.SettingAsInt (8 ms)
 [ RUN      ] CommandLineTest.SettingAsDbl
-[       OK ] CommandLineTest.SettingAsDbl (16 ms)
+[       OK ] CommandLineTest.SettingAsDbl (10 ms)
 [ RUN      ] CommandLineTest.SettingAsBool
-[       OK ] CommandLineTest.SettingAsBool (22 ms)
-[----------] 16 tests from CommandLineTest (239 ms total)
+[       OK ] CommandLineTest.SettingAsBool (12 ms)
+[----------] 16 tests from CommandLineTest (191 ms total)
 
 [----------] 8 tests from MaybeTest
 [ RUN      ] MaybeTest.TestNull
-[       OK ] MaybeTest.TestNull (7 ms)
+[       OK ] MaybeTest.TestNull (4 ms)
 [ RUN      ] MaybeTest.TestOk
-[       OK ] MaybeTest.TestOk (5 ms)
+[       OK ] MaybeTest.TestOk (3 ms)
 [ RUN      ] MaybeTest.TestNotDerived
-[       OK ] MaybeTest.TestNotDerived (8 ms)
+[       OK ] MaybeTest.TestNotDerived (5 ms)
 [ RUN      ] MaybeTest.TestDerived
-[       OK ] MaybeTest.TestDerived (6 ms)
+[       OK ] MaybeTest.TestDerived (4 ms)
 [ RUN      ] MaybeTest.TestWhere
-[       OK ] MaybeTest.TestWhere (11 ms)
+[       OK ] MaybeTest.TestWhere (7 ms)
 [ RUN      ] MaybeTest.TestValueOr
 [       OK ] MaybeTest.TestValueOr (4 ms)
 [ RUN      ] MaybeTest.TestNotAsDerived
-[       OK ] MaybeTest.TestNotAsDerived (5 ms)
+[       OK ] MaybeTest.TestNotAsDerived (4 ms)
 [ RUN      ] MaybeTest.TestAsDerived
-[       OK ] MaybeTest.TestAsDerived (3 ms)
-[----------] 8 tests from MaybeTest (52 ms total)
+[       OK ] MaybeTest.TestAsDerived (2 ms)
+[----------] 8 tests from MaybeTest (35 ms total)
 
 [----------] 7 tests from DensemapTest
 [ RUN      ] DensemapTest.TestCtors
-[       OK ] DensemapTest.TestCtors (101 ms)
+[       OK ] DensemapTest.TestCtors (64 ms)
 [ RUN      ] DensemapTest.TestAt
-[       OK ] DensemapTest.TestAt (38 ms)
+[       OK ] DensemapTest.TestAt (25 ms)
 [ RUN      ] DensemapTest.TestIter
-[       OK ] DensemapTest.TestIter (26 ms)
+[       OK ] DensemapTest.TestIter (17 ms)
 [ RUN      ] DensemapTest.TestConstIter
-[       OK ] DensemapTest.TestConstIter (18 ms)
+[       OK ] DensemapTest.TestConstIter (12 ms)
 [ RUN      ] DensemapTest.TestFind
-[       OK ] DensemapTest.TestFind (16 ms)
+[       OK ] DensemapTest.TestFind (14 ms)
 [ RUN      ] DensemapTest.TestOperatorArrayAccess
-[       OK ] DensemapTest.TestOperatorArrayAccess (16 ms)
+[       OK ] DensemapTest.TestOperatorArrayAccess (15 ms)
 [ RUN      ] DensemapTest.TestOperatorArrayAccessLValue
 [       OK ] DensemapTest.TestOperatorArrayAccessLValue (12 ms)
-[----------] 7 tests from DensemapTest (228 ms total)
+[----------] 7 tests from DensemapTest (160 ms total)
 
 [----------] Global test environment tear-down
-[==========] 72 tests from 16 test cases ran. (2247 ms total)
+[==========] 72 tests from 16 test cases ran. (1851 ms total)
 [  PASSED  ] 72 tests.
-==21023== 
-==21023== HEAP SUMMARY:
-==21023==     in use at exit: 0 bytes in 0 blocks
-==21023==   total heap usage: 3,309 allocs, 3,309 frees, 363,098 bytes allocated
-==21023== 
-==21023== All heap blocks were freed -- no leaks are possible
-==21023== 
-==21023== For counts of detected and suppressed errors, rerun with: -v
-==21023== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==24382== 
+==24382== HEAP SUMMARY:
+==24382==     in use at exit: 0 bytes in 0 blocks
+==24382==   total heap usage: 3,280 allocs, 3,280 frees, 347,598 bytes allocated
+==24382== 
+==24382== All heap blocks were freed -- no leaks are possible
+==24382== 
+==24382== For counts of detected and suppressed errors, rerun with: -v
+==24382== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
