@@ -1,5 +1,6 @@
 #include <theoria/core/RegisterThis.h>
 #include "theoria/core/Component.h"
+#include "theoria/config/Config.h"
 #include <gtest/gtest.h>
 
 

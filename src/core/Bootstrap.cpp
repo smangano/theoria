@@ -18,7 +18,9 @@
 using namespace theoria ;
 using namespace core ;
 
-std::unique_ptr<config::Config> Bootstrap::loadConfig() const
+using Config = config::Config ;
+
+std::unique_ptr<const config::Config> Bootstrap::loadConfig() const
 {
     std::string filename = findConfig() ;
     config::TOMLConfigBuilder builder ;
@@ -45,8 +47,48 @@ std::string Bootstrap::findConfig() const
     return filename ;
 }
 
+void Bootstrap::createCoreComponents(ConstConfigList& componentConfigs, std::vector<Component*>& coreComponents)
+{
+    for (const Config* compConfig : componentConfigs) {
+        Component * comp =_createCoreComp(*compConfig) ;
+        coreComponents.push_back(comp) ;
+    }
+}
+
+void Bootstrap::initializeCoreComponent(
+    ConstConfigList& componentConfigs, 
+    const std::vector<Component*>& coreComponents,
+    std::unordered_map<CompId, Dependencies>& coreCompDeps )
+{
+    int numComps = componentConfigs.size() ;
+    for (int i=0; i<numComps; ++i) {
+        Dependencies&& deps = coreComponents[i]->init(*componentConfigs[i]) ;
+        coreCompDeps[coreComponents[i]->id()] = std::move(deps) ;
+    }
+}
+
+void Bootstrap::initializeAppLifeCycle(const std::vector<Component*>& coreComponents)
+{
+    for (Component* comp : coreComponents)
+        comp->appLifeCycle(AppLifeCycle::INITIALIZED) ;
+}
+
+void Bootstrap::satisfyAndFinalize( std::unordered_map<CompId, Dependencies>& coreCompDeps)
+{
+    for (auto& compId_deps : coreCompDeps) {
+        auto compDeps = Registry::instance().satisfy(compId_deps.second) ;
+        Registry::instance().component(compId_deps.first)->finalize(compDeps) ;
+    }
+}
+
+void Bootstrap::finalizeAppLifeCycle(const std::vector<Component*>& coreComponents)
+{
+    for (Component* comp : coreComponents)
+        comp->appLifeCycle(AppLifeCycle::FINALIZED) ;
+}
+
 //shake Theoria's booty, shake it's booty...
-void Bootstrap::boot(config::Config& bootConfig)
+void Bootstrap::boot(const config::Config& bootConfig)
 {
     using Config = config::Config ;
 
@@ -57,29 +99,19 @@ void Bootstrap::boot(config::Config& bootConfig)
     std::unordered_map<CompId, Dependencies> coreCompDeps ;
 
     //First create all core components
-    for (const Config* compConfig : componentConfigs) {
-        Component * comp =_createCoreComp(*compConfig) ;
-        coreComponents.push_back(comp) ;
-    }
+    createCoreComponents(componentConfigs, coreComponents) ;
     
     //Then initialize core components
-    int numComps = componentConfigs.size() ;
-    for (int i=0; i<numComps; ++i) {
-        Dependencies&& deps = coreComponents[i]->init(*componentConfigs[i]) ;
-        coreCompDeps[coreComponents[i]->id()] = std::move(deps) ;
-    }
+    initializeCoreComponent(componentConfigs, coreComponents, coreCompDeps);
+
     //Fire INITIALIZED AppLifeCycle  Event
-    for (Component* comp : coreComponents)
-        comp->appLifeCycle(AppLifeCycle::INITIALIZED) ;
+    initializeAppLifeCycle(coreComponents) ;
 
     //Satisfy deps and finalize core components
-    for (auto& compId_deps : coreCompDeps) {
-        auto compDeps = Registry::instance().satisfy(compId_deps.second) ;
-        Registry::instance().component(compId_deps.first)->finalize(compDeps) ;
-    }
+    satisfyAndFinalize(coreCompDeps) ;
+
     //Fire FINALIZED AppLifeCycle  Event
-    for (Component* comp : coreComponents)
-        comp->appLifeCycle(AppLifeCycle::FINALIZED) ;
+    finalizeAppLifeCycle(coreComponents) ;
 }
 
 Component *  Bootstrap::_createCoreComp(const config::Config& compConfig)

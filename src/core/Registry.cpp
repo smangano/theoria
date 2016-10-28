@@ -191,18 +191,18 @@ void Registry::dump(std::ostream& stream) const
     stream << std::endl ;
 }
 
-void Registry::_setBootstrapConfig(std::unique_ptr<config::Config>& pBSConfig) 
+void Registry::_setBootstrapConfig(std::unique_ptr<const config::Config>& pBSConfig) 
 {
     if (_bootstrapConfig)
         throw RUNTIME_ERROR("Bootstrap Config already set.") ;
-    _bootstrapConfig = pBSConfig.release() ;
+    _bootstrapConfig = std::move(pBSConfig) ;
 }
 
-void Registry::_setAppConfig(std::unique_ptr<config::Config>& pAppConfig) 
+void Registry::_setAppConfig(std::unique_ptr<const config::Config>& pAppConfig) 
 {
     if (_appConfig)
         throw RUNTIME_ERROR("App Config already set.") ;
-    _appConfig = pAppConfig.release() ;
+    _appConfig = std::move(pAppConfig) ;
 }
 
 const config::Config& Registry::bootConfig() const

@@ -1,5 +1,6 @@
 #include "theoria/core/Registry.h"
 #include "theoria/core/Component.h"
+#include "theoria/config/Config.h"
 #include <gtest/gtest.h>
 
 #include <ostream>

@@ -227,8 +227,8 @@ private:
     friend class Theoria ;
     
 
-    void _setBootstrapConfig(std::unique_ptr<config::Config>& pBSConfig) ; 
-    void _setAppConfig(std::unique_ptr<config::Config>& pAppConfig) ;
+    void _setBootstrapConfig(std::unique_ptr<const config::Config>& pBSConfig) ; 
+    void _setAppConfig(std::unique_ptr<const config::Config>& pAppConfig) ;
 
     Component* _createComponent(FactoryMap_iterator iter) ;
 
@@ -236,8 +236,8 @@ private:
     FactoryMap _factories ; 
     ComponentMap _components ;
     ComponentXrefMap _xref ;
-    const config::Config * _bootstrapConfig ;
-    const config::Config * _appConfig ;
+    std::unique_ptr<const config::Config> _bootstrapConfig ;
+    std::unique_ptr<const config::Config> _appConfig ;
 } ;
 
 
