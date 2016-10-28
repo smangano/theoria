@@ -15,6 +15,9 @@ TEST(TestComponent, TestBasics) {
     EXPECT_EQ(def.name(), "Default") ;
     config::Config c ;
     EXPECT_EQ(def.init(c), core::Dependencies()) ;
+    //For code coverage of default impls. These do nothing
+    def.finalize(std::vetor<Component*>()) ;
+    def.appLifeCycle(AppLifeCycle::INITIALIZED) ;
 }
 
 

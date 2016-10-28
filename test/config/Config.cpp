@@ -103,6 +103,15 @@ TEST_F(ConfigTest, SingleConfigWithAttrTest) {
     ASSERT_TRUE(config->isLeaf()) ;
 }
 
+TEST_F(ConfigTest, AddExitsThrowsTest) {
+    //Adding an attr that exists should throw
+    config = builder().testSingleConfigWithAttr() ;
+    EXPECT_THROWS(config.addAttr('attr1', 10, "int"), std::runtime_error) ; 
+    delete config ;   
+    config = testConfigWithOneChild() ;
+    EXPECT_THROWS(config.
+}
+
 TEST_F(ConfigTest, SingleConfigWithOneChildTest) {
     config = builder().testConfigWithOneChild() ;
     ASSERT_EQ(config->name(), "Test") ;
