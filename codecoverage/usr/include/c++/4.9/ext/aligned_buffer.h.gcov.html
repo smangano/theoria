@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">22</td>
             <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntryMed">81.2 %</td>
+            <td class="headerCovTableEntryLo">68.8 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -110,24 +110,24 @@
 <span class="lineNum">      48 </span>            :         _M_storage;
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <span class="lineNum">      50 </span>            :       void*
-<span class="lineNum">      51 </span><span class="lineCov">       1009 :       _M_addr() noexcept</span>
+<span class="lineNum">      51 </span><span class="lineCov">       1755 :       _M_addr() noexcept</span>
 <span class="lineNum">      52 </span>            :       {
-<span class="lineNum">      53 </span><span class="lineCov">       1009 :         return static_cast&lt;void*&gt;(&amp;_M_storage);</span>
+<span class="lineNum">      53 </span><span class="lineCov">       1755 :         return static_cast&lt;void*&gt;(&amp;_M_storage);</span>
 <span class="lineNum">      54 </span>            :       }
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <span class="lineNum">      56 </span>            :       const void*
-<span class="lineNum">      57 </span><span class="lineCov">        178 :       _M_addr() const noexcept</span>
+<span class="lineNum">      57 </span><span class="lineCov">        534 :       _M_addr() const noexcept</span>
 <span class="lineNum">      58 </span>            :       {
-<span class="lineNum">      59 </span><span class="lineCov">        178 :         return static_cast&lt;const void*&gt;(&amp;_M_storage);</span>
+<span class="lineNum">      59 </span><span class="lineCov">        534 :         return static_cast&lt;const void*&gt;(&amp;_M_storage);</span>
 <span class="lineNum">      60 </span>            :       }
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <span class="lineNum">      62 </span>            :       _Tp*
-<span class="lineNum">      63 </span><span class="lineCov">       1009 :       _M_ptr() noexcept</span>
-<span class="lineNum">      64 </span><span class="lineCov">       1009 :       { return static_cast&lt;_Tp*&gt;(_M_addr()); }</span>
+<span class="lineNum">      63 </span><span class="lineCov">       1755 :       _M_ptr() noexcept</span>
+<span class="lineNum">      64 </span><span class="lineCov">       1755 :       { return static_cast&lt;_Tp*&gt;(_M_addr()); }</span>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <span class="lineNum">      66 </span>            :       const _Tp*
-<span class="lineNum">      67 </span><span class="lineCov">        178 :       _M_ptr() const noexcept</span>
-<span class="lineNum">      68 </span><span class="lineCov">        178 :       { return static_cast&lt;const _Tp*&gt;(_M_addr()); }</span>
+<span class="lineNum">      67 </span><span class="lineCov">        534 :       _M_ptr() const noexcept</span>
+<span class="lineNum">      68 </span><span class="lineCov">        534 :       { return static_cast&lt;const _Tp*&gt;(_M_addr()); }</span>
 <span class="lineNum">      69 </span>            :     };
 <span class="lineNum">      70 </span>            : 
 <span class="lineNum">      71 </span>            : } // namespace

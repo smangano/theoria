@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -113,30 +113,30 @@
 <span class="lineNum">      51 </span>            :   template&lt;typename _TRet, typename _Ret = _TRet, typename _CharT,
 <a name="52"><span class="lineNum">      52 </span>            :            typename... _Base&gt;</a>
 <span class="lineNum">      53 </span>            :     _Ret
-<span class="lineNum">      54 </span><span class="lineCov">         11 :     __stoa(_TRet (*__convf) (const _CharT*, _CharT**, _Base...),</span>
+<span class="lineNum">      54 </span><span class="lineCov">         33 :     __stoa(_TRet (*__convf) (const _CharT*, _CharT**, _Base...),</span>
 <span class="lineNum">      55 </span>            :            const char* __name, const _CharT* __str, std::size_t* __idx,
 <span class="lineNum">      56 </span>            :            _Base... __base)
 <span class="lineNum">      57 </span>            :     {
 <span class="lineNum">      58 </span>            :       _Ret __ret;
 <span class="lineNum">      59 </span>            : 
 <span class="lineNum">      60 </span>            :       _CharT* __endptr;
-<span class="lineNum">      61 </span><span class="lineCov">         11 :       errno = 0;</span>
-<span class="lineNum">      62 </span><span class="lineCov">         11 :       const _TRet __tmp = __convf(__str, &amp;__endptr, __base...);</span>
+<span class="lineNum">      61 </span><span class="lineCov">         33 :       errno = 0;</span>
+<span class="lineNum">      62 </span><span class="lineCov">         33 :       const _TRet __tmp = __convf(__str, &amp;__endptr, __base...);</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">         11 :       if (__endptr == __str)</span>
+<span class="lineNum">      64 </span><span class="lineCov">         33 :       if (__endptr == __str)</span>
 <span class="lineNum">      65 </span><span class="lineNoCov">          0 :         std::__throw_invalid_argument(__name);</span>
-<span class="lineNum">      66 </span><span class="lineCov">         11 :       else if (errno == ERANGE</span>
+<span class="lineNum">      66 </span><span class="lineCov">         33 :       else if (errno == ERANGE</span>
 <span class="lineNum">      67 </span>            :                || (std::__are_same&lt;_Ret, int&gt;::__value
 <span class="lineNum">      68 </span>            :                    &amp;&amp; (__tmp &lt; __numeric_traits&lt;int&gt;::__min
 <span class="lineNum">      69 </span>            :                        || __tmp &gt; __numeric_traits&lt;int&gt;::__max)))
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :         std::__throw_out_of_range(__name);</span>
 <span class="lineNum">      71 </span>            :       else
-<span class="lineNum">      72 </span><span class="lineCov">         11 :         __ret = __tmp;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         33 :         __ret = __tmp;</span>
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">         11 :       if (__idx)</span>
+<span class="lineNum">      74 </span><span class="lineCov">         33 :       if (__idx)</span>
 <span class="lineNum">      75 </span><span class="lineNoCov">          0 :         *__idx = __endptr - __str;</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">         11 :       return __ret;</span>
+<span class="lineNum">      77 </span><span class="lineCov">         33 :       return __ret;</span>
 <span class="lineNum">      78 </span>            :     }
 <span class="lineNum">      79 </span>            : 
 <span class="lineNum">      80 </span>            :   // Helper for the to_string / to_wstring functions.

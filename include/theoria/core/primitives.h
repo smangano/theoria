@@ -17,7 +17,7 @@ using TypeNameList = std::vector<TypeName> ;
 
 enum class AppLifeCycle
 {
-    INITITIALIZED, /* All Components Initialized. Nothing Finalized  yet.*/
+    INITIALIZED, /* All Components Initialized. Nothing Finalized  yet.*/
     FINALIZED,     /* All Components Finalized. Feel free to interact */
     PRESHUTDOWN,   /* About to shutdown but all components are safe */
     SHUTDOWN,      /* Last chance to perform shutdown actions. Your dependencies may be unsafe */

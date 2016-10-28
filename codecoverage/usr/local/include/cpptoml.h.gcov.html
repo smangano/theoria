@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">375</td>
-            <td class="headerCovTableEntry">662</td>
-            <td class="headerCovTableEntryLo">56.6 %</td>
+            <td class="headerCovTableEntry">346</td>
+            <td class="headerCovTableEntry">630</td>
+            <td class="headerCovTableEntryLo">54.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">128</td>
-            <td class="headerCovTableEntry">176</td>
-            <td class="headerCovTableEntryLo">72.7 %</td>
+            <td class="headerCovTableEntry">98</td>
+            <td class="headerCovTableEntry">144</td>
+            <td class="headerCovTableEntryLo">68.1 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -103,49 +103,49 @@
 <span class="lineNum">      41 </span>            : using string_to_base_map
 <span class="lineNum">      42 </span>            :     = std::unordered_map&lt;std::string, std::shared_ptr&lt;base&gt;&gt;;
 <span class="lineNum">      43 </span>            : #endif
-<a name="44"><span class="lineNum">      44 </span>            : </a>
+<span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : template &lt;class T&gt;
-<span class="lineNum">      46 </span><span class="lineCov">         27 : class option</span>
-<a name="47"><span class="lineNum">      47 </span>            : {</a>
+<span class="lineNum">      46 </span>            : class option
+<span class="lineNum">      47 </span>            : {
 <span class="lineNum">      48 </span>            :   public:
-<span class="lineNum">      49 </span><span class="lineCov">         37 :     option() : empty_{true}</span>
+<span class="lineNum">      49 </span>            :     option() : empty_{true}
 <span class="lineNum">      50 </span>            :     {
 <span class="lineNum">      51 </span>            :         // nothing
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         37 :     }</span></a>
+<span class="lineNum">      52 </span>            :     }
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">         25 :     option(T value) : empty_{false}, value_{std::move(value)}</span>
+<span class="lineNum">      54 </span>            :     option(T value) : empty_{false}, value_{std::move(value)}
 <span class="lineNum">      55 </span>            :     {
 <span class="lineNum">      56 </span>            :         // nothing
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         25 :     }</span></a>
+<span class="lineNum">      57 </span>            :     }
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         54 :     explicit operator bool() const</span>
+<span class="lineNum">      59 </span>            :     explicit operator bool() const
 <span class="lineNum">      60 </span>            :     {
-<span class="lineNum">      61 </span><span class="lineCov">         54 :         return !empty_;</span>
-<a name="62"><span class="lineNum">      62 </span>            :     }</a>
+<span class="lineNum">      61 </span>            :         return !empty_;
+<span class="lineNum">      62 </span>            :     }
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">         21 :     const T&amp; operator*() const</span>
+<span class="lineNum">      64 </span>            :     const T&amp; operator*() const
 <span class="lineNum">      65 </span>            :     {
-<span class="lineNum">      66 </span><span class="lineCov">         21 :         return value_;</span>
+<span class="lineNum">      66 </span>            :         return value_;
 <span class="lineNum">      67 </span>            :     }
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            :     const T* operator-&gt;() const
 <span class="lineNum">      70 </span>            :     {
 <span class="lineNum">      71 </span>            :         return &amp;value_;
-<a name="72"><span class="lineNum">      72 </span>            :     }</a>
+<span class="lineNum">      72 </span>            :     }
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">          6 :     const T&amp; value_or(const T&amp; alternative) const</span>
+<span class="lineNum">      74 </span>            :     const T&amp; value_or(const T&amp; alternative) const
 <span class="lineNum">      75 </span>            :     {
-<span class="lineNum">      76 </span><span class="lineCov">          6 :         if (!empty_)</span>
-<span class="lineNum">      77 </span><span class="lineCov">          4 :             return value_;</span>
-<span class="lineNum">      78 </span><span class="lineCov">          2 :         return alternative;</span>
+<span class="lineNum">      76 </span>            :         if (!empty_)
+<span class="lineNum">      77 </span>            :             return value_;
+<span class="lineNum">      78 </span>            :         return alternative;
 <span class="lineNum">      79 </span>            :     }
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            :   private:
 <span class="lineNum">      82 </span>            :     bool empty_;
 <span class="lineNum">      83 </span>            :     T value_;
-<a name="84"><span class="lineNum">      84 </span>            : };</a>
+<span class="lineNum">      84 </span>            : };
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : struct datetime</span>
+<span class="lineNum">      86 </span>            : struct datetime
 <span class="lineNum">      87 </span>            : {
 <span class="lineNum">      88 </span>            :     int year = 0;
 <span class="lineNum">      89 </span>            :     int month = 0;
@@ -277,40 +277,40 @@
 <span class="lineNum">     215 </span>            : /**
 <a name="216"><span class="lineNum">     216 </span>            :  * A generic base TOML value used for type erasure.</a>
 <span class="lineNum">     217 </span>            :  */
-<span class="lineNum">     218 </span><span class="lineCov">         34 : class base : public std::enable_shared_from_this&lt;base&gt;</span>
+<span class="lineNum">     218 </span><span class="lineCov">        102 : class base : public std::enable_shared_from_this&lt;base&gt;</span>
 <span class="lineNum">     219 </span>            : {
 <span class="lineNum">     220 </span>            :   public:
 <span class="lineNum">     221 </span>            :     /**
 <a name="222"><span class="lineNum">     222 </span>            :      * Determines if the given TOML element is a value.</a>
 <span class="lineNum">     223 </span>            :      */
-<span class="lineNum">     224 </span><span class="lineCov">          6 :     virtual bool is_value() const</span>
+<span class="lineNum">     224 </span><span class="lineCov">         18 :     virtual bool is_value() const</span>
 <span class="lineNum">     225 </span>            :     {
-<span class="lineNum">     226 </span><span class="lineCov">          6 :         return false;</span>
+<span class="lineNum">     226 </span><span class="lineCov">         18 :         return false;</span>
 <span class="lineNum">     227 </span>            :     }
 <span class="lineNum">     228 </span>            : 
 <span class="lineNum">     229 </span>            :     /**
 <a name="230"><span class="lineNum">     230 </span>            :      * Determines if the given TOML element is a table.</a>
 <span class="lineNum">     231 </span>            :      */
-<span class="lineNum">     232 </span><span class="lineCov">         21 :     virtual bool is_table() const</span>
+<span class="lineNum">     232 </span><span class="lineCov">         63 :     virtual bool is_table() const</span>
 <span class="lineNum">     233 </span>            :     {
-<span class="lineNum">     234 </span><span class="lineCov">         21 :         return false;</span>
+<span class="lineNum">     234 </span><span class="lineCov">         63 :         return false;</span>
 <span class="lineNum">     235 </span>            :     }
 <span class="lineNum">     236 </span>            : 
 <span class="lineNum">     237 </span>            :     /**
-<a name="238"><span class="lineNum">     238 </span>            :      * Converts the TOML element into a table.</a>
+<span class="lineNum">     238 </span>            :      * Converts the TOML element into a table.
 <span class="lineNum">     239 </span>            :      */
-<span class="lineNum">     240 </span><span class="lineCov">          4 :     std::shared_ptr&lt;table&gt; as_table()</span>
+<span class="lineNum">     240 </span>            :     std::shared_ptr&lt;table&gt; as_table()
 <span class="lineNum">     241 </span>            :     {
-<span class="lineNum">     242 </span><span class="lineCov">          4 :         if (is_table())</span>
-<span class="lineNum">     243 </span><span class="lineCov">          4 :             return std::static_pointer_cast&lt;table&gt;(shared_from_this());</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         return nullptr;</span>
+<span class="lineNum">     242 </span>            :         if (is_table())
+<span class="lineNum">     243 </span>            :             return std::static_pointer_cast&lt;table&gt;(shared_from_this());
+<span class="lineNum">     244 </span>            :         return nullptr;
 <span class="lineNum">     245 </span>            :     }
 <span class="lineNum">     246 </span>            :     /**
 <a name="247"><span class="lineNum">     247 </span>            :      * Determines if the TOML element is an array of &quot;leaf&quot; elements.</a>
 <span class="lineNum">     248 </span>            :      */
-<span class="lineNum">     249 </span><span class="lineCov">         27 :     virtual bool is_array() const</span>
+<span class="lineNum">     249 </span><span class="lineCov">         81 :     virtual bool is_array() const</span>
 <span class="lineNum">     250 </span>            :     {
-<span class="lineNum">     251 </span><span class="lineCov">         27 :         return false;</span>
+<span class="lineNum">     251 </span><span class="lineCov">         81 :         return false;</span>
 <span class="lineNum">     252 </span>            :     }
 <span class="lineNum">     253 </span>            : 
 <span class="lineNum">     254 </span>            :     /**
@@ -326,18 +326,18 @@
 <span class="lineNum">     264 </span>            :     /**
 <a name="265"><span class="lineNum">     265 </span>            :      * Determines if the given TOML element is an array of tables.</a>
 <span class="lineNum">     266 </span>            :      */
-<span class="lineNum">     267 </span><span class="lineCov">         25 :     virtual bool is_table_array() const</span>
+<span class="lineNum">     267 </span><span class="lineCov">         75 :     virtual bool is_table_array() const</span>
 <span class="lineNum">     268 </span>            :     {
-<span class="lineNum">     269 </span><span class="lineCov">         25 :         return false;</span>
+<span class="lineNum">     269 </span><span class="lineCov">         75 :         return false;</span>
 <span class="lineNum">     270 </span>            :     }
 <span class="lineNum">     271 </span>            : 
 <span class="lineNum">     272 </span>            :     /**
 <a name="273"><span class="lineNum">     273 </span>            :      * Converts the TOML element into a table array.</a>
 <span class="lineNum">     274 </span>            :      */
-<span class="lineNum">     275 </span><span class="lineCov">          4 :     std::shared_ptr&lt;table_array&gt; as_table_array()</span>
+<span class="lineNum">     275 </span><span class="lineCov">         12 :     std::shared_ptr&lt;table_array&gt; as_table_array()</span>
 <span class="lineNum">     276 </span>            :     {
-<span class="lineNum">     277 </span><span class="lineCov">          4 :         if (is_table_array())</span>
-<span class="lineNum">     278 </span><span class="lineCov">          4 :             return std::static_pointer_cast&lt;table_array&gt;(shared_from_this());</span>
+<span class="lineNum">     277 </span><span class="lineCov">         12 :         if (is_table_array())</span>
+<span class="lineNum">     278 </span><span class="lineCov">         12 :             return std::static_pointer_cast&lt;table_array&gt;(shared_from_this());</span>
 <span class="lineNum">     279 </span><span class="lineNoCov">          0 :         return nullptr;</span>
 <span class="lineNum">     280 </span>            :     }
 <span class="lineNum">     281 </span>            : 
@@ -355,17 +355,17 @@
 <span class="lineNum">     293 </span>            :     void accept(Visitor&amp;&amp; visitor, Args&amp;&amp;... args) const;
 <a name="294"><span class="lineNum">     294 </span>            : </a>
 <span class="lineNum">     295 </span>            :   protected:
-<span class="lineNum">     296 </span><span class="lineCov">         34 :     base()</span>
-<span class="lineNum">     297 </span><span class="lineCov">         34 :     {</span>
+<span class="lineNum">     296 </span><span class="lineCov">        102 :     base()</span>
+<span class="lineNum">     297 </span><span class="lineCov">        102 :     {</span>
 <span class="lineNum">     298 </span>            :         // nothing
-<span class="lineNum">     299 </span><span class="lineCov">         34 :     }</span>
+<span class="lineNum">     299 </span><span class="lineCov">        102 :     }</span>
 <span class="lineNum">     300 </span>            : };
 <span class="lineNum">     301 </span>            : 
 <span class="lineNum">     302 </span>            : /**
 <span class="lineNum">     303 </span>            :  * A concrete TOML value representing the &quot;leaves&quot; of the &quot;tree&quot;.
 <a name="304"><span class="lineNum">     304 </span>            :  */</a>
 <span class="lineNum">     305 </span>            : template &lt;class T&gt;
-<span class="lineNum">     306 </span><span class="lineCov">         21 : class value : public base</span>
+<span class="lineNum">     306 </span><span class="lineCov">         63 : class value : public base</span>
 <span class="lineNum">     307 </span>            : {
 <span class="lineNum">     308 </span>            :     struct make_shared_enabler
 <span class="lineNum">     309 </span>            :     {
@@ -379,23 +379,23 @@
 <span class="lineNum">     317 </span>            :   public:
 <a name="318"><span class="lineNum">     318 </span>            :     static_assert(valid_value&lt;T&gt;::value, &quot;invalid value type&quot;);</a>
 <span class="lineNum">     319 </span>            : 
-<span class="lineNum">     320 </span><span class="lineCov">         21 :     value(const make_shared_enabler&amp;, const T&amp; val) : value(val)</span>
+<span class="lineNum">     320 </span><span class="lineCov">         63 :     value(const make_shared_enabler&amp;, const T&amp; val) : value(val)</span>
 <span class="lineNum">     321 </span>            :     {
 <span class="lineNum">     322 </span>            :         // nothing; note that users cannot actually invoke this function
 <span class="lineNum">     323 </span>            :         // because they lack access to the make_shared_enabler.
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         21 :     }</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         63 :     }</span></a>
 <span class="lineNum">     325 </span>            : 
-<span class="lineNum">     326 </span><span class="lineCov">         21 :     bool is_value() const override</span>
+<span class="lineNum">     326 </span><span class="lineCov">         63 :     bool is_value() const override</span>
 <span class="lineNum">     327 </span>            :     {
-<span class="lineNum">     328 </span><span class="lineCov">         21 :         return true;</span>
+<span class="lineNum">     328 </span><span class="lineCov">         63 :         return true;</span>
 <span class="lineNum">     329 </span>            :     }
 <span class="lineNum">     330 </span>            : 
 <span class="lineNum">     331 </span>            :     /**
 <a name="332"><span class="lineNum">     332 </span>            :      * Gets the data associated with this value.</a>
 <span class="lineNum">     333 </span>            :      */
-<span class="lineNum">     334 </span><span class="lineCov">         25 :     T&amp; get()</span>
+<span class="lineNum">     334 </span><span class="lineCov">         75 :     T&amp; get()</span>
 <span class="lineNum">     335 </span>            :     {
-<span class="lineNum">     336 </span><span class="lineCov">         25 :         return data_;</span>
+<span class="lineNum">     336 </span><span class="lineCov">         75 :         return data_;</span>
 <span class="lineNum">     337 </span>            :     }
 <span class="lineNum">     338 </span>            : 
 <span class="lineNum">     339 </span>            :     /**
@@ -412,40 +412,40 @@
 <span class="lineNum">     350 </span>            :     /**
 <a name="351"><span class="lineNum">     351 </span>            :      * Constructs a value from the given data.</a>
 <span class="lineNum">     352 </span>            :      */
-<span class="lineNum">     353 </span><span class="lineCov">         21 :     value(const T&amp; val) : data_(val)</span>
+<span class="lineNum">     353 </span><span class="lineCov">         63 :     value(const T&amp; val) : data_(val)</span>
 <span class="lineNum">     354 </span>            :     {
-<span class="lineNum">     355 </span><span class="lineCov">         21 :     }</span>
+<span class="lineNum">     355 </span><span class="lineCov">         63 :     }</span>
 <span class="lineNum">     356 </span>            : 
 <span class="lineNum">     357 </span>            :     value(const value&amp; val) = delete;
 <span class="lineNum">     358 </span>            :     value&amp; operator=(const value&amp; val) = delete;
 <span class="lineNum">     359 </span>            : };
 <a name="360"><span class="lineNum">     360 </span>            : </a>
 <span class="lineNum">     361 </span>            : template &lt;class T&gt;
-<span class="lineNum">     362 </span><span class="lineCov">         21 : std::shared_ptr&lt;typename value_traits&lt;T&gt;::type&gt; make_value(T&amp;&amp; val)</span>
+<span class="lineNum">     362 </span><span class="lineCov">         63 : std::shared_ptr&lt;typename value_traits&lt;T&gt;::type&gt; make_value(T&amp;&amp; val)</span>
 <span class="lineNum">     363 </span>            : {
 <span class="lineNum">     364 </span>            :     using value_type = typename value_traits&lt;T&gt;::type;
 <span class="lineNum">     365 </span>            :     using enabler = typename value_type::make_shared_enabler;
-<span class="lineNum">     366 </span><span class="lineCov">         21 :     return std::make_shared&lt;value_type&gt;(enabler{}, std::forward&lt;T&gt;(val));</span>
+<span class="lineNum">     366 </span><span class="lineCov">         63 :     return std::make_shared&lt;value_type&gt;(enabler{}, std::forward&lt;T&gt;(val));</span>
 <span class="lineNum">     367 </span>            : }
 <a name="368"><span class="lineNum">     368 </span>            : </a>
 <span class="lineNum">     369 </span>            : template &lt;class T&gt;
-<span class="lineNum">     370 </span><span class="lineCov">         51 : inline std::shared_ptr&lt;value&lt;T&gt;&gt; base::as()</span>
+<span class="lineNum">     370 </span><span class="lineCov">        153 : inline std::shared_ptr&lt;value&lt;T&gt;&gt; base::as()</span>
 <span class="lineNum">     371 </span>            : {
-<span class="lineNum">     372 </span><span class="lineCov">         51 :     return std::dynamic_pointer_cast&lt;value&lt;T&gt;&gt;(shared_from_this());</span>
+<span class="lineNum">     372 </span><span class="lineCov">        153 :     return std::dynamic_pointer_cast&lt;value&lt;T&gt;&gt;(shared_from_this());</span>
 <span class="lineNum">     373 </span>            : }
 <span class="lineNum">     374 </span>            : 
 <span class="lineNum">     375 </span>            : // special case value&lt;double&gt; to allow getting an integer parameter as a
 <a name="376"><span class="lineNum">     376 </span>            : // double value</a>
 <span class="lineNum">     377 </span>            : template &lt;&gt;
-<span class="lineNum">     378 </span><span class="lineCov">          9 : inline std::shared_ptr&lt;value&lt;double&gt;&gt; base::as()</span>
+<span class="lineNum">     378 </span><span class="lineCov">         27 : inline std::shared_ptr&lt;value&lt;double&gt;&gt; base::as()</span>
 <span class="lineNum">     379 </span>            : {
-<span class="lineNum">     380 </span><span class="lineCov">          9 :     if (auto v = std::dynamic_pointer_cast&lt;value&lt;double&gt;&gt;(shared_from_this()))</span>
-<span class="lineNum">     381 </span><span class="lineCov">          3 :         return v;</span>
+<span class="lineNum">     380 </span><span class="lineCov">         27 :     if (auto v = std::dynamic_pointer_cast&lt;value&lt;double&gt;&gt;(shared_from_this()))</span>
+<span class="lineNum">     381 </span><span class="lineCov">          9 :         return v;</span>
 <span class="lineNum">     382 </span>            : 
-<span class="lineNum">     383 </span><span class="lineCov">          6 :     if (auto v = std::dynamic_pointer_cast&lt;value&lt;int64_t&gt;&gt;(shared_from_this()))</span>
+<span class="lineNum">     383 </span><span class="lineCov">         18 :     if (auto v = std::dynamic_pointer_cast&lt;value&lt;int64_t&gt;&gt;(shared_from_this()))</span>
 <span class="lineNum">     384 </span><span class="lineNoCov">          0 :         return make_value&lt;double&gt;(static_cast&lt;double&gt;(v-&gt;get()));</span>
 <span class="lineNum">     385 </span>            : 
-<span class="lineNum">     386 </span><span class="lineCov">          6 :     return nullptr;</span>
+<span class="lineNum">     386 </span><span class="lineCov">         18 :     return nullptr;</span>
 <span class="lineNum">     387 </span>            : }
 <span class="lineNum">     388 </span>            : 
 <span class="lineNum">     389 </span>            : template &lt;class T&gt;
@@ -755,7 +755,7 @@
 <span class="lineNum">     693 </span>            : 
 <a name="694"><span class="lineNum">     694 </span>            : class table;</a>
 <span class="lineNum">     695 </span>            : 
-<span class="lineNum">     696 </span><span class="lineCov">          2 : class table_array : public base</span>
+<span class="lineNum">     696 </span><span class="lineCov">          6 : class table_array : public base</span>
 <span class="lineNum">     697 </span>            : {
 <span class="lineNum">     698 </span>            :     friend class table;
 <span class="lineNum">     699 </span>            :     friend std::shared_ptr&lt;table_array&gt; make_table_array();
@@ -769,21 +769,21 @@
 <span class="lineNum">     707 </span>            :     /**
 <span class="lineNum">     708 </span>            :      * arrays can be iterated over.  Const version.
 <span class="lineNum">     709 </span>            :      */
-<a name="710"><span class="lineNum">     710 </span>            :     using const_iterator = std::vector&lt;std::shared_ptr&lt;table&gt;&gt;::const_iterator;</a>
+<span class="lineNum">     710 </span>            :     using const_iterator = std::vector&lt;std::shared_ptr&lt;table&gt;&gt;::const_iterator;
 <span class="lineNum">     711 </span>            : 
-<span class="lineNum">     712 </span><span class="lineCov">          2 :     iterator begin()</span>
+<span class="lineNum">     712 </span>            :     iterator begin()
 <span class="lineNum">     713 </span>            :     {
-<span class="lineNum">     714 </span><span class="lineCov">          2 :         return array_.begin();</span>
+<span class="lineNum">     714 </span>            :         return array_.begin();
 <span class="lineNum">     715 </span>            :     }
 <span class="lineNum">     716 </span>            : 
 <span class="lineNum">     717 </span>            :     const_iterator begin() const
 <span class="lineNum">     718 </span>            :     {
 <span class="lineNum">     719 </span>            :         return array_.begin();
-<a name="720"><span class="lineNum">     720 </span>            :     }</a>
+<span class="lineNum">     720 </span>            :     }
 <span class="lineNum">     721 </span>            : 
-<span class="lineNum">     722 </span><span class="lineCov">          2 :     iterator end()</span>
+<span class="lineNum">     722 </span>            :     iterator end()
 <span class="lineNum">     723 </span>            :     {
-<span class="lineNum">     724 </span><span class="lineCov">          2 :         return array_.end();</span>
+<span class="lineNum">     724 </span>            :         return array_.end();
 <span class="lineNum">     725 </span>            :     }
 <span class="lineNum">     726 </span>            : 
 <span class="lineNum">     727 </span>            :     const_iterator end() const
@@ -791,14 +791,14 @@
 <span class="lineNum">     729 </span>            :         return array_.end();
 <a name="730"><span class="lineNum">     730 </span>            :     }</a>
 <span class="lineNum">     731 </span>            : 
-<span class="lineNum">     732 </span><span class="lineCov">          8 :     virtual bool is_table_array() const override</span>
+<span class="lineNum">     732 </span><span class="lineCov">         24 :     virtual bool is_table_array() const override</span>
 <span class="lineNum">     733 </span>            :     {
-<span class="lineNum">     734 </span><span class="lineCov">          8 :         return true;</span>
+<span class="lineNum">     734 </span><span class="lineCov">         24 :         return true;</span>
 <a name="735"><span class="lineNum">     735 </span>            :     }</a>
 <span class="lineNum">     736 </span>            : 
-<span class="lineNum">     737 </span><span class="lineCov">          8 :     std::vector&lt;std::shared_ptr&lt;table&gt;&gt;&amp; get()</span>
+<span class="lineNum">     737 </span><span class="lineCov">         24 :     std::vector&lt;std::shared_ptr&lt;table&gt;&gt;&amp; get()</span>
 <span class="lineNum">     738 </span>            :     {
-<span class="lineNum">     739 </span><span class="lineCov">          8 :         return array_;</span>
+<span class="lineNum">     739 </span><span class="lineCov">         24 :         return array_;</span>
 <span class="lineNum">     740 </span>            :     }
 <span class="lineNum">     741 </span>            : 
 <span class="lineNum">     742 </span>            :     const std::vector&lt;std::shared_ptr&lt;table&gt;&gt;&amp; get() const
@@ -839,10 +839,10 @@
 <span class="lineNum">     777 </span>            :     }
 <a name="778"><span class="lineNum">     778 </span>            : </a>
 <span class="lineNum">     779 </span>            :   private:
-<span class="lineNum">     780 </span><span class="lineCov">          2 :     table_array()</span>
-<span class="lineNum">     781 </span><span class="lineCov">          2 :     {</span>
+<span class="lineNum">     780 </span><span class="lineCov">          6 :     table_array()</span>
+<span class="lineNum">     781 </span><span class="lineCov">          6 :     {</span>
 <span class="lineNum">     782 </span>            :         // nothing
-<span class="lineNum">     783 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     783 </span><span class="lineCov">          6 :     }</span>
 <span class="lineNum">     784 </span>            : 
 <span class="lineNum">     785 </span>            :     table_array(const table_array&amp; obj) = delete;
 <span class="lineNum">     786 </span>            :     table_array&amp; operator=(const table_array&amp; rhs) = delete;
@@ -850,17 +850,17 @@
 <span class="lineNum">     788 </span>            :     std::vector&lt;std::shared_ptr&lt;table&gt;&gt; array_;
 <a name="789"><span class="lineNum">     789 </span>            : };</a>
 <span class="lineNum">     790 </span>            : 
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          2 : inline std::shared_ptr&lt;table_array&gt; make_table_array()</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          6 : inline std::shared_ptr&lt;table_array&gt; make_table_array()</span></a>
 <span class="lineNum">     792 </span>            : {
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          2 :     struct make_shared_enabler : public table_array</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          6 :     struct make_shared_enabler : public table_array</span></a>
 <span class="lineNum">     794 </span>            :     {
-<span class="lineNum">     795 </span><span class="lineCov">          2 :         make_shared_enabler()</span>
-<span class="lineNum">     796 </span><span class="lineCov">          2 :         {</span>
+<span class="lineNum">     795 </span><span class="lineCov">          6 :         make_shared_enabler()</span>
+<span class="lineNum">     796 </span><span class="lineCov">          6 :         {</span>
 <span class="lineNum">     797 </span>            :             // nothing
-<span class="lineNum">     798 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">     798 </span><span class="lineCov">          6 :         }</span>
 <span class="lineNum">     799 </span>            :     };
 <span class="lineNum">     800 </span>            : 
-<span class="lineNum">     801 </span><span class="lineCov">          2 :     return std::make_shared&lt;make_shared_enabler&gt;();</span>
+<span class="lineNum">     801 </span><span class="lineCov">          6 :     return std::make_shared&lt;make_shared_enabler&gt;();</span>
 <span class="lineNum">     802 </span>            : }
 <a name="803"><span class="lineNum">     803 </span>            : </a>
 <span class="lineNum">     804 </span>            : template &lt;&gt;
@@ -872,7 +872,7 @@
 <span class="lineNum">     810 </span>            : /**
 <a name="811"><span class="lineNum">     811 </span>            :  * Represents a TOML keytable.</a>
 <span class="lineNum">     812 </span>            :  */
-<span class="lineNum">     813 </span><span class="lineCov">         11 : class table : public base</span>
+<span class="lineNum">     813 </span><span class="lineCov">         33 : class table : public base</span>
 <span class="lineNum">     814 </span>            : {
 <span class="lineNum">     815 </span>            :   public:
 <span class="lineNum">     816 </span>            :     friend class table_array;
@@ -888,9 +888,9 @@
 <span class="lineNum">     826 </span>            :      */
 <a name="827"><span class="lineNum">     827 </span>            :     using const_iterator = string_to_base_map::const_iterator;</a>
 <span class="lineNum">     828 </span>            : 
-<span class="lineNum">     829 </span><span class="lineCov">         11 :     iterator begin()</span>
+<span class="lineNum">     829 </span><span class="lineCov">         33 :     iterator begin()</span>
 <span class="lineNum">     830 </span>            :     {
-<span class="lineNum">     831 </span><span class="lineCov">         11 :         return map_.begin();</span>
+<span class="lineNum">     831 </span><span class="lineCov">         33 :         return map_.begin();</span>
 <span class="lineNum">     832 </span>            :     }
 <span class="lineNum">     833 </span>            : 
 <span class="lineNum">     834 </span>            :     const_iterator begin() const
@@ -898,9 +898,9 @@
 <span class="lineNum">     836 </span>            :         return map_.begin();
 <a name="837"><span class="lineNum">     837 </span>            :     }</a>
 <span class="lineNum">     838 </span>            : 
-<span class="lineNum">     839 </span><span class="lineCov">         11 :     iterator end()</span>
+<span class="lineNum">     839 </span><span class="lineCov">         33 :     iterator end()</span>
 <span class="lineNum">     840 </span>            :     {
-<span class="lineNum">     841 </span><span class="lineCov">         11 :         return map_.end();</span>
+<span class="lineNum">     841 </span><span class="lineCov">         33 :         return map_.end();</span>
 <span class="lineNum">     842 </span>            :     }
 <span class="lineNum">     843 </span>            : 
 <span class="lineNum">     844 </span>            :     const_iterator end() const
@@ -908,9 +908,9 @@
 <span class="lineNum">     846 </span>            :         return map_.end();
 <a name="847"><span class="lineNum">     847 </span>            :     }</a>
 <span class="lineNum">     848 </span>            : 
-<span class="lineNum">     849 </span><span class="lineCov">         15 :     bool is_table() const override</span>
+<span class="lineNum">     849 </span><span class="lineCov">         45 :     bool is_table() const override</span>
 <span class="lineNum">     850 </span>            :     {
-<span class="lineNum">     851 </span><span class="lineCov">         15 :         return true;</span>
+<span class="lineNum">     851 </span><span class="lineCov">         45 :         return true;</span>
 <a name="852"><span class="lineNum">     852 </span>            :     }</a>
 <span class="lineNum">     853 </span>            : 
 <span class="lineNum">     854 </span><span class="lineNoCov">          0 :     bool empty() const</span>
@@ -921,9 +921,9 @@
 <span class="lineNum">     859 </span>            :     /**
 <a name="860"><span class="lineNum">     860 </span>            :      * Determines if this key table contains the given key.</a>
 <span class="lineNum">     861 </span>            :      */
-<span class="lineNum">     862 </span><span class="lineCov">         38 :     bool contains(const std::string&amp; key) const</span>
+<span class="lineNum">     862 </span><span class="lineCov">        114 :     bool contains(const std::string&amp; key) const</span>
 <span class="lineNum">     863 </span>            :     {
-<span class="lineNum">     864 </span><span class="lineCov">         38 :         return map_.find(key) != map_.end();</span>
+<span class="lineNum">     864 </span><span class="lineCov">        114 :         return map_.find(key) != map_.end();</span>
 <span class="lineNum">     865 </span>            :     }
 <span class="lineNum">     866 </span>            : 
 <span class="lineNum">     867 </span>            :     /**
@@ -940,9 +940,9 @@
 <span class="lineNum">     878 </span>            :      * Obtains the base for a given key.
 <a name="879"><span class="lineNum">     879 </span>            :      * @throw std::out_of_range if the key does not exist</a>
 <span class="lineNum">     880 </span>            :      */
-<span class="lineNum">     881 </span><span class="lineCov">         79 :     std::shared_ptr&lt;base&gt; get(const std::string&amp; key) const</span>
+<span class="lineNum">     881 </span><span class="lineCov">        237 :     std::shared_ptr&lt;base&gt; get(const std::string&amp; key) const</span>
 <span class="lineNum">     882 </span>            :     {
-<span class="lineNum">     883 </span><span class="lineCov">         79 :         return map_.at(key);</span>
+<span class="lineNum">     883 </span><span class="lineCov">        237 :         return map_.at(key);</span>
 <span class="lineNum">     884 </span>            :     }
 <span class="lineNum">     885 </span>            : 
 <span class="lineNum">     886 </span>            :     /**
@@ -1001,13 +1001,13 @@
 <span class="lineNum">     939 </span>            :     }
 <span class="lineNum">     940 </span>            : 
 <span class="lineNum">     941 </span>            :     /**
-<a name="942"><span class="lineNum">     942 </span>            :      * Obtains a table_array for a given key, if possible.</a>
+<span class="lineNum">     942 </span>            :      * Obtains a table_array for a given key, if possible.
 <span class="lineNum">     943 </span>            :      */
-<span class="lineNum">     944 </span><span class="lineCov">          2 :     std::shared_ptr&lt;table_array&gt; get_table_array(const std::string&amp; key) const</span>
+<span class="lineNum">     944 </span>            :     std::shared_ptr&lt;table_array&gt; get_table_array(const std::string&amp; key) const
 <span class="lineNum">     945 </span>            :     {
-<span class="lineNum">     946 </span><span class="lineCov">          2 :         if (!contains(key))</span>
-<span class="lineNum">     947 </span><span class="lineNoCov">          0 :             return nullptr;</span>
-<span class="lineNum">     948 </span><span class="lineCov">          2 :         return get(key)-&gt;as_table_array();</span>
+<span class="lineNum">     946 </span>            :         if (!contains(key))
+<span class="lineNum">     947 </span>            :             return nullptr;
+<span class="lineNum">     948 </span>            :         return get(key)-&gt;as_table_array();
 <span class="lineNum">     949 </span>            :     }
 <span class="lineNum">     950 </span>            : 
 <span class="lineNum">     951 </span>            :     /**
@@ -1025,20 +1025,20 @@
 <span class="lineNum">     963 </span>            :     /**
 <span class="lineNum">     964 </span>            :      * Helper function that attempts to get a value corresponding
 <span class="lineNum">     965 </span>            :      * to the template parameter from a given key.
-<a name="966"><span class="lineNum">     966 </span>            :      */</a>
+<span class="lineNum">     966 </span>            :      */
 <span class="lineNum">     967 </span>            :     template &lt;class T&gt;
-<span class="lineNum">     968 </span><span class="lineCov">         62 :     option&lt;T&gt; get_as(const std::string&amp; key) const</span>
+<span class="lineNum">     968 </span>            :     option&lt;T&gt; get_as(const std::string&amp; key) const
 <span class="lineNum">     969 </span>            :     {
 <span class="lineNum">     970 </span>            :         try
 <span class="lineNum">     971 </span>            :         {
-<span class="lineNum">     972 </span><span class="lineCov">        122 :             if (auto v = get(key)-&gt;as&lt;T&gt;())</span>
-<span class="lineNum">     973 </span><span class="lineCov">         25 :                 return {v-&gt;get()};</span>
+<span class="lineNum">     972 </span>            :             if (auto v = get(key)-&gt;as&lt;T&gt;())
+<span class="lineNum">     973 </span>            :                 return {v-&gt;get()};
 <span class="lineNum">     974 </span>            :             else
-<span class="lineNum">     975 </span><span class="lineCov">         35 :                 return {};</span>
+<span class="lineNum">     975 </span>            :                 return {};
 <span class="lineNum">     976 </span>            :         }
-<span class="lineNum">     977 </span><span class="lineCov">          2 :         catch (const std::out_of_range&amp;)</span>
+<span class="lineNum">     977 </span>            :         catch (const std::out_of_range&amp;)
 <span class="lineNum">     978 </span>            :         {
-<span class="lineNum">     979 </span><span class="lineCov">          2 :             return {};</span>
+<span class="lineNum">     979 </span>            :             return {};
 <span class="lineNum">     980 </span>            :         }
 <span class="lineNum">     981 </span>            :     }
 <span class="lineNum">     982 </span>            : 
@@ -1129,10 +1129,10 @@
 <span class="lineNum">    1067 </span>            :     /**
 <a name="1068"><span class="lineNum">    1068 </span>            :      * Adds an element to the keytable.</a>
 <span class="lineNum">    1069 </span>            :      */
-<span class="lineNum">    1070 </span><span class="lineCov">         27 :     void insert(const std::string&amp; key, const std::shared_ptr&lt;base&gt;&amp; value)</span>
+<span class="lineNum">    1070 </span><span class="lineCov">         81 :     void insert(const std::string&amp; key, const std::shared_ptr&lt;base&gt;&amp; value)</span>
 <span class="lineNum">    1071 </span>            :     {
-<span class="lineNum">    1072 </span><span class="lineCov">         27 :         map_[key] = value;</span>
-<span class="lineNum">    1073 </span><span class="lineCov">         27 :     }</span>
+<span class="lineNum">    1072 </span><span class="lineCov">         81 :         map_[key] = value;</span>
+<span class="lineNum">    1073 </span><span class="lineCov">         81 :     }</span>
 <span class="lineNum">    1074 </span>            : 
 <span class="lineNum">    1075 </span>            :     /**
 <span class="lineNum">    1076 </span>            :      * Convenience shorthand for adding a simple element to the
@@ -1154,10 +1154,10 @@
 <span class="lineNum">    1092 </span>            :     }
 <a name="1093"><span class="lineNum">    1093 </span>            : </a>
 <span class="lineNum">    1094 </span>            :   private:
-<span class="lineNum">    1095 </span><span class="lineCov">         11 :     table()</span>
-<span class="lineNum">    1096 </span><span class="lineCov">         11 :     {</span>
+<span class="lineNum">    1095 </span><span class="lineCov">         33 :     table()</span>
+<span class="lineNum">    1096 </span><span class="lineCov">         33 :     {</span>
 <span class="lineNum">    1097 </span>            :         // nothing
-<span class="lineNum">    1098 </span><span class="lineCov">         11 :     }</span>
+<span class="lineNum">    1098 </span><span class="lineCov">         33 :     }</span>
 <span class="lineNum">    1099 </span>            : 
 <span class="lineNum">    1100 </span>            :     table(const table&amp; obj) = delete;
 <a name="1101"><span class="lineNum">    1101 </span>            :     table&amp; operator=(const table&amp; rhs) = delete;</a>
@@ -1276,17 +1276,17 @@
 <span class="lineNum">    1214 </span>            :     return {};
 <a name="1215"><span class="lineNum">    1215 </span>            : }</a>
 <span class="lineNum">    1216 </span>            : 
-<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">         11 : std::shared_ptr&lt;table&gt; make_table()</span></a>
+<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">         33 : std::shared_ptr&lt;table&gt; make_table()</span></a>
 <span class="lineNum">    1218 </span>            : {
-<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">         11 :     struct make_shared_enabler : public table</span></a>
+<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">         33 :     struct make_shared_enabler : public table</span></a>
 <span class="lineNum">    1220 </span>            :     {
-<span class="lineNum">    1221 </span><span class="lineCov">         11 :         make_shared_enabler()</span>
-<span class="lineNum">    1222 </span><span class="lineCov">         11 :         {</span>
+<span class="lineNum">    1221 </span><span class="lineCov">         33 :         make_shared_enabler()</span>
+<span class="lineNum">    1222 </span><span class="lineCov">         33 :         {</span>
 <span class="lineNum">    1223 </span>            :             // nothing
-<span class="lineNum">    1224 </span><span class="lineCov">         11 :         }</span>
+<span class="lineNum">    1224 </span><span class="lineCov">         33 :         }</span>
 <span class="lineNum">    1225 </span>            :     };
 <span class="lineNum">    1226 </span>            : 
-<span class="lineNum">    1227 </span><span class="lineCov">         11 :     return std::make_shared&lt;make_shared_enabler&gt;();</span>
+<span class="lineNum">    1227 </span><span class="lineCov">         33 :     return std::make_shared&lt;make_shared_enabler&gt;();</span>
 <span class="lineNum">    1228 </span>            : }
 <span class="lineNum">    1229 </span>            : 
 <span class="lineNum">    1230 </span>            : template &lt;&gt;
@@ -1314,15 +1314,15 @@
 <span class="lineNum">    1252 </span>            : /**
 <a name="1253"><span class="lineNum">    1253 </span>            :  * The parser class.</a>
 <span class="lineNum">    1254 </span>            :  */
-<span class="lineNum">    1255 </span><span class="lineCov">          3 : class parser</span>
+<span class="lineNum">    1255 </span><span class="lineCov">          9 : class parser</span>
 <span class="lineNum">    1256 </span>            : {
 <span class="lineNum">    1257 </span>            :   public:
 <span class="lineNum">    1258 </span>            :     /**
 <a name="1259"><span class="lineNum">    1259 </span>            :      * Parsers are constructed from streams.</a>
 <span class="lineNum">    1260 </span>            :      */
-<span class="lineNum">    1261 </span><span class="lineCov">          3 :     parser(std::istream&amp; stream) : input_(stream)</span>
+<span class="lineNum">    1261 </span><span class="lineCov">          9 :     parser(std::istream&amp; stream) : input_(stream)</span>
 <span class="lineNum">    1262 </span>            :     {
-<span class="lineNum">    1263 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">    1263 </span><span class="lineCov">          9 :     }</span>
 <span class="lineNum">    1264 </span>            : 
 <span class="lineNum">    1265 </span>            :     parser&amp; operator=(const parser&amp; parser) = delete;
 <span class="lineNum">    1266 </span>            : 
@@ -1330,33 +1330,33 @@
 <span class="lineNum">    1268 </span>            :      * Parses the stream this parser was created on until EOF.
 <a name="1269"><span class="lineNum">    1269 </span>            :      * @throw parse_exception if there are errors in parsing</a>
 <span class="lineNum">    1270 </span>            :      */
-<span class="lineNum">    1271 </span><span class="lineCov">          3 :     std::shared_ptr&lt;table&gt; parse()</span>
+<span class="lineNum">    1271 </span><span class="lineCov">          9 :     std::shared_ptr&lt;table&gt; parse()</span>
 <span class="lineNum">    1272 </span>            :     {
-<span class="lineNum">    1273 </span><span class="lineCov">          3 :         std::shared_ptr&lt;table&gt; root = make_table();</span>
+<span class="lineNum">    1273 </span><span class="lineCov">          9 :         std::shared_ptr&lt;table&gt; root = make_table();</span>
 <span class="lineNum">    1274 </span>            : 
-<span class="lineNum">    1275 </span><span class="lineCov">          3 :         table* curr_table = root.get();</span>
+<span class="lineNum">    1275 </span><span class="lineCov">          9 :         table* curr_table = root.get();</span>
 <span class="lineNum">    1276 </span>            : 
-<span class="lineNum">    1277 </span><span class="lineCov">         41 :         while (std::getline(input_, line_))</span>
+<span class="lineNum">    1277 </span><span class="lineCov">        123 :         while (std::getline(input_, line_))</span>
 <span class="lineNum">    1278 </span>            :         {
-<span class="lineNum">    1279 </span><span class="lineCov">         35 :             line_number_++;</span>
-<span class="lineNum">    1280 </span><span class="lineCov">         35 :             auto it = line_.begin();</span>
-<span class="lineNum">    1281 </span><span class="lineCov">         35 :             auto end = line_.end();</span>
-<span class="lineNum">    1282 </span><span class="lineCov">         35 :             consume_whitespace(it, end);</span>
-<span class="lineNum">    1283 </span><span class="lineCov">         35 :             if (it == end || *it == '#')</span>
-<span class="lineNum">    1284 </span><span class="lineCov">          6 :                 continue;</span>
-<span class="lineNum">    1285 </span><span class="lineCov">         29 :             if (*it == '[')</span>
+<span class="lineNum">    1279 </span><span class="lineCov">        105 :             line_number_++;</span>
+<span class="lineNum">    1280 </span><span class="lineCov">        105 :             auto it = line_.begin();</span>
+<span class="lineNum">    1281 </span><span class="lineCov">        105 :             auto end = line_.end();</span>
+<span class="lineNum">    1282 </span><span class="lineCov">        105 :             consume_whitespace(it, end);</span>
+<span class="lineNum">    1283 </span><span class="lineCov">        105 :             if (it == end || *it == '#')</span>
+<span class="lineNum">    1284 </span><span class="lineCov">         18 :                 continue;</span>
+<span class="lineNum">    1285 </span><span class="lineCov">         87 :             if (*it == '[')</span>
 <span class="lineNum">    1286 </span>            :             {
-<span class="lineNum">    1287 </span><span class="lineCov">          8 :                 curr_table = root.get();</span>
-<span class="lineNum">    1288 </span><span class="lineCov">          8 :                 parse_table(it, end, curr_table);</span>
+<span class="lineNum">    1287 </span><span class="lineCov">         24 :                 curr_table = root.get();</span>
+<span class="lineNum">    1288 </span><span class="lineCov">         24 :                 parse_table(it, end, curr_table);</span>
 <span class="lineNum">    1289 </span>            :             }
 <span class="lineNum">    1290 </span>            :             else
 <span class="lineNum">    1291 </span>            :             {
-<span class="lineNum">    1292 </span><span class="lineCov">         21 :                 parse_key_value(it, end, curr_table);</span>
-<span class="lineNum">    1293 </span><span class="lineCov">         21 :                 consume_whitespace(it, end);</span>
-<span class="lineNum">    1294 </span><span class="lineCov">         21 :                 eol_or_comment(it, end);</span>
+<span class="lineNum">    1292 </span><span class="lineCov">         63 :                 parse_key_value(it, end, curr_table);</span>
+<span class="lineNum">    1293 </span><span class="lineCov">         63 :                 consume_whitespace(it, end);</span>
+<span class="lineNum">    1294 </span><span class="lineCov">         63 :                 eol_or_comment(it, end);</span>
 <span class="lineNum">    1295 </span>            :             }
 <span class="lineNum">    1296 </span>            :         }
-<span class="lineNum">    1297 </span><span class="lineCov">          3 :         return root;</span>
+<span class="lineNum">    1297 </span><span class="lineCov">          9 :         return root;</span>
 <span class="lineNum">    1298 </span>            :     }
 <span class="lineNum">    1299 </span>            : 
 <span class="lineNum">    1300 </span>            :   private:
@@ -1370,45 +1370,45 @@
 <span class="lineNum">    1308 </span><span class="lineNoCov">          0 :         throw parse_exception{err, line_number_};</span>
 <a name="1309"><span class="lineNum">    1309 </span>            :     }</a>
 <span class="lineNum">    1310 </span>            : 
-<span class="lineNum">    1311 </span><span class="lineCov">          8 :     void parse_table(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1311 </span><span class="lineCov">         24 :     void parse_table(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1312 </span>            :                      const std::string::iterator&amp; end, table*&amp; curr_table)
 <span class="lineNum">    1313 </span>            :     {
 <span class="lineNum">    1314 </span>            :         // remove the beginning keytable marker
-<span class="lineNum">    1315 </span><span class="lineCov">          8 :         ++it;</span>
-<span class="lineNum">    1316 </span><span class="lineCov">          8 :         if (it == end)</span>
+<span class="lineNum">    1315 </span><span class="lineCov">         24 :         ++it;</span>
+<span class="lineNum">    1316 </span><span class="lineCov">         24 :         if (it == end)</span>
 <span class="lineNum">    1317 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Unexpected end of table&quot;);</span>
-<span class="lineNum">    1318 </span><span class="lineCov">          8 :         if (*it == '[')</span>
-<span class="lineNum">    1319 </span><span class="lineCov">          4 :             parse_table_array(it, end, curr_table);</span>
+<span class="lineNum">    1318 </span><span class="lineCov">         24 :         if (*it == '[')</span>
+<span class="lineNum">    1319 </span><span class="lineCov">         12 :             parse_table_array(it, end, curr_table);</span>
 <span class="lineNum">    1320 </span>            :         else
-<span class="lineNum">    1321 </span><span class="lineCov">          4 :             parse_single_table(it, end, curr_table);</span>
-<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">          8 :     }</span></a>
+<span class="lineNum">    1321 </span><span class="lineCov">         12 :             parse_single_table(it, end, curr_table);</span>
+<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">         24 :     }</span></a>
 <span class="lineNum">    1323 </span>            : 
-<span class="lineNum">    1324 </span><span class="lineCov">          4 :     void parse_single_table(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1324 </span><span class="lineCov">         12 :     void parse_single_table(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1325 </span>            :                             const std::string::iterator&amp; end,
 <span class="lineNum">    1326 </span>            :                             table*&amp; curr_table)
 <span class="lineNum">    1327 </span>            :     {
-<span class="lineNum">    1328 </span><span class="lineCov">          4 :         if (it == end || *it == ']')</span>
+<span class="lineNum">    1328 </span><span class="lineCov">         12 :         if (it == end || *it == ']')</span>
 <span class="lineNum">    1329 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Table name cannot be empty&quot;);</span>
 <span class="lineNum">    1330 </span>            : 
-<span class="lineNum">    1331 </span><span class="lineCov">          4 :         std::string full_table_name;</span>
-<span class="lineNum">    1332 </span><span class="lineCov">          4 :         bool inserted = false;</span>
-<span class="lineNum">    1333 </span><span class="lineCov">         15 :         while (it != end &amp;&amp; *it != ']')</span>
+<span class="lineNum">    1331 </span><span class="lineCov">         12 :         std::string full_table_name;</span>
+<span class="lineNum">    1332 </span><span class="lineCov">         12 :         bool inserted = false;</span>
+<span class="lineNum">    1333 </span><span class="lineCov">         45 :         while (it != end &amp;&amp; *it != ']')</span>
 <a name="1334"><span class="lineNum">    1334 </span>            :         {</a>
 <span class="lineNum">    1335 </span>            :             auto part = parse_key(it, end,
-<span class="lineNum">    1336 </span><span class="lineCov">         30 :                                   [](char c) { return c == '.' || c == ']'; });</span>
+<span class="lineNum">    1336 </span><span class="lineCov">         90 :                                   [](char c) { return c == '.' || c == ']'; });</span>
 <span class="lineNum">    1337 </span>            : 
-<span class="lineNum">    1338 </span><span class="lineCov">          7 :             if (part.empty())</span>
+<span class="lineNum">    1338 </span><span class="lineCov">         21 :             if (part.empty())</span>
 <span class="lineNum">    1339 </span><span class="lineNoCov">          0 :                 throw_parse_exception(&quot;Empty component of table name&quot;);</span>
 <span class="lineNum">    1340 </span>            : 
-<span class="lineNum">    1341 </span><span class="lineCov">          7 :             if (!full_table_name.empty())</span>
-<span class="lineNum">    1342 </span><span class="lineCov">          3 :                 full_table_name += &quot;.&quot;;</span>
-<span class="lineNum">    1343 </span><span class="lineCov">          7 :             full_table_name += part;</span>
+<span class="lineNum">    1341 </span><span class="lineCov">         21 :             if (!full_table_name.empty())</span>
+<span class="lineNum">    1342 </span><span class="lineCov">          9 :                 full_table_name += &quot;.&quot;;</span>
+<span class="lineNum">    1343 </span><span class="lineCov">         21 :             full_table_name += part;</span>
 <span class="lineNum">    1344 </span>            : 
-<span class="lineNum">    1345 </span><span class="lineCov">          7 :             if (curr_table-&gt;contains(part))</span>
+<span class="lineNum">    1345 </span><span class="lineCov">         21 :             if (curr_table-&gt;contains(part))</span>
 <span class="lineNum">    1346 </span>            :             {
-<span class="lineNum">    1347 </span><span class="lineCov">          3 :                 auto b = curr_table-&gt;get(part);</span>
-<span class="lineNum">    1348 </span><span class="lineCov">          3 :                 if (b-&gt;is_table())</span>
-<span class="lineNum">    1349 </span><span class="lineCov">          3 :                     curr_table = static_cast&lt;table*&gt;(b.get());</span>
+<span class="lineNum">    1347 </span><span class="lineCov">          9 :                 auto b = curr_table-&gt;get(part);</span>
+<span class="lineNum">    1348 </span><span class="lineCov">          9 :                 if (b-&gt;is_table())</span>
+<span class="lineNum">    1349 </span><span class="lineCov">          9 :                     curr_table = static_cast&lt;table*&gt;(b.get());</span>
 <span class="lineNum">    1350 </span><span class="lineNoCov">          0 :                 else if (b-&gt;is_table_array())</span>
 <span class="lineNum">    1351 </span>            :                     curr_table = std::static_pointer_cast&lt;table_array&gt;(b)
 <span class="lineNum">    1352 </span><span class="lineNoCov">          0 :                                      -&gt;get()</span>
@@ -1420,18 +1420,18 @@
 <span class="lineNum">    1358 </span>            :             }
 <span class="lineNum">    1359 </span>            :             else
 <span class="lineNum">    1360 </span>            :             {
-<span class="lineNum">    1361 </span><span class="lineCov">          4 :                 inserted = true;</span>
-<span class="lineNum">    1362 </span><span class="lineCov">          4 :                 curr_table-&gt;insert(part, make_table());</span>
-<span class="lineNum">    1363 </span><span class="lineCov">          4 :                 curr_table = static_cast&lt;table*&gt;(curr_table-&gt;get(part).get());</span>
+<span class="lineNum">    1361 </span><span class="lineCov">         12 :                 inserted = true;</span>
+<span class="lineNum">    1362 </span><span class="lineCov">         12 :                 curr_table-&gt;insert(part, make_table());</span>
+<span class="lineNum">    1363 </span><span class="lineCov">         12 :                 curr_table = static_cast&lt;table*&gt;(curr_table-&gt;get(part).get());</span>
 <span class="lineNum">    1364 </span>            :             }
-<span class="lineNum">    1365 </span><span class="lineCov">          7 :             consume_whitespace(it, end);</span>
-<span class="lineNum">    1366 </span><span class="lineCov">          7 :             if (it != end &amp;&amp; *it == '.')</span>
-<span class="lineNum">    1367 </span><span class="lineCov">          3 :                 ++it;</span>
-<span class="lineNum">    1368 </span><span class="lineCov">          7 :             consume_whitespace(it, end);</span>
-<span class="lineNum">    1369 </span><span class="lineCov">          7 :         }</span>
+<span class="lineNum">    1365 </span><span class="lineCov">         21 :             consume_whitespace(it, end);</span>
+<span class="lineNum">    1366 </span><span class="lineCov">         21 :             if (it != end &amp;&amp; *it == '.')</span>
+<span class="lineNum">    1367 </span><span class="lineCov">          9 :                 ++it;</span>
+<span class="lineNum">    1368 </span><span class="lineCov">         21 :             consume_whitespace(it, end);</span>
+<span class="lineNum">    1369 </span><span class="lineCov">         21 :         }</span>
 <span class="lineNum">    1370 </span>            : 
 <span class="lineNum">    1371 </span>            :         // table already existed
-<span class="lineNum">    1372 </span><span class="lineCov">          4 :         if (!inserted)</span>
+<span class="lineNum">    1372 </span><span class="lineCov">         12 :         if (!inserted)</span>
 <span class="lineNum">    1373 </span>            :         {
 <a name="1374"><span class="lineNum">    1374 </span>            :             auto is_value</a>
 <span class="lineNum">    1375 </span>            :                 = [](const std::pair&lt;const std::string&amp;,
@@ -1451,56 +1451,56 @@
 <span class="lineNum">    1389 </span>            :             }
 <span class="lineNum">    1390 </span>            :         }
 <span class="lineNum">    1391 </span>            : 
-<span class="lineNum">    1392 </span><span class="lineCov">          4 :         ++it;</span>
-<span class="lineNum">    1393 </span><span class="lineCov">          4 :         consume_whitespace(it, end);</span>
-<span class="lineNum">    1394 </span><span class="lineCov">          4 :         eol_or_comment(it, end);</span>
-<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">          4 :     }</span></a>
+<span class="lineNum">    1392 </span><span class="lineCov">         12 :         ++it;</span>
+<span class="lineNum">    1393 </span><span class="lineCov">         12 :         consume_whitespace(it, end);</span>
+<span class="lineNum">    1394 </span><span class="lineCov">         12 :         eol_or_comment(it, end);</span>
+<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">         12 :     }</span></a>
 <span class="lineNum">    1396 </span>            : 
-<span class="lineNum">    1397 </span><span class="lineCov">          4 :     void parse_table_array(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1397 </span><span class="lineCov">         12 :     void parse_table_array(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1398 </span>            :                            const std::string::iterator&amp; end, table*&amp; curr_table)
 <span class="lineNum">    1399 </span>            :     {
-<span class="lineNum">    1400 </span><span class="lineCov">          4 :         ++it;</span>
-<span class="lineNum">    1401 </span><span class="lineCov">          4 :         if (it == end || *it == ']')</span>
+<span class="lineNum">    1400 </span><span class="lineCov">         12 :         ++it;</span>
+<span class="lineNum">    1401 </span><span class="lineCov">         12 :         if (it == end || *it == ']')</span>
 <span class="lineNum">    1402 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Table array name cannot be empty&quot;);</span>
 <span class="lineNum">    1403 </span>            : 
-<span class="lineNum">    1404 </span><span class="lineCov">          4 :         std::string full_ta_name;</span>
-<span class="lineNum">    1405 </span><span class="lineCov">         16 :         while (it != end &amp;&amp; *it != ']')</span>
+<span class="lineNum">    1404 </span><span class="lineCov">         12 :         std::string full_ta_name;</span>
+<span class="lineNum">    1405 </span><span class="lineCov">         48 :         while (it != end &amp;&amp; *it != ']')</span>
 <a name="1406"><span class="lineNum">    1406 </span>            :         {</a>
 <span class="lineNum">    1407 </span>            :             auto part = parse_key(it, end,
-<span class="lineNum">    1408 </span><span class="lineCov">         42 :                                   [](char c) { return c == '.' || c == ']'; });</span>
+<span class="lineNum">    1408 </span><span class="lineCov">        126 :                                   [](char c) { return c == '.' || c == ']'; });</span>
 <span class="lineNum">    1409 </span>            : 
-<span class="lineNum">    1410 </span><span class="lineCov">          8 :             if (part.empty())</span>
+<span class="lineNum">    1410 </span><span class="lineCov">         24 :             if (part.empty())</span>
 <span class="lineNum">    1411 </span><span class="lineNoCov">          0 :                 throw_parse_exception(&quot;Empty component of table array name&quot;);</span>
 <span class="lineNum">    1412 </span>            : 
-<span class="lineNum">    1413 </span><span class="lineCov">          8 :             if (!full_ta_name.empty())</span>
-<span class="lineNum">    1414 </span><span class="lineCov">          4 :                 full_ta_name += &quot;.&quot;;</span>
-<span class="lineNum">    1415 </span><span class="lineCov">          8 :             full_ta_name += part;</span>
+<span class="lineNum">    1413 </span><span class="lineCov">         24 :             if (!full_ta_name.empty())</span>
+<span class="lineNum">    1414 </span><span class="lineCov">         12 :                 full_ta_name += &quot;.&quot;;</span>
+<span class="lineNum">    1415 </span><span class="lineCov">         24 :             full_ta_name += part;</span>
 <span class="lineNum">    1416 </span>            : 
-<span class="lineNum">    1417 </span><span class="lineCov">          8 :             consume_whitespace(it, end);</span>
-<span class="lineNum">    1418 </span><span class="lineCov">          8 :             if (it != end &amp;&amp; *it == '.')</span>
-<span class="lineNum">    1419 </span><span class="lineCov">          4 :                 ++it;</span>
-<span class="lineNum">    1420 </span><span class="lineCov">          8 :             consume_whitespace(it, end);</span>
+<span class="lineNum">    1417 </span><span class="lineCov">         24 :             consume_whitespace(it, end);</span>
+<span class="lineNum">    1418 </span><span class="lineCov">         24 :             if (it != end &amp;&amp; *it == '.')</span>
+<span class="lineNum">    1419 </span><span class="lineCov">         12 :                 ++it;</span>
+<span class="lineNum">    1420 </span><span class="lineCov">         24 :             consume_whitespace(it, end);</span>
 <span class="lineNum">    1421 </span>            : 
-<span class="lineNum">    1422 </span><span class="lineCov">          8 :             if (curr_table-&gt;contains(part))</span>
+<span class="lineNum">    1422 </span><span class="lineCov">         24 :             if (curr_table-&gt;contains(part))</span>
 <span class="lineNum">    1423 </span>            :             {
-<span class="lineNum">    1424 </span><span class="lineCov">          6 :                 auto b = curr_table-&gt;get(part);</span>
+<span class="lineNum">    1424 </span><span class="lineCov">         18 :                 auto b = curr_table-&gt;get(part);</span>
 <span class="lineNum">    1425 </span>            : 
 <span class="lineNum">    1426 </span>            :                 // if this is the end of the table array name, add an
 <span class="lineNum">    1427 </span>            :                 // element to the table array that we just looked up
-<span class="lineNum">    1428 </span><span class="lineCov">          6 :                 if (it != end &amp;&amp; *it == ']')</span>
+<span class="lineNum">    1428 </span><span class="lineCov">         18 :                 if (it != end &amp;&amp; *it == ']')</span>
 <span class="lineNum">    1429 </span>            :                 {
-<span class="lineNum">    1430 </span><span class="lineCov">          2 :                     if (!b-&gt;is_table_array())</span>
+<span class="lineNum">    1430 </span><span class="lineCov">          6 :                     if (!b-&gt;is_table_array())</span>
 <span class="lineNum">    1431 </span><span class="lineNoCov">          0 :                         throw_parse_exception(&quot;Key &quot; + full_ta_name</span>
 <span class="lineNum">    1432 </span><span class="lineNoCov">          0 :                                               + &quot; is not a table array&quot;);</span>
-<span class="lineNum">    1433 </span><span class="lineCov">          2 :                     auto v = b-&gt;as_table_array();</span>
-<span class="lineNum">    1434 </span><span class="lineCov">          2 :                     v-&gt;get().push_back(make_table());</span>
-<span class="lineNum">    1435 </span><span class="lineCov">          2 :                     curr_table = v-&gt;get().back().get();</span>
+<span class="lineNum">    1433 </span><span class="lineCov">          6 :                     auto v = b-&gt;as_table_array();</span>
+<span class="lineNum">    1434 </span><span class="lineCov">          6 :                     v-&gt;get().push_back(make_table());</span>
+<span class="lineNum">    1435 </span><span class="lineCov">          6 :                     curr_table = v-&gt;get().back().get();</span>
 <span class="lineNum">    1436 </span>            :                 }
 <span class="lineNum">    1437 </span>            :                 // otherwise, just keep traversing down the key name
 <span class="lineNum">    1438 </span>            :                 else
 <span class="lineNum">    1439 </span>            :                 {
-<span class="lineNum">    1440 </span><span class="lineCov">          4 :                     if (b-&gt;is_table())</span>
-<span class="lineNum">    1441 </span><span class="lineCov">          4 :                         curr_table = static_cast&lt;table*&gt;(b.get());</span>
+<span class="lineNum">    1440 </span><span class="lineCov">         12 :                     if (b-&gt;is_table())</span>
+<span class="lineNum">    1441 </span><span class="lineCov">         12 :                         curr_table = static_cast&lt;table*&gt;(b.get());</span>
 <span class="lineNum">    1442 </span><span class="lineNoCov">          0 :                     else if (b-&gt;is_table_array())</span>
 <span class="lineNum">    1443 </span>            :                         curr_table = std::static_pointer_cast&lt;table_array&gt;(b)
 <span class="lineNum">    1444 </span><span class="lineNoCov">          0 :                                          -&gt;get()</span>
@@ -1509,20 +1509,20 @@
 <span class="lineNum">    1447 </span>            :                     else
 <span class="lineNum">    1448 </span><span class="lineNoCov">          0 :                         throw_parse_exception(&quot;Key &quot; + full_ta_name</span>
 <span class="lineNum">    1449 </span><span class="lineNoCov">          0 :                                               + &quot; already exists as a value&quot;);</span>
-<span class="lineNum">    1450 </span><span class="lineCov">          6 :                 }</span>
+<span class="lineNum">    1450 </span><span class="lineCov">         18 :                 }</span>
 <span class="lineNum">    1451 </span>            :             }
 <span class="lineNum">    1452 </span>            :             else
 <span class="lineNum">    1453 </span>            :             {
 <span class="lineNum">    1454 </span>            :                 // if this is the end of the table array name, add a new
 <span class="lineNum">    1455 </span>            :                 // table array and a new table inside that array for us to
 <span class="lineNum">    1456 </span>            :                 // add keys to next
-<span class="lineNum">    1457 </span><span class="lineCov">          2 :                 if (it != end &amp;&amp; *it == ']')</span>
+<span class="lineNum">    1457 </span><span class="lineCov">          6 :                 if (it != end &amp;&amp; *it == ']')</span>
 <span class="lineNum">    1458 </span>            :                 {
-<span class="lineNum">    1459 </span><span class="lineCov">          2 :                     curr_table-&gt;insert(part, make_table_array());</span>
+<span class="lineNum">    1459 </span><span class="lineCov">          6 :                     curr_table-&gt;insert(part, make_table_array());</span>
 <span class="lineNum">    1460 </span>            :                     auto arr = std::static_pointer_cast&lt;table_array&gt;(
-<span class="lineNum">    1461 </span><span class="lineCov">          2 :                         curr_table-&gt;get(part));</span>
-<span class="lineNum">    1462 </span><span class="lineCov">          2 :                     arr-&gt;get().push_back(make_table());</span>
-<span class="lineNum">    1463 </span><span class="lineCov">          2 :                     curr_table = arr-&gt;get().back().get();</span>
+<span class="lineNum">    1461 </span><span class="lineCov">          6 :                         curr_table-&gt;get(part));</span>
+<span class="lineNum">    1462 </span><span class="lineCov">          6 :                     arr-&gt;get().push_back(make_table());</span>
+<span class="lineNum">    1463 </span><span class="lineCov">          6 :                     curr_table = arr-&gt;get().back().get();</span>
 <span class="lineNum">    1464 </span>            :                 }
 <span class="lineNum">    1465 </span>            :                 // otherwise, create the implicitly defined table and move
 <span class="lineNum">    1466 </span>            :                 // down to it
@@ -1533,87 +1533,87 @@
 <span class="lineNum">    1471 </span><span class="lineNoCov">          0 :                         = static_cast&lt;table*&gt;(curr_table-&gt;get(part).get());</span>
 <span class="lineNum">    1472 </span>            :                 }
 <span class="lineNum">    1473 </span>            :             }
-<span class="lineNum">    1474 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">    1474 </span><span class="lineCov">         24 :         }</span>
 <span class="lineNum">    1475 </span>            : 
 <span class="lineNum">    1476 </span>            :         // consume the last &quot;]]&quot;
-<span class="lineNum">    1477 </span><span class="lineCov">          4 :         if (it == end)</span>
+<span class="lineNum">    1477 </span><span class="lineCov">         12 :         if (it == end)</span>
 <span class="lineNum">    1478 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Unterminated table array name&quot;);</span>
-<span class="lineNum">    1479 </span><span class="lineCov">          4 :         ++it;</span>
-<span class="lineNum">    1480 </span><span class="lineCov">          4 :         if (it == end)</span>
+<span class="lineNum">    1479 </span><span class="lineCov">         12 :         ++it;</span>
+<span class="lineNum">    1480 </span><span class="lineCov">         12 :         if (it == end)</span>
 <span class="lineNum">    1481 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Unterminated table array name&quot;);</span>
-<span class="lineNum">    1482 </span><span class="lineCov">          4 :         ++it;</span>
+<span class="lineNum">    1482 </span><span class="lineCov">         12 :         ++it;</span>
 <span class="lineNum">    1483 </span>            : 
-<span class="lineNum">    1484 </span><span class="lineCov">          4 :         consume_whitespace(it, end);</span>
-<span class="lineNum">    1485 </span><span class="lineCov">          4 :         eol_or_comment(it, end);</span>
-<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">          4 :     }</span></a>
+<span class="lineNum">    1484 </span><span class="lineCov">         12 :         consume_whitespace(it, end);</span>
+<span class="lineNum">    1485 </span><span class="lineCov">         12 :         eol_or_comment(it, end);</span>
+<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">         12 :     }</span></a>
 <span class="lineNum">    1487 </span>            : 
-<span class="lineNum">    1488 </span><span class="lineCov">         21 :     void parse_key_value(std::string::iterator&amp; it, std::string::iterator&amp; end,</span>
+<span class="lineNum">    1488 </span><span class="lineCov">         63 :     void parse_key_value(std::string::iterator&amp; it, std::string::iterator&amp; end,</span>
 <a name="1489"><span class="lineNum">    1489 </span>            :                          table* curr_table)</a>
 <span class="lineNum">    1490 </span>            :     {
-<span class="lineNum">    1491 </span><span class="lineCov">         89 :         auto key = parse_key(it, end, [](char c) { return c == '='; });</span>
-<span class="lineNum">    1492 </span><span class="lineCov">         21 :         if (curr_table-&gt;contains(key))</span>
+<span class="lineNum">    1491 </span><span class="lineCov">        267 :         auto key = parse_key(it, end, [](char c) { return c == '='; });</span>
+<span class="lineNum">    1492 </span><span class="lineCov">         63 :         if (curr_table-&gt;contains(key))</span>
 <span class="lineNum">    1493 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Key &quot; + key + &quot; already present&quot;);</span>
-<span class="lineNum">    1494 </span><span class="lineCov">         21 :         if (*it != '=')</span>
+<span class="lineNum">    1494 </span><span class="lineCov">         63 :         if (*it != '=')</span>
 <span class="lineNum">    1495 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Value must follow after a '='&quot;);</span>
-<span class="lineNum">    1496 </span><span class="lineCov">         21 :         ++it;</span>
-<span class="lineNum">    1497 </span><span class="lineCov">         21 :         consume_whitespace(it, end);</span>
-<span class="lineNum">    1498 </span><span class="lineCov">         21 :         curr_table-&gt;insert(key, parse_value(it, end));</span>
-<span class="lineNum">    1499 </span><span class="lineCov">         21 :         consume_whitespace(it, end);</span>
-<span class="lineNum">    1500 </span><span class="lineCov">         21 :     }</span>
+<span class="lineNum">    1496 </span><span class="lineCov">         63 :         ++it;</span>
+<span class="lineNum">    1497 </span><span class="lineCov">         63 :         consume_whitespace(it, end);</span>
+<span class="lineNum">    1498 </span><span class="lineCov">         63 :         curr_table-&gt;insert(key, parse_value(it, end));</span>
+<span class="lineNum">    1499 </span><span class="lineCov">         63 :         consume_whitespace(it, end);</span>
+<span class="lineNum">    1500 </span><span class="lineCov">         63 :     }</span>
 <a name="1501"><span class="lineNum">    1501 </span>            : </a>
 <span class="lineNum">    1502 </span>            :     template &lt;class Function&gt;
-<span class="lineNum">    1503 </span><span class="lineCov">         36 :     std::string parse_key(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1503 </span><span class="lineCov">        108 :     std::string parse_key(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1504 </span>            :                           const std::string::iterator&amp; end, Function&amp;&amp; fun)
 <span class="lineNum">    1505 </span>            :     {
-<span class="lineNum">    1506 </span><span class="lineCov">         36 :         consume_whitespace(it, end);</span>
-<span class="lineNum">    1507 </span><span class="lineCov">         36 :         if (*it == '&quot;')</span>
+<span class="lineNum">    1506 </span><span class="lineCov">        108 :         consume_whitespace(it, end);</span>
+<span class="lineNum">    1507 </span><span class="lineCov">        108 :         if (*it == '&quot;')</span>
 <span class="lineNum">    1508 </span>            :         {
 <span class="lineNum">    1509 </span><span class="lineNoCov">          0 :             return parse_quoted_key(it, end);</span>
 <span class="lineNum">    1510 </span>            :         }
 <span class="lineNum">    1511 </span>            :         else
 <span class="lineNum">    1512 </span>            :         {
-<span class="lineNum">    1513 </span><span class="lineCov">         36 :             auto bke = std::find_if(it, end, std::forward&lt;Function&gt;(fun));</span>
-<span class="lineNum">    1514 </span><span class="lineCov">         36 :             return parse_bare_key(it, bke);</span>
+<span class="lineNum">    1513 </span><span class="lineCov">        108 :             auto bke = std::find_if(it, end, std::forward&lt;Function&gt;(fun));</span>
+<span class="lineNum">    1514 </span><span class="lineCov">        108 :             return parse_bare_key(it, bke);</span>
 <span class="lineNum">    1515 </span>            :         }
 <a name="1516"><span class="lineNum">    1516 </span>            :     }</a>
 <span class="lineNum">    1517 </span>            : 
-<span class="lineNum">    1518 </span><span class="lineCov">         36 :     std::string parse_bare_key(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1518 </span><span class="lineCov">        108 :     std::string parse_bare_key(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1519 </span>            :                                const std::string::iterator&amp; end)
 <span class="lineNum">    1520 </span>            :     {
-<span class="lineNum">    1521 </span><span class="lineCov">         36 :         if (it == end)</span>
+<span class="lineNum">    1521 </span><span class="lineCov">        108 :         if (it == end)</span>
 <span class="lineNum">    1522 </span>            :         {
 <span class="lineNum">    1523 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Bare key missing name&quot;);</span>
 <span class="lineNum">    1524 </span>            :         }
 <span class="lineNum">    1525 </span>            : 
-<span class="lineNum">    1526 </span><span class="lineCov">         36 :         auto key_end = end;</span>
-<span class="lineNum">    1527 </span><span class="lineCov">         36 :         --key_end;</span>
-<span class="lineNum">    1528 </span><span class="lineCov">         36 :         consume_backwards_whitespace(key_end, it);</span>
-<span class="lineNum">    1529 </span><span class="lineCov">         36 :         ++key_end;</span>
-<span class="lineNum">    1530 </span><span class="lineCov">         36 :         std::string key{it, key_end};</span>
+<span class="lineNum">    1526 </span><span class="lineCov">        108 :         auto key_end = end;</span>
+<span class="lineNum">    1527 </span><span class="lineCov">        108 :         --key_end;</span>
+<span class="lineNum">    1528 </span><span class="lineCov">        108 :         consume_backwards_whitespace(key_end, it);</span>
+<span class="lineNum">    1529 </span><span class="lineCov">        108 :         ++key_end;</span>
+<span class="lineNum">    1530 </span><span class="lineCov">        108 :         std::string key{it, key_end};</span>
 <span class="lineNum">    1531 </span>            : 
-<span class="lineNum">    1532 </span><span class="lineCov">         36 :         if (std::find(it, key_end, '#') != key_end)</span>
+<span class="lineNum">    1532 </span><span class="lineCov">        108 :         if (std::find(it, key_end, '#') != key_end)</span>
 <span class="lineNum">    1533 </span>            :         {
 <span class="lineNum">    1534 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Bare key &quot; + key + &quot; cannot contain #&quot;);</span>
 <span class="lineNum">    1535 </span>            :         }
 <a name="1536"><span class="lineNum">    1536 </span>            : </a>
-<span class="lineNum">    1537 </span><span class="lineCov">         72 :         if (std::find_if(it, key_end,</span>
-<span class="lineNum">    1538 </span><span class="lineCov">        125 :                          [](char c) { return c == ' ' || c == '\t'; })</span>
-<span class="lineNum">    1539 </span><span class="lineCov">         72 :             != key_end)</span>
+<span class="lineNum">    1537 </span><span class="lineCov">        216 :         if (std::find_if(it, key_end,</span>
+<span class="lineNum">    1538 </span><span class="lineCov">        375 :                          [](char c) { return c == ' ' || c == '\t'; })</span>
+<span class="lineNum">    1539 </span><span class="lineCov">        216 :             != key_end)</span>
 <span class="lineNum">    1540 </span>            :         {
 <span class="lineNum">    1541 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Bare key &quot; + key</span>
 <span class="lineNum">    1542 </span><span class="lineNoCov">          0 :                                   + &quot; cannot contain whitespace&quot;);</span>
 <span class="lineNum">    1543 </span>            :         }
 <a name="1544"><span class="lineNum">    1544 </span>            : </a>
-<span class="lineNum">    1545 </span><span class="lineCov">         72 :         if (std::find_if(it, key_end,</span>
-<span class="lineNum">    1546 </span><span class="lineCov">        125 :                          [](char c) { return c == '[' || c == ']'; })</span>
-<span class="lineNum">    1547 </span><span class="lineCov">         72 :             != key_end)</span>
+<span class="lineNum">    1545 </span><span class="lineCov">        216 :         if (std::find_if(it, key_end,</span>
+<span class="lineNum">    1546 </span><span class="lineCov">        375 :                          [](char c) { return c == '[' || c == ']'; })</span>
+<span class="lineNum">    1547 </span><span class="lineCov">        216 :             != key_end)</span>
 <span class="lineNum">    1548 </span>            :         {
 <span class="lineNum">    1549 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Bare key &quot; + key</span>
 <span class="lineNum">    1550 </span><span class="lineNoCov">          0 :                                   + &quot; cannot contain '[' or ']'&quot;);</span>
 <span class="lineNum">    1551 </span>            :         }
 <span class="lineNum">    1552 </span>            : 
-<span class="lineNum">    1553 </span><span class="lineCov">         36 :         it = end;</span>
-<span class="lineNum">    1554 </span><span class="lineCov">         36 :         return key;</span>
+<span class="lineNum">    1553 </span><span class="lineCov">        108 :         it = end;</span>
+<span class="lineNum">    1554 </span><span class="lineCov">        108 :         return key;</span>
 <a name="1555"><span class="lineNum">    1555 </span>            :     }</a>
 <span class="lineNum">    1556 </span>            : 
 <span class="lineNum">    1557 </span><span class="lineNoCov">          0 :     std::string parse_quoted_key(std::string::iterator&amp; it,</span>
@@ -1633,21 +1633,21 @@
 <span class="lineNum">    1571 </span>            :         INLINE_TABLE
 <a name="1572"><span class="lineNum">    1572 </span>            :     };</a>
 <span class="lineNum">    1573 </span>            : 
-<span class="lineNum">    1574 </span><span class="lineCov">         21 :     std::shared_ptr&lt;base&gt; parse_value(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1574 </span><span class="lineCov">         63 :     std::shared_ptr&lt;base&gt; parse_value(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1575 </span>            :                                       std::string::iterator&amp; end)
 <span class="lineNum">    1576 </span>            :     {
-<span class="lineNum">    1577 </span><span class="lineCov">         21 :         parse_type type = determine_value_type(it, end);</span>
-<span class="lineNum">    1578 </span><span class="lineCov">         21 :         switch (type)</span>
+<span class="lineNum">    1577 </span><span class="lineCov">         63 :         parse_type type = determine_value_type(it, end);</span>
+<span class="lineNum">    1578 </span><span class="lineCov">         63 :         switch (type)</span>
 <span class="lineNum">    1579 </span>            :         {
 <span class="lineNum">    1580 </span>            :             case parse_type::STRING:
-<span class="lineNum">    1581 </span><span class="lineCov">          4 :                 return parse_string(it, end);</span>
+<span class="lineNum">    1581 </span><span class="lineCov">         12 :                 return parse_string(it, end);</span>
 <span class="lineNum">    1582 </span>            :             case parse_type::DATE:
-<span class="lineNum">    1583 </span><span class="lineCov">          3 :                 return parse_date(it, end);</span>
+<span class="lineNum">    1583 </span><span class="lineCov">          9 :                 return parse_date(it, end);</span>
 <span class="lineNum">    1584 </span>            :             case parse_type::INT:
 <span class="lineNum">    1585 </span>            :             case parse_type::FLOAT:
-<span class="lineNum">    1586 </span><span class="lineCov">         11 :                 return parse_number(it, end);</span>
+<span class="lineNum">    1586 </span><span class="lineCov">         33 :                 return parse_number(it, end);</span>
 <span class="lineNum">    1587 </span>            :             case parse_type::BOOL:
-<span class="lineNum">    1588 </span><span class="lineCov">          3 :                 return parse_bool(it, end);</span>
+<span class="lineNum">    1588 </span><span class="lineCov">          9 :                 return parse_bool(it, end);</span>
 <span class="lineNum">    1589 </span>            :             case parse_type::ARRAY:
 <span class="lineNum">    1590 </span><span class="lineNoCov">          0 :                 return parse_array(it, end);</span>
 <span class="lineNum">    1591 </span>            :             case parse_type::INLINE_TABLE:
@@ -1657,24 +1657,24 @@
 <span class="lineNum">    1595 </span>            :         }
 <a name="1596"><span class="lineNum">    1596 </span>            :     }</a>
 <span class="lineNum">    1597 </span>            : 
-<span class="lineNum">    1598 </span><span class="lineCov">         21 :     parse_type determine_value_type(const std::string::iterator&amp; it,</span>
+<span class="lineNum">    1598 </span><span class="lineCov">         63 :     parse_type determine_value_type(const std::string::iterator&amp; it,</span>
 <span class="lineNum">    1599 </span>            :                                     const std::string::iterator&amp; end)
 <span class="lineNum">    1600 </span>            :     {
-<span class="lineNum">    1601 </span><span class="lineCov">         21 :         if (*it == '&quot;' || *it == '\'')</span>
+<span class="lineNum">    1601 </span><span class="lineCov">         63 :         if (*it == '&quot;' || *it == '\'')</span>
 <span class="lineNum">    1602 </span>            :         {
-<span class="lineNum">    1603 </span><span class="lineCov">          4 :             return parse_type::STRING;</span>
+<span class="lineNum">    1603 </span><span class="lineCov">         12 :             return parse_type::STRING;</span>
 <span class="lineNum">    1604 </span>            :         }
-<span class="lineNum">    1605 </span><span class="lineCov">         17 :         else if (is_date(it, end))</span>
+<span class="lineNum">    1605 </span><span class="lineCov">         51 :         else if (is_date(it, end))</span>
 <span class="lineNum">    1606 </span>            :         {
-<span class="lineNum">    1607 </span><span class="lineCov">          3 :             return parse_type::DATE;</span>
+<span class="lineNum">    1607 </span><span class="lineCov">          9 :             return parse_type::DATE;</span>
 <span class="lineNum">    1608 </span>            :         }
-<span class="lineNum">    1609 </span><span class="lineCov">         14 :         else if (is_number(*it) || *it == '-' || *it == '+')</span>
+<span class="lineNum">    1609 </span><span class="lineCov">         42 :         else if (is_number(*it) || *it == '-' || *it == '+')</span>
 <span class="lineNum">    1610 </span>            :         {
-<span class="lineNum">    1611 </span><span class="lineCov">         11 :             return determine_number_type(it, end);</span>
+<span class="lineNum">    1611 </span><span class="lineCov">         33 :             return determine_number_type(it, end);</span>
 <span class="lineNum">    1612 </span>            :         }
-<span class="lineNum">    1613 </span><span class="lineCov">          3 :         else if (*it == 't' || *it == 'f')</span>
+<span class="lineNum">    1613 </span><span class="lineCov">          9 :         else if (*it == 't' || *it == 'f')</span>
 <span class="lineNum">    1614 </span>            :         {
-<span class="lineNum">    1615 </span><span class="lineCov">          3 :             return parse_type::BOOL;</span>
+<span class="lineNum">    1615 </span><span class="lineCov">          9 :             return parse_type::BOOL;</span>
 <span class="lineNum">    1616 </span>            :         }
 <span class="lineNum">    1617 </span><span class="lineNoCov">          0 :         else if (*it == '[')</span>
 <span class="lineNum">    1618 </span>            :         {
@@ -1687,39 +1687,39 @@
 <span class="lineNum">    1625 </span><span class="lineNoCov">          0 :         throw_parse_exception(&quot;Failed to parse value type&quot;);</span>
 <a name="1626"><span class="lineNum">    1626 </span>            :     }</a>
 <span class="lineNum">    1627 </span>            : 
-<span class="lineNum">    1628 </span><span class="lineCov">         11 :     parse_type determine_number_type(const std::string::iterator&amp; it,</span>
+<span class="lineNum">    1628 </span><span class="lineCov">         33 :     parse_type determine_number_type(const std::string::iterator&amp; it,</span>
 <span class="lineNum">    1629 </span>            :                                      const std::string::iterator&amp; end)
 <span class="lineNum">    1630 </span>            :     {
 <span class="lineNum">    1631 </span>            :         // determine if we are an integer or a float
-<span class="lineNum">    1632 </span><span class="lineCov">         11 :         auto check_it = it;</span>
-<span class="lineNum">    1633 </span><span class="lineCov">         11 :         if (*check_it == '-' || *check_it == '+')</span>
+<span class="lineNum">    1632 </span><span class="lineCov">         33 :         auto check_it = it;</span>
+<span class="lineNum">    1633 </span><span class="lineCov">         33 :         if (*check_it == '-' || *check_it == '+')</span>
 <span class="lineNum">    1634 </span><span class="lineNoCov">          0 :             ++check_it;</span>
-<span class="lineNum">    1635 </span><span class="lineCov">         36 :         while (check_it != end &amp;&amp; is_number(*check_it))</span>
-<span class="lineNum">    1636 </span><span class="lineCov">         14 :             ++check_it;</span>
-<span class="lineNum">    1637 </span><span class="lineCov">         11 :         if (check_it != end &amp;&amp; *check_it == '.')</span>
+<span class="lineNum">    1635 </span><span class="lineCov">        108 :         while (check_it != end &amp;&amp; is_number(*check_it))</span>
+<span class="lineNum">    1636 </span><span class="lineCov">         42 :             ++check_it;</span>
+<span class="lineNum">    1637 </span><span class="lineCov">         33 :         if (check_it != end &amp;&amp; *check_it == '.')</span>
 <span class="lineNum">    1638 </span>            :         {
-<span class="lineNum">    1639 </span><span class="lineCov">          3 :             ++check_it;</span>
-<span class="lineNum">    1640 </span><span class="lineCov">          9 :             while (check_it != end &amp;&amp; is_number(*check_it))</span>
-<span class="lineNum">    1641 </span><span class="lineCov">          3 :                 ++check_it;</span>
-<span class="lineNum">    1642 </span><span class="lineCov">          3 :             return parse_type::FLOAT;</span>
+<span class="lineNum">    1639 </span><span class="lineCov">          9 :             ++check_it;</span>
+<span class="lineNum">    1640 </span><span class="lineCov">         27 :             while (check_it != end &amp;&amp; is_number(*check_it))</span>
+<span class="lineNum">    1641 </span><span class="lineCov">          9 :                 ++check_it;</span>
+<span class="lineNum">    1642 </span><span class="lineCov">          9 :             return parse_type::FLOAT;</span>
 <span class="lineNum">    1643 </span>            :         }
 <span class="lineNum">    1644 </span>            :         else
 <span class="lineNum">    1645 </span>            :         {
-<span class="lineNum">    1646 </span><span class="lineCov">          8 :             return parse_type::INT;</span>
+<span class="lineNum">    1646 </span><span class="lineCov">         24 :             return parse_type::INT;</span>
 <span class="lineNum">    1647 </span>            :         }
 <a name="1648"><span class="lineNum">    1648 </span>            :     }</a>
 <span class="lineNum">    1649 </span>            : 
-<span class="lineNum">    1650 </span><span class="lineCov">          4 :     std::shared_ptr&lt;value&lt;std::string&gt;&gt; parse_string(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1650 </span><span class="lineCov">         12 :     std::shared_ptr&lt;value&lt;std::string&gt;&gt; parse_string(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1651 </span>            :                                                      std::string::iterator&amp; end)
 <span class="lineNum">    1652 </span>            :     {
-<span class="lineNum">    1653 </span><span class="lineCov">          4 :         auto delim = *it;</span>
-<span class="lineNum">    1654 </span><span class="lineCov">          4 :         assert(delim == '&quot;' || delim == '\'');</span>
+<span class="lineNum">    1653 </span><span class="lineCov">         12 :         auto delim = *it;</span>
+<span class="lineNum">    1654 </span><span class="lineCov">         12 :         assert(delim == '&quot;' || delim == '\'');</span>
 <span class="lineNum">    1655 </span>            : 
 <span class="lineNum">    1656 </span>            :         // end is non-const here because we have to be able to potentially
 <span class="lineNum">    1657 </span>            :         // parse multiple lines in a string, not just one
-<span class="lineNum">    1658 </span><span class="lineCov">          4 :         auto check_it = it;</span>
-<span class="lineNum">    1659 </span><span class="lineCov">          4 :         ++check_it;</span>
-<span class="lineNum">    1660 </span><span class="lineCov">          4 :         if (check_it != end &amp;&amp; *check_it == delim)</span>
+<span class="lineNum">    1658 </span><span class="lineCov">         12 :         auto check_it = it;</span>
+<span class="lineNum">    1659 </span><span class="lineCov">         12 :         ++check_it;</span>
+<span class="lineNum">    1660 </span><span class="lineCov">         12 :         if (check_it != end &amp;&amp; *check_it == delim)</span>
 <span class="lineNum">    1661 </span>            :         {
 <span class="lineNum">    1662 </span><span class="lineNoCov">          0 :             ++check_it;</span>
 <span class="lineNum">    1663 </span><span class="lineNoCov">          0 :             if (check_it != end &amp;&amp; *check_it == delim)</span>
@@ -1728,7 +1728,7 @@
 <span class="lineNum">    1666 </span><span class="lineNoCov">          0 :                 return parse_multiline_string(it, end, delim);</span>
 <span class="lineNum">    1667 </span>            :             }
 <span class="lineNum">    1668 </span>            :         }
-<span class="lineNum">    1669 </span><span class="lineCov">          4 :         return make_value&lt;std::string&gt;(string_literal(it, end, delim));</span>
+<span class="lineNum">    1669 </span><span class="lineCov">         12 :         return make_value&lt;std::string&gt;(string_literal(it, end, delim));</span>
 <span class="lineNum">    1670 </span>            :     }
 <a name="1671"><span class="lineNum">    1671 </span>            : </a>
 <span class="lineNum">    1672 </span>            :     std::shared_ptr&lt;value&lt;std::string&gt;&gt;
@@ -1817,27 +1817,27 @@
 <span class="lineNum">    1755 </span><span class="lineNoCov">          0 :         throw_parse_exception(&quot;Unterminated multi-line basic string&quot;);</span>
 <a name="1756"><span class="lineNum">    1756 </span>            :     }</a>
 <span class="lineNum">    1757 </span>            : 
-<span class="lineNum">    1758 </span><span class="lineCov">          4 :     std::string string_literal(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1758 </span><span class="lineCov">         12 :     std::string string_literal(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1759 </span>            :                                const std::string::iterator&amp; end, char delim)
 <span class="lineNum">    1760 </span>            :     {
-<span class="lineNum">    1761 </span><span class="lineCov">          4 :         ++it;</span>
-<span class="lineNum">    1762 </span><span class="lineCov">          4 :         std::string val;</span>
-<span class="lineNum">    1763 </span><span class="lineCov">         52 :         while (it != end)</span>
+<span class="lineNum">    1761 </span><span class="lineCov">         12 :         ++it;</span>
+<span class="lineNum">    1762 </span><span class="lineCov">         12 :         std::string val;</span>
+<span class="lineNum">    1763 </span><span class="lineCov">        156 :         while (it != end)</span>
 <span class="lineNum">    1764 </span>            :         {
 <span class="lineNum">    1765 </span>            :             // handle escaped characters
-<span class="lineNum">    1766 </span><span class="lineCov">         48 :             if (delim == '&quot;' &amp;&amp; *it == '\\')</span>
+<span class="lineNum">    1766 </span><span class="lineCov">        144 :             if (delim == '&quot;' &amp;&amp; *it == '\\')</span>
 <span class="lineNum">    1767 </span>            :             {
 <span class="lineNum">    1768 </span><span class="lineNoCov">          0 :                 val += parse_escape_code(it, end);</span>
 <span class="lineNum">    1769 </span>            :             }
-<span class="lineNum">    1770 </span><span class="lineCov">         48 :             else if (*it == delim)</span>
+<span class="lineNum">    1770 </span><span class="lineCov">        144 :             else if (*it == delim)</span>
 <span class="lineNum">    1771 </span>            :             {
-<span class="lineNum">    1772 </span><span class="lineCov">          4 :                 ++it;</span>
-<span class="lineNum">    1773 </span><span class="lineCov">          4 :                 consume_whitespace(it, end);</span>
-<span class="lineNum">    1774 </span><span class="lineCov">          8 :                 return val;</span>
+<span class="lineNum">    1772 </span><span class="lineCov">         12 :                 ++it;</span>
+<span class="lineNum">    1773 </span><span class="lineCov">         12 :                 consume_whitespace(it, end);</span>
+<span class="lineNum">    1774 </span><span class="lineCov">         24 :                 return val;</span>
 <span class="lineNum">    1775 </span>            :             }
 <span class="lineNum">    1776 </span>            :             else
 <span class="lineNum">    1777 </span>            :             {
-<span class="lineNum">    1778 </span><span class="lineCov">         44 :                 val += *it++;</span>
+<span class="lineNum">    1778 </span><span class="lineCov">        132 :                 val += *it++;</span>
 <span class="lineNum">    1779 </span>            :             }
 <span class="lineNum">    1780 </span>            :         }
 <span class="lineNum">    1781 </span><span class="lineNoCov">          0 :         throw_parse_exception(&quot;Unterminated string literal&quot;);</span>
@@ -1886,25 +1886,25 @@
 <span class="lineNum">    1824 </span><span class="lineNoCov">          0 :         return value;</span>
 <a name="1825"><span class="lineNum">    1825 </span>            :     }</a>
 <span class="lineNum">    1826 </span>            : 
-<span class="lineNum">    1827 </span><span class="lineCov">         11 :     std::shared_ptr&lt;base&gt; parse_number(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1827 </span><span class="lineCov">         33 :     std::shared_ptr&lt;base&gt; parse_number(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1828 </span>            :                                        const std::string::iterator&amp; end)
 <span class="lineNum">    1829 </span>            :     {
 <span class="lineNum">    1830 </span>            :         // determine if we are an integer or a float
-<a name="1831"><span class="lineNum">    1831 </span><span class="lineCov">         11 :         auto check_it = it;</span></a>
+<a name="1831"><span class="lineNum">    1831 </span><span class="lineCov">         33 :         auto check_it = it;</span></a>
 <span class="lineNum">    1832 </span>            : 
-<span class="lineNum">    1833 </span><span class="lineCov">         11 :         auto eat_sign = [&amp;]() {</span>
-<span class="lineNum">    1834 </span><span class="lineCov">         11 :             if (check_it != end &amp;&amp; (*check_it == '-' || *check_it == '+'))</span>
+<span class="lineNum">    1833 </span><span class="lineCov">         33 :         auto eat_sign = [&amp;]() {</span>
+<span class="lineNum">    1834 </span><span class="lineCov">         33 :             if (check_it != end &amp;&amp; (*check_it == '-' || *check_it == '+'))</span>
 <span class="lineNum">    1835 </span><span class="lineNoCov">          0 :                 ++check_it;</span>
-<span class="lineNum">    1836 </span><span class="lineCov">         22 :         };</span>
+<span class="lineNum">    1836 </span><span class="lineCov">         66 :         };</span>
 <span class="lineNum">    1837 </span>            : 
-<a name="1838"><span class="lineNum">    1838 </span><span class="lineCov">         11 :         eat_sign();</span></a>
+<a name="1838"><span class="lineNum">    1838 </span><span class="lineCov">         33 :         eat_sign();</span></a>
 <span class="lineNum">    1839 </span>            : 
-<span class="lineNum">    1840 </span><span class="lineCov">         14 :         auto eat_numbers = [&amp;]() {</span>
-<span class="lineNum">    1841 </span><span class="lineCov">         14 :             auto beg = check_it;</span>
-<span class="lineNum">    1842 </span><span class="lineCov">         45 :             while (check_it != end &amp;&amp; is_number(*check_it))</span>
+<span class="lineNum">    1840 </span><span class="lineCov">         42 :         auto eat_numbers = [&amp;]() {</span>
+<span class="lineNum">    1841 </span><span class="lineCov">         42 :             auto beg = check_it;</span>
+<span class="lineNum">    1842 </span><span class="lineCov">        135 :             while (check_it != end &amp;&amp; is_number(*check_it))</span>
 <span class="lineNum">    1843 </span>            :             {
-<span class="lineNum">    1844 </span><span class="lineCov">         17 :                 ++check_it;</span>
-<span class="lineNum">    1845 </span><span class="lineCov">         17 :                 if (check_it != end &amp;&amp; *check_it == '_')</span>
+<span class="lineNum">    1844 </span><span class="lineCov">         51 :                 ++check_it;</span>
+<span class="lineNum">    1845 </span><span class="lineCov">         51 :                 if (check_it != end &amp;&amp; *check_it == '_')</span>
 <span class="lineNum">    1846 </span>            :                 {
 <span class="lineNum">    1847 </span><span class="lineNoCov">          0 :                     ++check_it;</span>
 <span class="lineNum">    1848 </span><span class="lineNoCov">          0 :                     if (check_it == end || !is_number(*check_it))</span>
@@ -1912,51 +1912,51 @@
 <span class="lineNum">    1850 </span>            :                 }
 <span class="lineNum">    1851 </span>            :             }
 <span class="lineNum">    1852 </span>            : 
-<span class="lineNum">    1853 </span><span class="lineCov">         14 :             if (check_it == beg)</span>
+<span class="lineNum">    1853 </span><span class="lineCov">         42 :             if (check_it == beg)</span>
 <span class="lineNum">    1854 </span><span class="lineNoCov">          0 :                 throw_parse_exception(&quot;Malformed number&quot;);</span>
-<span class="lineNum">    1855 </span><span class="lineCov">         25 :         };</span>
+<span class="lineNum">    1855 </span><span class="lineCov">         75 :         };</span>
 <span class="lineNum">    1856 </span>            : 
-<span class="lineNum">    1857 </span><span class="lineCov">         11 :         eat_numbers();</span>
+<span class="lineNum">    1857 </span><span class="lineCov">         33 :         eat_numbers();</span>
 <span class="lineNum">    1858 </span>            : 
-<span class="lineNum">    1859 </span><span class="lineCov">         22 :         if (check_it != end</span>
-<span class="lineNum">    1860 </span><span class="lineCov">         11 :             &amp;&amp; (*check_it == '.' || *check_it == 'e' || *check_it == 'E'))</span>
+<span class="lineNum">    1859 </span><span class="lineCov">         66 :         if (check_it != end</span>
+<span class="lineNum">    1860 </span><span class="lineCov">         33 :             &amp;&amp; (*check_it == '.' || *check_it == 'e' || *check_it == 'E'))</span>
 <span class="lineNum">    1861 </span>            :         {
-<span class="lineNum">    1862 </span><span class="lineCov">          3 :             bool is_exp = *check_it == 'e' || *check_it == 'E';</span>
+<span class="lineNum">    1862 </span><span class="lineCov">          9 :             bool is_exp = *check_it == 'e' || *check_it == 'E';</span>
 <span class="lineNum">    1863 </span>            : 
-<span class="lineNum">    1864 </span><span class="lineCov">          3 :             ++check_it;</span>
-<span class="lineNum">    1865 </span><span class="lineCov">          3 :             if (check_it == end)</span>
+<span class="lineNum">    1864 </span><span class="lineCov">          9 :             ++check_it;</span>
+<span class="lineNum">    1865 </span><span class="lineCov">          9 :             if (check_it == end)</span>
 <span class="lineNum">    1866 </span><span class="lineNoCov">          0 :                 throw_parse_exception(&quot;Floats must have trailing digits&quot;);</span>
 <span class="lineNum">    1867 </span>            : 
-<span class="lineNum">    1868 </span><span class="lineCov">          3 :             if (is_exp)</span>
+<span class="lineNum">    1868 </span><span class="lineCov">          9 :             if (is_exp)</span>
 <span class="lineNum">    1869 </span><span class="lineNoCov">          0 :                 eat_sign();</span>
 <span class="lineNum">    1870 </span>            : 
-<span class="lineNum">    1871 </span><span class="lineCov">          3 :             eat_numbers();</span>
+<span class="lineNum">    1871 </span><span class="lineCov">          9 :             eat_numbers();</span>
 <span class="lineNum">    1872 </span>            : 
-<span class="lineNum">    1873 </span><span class="lineCov">          9 :             if (!is_exp &amp;&amp; check_it != end</span>
-<span class="lineNum">    1874 </span><span class="lineCov">          6 :                 &amp;&amp; (*check_it == 'e' || *check_it == 'E'))</span>
+<span class="lineNum">    1873 </span><span class="lineCov">         27 :             if (!is_exp &amp;&amp; check_it != end</span>
+<span class="lineNum">    1874 </span><span class="lineCov">         18 :                 &amp;&amp; (*check_it == 'e' || *check_it == 'E'))</span>
 <span class="lineNum">    1875 </span>            :             {
 <span class="lineNum">    1876 </span><span class="lineNoCov">          0 :                 ++check_it;</span>
 <span class="lineNum">    1877 </span><span class="lineNoCov">          0 :                 eat_sign();</span>
 <span class="lineNum">    1878 </span><span class="lineNoCov">          0 :                 eat_numbers();</span>
 <span class="lineNum">    1879 </span>            :             }
 <span class="lineNum">    1880 </span>            : 
-<span class="lineNum">    1881 </span><span class="lineCov">          3 :             return parse_float(it, check_it);</span>
+<span class="lineNum">    1881 </span><span class="lineCov">          9 :             return parse_float(it, check_it);</span>
 <span class="lineNum">    1882 </span>            :         }
 <span class="lineNum">    1883 </span>            :         else
 <span class="lineNum">    1884 </span>            :         {
-<span class="lineNum">    1885 </span><span class="lineCov">          8 :             return parse_int(it, check_it);</span>
+<span class="lineNum">    1885 </span><span class="lineCov">         24 :             return parse_int(it, check_it);</span>
 <span class="lineNum">    1886 </span>            :         }
 <a name="1887"><span class="lineNum">    1887 </span>            :     }</a>
 <span class="lineNum">    1888 </span>            : 
-<span class="lineNum">    1889 </span><span class="lineCov">          8 :     std::shared_ptr&lt;value&lt;int64_t&gt;&gt; parse_int(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1889 </span><span class="lineCov">         24 :     std::shared_ptr&lt;value&lt;int64_t&gt;&gt; parse_int(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1890 </span>            :                                               const std::string::iterator&amp; end)
 <span class="lineNum">    1891 </span>            :     {
-<span class="lineNum">    1892 </span><span class="lineCov">          8 :         std::string v{it, end};</span>
-<span class="lineNum">    1893 </span><span class="lineCov">          8 :         v.erase(std::remove(v.begin(), v.end(), '_'), v.end());</span>
-<span class="lineNum">    1894 </span><span class="lineCov">          8 :         it = end;</span>
+<span class="lineNum">    1892 </span><span class="lineCov">         24 :         std::string v{it, end};</span>
+<span class="lineNum">    1893 </span><span class="lineCov">         24 :         v.erase(std::remove(v.begin(), v.end(), '_'), v.end());</span>
+<span class="lineNum">    1894 </span><span class="lineCov">         24 :         it = end;</span>
 <span class="lineNum">    1895 </span>            :         try
 <span class="lineNum">    1896 </span>            :         {
-<span class="lineNum">    1897 </span><span class="lineCov">         16 :             return make_value&lt;int64_t&gt;(std::stoll(v));</span>
+<span class="lineNum">    1897 </span><span class="lineCov">         48 :             return make_value&lt;int64_t&gt;(std::stoll(v));</span>
 <span class="lineNum">    1898 </span>            :         }
 <span class="lineNum">    1899 </span><span class="lineNoCov">          0 :         catch (const std::invalid_argument&amp; ex)</span>
 <span class="lineNum">    1900 </span>            :         {
@@ -1967,18 +1967,18 @@
 <span class="lineNum">    1905 </span>            :         {
 <span class="lineNum">    1906 </span>            :             throw_parse_exception(&quot;Malformed number (out of range: &quot;
 <span class="lineNum">    1907 </span><span class="lineNoCov">          0 :                                   + std::string{ex.what()} + &quot;)&quot;);</span>
-<span class="lineNum">    1908 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">    1908 </span><span class="lineCov">         24 :         }</span>
 <a name="1909"><span class="lineNum">    1909 </span>            :     }</a>
 <span class="lineNum">    1910 </span>            : 
-<span class="lineNum">    1911 </span><span class="lineCov">          3 :     std::shared_ptr&lt;value&lt;double&gt;&gt; parse_float(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1911 </span><span class="lineCov">          9 :     std::shared_ptr&lt;value&lt;double&gt;&gt; parse_float(std::string::iterator&amp; it,</span>
 <span class="lineNum">    1912 </span>            :                                                const std::string::iterator&amp; end)
 <span class="lineNum">    1913 </span>            :     {
-<span class="lineNum">    1914 </span><span class="lineCov">          3 :         std::string v{it, end};</span>
-<span class="lineNum">    1915 </span><span class="lineCov">          3 :         v.erase(std::remove(v.begin(), v.end(), '_'), v.end());</span>
-<span class="lineNum">    1916 </span><span class="lineCov">          3 :         it = end;</span>
+<span class="lineNum">    1914 </span><span class="lineCov">          9 :         std::string v{it, end};</span>
+<span class="lineNum">    1915 </span><span class="lineCov">          9 :         v.erase(std::remove(v.begin(), v.end(), '_'), v.end());</span>
+<span class="lineNum">    1916 </span><span class="lineCov">          9 :         it = end;</span>
 <span class="lineNum">    1917 </span>            :         try
 <span class="lineNum">    1918 </span>            :         {
-<span class="lineNum">    1919 </span><span class="lineCov">          6 :             return make_value&lt;double&gt;(std::stod(v));</span>
+<span class="lineNum">    1919 </span><span class="lineCov">         18 :             return make_value&lt;double&gt;(std::stod(v));</span>
 <span class="lineNum">    1920 </span>            :         }
 <span class="lineNum">    1921 </span><span class="lineNoCov">          0 :         catch (const std::invalid_argument&amp; ex)</span>
 <span class="lineNum">    1922 </span>            :         {
@@ -1989,102 +1989,102 @@
 <span class="lineNum">    1927 </span>            :         {
 <span class="lineNum">    1928 </span>            :             throw_parse_exception(&quot;Malformed number (out of range: &quot;
 <span class="lineNum">    1929 </span><span class="lineNoCov">          0 :                                   + std::string{ex.what()} + &quot;)&quot;);</span>
-<span class="lineNum">    1930 </span><span class="lineCov">          3 :         }</span>
+<span class="lineNum">    1930 </span><span class="lineCov">          9 :         }</span>
 <a name="1931"><span class="lineNum">    1931 </span>            :     }</a>
 <span class="lineNum">    1932 </span>            : 
-<span class="lineNum">    1933 </span><span class="lineCov">          3 :     std::shared_ptr&lt;value&lt;bool&gt;&gt; parse_bool(std::string::iterator&amp; it,</span>
+<span class="lineNum">    1933 </span><span class="lineCov">          9 :     std::shared_ptr&lt;value&lt;bool&gt;&gt; parse_bool(std::string::iterator&amp; it,</span>
 <a name="1934"><span class="lineNum">    1934 </span>            :                                             const std::string::iterator&amp; end)</a>
 <span class="lineNum">    1935 </span>            :     {
-<span class="lineNum">    1936 </span><span class="lineCov">         16 :         auto boolend = std::find_if(it, end, [](char c) {</span>
-<span class="lineNum">    1937 </span><span class="lineCov">         16 :             return c == ' ' || c == '\t' || c == '#' || c == ',' || c == ']';</span>
-<span class="lineNum">    1938 </span><span class="lineCov">         19 :         });</span>
-<span class="lineNum">    1939 </span><span class="lineCov">          3 :         std::string v{it, boolend};</span>
-<span class="lineNum">    1940 </span><span class="lineCov">          3 :         it = boolend;</span>
-<span class="lineNum">    1941 </span><span class="lineCov">          3 :         if (v == &quot;true&quot;)</span>
-<span class="lineNum">    1942 </span><span class="lineCov">          2 :             return make_value&lt;bool&gt;(true);</span>
-<span class="lineNum">    1943 </span><span class="lineCov">          1 :         else if (v == &quot;false&quot;)</span>
-<span class="lineNum">    1944 </span><span class="lineCov">          1 :             return make_value&lt;bool&gt;(false);</span>
+<span class="lineNum">    1936 </span><span class="lineCov">         48 :         auto boolend = std::find_if(it, end, [](char c) {</span>
+<span class="lineNum">    1937 </span><span class="lineCov">         48 :             return c == ' ' || c == '\t' || c == '#' || c == ',' || c == ']';</span>
+<span class="lineNum">    1938 </span><span class="lineCov">         57 :         });</span>
+<span class="lineNum">    1939 </span><span class="lineCov">          9 :         std::string v{it, boolend};</span>
+<span class="lineNum">    1940 </span><span class="lineCov">          9 :         it = boolend;</span>
+<span class="lineNum">    1941 </span><span class="lineCov">          9 :         if (v == &quot;true&quot;)</span>
+<span class="lineNum">    1942 </span><span class="lineCov">          6 :             return make_value&lt;bool&gt;(true);</span>
+<span class="lineNum">    1943 </span><span class="lineCov">          3 :         else if (v == &quot;false&quot;)</span>
+<span class="lineNum">    1944 </span><span class="lineCov">          3 :             return make_value&lt;bool&gt;(false);</span>
 <span class="lineNum">    1945 </span>            :         else
 <span class="lineNum">    1946 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Attempted to parse invalid boolean value&quot;);</span>
 <a name="1947"><span class="lineNum">    1947 </span>            :     }</a>
 <span class="lineNum">    1948 </span>            : 
-<span class="lineNum">    1949 </span><span class="lineCov">         20 :     std::string::iterator find_end_of_date(std::string::iterator it,</span>
+<span class="lineNum">    1949 </span><span class="lineCov">         60 :     std::string::iterator find_end_of_date(std::string::iterator it,</span>
 <a name="1950"><span class="lineNum">    1950 </span>            :                                            std::string::iterator end)</a>
 <span class="lineNum">    1951 </span>            :     {
-<span class="lineNum">    1952 </span><span class="lineCov">        180 :         return std::find_if(it, end, [this](char c) {</span>
-<span class="lineNum">    1953 </span><span class="lineCov">        243 :             return !is_number(c) &amp;&amp; c != 'T' &amp;&amp; c != 'Z' &amp;&amp; c != ':' &amp;&amp; c != '-'</span>
-<span class="lineNum">    1954 </span><span class="lineCov">        203 :                    &amp;&amp; c != '+' &amp;&amp; c != '.';</span>
-<span class="lineNum">    1955 </span><span class="lineCov">        200 :         });</span>
+<span class="lineNum">    1952 </span><span class="lineCov">        540 :         return std::find_if(it, end, [this](char c) {</span>
+<span class="lineNum">    1953 </span><span class="lineCov">        729 :             return !is_number(c) &amp;&amp; c != 'T' &amp;&amp; c != 'Z' &amp;&amp; c != ':' &amp;&amp; c != '-'</span>
+<span class="lineNum">    1954 </span><span class="lineCov">        609 :                    &amp;&amp; c != '+' &amp;&amp; c != '.';</span>
+<span class="lineNum">    1955 </span><span class="lineCov">        600 :         });</span>
 <span class="lineNum">    1956 </span>            :     }
 <a name="1957"><span class="lineNum">    1957 </span>            : </a>
 <span class="lineNum">    1958 </span>            :     std::shared_ptr&lt;value&lt;datetime&gt;&gt;
-<span class="lineNum">    1959 </span><span class="lineCov">          3 :     parse_date(std::string::iterator&amp; it, const std::string::iterator&amp; end)</span>
+<span class="lineNum">    1959 </span><span class="lineCov">          9 :     parse_date(std::string::iterator&amp; it, const std::string::iterator&amp; end)</span>
 <span class="lineNum">    1960 </span>            :     {
-<a name="1961"><span class="lineNum">    1961 </span><span class="lineCov">          3 :         auto date_end = find_end_of_date(it, end);</span></a>
+<a name="1961"><span class="lineNum">    1961 </span><span class="lineCov">          9 :         auto date_end = find_end_of_date(it, end);</span></a>
 <span class="lineNum">    1962 </span>            : 
-<span class="lineNum">    1963 </span><span class="lineCov">         17 :         auto eat = [&amp;](char c) {</span>
-<span class="lineNum">    1964 </span><span class="lineCov">         17 :             if (it == date_end || *it != c)</span>
+<span class="lineNum">    1963 </span><span class="lineCov">         51 :         auto eat = [&amp;](char c) {</span>
+<span class="lineNum">    1964 </span><span class="lineCov">         51 :             if (it == date_end || *it != c)</span>
 <span class="lineNum">    1965 </span><span class="lineNoCov">          0 :                 throw_parse_exception(&quot;Malformed date&quot;);</span>
-<span class="lineNum">    1966 </span><span class="lineCov">         17 :             ++it;</span>
-<a name="1967"><span class="lineNum">    1967 </span><span class="lineCov">         20 :         };</span></a>
+<span class="lineNum">    1966 </span><span class="lineCov">         51 :             ++it;</span>
+<a name="1967"><span class="lineNum">    1967 </span><span class="lineCov">         60 :         };</span></a>
 <span class="lineNum">    1968 </span>            : 
-<span class="lineNum">    1969 </span><span class="lineCov">         22 :         auto eat_digits = [&amp;](int len) {</span>
-<span class="lineNum">    1970 </span><span class="lineCov">         22 :             int val = 0;</span>
-<span class="lineNum">    1971 </span><span class="lineCov">         72 :             for (int i = 0; i &lt; len; ++i)</span>
+<span class="lineNum">    1969 </span><span class="lineCov">         66 :         auto eat_digits = [&amp;](int len) {</span>
+<span class="lineNum">    1970 </span><span class="lineCov">         66 :             int val = 0;</span>
+<span class="lineNum">    1971 </span><span class="lineCov">        216 :             for (int i = 0; i &lt; len; ++i)</span>
 <span class="lineNum">    1972 </span>            :             {
-<span class="lineNum">    1973 </span><span class="lineCov">         50 :                 if (!is_number(*it) || it == date_end)</span>
+<span class="lineNum">    1973 </span><span class="lineCov">        150 :                 if (!is_number(*it) || it == date_end)</span>
 <span class="lineNum">    1974 </span><span class="lineNoCov">          0 :                     throw_parse_exception(&quot;Malformed date&quot;);</span>
-<span class="lineNum">    1975 </span><span class="lineCov">         50 :                 val = 10 * val + (*it++ - '0');</span>
+<span class="lineNum">    1975 </span><span class="lineCov">        150 :                 val = 10 * val + (*it++ - '0');</span>
 <span class="lineNum">    1976 </span>            :             }
-<span class="lineNum">    1977 </span><span class="lineCov">         22 :             return val;</span>
-<span class="lineNum">    1978 </span><span class="lineCov">          3 :         };</span>
+<span class="lineNum">    1977 </span><span class="lineCov">         66 :             return val;</span>
+<span class="lineNum">    1978 </span><span class="lineCov">          9 :         };</span>
 <span class="lineNum">    1979 </span>            : 
-<span class="lineNum">    1980 </span><span class="lineCov">          3 :         datetime dt;</span>
+<span class="lineNum">    1980 </span><span class="lineCov">          9 :         datetime dt;</span>
 <span class="lineNum">    1981 </span>            : 
-<span class="lineNum">    1982 </span><span class="lineCov">          3 :         dt.year = eat_digits(4);</span>
-<span class="lineNum">    1983 </span><span class="lineCov">          3 :         eat('-');</span>
-<span class="lineNum">    1984 </span><span class="lineCov">          3 :         dt.month = eat_digits(2);</span>
-<span class="lineNum">    1985 </span><span class="lineCov">          3 :         eat('-');</span>
-<span class="lineNum">    1986 </span><span class="lineCov">          3 :         dt.day = eat_digits(2);</span>
-<span class="lineNum">    1987 </span><span class="lineCov">          3 :         eat('T');</span>
-<span class="lineNum">    1988 </span><span class="lineCov">          3 :         dt.hour = eat_digits(2);</span>
-<span class="lineNum">    1989 </span><span class="lineCov">          3 :         eat(':');</span>
-<span class="lineNum">    1990 </span><span class="lineCov">          3 :         dt.minute = eat_digits(2);</span>
-<span class="lineNum">    1991 </span><span class="lineCov">          3 :         eat(':');</span>
-<span class="lineNum">    1992 </span><span class="lineCov">          3 :         dt.second = eat_digits(2);</span>
+<span class="lineNum">    1982 </span><span class="lineCov">          9 :         dt.year = eat_digits(4);</span>
+<span class="lineNum">    1983 </span><span class="lineCov">          9 :         eat('-');</span>
+<span class="lineNum">    1984 </span><span class="lineCov">          9 :         dt.month = eat_digits(2);</span>
+<span class="lineNum">    1985 </span><span class="lineCov">          9 :         eat('-');</span>
+<span class="lineNum">    1986 </span><span class="lineCov">          9 :         dt.day = eat_digits(2);</span>
+<span class="lineNum">    1987 </span><span class="lineCov">          9 :         eat('T');</span>
+<span class="lineNum">    1988 </span><span class="lineCov">          9 :         dt.hour = eat_digits(2);</span>
+<span class="lineNum">    1989 </span><span class="lineCov">          9 :         eat(':');</span>
+<span class="lineNum">    1990 </span><span class="lineCov">          9 :         dt.minute = eat_digits(2);</span>
+<span class="lineNum">    1991 </span><span class="lineCov">          9 :         eat(':');</span>
+<span class="lineNum">    1992 </span><span class="lineCov">          9 :         dt.second = eat_digits(2);</span>
 <span class="lineNum">    1993 </span>            : 
-<span class="lineNum">    1994 </span><span class="lineCov">          3 :         if (*it == '.')</span>
+<span class="lineNum">    1994 </span><span class="lineCov">          9 :         if (*it == '.')</span>
 <span class="lineNum">    1995 </span>            :         {
 <span class="lineNum">    1996 </span><span class="lineNoCov">          0 :             ++it;</span>
 <span class="lineNum">    1997 </span><span class="lineNoCov">          0 :             while (it != date_end &amp;&amp; is_number(*it))</span>
 <span class="lineNum">    1998 </span><span class="lineNoCov">          0 :                 dt.microsecond = 10 * dt.microsecond + (*it++ - '0');</span>
 <span class="lineNum">    1999 </span>            :         }
 <span class="lineNum">    2000 </span>            : 
-<span class="lineNum">    2001 </span><span class="lineCov">          3 :         if (it == date_end)</span>
+<span class="lineNum">    2001 </span><span class="lineCov">          9 :         if (it == date_end)</span>
 <span class="lineNum">    2002 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Malformed date&quot;);</span>
 <span class="lineNum">    2003 </span>            : 
-<span class="lineNum">    2004 </span><span class="lineCov">          3 :         int hoff = 0;</span>
-<span class="lineNum">    2005 </span><span class="lineCov">          3 :         int moff = 0;</span>
-<span class="lineNum">    2006 </span><span class="lineCov">          3 :         if (*it == '+' || *it == '-')</span>
+<span class="lineNum">    2004 </span><span class="lineCov">          9 :         int hoff = 0;</span>
+<span class="lineNum">    2005 </span><span class="lineCov">          9 :         int moff = 0;</span>
+<span class="lineNum">    2006 </span><span class="lineCov">          9 :         if (*it == '+' || *it == '-')</span>
 <span class="lineNum">    2007 </span>            :         {
-<span class="lineNum">    2008 </span><span class="lineCov">          2 :             auto plus = *it == '+';</span>
-<span class="lineNum">    2009 </span><span class="lineCov">          2 :             ++it;</span>
+<span class="lineNum">    2008 </span><span class="lineCov">          6 :             auto plus = *it == '+';</span>
+<span class="lineNum">    2009 </span><span class="lineCov">          6 :             ++it;</span>
 <span class="lineNum">    2010 </span>            : 
-<span class="lineNum">    2011 </span><span class="lineCov">          2 :             hoff = eat_digits(2);</span>
-<span class="lineNum">    2012 </span><span class="lineCov">          2 :             dt.hour_offset = (plus) ? hoff : -hoff;</span>
-<span class="lineNum">    2013 </span><span class="lineCov">          2 :             eat(':');</span>
-<span class="lineNum">    2014 </span><span class="lineCov">          2 :             moff = eat_digits(2);</span>
-<span class="lineNum">    2015 </span><span class="lineCov">          2 :             dt.minute_offset = (plus) ? moff : -moff;</span>
+<span class="lineNum">    2011 </span><span class="lineCov">          6 :             hoff = eat_digits(2);</span>
+<span class="lineNum">    2012 </span><span class="lineCov">          6 :             dt.hour_offset = (plus) ? hoff : -hoff;</span>
+<span class="lineNum">    2013 </span><span class="lineCov">          6 :             eat(':');</span>
+<span class="lineNum">    2014 </span><span class="lineCov">          6 :             moff = eat_digits(2);</span>
+<span class="lineNum">    2015 </span><span class="lineCov">          6 :             dt.minute_offset = (plus) ? moff : -moff;</span>
 <span class="lineNum">    2016 </span>            :         }
-<span class="lineNum">    2017 </span><span class="lineCov">          1 :         else if (*it == 'Z')</span>
+<span class="lineNum">    2017 </span><span class="lineCov">          3 :         else if (*it == 'Z')</span>
 <span class="lineNum">    2018 </span>            :         {
-<span class="lineNum">    2019 </span><span class="lineCov">          1 :             ++it;</span>
+<span class="lineNum">    2019 </span><span class="lineCov">          3 :             ++it;</span>
 <span class="lineNum">    2020 </span>            :         }
 <span class="lineNum">    2021 </span>            : 
-<span class="lineNum">    2022 </span><span class="lineCov">          3 :         if (it != date_end)</span>
+<span class="lineNum">    2022 </span><span class="lineCov">          9 :         if (it != date_end)</span>
 <span class="lineNum">    2023 </span><span class="lineNoCov">          0 :             throw_parse_exception(&quot;Malformed date&quot;);</span>
 <span class="lineNum">    2024 </span>            : 
-<span class="lineNum">    2025 </span><span class="lineCov">          3 :         return make_value(dt);</span>
+<span class="lineNum">    2025 </span><span class="lineCov">          9 :         return make_value(dt);</span>
 <a name="2026"><span class="lineNum">    2026 </span>            :     }</a>
 <span class="lineNum">    2027 </span>            : 
 <span class="lineNum">    2028 </span><span class="lineNoCov">          0 :     std::shared_ptr&lt;base&gt; parse_array(std::string::iterator&amp; it,</span>
@@ -2225,46 +2225,46 @@
 <span class="lineNum">    2163 </span>            :         }
 <a name="2164"><span class="lineNum">    2164 </span><span class="lineNoCov">          0 :     }</span></a>
 <span class="lineNum">    2165 </span>            : 
-<span class="lineNum">    2166 </span><span class="lineCov">        176 :     void consume_whitespace(std::string::iterator&amp; it,</span>
+<span class="lineNum">    2166 </span><span class="lineCov">        528 :     void consume_whitespace(std::string::iterator&amp; it,</span>
 <span class="lineNum">    2167 </span>            :                             const std::string::iterator&amp; end)
 <span class="lineNum">    2168 </span>            :     {
-<span class="lineNum">    2169 </span><span class="lineCov">       1507 :         while (it != end &amp;&amp; (*it == ' ' || *it == '\t'))</span>
-<span class="lineNum">    2170 </span><span class="lineCov">       1155 :             ++it;</span>
-<a name="2171"><span class="lineNum">    2171 </span><span class="lineCov">        176 :     }</span></a>
+<span class="lineNum">    2169 </span><span class="lineCov">       4521 :         while (it != end &amp;&amp; (*it == ' ' || *it == '\t'))</span>
+<span class="lineNum">    2170 </span><span class="lineCov">       3465 :             ++it;</span>
+<a name="2171"><span class="lineNum">    2171 </span><span class="lineCov">        528 :     }</span></a>
 <span class="lineNum">    2172 </span>            : 
-<span class="lineNum">    2173 </span><span class="lineCov">         36 :     void consume_backwards_whitespace(std::string::iterator&amp; back,</span>
+<span class="lineNum">    2173 </span><span class="lineCov">        108 :     void consume_backwards_whitespace(std::string::iterator&amp; back,</span>
 <span class="lineNum">    2174 </span>            :                                       const std::string::iterator&amp; front)
 <span class="lineNum">    2175 </span>            :     {
-<span class="lineNum">    2176 </span><span class="lineCov">         72 :         while (back != front &amp;&amp; (*back == ' ' || *back == '\t'))</span>
+<span class="lineNum">    2176 </span><span class="lineCov">        216 :         while (back != front &amp;&amp; (*back == ' ' || *back == '\t'))</span>
 <span class="lineNum">    2177 </span><span class="lineNoCov">          0 :             --back;</span>
-<a name="2178"><span class="lineNum">    2178 </span><span class="lineCov">         36 :     }</span></a>
+<a name="2178"><span class="lineNum">    2178 </span><span class="lineCov">        108 :     }</span></a>
 <span class="lineNum">    2179 </span>            : 
-<span class="lineNum">    2180 </span><span class="lineCov">         29 :     void eol_or_comment(const std::string::iterator&amp; it,</span>
+<span class="lineNum">    2180 </span><span class="lineCov">         87 :     void eol_or_comment(const std::string::iterator&amp; it,</span>
 <span class="lineNum">    2181 </span>            :                         const std::string::iterator&amp; end)
 <span class="lineNum">    2182 </span>            :     {
-<span class="lineNum">    2183 </span><span class="lineCov">         29 :         if (it != end &amp;&amp; *it != '#')</span>
+<span class="lineNum">    2183 </span><span class="lineCov">         87 :         if (it != end &amp;&amp; *it != '#')</span>
 <span class="lineNum">    2184 </span>            :             throw_parse_exception(&quot;Unidentified trailing character &quot;
 <span class="lineNum">    2185 </span><span class="lineNoCov">          0 :                                   + std::string{*it}</span>
 <span class="lineNum">    2186 </span><span class="lineNoCov">          0 :                                   + &quot;---did you forget a '#'?&quot;);</span>
-<a name="2187"><span class="lineNum">    2187 </span><span class="lineCov">         29 :     }</span></a>
+<a name="2187"><span class="lineNum">    2187 </span><span class="lineCov">         87 :     }</span></a>
 <span class="lineNum">    2188 </span>            : 
-<span class="lineNum">    2189 </span><span class="lineCov">        306 :     bool is_number(char c)</span>
+<span class="lineNum">    2189 </span><span class="lineCov">        918 :     bool is_number(char c)</span>
 <span class="lineNum">    2190 </span>            :     {
-<span class="lineNum">    2191 </span><span class="lineCov">        306 :         return c &gt;= '0' &amp;&amp; c &lt;= '9';</span>
+<span class="lineNum">    2191 </span><span class="lineCov">        918 :         return c &gt;= '0' &amp;&amp; c &lt;= '9';</span>
 <a name="2192"><span class="lineNum">    2192 </span>            :     }</a>
 <span class="lineNum">    2193 </span>            : 
-<span class="lineNum">    2194 </span><span class="lineCov">         17 :     bool is_date(const std::string::iterator&amp; it,</span>
+<span class="lineNum">    2194 </span><span class="lineCov">         51 :     bool is_date(const std::string::iterator&amp; it,</span>
 <span class="lineNum">    2195 </span>            :                  const std::string::iterator&amp; end)
 <span class="lineNum">    2196 </span>            :     {
-<span class="lineNum">    2197 </span><span class="lineCov">         17 :         auto date_end = find_end_of_date(it, end);</span>
-<span class="lineNum">    2198 </span><span class="lineCov">         17 :         std::string to_match{it, date_end};</span>
+<span class="lineNum">    2197 </span><span class="lineCov">         51 :         auto date_end = find_end_of_date(it, end);</span>
+<span class="lineNum">    2198 </span><span class="lineCov">         51 :         std::string to_match{it, date_end};</span>
 <span class="lineNum">    2199 </span>            : #if CPPTOML_HAS_STD_REGEX
 <span class="lineNum">    2200 </span>            :         return std::regex_match(to_match, date_pattern_);
 <span class="lineNum">    2201 </span>            : #else
 <span class="lineNum">    2202 </span>            :         // this can be approximate; we just need a lookahead
-<span class="lineNum">    2203 </span><span class="lineCov">         20 :         return to_match.length() &gt;= 20 &amp;&amp; to_match[4] == '-'</span>
-<span class="lineNum">    2204 </span><span class="lineCov">          3 :                &amp;&amp; to_match[7] == '-' &amp;&amp; to_match[10] == 'T'</span>
-<span class="lineNum">    2205 </span><span class="lineCov">         20 :                &amp;&amp; to_match[13] == ':' &amp;&amp; to_match[16] == ':';</span>
+<span class="lineNum">    2203 </span><span class="lineCov">         60 :         return to_match.length() &gt;= 20 &amp;&amp; to_match[4] == '-'</span>
+<span class="lineNum">    2204 </span><span class="lineCov">          9 :                &amp;&amp; to_match[7] == '-' &amp;&amp; to_match[10] == 'T'</span>
+<span class="lineNum">    2205 </span><span class="lineCov">         60 :                &amp;&amp; to_match[13] == ':' &amp;&amp; to_match[16] == ':';</span>
 <span class="lineNum">    2206 </span>            : #endif
 <span class="lineNum">    2207 </span>            :     }
 <span class="lineNum">    2208 </span>            : 

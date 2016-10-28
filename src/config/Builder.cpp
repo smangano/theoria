@@ -14,6 +14,11 @@ void ConfigBuilder::pushConfig(const std::string& name, const std::string& desc)
     _stack.push(ConfigPtr(new Config(name, desc))) ;
 }
 
+void ConfigBuilder::pushConfig(Config* config) 
+{
+    _stack.push(ConfigPtr(config)) ;
+}
+
 void ConfigBuilder::pushConfigArray(const std::string& name) 
 {
     _stack.push(ConfigPtr(new ConfigArray(name))) ;
@@ -67,12 +72,19 @@ void ConfigBuilder::setAttrSource(const std::string& name, const std::string& va
 }
 
 
-void ConfigBuilder::popAsChild() 
+void ConfigBuilder::popAsChild(bool allowDups) 
 {
     ConfigPtr child;
     child.swap(_stack.top()) ;
     _stack.pop() ;
-    _stack.top()->addChild(child.release()) ;
+    Config *p = nullptr ;
+    try {
+        p = child.release() ;
+        _stack.top()->addChild(p, allowDups || _stack.top()->isArray()) ;
+    } catch (...) {
+        child.reset(p) ; //retake ownership!
+        throw ;
+    }
 }
 
 void ConfigBuilder::pop() 

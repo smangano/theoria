@@ -5,7 +5,7 @@
 using namespace theoria ;
 using namespace theoria::config ;
 
-class BuildTestConfig : private ConfigBuilder
+class BuildTestConfig : public ConfigBuilder
 {
 public:
 
@@ -67,10 +67,12 @@ class ConfigTest : public ::testing::Test
         delete config ;
     }
 
-protected:
+public:
 
     BuildTestConfig& builder() {return *_builder;}
     
+protected:
+
     BuildTestConfig *_builder ;
     const Config * config = nullptr ;
     
@@ -105,11 +107,12 @@ TEST_F(ConfigTest, SingleConfigWithAttrTest) {
 
 TEST_F(ConfigTest, AddExitsThrowsTest) {
     //Adding an attr that exists should throw
-    config = builder().testSingleConfigWithAttr() ;
-    EXPECT_THROWS(config.addAttr('attr1', 10, "int"), std::runtime_error) ; 
-    delete config ;   
-    config = testConfigWithOneChild() ;
-    EXPECT_THROWS(config.
+    config = builder().testConfigWithOneChild() ;
+    builder().pushConfig(const_cast<Config*>(config)) ;
+    EXPECT_THROW(builder().addAttr("attr1", "10", "int"), std::runtime_error) ; 
+    builder().pushConfig("Child1") ;
+    EXPECT_THROW(builder().popAsChild(), std::runtime_error) ;
+    config = builder().releaseAll() ;
 }
 
 TEST_F(ConfigTest, SingleConfigWithOneChildTest) {

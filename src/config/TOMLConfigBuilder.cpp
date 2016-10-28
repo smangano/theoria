@@ -70,7 +70,7 @@ void TOMLConfigBuilder::_recursive_build(cpptoml::table& table)
             for (const auto& tableElem : *tarr) {
                 pushConfig(iter->first, iter->first) ;
                 _recursive_build(*tableElem) ;
-                popAsChild() ;
+                popAsChild(true) ;
             }
             popAsChild() ;
         }

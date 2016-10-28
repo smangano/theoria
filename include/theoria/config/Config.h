@@ -153,7 +153,7 @@ protected:
     Config(const std::string& name, const std::string& desc) ;
 
     void addAttr(const std::string& name, const std::string& value, const std::string& type="") ;
-    void addChild(Config* child) ;
+    void addChild(Config* child, bool allowDups=false) ;
 
     Attrs::iterator findAttr(const std::string& name) {
         return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;

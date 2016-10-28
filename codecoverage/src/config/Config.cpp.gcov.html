@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryMed">83.1 %</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryHi">90.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">23</td>
-            <td class="headerCovTableEntryHi">95.7 %</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntryHi">96.3 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -68,120 +68,129 @@
 <span class="lineNum">       6 </span>            : 
 <a name="7"><span class="lineNum">       7 </span>            : using ConstConfigList = Config::ConstConfigList ;</a>
 <span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span><span class="lineCov">          1 : Config::Config() </span>
-<span class="lineNum">      10 </span><span class="lineCov">          1 :     : _parent(nullptr)</span>
+<span class="lineNum">       9 </span><span class="lineCov">          3 : Config::Config() </span>
+<span class="lineNum">      10 </span><span class="lineCov">          3 :     : _parent(nullptr)</span>
 <span class="lineNum">      11 </span>            : {
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 : }</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          3 : }</span></a>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">         23 : Config::Config(std::string const&amp; name, std::string const&amp; desc)</span>
-<span class="lineNum">      15 </span><span class="lineCov">         23 :     : _name(name), _desc(desc), _parent(nullptr)</span>
+<span class="lineNum">      14 </span><span class="lineCov">         90 : Config::Config(std::string const&amp; name, std::string const&amp; desc)</span>
+<span class="lineNum">      15 </span><span class="lineCov">         90 :     : _name(name), _desc(desc), _parent(nullptr)</span>
 <span class="lineNum">      16 </span>            : {
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">         23 : }</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">         90 : }</span></a>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">         69 : Config::~Config() </span>
+<span class="lineNum">      19 </span><span class="lineCov">        234 : Config::~Config() </span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">         24 :     _parent = nullptr ;</span>
-<span class="lineNum">      22 </span><span class="lineCov">         39 :     for(auto child : _children) </span>
-<span class="lineNum">      23 </span><span class="lineCov">         15 :         delete child ;</span>
-<span class="lineNum">      24 </span><span class="lineCov">         45 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">         81 :     _parent = nullptr ;</span>
+<span class="lineNum">      22 </span><span class="lineCov">        129 :     for(auto child : _children) </span>
+<span class="lineNum">      23 </span><span class="lineCov">         48 :         delete child ;</span>
+<span class="lineNum">      24 </span><span class="lineCov">        153 : }</span>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">         31 : void Config::addAttr(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) </span>
+<span class="lineNum">      27 </span><span class="lineCov">        117 : void Config::addAttr(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) </span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">         31 :     if (hasAttr(name))</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not addAttr [%s] to config [%s] : Name already exists&quot;, </span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :                              name.c_str(),  this-&gt;name().c_str()) ;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         31 :      _attrs.push_back(Config::Attr(name, value, type)) ;</span>
-<a name="33"><span class="lineNum">      33 </span><span class="lineCov">         31 : }</span></a>
+<span class="lineNum">      29 </span><span class="lineCov">        117 :     if (hasAttr(name))</span>
+<span class="lineNum">      30 </span><span class="lineCov">          6 :         throw RUNTIME_ERROR(&quot;Could not addAttr [%s] to config [%s] : Name already exists&quot;, </span>
+<span class="lineNum">      31 </span><span class="lineCov">          6 :                              name.c_str(),  this-&gt;name().c_str()) ;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        114 :      _attrs.push_back(Config::Attr(name, value, type)) ;</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineCov">        114 : }</span></a>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">         15 : void Config::addChild(Config* child) </span>
+<span class="lineNum">      35 </span><span class="lineCov">         60 : void Config::addChild(Config* child, bool allowDups) </span>
 <span class="lineNum">      36 </span>            : {
-<span class="lineNum">      37 </span><span class="lineCov">         15 :     if (hasChild(child))</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not addChild [%s] to config [%s] : Child already exists&quot;, </span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :                              child-&gt;name().c_str(),  this-&gt;name().c_str()) ;</span>
-<span class="lineNum">      40 </span><span class="lineCov">         15 :    _children.push_back(child) ; </span>
-<span class="lineNum">      41 </span><span class="lineCov">         15 :    child-&gt;_parent = this ;</span>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         15 : }</span></a>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">          5 : ConstConfigList Config::getChildren(const ConfigPredicate&amp; predicate) const</span>
-<span class="lineNum">      45 </span>            : {
-<span class="lineNum">      46 </span><span class="lineCov">          5 :     ConstConfigList result ;</span>
-<span class="lineNum">      47 </span><span class="lineCov">          5 :     std::copy_if(_children.cbegin(), _children.cend(), std::back_inserter(result), predicate) ;</span>
-<span class="lineNum">      48 </span><span class="lineCov">          5 :     return result ;</span>
-<a name="49"><span class="lineNum">      49 </span>            : }</a>
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">          4 : ConstConfigList Config::getSiblings() const </span>
-<span class="lineNum">      52 </span>            : {
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          4 :     if (getParent() == nullptr)</span></a>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         return ConstConfigList() ;</span>
-<span class="lineNum">      55 </span><span class="lineCov">         14 :     return getParent()-&gt;getChildren([this] (const Config *c) {return c != this;}) ;       </span>
-<a name="56"><span class="lineNum">      56 </span>            : }</a>
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">          1 : ConstConfigList Config::getSiblings(const ConfigPredicate&amp; predicate) const</span>
-<span class="lineNum">      59 </span>            : {
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">          1 :     if (getParent() == nullptr)</span></a>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :         return ConstConfigList() ;</span>
-<span class="lineNum">      62 </span><span class="lineCov">          9 :     return getParent()-&gt;getChildren([this, predicate] (const Config *c) {return c != this &amp;&amp; predicate(c);}) ;       </span>
-<a name="63"><span class="lineNum">      63 </span>            : }</a>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">          7 : bool Config::isArray() const</span>
-<span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">          7 :     return false ;</span>
-<span class="lineNum">      68 </span>            : }
-<span class="lineNum">      69 </span>            : 
-<a name="70"><span class="lineNum">      70 </span>            : struct toTomlName</a>
-<span class="lineNum">      71 </span>            : {
-<span class="lineNum">      72 </span><span class="lineCov">          1 :     toTomlName(const Config&amp; c_) : c(c_) {}</span>
-<span class="lineNum">      73 </span>            :     const Config&amp; c;
-<a name="74"><span class="lineNum">      74 </span>            : } ;</a>
-<span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">          1 : std::ostream&amp; operator &lt;&lt;(std::ostream&amp; os, const toTomlName&amp; n) </span>
-<span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineCov">          1 :     if (n.c.getParent() &amp;&amp; n.c.getParent()-&gt;getParent())</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :         os &lt;&lt; toTomlName(*n.c.getParent()) &lt;&lt; &quot;.&quot; ;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 :     os &lt;&lt; n.c.name() ;</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :     return os ;</span>
-<a name="82"><span class="lineNum">      82 </span>            : }</a>
-<span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span><span class="lineCov">          2 : void Config::toTOML(std::ostream&amp; os) const</span>
-<span class="lineNum">      85 </span>            : {
-<span class="lineNum">      86 </span><span class="lineCov">          2 :     if (getParent() != nullptr)</span>
-<span class="lineNum">      87 </span>            :     {
-<span class="lineNum">      88 </span><span class="lineCov">          1 :         if (getParent()-&gt;isArray()) os &lt;&lt; &quot;[&quot; ;</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :         os &lt;&lt; &quot;[&quot; &lt;&lt; toTomlName(*this) &lt;&lt; &quot;]&quot; ;</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 :         if (getParent()-&gt;isArray()) os &lt;&lt; &quot;]&quot; ;</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 :         os &lt;&lt; &quot;\n&quot; ;</span>
-<span class="lineNum">      92 </span>            :     }
-<span class="lineNum">      93 </span><span class="lineCov">          5 :     for (auto attr = beginAttr(), end = endAttr(); attr != end ; ++attr)</span>
-<span class="lineNum">      94 </span>            :     {
-<span class="lineNum">      95 </span><span class="lineCov">          3 :         attr-&gt;toTOML(os) ;</span>
-<span class="lineNum">      96 </span>            :     }
-<span class="lineNum">      97 </span><span class="lineCov">          3 :     for (auto child : getChildren()) {</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :         child-&gt;toTOML(os) ;    </span>
-<span class="lineNum">      99 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     100 </span>            :     
-<span class="lineNum">     101 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span>            : ////
-<a name="105"><span class="lineNum">     105 </span>            : //ConfigArray</a>
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span><span class="lineCov">          2 : ConfigArray::ConfigArray(const std::string&amp; name) :</span>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          2 :     Config(name, &quot;&quot;) {}</span></a>
-<span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span><span class="lineCov">          4 : bool ConfigArray::isArray() const </span>
-<span class="lineNum">     111 </span>            : {
-<span class="lineNum">     112 </span><span class="lineCov">          4 :     return true ;</span>
-<a name="113"><span class="lineNum">     113 </span>            : }</a>
-<span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : void ConfigArray::toTOML(std::ostream&amp; os) const</span>
-<span class="lineNum">     116 </span>            : {
-<span class="lineNum">     117 </span>            :     //pass through to elements
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     for (auto child : getChildren()) {</span>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :         child-&gt;toTOML(os) ;    </span></a>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     121 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     122 </span>            : 
+<span class="lineNum">      37 </span><span class="lineCov">         60 :     if (getChild(child-&gt;name())) </span>
+<span class="lineNum">      38 </span><span class="lineCov">          9 :         if (!allowDups || hasChild(child)) //allowDups is only okay if not the same object</span>
+<span class="lineNum">      39 </span><span class="lineCov">          9 :             throw RUNTIME_ERROR(&quot;Could not addChild [%s] to config [%s] : Child already exists&quot;, </span>
+<span class="lineNum">      40 </span><span class="lineCov">          9 :                                  child-&gt;name().c_str(),  this-&gt;name().c_str()) ;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         57 :    _children.push_back(child) ; </span>
+<span class="lineNum">      42 </span><span class="lineCov">         57 :    child-&gt;_parent = this ;</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         57 : }</span></a>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">         15 : ConstConfigList Config::getChildren(const ConfigPredicate&amp; predicate) const</span>
+<span class="lineNum">      46 </span>            : {
+<span class="lineNum">      47 </span><span class="lineCov">         15 :     ConstConfigList result ;</span>
+<span class="lineNum">      48 </span><span class="lineCov">         15 :     std::copy_if(_children.cbegin(), _children.cend(), std::back_inserter(result), predicate) ;</span>
+<span class="lineNum">      49 </span><span class="lineCov">         15 :     return result ;</span>
+<a name="50"><span class="lineNum">      50 </span>            : }</a>
+<span class="lineNum">      51 </span>            : 
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         63 : const Config* Config::getChild(const std::string&amp; name) const</span></a>
+<span class="lineNum">      53 </span>            : {
+<span class="lineNum">      54 </span><span class="lineCov">        663 :     auto iter = std::find_if(_children.cbegin(), _children.cend(), [name] (const Config* c) {return c-&gt;name() == name;}) ;</span>
+<span class="lineNum">      55 </span><span class="lineCov">         63 :     if (iter != _children.cend())</span>
+<span class="lineNum">      56 </span><span class="lineCov">         12 :         return *iter;</span>
+<span class="lineNum">      57 </span><span class="lineCov">         51 :     return nullptr ;        </span>
+<a name="58"><span class="lineNum">      58 </span>            : }</a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">         12 : ConstConfigList Config::getSiblings() const </span>
+<span class="lineNum">      61 </span>            : {
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         12 :     if (getParent() == nullptr)</span></a>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         return ConstConfigList() ;</span>
+<span class="lineNum">      64 </span><span class="lineCov">         42 :     return getParent()-&gt;getChildren([this] (const Config *c) {return c != this;}) ;       </span>
+<a name="65"><span class="lineNum">      65 </span>            : }</a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">          3 : ConstConfigList Config::getSiblings(const ConfigPredicate&amp; predicate) const</span>
+<span class="lineNum">      68 </span>            : {
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          3 :     if (getParent() == nullptr)</span></a>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :         return ConstConfigList() ;</span>
+<span class="lineNum">      71 </span><span class="lineCov">         27 :     return getParent()-&gt;getChildren([this, predicate] (const Config *c) {return c != this &amp;&amp; predicate(c);}) ;       </span>
+<a name="72"><span class="lineNum">      72 </span>            : }</a>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineCov">         69 : bool Config::isArray() const</span>
+<span class="lineNum">      75 </span>            : {
+<span class="lineNum">      76 </span><span class="lineCov">         69 :     return false ;</span>
+<span class="lineNum">      77 </span>            : }
+<span class="lineNum">      78 </span>            : 
+<a name="79"><span class="lineNum">      79 </span>            : struct toTomlName</a>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineCov">          3 :     toTomlName(const Config&amp; c_) : c(c_) {}</span>
+<span class="lineNum">      82 </span>            :     const Config&amp; c;
+<a name="83"><span class="lineNum">      83 </span>            : } ;</a>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineCov">          3 : std::ostream&amp; operator &lt;&lt;(std::ostream&amp; os, const toTomlName&amp; n) </span>
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span><span class="lineCov">          3 :     if (n.c.getParent() &amp;&amp; n.c.getParent()-&gt;getParent())</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         os &lt;&lt; toTomlName(*n.c.getParent()) &lt;&lt; &quot;.&quot; ;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          3 :     os &lt;&lt; n.c.name() ;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          3 :     return os ;</span>
+<a name="91"><span class="lineNum">      91 </span>            : }</a>
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span><span class="lineCov">          6 : void Config::toTOML(std::ostream&amp; os) const</span>
+<span class="lineNum">      94 </span>            : {
+<span class="lineNum">      95 </span><span class="lineCov">          6 :     if (getParent() != nullptr)</span>
+<span class="lineNum">      96 </span>            :     {
+<span class="lineNum">      97 </span><span class="lineCov">          3 :         if (getParent()-&gt;isArray()) os &lt;&lt; &quot;[&quot; ;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          3 :         os &lt;&lt; &quot;[&quot; &lt;&lt; toTomlName(*this) &lt;&lt; &quot;]&quot; ;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          3 :         if (getParent()-&gt;isArray()) os &lt;&lt; &quot;]&quot; ;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          3 :         os &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     101 </span>            :     }
+<span class="lineNum">     102 </span><span class="lineCov">         15 :     for (auto attr = beginAttr(), end = endAttr(); attr != end ; ++attr)</span>
+<span class="lineNum">     103 </span>            :     {
+<span class="lineNum">     104 </span><span class="lineCov">          9 :         attr-&gt;toTOML(os) ;</span>
+<span class="lineNum">     105 </span>            :     }
+<span class="lineNum">     106 </span><span class="lineCov">          9 :     for (auto child : getChildren()) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">          3 :         child-&gt;toTOML(os) ;    </span>
+<span class="lineNum">     108 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">     109 </span>            :     
+<span class="lineNum">     110 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            : ////
+<a name="114"><span class="lineNum">     114 </span>            : //ConfigArray</a>
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span><span class="lineCov">          6 : ConfigArray::ConfigArray(const std::string&amp; name) :</span>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          6 :     Config(name, &quot;&quot;) {}</span></a>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineCov">         12 : bool ConfigArray::isArray() const </span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineCov">         12 :     return true ;</span>
+<a name="122"><span class="lineNum">     122 </span>            : }</a>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : void ConfigArray::toTOML(std::ostream&amp; os) const</span>
+<span class="lineNum">     125 </span>            : {
+<span class="lineNum">     126 </span>            :     //pass through to elements
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     for (auto child : getChildren()) {</span>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :         child-&gt;toTOML(os) ;    </span></a>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     130 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     131 </span>            : 
 </pre>
       </td>
     </tr>

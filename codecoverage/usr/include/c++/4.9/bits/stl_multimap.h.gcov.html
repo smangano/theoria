@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -154,7 +154,7 @@
 <span class="lineNum">      92 </span>            :   template &lt;typename _Key, typename _Tp,
 <a name="93"><span class="lineNum">      93 </span>            :             typename _Compare = std::less&lt;_Key&gt;,</a>
 <span class="lineNum">      94 </span>            :             typename _Alloc = std::allocator&lt;std::pair&lt;const _Key, _Tp&gt; &gt; &gt;
-<span class="lineNum">      95 </span><span class="lineCov">         16 :     class multimap</span>
+<span class="lineNum">      95 </span><span class="lineCov">         51 :     class multimap</span>
 <span class="lineNum">      96 </span>            :     {
 <span class="lineNum">      97 </span>            :     public:
 <span class="lineNum">      98 </span>            :       typedef _Key                                          key_type;
@@ -219,8 +219,8 @@
 <span class="lineNum">     157 </span>            :       /**
 <a name="158"><span class="lineNum">     158 </span>            :        *  @brief  Default constructor creates no elements.</a>
 <span class="lineNum">     159 </span>            :        */
-<span class="lineNum">     160 </span><span class="lineCov">         16 :       multimap()</span>
-<span class="lineNum">     161 </span><span class="lineCov">         16 :       : _M_t() { }</span>
+<span class="lineNum">     160 </span><span class="lineCov">         51 :       multimap()</span>
+<span class="lineNum">     161 </span><span class="lineCov">         51 :       : _M_t() { }</span>
 <span class="lineNum">     162 </span>            : 
 <span class="lineNum">     163 </span>            :       /**
 <span class="lineNum">     164 </span>            :        *  @brief  Creates a %multimap with no elements.
@@ -427,8 +427,8 @@
 <span class="lineNum">     365 </span>            :        *  keys.
 <a name="366"><span class="lineNum">     366 </span>            :        */</a>
 <span class="lineNum">     367 </span>            :       iterator
-<span class="lineNum">     368 </span><span class="lineCov">         16 :       end() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     369 </span><span class="lineCov">         16 :       { return _M_t.end(); }</span>
+<span class="lineNum">     368 </span><span class="lineCov">         48 :       end() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     369 </span><span class="lineCov">         48 :       { return _M_t.end(); }</span>
 <span class="lineNum">     370 </span>            : 
 <span class="lineNum">     371 </span>            :       /**
 <span class="lineNum">     372 </span>            :        *  Returns a read-only (constant) iterator that points one past the last
@@ -604,8 +604,8 @@
 <span class="lineNum">     542 </span>            :                std::enable_if&lt;std::is_constructible&lt;value_type,
 <a name="543"><span class="lineNum">     543 </span>            :                                                     _Pair&amp;&amp;&gt;::value&gt;::type&gt;</a>
 <span class="lineNum">     544 </span>            :         iterator
-<span class="lineNum">     545 </span><span class="lineCov">         19 :         insert(_Pair&amp;&amp; __x)</span>
-<span class="lineNum">     546 </span><span class="lineCov">         19 :         { return _M_t._M_insert_equal(std::forward&lt;_Pair&gt;(__x)); }</span>
+<span class="lineNum">     545 </span><span class="lineCov">         57 :         insert(_Pair&amp;&amp; __x)</span>
+<span class="lineNum">     546 </span><span class="lineCov">         57 :         { return _M_t._M_insert_equal(std::forward&lt;_Pair&gt;(__x)); }</span>
 <span class="lineNum">     547 </span>            : #endif
 <span class="lineNum">     548 </span>            : 
 <span class="lineNum">     549 </span>            :       /**
@@ -828,8 +828,8 @@
 <span class="lineNum">     766 </span>            :        *  past-the-end ( @c end() ) iterator.
 <a name="767"><span class="lineNum">     767 </span>            :        */</a>
 <span class="lineNum">     768 </span>            :       iterator
-<span class="lineNum">     769 </span><span class="lineCov">         13 :       find(const key_type&amp; __x)</span>
-<span class="lineNum">     770 </span><span class="lineCov">         13 :       { return _M_t.find(__x); }</span>
+<span class="lineNum">     769 </span><span class="lineCov">         39 :       find(const key_type&amp; __x)</span>
+<span class="lineNum">     770 </span><span class="lineCov">         39 :       { return _M_t.find(__x); }</span>
 <span class="lineNum">     771 </span>            : 
 <span class="lineNum">     772 </span>            :       /**
 <span class="lineNum">     773 </span>            :        *  @brief Tries to locate an element in a %multimap.
@@ -867,8 +867,8 @@
 <span class="lineNum">     805 </span>            :        *  or end() if no such element exists.
 <a name="806"><span class="lineNum">     806 </span>            :        */</a>
 <span class="lineNum">     807 </span>            :       iterator
-<span class="lineNum">     808 </span><span class="lineCov">          3 :       lower_bound(const key_type&amp; __x)</span>
-<span class="lineNum">     809 </span><span class="lineCov">          3 :       { return _M_t.lower_bound(__x); }</span>
+<span class="lineNum">     808 </span><span class="lineCov">          9 :       lower_bound(const key_type&amp; __x)</span>
+<span class="lineNum">     809 </span><span class="lineCov">          9 :       { return _M_t.lower_bound(__x); }</span>
 <span class="lineNum">     810 </span>            : 
 <span class="lineNum">     811 </span>            :       /**
 <span class="lineNum">     812 </span>            :        *  @brief Finds the beginning of a subsequence matching given key.

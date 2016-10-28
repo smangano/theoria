@@ -32,11 +32,12 @@ void Config::addAttr(const std::string& name, const std::string& value, const st
      _attrs.push_back(Config::Attr(name, value, type)) ;
 }
 
-void Config::addChild(Config* child) 
+void Config::addChild(Config* child, bool allowDups) 
 {
-    if (hasChild(child))
-        throw RUNTIME_ERROR("Could not addChild [%s] to config [%s] : Child already exists", 
-                             child->name().c_str(),  this->name().c_str()) ;
+    if (getChild(child->name())) 
+        if (!allowDups || hasChild(child)) //allowDups is only okay if not the same object
+            throw RUNTIME_ERROR("Could not addChild [%s] to config [%s] : Child already exists", 
+                                 child->name().c_str(),  this->name().c_str()) ;
    _children.push_back(child) ; 
    child->_parent = this ;
 }

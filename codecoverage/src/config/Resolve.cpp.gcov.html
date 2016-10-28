@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-28 03:47:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -72,74 +72,74 @@
 <span class="lineNum">      10 </span>            : 
 <a name="11"><span class="lineNum">      11 </span>            : using Result = ConfigVariableResolver::Result ;</a>
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span><span class="lineCov">         20 : ConfigVariableResolver::~ConfigVariableResolver() </span>
+<span class="lineNum">      13 </span><span class="lineCov">         63 : ConfigVariableResolver::~ConfigVariableResolver() </span>
 <span class="lineNum">      14 </span>            : {
-<span class="lineNum">      15 </span><span class="lineCov">         20 :     delete _next ;</span>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">         20 : }</span></a>
+<span class="lineNum">      15 </span><span class="lineCov">         63 :     delete _next ;</span>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">         63 : }</span></a>
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">         28 : std::string ConfigVariableResolver::resolve(const std::string&amp; var) const </span>
+<span class="lineNum">      18 </span><span class="lineCov">         84 : std::string ConfigVariableResolver::resolve(const std::string&amp; var) const </span>
 <span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineCov">         28 :     if (var.size() &lt; 2 || var[0] != '$') </span>
+<span class="lineNum">      20 </span><span class="lineCov">         84 :     if (var.size() &lt; 2 || var[0] != '$') </span>
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;resolve expects variables with leading '$' - got [%s] instead&quot;, var.c_str()) ;</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         28 :     Result r ;</span>
-<span class="lineNum">      24 </span><span class="lineCov">         28 :     if (var.size() &gt; 2 &amp;&amp; var[1] == '$')</span>
-<span class="lineNum">      25 </span><span class="lineCov">         12 :        r = resolveLast(var.substr(2)) ;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         84 :     Result r ;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         84 :     if (var.size() &gt; 2 &amp;&amp; var[1] == '$')</span>
+<span class="lineNum">      25 </span><span class="lineCov">         36 :        r = resolveLast(var.substr(2)) ;</span>
 <span class="lineNum">      26 </span>            :     else
-<span class="lineNum">      27 </span><span class="lineCov">         16 :        r = resolveFirst(var.substr(1)) ;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         28 :     return r.first != nullptr ? r.second : var ;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         48 :        r = resolveFirst(var.substr(1)) ;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         84 :     return r.first != nullptr ? r.second : var ;</span>
 <a name="29"><span class="lineNum">      29 </span>            : }</a>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         16 : Result ConfigVariableResolver::resolveFirst(const std::string&amp; name) const </span>
+<span class="lineNum">      31 </span><span class="lineCov">         48 : Result ConfigVariableResolver::resolveFirst(const std::string&amp; name) const </span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         16 :     const ConfigVariableResolver* resolver = this ;</span>
-<span class="lineNum">      34 </span><span class="lineCov">         38 :     while(resolver) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">         22 :         Result result = resolver-&gt;lookup(name) ;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         22 :         if (result.first != nullptr)</span>
-<span class="lineNum">      37 </span><span class="lineCov">         16 :             return result ; </span>
-<span class="lineNum">      38 </span><span class="lineCov">          6 :         resolver = resolver-&gt;_next ;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         48 :     const ConfigVariableResolver* resolver = this ;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        114 :     while(resolver) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         66 :         Result result = resolver-&gt;lookup(name) ;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         66 :         if (result.first != nullptr)</span>
+<span class="lineNum">      37 </span><span class="lineCov">         48 :             return result ; </span>
+<span class="lineNum">      38 </span><span class="lineCov">         18 :         resolver = resolver-&gt;_next ;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         18 :     }</span>
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 :     return Result(nullptr, &quot;&quot;) ;</span>
 <a name="41"><span class="lineNum">      41 </span>            : }</a>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">         12 : Result ConfigVariableResolver::resolveLast(const std::string&amp; name) const </span>
+<span class="lineNum">      43 </span><span class="lineCov">         36 : Result ConfigVariableResolver::resolveLast(const std::string&amp; name) const </span>
 <span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineCov">         12 :     Result result(nullptr, &quot;&quot;) ;</span>
-<span class="lineNum">      46 </span><span class="lineCov">         12 :     const ConfigVariableResolver* resolver = this ;</span>
-<span class="lineNum">      47 </span><span class="lineCov">         46 :     while(resolver) {</span>
-<span class="lineNum">      48 </span><span class="lineCov">         24 :         Result temp = resolver-&gt;lookup(name) ;</span>
-<span class="lineNum">      49 </span><span class="lineCov">         22 :         if (temp.first != nullptr)</span>
-<span class="lineNum">      50 </span><span class="lineCov">         17 :             result = temp ;</span>
-<span class="lineNum">      51 </span><span class="lineCov">         22 :         resolver = resolver-&gt;_next ;</span>
-<span class="lineNum">      52 </span><span class="lineCov">         22 :     }</span>
-<span class="lineNum">      53 </span><span class="lineCov">         10 :     return result ;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         36 :     Result result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      46 </span><span class="lineCov">         36 :     const ConfigVariableResolver* resolver = this ;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        138 :     while(resolver) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">         72 :         Result temp = resolver-&gt;lookup(name) ;</span>
+<span class="lineNum">      49 </span><span class="lineCov">         66 :         if (temp.first != nullptr)</span>
+<span class="lineNum">      50 </span><span class="lineCov">         51 :             result = temp ;</span>
+<span class="lineNum">      51 </span><span class="lineCov">         66 :         resolver = resolver-&gt;_next ;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         66 :     }</span>
+<span class="lineNum">      53 </span><span class="lineCov">         30 :     return result ;</span>
 <a name="54"><span class="lineNum">      54 </span>            : }</a>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">         10 : void ConfigVariableResolver::append(ConfigVariableResolver* resolver)</span>
+<span class="lineNum">      56 </span><span class="lineCov">         30 : void ConfigVariableResolver::append(ConfigVariableResolver* resolver)</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">         10 :     if (! resolver)</span>
+<span class="lineNum">      58 </span><span class="lineCov">         30 :     if (! resolver)</span>
 <span class="lineNum">      59 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't append resolver to chain at [%s]: nullptr was provided in append!&quot;, name().c_str()) ;</span>
-<span class="lineNum">      60 </span><span class="lineCov">         10 :     if (resolver-&gt;_next)</span>
+<span class="lineNum">      60 </span><span class="lineCov">         30 :     if (resolver-&gt;_next)</span>
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't append resolver [%s] to chain at [%s]: appending resolver already part of a chain is not supported&quot;, resolver-&gt;name().c_str(), name().c_str()) ;</span>
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span><span class="lineCov">         10 :     ConfigVariableResolver * p = this ;</span>
-<span class="lineNum">      64 </span><span class="lineCov">         10 :     ConfigVariableResolver * prev = nullptr ;</span>
-<span class="lineNum">      65 </span><span class="lineCov">         34 :     while(p) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">         14 :         if (p == resolver)</span>
+<span class="lineNum">      63 </span><span class="lineCov">         30 :     ConfigVariableResolver * p = this ;</span>
+<span class="lineNum">      64 </span><span class="lineCov">         30 :     ConfigVariableResolver * prev = nullptr ;</span>
+<span class="lineNum">      65 </span><span class="lineCov">        102 :     while(p) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         42 :         if (p == resolver)</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;Can't append resolver [%s] to resolver chain: Already exists!&quot;, resolver-&gt;name().c_str()) ;</span>
-<span class="lineNum">      68 </span><span class="lineCov">         14 :         prev = p ;</span>
-<span class="lineNum">      69 </span><span class="lineCov">         14 :         p = p-&gt;_next ;</span>
+<span class="lineNum">      68 </span><span class="lineCov">         42 :         prev = p ;</span>
+<span class="lineNum">      69 </span><span class="lineCov">         42 :         p = p-&gt;_next ;</span>
 <span class="lineNum">      70 </span>            :     }
-<span class="lineNum">      71 </span><span class="lineCov">         10 :     prev-&gt;_next = resolver ;</span>
-<span class="lineNum">      72 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">         30 :     prev-&gt;_next = resolver ;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         30 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span>            : //////////////////////////
 <a name="75"><span class="lineNum">      75 </span>            : //EnvVarResolver</a>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">         18 : Result EnvVarResolver::lookup(const std::string&amp; name) const  </span>
+<span class="lineNum">      77 </span><span class="lineCov">         54 : Result EnvVarResolver::lookup(const std::string&amp; name) const  </span>
 <span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span><span class="lineCov">         18 :     const char * value = std::getenv(name.c_str()) ;</span>
-<span class="lineNum">      80 </span><span class="lineCov">         18 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      79 </span><span class="lineCov">         54 :     const char * value = std::getenv(name.c_str()) ;</span>
+<span class="lineNum">      80 </span><span class="lineCov">         54 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
 <span class="lineNum">      81 </span>            :     
 <a name="82"><span class="lineNum">      82 </span>            : }</a>
 <span class="lineNum">      83 </span>            : 
@@ -151,10 +151,10 @@
 <span class="lineNum">      89 </span>            : //////////////////////////
 <a name="90"><span class="lineNum">      90 </span>            : //CmdLineResolver</a>
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">         24 : Result CmdLineResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">      92 </span><span class="lineCov">         72 : Result CmdLineResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">      93 </span>            : {
-<span class="lineNum">      94 </span><span class="lineCov">         24 :     const char * value = util::CommandLine::instance().variableAsPtr(name) ;</span>
-<span class="lineNum">      95 </span><span class="lineCov">         24 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      94 </span><span class="lineCov">         72 :     const char * value = util::CommandLine::instance().variableAsPtr(name) ;</span>
+<span class="lineNum">      95 </span><span class="lineCov">         72 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
 <a name="96"><span class="lineNum">      96 </span>            : }</a>
 <span class="lineNum">      97 </span>            : 
 <span class="lineNum">      98 </span><span class="lineNoCov">          0 : std::string CmdLineResolver::name() const </span>
@@ -165,9 +165,9 @@
 <span class="lineNum">     103 </span>            : //////////////////////////
 <a name="104"><span class="lineNum">     104 </span>            : //DisallowResolver </a>
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">          2 : Result DisallowResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">     106 </span><span class="lineCov">          6 : Result DisallowResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span><span class="lineCov">          2 :     throw RUNTIME_ERROR(&quot;Resolving variables disallowed while trying to resolve variable with name: [%s]&quot;, name.c_str()) ;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          6 :     throw RUNTIME_ERROR(&quot;Resolving variables disallowed while trying to resolve variable with name: [%s]&quot;, name.c_str()) ;</span>
 <a name="109"><span class="lineNum">     109 </span>            : }</a>
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span><span class="lineNoCov">          0 : std::string DisallowResolver::name() const </span>
@@ -178,9 +178,9 @@
 <span class="lineNum">     116 </span>            : //////////////////////////
 <a name="117"><span class="lineNum">     117 </span>            : // DisableResolver</a>
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">          2 : Result DisableResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">     119 </span><span class="lineCov">          6 : Result DisableResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineCov">          2 :     return Result(this, name) ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          6 :     return Result(this, name) ;</span>
 <span class="lineNum">     122 </span>            : }
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <span class="lineNum">     124 </span>            : 
@@ -189,133 +189,135 @@
 <span class="lineNum">     127 </span><span class="lineNoCov">          0 :     return &quot;DisableResolver&quot; ;</span>
 <span class="lineNum">     128 </span>            : }
 <span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span>            : /////////////////////////
-<a name="131"><span class="lineNum">     131 </span>            : //TOMLResolver</a>
-<span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : class TOMLResolver::TOMLResolverImpl :  public ConfigVariableResolver</span>
-<span class="lineNum">     134 </span>            : {
-<span class="lineNum">     135 </span>            : public:
-<span class="lineNum">     136 </span>            :     TOMLResolverImpl(const std::string&amp; tomlFilePath) ;
-<span class="lineNum">     137 </span>            :     TOMLResolverImpl(std::istream&amp; is) ;
-<span class="lineNum">     138 </span>            :     Result lookup(const std::string&amp; name) const override ;
-<span class="lineNum">     139 </span>            :     std::string name() const override ;
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            : private:
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : 
+<span class="lineNum">     132 </span>            : /////////////////////////
+<a name="133"><span class="lineNum">     133 </span>            : //TOMLResolver</a>
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 : class TOMLResolver::TOMLResolverImpl :  public ConfigVariableResolver</span>
+<span class="lineNum">     136 </span>            : {
+<span class="lineNum">     137 </span>            : public:
+<span class="lineNum">     138 </span>            :     TOMLResolverImpl(const std::string&amp; tomlFilePath) ;
+<span class="lineNum">     139 </span>            :     TOMLResolverImpl(std::istream&amp; is) ;
+<span class="lineNum">     140 </span>            :     Result lookup(const std::string&amp; name) const override ;
+<span class="lineNum">     141 </span>            :     std::string name() const override ;
 <span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span>            :     std::string _tomlFilePath ;
-<span class="lineNum">     144 </span>            :     std::shared_ptr&lt;cpptoml::table&gt; _tomlTable ;
-<span class="lineNum">     145 </span>            : } ;
-<a name="146"><span class="lineNum">     146 </span>            : </a>
-<span class="lineNum">     147 </span>            : 
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolver(const std::string&amp; tomlFilePath) :</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     _impl(new TOMLResolver::TOMLResolverImpl(tomlFilePath))</span>
-<span class="lineNum">     150 </span>            : {
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     152 </span>            : 
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolver(std::istream&amp; iss) :</span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     _impl(new TOMLResolver::TOMLResolverImpl(iss))</span>
-<span class="lineNum">     155 </span>            : {
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 : }</span>
-<a name="157"><span class="lineNum">     157 </span>            : </a>
-<span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 : Result TOMLResolver::lookup(const std::string&amp; name) const </span>
-<span class="lineNum">     160 </span>            : {
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :     return _impl-&gt;lookup(name) ;</span>
-<a name="162"><span class="lineNum">     162 </span>            : }</a>
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 : std::string TOMLResolver::name() const </span>
-<span class="lineNum">     165 </span>            : {
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     return &quot;TOMLResolver:&quot; ;</span>
-<a name="167"><span class="lineNum">     167 </span>            : }</a>
-<span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(const std::string&amp; tomlFilePath)</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     :_tomlFilePath(tomlFilePath), _tomlTable()</span>
-<span class="lineNum">     171 </span>            : {
-<span class="lineNum">     172 </span>            :     try {
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 :         _tomlTable = cpptoml::parse_file(tomlFilePath);</span>
-<span class="lineNum">     174 </span>            :     }
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     catch(const cpptoml::parse_exception&amp; parseEx) {</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not parse TOML: %s&quot;, parseEx.what()) ;</span>
-<span class="lineNum">     177 </span>            :     }
-<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     179 </span>            : 
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(std::istream&amp; is)</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     :_tomlFilePath(&quot;&lt;istream&gt;&quot;), _tomlTable()</span>
-<span class="lineNum">     182 </span>            : {
-<span class="lineNum">     183 </span>            :     try {
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :         cpptoml::parser parser_(is) ;</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 :         _tomlTable = parser_.parse() ;</span>
-<span class="lineNum">     186 </span>            :     } 
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     catch(const cpptoml::parse_exception&amp; parseEx) {</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not parse TOML: %s&quot;, parseEx.what()) ;</span>
-<span class="lineNum">     189 </span>            :     }
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : }</span>
-<a name="191"><span class="lineNum">     191 </span>            : </a>
-<span class="lineNum">     192 </span>            : 
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 : Result TOMLResolver::TOMLResolverImpl::lookup(const std::string&amp; name) const</span>
-<span class="lineNum">     194 </span>            : {
-<span class="lineNum">     195 </span>            :     
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     auto base = _tomlTable-&gt;get_qualified(name) ;</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     if (base-&gt;is_value()) {</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :         std::ostringstream oss ;</span>
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :         auto strVal = base-&gt;as&lt;std::string&gt;() ;</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         if (strVal) {</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :             std::string v = strVal-&gt;get() ;</span>
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 :             return Result(this, v) ;         </span>
-<span class="lineNum">     203 </span>            :         }
-<span class="lineNum">     204 </span>            : 
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 :         auto intVal = base-&gt;as&lt;int64_t&gt;() ;</span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 :         if (intVal) {</span>
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 :             oss &lt;&lt; intVal-&gt;get() ;         </span>
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
-<span class="lineNum">     209 </span>            :         }
-<span class="lineNum">     210 </span>            : 
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :         auto dblVal = base-&gt;as&lt;double&gt;() ;</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :         if (dblVal) {</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :             oss &lt;&lt; dblVal-&gt;get() ;         </span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
-<span class="lineNum">     215 </span>            :         }
-<span class="lineNum">     216 </span>            : 
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         auto boolVal = base-&gt;as&lt;bool&gt;() ;</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :         if (boolVal) {</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :             oss &lt;&lt; boolVal-&gt;get() ;         </span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
-<span class="lineNum">     221 </span>            :         }
-<span class="lineNum">     222 </span>            : 
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :         auto dateVal = base-&gt;as&lt;cpptoml::datetime&gt;() ;</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :         if (dateVal) {</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :             auto dt = dateVal-&gt;get() ;</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 :             oss &lt;&lt; std::setfill('0') ;</span>
-<span class="lineNum">     227 </span><span class="lineNoCov">          0 :             oss &lt;&lt; std::setw(4) &lt;&lt; dt.year &lt;&lt; &quot;-&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.month &lt;&lt; &quot;-&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.day ;</span>
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 :             if (dt.hour || dt.minute || dt.second || dt.microsecond)</span>
-<span class="lineNum">     229 </span>            :             {
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 :                 oss &lt;&lt; &quot;T&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.hour &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2)  &lt;&lt; dt.minute &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2) </span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 :                     &lt;&lt; dt.second ;</span>
-<span class="lineNum">     232 </span><span class="lineNoCov">          0 :                 if (dt.microsecond) </span>
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 :                     oss &lt;&lt; std::setw(6) &lt;&lt; dt.microsecond ;</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 :                 if (dt.hour_offset || dt.minute_offset) {</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 :                     if (dt.hour_offset &lt; 0) {</span>
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 :                         oss &lt;&lt; &quot;-&quot; ;</span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :                         dt.hour_offset *= -1 ;</span>
-<span class="lineNum">     238 </span>            :                     }
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :                     oss &lt;&lt; std::setw(2) &lt;&lt; dt.hour_offset &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.minute_offset ;</span>
-<span class="lineNum">     240 </span>            :                 }
-<span class="lineNum">     241 </span>            :             }
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
-<span class="lineNum">     243 </span>            :         }
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;TOMLResolver unknown value type found!&quot;) ;</span>
-<span class="lineNum">     245 </span>            :     }
-<span class="lineNum">     246 </span><span class="lineNoCov">          0 :     std::string found = base-&gt;is_table() ? &quot;table&quot; :  </span>
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 :         base-&gt;is_table_array() ? &quot;table_array&quot; : </span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 :             base-&gt;is_array() ? &quot;array&quot; : &quot;UNKNOWN&quot; ;</span>
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     throw RUNTIME_ERROR(&quot;TOMLResolver can only resolve primitive values not [%s]&quot;, found.c_str()) ; </span>
-<a name="250"><span class="lineNum">     250 </span>            : }</a>
-<span class="lineNum">     251 </span>            : 
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 : std::string TOMLResolver::TOMLResolverImpl::name() const </span>
-<span class="lineNum">     253 </span>            : {
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :     return &quot;TOMLResolver:&quot; ;</span>
-<span class="lineNum">     255 </span>            : }
-<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     143 </span>            : private:
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            :     std::string _tomlFilePath ;
+<span class="lineNum">     146 </span>            :     std::shared_ptr&lt;cpptoml::table&gt; _tomlTable ;
+<span class="lineNum">     147 </span>            : } ;
+<a name="148"><span class="lineNum">     148 </span>            : </a>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolver(const std::string&amp; tomlFilePath) :</span>
+<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     _impl(new TOMLResolver::TOMLResolverImpl(tomlFilePath))</span>
+<span class="lineNum">     152 </span>            : {
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     154 </span>            : 
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolver(std::istream&amp; iss) :</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     _impl(new TOMLResolver::TOMLResolverImpl(iss))</span>
+<span class="lineNum">     157 </span>            : {
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 : }</span>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : Result TOMLResolver::lookup(const std::string&amp; name) const </span>
+<span class="lineNum">     162 </span>            : {
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :     return _impl-&gt;lookup(name) ;</span>
+<a name="164"><span class="lineNum">     164 </span>            : }</a>
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 : std::string TOMLResolver::name() const </span>
+<span class="lineNum">     167 </span>            : {
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     return &quot;TOMLResolver:&quot; ;</span>
+<a name="169"><span class="lineNum">     169 </span>            : }</a>
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(const std::string&amp; tomlFilePath)</span>
+<span class="lineNum">     172 </span><span class="lineNoCov">          0 :     :_tomlFilePath(tomlFilePath), _tomlTable()</span>
+<span class="lineNum">     173 </span>            : {
+<span class="lineNum">     174 </span>            :     try {
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :         _tomlTable = cpptoml::parse_file(tomlFilePath);</span>
+<span class="lineNum">     176 </span>            :     }
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :     catch(const cpptoml::parse_exception&amp; parseEx) {</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not parse TOML: %s&quot;, parseEx.what()) ;</span>
+<span class="lineNum">     179 </span>            :     }
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(std::istream&amp; is)</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     :_tomlFilePath(&quot;&lt;istream&gt;&quot;), _tomlTable()</span>
+<span class="lineNum">     184 </span>            : {
+<span class="lineNum">     185 </span>            :     try {
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :         cpptoml::parser parser_(is) ;</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :         _tomlTable = parser_.parse() ;</span>
+<span class="lineNum">     188 </span>            :     } 
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     catch(const cpptoml::parse_exception&amp; parseEx) {</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not parse TOML: %s&quot;, parseEx.what()) ;</span>
+<span class="lineNum">     191 </span>            :     }
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : }</span>
+<a name="193"><span class="lineNum">     193 </span>            : </a>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 : Result TOMLResolver::TOMLResolverImpl::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">     196 </span>            : {
+<span class="lineNum">     197 </span>            :     
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     auto base = _tomlTable-&gt;get_qualified(name) ;</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     if (base-&gt;is_value()) {</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         std::ostringstream oss ;</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         auto strVal = base-&gt;as&lt;std::string&gt;() ;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :         if (strVal) {</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :             std::string v = strVal-&gt;get() ;</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :             return Result(this, v) ;         </span>
+<span class="lineNum">     205 </span>            :         }
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :         auto intVal = base-&gt;as&lt;int64_t&gt;() ;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :         if (intVal) {</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :             oss &lt;&lt; intVal-&gt;get() ;         </span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
+<span class="lineNum">     211 </span>            :         }
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         auto dblVal = base-&gt;as&lt;double&gt;() ;</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         if (dblVal) {</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :             oss &lt;&lt; dblVal-&gt;get() ;         </span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
+<span class="lineNum">     217 </span>            :         }
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :         auto boolVal = base-&gt;as&lt;bool&gt;() ;</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :         if (boolVal) {</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :             oss &lt;&lt; boolVal-&gt;get() ;         </span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
+<span class="lineNum">     223 </span>            :         }
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :         auto dateVal = base-&gt;as&lt;cpptoml::datetime&gt;() ;</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :         if (dateVal) {</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :             auto dt = dateVal-&gt;get() ;</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :             oss &lt;&lt; std::setfill('0') ;</span>
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :             oss &lt;&lt; std::setw(4) &lt;&lt; dt.year &lt;&lt; &quot;-&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.month &lt;&lt; &quot;-&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.day ;</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :             if (dt.hour || dt.minute || dt.second || dt.microsecond)</span>
+<span class="lineNum">     231 </span>            :             {
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :                 oss &lt;&lt; &quot;T&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.hour &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2)  &lt;&lt; dt.minute &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2) </span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :                     &lt;&lt; dt.second ;</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :                 if (dt.microsecond) </span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :                     oss &lt;&lt; std::setw(6) &lt;&lt; dt.microsecond ;</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :                 if (dt.hour_offset || dt.minute_offset) {</span>
+<span class="lineNum">     237 </span><span class="lineNoCov">          0 :                     if (dt.hour_offset &lt; 0) {</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :                         oss &lt;&lt; &quot;-&quot; ;</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :                         dt.hour_offset *= -1 ;</span>
+<span class="lineNum">     240 </span>            :                     }
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :                     oss &lt;&lt; std::setw(2) &lt;&lt; dt.hour_offset &lt;&lt; &quot;:&quot; &lt;&lt; std::setw(2) &lt;&lt; dt.minute_offset ;</span>
+<span class="lineNum">     242 </span>            :                 }
+<span class="lineNum">     243 </span>            :             }
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :             return Result(this, oss.str()) ;</span>
+<span class="lineNum">     245 </span>            :         }
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;TOMLResolver unknown value type found!&quot;) ;</span>
+<span class="lineNum">     247 </span>            :     }
+<span class="lineNum">     248 </span><span class="lineNoCov">          0 :     std::string found = base-&gt;is_table() ? &quot;table&quot; :  </span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :         base-&gt;is_table_array() ? &quot;table_array&quot; : </span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :             base-&gt;is_array() ? &quot;array&quot; : &quot;UNKNOWN&quot; ;</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :     throw RUNTIME_ERROR(&quot;TOMLResolver can only resolve primitive values not [%s]&quot;, found.c_str()) ; </span>
+<a name="252"><span class="lineNum">     252 </span>            : }</a>
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 : std::string TOMLResolver::TOMLResolverImpl::name() const </span>
+<span class="lineNum">     255 </span>            : {
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     return &quot;TOMLResolver:&quot; ;</span>
+<span class="lineNum">     257 </span>            : }
+<span class="lineNum">     258 </span>            : 
 </pre>
       </td>
     </tr>

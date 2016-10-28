@@ -160,13 +160,26 @@ private:
 
 union MsgData
 {
+public:
+
+    MsgData() : dp(nullptr) {} 
+
 	const std::pair<int,int> d2 ;
     const long long          dl ;
     const void *             dp ;
 } ;
 
+/**
+ * Placeholder for concept that needs much more thought
+ */
 class Message
 {
+public:
+
+    Message() :
+        origSenderId(-1), origDestId(-1), lastSenderId(-1), msgType(0), msgData() 
+    {
+    } ;
 private:
 
 	CompId origSenderId ;
@@ -176,6 +189,12 @@ private:
     MsgData msgData ;  
 } ; 
 
+/* Components are the soul of Theoria. Components are used to implement the 
+ * meaty parts of your application. Things that contain significant business logic,
+ * are generally long-lived, manage complex data structures, processes or algorithms, etc.
+ * Components support a rich lifecycle, can be dynamically configured and dynamically wired up
+ * to other components. 
+ */
 class Component 
 {
 public:

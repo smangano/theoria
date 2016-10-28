@@ -76,7 +76,7 @@ TEST_F(RegistryTest, CreateByTypenameOnlyOneRegister)
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault) 
 {
-    auto reg = Registry::instance() ;
+    Registry& reg = Registry::instance() ;
     reg.registerFactory("MockComponent", "MockComponent2", MockComponent2::factory) ; 
     reg.registerFactory("MockComponent", MockComponent::factory) ; 
     Component *comp =  reg.createComponent("MockComponent") ;
@@ -89,8 +89,8 @@ TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault)
 
     auto iter = reg.findfact(reg.beginFact(), [] (auto fact) {return fact.first.second == "MockComponent2";}) ;
     ASSERT_NE(iter, reg.endFact()) ;
-    EXPECT_EQ(iter.first.first, "MockComponent") ;
-    EXPECT_EQ(iter.first.second, "MockComponent2") ;
+    EXPECT_EQ(iter->first.first, "MockComponent") ;
+    EXPECT_EQ(iter->first.second, "MockComponent2") ;
 }
 
 TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed) 
@@ -192,8 +192,8 @@ TEST_F(RegistryTest, CreateByDepTwoRegistered)
 
 TEST_F(RegistryTest, TestCreateComponentNotRegisteredThrows)
 {
-    EXPECT_THROW(Registry::instance().createComponent("Blah") std::runtime_error) ;
-    EXPECT_THROW(Registry::instance().createComponent("Blah","BlahBlah") std::runtime_error);
+    EXPECT_THROW(Registry::instance().createComponent("Blah"), std::runtime_error) ;
+    EXPECT_THROW(Registry::instance().createComponent("Blah","BlahBlah"), std::runtime_error);
     //Dep based returns null;:
     Dependencies::Dependent strict("Blah", "BlahBlah") ;
     ASSERT_EQ(Registry::instance().createComponent(strict), nullptr) ;

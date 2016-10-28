@@ -31,6 +31,11 @@ public:
      */
     void pushConfig(const std::string& name, const std::string& desc="") ;
 
+    /* Push an existing node to augment
+     * @config a Config node
+     */
+    void pushConfig(Config* config) ;
+
     /* Create a ConfigArray node with name and push on to the node stack
      * @name the name of the array
      */
@@ -60,8 +65,10 @@ public:
     void setAttrSource(const std::string& name, const std::string& variableName, const std::string& resolverName) ;
 
     /* Pop a node off the stack and attach it as a chile to the new top node
+     * @allowDups - Normally Config nodes must be unique by name. Set true to override.  NOTE: if parent is 
+     *              an array dups will automatically to be allowed even if allowDups==false
      */
-    void popAsChild(); 
+    void popAsChild(bool allowDups=false); 
 
     /* Pop the top node. It will be lost if you need not save somewhere by first calling top
      */

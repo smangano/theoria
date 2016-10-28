@@ -23,7 +23,7 @@ Result AppConfigResolver::lookup(const std::string& name) const
     const Config * config = &core::Registry::instance().appConfig() ; 
     auto names = util::string_split(name, '.') ;
     int i = 0 ;
-    for (;i<names.size()-1 && config; i++) {
+    for (;i<(int)names.size()-1 && config; i++) {
         config = config->getChild(names[i]) ;
     }
     if (config) {

@@ -68,9 +68,9 @@ void Bootstrap::boot(config::Config& bootConfig)
         Dependencies&& deps = coreComponents[i]->init(*componentConfigs[i]) ;
         coreCompDeps[coreComponents[i]->id()] = std::move(deps) ;
     }
-    //Fire INITITIALIZED AppLifeCycle  Event
+    //Fire INITIALIZED AppLifeCycle  Event
     for (Component* comp : coreComponents)
-        comp->appLifeCycle(AppLifeCycle::INITITIALIZED) ;
+        comp->appLifeCycle(AppLifeCycle::INITIALIZED) ;
 
     //Satisfy deps and finalize core components
     for (auto& compId_deps : coreCompDeps) {
