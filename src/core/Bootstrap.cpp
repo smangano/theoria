@@ -24,7 +24,7 @@ std::unique_ptr<const config::Config> Bootstrap::loadConfig() const
 {
     std::string filename = findConfig() ;
     config::TOMLConfigBuilder builder ;
-    return std::unique_ptr<config::Config>(builder.parse_file(filename)) ;
+    return builder.parse_file(filename) ;
 }
 
 std::string Bootstrap::findConfig() const
@@ -87,9 +87,23 @@ void Bootstrap::finalizeAppLifeCycle(const std::vector<Component*>& coreComponen
         comp->appLifeCycle(AppLifeCycle::FINALIZED) ;
 }
 
+Component *  Bootstrap::_createCoreComp(const config::Config& compConfig)
+{
+    TypeName compType = compConfig.getAttrAsStr("type", compConfig.name()) ;
+    SubTypeName compSubType = compConfig.getAttrAsStr("subtype", "") ;
+    Component * component = nullptr;
+    if (compSubType == "")
+        component = Registry::instance().createComponent(compType) ;
+    else
+        component = Registry::instance().createComponent(compType, compSubType) ; 
+    return component ;
+}
+
 //shake Theoria's booty, shake it's booty...
+// LCOV_EXCL_START
 void Bootstrap::boot(const config::Config& bootConfig)
 {
+
     using Config = config::Config ;
 
     auto componentConfigs = 
@@ -113,17 +127,6 @@ void Bootstrap::boot(const config::Config& bootConfig)
     //Fire FINALIZED AppLifeCycle  Event
     finalizeAppLifeCycle(coreComponents) ;
 }
-
-Component *  Bootstrap::_createCoreComp(const config::Config& compConfig)
-{
-    TypeName compType = compConfig.getAttrAsStr("type", compConfig.name()) ;
-    SubTypeName compSubType = compConfig.getAttrAsStr("subtype", "") ;
-    Component * component = nullptr;
-    if (compSubType == "")
-        component = Registry::instance().createComponent(compType) ;
-    else
-        component = Registry::instance().createComponent(compType, compSubType) ; 
-    return component ;
-}
+// LCOV_EXCL_STOP
 
 

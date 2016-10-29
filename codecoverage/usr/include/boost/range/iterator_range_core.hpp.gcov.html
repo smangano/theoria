@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-29 04:25:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -241,9 +241,9 @@
 <span class="lineNum">     179 </span>            : 
 <a name="180"><span class="lineNum">     180 </span>            :             //! Constructor from a pair of iterators</a>
 <span class="lineNum">     181 </span>            :             template&lt; class Iterator &gt;
-<span class="lineNum">     182 </span><span class="lineCov">         84 :             iterator_range( Iterator Begin, Iterator End ) :</span>
-<span class="lineNum">     183 </span><span class="lineCov">         84 :                 m_Begin(Begin), m_End(End)</span>
-<span class="lineNum">     184 </span><span class="lineCov">         84 :             {}</span>
+<span class="lineNum">     182 </span><span class="lineCov">         28 :             iterator_range( Iterator Begin, Iterator End ) :</span>
+<span class="lineNum">     183 </span><span class="lineCov">         28 :                 m_Begin(Begin), m_End(End)</span>
+<span class="lineNum">     184 </span><span class="lineCov">         28 :             {}</span>
 <span class="lineNum">     185 </span>            : 
 <span class="lineNum">     186 </span>            :             //! Constructor from a Range
 <span class="lineNum">     187 </span>            :             template&lt; class Range &gt;
@@ -302,14 +302,14 @@
 <span class="lineNum">     240 </span>            :                 return *this;
 <a name="241"><span class="lineNum">     241 </span>            :             }</a>
 <span class="lineNum">     242 </span>            : 
-<span class="lineNum">     243 </span><span class="lineCov">         84 :             IteratorT begin() const</span>
+<span class="lineNum">     243 </span><span class="lineCov">         28 :             IteratorT begin() const</span>
 <span class="lineNum">     244 </span>            :             {
-<span class="lineNum">     245 </span><span class="lineCov">         84 :                 return m_Begin;</span>
+<span class="lineNum">     245 </span><span class="lineCov">         28 :                 return m_Begin;</span>
 <a name="246"><span class="lineNum">     246 </span>            :             }</a>
 <span class="lineNum">     247 </span>            : 
-<span class="lineNum">     248 </span><span class="lineCov">         84 :             IteratorT end() const</span>
+<span class="lineNum">     248 </span><span class="lineCov">         28 :             IteratorT end() const</span>
 <span class="lineNum">     249 </span>            :             {
-<span class="lineNum">     250 </span><span class="lineCov">         84 :                 return m_End;</span>
+<span class="lineNum">     250 </span><span class="lineCov">         28 :                 return m_End;</span>
 <span class="lineNum">     251 </span>            :             }
 <span class="lineNum">     252 </span>            : 
 <span class="lineNum">     253 </span>            :             difference_type size() const

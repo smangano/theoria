@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-29 04:25:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -157,7 +157,7 @@
 <span class="lineNum">      95 </span>            :            class _Hash = hash&lt;_Key&gt;,
 <a name="96"><span class="lineNum">      96 </span>            :            class _Pred = std::equal_to&lt;_Key&gt;,</a>
 <span class="lineNum">      97 </span>            :            class _Alloc = std::allocator&lt;std::pair&lt;const _Key, _Tp&gt; &gt; &gt;
-<span class="lineNum">      98 </span><span class="lineCov">         33 :     class unordered_map</span>
+<span class="lineNum">      98 </span><span class="lineCov">         14 :     class unordered_map</span>
 <span class="lineNum">      99 </span>            :     {
 <span class="lineNum">     100 </span>            :       typedef __umap_hashtable&lt;_Key, _Tp, _Hash, _Pred, _Alloc&gt;  _Hashtable;
 <span class="lineNum">     101 </span>            :       _Hashtable _M_h;
@@ -198,12 +198,12 @@
 <span class="lineNum">     136 </span>            :        *  @param __a  An allocator object.
 <a name="137"><span class="lineNum">     137 </span>            :        */</a>
 <span class="lineNum">     138 </span>            :       explicit
-<span class="lineNum">     139 </span><span class="lineCov">        177 :       unordered_map(size_type __n = 10,</span>
+<span class="lineNum">     139 </span><span class="lineCov">         62 :       unordered_map(size_type __n = 10,</span>
 <span class="lineNum">     140 </span>            :                     const hasher&amp; __hf = hasher(),
 <span class="lineNum">     141 </span>            :                     const key_equal&amp; __eql = key_equal(),
 <span class="lineNum">     142 </span>            :                     const allocator_type&amp; __a = allocator_type())
-<span class="lineNum">     143 </span><span class="lineCov">        177 :       : _M_h(__n, __hf, __eql, __a)</span>
-<span class="lineNum">     144 </span><span class="lineCov">        177 :       { }</span>
+<span class="lineNum">     143 </span><span class="lineCov">         62 :       : _M_h(__n, __hf, __eql, __a)</span>
+<span class="lineNum">     144 </span><span class="lineCov">         62 :       { }</span>
 <span class="lineNum">     145 </span>            : 
 <span class="lineNum">     146 </span>            :       /**
 <span class="lineNum">     147 </span>            :        *  @brief  Builds an %unordered_map from a range.
@@ -337,8 +337,8 @@
 <span class="lineNum">     275 </span>            :        *  %unordered_map.
 <a name="276"><span class="lineNum">     276 </span>            :        */</a>
 <span class="lineNum">     277 </span>            :       iterator
-<span class="lineNum">     278 </span><span class="lineCov">         33 :       begin() noexcept</span>
-<span class="lineNum">     279 </span><span class="lineCov">         33 :       { return _M_h.begin(); }</span>
+<span class="lineNum">     278 </span><span class="lineCov">         14 :       begin() noexcept</span>
+<span class="lineNum">     279 </span><span class="lineCov">         14 :       { return _M_h.begin(); }</span>
 <span class="lineNum">     280 </span>            : 
 <span class="lineNum">     281 </span>            :       //@{
 <span class="lineNum">     282 </span>            :       /**
@@ -359,8 +359,8 @@
 <span class="lineNum">     297 </span>            :        *  the %unordered_map.
 <a name="298"><span class="lineNum">     298 </span>            :        */</a>
 <span class="lineNum">     299 </span>            :       iterator
-<span class="lineNum">     300 </span><span class="lineCov">         33 :       end() noexcept</span>
-<span class="lineNum">     301 </span><span class="lineCov">         33 :       { return _M_h.end(); }</span>
+<span class="lineNum">     300 </span><span class="lineCov">         14 :       end() noexcept</span>
+<span class="lineNum">     301 </span><span class="lineCov">         14 :       { return _M_h.end(); }</span>
 <span class="lineNum">     302 </span>            : 
 <span class="lineNum">     303 </span>            :       //@{
 <span class="lineNum">     304 </span>            :       /**
@@ -368,8 +368,8 @@
 <span class="lineNum">     306 </span>            :        *  element in the %unordered_map.
 <a name="307"><span class="lineNum">     307 </span>            :        */</a>
 <span class="lineNum">     308 </span>            :       const_iterator
-<span class="lineNum">     309 </span><span class="lineCov">        114 :       end() const noexcept</span>
-<span class="lineNum">     310 </span><span class="lineCov">        114 :       { return _M_h.end(); }</span>
+<span class="lineNum">     309 </span><span class="lineCov">         45 :       end() const noexcept</span>
+<span class="lineNum">     310 </span><span class="lineCov">         45 :       { return _M_h.end(); }</span>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
 <span class="lineNum">     312 </span>            :       const_iterator
 <span class="lineNum">     313 </span><span class="lineNoCov">          0 :       cend() const noexcept</span>
@@ -636,8 +636,8 @@
 <span class="lineNum">     574 </span>            :       { return _M_h.find(__x); }
 <a name="575"><span class="lineNum">     575 </span>            : </a>
 <span class="lineNum">     576 </span>            :       const_iterator
-<span class="lineNum">     577 </span><span class="lineCov">        114 :       find(const key_type&amp; __x) const</span>
-<span class="lineNum">     578 </span><span class="lineCov">        114 :       { return _M_h.find(__x); }</span>
+<span class="lineNum">     577 </span><span class="lineCov">         45 :       find(const key_type&amp; __x) const</span>
+<span class="lineNum">     578 </span><span class="lineCov">         45 :       { return _M_h.find(__x); }</span>
 <span class="lineNum">     579 </span>            :       //@}
 <span class="lineNum">     580 </span>            : 
 <span class="lineNum">     581 </span>            :       /**
@@ -685,12 +685,12 @@
 <span class="lineNum">     623 </span>            :        *  Lookup requires constant time.
 <a name="624"><span class="lineNum">     624 </span>            :        */</a>
 <span class="lineNum">     625 </span>            :       mapped_type&amp;
-<span class="lineNum">     626 </span><span class="lineCov">        150 :       operator[](const key_type&amp; __k)</span>
-<span class="lineNum">     627 </span><span class="lineCov">        150 :       { return _M_h[__k]; }</span>
+<span class="lineNum">     626 </span><span class="lineCov">         57 :       operator[](const key_type&amp; __k)</span>
+<span class="lineNum">     627 </span><span class="lineCov">         57 :       { return _M_h[__k]; }</span>
 <a name="628"><span class="lineNum">     628 </span>            : </a>
 <span class="lineNum">     629 </span>            :       mapped_type&amp;
-<span class="lineNum">     630 </span><span class="lineCov">         69 :       operator[](key_type&amp;&amp; __k)</span>
-<span class="lineNum">     631 </span><span class="lineCov">         69 :       { return _M_h[std::move(__k)]; }</span>
+<span class="lineNum">     630 </span><span class="lineCov">         23 :       operator[](key_type&amp;&amp; __k)</span>
+<span class="lineNum">     631 </span><span class="lineCov">         23 :       { return _M_h[std::move(__k)]; }</span>
 <span class="lineNum">     632 </span>            :       //@}
 <span class="lineNum">     633 </span>            : 
 <span class="lineNum">     634 </span>            :       //@{
@@ -706,8 +706,8 @@
 <span class="lineNum">     644 </span>            :       { return _M_h.at(__k); }
 <a name="645"><span class="lineNum">     645 </span>            : </a>
 <span class="lineNum">     646 </span>            :       const mapped_type&amp;
-<span class="lineNum">     647 </span><span class="lineCov">        237 :       at(const key_type&amp; __k) const</span>
-<span class="lineNum">     648 </span><span class="lineCov">        237 :       { return _M_h.at(__k); }</span>
+<span class="lineNum">     647 </span><span class="lineCov">         88 :       at(const key_type&amp; __k) const</span>
+<span class="lineNum">     648 </span><span class="lineCov">         88 :       { return _M_h.at(__k); }</span>
 <span class="lineNum">     649 </span>            :       //@}
 <span class="lineNum">     650 </span>            : 
 <span class="lineNum">     651 </span>            :       // bucket interface.

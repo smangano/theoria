@@ -12,8 +12,8 @@ public:
 
     TOMLConfigBuilder() {};
 
-    Config* parse_file(const std::string& filename) ; 
-    Config* parse(std::istream& stream) ; 
+    std::unique_ptr<const Config> parse_file(const std::string& filename) override ; 
+    std::unique_ptr<const Config> parse(std::istream& stream) override ; 
 
 private:
 

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-29 04:25:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -192,14 +192,14 @@
 <span class="lineNum">     130 </span>            :     mutex&amp; operator=(const mutex&amp;) = delete;
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <span class="lineNum">     132 </span>            :     void
-<span class="lineNum">     133 </span><span class="lineCov">        159 :     lock()</span>
+<span class="lineNum">     133 </span><span class="lineCov">         56 :     lock()</span>
 <span class="lineNum">     134 </span>            :     {
-<span class="lineNum">     135 </span><span class="lineCov">        159 :       int __e = __gthread_mutex_lock(&amp;_M_mutex);</span>
+<span class="lineNum">     135 </span><span class="lineCov">         56 :       int __e = __gthread_mutex_lock(&amp;_M_mutex);</span>
 <span class="lineNum">     136 </span>            : 
 <span class="lineNum">     137 </span>            :       // EINVAL, EAGAIN, EBUSY, EINVAL, EDEADLK(may)
-<span class="lineNum">     138 </span><span class="lineCov">        159 :       if (__e)</span>
+<span class="lineNum">     138 </span><span class="lineCov">         56 :       if (__e)</span>
 <span class="lineNum">     139 </span><span class="lineNoCov">          0 :         __throw_system_error(__e);</span>
-<span class="lineNum">     140 </span><span class="lineCov">        159 :     }</span>
+<span class="lineNum">     140 </span><span class="lineCov">         56 :     }</span>
 <span class="lineNum">     141 </span>            : 
 <span class="lineNum">     142 </span>            :     bool
 <span class="lineNum">     143 </span>            :     try_lock() noexcept
@@ -209,11 +209,11 @@
 <span class="lineNum">     147 </span>            :     }
 <a name="148"><span class="lineNum">     148 </span>            : </a>
 <span class="lineNum">     149 </span>            :     void
-<span class="lineNum">     150 </span><span class="lineCov">        159 :     unlock()</span>
+<span class="lineNum">     150 </span><span class="lineCov">         56 :     unlock()</span>
 <span class="lineNum">     151 </span>            :     {
 <span class="lineNum">     152 </span>            :       // XXX EINVAL, EAGAIN, EPERM
-<span class="lineNum">     153 </span><span class="lineCov">        159 :       __gthread_mutex_unlock(&amp;_M_mutex);</span>
-<span class="lineNum">     154 </span><span class="lineCov">        159 :     }</span>
+<span class="lineNum">     153 </span><span class="lineCov">         56 :       __gthread_mutex_unlock(&amp;_M_mutex);</span>
+<span class="lineNum">     154 </span><span class="lineCov">         56 :     }</span>
 <span class="lineNum">     155 </span>            : 
 <span class="lineNum">     156 </span>            :     native_handle_type
 <span class="lineNum">     157 </span>            :     native_handle()
@@ -435,14 +435,14 @@
 <span class="lineNum">     373 </span>            :     public:
 <a name="374"><span class="lineNum">     374 </span>            :       typedef _Mutex mutex_type;</a>
 <span class="lineNum">     375 </span>            : 
-<span class="lineNum">     376 </span><span class="lineCov">        159 :       explicit lock_guard(mutex_type&amp; __m) : _M_device(__m)</span>
-<span class="lineNum">     377 </span><span class="lineCov">        159 :       { _M_device.lock(); }</span>
+<span class="lineNum">     376 </span><span class="lineCov">         56 :       explicit lock_guard(mutex_type&amp; __m) : _M_device(__m)</span>
+<span class="lineNum">     377 </span><span class="lineCov">         56 :       { _M_device.lock(); }</span>
 <span class="lineNum">     378 </span>            : 
 <span class="lineNum">     379 </span>            :       lock_guard(mutex_type&amp; __m, adopt_lock_t) : _M_device(__m)
 <a name="380"><span class="lineNum">     380 </span>            :       { } // calling thread owns mutex</a>
 <span class="lineNum">     381 </span>            : 
-<span class="lineNum">     382 </span><span class="lineCov">        159 :       ~lock_guard()</span>
-<span class="lineNum">     383 </span><span class="lineCov">        159 :       { _M_device.unlock(); }</span>
+<span class="lineNum">     382 </span><span class="lineCov">         56 :       ~lock_guard()</span>
+<span class="lineNum">     383 </span><span class="lineCov">         56 :       { _M_device.unlock(); }</span>
 <span class="lineNum">     384 </span>            : 
 <span class="lineNum">     385 </span>            :       lock_guard(const lock_guard&amp;) = delete;
 <span class="lineNum">     386 </span>            :       lock_guard&amp; operator=(const lock_guard&amp;) = delete;

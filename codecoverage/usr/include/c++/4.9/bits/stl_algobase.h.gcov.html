@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-29 04:25:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -337,8 +337,8 @@
 <span class="lineNum">     275 </span>            : 
 <a name="276"><span class="lineNum">     276 </span>            :   template&lt;typename _Iterator&gt;</a>
 <span class="lineNum">     277 </span>            :     inline typename _Niter_base&lt;_Iterator&gt;::iterator_type
-<span class="lineNum">     278 </span><span class="lineCov">         57 :     __niter_base(_Iterator __it)</span>
-<span class="lineNum">     279 </span><span class="lineCov">         57 :     { return std::_Niter_base&lt;_Iterator&gt;::_S_base(__it); }</span>
+<span class="lineNum">     278 </span><span class="lineCov">         20 :     __niter_base(_Iterator __it)</span>
+<span class="lineNum">     279 </span><span class="lineCov">         20 :     { return std::_Niter_base&lt;_Iterator&gt;::_S_base(__it); }</span>
 <span class="lineNum">     280 </span>            : 
 <span class="lineNum">     281 </span>            :   // Likewise, for move_iterator.
 <span class="lineNum">     282 </span>            :   template&lt;typename _Iterator&gt;
@@ -816,13 +816,13 @@
 <span class="lineNum">     754 </span>            :   template&lt;typename _OutputIterator, typename _Size, typename _Tp&gt;
 <a name="755"><span class="lineNum">     755 </span>            :     inline typename</a>
 <span class="lineNum">     756 </span>            :     __gnu_cxx::__enable_if&lt;__is_scalar&lt;_Tp&gt;::__value, _OutputIterator&gt;::__type
-<span class="lineNum">     757 </span><span class="lineCov">         57 :     __fill_n_a(_OutputIterator __first, _Size __n, const _Tp&amp; __value)</span>
+<span class="lineNum">     757 </span><span class="lineCov">         20 :     __fill_n_a(_OutputIterator __first, _Size __n, const _Tp&amp; __value)</span>
 <span class="lineNum">     758 </span>            :     {
-<span class="lineNum">     759 </span><span class="lineCov">         57 :       const _Tp __tmp = __value;</span>
-<span class="lineNum">     760 </span><span class="lineCov">       1797 :       for (__decltype(__n + 0) __niter = __n;</span>
+<span class="lineNum">     759 </span><span class="lineCov">         20 :       const _Tp __tmp = __value;</span>
+<span class="lineNum">     760 </span><span class="lineCov">        660 :       for (__decltype(__n + 0) __niter = __n;</span>
 <span class="lineNum">     761 </span>            :            __niter &gt; 0; --__niter, ++__first)
-<span class="lineNum">     762 </span><span class="lineCov">       1740 :         *__first = __tmp;</span>
-<span class="lineNum">     763 </span><span class="lineCov">         57 :       return __first;</span>
+<span class="lineNum">     762 </span><span class="lineCov">        640 :         *__first = __tmp;</span>
+<span class="lineNum">     763 </span><span class="lineCov">         20 :       return __first;</span>
 <span class="lineNum">     764 </span>            :     }
 <span class="lineNum">     765 </span>            : 
 <span class="lineNum">     766 </span>            :   template&lt;typename _Size, typename _Tp&gt;
@@ -851,12 +851,12 @@
 <span class="lineNum">     789 </span>            :   */
 <a name="790"><span class="lineNum">     790 </span>            :   template&lt;typename _OI, typename _Size, typename _Tp&gt;</a>
 <span class="lineNum">     791 </span>            :     inline _OI
-<span class="lineNum">     792 </span><span class="lineCov">         57 :     fill_n(_OI __first, _Size __n, const _Tp&amp; __value)</span>
+<span class="lineNum">     792 </span><span class="lineCov">         20 :     fill_n(_OI __first, _Size __n, const _Tp&amp; __value)</span>
 <span class="lineNum">     793 </span>            :     {
 <span class="lineNum">     794 </span>            :       // concept requirements
 <span class="lineNum">     795 </span>            :       __glibcxx_function_requires(_OutputIteratorConcept&lt;_OI, _Tp&gt;)
 <span class="lineNum">     796 </span>            : 
-<span class="lineNum">     797 </span><span class="lineCov">         57 :       return _OI(std::__fill_n_a(std::__niter_base(__first), __n, __value));</span>
+<span class="lineNum">     797 </span><span class="lineCov">         20 :       return _OI(std::__fill_n_a(std::__niter_base(__first), __n, __value));</span>
 <span class="lineNum">     798 </span>            :     }
 <span class="lineNum">     799 </span>            : 
 <span class="lineNum">     800 </span>            :   template&lt;bool _BoolType&gt;

@@ -6,7 +6,7 @@
 using namespace theoria ;
 using namespace config ;
 
-Config* TOMLConfigBuilder::parse(std::istream& stream)
+std::unique_ptr<const Config> TOMLConfigBuilder::parse(std::istream& stream)
 {
     try {
         cpptoml::parser parser_(stream) ;
@@ -20,10 +20,10 @@ Config* TOMLConfigBuilder::parse(std::istream& stream)
         throw RUNTIME_ERROR("Could not parse TOML config: %s", parseEx.what()) ;
     }
 
-    return releaseAll() ;
+    return std::unique_ptr<const Config>(releaseAll()) ;
 }
 
-Config* TOMLConfigBuilder::parse_file(const std::string& filename)
+std::unique_ptr<const Config> TOMLConfigBuilder::parse_file(const std::string& filename)
 {
     try {
         auto config = cpptoml::parse_file(filename);
@@ -39,7 +39,7 @@ Config* TOMLConfigBuilder::parse_file(const std::string& filename)
         throw RUNTIME_ERROR("Could not parse TOML config: %s: %s", filename.c_str(), parseEx.what()) ;
     }
 
-    return releaseAll() ;
+    return std::unique_ptr<const Config>(releaseAll()) ;
 }
 
 void TOMLConfigBuilder::_recursive_build(cpptoml::table& table)

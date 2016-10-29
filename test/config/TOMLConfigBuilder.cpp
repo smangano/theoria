@@ -25,7 +25,6 @@ class TOMLConfigBuilderTest : public ::testing::Test
 
     virtual void TearDown() {
         delete _builder ;
-        delete config ;
     }
 
 protected:
@@ -33,13 +32,13 @@ protected:
     TOMLConfigBuilder& builder() {return *_builder;}
     
     TOMLConfigBuilder *_builder ;
-    const Config* config = nullptr ;
+    std::unique_ptr<const Config> config ;
     
 } ;
 
 TEST_F(TOMLConfigBuilderTest, TestSimpleTOML) {
     std::istringstream iss(TEST1) ;
-   config =  builder().parse(iss) ;
+   config = std::move(builder().parse(iss)) ;
    ASSERT_EQ(config->name(), "Test1App") ;
    ASSERT_EQ(config->desc(), "A Test of TOML") ;
    ASSERT_EQ(config->getParent(), nullptr) ;
@@ -75,7 +74,7 @@ d=false                                     \n\
 
 TEST_F(TOMLConfigBuilderTest, TestTOMLWithTableArray) {
    std::istringstream iss(TEST2) ;
-   config =  builder().parse(iss) ;
+   config =  std::move(builder().parse(iss)) ;
    ASSERT_EQ(config->name(), "Test1App") ;
    ASSERT_EQ(config->desc(), "A Test of TOML") ;
    ASSERT_EQ(config->getParent(), nullptr) ;
@@ -107,7 +106,7 @@ x=2                                         \n\
 
 TEST_F(TOMLConfigBuilderTest, TestTOMLWithNestedTables) {
     std::istringstream iss(TEST3) ;
-    config =  builder().parse(iss) ;
+    config =  std::move(builder().parse(iss)) ;
     EXPECT_EQ(config->getParent(), nullptr) ;
     ASSERT_EQ(config->numChildren(), 1) ;
     EXPECT_FALSE(config->isArray()) ;

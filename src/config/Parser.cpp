@@ -1,4 +1,5 @@
 #include <theoria/config/Parser.h>
+#include <theoria/config/Config.h>
 #include <theoria/except/except.h>
 
 #include <fstream>
@@ -6,7 +7,7 @@
 using namespace theoria ;
 using namespace config ;
 
-Config* ConfigParser::parse_file(const std::string& filename) 
+std::unique_ptr<const Config> ConfigParser::parse_file(const std::string& filename) 
 {
     std::ifstream ifs(filename.c_str()) ;
     if (!ifs.good()) 

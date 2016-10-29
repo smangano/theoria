@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-29 04:25:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -343,33 +343,33 @@
 <span class="lineNum">     281 </span>            :             \note This function provides the strong exception-safety guarantee
 <a name="282"><span class="lineNum">     282 </span>            :         */</a>
 <span class="lineNum">     283 </span>            :         template&lt;typename Range1T, typename Range2T, typename PredicateT&gt;
-<span class="lineNum">     284 </span><span class="lineCov">         42 :         inline bool equals( </span>
+<span class="lineNum">     284 </span><span class="lineCov">         14 :         inline bool equals( </span>
 <span class="lineNum">     285 </span>            :             const Range1T&amp; Input, 
 <span class="lineNum">     286 </span>            :             const Range2T&amp; Test,
 <span class="lineNum">     287 </span>            :             PredicateT Comp)
 <span class="lineNum">     288 </span>            :         {
-<span class="lineNum">     289 </span><span class="lineCov">         42 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));</span>
-<span class="lineNum">     290 </span><span class="lineCov">         42 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));</span>
+<span class="lineNum">     289 </span><span class="lineCov">         14 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range1T&gt;::type&gt; lit_input(::boost::as_literal(Input));</span>
+<span class="lineNum">     290 </span><span class="lineCov">         14 :             iterator_range&lt;BOOST_STRING_TYPENAME range_const_iterator&lt;Range2T&gt;::type&gt; lit_test(::boost::as_literal(Test));</span>
 <span class="lineNum">     291 </span>            : 
 <span class="lineNum">     292 </span>            :             typedef BOOST_STRING_TYPENAME 
 <span class="lineNum">     293 </span>            :                 range_const_iterator&lt;Range1T&gt;::type Iterator1T;
 <span class="lineNum">     294 </span>            :             typedef BOOST_STRING_TYPENAME 
 <span class="lineNum">     295 </span>            :                 range_const_iterator&lt;Range2T&gt;::type Iterator2T;
 <span class="lineNum">     296 </span>            :                 
-<span class="lineNum">     297 </span><span class="lineCov">         42 :             Iterator1T InputEnd=::boost::end(lit_input);</span>
-<span class="lineNum">     298 </span><span class="lineCov">         42 :             Iterator2T TestEnd=::boost::end(lit_test);</span>
+<span class="lineNum">     297 </span><span class="lineCov">         14 :             Iterator1T InputEnd=::boost::end(lit_input);</span>
+<span class="lineNum">     298 </span><span class="lineCov">         14 :             Iterator2T TestEnd=::boost::end(lit_test);</span>
 <span class="lineNum">     299 </span>            : 
-<span class="lineNum">     300 </span><span class="lineCov">         42 :             Iterator1T it=::boost::begin(lit_input);</span>
-<span class="lineNum">     301 </span><span class="lineCov">         42 :             Iterator2T pit=::boost::begin(lit_test);</span>
-<span class="lineNum">     302 </span><span class="lineCov">        105 :             for(;</span>
+<span class="lineNum">     300 </span><span class="lineCov">         14 :             Iterator1T it=::boost::begin(lit_input);</span>
+<span class="lineNum">     301 </span><span class="lineCov">         14 :             Iterator2T pit=::boost::begin(lit_test);</span>
+<span class="lineNum">     302 </span><span class="lineCov">         35 :             for(;</span>
 <span class="lineNum">     303 </span>            :                 it!=InputEnd &amp;&amp; pit!=TestEnd;
 <span class="lineNum">     304 </span>            :                 ++it,++pit)
 <span class="lineNum">     305 </span>            :             {
-<span class="lineNum">     306 </span><span class="lineCov">         90 :                 if( !(Comp(*it,*pit)) )</span>
-<span class="lineNum">     307 </span><span class="lineCov">         27 :                     return false;</span>
+<span class="lineNum">     306 </span><span class="lineCov">         30 :                 if( !(Comp(*it,*pit)) )</span>
+<span class="lineNum">     307 </span><span class="lineCov">          9 :                     return false;</span>
 <span class="lineNum">     308 </span>            :             }
 <span class="lineNum">     309 </span>            : 
-<span class="lineNum">     310 </span><span class="lineCov">         15 :             return  (pit==TestEnd) &amp;&amp; (it==InputEnd);</span>
+<span class="lineNum">     310 </span><span class="lineCov">          5 :             return  (pit==TestEnd) &amp;&amp; (it==InputEnd);</span>
 <span class="lineNum">     311 </span>            :         }
 <span class="lineNum">     312 </span>            : 
 <span class="lineNum">     313 </span>            :         //! 'Equals' predicate
@@ -400,12 +400,12 @@
 <span class="lineNum">     338 </span>            :             \note This function provides the strong exception-safety guarantee
 <a name="339"><span class="lineNum">     339 </span>            :         */</a>
 <span class="lineNum">     340 </span>            :         template&lt;typename Range1T, typename Range2T&gt;
-<span class="lineNum">     341 </span><span class="lineCov">         42 :         inline bool iequals( </span>
+<span class="lineNum">     341 </span><span class="lineCov">         14 :         inline bool iequals( </span>
 <span class="lineNum">     342 </span>            :             const Range1T&amp; Input, 
 <span class="lineNum">     343 </span>            :             const Range2T&amp; Test,
 <span class="lineNum">     344 </span>            :             const std::locale&amp; Loc=std::locale())
 <span class="lineNum">     345 </span>            :         {
-<span class="lineNum">     346 </span><span class="lineCov">         42 :             return ::boost::algorithm::equals(Input, Test, is_iequal(Loc));</span>
+<span class="lineNum">     346 </span><span class="lineCov">         14 :             return ::boost::algorithm::equals(Input, Test, is_iequal(Loc));</span>
 <span class="lineNum">     347 </span>            :         }
 <span class="lineNum">     348 </span>            : 
 <span class="lineNum">     349 </span>            : // lexicographical_compare predicate -----------------------------//
