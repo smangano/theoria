@@ -30,6 +30,24 @@ RegistryLock::~RegistryLock()
     registry_lock.unlock();
 }
 
+RegistryLock(int ntimes=1, long sleepms = 0.0) 
+    : RegistryLock(ntimes, std::chrono::std::chrono::milliseconds(sleepms))
+{
+}
+
+template< class Rep, class Period >
+RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) 
+{
+    bool gotLock = false
+    while(n>0 && !gotLock) {
+        gotLock = registry_lock.try_lock() ;
+        if (sleepms > 0) 
+            std::this_thread::sleep_for(sleepduration) ;
+    }
+    if (!gotLock)
+        throw RegistryLocked();
+}
+
 Registry::~Registry()
 {
     for (auto pair : _components) {

@@ -34,8 +34,28 @@ class Theoria ;
  */
 struct RegistryLock
 {
+    /*
+     * Lock registry or block if already locked
+     */
     RegistryLock() ;
+    /*
+     * Try to lock registry ntimes with sleep ms between. Raises exception if lock not aquired
+     */
+    RegistryLock(int ntimes=1, long sleepms = 0.0) ;
+
+    /*
+     * Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not aquired
+     */
+    template< class Rep, class Period >
+    RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) ;
+    
+    
     ~RegistryLock() ;
+
+    /**
+     * Return true if not locked. Not particularly useful outside of unit test
+     */
+    static bool testLock() ;
 };
 
 class Registry

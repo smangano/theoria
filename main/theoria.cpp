@@ -15,17 +15,17 @@ int main(int argc, const char ** argv)
         util::CommandLine cmdline(argc-1, &(argv[1])) ;
         theoria.init() ;
 
-        if (cmdline.hasSetting(OPTION_HELP)) 
+        if (cmdline.hasSetting(OPTION_HELP[OPTS_IDX_NAME])) 
         {
             theoria.help() ;
         }
         else
-        if (cmdline.hasSetting(OPTION_SHOW_CONFIG) || cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY)) 
+        if (cmdline.hasSetting(OPTION_SHOW_CONFIG[OPTS_IDX_NAME]) || cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY[OPTS_IDX_NAME])) 
         {
-            theoria.show_config(cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY)) ;
+            theoria.show_config(cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY[OPTS_IDX_NAME])) ;
         }
 
-        if (!cmdline.hasSetting(OPTION_INIT_ONLY))
+        if (!cmdline.hasSetting(OPTION_INIT_ONLY[OPTS_IDX_NAME]))
         {
             theoria.run() ;
         }

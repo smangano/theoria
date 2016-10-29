@@ -1,0 +1,27 @@
+[vars.threads]
+type=int
+desc="Specifies total number of threads"
+private=false   #Default
+
+[vars.host1]
+type="string"
+desc="Host1 name or TCP address"
+
+[vars.port1]
+type="int"
+desc="Host1 port"
+
+#If you don't declare a variable then it is private but if you prefer to document it here
+#you can say it is private
+[vars.internal1]
+private=true
+type="double"
+desc="Something used internally"
+
+
+
+
+
+
+
+
