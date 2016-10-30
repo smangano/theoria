@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">71.4 %</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">55.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-29 04:25:57</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">57</td>
-            <td class="headerCovTableEntry">94</td>
-            <td class="headerCovTableEntryLo">60.6 %</td>
+            <td class="headerCovTableEntry">91</td>
+            <td class="headerCovTableEntry">100</td>
+            <td class="headerCovTableEntryHi">91.0 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -172,15 +172,15 @@
 <span class="lineNum">     110 </span>            :       typedef true_type propagate_on_container_move_assignment;
 <a name="111"><span class="lineNum">     111 </span>            : #endif</a>
 <span class="lineNum">     112 </span>            : 
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        231 :       allocator() throw() { }</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        505 :       allocator() throw() { }</span></a>
 <span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineCov">        188 :       allocator(const allocator&amp; __a) throw()</span>
-<span class="lineNum">     116 </span><span class="lineCov">        188 :       : __allocator_base&lt;_Tp&gt;(__a) { }</span>
+<span class="lineNum">     115 </span><span class="lineCov">        459 :       allocator(const allocator&amp; __a) throw()</span>
+<span class="lineNum">     116 </span><span class="lineCov">        459 :       : __allocator_base&lt;_Tp&gt;(__a) { }</span>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
 <span class="lineNum">     118 </span>            :       template&lt;typename _Tp1&gt;
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        242 :         allocator(const allocator&lt;_Tp1&gt;&amp;) throw() { }</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        782 :         allocator(const allocator&lt;_Tp1&gt;&amp;) throw() { }</span></a>
 <span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span><span class="lineCov">        489 :       ~allocator() throw() { }</span>
+<span class="lineNum">     121 </span><span class="lineCov">       1745 :       ~allocator() throw() { }</span>
 <span class="lineNum">     122 </span>            : 
 <span class="lineNum">     123 </span>            :       // Inherit everything else.
 <span class="lineNum">     124 </span>            :     };
@@ -200,10 +200,10 @@
 <span class="lineNum">     138 </span>            :     operator!=(const allocator&lt;_T1&gt;&amp;, const allocator&lt;_T2&gt;&amp;)
 <span class="lineNum">     139 </span>            :     { return false; }
 <span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            :   template&lt;typename _Tp&gt;
+<a name="141"><span class="lineNum">     141 </span>            :   template&lt;typename _Tp&gt;</a>
 <span class="lineNum">     142 </span>            :     inline bool
-<span class="lineNum">     143 </span>            :     operator!=(const allocator&lt;_Tp&gt;&amp;, const allocator&lt;_Tp&gt;&amp;)
-<span class="lineNum">     144 </span>            :     { return false; }
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     operator!=(const allocator&lt;_Tp&gt;&amp;, const allocator&lt;_Tp&gt;&amp;)</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     { return false; }</span>
 <span class="lineNum">     145 </span>            : 
 <span class="lineNum">     146 </span>            :   /// @} group allocator
 <span class="lineNum">     147 </span>            : 

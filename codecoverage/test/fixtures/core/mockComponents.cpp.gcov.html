@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - test/fixtures/core/mockComponents.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">test/fixtures/core</a> - mockComponents.cpp<span style="font-size: 80%;"> (source / <a href="mockComponents.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : const char * const TOML_CONFIG = \</a>
+<span class="lineNum">       2 </span>            : &quot;\
+<span class="lineNum">       3 </span>            : [MockComponent]             \n\
+<span class="lineNum">       4 </span>            : kind=\&quot;Component\&quot;          \n\
+<span class="lineNum">       5 </span>            : type=\&quot;MockComponent\&quot;      \n\
+<span class="lineNum">       6 </span>            : subtype=\&quot;MockComponent\&quot;   \n\
+<span class="lineNum">       7 </span>            :                             \n\
+<span class="lineNum">       8 </span>            : [MockComponent2]            \n\
+<span class="lineNum">       9 </span>            : kind=\&quot;Component\&quot;          \n\
+<span class="lineNum">      10 </span>            : type=\&quot;MockComponent\&quot;      \n\
+<span class="lineNum">      11 </span>            : subtype=\&quot;MockComponent2\&quot;  \n\
+<span class="lineNum">      12 </span>            : &quot; ;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : const char * const TOML_CONFIG1 = \
+<span class="lineNum">      15 </span>            : &quot;\
+<span class="lineNum">      16 </span>            : [MockComponent]             \n\
+<span class="lineNum">      17 </span>            : kind=\&quot;Component\&quot;          \n\
+<span class="lineNum">      18 </span>            : type=\&quot;MockComponent\&quot;      \n\
+<a name="19"><span class="lineNum">      19 </span>            : &quot; ;</a>
+<span class="lineNum">      20 </span>            : 
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         14 : struct MockComponent : public ::theoria::core::Component</span></a>
+<span class="lineNum">      22 </span>            : {
+<span class="lineNum">      23 </span><span class="lineCov">          9 :     MockComponent(::theoria::core::CompId id):</span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          9 :         ::theoria::core::Component(id, &quot;MockCompoent&quot;) {}</span></a>
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span><span class="lineCov">          5 :     static ::theoria::core::Component* factory(::theoria::core::CompId id) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          5 :         return new MockComponent(id) ;</span>
+<span class="lineNum">      28 </span>            :     }
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            :     static void reg() ;    
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            :     void finalize(std::vector&lt;::theoria::core::Component*&gt;&amp; dependencies) override ;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            :     std::vector&lt;Component*&gt; myDeps ;
+<a name="35"><span class="lineNum">      35 </span>            : } ;</a>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineCov">          3 : void MockComponent::finalize(std::vector&lt;Component*&gt;&amp; dependencies)</span>
+<span class="lineNum">      38 </span>            : {
+<span class="lineNum">      39 </span><span class="lineCov">          3 :     myDeps = dependencies ;</span>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">          7 : void MockComponent::reg() {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          7 :     ::theoria::core::RegisterThis&lt;MockComponent&gt; rt(&quot;MockComponent&quot;) ;</span>
+<a name="44"><span class="lineNum">      44 </span><span class="lineCov">          7 : }    </span></a>
+<span class="lineNum">      45 </span>            : 
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         30 : struct MockComponent2 : public MockComponent</span></a>
+<span class="lineNum">      47 </span>            : {
+<span class="lineNum">      48 </span><span class="lineCov">         15 :     MockComponent2(::theoria::core::CompId id):</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">         15 :         MockComponent(id) {_name = &quot;MockComponent2&quot;;}</span></a>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span><span class="lineCov">         15 :     static ::theoria::core::Component* factory(::theoria::core::CompId id) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">         15 :         return new MockComponent2(id) ;</span>
+<span class="lineNum">      53 </span>            :     }
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            :     static void reg() ;     
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :     ::theoria::core::Dependencies init(const ::theoria::config::Config&amp; config) override ;
+<a name="58"><span class="lineNum">      58 </span>            : } ;</a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">          6 : void MockComponent2::reg() </span>
+<span class="lineNum">      61 </span>            : {
+<span class="lineNum">      62 </span><span class="lineCov">          6 :     ::theoria::core::RegisterThis&lt;MockComponent2&gt; rt(&quot;MockComponent&quot;, &quot;MockComponent2&quot;); </span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          6 : }</span></a>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">          2 : ::theoria::core::Dependencies MockComponent2::init(const ::theoria::config::Config&amp; config)</span>
+<span class="lineNum">      66 </span>            : {
+<span class="lineNum">      67 </span><span class="lineCov">          2 :     return ::theoria::core::Dependencies().strict(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
+<span class="lineNum">      68 </span>            : }
+<span class="lineNum">      69 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ env.Append(CPPPATH=['./include'])
 env['ENV']['LD_LIBRARY_PATH'] = ['.', './build', '/home/smangano/dev/theoria/build/']
 
 program1 = env.Program('unittests', tests, LIBPATH=['.', '/usr/local/lib', '/usr/lib/x86_64-linux-gnu'],
-LIBS=['theoria','gtest', 'pthread', 'gcov'], CPPPATH=env['CPPPATH'] + ['./test'])
+LIBS=['theoria','gtest', 'pthread', 'gcov', 'gmock'], CPPPATH=env['CPPPATH'] + ['./test'])
 test_alias = Alias('unittests', [program1], program1[0].path, ENV={'LD_LIBRARY_PATH' : ['.', './build',
 '/home/smangano/dev/theoria/build/']})
 

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">181</td>
             <td class="headerCovTableEntry">186</td>
-            <td class="headerCovTableEntryHi">97.3 %</td>
+            <td class="headerCovTableEntry">186</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntryHi">92.9 %</td>
+            <td class="headerCovTableEntry">68</td>
+            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -62,297 +62,294 @@
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : #include &quot;theoria/core/Registry.h&quot;</a>
 <span class="lineNum">       2 </span>            : #include &quot;theoria/core/Component.h&quot;
-<span class="lineNum">       3 </span>            : #include &lt;gtest/gtest.h&gt;
-<span class="lineNum">       4 </span>            : 
-<span class="lineNum">       5 </span>            : #include &lt;ostream&gt;
+<span class="lineNum">       3 </span>            : #include &quot;theoria/core/RegisterThis.h&quot;
+<span class="lineNum">       4 </span>            : #include &quot;theoria/config/Config.h&quot;
+<span class="lineNum">       5 </span>            : #include &lt;gtest/gtest.h&gt;
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span>            : using namespace theoria ;
-<a name="8"><span class="lineNum">       8 </span>            : using namespace core ;</a>
-<span class="lineNum">       9 </span>            : 
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">         28 : class RegistryTest : public ::testing::Test </span></a>
-<span class="lineNum">      11 </span>            : {
-<span class="lineNum">      12 </span><span class="lineCov">         14 :     virtual void TearDown() {</span>
-<span class="lineNum">      13 </span><span class="lineCov">         14 :         Registry::instance().reset() ;</span>
-<span class="lineNum">      14 </span><span class="lineCov">         14 :     } </span>
-<a name="15"><span class="lineNum">      15 </span>            : } ;</a>
-<span class="lineNum">      16 </span>            : 
-<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 : struct MockComponent : public Component</span></a>
-<span class="lineNum">      18 </span>            : {
-<span class="lineNum">      19 </span><span class="lineNoCov">          0 :     MockComponent(CompId id):</span>
-<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 :         Component(id, &quot;MockCompoent&quot;) {}</span></a>
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 :     static Component* factory(CompId id) {</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 :         return new MockComponent(id) ;</span>
-<span class="lineNum">      24 </span>            :     }
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : 
-<a name="27"><span class="lineNum">      27 </span>            : } ;</a>
-<span class="lineNum">      28 </span>            : 
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">         22 : struct MockComponent2 : public MockComponent</span></a>
-<span class="lineNum">      30 </span>            : {
-<span class="lineNum">      31 </span><span class="lineCov">         11 :     MockComponent2(CompId id):</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">         11 :         MockComponent(id) {_name = &quot;MockComponent2&quot;;}</span></a>
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">         11 :     static Component* factory(CompId id) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">         11 :         return new MockComponent2(id) ;</span>
-<span class="lineNum">      36 </span>            :     }
-<span class="lineNum">      37 </span>            : 
-<a name="38"><span class="lineNum">      38 </span>            : } ;</a>
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">          5 : TEST_F(RegistryTest, RegisterFactoryByTypenameOnly) </span>
-<span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().findFact(&quot;MockComponent&quot;), Registry::instance().endFact()) ;</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :     ASSERT_EQ(Registry::instance().findFact(&quot;MockComponent&quot;)-&gt;first, </span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent&quot;))) ;</span>
-<a name="48"><span class="lineNum">      48 </span>            : }</a>
-<span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">          5 : TEST_F(RegistryTest, RegisterFactoryByTypenameAndSubType) </span>
-<span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().findFact(&quot;MockComponent&quot;), Registry::instance().endFact()) ;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :     auto iter = Registry::instance().findFact(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;first, </span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent&quot;))) ;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;second, MockComponent::factory) ;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :     ++iter ;</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;first, </span>
-<span class="lineNum">      63 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent2&quot;))) ;</span>
-<span class="lineNum">      64 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;second, MockComponent2::factory) ;</span>
-<a name="65"><span class="lineNum">      65 </span>            : }</a>
-<span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameOnlyOneRegister) </span>
-<span class="lineNum">      68 </span>            : {
-<span class="lineNum">      69 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">      70 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
+<span class="lineNum">       7 </span>            : #include &lt;ostream&gt;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : using namespace theoria ;
+<span class="lineNum">      10 </span>            : using namespace core ;
+<span class="lineNum">      11 </span>            : 
+<a name="12"><span class="lineNum">      12 </span>            : #include &quot;fixtures/core/mockComponents.cpp&quot;</a>
+<span class="lineNum">      13 </span>            : 
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         30 : class RegistryTest : public ::testing::Test </span></a>
+<span class="lineNum">      15 </span>            : {
+<span class="lineNum">      16 </span><span class="lineCov">         15 :     virtual void TearDown() {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         15 :         Registry::instance().reset() ;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         15 :     } </span>
+<a name="19"><span class="lineNum">      19 </span>            : } ;</a>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          5 : TEST_F(RegistryTest, RegisterFactoryByTypenameOnly) </span>
+<span class="lineNum">      22 </span>            : {
+<span class="lineNum">      23 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().findFact(&quot;MockComponent&quot;), Registry::instance().endFact()) ;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :     ASSERT_EQ(Registry::instance().findFact(&quot;MockComponent&quot;)-&gt;first, </span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent&quot;))) ;</span>
+<a name="29"><span class="lineNum">      29 </span>            : }</a>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">          5 : TEST_F(RegistryTest, RegisterFactoryByTypenameAndSubType) </span>
+<span class="lineNum">      32 </span>            : {
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().beginFact(), Registry::instance().endFact()) ;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 :     ASSERT_NE(Registry::instance().findFact(&quot;MockComponent&quot;), Registry::instance().endFact()) ;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          1 :     auto iter = Registry::instance().findFact(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;first, </span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent&quot;))) ;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;second, MockComponent::factory) ;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     ++iter ;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;first, </span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :               std::make_pair(std::string(&quot;MockComponent&quot;), std::string(&quot;MockComponent2&quot;))) ;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     ASSERT_EQ(iter-&gt;second, MockComponent2::factory) ;</span>
+<a name="46"><span class="lineNum">      46 </span>            : }</a>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameOnlyOneRegister) </span>
+<span class="lineNum">      49 </span>            : {
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
+<a name="56"><span class="lineNum">      56 </span>            : }</a>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault) </span>
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     Registry&amp; reg = Registry::instance() ;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     reg.registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     reg.registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     Component *comp =  reg.createComponent(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     MockComponent* mock = dynamic_cast&lt;MockComponent*&gt;(comp) ;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     ASSERT_NE(mock,nullptr) ;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 :     ASSERT_EQ(mock2,nullptr) ;</span></a>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineCov">          6 :     auto iter = reg.findfact(reg.beginFact(), [] (auto fact) {return fact.first.second == &quot;MockComponent2&quot;;}) ;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     ASSERT_NE(iter, reg.endFact()) ;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     EXPECT_EQ(iter-&gt;first.first, &quot;MockComponent&quot;) ;</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     EXPECT_EQ(iter-&gt;first.second, &quot;MockComponent2&quot;) ;</span>
 <a name="75"><span class="lineNum">      75 </span>            : }</a>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseDefault) </span>
+<span class="lineNum">      77 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed) </span>
 <span class="lineNum">      78 </span>            : {
 <span class="lineNum">      79 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
 <span class="lineNum">      80 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :     MockComponent* mock = dynamic_cast&lt;MockComponent*&gt;(comp) ;</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :     ASSERT_NE(mock,nullptr) ;</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :     ASSERT_EQ(mock2,nullptr) ;</span>
-<a name="88"><span class="lineNum">      88 </span>            : }</a>
-<span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseAlreadyUsed) </span>
-<span class="lineNum">      91 </span>            : {
-<span class="lineNum">      92 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            :     //Use Mock2
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            :     //Now this returns Mock2 becaused used one preferred
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :     mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
+<a name="93"><span class="lineNum">      93 </span>            : }</a>
 <span class="lineNum">      94 </span>            : 
-<span class="lineNum">      95 </span>            :     //Use Mock2
-<span class="lineNum">      96 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span>            :     //Now this returns Mock2 becaused used one preferred
-<span class="lineNum">     102 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :     mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
-<a name="106"><span class="lineNum">     106 </span>            : }</a>
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst) </span>
-<span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M1&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M2&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span>            :     //Now this returns Mock2 becaused it is first
-<span class="lineNum">     114 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
-<a name="118"><span class="lineNum">     118 </span>            : }</a>
-<span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterErrorDueToNoAmbiguity) </span>
-<span class="lineNum">     121 </span>            : {
-<span class="lineNum">     122 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M1&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M2&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      95 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterUseFirst) </span>
+<span class="lineNum">      96 </span>            : {
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M1&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M2&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            :     //Now this returns Mock2 becaused it is first
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     MockComponent2* mock2 = dynamic_cast&lt;MockComponent2*&gt;(comp) ;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     ASSERT_NE(mock2,nullptr) ;</span>
+<a name="105"><span class="lineNum">     105 </span>            : }</a>
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByTypenameTwoRegisterErrorDueToNoAmbiguity) </span>
+<span class="lineNum">     108 </span>            : {
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M1&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;M2&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            :     //Now this returns Mock2 becaused it is first
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     bool allow_ambiguity = false ;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 :     ASSERT_THROW(Registry::instance().createComponent(&quot;MockComponent&quot;, allow_ambiguity), std::runtime_error) ;</span>
+<a name="115"><span class="lineNum">     115 </span>            : }</a>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepNoMatching) </span>
+<span class="lineNum">     118 </span>            : {
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent3&quot;) ;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
 <span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span>            :     //Now this returns Mock2 becaused it is first
-<span class="lineNum">     126 </span><span class="lineCov">          1 :     bool allow_ambiguity = false ;</span>
-<span class="lineNum">     127 </span><span class="lineCov">          2 :     ASSERT_THROW(Registry::instance().createComponent(&quot;MockComponent&quot;, allow_ambiguity), std::runtime_error) ;</span>
-<a name="128"><span class="lineNum">     128 </span>            : }</a>
-<span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepNoMatching) </span>
-<span class="lineNum">     131 </span>            : {
-<span class="lineNum">     132 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent3&quot;) ;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent3&quot;, &quot;&quot;) ;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent3&quot;) ;</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepOnlyOneRegister) </span>
+<span class="lineNum">     135 </span>            : {
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
 <span class="lineNum">     137 </span>            : 
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent3&quot;) ;</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
-<span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent3&quot;, &quot;&quot;) ;</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
 <span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepOnlyOneRegister) </span>
-<span class="lineNum">     148 </span>            : {
-<span class="lineNum">     149 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     150 </span>            : 
-<span class="lineNum">     151 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
-<span class="lineNum">     155 </span>            : 
-<span class="lineNum">     156 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 :     EXPECT_EQ(comp, nullptr) ;</span>
-<span class="lineNum">     159 </span>            : 
-<span class="lineNum">     160 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
-<span class="lineNum">     161 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
-<a name="164"><span class="lineNum">     164 </span>            : }</a>
-<span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepTwoRegistered) </span>
-<span class="lineNum">     167 </span>            : {
-<span class="lineNum">     168 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     170 </span>            : 
-<span class="lineNum">     171 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
-<span class="lineNum">     175 </span>            : 
-<span class="lineNum">     176 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent&quot;) ;</span>
-<span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
-<span class="lineNum">     182 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
-<span class="lineNum">     183 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent&quot;) ;</span>
-<a name="185"><span class="lineNum">     185 </span>            : }</a>
-<span class="lineNum">     186 </span>            : 
-<span class="lineNum">     187 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentById) </span>
-<span class="lineNum">     188 </span>            : {
-<span class="lineNum">     189 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     193 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     194 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     195 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
-<span class="lineNum">     196 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
-<span class="lineNum">     197 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
-<span class="lineNum">     198 </span>            : 
-<span class="lineNum">     199 </span>            :     //Having established above we can now test access to these compenents by their id
-<span class="lineNum">     200 </span>            : 
-<span class="lineNum">     201 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(comp1-&gt;id()) ;</span>
-<span class="lineNum">     202 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
-<span class="lineNum">     203 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
-<span class="lineNum">     204 </span>            : 
-<span class="lineNum">     205 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(comp2-&gt;id()) ;</span>
-<span class="lineNum">     206 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
-<span class="lineNum">     207 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
-<span class="lineNum">     208 </span>            : 
-<span class="lineNum">     209 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(99) ;</span>
-<span class="lineNum">     210 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
-<a name="211"><span class="lineNum">     211 </span>            : }</a>
-<span class="lineNum">     212 </span>            : 
-<span class="lineNum">     213 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByType) </span>
-<span class="lineNum">     214 </span>            : {
-<span class="lineNum">     215 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     216 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     217 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     218 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     219 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     220 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     221 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
-<span class="lineNum">     223 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
-<span class="lineNum">     224 </span>            : 
-<span class="lineNum">     225 </span>            :     //Having established above we can now test access to these compenents by their type
-<span class="lineNum">     226 </span>            : 
-<span class="lineNum">     227 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     228 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
-<span class="lineNum">     229 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
-<span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(&quot;MockComponent3&quot;) ;</span>
-<span class="lineNum">     232 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
-<a name="233"><span class="lineNum">     233 </span>            : }</a>
-<span class="lineNum">     234 </span>            : 
-<span class="lineNum">     235 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByTypeSubType) </span>
-<span class="lineNum">     236 </span>            : {
-<span class="lineNum">     237 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     238 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     239 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     240 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     241 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     242 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     243 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
-<span class="lineNum">     244 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
-<span class="lineNum">     245 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
-<span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span>            :     //Having established above we can now test access to these compenents by their type
-<span class="lineNum">     248 </span>            : 
-<span class="lineNum">     249 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     250 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
-<span class="lineNum">     251 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
-<span class="lineNum">     252 </span>            : 
-<span class="lineNum">     253 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(&quot;MockComponent&quot;, &quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     254 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
-<span class="lineNum">     256 </span>            : 
-<span class="lineNum">     257 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(&quot;MockComponent2&quot;, &quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     258 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
-<a name="259"><span class="lineNum">     259 </span>            : }</a>
-<span class="lineNum">     260 </span>            : 
-<span class="lineNum">     261 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByDep) </span>
-<span class="lineNum">     262 </span>            : {
-<span class="lineNum">     263 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
-<span class="lineNum">     264 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
-<span class="lineNum">     265 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
-<span class="lineNum">     266 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
-<span class="lineNum">     267 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
-<span class="lineNum">     268 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
-<span class="lineNum">     269 </span><span class="lineCov">          2 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
-<span class="lineNum">     270 </span><span class="lineCov">          1 :     Component *comp3 =  Registry::instance().createComponent(loose) ;</span>
-<span class="lineNum">     271 </span>            : 
-<span class="lineNum">     272 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
-<span class="lineNum">     273 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
-<span class="lineNum">     274 </span><span class="lineCov">          1 :     ASSERT_NE(comp3, nullptr) ;</span>
-<span class="lineNum">     275 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
-<span class="lineNum">     276 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp3) ;</span>
-<span class="lineNum">     277 </span>            : 
-<span class="lineNum">     278 </span>            :     //Having established above we can now test access to these compenents by their deps
-<span class="lineNum">     279 </span>            : 
-<span class="lineNum">     280 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(strict) ;</span>
-<span class="lineNum">     281 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
-<span class="lineNum">     282 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
-<span class="lineNum">     283 </span>            : 
-<span class="lineNum">     284 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(defaulted) ;</span>
-<span class="lineNum">     285 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
-<span class="lineNum">     286 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
-<span class="lineNum">     287 </span>            : 
-<span class="lineNum">     288 </span>            :     //Loose is like a box of choclates, yah never know what ya gonna get
-<span class="lineNum">     289 </span><span class="lineCov">          1 :     auto maybe3 = Registry::instance().component(loose) ;</span>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe3) ;</span></a>
-<span class="lineNum">     291 </span><span class="lineCov">          2 :     EXPECT_EQ(maybe3.get(), comp2) ; </span>
-<span class="lineNum">     292 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     293 </span>            : 
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
+<a name="151"><span class="lineNum">     151 </span>            : }</a>
+<span class="lineNum">     152 </span>            : 
+<span class="lineNum">     153 </span><span class="lineCov">          5 : TEST_F(RegistryTest, CreateByDepTwoRegistered) </span>
+<span class="lineNum">     154 </span>            : {
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     Component *comp =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent2&quot;) ;</span>
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent&quot;) ;</span>
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     comp =  Registry::instance().createComponent(loose) ;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     ASSERT_NE(comp, nullptr) ;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     EXPECT_EQ(comp-&gt;name(), &quot;MockComponent:MockComponent&quot;) ;</span>
+<a name="172"><span class="lineNum">     172 </span>            : }</a>
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span><span class="lineCov">          5 : TEST_F(RegistryTest, TestCreateComponentNotRegisteredThrows)</span>
+<span class="lineNum">     175 </span>            : {
+<span class="lineNum">     176 </span><span class="lineCov">          2 :     EXPECT_THROW(Registry::instance().createComponent(&quot;Blah&quot;), std::runtime_error) ;</span>
+<span class="lineNum">     177 </span><span class="lineCov">          2 :     EXPECT_THROW(Registry::instance().createComponent(&quot;Blah&quot;,&quot;BlahBlah&quot;), std::runtime_error);</span>
+<span class="lineNum">     178 </span>            :     //Dep based returns null;:
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;Blah&quot;, &quot;BlahBlah&quot;) ;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     ASSERT_EQ(Registry::instance().createComponent(strict), nullptr) ;</span>
+<span class="lineNum">     181 </span>            : 
+<a name="182"><span class="lineNum">     182 </span>            : }</a>
+<span class="lineNum">     183 </span>            : 
+<span class="lineNum">     184 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentById) </span>
+<span class="lineNum">     185 </span>            : {
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     188 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     189 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     190 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span>            :     //Having established above we can now test access to these compenents by their id
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(comp1-&gt;id()) ;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(comp2-&gt;id()) ;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
+<span class="lineNum">     204 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(99) ;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
+<a name="208"><span class="lineNum">     208 </span>            : }</a>
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByType) </span>
+<span class="lineNum">     211 </span>            : {
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
+<span class="lineNum">     219 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
+<span class="lineNum">     221 </span>            : 
+<span class="lineNum">     222 </span>            :     //Having established above we can now test access to these compenents by their type
+<span class="lineNum">     223 </span>            : 
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(&quot;MockComponent3&quot;) ;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
+<a name="230"><span class="lineNum">     230 </span>            : }</a>
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByTypeSubType) </span>
+<span class="lineNum">     233 </span>            : {
+<span class="lineNum">     234 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            :     //Having established above we can now test access to these compenents by their type
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     247 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(&quot;MockComponent&quot;, &quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span><span class="lineCov">          1 :     auto maybeNot = Registry::instance().component(&quot;MockComponent2&quot;, &quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     255 </span><span class="lineCov">          2 :     ASSERT_FALSE(maybeNot) ;</span>
+<a name="256"><span class="lineNum">     256 </span>            : }</a>
+<span class="lineNum">     257 </span>            : 
+<span class="lineNum">     258 </span><span class="lineCov">          5 : TEST_F(RegistryTest, ComponentByDep) </span>
+<span class="lineNum">     259 </span>            : {
+<span class="lineNum">     260 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, &quot;MockComponent2&quot;, MockComponent2::factory) ; </span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     Registry::instance().registerFactory(&quot;MockComponent&quot;, MockComponent::factory) ; </span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     Dependencies::Dependent strict(&quot;MockComponent&quot;, &quot;MockComponent2&quot;) ;</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     Component *comp1 =  Registry::instance().createComponent(strict) ;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          2 :     Dependencies::Dependent defaulted(&quot;MockComponent&quot;) ;</span>
+<span class="lineNum">     265 </span><span class="lineCov">          1 :     Component *comp2 =  Registry::instance().createComponent(defaulted) ;</span>
+<span class="lineNum">     266 </span><span class="lineCov">          2 :     Dependencies::Dependent loose(&quot;MockComponent&quot;, &quot;&quot;) ;</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :     Component *comp3 =  Registry::instance().createComponent(loose) ;</span>
+<span class="lineNum">     268 </span>            : 
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, nullptr) ;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     ASSERT_NE(comp2, nullptr) ;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     ASSERT_NE(comp3, nullptr) ;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp2) ;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     ASSERT_NE(comp1, comp3) ;</span>
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span>            :     //Having established above we can now test access to these compenents by their deps
+<span class="lineNum">     276 </span>            : 
+<span class="lineNum">     277 </span><span class="lineCov">          1 :     auto maybe1 = Registry::instance().component(strict) ;</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe1) ;</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe1.get(), comp1) ; </span>
+<span class="lineNum">     280 </span>            : 
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     auto maybe2 = Registry::instance().component(defaulted) ;</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe2) ;</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     EXPECT_EQ(maybe2.get(), comp2) ; </span>
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span>            :     //Loose is like a box of choclates, yah never know what ya gonna get
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     auto maybe3 = Registry::instance().component(loose) ;</span>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          1 :     ASSERT_TRUE(maybe3) ;</span></a>
+<span class="lineNum">     288 </span><span class="lineCov">          2 :     EXPECT_EQ(maybe3.get(), comp2) ; </span>
+<span class="lineNum">     289 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     290 </span>            : 
 </pre>
       </td>
     </tr>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-29 04:25:57</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -71,38 +71,38 @@
 <span class="lineNum">       9 </span>            : 
 <a name="10"><span class="lineNum">      10 </span>            : static CommandLine*  __CommandLine = nullptr ;</a>
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span><span class="lineCov">         25 : CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)</span>
+<span class="lineNum">      12 </span><span class="lineCov">         29 : CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)</span>
 <span class="lineNum">      13 </span>            : {
 <span class="lineNum">      14 </span>            :     //The first one constructed is the global instance
-<span class="lineNum">      15 </span><span class="lineCov">         24 :     if (!__CommandLine) </span>
-<span class="lineNum">      16 </span><span class="lineCov">         24 :         __CommandLine = this ;</span>
+<span class="lineNum">      15 </span><span class="lineCov">         28 :     if (!__CommandLine) </span>
+<span class="lineNum">      16 </span><span class="lineCov">         28 :         __CommandLine = this ;</span>
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">         24 :     if (argc &lt; 1) </span>
+<span class="lineNum">      18 </span><span class="lineCov">         28 :     if (argc &lt; 1) </span>
 <span class="lineNum">      19 </span><span class="lineCov">          1 :         throw RUNTIME_ERROR(&quot;theoria requires at least a config file arg&quot;) ;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            :     //First the config file which is mandatory
-<span class="lineNum">      22 </span><span class="lineCov">         23 :     std::string config_file(argv[0]) ;</span>
-<span class="lineNum">      23 </span><span class="lineCov">         23 :     if (!allowMissingConfig) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         27 :     std::string config_file(argv[0]) ;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         27 :     if (!allowMissingConfig) {</span>
 <span class="lineNum">      24 </span><span class="lineCov">         15 :         FILE* f = fopen(config_file.c_str(), &quot;r&quot;) ;</span>
 <span class="lineNum">      25 </span><span class="lineCov">         15 :         if (!f)</span>
 <span class="lineNum">      26 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;theoria could not open config %s&quot;, config_file.c_str()) ;</span>
 <span class="lineNum">      27 </span><span class="lineCov">         15 :         fclose(f) ;</span>
 <span class="lineNum">      28 </span>            :     }
-<span class="lineNum">      29 </span><span class="lineCov">         23 :     _configFileName = config_file ;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         27 :     _configFileName = config_file ;</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            :     //Second optional settings which may be terminated with --
-<span class="lineNum">      32 </span><span class="lineCov">         23 :     int iSetting = 1 ;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         69 :     while(iSetting &lt; argc &amp;&amp; strcmp(argv[iSetting], &quot;--&quot;) != 0 &amp;&amp; argv[iSetting] == strstr(argv[iSetting], &quot;--&quot;)) {</span>
-<span class="lineNum">      34 </span><span class="lineCov">         23 :         const char * setting = argv[iSetting++]+2 ;</span>
-<span class="lineNum">      35 </span><span class="lineCov">         23 :         const char * value = &quot;true&quot; ;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         23 :         if (iSetting &lt; argc &amp;&amp; strncmp(argv[iSetting], &quot;--&quot;, 2) != 0)</span>
-<span class="lineNum">      37 </span><span class="lineCov">         17 :             value = argv[iSetting++] ;</span>
-<span class="lineNum">      38 </span><span class="lineCov">         23 :         _settings[setting] = value ;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         27 :     int iSetting = 1 ;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         78 :     while(iSetting &lt; argc &amp;&amp; strcmp(argv[iSetting], &quot;--&quot;) != 0 &amp;&amp; argv[iSetting] == strstr(argv[iSetting], &quot;--&quot;)) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">         24 :         const char * setting = argv[iSetting++]+2 ;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         24 :         const char * value = &quot;true&quot; ;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         24 :         if (iSetting &lt; argc &amp;&amp; strncmp(argv[iSetting], &quot;--&quot;, 2) != 0)</span>
+<span class="lineNum">      37 </span><span class="lineCov">         18 :             value = argv[iSetting++] ;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         24 :         _settings[setting] = value ;</span>
 <span class="lineNum">      39 </span>            :     }
 <span class="lineNum">      40 </span>            :    
-<span class="lineNum">      41 </span><span class="lineCov">         23 :     iSetting++ ; //eat potential trailing -- </span>
-<span class="lineNum">      42 </span><span class="lineCov">         23 :     if (iSetting &gt;= argc)</span>
-<span class="lineNum">      43 </span><span class="lineCov">         35 :         return ;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         27 :     iSetting++ ; //eat potential trailing -- </span>
+<span class="lineNum">      42 </span><span class="lineCov">         27 :     if (iSetting &gt;= argc)</span>
+<span class="lineNum">      43 </span><span class="lineCov">         43 :         return ;</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            :     //Variables
 <span class="lineNum">      46 </span><span class="lineCov">         11 :     const char * pEq = nullptr ;</span>
@@ -123,10 +123,10 @@
 <span class="lineNum">      61 </span><span class="lineCov">         11 :     }</span>
 <a name="62"><span class="lineNum">      62 </span>            : }</a>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">        112 : const CommandLine&amp; CommandLine::instance() </span>
+<span class="lineNum">      64 </span><span class="lineCov">        116 : const CommandLine&amp; CommandLine::instance() </span>
 <span class="lineNum">      65 </span>            : {
 <span class="lineNum">      66 </span>            :     //yes death will be swift if used before main initializes!
-<span class="lineNum">      67 </span><span class="lineCov">        112 :     return *__CommandLine ;</span>
+<span class="lineNum">      67 </span><span class="lineCov">        116 :     return *__CommandLine ;</span>
 <span class="lineNum">      68 </span>            : }
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <span class="lineNum">      70 </span>            : 
@@ -161,10 +161,10 @@
 <span class="lineNum">      99 </span><span class="lineNoCov">          0 :     return convertToBool(findVar(name) , endVars(), &quot;variable&quot;, name, def) ;</span>
 <a name="100"><span class="lineNum">     100 </span>            : }</a>
 <span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineCov">         24 : void CommandLine::reset()</span>
+<span class="lineNum">     102 </span><span class="lineCov">         28 : void CommandLine::reset()</span>
 <span class="lineNum">     103 </span>            : {
-<span class="lineNum">     104 </span><span class="lineCov">         24 :     __CommandLine = nullptr ;</span>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">         24 : }</span></a>
+<span class="lineNum">     104 </span><span class="lineCov">         28 :     __CommandLine = nullptr ;</span>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">         28 : }</span></a>
 <span class="lineNum">     106 </span>            : 
 <span class="lineNum">     107 </span><span class="lineCov">          3 : const char * CommandLine::settingAsPtr(const std::string&amp; name) const noexcept </span>
 <span class="lineNum">     108 </span>            : {
@@ -174,12 +174,12 @@
 <span class="lineNum">     112 </span><span class="lineCov">          1 :     return nullptr ;</span>
 <a name="113"><span class="lineNum">     113 </span>            : }</a>
 <span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineCov">          2 : const std::string&amp; CommandLine::settingAsStr(const std::string&amp; name, const std::string&amp; def) const </span>
+<span class="lineNum">     115 </span><span class="lineCov">          6 : const std::string&amp; CommandLine::settingAsStr(const std::string&amp; name, const std::string&amp; def) const </span>
 <span class="lineNum">     116 </span>            : {
-<span class="lineNum">     117 </span><span class="lineCov">          2 :     auto iter = findSetting(name) ;</span>
-<span class="lineNum">     118 </span><span class="lineCov">          2 :     if (iter != endSettings())</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :         return iter-&gt;second ;</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 :     return def ;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          6 :     auto iter = findSetting(name) ;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          6 :     if (iter != endSettings())</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 :         return iter-&gt;second ;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          4 :     return def ;</span>
 <a name="121"><span class="lineNum">     121 </span>            : }</a>
 <span class="lineNum">     122 </span>            : 
 <span class="lineNum">     123 </span><span class="lineCov">          8 : int64_t CommandLine::settingAsInt(const std::string&amp; name, int64_t def) const </span>

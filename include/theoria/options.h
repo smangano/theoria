@@ -1,7 +1,11 @@
 #pragma once
 
+#include <string>
+
 namespace theoria
 {
+    static const std::string dashdash("--") ;
+
     /*
      * --bootstrap_path :  The path to search for bootstrap.toml 
      */
@@ -24,5 +28,7 @@ namespace theoria
     const char * const OPTION_SHOW_CONFIG = "show_config" ;
     const char * const OPTION_SHOW_CONFIG_ONLY = "show_config_only" ;
 
+    inline const char * OPT(std::string& buf, const std::string& opt) {buf = dashdash+opt; return buf.c_str();}
 
-} ;
+} 
+

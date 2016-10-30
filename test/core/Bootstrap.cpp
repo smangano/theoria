@@ -4,8 +4,13 @@
 #include <theoria/core/RegisterThis.h>
 #include <theoria/config/Config.h>
 #include <theoria/config/TOMLConfigBuilder.h>
+#include <theoria/os/os.h>
+#include <theoria/util/CommandLine.h>
+#include <theoria/envvars.h>
+#include <theoria/options.h>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <cstdlib>
 
 namespace theoria {
 
@@ -114,5 +119,119 @@ TEST_F(TestBootstrap, finalizeAppLifeCycleTest) {
     EXPECT_EQ(myMock->lastCall, core::AppLifeCycle::FINALIZED) ;
     delete myMock ;
 }
+
+TEST_F(TestBootstrap, satisfyAndFinalizeTest) {
+    std::vector<core::Component*> comps ;
+    bootstrap.createCoreComponents(componentConfigs, comps) ;
+    std::unordered_map<core::CompId, core::Dependencies> coreCompDeps ;
+    bootstrap.initializeCoreComponent(componentConfigs, comps, coreCompDeps) ;
+    bootstrap.satisfyAndFinalize(coreCompDeps) ;
+    auto maybeMC = core::Registry::instance().component("MockComponent", "MockComponent") ; 
+    ASSERT_TRUE(maybeMC) ;
+    EXPECT_EQ(maybeMC->cast<MockComponent>()->myDeps.size(), 0) ;
+    auto maybeMC2 = core::Registry::instance().component("MockComponent", "MockComponent2") ; 
+    ASSERT_TRUE(maybeMC2) ;
+    ASSERT_EQ(maybeMC2->cast<MockComponent2>()->myDeps.size(), 1) ;
+    EXPECT_EQ(maybeMC2->cast<MockComponent2>()->myDeps[0], maybeMC.get()) ;
+}
+
+TEST(TestBootstrap1, TestSingleCompontConfig) {
+    std::istringstream iss(TOML_CONFIG1) ;
+    auto config = config::TOMLConfigBuilder().parse(iss) ; 
+    auto componentConfigs = 
+        config->getChildren( [] (const config::Config* child) {return child->getAttrAsStr("kind", "Component") == "Component";} ) ;
+    MockComponent::reg();
+    std::vector<core::Component*> comps ;
+    core::Bootstrap bootstrap ;
+    bootstrap.createCoreComponents(componentConfigs, comps) ;
+    std::unordered_map<core::CompId, core::Dependencies> coreCompDeps ;
+    bootstrap.initializeCoreComponent(componentConfigs, comps, coreCompDeps) ;
+    bootstrap.satisfyAndFinalize(coreCompDeps) ;
+    auto maybeMC = core::Registry::instance().component("MockComponent") ; 
+    ASSERT_TRUE(maybeMC) ;
+    EXPECT_EQ(maybeMC->cast<MockComponent>()->myDeps.size(), 0) ;
+}
+
+class TempFile
+{
+public:
+    
+    TempFile(const std::string& path):
+        _path(path) 
+    {
+        FILE* fp ;
+        if (!(fp=fopen(_path.c_str(), "w")))
+            std::runtime_error("TempFile create failed") ; 
+        fclose(fp) ;
+    }
+
+    ~TempFile() {
+        remove(_path.c_str()) ;
+    }
+
+    std::string path() const {return _path;} 
+
+private:
+
+    std::string _path ;
+} ;
+
+class BootstrapFindConfigTest : public ::testing::Test
+{
+
+    virtual void TearDown() {
+        util::CommandLine::reset() ; 
+    }
+} ;
+
+TEST_F(BootstrapFindConfigTest, findConfigViaEnv) {
+    const char* argv[] = {"dummy.toml"} ;
+    bool allowMissingConfig = true ;
+    util::CommandLine cl(1, argv, allowMissingConfig) ;
+    TempFile temp("./bootstrap.toml") ;
+    setenv(ENV_BOOTSTRAP_CONFIG_PATH, "/tmp:.", 1) ;
+    core::Bootstrap bootstrap;
+    EXPECT_EQ(bootstrap.findConfig(), temp.path()) ;
+    unsetenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
+}
+
+TEST_F(BootstrapFindConfigTest, findConfigViaCmdLineOpt) {
+    std::string buf ;
+    const char* argv[] = {"dummy.toml", OPT(buf, OPTION_BOOTSTRAP_CONFIG_PATH), "."} ;
+    bool allowMissingConfig = true ;
+    util::CommandLine cl(3, argv, allowMissingConfig) ;
+    TempFile temp("./bootstrap.toml") ;
+    unsetenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
+    core::Bootstrap bootstrap;
+    EXPECT_EQ(bootstrap.findConfig(), temp.path()) ;
+}
+
+TEST_F(BootstrapFindConfigTest, findConfigViaOS) {
+    
+    if (os::dir_exists("/usr/local/theoria") && !os::exists("/usr/local/theoria/bootstrap.toml")) {
+        std::string buf ;
+        const char* argv[] = {"dummy.toml"} ;
+        bool allowMissingConfig = true ;
+        util::CommandLine cl(1, argv, allowMissingConfig) ;
+        TempFile temp("/usr/local/theoria/bootstrap.toml") ;
+        unsetenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
+        core::Bootstrap bootstrap;
+        EXPECT_EQ(bootstrap.findConfig(), temp.path()) ;
+    }
+}
+
+TEST_F(BootstrapFindConfigTest, findConfigThrows) {
+    
+    if (!os::exists("/usr/local/theoria/bootstrap.toml")) {
+        std::string buf ;
+        const char* argv[] = {"dummy.toml"} ;
+        bool allowMissingConfig = true ;
+        util::CommandLine cl(1, argv, allowMissingConfig) ;
+        unsetenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
+        core::Bootstrap bootstrap;
+        EXPECT_THROW(bootstrap.findConfig(), std::runtime_error) ;
+    }
+}
+
 
 } //namespace theoria

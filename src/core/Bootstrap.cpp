@@ -41,6 +41,7 @@ std::string Bootstrap::findConfig() const
         filename = os::join_path(dir, "bootstrap.toml") ;
         if (os::exists(filename)) 
             break ;
+        filename = "" ;
     }
     if (filename == "")
         throw RUNTIME_ERROR("boostrap.toml not found whils searching %s. Can't proceed.", path.c_str()) ; 

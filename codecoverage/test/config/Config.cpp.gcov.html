@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">138</td>
-            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntry">146</td>
+            <td class="headerCovTableEntry">146</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">35</td>
-            <td class="headerCovTableEntryHi">97.1 %</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntryHi">97.4 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -67,7 +67,7 @@
 <span class="lineNum">       5 </span>            : using namespace theoria ;
 <a name="6"><span class="lineNum">       6 </span>            : using namespace theoria::config ;</a>
 <span class="lineNum">       7 </span>            : 
-<span class="lineNum">       8 </span><span class="lineCov">         10 : class BuildTestConfig : private ConfigBuilder</span>
+<span class="lineNum">       8 </span><span class="lineCov">         12 : class BuildTestConfig : public ConfigBuilder</span>
 <span class="lineNum">       9 </span>            : {
 <span class="lineNum">      10 </span>            : public:
 <span class="lineNum">      11 </span>            : 
@@ -91,15 +91,15 @@
 <span class="lineNum">      29 </span><span class="lineCov">          1 :     return releaseAll() ;</span>
 <a name="30"><span class="lineNum">      30 </span>            : }</a>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">          2 : Config* BuildTestConfig::testConfigWithOneChild() </span>
+<span class="lineNum">      32 </span><span class="lineCov">          3 : Config* BuildTestConfig::testConfigWithOneChild() </span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">          2 :     pushConfig(&quot;Test&quot;, &quot;testConfigWithOneChild&quot;) ;</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :     addAttr(&quot;attr1&quot;, &quot;1&quot;, &quot;int&quot;) ;</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 :     addAttr(&quot;attr2&quot;, &quot;foo&quot;, &quot;string&quot;) ;</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :     pushConfig(&quot;Child1&quot;, &quot;Some Child&quot;) ;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :     addAttr(&quot;attr1&quot;, &quot;2&quot;, &quot;int&quot;) ;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :     popAsChild() ;</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 :     return releaseAll() ;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          3 :     pushConfig(&quot;Test&quot;, &quot;testConfigWithOneChild&quot;) ;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 :     addAttr(&quot;attr1&quot;, &quot;1&quot;, &quot;int&quot;) ;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          3 :     addAttr(&quot;attr2&quot;, &quot;foo&quot;, &quot;string&quot;) ;</span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 :     pushConfig(&quot;Child1&quot;, &quot;Some Child&quot;) ;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :     addAttr(&quot;attr1&quot;, &quot;2&quot;, &quot;int&quot;) ;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :     popAsChild() ;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 :     return releaseAll() ;</span>
 <a name="41"><span class="lineNum">      41 </span>            : }</a>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span><span class="lineCov">          1 : Config* BuildTestConfig::testConfigWithMultipleChildren() </span>
@@ -118,152 +118,164 @@
 <span class="lineNum">      56 </span><span class="lineCov">          1 :     return releaseAll() ;</span>
 <a name="57"><span class="lineNum">      57 </span>            : }</a>
 <span class="lineNum">      58 </span>            : 
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         10 : class ConfigTest : public ::testing::Test </span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">         12 : class ConfigTest : public ::testing::Test </span></a>
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">          5 :     virtual void SetUp() {</span>
-<span class="lineNum">      62 </span><span class="lineCov">          5 :        _builder = new BuildTestConfig() ;  </span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          5 :     }</span></a>
+<span class="lineNum">      61 </span><span class="lineCov">          6 :     virtual void SetUp() {</span>
+<span class="lineNum">      62 </span><span class="lineCov">          6 :        _builder = new BuildTestConfig() ;  </span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          6 :     }</span></a>
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">          5 :     virtual void TearDown() {</span>
-<span class="lineNum">      66 </span><span class="lineCov">          5 :         delete _builder ;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          5 :         delete config ;</span>
-<span class="lineNum">      68 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      65 </span><span class="lineCov">          6 :     virtual void TearDown() {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          6 :         delete _builder ;</span>
+<span class="lineNum">      67 </span><span class="lineCov">          6 :         delete config ;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          6 :     }</span>
 <span class="lineNum">      69 </span>            : 
-<a name="70"><span class="lineNum">      70 </span>            : protected:</a>
+<a name="70"><span class="lineNum">      70 </span>            : public:</a>
 <span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">          5 :     BuildTestConfig&amp; builder() {return *_builder;}</span>
+<span class="lineNum">      72 </span><span class="lineCov">         11 :     BuildTestConfig&amp; builder() {return *_builder;}</span>
 <span class="lineNum">      73 </span>            :     
-<span class="lineNum">      74 </span>            :     BuildTestConfig *_builder ;
-<span class="lineNum">      75 </span>            :     const Config * config = nullptr ;
-<span class="lineNum">      76 </span>            :     
-<a name="77"><span class="lineNum">      77 </span>            : } ;</a>
-<span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigTest) {</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 :     config = builder().testSingleConfigNoAttr() ;</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testSingleConfigNoAttr&quot;) ;</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getChildren(), Config::ConstConfigList()) ;</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 0) ;</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isLeaf()) ;</span>
-<a name="88"><span class="lineNum">      88 </span>            : }</a>
-<span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithAttrTest) {</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 :     config = builder().testSingleConfigWithAttr() ;</span>
-<span class="lineNum">      92 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testSingleConfigWithAttr&quot;) ;</span>
-<span class="lineNum">      94 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getChildren(), Config::ConstConfigList()) ;</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isLeaf()) ;</span>
-<a name="104"><span class="lineNum">     104 </span>            : }</a>
-<span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithOneChildTest) {</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 :     config = builder().testConfigWithOneChild() ;</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
-<span class="lineNum">     109 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testConfigWithOneChild&quot;) ;</span>
-<span class="lineNum">     110 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
-<span class="lineNum">     111 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numChildren(), 1) ;</span>
-<span class="lineNum">     112 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
-<span class="lineNum">     113 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :     ASSERT_FALSE(config-&gt;isLeaf()) ;</span>
-<span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span><span class="lineCov">          1 :     const Config * child = config-&gt;getChildren()[0] ;</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;name(), &quot;Child1&quot;) ;</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;desc(), &quot;Some Child&quot;) ;</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getParent(), config) ;</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;numChildren(), 0) ;</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;numAttr(), 1) ;</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :     ASSERT_TRUE(child-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getAttrAsInt(&quot;attr1&quot;), 2) ;</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child)) ;</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getSiblings(), Config::ConstConfigList()) ;</span>
-<span class="lineNum">     131 </span><span class="lineCov">          1 :     ASSERT_FALSE(child-&gt;isRoot()) ;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 :     ASSERT_TRUE(child-&gt;isLeaf()) ;</span>
-<a name="133"><span class="lineNum">     133 </span>            : }</a>
-<span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithMultipleChildrenTest) {</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :     config = builder().testConfigWithMultipleChildren() ;</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testConfigWithMultipleChildren&quot;) ;</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numChildren(), 3) ;</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
-<span class="lineNum">     142 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
-<span class="lineNum">     143 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
-<span class="lineNum">     145 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
-<span class="lineNum">     147 </span>            : 
-<span class="lineNum">     148 </span><span class="lineCov">          1 :     auto children = config-&gt;getChildren() ;</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 :     const Config * child1 = children[0] ;</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 :     const Config * child2 = children[1] ;</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 :     const Config * child3 = children[2] ;</span>
-<span class="lineNum">     152 </span>            : 
-<span class="lineNum">     153 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;name(), &quot;Child1&quot;) ;</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;name(), &quot;Child2&quot;) ;</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;name(), &quot;Child3&quot;) ;</span>
-<span class="lineNum">     156 </span>            : 
-<span class="lineNum">     157 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;desc(), &quot;Some Child&quot;) ;</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;desc(), &quot;Some Other Child&quot;) ;</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;desc(), &quot;Yet Another Child&quot;) ;</span>
-<span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;getParent(), config) ;</span>
-<span class="lineNum">     162 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;getParent(), config) ;</span>
-<span class="lineNum">     163 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;getParent(), config) ;</span>
+<span class="lineNum">      74 </span>            : protected:
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :     BuildTestConfig *_builder ;
+<span class="lineNum">      77 </span>            :     const Config * config = nullptr ;
+<span class="lineNum">      78 </span>            :     
+<a name="79"><span class="lineNum">      79 </span>            : } ;</a>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigTest) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     config = builder().testSingleConfigNoAttr() ;</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testSingleConfigNoAttr&quot;) ;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getChildren(), Config::ConstConfigList()) ;</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 0) ;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isLeaf()) ;</span>
+<a name="90"><span class="lineNum">      90 </span>            : }</a>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithAttrTest) {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     config = builder().testSingleConfigWithAttr() ;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testSingleConfigWithAttr&quot;) ;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getChildren(), Config::ConstConfigList()) ;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isLeaf()) ;</span>
+<a name="106"><span class="lineNum">     106 </span>            : }</a>
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span><span class="lineCov">          5 : TEST_F(ConfigTest, AddExitsThrowsTest) {</span>
+<span class="lineNum">     109 </span>            :     //Adding an attr that exists should throw
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     config = builder().testConfigWithOneChild() ;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     builder().pushConfig(const_cast&lt;Config*&gt;(config)) ;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          2 :     EXPECT_THROW(builder().addAttr(&quot;attr1&quot;, &quot;10&quot;, &quot;int&quot;), std::runtime_error) ; </span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     builder().pushConfig(&quot;Child1&quot;) ;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 :     EXPECT_THROW(builder().popAsChild(), std::runtime_error) ;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     config = builder().releaseAll() ;</span>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithOneChildTest) {</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     config = builder().testConfigWithOneChild() ;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testConfigWithOneChild&quot;) ;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numChildren(), 1) ;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;isRoot()) ;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :     ASSERT_FALSE(config-&gt;isLeaf()) ;</span>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineCov">          1 :     const Config * child = config-&gt;getChildren()[0] ;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;name(), &quot;Child1&quot;) ;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;desc(), &quot;Some Child&quot;) ;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getParent(), config) ;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;numChildren(), 0) ;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;numAttr(), 1) ;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :     ASSERT_TRUE(child-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getAttrAsInt(&quot;attr1&quot;), 2) ;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child)) ;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     ASSERT_EQ(child-&gt;getSiblings(), Config::ConstConfigList()) ;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     ASSERT_FALSE(child-&gt;isRoot()) ;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     ASSERT_TRUE(child-&gt;isLeaf()) ;</span>
+<a name="145"><span class="lineNum">     145 </span>            : }</a>
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithMultipleChildrenTest) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :     config = builder().testConfigWithMultipleChildren() ;</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;name(), &quot;Test&quot;) ;</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;desc(), &quot;testConfigWithMultipleChildren&quot;) ;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getParent(), nullptr) ;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numChildren(), 3) ;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;numAttr(), 2) ;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr1&quot;)) ;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr1&quot;), &quot;1&quot;) ;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsInt(&quot;attr1&quot;), 1) ;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasAttr(&quot;attr2&quot;)) ;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     ASSERT_EQ(config-&gt;getAttrAsStr(&quot;attr2&quot;), &quot;foo&quot;) ;</span>
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     auto children = config-&gt;getChildren() ;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     const Config * child1 = children[0] ;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     const Config * child2 = children[1] ;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     const Config * child3 = children[2] ;</span>
 <span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;numChildren(), 0) ;</span>
-<span class="lineNum">     166 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;numChildren(), 0) ;</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;numChildren(), 0) ;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;name(), &quot;Child1&quot;) ;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;name(), &quot;Child2&quot;) ;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;name(), &quot;Child3&quot;) ;</span>
 <span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;numAttr(), 1) ;</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;numAttr(), 1) ;</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;numAttr(), 0) ;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;desc(), &quot;Some Child&quot;) ;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;desc(), &quot;Some Other Child&quot;) ;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;desc(), &quot;Yet Another Child&quot;) ;</span>
 <span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child1)) ;</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child2)) ;</span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child3)) ;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;getParent(), config) ;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;getParent(), config) ;</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;getParent(), config) ;</span>
 <span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span><span class="lineCov">          1 :     Config::ConstConfigList child1Sibs = {child2, child3} ;</span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;getSiblings(), child1Sibs) ;</span>
-<span class="lineNum">     179 </span>            : 
-<span class="lineNum">     180 </span><span class="lineCov">          1 :     Config::ConstConfigList child2Sibs = {child1, child3} ;</span>
-<span class="lineNum">     181 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;getSiblings(), child2Sibs) ;</span>
-<span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span><span class="lineCov">          1 :     Config::ConstConfigList child3Sibs = {child1, child2} ;</span>
-<span class="lineNum">     184 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;getSiblings(), child3Sibs) ;</span>
-<a name="185"><span class="lineNum">     185 </span>            : </a>
-<span class="lineNum">     186 </span><span class="lineCov">          1 :     Config::ConstConfigList child3SibsFiltered = {child2} ;</span>
-<span class="lineNum">     187 </span><span class="lineCov">          4 :     Config::ConstConfigList filtered = child3-&gt;getSiblings([&amp;] (const Config* sib) {return sib-&gt;name() != &quot;Child1&quot;;}) ;</span>
-<span class="lineNum">     188 </span><span class="lineCov">          2 :     ASSERT_EQ(filtered, child3SibsFiltered) ;</span>
-<span class="lineNum">     189 </span>            : 
-<span class="lineNum">     190 </span>            : 
-<a name="191"><span class="lineNum">     191 </span>            : }</a>
-<span class="lineNum">     192 </span>            : 
-<span class="lineNum">     193 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithOneChildTOMLTest) {</span>
-<span class="lineNum">     194 </span><span class="lineCov">          1 :     std::string expected =&quot;\</span>
-<span class="lineNum">     195 </span>            : attr1 = 1 #literal\n\
-<span class="lineNum">     196 </span>            : attr2 = \&quot;foo\&quot; #literal\n\
-<span class="lineNum">     197 </span>            : [Child1]\n\
-<span class="lineNum">     198 </span>            : attr1 = 2 #literal\n&quot; ;
-<span class="lineNum">     199 </span>            : 
-<span class="lineNum">     200 </span><span class="lineCov">          1 :     config = builder().testConfigWithOneChild() ;</span>
-<span class="lineNum">     201 </span><span class="lineCov">          2 :     std::ostringstream oss ;</span>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 :     config-&gt;toTOML(oss) ;</span></a>
-<span class="lineNum">     203 </span><span class="lineCov">          2 :     EXPECT_EQ(oss.str(), expected) ;</span>
-<span class="lineNum">     204 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;numChildren(), 0) ;</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;numChildren(), 0) ;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;numChildren(), 0) ;</span>
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;numAttr(), 1) ;</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;numAttr(), 1) ;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;numAttr(), 0) ;</span>
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child1)) ;</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child2)) ;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :     ASSERT_TRUE(config-&gt;hasChild(child3)) ;</span>
+<span class="lineNum">     188 </span>            : 
+<span class="lineNum">     189 </span><span class="lineCov">          1 :     Config::ConstConfigList child1Sibs = {child2, child3} ;</span>
+<span class="lineNum">     190 </span><span class="lineCov">          1 :     ASSERT_EQ(child1-&gt;getSiblings(), child1Sibs) ;</span>
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     Config::ConstConfigList child2Sibs = {child1, child3} ;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     ASSERT_EQ(child2-&gt;getSiblings(), child2Sibs) ;</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     Config::ConstConfigList child3Sibs = {child1, child2} ;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     ASSERT_EQ(child3-&gt;getSiblings(), child3Sibs) ;</span>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     Config::ConstConfigList child3SibsFiltered = {child2} ;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          4 :     Config::ConstConfigList filtered = child3-&gt;getSiblings([&amp;] (const Config* sib) {return sib-&gt;name() != &quot;Child1&quot;;}) ;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          2 :     ASSERT_EQ(filtered, child3SibsFiltered) ;</span>
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            : 
+<a name="203"><span class="lineNum">     203 </span>            : }</a>
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span><span class="lineCov">          5 : TEST_F(ConfigTest, SingleConfigWithOneChildTOMLTest) {</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     std::string expected =&quot;\</span>
+<span class="lineNum">     207 </span>            : attr1 = 1 #literal\n\
+<span class="lineNum">     208 </span>            : attr2 = \&quot;foo\&quot; #literal\n\
+<span class="lineNum">     209 </span>            : [Child1]\n\
+<span class="lineNum">     210 </span>            : attr1 = 2 #literal\n&quot; ;
+<span class="lineNum">     211 </span>            : 
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     config = builder().testConfigWithOneChild() ;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          2 :     std::ostringstream oss ;</span>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          1 :     config-&gt;toTOML(oss) ;</span></a>
+<span class="lineNum">     215 </span><span class="lineCov">          2 :     EXPECT_EQ(oss.str(), expected) ;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          4 : }</span>
 </pre>
       </td>
     </tr>

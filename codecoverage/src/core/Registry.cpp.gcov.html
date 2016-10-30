@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">96</td>
+            <td class="headerCovTableEntry">103</td>
             <td class="headerCovTableEntry">143</td>
-            <td class="headerCovTableEntryLo">67.1 %</td>
+            <td class="headerCovTableEntryLo">72.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-29 04:25:57</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">21</td>
             <td class="headerCovTableEntry">26</td>
-            <td class="headerCovTableEntryMed">76.9 %</td>
+            <td class="headerCovTableEntryMed">80.8 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -92,37 +92,37 @@
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :     registry_lock.unlock();</span>
 <a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span></a>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">         38 : Registry::~Registry()</span>
+<span class="lineNum">      33 </span><span class="lineCov">         48 : Registry::~Registry()</span>
 <span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span><span class="lineCov">         39 :     for (auto pair : _components) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">         20 :         delete pair.second ;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         52 :     for (auto pair : _components) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         28 :         delete pair.second ;</span>
 <span class="lineNum">      37 </span>            :     }
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         19 : }</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         24 : }</span></a>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">        139 : Registry&amp; Registry::instance() </span>
+<span class="lineNum">      40 </span><span class="lineCov">        185 : Registry&amp; Registry::instance() </span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">        139 :     static Registry TheRegistry ;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        185 :     static Registry TheRegistry ;</span>
 <span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">        139 :     return TheRegistry ;</span>
+<span class="lineNum">      44 </span><span class="lineCov">        185 :     return TheRegistry ;</span>
 <a name="45"><span class="lineNum">      45 </span>            : }</a>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">         18 : void Registry::reset()</span>
+<span class="lineNum">      47 </span><span class="lineCov">         23 : void Registry::reset()</span>
 <span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">         18 :     Registry::instance().~Registry() ;</span>
-<span class="lineNum">      50 </span><span class="lineCov">         18 :     new (&amp;Registry::instance()) Registry ;</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      49 </span><span class="lineCov">         23 :     Registry::instance().~Registry() ;</span>
+<span class="lineNum">      50 </span><span class="lineCov">         23 :     new (&amp;Registry::instance()) Registry ;</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         23 : }</span></a>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">         10 : void Registry::registerFactory(const std::string&amp; type, ComponentFactory factory) </span>
+<span class="lineNum">      53 </span><span class="lineCov">         16 : void Registry::registerFactory(const std::string&amp; type, ComponentFactory factory) </span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">         10 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">      56 </span><span class="lineCov">         10 :     _factories[std::make_pair(type,type)] = factory ;</span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         10 : }</span></a>
+<span class="lineNum">      55 </span><span class="lineCov">         16 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">      56 </span><span class="lineCov">         16 :     _factories[std::make_pair(type,type)] = factory ;</span>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         16 : }</span></a>
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         18 : void Registry::registerFactory(const TypeName&amp; type, const SubTypeName&amp; subtype, ComponentFactory factory) </span>
+<span class="lineNum">      59 </span><span class="lineCov">         23 : void Registry::registerFactory(const TypeName&amp; type, const SubTypeName&amp; subtype, ComponentFactory factory) </span>
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">         18 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">      62 </span><span class="lineCov">         18 :     _factories[std::make_pair(type,subtype)] = factory ;</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         18 : }</span></a>
+<span class="lineNum">      61 </span><span class="lineCov">         23 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">      62 </span><span class="lineCov">         23 :     _factories[std::make_pair(type,subtype)] = factory ;</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         23 : }</span></a>
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span><span class="lineCov">          4 : FactoryMap_iterator Registry::beginFact() </span>
 <span class="lineNum">      66 </span>            : {
@@ -179,20 +179,20 @@
 <span class="lineNum">     117 </span><span class="lineCov">          7 :         if (range.first != range.second) {</span>
 <span class="lineNum">     118 </span><span class="lineCov">          6 :             if (distance(range.first, range.second)  == 1)</span>
 <span class="lineNum">     119 </span>            :             {
-<span class="lineNum">     120 </span><span class="lineCov">          1 :                 return _createComponent(range.first) ;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :                 return _createComponent(range.first) ;</span>
 <span class="lineNum">     121 </span>            :             }
 <span class="lineNum">     122 </span>            :             else
 <span class="lineNum">     123 </span>            :             {
 <span class="lineNum">     124 </span>            :                 //Check for usage
-<span class="lineNum">     125 </span><span class="lineCov">         14 :                 for (auto iter = range.first; iter != range.second; ++iter) {</span>
-<span class="lineNum">     126 </span><span class="lineCov">         10 :                     if (_xref.find(iter-&gt;first) != _xref.end()) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">         11 :                 for (auto iter = range.first; iter != range.second; ++iter) {</span>
+<span class="lineNum">     126 </span><span class="lineCov">          8 :                     if (_xref.find(iter-&gt;first) != _xref.end()) {</span>
 <span class="lineNum">     127 </span><span class="lineCov">          1 :                         return _createComponent(iter) ;</span>
 <span class="lineNum">     128 </span>            :                     }
 <span class="lineNum">     129 </span>            :                 }
 <span class="lineNum">     130 </span>            :                 //No component's of type have been used so look for the default
-<span class="lineNum">     131 </span><span class="lineCov">          4 :                 auto def = _factories.find(std::make_pair(type, type)) ;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          4 :                 if (def != _factories.end()) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">          2 :                     return _createComponent(def) ;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          3 :                 auto def = _factories.find(std::make_pair(type, type)) ;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          3 :                 if (def != _factories.end()) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :                     return _createComponent(def) ;</span>
 <span class="lineNum">     134 </span>            :                 }
 <span class="lineNum">     135 </span><span class="lineCov">          2 :                 if (allow_ambiguity) {</span>
 <span class="lineNum">     136 </span>            :                     //No compelling reason to pick one so use first
@@ -208,13 +208,13 @@
 <span class="lineNum">     146 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] : Not Registered&quot;, type.c_str()) ;</span>
 <a name="147"><span class="lineNum">     147 </span>            : }</a>
 <span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineCov">          2 : Component* Registry::createComponent(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
+<span class="lineNum">     149 </span><span class="lineCov">         10 : Component* Registry::createComponent(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
 <span class="lineNum">     150 </span>            : {
 <span class="lineNum">     151 </span>            :     { //locked
-<span class="lineNum">     152 </span><span class="lineCov">          2 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">     153 </span><span class="lineCov">          2 :         auto iter = _factories.find(std::make_pair(type, subtype)) ;</span>
-<span class="lineNum">     154 </span><span class="lineCov">          2 :         if (iter != _factories.end())</span>
-<span class="lineNum">     155 </span><span class="lineCov">          2 :             return _createComponent(iter) ;</span>
+<span class="lineNum">     152 </span><span class="lineCov">         10 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">     153 </span><span class="lineCov">         10 :         auto iter = _factories.find(std::make_pair(type, subtype)) ;</span>
+<span class="lineNum">     154 </span><span class="lineCov">         10 :         if (iter != _factories.end())</span>
+<span class="lineNum">     155 </span><span class="lineCov">         18 :             return _createComponent(iter) ;</span>
 <span class="lineNum">     156 </span>            :     } //unlocked
 <span class="lineNum">     157 </span>            : 
 <span class="lineNum">     158 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] and subtype [%s]: Not Registered&quot;,</span>
@@ -223,17 +223,17 @@
 <span class="lineNum">     161 </span><span class="lineCov">          1 :                        ) ;</span>
 <a name="162"><span class="lineNum">     162 </span>            : }</a>
 <span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span><span class="lineCov">         20 : Component* Registry::_createComponent(FactoryMap_iterator iter) </span>
+<span class="lineNum">     164 </span><span class="lineCov">         28 : Component* Registry::_createComponent(FactoryMap_iterator iter) </span>
 <span class="lineNum">     165 </span>            : {
-<span class="lineNum">     166 </span><span class="lineCov">         20 :     Component* comp = iter-&gt;second(_nextId) ;</span>
-<span class="lineNum">     167 </span><span class="lineCov">         20 :     if (!comp) </span>
+<span class="lineNum">     166 </span><span class="lineCov">         28 :     Component* comp = iter-&gt;second(_nextId) ;</span>
+<span class="lineNum">     167 </span><span class="lineCov">         28 :     if (!comp) </span>
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] subtype [%s] : Factory returned nullptr&quot;,</span>
 <span class="lineNum">     169 </span>            :                             iter-&gt;first.first.c_str(),
 <span class="lineNum">     170 </span><span class="lineNoCov">          0 :                             iter-&gt;first.second.c_str()) ;</span>
-<span class="lineNum">     171 </span><span class="lineCov">         20 :     comp-&gt;setName(iter-&gt;first.first + &quot;:&quot; + iter-&gt;first.second) ;</span>
-<span class="lineNum">     172 </span><span class="lineCov">         20 :     _components[comp-&gt;id()] = comp ;</span>
-<span class="lineNum">     173 </span><span class="lineCov">         20 :     _xref.insert(std::make_pair(iter-&gt;first, _nextId++)) ;</span>
-<span class="lineNum">     174 </span><span class="lineCov">         20 :     return comp ;</span>
+<span class="lineNum">     171 </span><span class="lineCov">         28 :     comp-&gt;setName(iter-&gt;first.first + &quot;:&quot; + iter-&gt;first.second) ;</span>
+<span class="lineNum">     172 </span><span class="lineCov">         28 :     _components[comp-&gt;id()] = comp ;</span>
+<span class="lineNum">     173 </span><span class="lineCov">         28 :     _xref.insert(std::make_pair(iter-&gt;first, _nextId++)) ;</span>
+<span class="lineNum">     174 </span><span class="lineCov">         28 :     return comp ;</span>
 <a name="175"><span class="lineNum">     175 </span>            : }</a>
 <span class="lineNum">     176 </span>            : 
 <span class="lineNum">     177 </span><span class="lineNoCov">          0 : void Registry::dump(std::ostream&amp; stream) const </span>
@@ -282,44 +282,44 @@
 <span class="lineNum">     220 </span><span class="lineCov">          3 :     return *_appConfig ;</span>
 <a name="221"><span class="lineNum">     221 </span>            : }</a>
 <span class="lineNum">     222 </span>            : 
-<span class="lineNum">     223 </span><span class="lineCov">          4 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type) </span>
+<span class="lineNum">     223 </span><span class="lineCov">          7 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type) </span>
 <span class="lineNum">     224 </span>            : {
-<span class="lineNum">     225 </span><span class="lineCov">          4 :     auto iter = _xref.lower_bound(CompFactoryKey(type, std::string())) ;</span>
-<span class="lineNum">     226 </span><span class="lineCov">          4 :     if (iter != _xref.end() &amp;&amp; iter-&gt;first.first == type)</span>
-<span class="lineNum">     227 </span><span class="lineCov">          3 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          7 :     auto iter = _xref.lower_bound(CompFactoryKey(type, std::string())) ;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          7 :     if (iter != _xref.end() &amp;&amp; iter-&gt;first.first == type)</span>
+<span class="lineNum">     227 </span><span class="lineCov">          6 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
 <span class="lineNum">     228 </span><span class="lineCov">          1 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
 <a name="229"><span class="lineNum">     229 </span>            : }</a>
 <span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span><span class="lineCov">          5 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
+<span class="lineNum">     231 </span><span class="lineCov">          9 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
 <span class="lineNum">     232 </span>            : {
-<span class="lineNum">     233 </span><span class="lineCov">          5 :     auto iter = _xref.find(CompFactoryKey(type, subtype)) ;</span>
-<span class="lineNum">     234 </span><span class="lineCov">          5 :     if (iter != _xref.end())</span>
-<span class="lineNum">     235 </span><span class="lineCov">          4 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
-<span class="lineNum">     236 </span><span class="lineCov">          1 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<span class="lineNum">     233 </span><span class="lineCov">          9 :     auto iter = _xref.find(CompFactoryKey(type, subtype)) ;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          9 :     if (iter != _xref.end())</span>
+<span class="lineNum">     235 </span><span class="lineCov">          7 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
+<span class="lineNum">     236 </span><span class="lineCov">          2 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
 <a name="237"><span class="lineNum">     237 </span>            : }</a>
 <span class="lineNum">     238 </span>            : 
-<span class="lineNum">     239 </span><span class="lineCov">          3 : util::Maybe&lt;Component&gt; Registry::component(const Dependencies::Dependent&amp; dep)</span>
+<span class="lineNum">     239 </span><span class="lineCov">          4 : util::Maybe&lt;Component&gt; Registry::component(const Dependencies::Dependent&amp; dep)</span>
 <span class="lineNum">     240 </span>            : {
-<span class="lineNum">     241 </span><span class="lineCov">          3 :     if (dep.subtype == &quot;&quot;)</span>
-<span class="lineNum">     242 </span><span class="lineCov">          1 :         return component(dep.type) ;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          4 :     if (dep.subtype == &quot;&quot;)</span>
+<span class="lineNum">     242 </span><span class="lineCov">          2 :         return component(dep.type) ;</span>
 <span class="lineNum">     243 </span>            :     else
 <span class="lineNum">     244 </span><span class="lineCov">          2 :         return component(dep.type, dep.subtype) ;</span>
 <a name="245"><span class="lineNum">     245 </span>            : }</a>
 <span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : std::vector&lt;Component*&gt; Registry::satisfy(const Dependencies&amp; deps, CompId id) </span>
+<span class="lineNum">     247 </span><span class="lineCov">          3 : std::vector&lt;Component*&gt; Registry::satisfy(const Dependencies&amp; deps, CompId id) </span>
 <span class="lineNum">     248 </span>            : {
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     std::vector&lt;Component*&gt; satisfaction ;</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 :     for(const Dependencies::Dependent&amp; dep : deps) </span>
+<span class="lineNum">     249 </span><span class="lineCov">          3 :     std::vector&lt;Component*&gt; satisfaction ;</span>
+<span class="lineNum">     250 </span><span class="lineCov">          4 :     for(const Dependencies::Dependent&amp; dep : deps) </span>
 <span class="lineNum">     251 </span>            :     {
 <span class="lineNum">     252 </span>            :         try
 <span class="lineNum">     253 </span>            :         {
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :             auto comp = component(dep) ;</span>
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 :             if (!comp &amp;&amp; dep.required()) {</span>
+<span class="lineNum">     254 </span><span class="lineCov">          1 :             auto comp = component(dep) ;</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :             if (!comp &amp;&amp; dep.required()) {</span>
 <span class="lineNum">     256 </span>            :                 //Attempt to satsify by creating it on the fly    
 <span class="lineNum">     257 </span><span class="lineNoCov">          0 :                 comp.reset(createComponent(dep)) ;  </span>
 <span class="lineNum">     258 </span><span class="lineNoCov">          0 :                 *comp ; //May trigger exception as required dep could not be satisfied</span>
 <span class="lineNum">     259 </span>            :             }
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 :             satisfaction.push_back(comp.get()) ;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :             satisfaction.push_back(comp.get()) ;</span>
 <span class="lineNum">     261 </span>            :         }
 <span class="lineNum">     262 </span><span class="lineNoCov">          0 :         catch (const std::runtime_error&amp; err) {</span>
 <span class="lineNum">     263 </span>            :             //&quot;I can't get no satisfaction
@@ -332,7 +332,7 @@
 <span class="lineNum">     270 </span><span class="lineNoCov">          0 :                 dep.str().c_str(), name.c_str(), id) ;</span>
 <span class="lineNum">     271 </span>            :         }
 <a name="272"><span class="lineNum">     272 </span>            :     }</a>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 :     return satisfaction ;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          3 :     return satisfaction ;</span>
 <span class="lineNum">     274 </span><span class="lineCov">          3 : }</span>
 </pre>
       </td>

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">33</td>
-            <td class="headerCovTableEntryLo">54.5 %</td>
+            <td class="headerCovTableEntry">45</td>
+            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntryMed">81.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-29 04:25:57</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">23</td>
-            <td class="headerCovTableEntryLo">34.8 %</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryMed">77.5 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -94,10 +94,10 @@
 <span class="lineNum">      32 </span>            : 
 <a name="33"><span class="lineNum">      33 </span>            :     using Text = std::string ; //Placeholder for future Text class</a>
 <span class="lineNum">      34 </span>            : 
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         62 :     struct Attr</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">        660 :     struct Attr</span></a>
 <span class="lineNum">      36 </span>            :     {
-<span class="lineNum">      37 </span><span class="lineCov">         43 :         Attr(const std::string&amp; name_, const std::string&amp; value_, const std::string&amp; type_ =&quot;&quot;, const std::string&amp; src_ = &quot;literal&quot;):</span>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         43 :             name(name_), value(value_), type(type_), source(src_) {}</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">         76 :         Attr(const std::string&amp; name_, const std::string&amp; value_, const std::string&amp; type_ =&quot;&quot;, const std::string&amp; src_ = &quot;literal&quot;):</span>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         76 :             name(name_), value(value_), type(type_), source(src_) {}</span></a>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span><span class="lineCov">          3 :         std::string decorated_val() const </span>
 <span class="lineNum">      41 </span>            :         {
@@ -130,44 +130,44 @@
 <span class="lineNum">      68 </span>            :     using ConstConfigList = std::vector&lt;const Config*&gt; ;
 <a name="69"><span class="lineNum">      69 </span>            :     using ConfigPredicate = std::function&lt;bool (const Config *)&gt; ;</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     Attrs::const_iterator findAttr(const std::string&amp; name) const {</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :         return std::find_if(_attrs.cbegin(), _attrs.cend(), [name](auto x) { return x.name == name; }) ;</span>
+<span class="lineNum">      71 </span><span class="lineCov">        132 :     Attrs::const_iterator findAttr(const std::string&amp; name) const {</span>
+<span class="lineNum">      72 </span><span class="lineCov">       1484 :         return std::find_if(_attrs.cbegin(), _attrs.cend(), [name](auto x) { return x.name == name; }) ;</span>
 <span class="lineNum">      73 </span>            :     }  
 <a name="74"><span class="lineNum">      74 </span>            : </a>
 <span class="lineNum">      75 </span>            :     
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     const Config* getParent() const noexcept </span>
+<span class="lineNum">      76 </span><span class="lineCov">         28 :     const Config* getParent() const noexcept </span>
 <span class="lineNum">      77 </span>            :     {
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :         return _parent ;</span>
+<span class="lineNum">      78 </span><span class="lineCov">         28 :         return _parent ;</span>
 <a name="79"><span class="lineNum">      79 </span>            :     }</a>
-<span class="lineNum">      80 </span>            : 
-<a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :     bool hasChild(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}</span></a>
-<span class="lineNum">      82 </span>            :     int numChildren() const {return _children.size();}
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     ConstConfigList getChildren() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}</span>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          6 :     bool hasChild(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}</span></a>
+<span class="lineNum">      82 </span><span class="lineCov">         11 :     int numChildren() const {return _children.size();}</span>
+<span class="lineNum">      83 </span><span class="lineCov">         11 :     ConstConfigList getChildren() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}</span>
 <span class="lineNum">      84 </span>            :     ConstConfigList getChildren(const ConfigPredicate&amp; predicate) const ;
 <span class="lineNum">      85 </span>            :     const Config* getChild(const std::string&amp; name) const ;
 <span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            :     ConstConfigList getSiblings() const ;
-<span class="lineNum">      88 </span>            :     ConstConfigList getSiblings(const ConfigPredicate&amp; predicate) const  ;
-<span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span>            :     bool isRoot() const noexcept { return _parent == nullptr ; }
-<a name="91"><span class="lineNum">      91 </span>            :     bool isLeaf() const noexcept { return _children.empty() ; }</a>
-<span class="lineNum">      92 </span>            :     
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     const std::string&amp; name() const noexcept {return _name;}</span>
-<a name="94"><span class="lineNum">      94 </span>            :     std::string desc() const noexcept {return _desc; }</a>
-<span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     bool hasAttr(const std::string&amp; name) const {return findAttr(name) != _attrs.cend() ;}</span>
-<span class="lineNum">      97 </span>            :     int numAttr() const {return _attrs.size();}
-<span class="lineNum">      98 </span>            : 
+<a name="88"><span class="lineNum">      88 </span>            :     ConstConfigList getSiblings(const ConfigPredicate&amp; predicate) const  ;</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<span class="lineNum">      90 </span><span class="lineCov">          4 :     bool isRoot() const noexcept { return _parent == nullptr ; }</span>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          4 :     bool isLeaf() const noexcept { return _children.empty() ; }</span></a>
+<a name="92"><span class="lineNum">      92 </span>            :     </a>
+<span class="lineNum">      93 </span><span class="lineCov">         88 :     const std::string&amp; name() const noexcept {return _name;}</span>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">         10 :     std::string desc() const noexcept {return _desc; }</span></a>
+<a name="95"><span class="lineNum">      95 </span>            : </a>
+<span class="lineNum">      96 </span><span class="lineCov">         84 :     bool hasAttr(const std::string&amp; name) const {return findAttr(name) != _attrs.cend() ;}</span>
+<span class="lineNum">      97 </span><span class="lineCov">          8 :     int numAttr() const {return _attrs.size();}</span>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
 <span class="lineNum">      99 </span>            :     template &lt;class T&gt;
-<span class="lineNum">     100 </span>            :     T getAttr(const std::string&amp; name) const 
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     T getAttr(const std::string&amp; name) const </span>
 <span class="lineNum">     101 </span>            :     {
-<span class="lineNum">     102 </span>            :         auto iter = findAttr(name) ;
-<span class="lineNum">     103 </span>            :         if (iter == _attrs.cend()) 
+<span class="lineNum">     102 </span><span class="lineCov">          1 :         auto iter = findAttr(name) ;</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :         if (iter == _attrs.cend()) </span>
 <span class="lineNum">     104 </span>            :         {
-<span class="lineNum">     105 </span>            :             throw RUNTIME_ERROR(&quot;Config: [%s] Attr: [%s] not found.&quot;, this-&gt;name().c_str(), name.c_str()) ;
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;Config: [%s] Attr: [%s] not found.&quot;, this-&gt;name().c_str(), name.c_str()) ;</span>
 <span class="lineNum">     106 </span>            :         }
 <span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            :         return util::convert&lt;T&gt;(iter-&gt;value) ;
+<span class="lineNum">     108 </span><span class="lineCov">          1 :         return util::convert&lt;T&gt;(iter-&gt;value) ;</span>
 <span class="lineNum">     109 </span>            :     }
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span>            :     template &lt;class T&gt;
@@ -177,20 +177,20 @@
 <span class="lineNum">     115 </span>            :         return (iter != _attrs.end()) ?  util::convert&lt;T&gt;(iter-&gt;value) : def ;
 <a name="116"><span class="lineNum">     116 </span>            :     }</a>
 <span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     std::string getAttrAsStr(const std::string&amp; name, const std::string&amp; def = &quot;&quot;) const noexcept</span>
+<span class="lineNum">     118 </span><span class="lineCov">         41 :     std::string getAttrAsStr(const std::string&amp; name, const std::string&amp; def = &quot;&quot;) const noexcept</span>
 <span class="lineNum">     119 </span>            :     {
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :         auto iter = findAttr(name) ;</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         return (iter != _attrs.end()) ? iter-&gt;value :  def ;      </span>
-<span class="lineNum">     122 </span>            :     }
+<span class="lineNum">     120 </span><span class="lineCov">         41 :         auto iter = findAttr(name) ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">         41 :         return (iter != _attrs.end()) ? iter-&gt;value :  def ;      </span>
+<a name="122"><span class="lineNum">     122 </span>            :     }</a>
 <span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span>            :     int getAttrAsInt(const std::string&amp; name, int def = 0) const 
+<span class="lineNum">     124 </span><span class="lineCov">          5 :     int getAttrAsInt(const std::string&amp; name, int def = 0) const </span>
 <span class="lineNum">     125 </span>            :     {
-<span class="lineNum">     126 </span>            :         return util::convertToInt(findAttr(name), _attrs.end(), &quot;getAttr&quot;, name, def) ;
-<span class="lineNum">     127 </span>            :     }
+<span class="lineNum">     126 </span><span class="lineCov">          5 :         return util::convertToInt(findAttr(name), _attrs.end(), &quot;getAttr&quot;, name, def) ;</span>
+<a name="127"><span class="lineNum">     127 </span>            :     }</a>
 <span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span>            :     double getAttrAsDbl(const std::string&amp; name, double def = 0.0) const 
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     double getAttrAsDbl(const std::string&amp; name, double def = 0.0) const </span>
 <span class="lineNum">     130 </span>            :     {
-<span class="lineNum">     131 </span>            :         return util::convertToDbl(findAttr(name), _attrs.end(), &quot;getAttr&quot;, name, def) ;
+<span class="lineNum">     131 </span><span class="lineCov">          1 :         return util::convertToDbl(findAttr(name), _attrs.end(), &quot;getAttr&quot;, name, def) ;</span>
 <a name="132"><span class="lineNum">     132 </span>            :     }</a>
 <span class="lineNum">     133 </span>            : 
 <span class="lineNum">     134 </span><span class="lineNoCov">          0 :     bool getAttrAsBool(const std::string&amp; name, bool def = false) const </span>
@@ -215,18 +215,18 @@
 <span class="lineNum">     153 </span>            :     Config(const std::string&amp; name, const std::string&amp; desc) ;
 <span class="lineNum">     154 </span>            : 
 <span class="lineNum">     155 </span>            :     void addAttr(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type=&quot;&quot;) ;
-<span class="lineNum">     156 </span>            :     void addChild(Config* child, bool allowDups=false) ;
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            :     Attrs::iterator findAttr(const std::string&amp; name) {
-<span class="lineNum">     159 </span>            :         return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;
-<span class="lineNum">     160 </span>            :     }  
+<a name="156"><span class="lineNum">     156 </span>            :     void addChild(Config* child, bool allowDups=false) ;</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     Attrs::iterator findAttr(const std::string&amp; name) {</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :         return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;</span>
+<a name="160"><span class="lineNum">     160 </span>            :     }  </a>
 <span class="lineNum">     161 </span>            :  
-<span class="lineNum">     162 </span>            :     Attrs::iterator endAttr() {
-<span class="lineNum">     163 </span>            :         return _attrs.end() ;
-<span class="lineNum">     164 </span>            :     }
-<span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span>            :     void setName(const std::string&amp; name) {_name = name;}
-<span class="lineNum">     167 </span>            :     void setDesc(const std::string&amp; desc) {_desc = desc;}
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     Attrs::iterator endAttr() {</span>
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 :         return _attrs.end() ;</span>
+<a name="164"><span class="lineNum">     164 </span>            :     }</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<span class="lineNum">     166 </span><span class="lineNoCov">          0 :     void setName(const std::string&amp; name) {_name = name;}</span>
+<span class="lineNum">     167 </span><span class="lineCov">          2 :     void setDesc(const std::string&amp; desc) {_desc = desc;}</span>
 <span class="lineNum">     168 </span>            : 
 <span class="lineNum">     169 </span>            :     std::string _name ;
 <span class="lineNum">     170 </span>            :     Text _desc ; 
@@ -245,12 +245,12 @@
 <span class="lineNum">     183 </span>            :     using const_iterator = Children::const_iterator ;
 <span class="lineNum">     184 </span>            : 
 <span class="lineNum">     185 </span>            :     virtual void toTOML(std::ostream&amp; out) const ;
-<span class="lineNum">     186 </span>            :     virtual bool isArray() const ;
+<a name="186"><span class="lineNum">     186 </span>            :     virtual bool isArray() const ;</a>
 <span class="lineNum">     187 </span>            :     bool hasElement(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
-<span class="lineNum">     188 </span>            :     int numElements() const {return _children.size();}
-<span class="lineNum">     189 </span>            :     ConstConfigList getElements() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
+<span class="lineNum">     188 </span><span class="lineCov">          2 :     int numElements() const {return _children.size();}</span>
+<a name="189"><span class="lineNum">     189 </span>            :     ConstConfigList getElements() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}</a>
 <span class="lineNum">     190 </span>            :     ConstConfigList getElements(const ConfigPredicate&amp; predicate) const {return getChildren(predicate);}
-<a name="191"><span class="lineNum">     191 </span>            :     const Config* at(int index) const { return _children.at(index) ; }</a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          4 :     const Config* at(int index) const { return _children.at(index) ; }</span></a>
 <a name="192"><span class="lineNum">     192 </span>            :     const Config* operator[](int index) const { return _children[index] ; }</a>
 <span class="lineNum">     193 </span><span class="lineNoCov">          0 :     const_iterator begin() const {return _children.cbegin(); }</span>
 <span class="lineNum">     194 </span><span class="lineNoCov">          0 :     const_iterator end() const {return _children.cend(); }</span>
