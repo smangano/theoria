@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <iostream>
 #include <mutex>
+#include <thread>
 
 using namespace theoria ;
 using namespace core ;
@@ -20,6 +21,7 @@ namespace
     const std::string _HIGHEST =  { '\xff', '\xff', '\xff' , '\xff', '\xff', '\xff', '\xff', '\xff', '\xff' } ;
 }
 
+
 RegistryLock::RegistryLock()
 {
     registry_lock.lock();
@@ -30,18 +32,18 @@ RegistryLock::~RegistryLock()
     registry_lock.unlock();
 }
 
-RegistryLock(int ntimes=1, long sleepms = 0.0) 
-    : RegistryLock(ntimes, std::chrono::std::chrono::milliseconds(sleepms))
+RegistryLock::RegistryLock(int ntimes, long sleepms) 
+    : RegistryLock(ntimes, std::chrono::milliseconds(sleepms))
 {
 }
 
 template< class Rep, class Period >
-RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) 
+RegistryLock::RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) 
 {
-    bool gotLock = false
-    while(n>0 && !gotLock) {
+    bool gotLock = false ;
+    while(ntimes>0 && !gotLock) {
         gotLock = registry_lock.try_lock() ;
-        if (sleepms > 0) 
+        if (sleepduration.count() > 0) 
             std::this_thread::sleep_for(sleepduration) ;
     }
     if (!gotLock)

@@ -31,7 +31,7 @@ std::string Bootstrap::findConfig() const
 {
     const char * envPath = ::getenv(ENV_BOOTSTRAP_CONFIG_PATH) ;
     envPath = envPath ? envPath : "" ;
-    std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH, envPath) ; 
+    std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH[0], envPath) ; 
     if (path == "")
         path = os::bootstrap_path() ;
 

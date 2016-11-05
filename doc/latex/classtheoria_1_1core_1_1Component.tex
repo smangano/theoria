@@ -1,0 +1,123 @@
+\hypertarget{classtheoria_1_1core_1_1Component}{\section{theoria\+:\+:core\+:\+:Component Class Reference}
+\label{classtheoria_1_1core_1_1Component}\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+}
+
+
+Inheritance diagram for theoria\+:\+:core\+:\+:Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classtheoria_1_1core_1_1Component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for theoria\+:\+:core\+:\+:Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classtheoria_1_1core_1_1Component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a64b1e60585ad8c0d12d9be814b37dda8}{{\bfseries Component} (Comp\+Id id)}\label{classtheoria_1_1core_1_1Component_a64b1e60585ad8c0d12d9be814b37dda8}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a719767a45a12a3d12670aadd83f5d292}{{\bfseries Component} (Comp\+Id id, const std\+::string \&name)}\label{classtheoria_1_1core_1_1Component_a719767a45a12a3d12670aadd83f5d292}
+
+\item 
+virtual \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} \hyperlink{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}{init} (const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \&config)
+\item 
+virtual void \hyperlink{classtheoria_1_1core_1_1Component_a0dadc51334ff054dad8169c594ebadb4}{finalize} (std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ $>$ \&dependencies)
+\item 
+virtual void \hyperlink{classtheoria_1_1core_1_1Component_ae036cde9b803a621149efeff7e0e00fc}{app\+Life\+Cycle} (App\+Life\+Cycle state)
+\item 
+virtual void \hyperlink{classtheoria_1_1core_1_1Component_a92578e2b6253681a21b91e7c22b22975}{comp\+Life\+Cycle} (Comp\+Life\+Cycle state, Comp\+Id id)
+\item 
+virtual void \hyperlink{classtheoria_1_1core_1_1Component_a94991dc5bdf509df6d35bb218e4880eb}{on\+Message} (\hyperlink{classtheoria_1_1core_1_1Message}{Message} msg)
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a6c123ce21724ea6eac2f66f355ac514a}{Comp\+Id {\bfseries id} () const }\label{classtheoria_1_1core_1_1Component_a6c123ce21724ea6eac2f66f355ac514a}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a69c1f8a3918c5a53d5343f38a53c781b}{const std\+::string \& {\bfseries name} () const }\label{classtheoria_1_1core_1_1Component_a69c1f8a3918c5a53d5343f38a53c781b}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a4c741f3d65b7d50bd56378bdc9cc9a62}{void {\bfseries set\+Name} (const std\+::string \&name)}\label{classtheoria_1_1core_1_1Component_a4c741f3d65b7d50bd56378bdc9cc9a62}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a1b3e32c74b8a8bb6701918ec8114c606}{{\footnotesize template$<$class T $>$ }\\T $\ast$ {\bfseries cast} (const std\+::string \&requestor=\char`\"{}Unknown\char`\"{})}\label{classtheoria_1_1core_1_1Component_a1b3e32c74b8a8bb6701918ec8114c606}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a18744abc83e088af3c3d42e0a22c35e3}{virtual \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries acquire} (const std\+::type\+\_\+info \&type\+Info, void $\ast$$\ast$dest)}\label{classtheoria_1_1core_1_1Component_a18744abc83e088af3c3d42e0a22c35e3}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_a460b08de1c87f984fe9b6e4a1b8b50e6}{Comp\+Id {\bfseries \+\_\+id}}\label{classtheoria_1_1core_1_1Component_a460b08de1c87f984fe9b6e4a1b8b50e6}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Component_ac1eca19b044721b873a0ec32cf3667a1}{std\+::string {\bfseries \+\_\+name}}\label{classtheoria_1_1core_1_1Component_ac1eca19b044721b873a0ec32cf3667a1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classtheoria_1_1core_1_1Component_ae036cde9b803a621149efeff7e0e00fc}{\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!app\+Life\+Cycle@{app\+Life\+Cycle}}
+\index{app\+Life\+Cycle@{app\+Life\+Cycle}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+\subsubsection[{app\+Life\+Cycle}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::app\+Life\+Cycle (
+\begin{DoxyParamCaption}
+\item[{App\+Life\+Cycle}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classtheoria_1_1core_1_1Component_ae036cde9b803a621149efeff7e0e00fc}
+This is a place to take action on application lifecycle events. 
+
+Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp_a3f73bc54ca3d29097525578a218cb72f}{theoria\+::core\+::\+Config\+Var\+Resolver\+Builder\+Comp}.
+
+\hypertarget{classtheoria_1_1core_1_1Component_a92578e2b6253681a21b91e7c22b22975}{\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!comp\+Life\+Cycle@{comp\+Life\+Cycle}}
+\index{comp\+Life\+Cycle@{comp\+Life\+Cycle}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+\subsubsection[{comp\+Life\+Cycle}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::comp\+Life\+Cycle (
+\begin{DoxyParamCaption}
+\item[{Comp\+Life\+Cycle}]{state, }
+\item[{Comp\+Id}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classtheoria_1_1core_1_1Component_a92578e2b6253681a21b91e7c22b22975}
+This is a place to take action on events related to components you depend on \hypertarget{classtheoria_1_1core_1_1Component_a0dadc51334ff054dad8169c594ebadb4}{\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!finalize@{finalize}}
+\index{finalize@{finalize}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::finalize (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Component} $\ast$ $>$ \&}]{dependencies}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classtheoria_1_1core_1_1Component_a0dadc51334ff054dad8169c594ebadb4}
+Receive the components you required in \hyperlink{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}{init()}. Optional components will be nullptrs. All components received are initialized but not necessarily finalized so do not call into the component yet (unless you really know what you are doing but you are prob asking for trouble) 
+
+Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp_a9e955a2df7e7944f74e368d35107a467}{theoria\+::core\+::\+Config\+Var\+Resolver\+Builder\+Comp}.
+
+\hypertarget{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}{\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!init@{init}}
+\index{init@{init}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dependencies} Component\+::init (
+\begin{DoxyParamCaption}
+\item[{const {\bf config\+::\+Config} \&}]{config}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}
+Initialize component from its configuration and return the Components dependencies 
+
+Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp_a6730be89ad6997911dcae55b42c64395}{theoria\+::core\+::\+Config\+Var\+Resolver\+Builder\+Comp}.
+
+\hypertarget{classtheoria_1_1core_1_1Component_a94991dc5bdf509df6d35bb218e4880eb}{\index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!on\+Message@{on\+Message}}
+\index{on\+Message@{on\+Message}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
+\subsubsection[{on\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::on\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Message}}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classtheoria_1_1core_1_1Component_a94991dc5bdf509df6d35bb218e4880eb}
+If your coponent is a member of a event loop, async messages arrive here 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/theoria/core/Component.\+h\item 
+src/core/Component.\+cpp\end{DoxyCompactItemize}

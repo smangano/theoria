@@ -5,9 +5,10 @@
 #include <theoria/util/densemap.h>
 #include <theoria/util/Maybe.h>
 
-#include <string>
+#include <chrono>
 #include <map>
 #include <memory>
+#include <string>
 
 namespace theoria { 
 
@@ -28,6 +29,10 @@ namespace core {
  */
 class Component ;
 class Theoria ;
+
+class RegistryLocked : public std::exception
+{
+} ;
 
 /**
  * Used to lock the Registry for iteration in a multi-threaded env

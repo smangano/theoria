@@ -1,0 +1,111 @@
+\hypertarget{classtheoria_1_1core_1_1Registry}{\section{theoria\+:\+:core\+:\+:Registry Class Reference}
+\label{classtheoria_1_1core_1_1Registry}\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{using {\bfseries Factory\+Map\+\_\+iterator} = Factory\+Map\+::iterator}\label{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}{void {\bfseries register\+Factory} (const Type\+Name \&type, Component\+Factory factory)}\label{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a861b9906b6e10bdebc74ec7397ea971a}{void {\bfseries register\+Factory} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype, Component\+Factory factory)}\label{classtheoria_1_1core_1_1Registry_a861b9906b6e10bdebc74ec7397ea971a}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a846b6ea01b2c4d3d1276796e9ef2b32b}{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries create\+Component} (const Type\+Name \&type, int allow\+\_\+ambiguity=true)}\label{classtheoria_1_1core_1_1Registry_a846b6ea01b2c4d3d1276796e9ef2b32b}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries create\+Component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)}\label{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries create\+Component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep) noexcept}\label{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}{Factory\+Map\+\_\+iterator {\bfseries begin\+Fact} ()}\label{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}{Factory\+Map\+\_\+iterator {\bfseries end\+Fact} ()}\label{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}{Factory\+Map\+\_\+iterator {\bfseries find\+Fact} (const Type\+Name \&type)}\label{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}{Factory\+Map\+\_\+iterator {\bfseries findfact} (Factory\+Map\+::iterator start, bool($\ast$predicate)(Factory\+Map\+::value\+\_\+type \&v))}\label{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}{Component\+Map\+::iterator {\bfseries begin\+Comp} ()}\label{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}{Component\+Map\+::iterator {\bfseries end\+Comp} ()}\label{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_aa493493b6fef9a16a73e554aa5db5ea6}{Component\+Map\+::const\+\_\+iterator {\bfseries begin\+Comp} () const }\label{classtheoria_1_1core_1_1Registry_aa493493b6fef9a16a73e554aa5db5ea6}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a4767d6f21b33aef3f68566e6f0587991}{Component\+Map\+::const\+\_\+iterator {\bfseries end\+Comp} () const }\label{classtheoria_1_1core_1_1Registry_a4767d6f21b33aef3f68566e6f0587991}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a89d93cea065fb51be29d8f56654cede1}{void {\bfseries dump} (std\+::ostream \&stream) const }\label{classtheoria_1_1core_1_1Registry_a89d93cea065fb51be29d8f56654cede1}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}{void {\bfseries reset} ()}\label{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}{\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (Comp\+Id id)}\label{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}{\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const Type\+Name \&type)}\label{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}{\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)}\label{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}{\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep)}\label{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}{{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (Comp\+Id id)}\label{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}{{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (const Type\+Name \&type)}\label{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}{{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)}\label{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a433d5a646a5f19a5e24852eef7c21d49}{const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& {\bfseries boot\+Config} () const }\label{classtheoria_1_1core_1_1Registry_a433d5a646a5f19a5e24852eef7c21d49}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_afd2587440ae5133a7e7a24209eb965fc}{const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& {\bfseries app\+Config} () const }\label{classtheoria_1_1core_1_1Registry_afd2587440ae5133a7e7a24209eb965fc}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}{std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ $>$ {\bfseries satisfy} (const \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} \&deps, Comp\+Id comp\+Id=-\/1)}\label{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}{void {\bfseries release} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$component)}\label{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}
+
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}{void {\bfseries add\+Dep} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$from, \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$to)}\label{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}{static \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} \& {\bfseries instance} ()}\label{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1core_1_1Registry_a03f09b9a4f49119b0c16c42ded7cba64}{class {\bfseries Theoria}}\label{classtheoria_1_1core_1_1Registry_a03f09b9a4f49119b0c16c42ded7cba64}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/theoria/core/Registry.\+h\item 
+src/core/Registry.\+cpp\end{DoxyCompactItemize}

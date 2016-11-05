@@ -197,7 +197,7 @@ TEST_F(BootstrapFindConfigTest, findConfigViaEnv) {
 
 TEST_F(BootstrapFindConfigTest, findConfigViaCmdLineOpt) {
     std::string buf ;
-    const char* argv[] = {"dummy.toml", OPT(buf, OPTION_BOOTSTRAP_CONFIG_PATH), "."} ;
+    const char* argv[] = {"dummy.toml", OPT(buf, OPTION_BOOTSTRAP_CONFIG_PATH[0]), "."} ;
     bool allowMissingConfig = true ;
     util::CommandLine cl(3, argv, allowMissingConfig) ;
     TempFile temp("./bootstrap.toml") ;

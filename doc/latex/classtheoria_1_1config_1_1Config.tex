@@ -1,0 +1,181 @@
+\hypertarget{classtheoria_1_1config_1_1Config}{\section{theoria\+:\+:config\+:\+:Config Class Reference}
+\label{classtheoria_1_1config_1_1Config}\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+}
+
+
+Inheritance diagram for theoria\+:\+:config\+:\+:Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classtheoria_1_1config_1_1Config__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for theoria\+:\+:config\+:\+:Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classtheoria_1_1config_1_1Config__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{using {\bfseries Const\+Config\+List} = std\+::vector$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$}\label{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{using {\bfseries Config\+Predicate} = std\+::function$<$ bool(const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$)$>$}\label{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a7576e899a6608ee9362e079959dac24c}{Attrs\+::const\+\_\+iterator {\bfseries find\+Attr} (const std\+::string \&name) const }\label{classtheoria_1_1config_1_1Config_a7576e899a6608ee9362e079959dac24c}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}{const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries get\+Parent} () const noexcept}\label{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a612dc92ad47937e7d1291d040252b860}{bool {\bfseries has\+Child} (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child) const }\label{classtheoria_1_1config_1_1Config_a612dc92ad47937e7d1291d040252b860}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a5f37f0b2a36a64af46d3371ccbc0dd53}{int {\bfseries num\+Children} () const }\label{classtheoria_1_1config_1_1Config_a5f37f0b2a36a64af46d3371ccbc0dd53}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a2bfdab537ca5358f85d0e4ae8014b949}{Const\+Config\+List {\bfseries get\+Children} () const }\label{classtheoria_1_1config_1_1Config_a2bfdab537ca5358f85d0e4ae8014b949}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a8dffcbfc38e95e42d0357ebb112d7b62}{Const\+Config\+List {\bfseries get\+Children} (const Config\+Predicate \&predicate) const }\label{classtheoria_1_1config_1_1Config_a8dffcbfc38e95e42d0357ebb112d7b62}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a88395f87ae17b549a2e67297962a7a83}{const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries get\+Child} (const std\+::string \&name) const }\label{classtheoria_1_1config_1_1Config_a88395f87ae17b549a2e67297962a7a83}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_afde7d3bd799b8f275bf8c30ffa9a28c9}{Const\+Config\+List {\bfseries get\+Siblings} () const }\label{classtheoria_1_1config_1_1Config_afde7d3bd799b8f275bf8c30ffa9a28c9}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_af0c8d99efb84a611e0ec7cb95350796e}{Const\+Config\+List {\bfseries get\+Siblings} (const Config\+Predicate \&predicate) const }\label{classtheoria_1_1config_1_1Config_af0c8d99efb84a611e0ec7cb95350796e}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}{bool {\bfseries is\+Root} () const noexcept}\label{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}{bool {\bfseries is\+Leaf} () const noexcept}\label{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{const std\+::string \& {\bfseries name} () const noexcept}\label{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}{std\+::string {\bfseries desc} () const noexcept}\label{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a5c507593cfe95c57f3f37a45d07ecedd}{bool {\bfseries has\+Attr} (const std\+::string \&name) const }\label{classtheoria_1_1config_1_1Config_a5c507593cfe95c57f3f37a45d07ecedd}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ab87a7192f2b8abeaaf452e31a6ce767d}{int {\bfseries num\+Attr} () const }\label{classtheoria_1_1config_1_1Config_ab87a7192f2b8abeaaf452e31a6ce767d}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a120102b4654bbe5ff2722ed6e1292737}{{\footnotesize template$<$class T $>$ }\\T {\bfseries get\+Attr} (const std\+::string \&name) const }\label{classtheoria_1_1config_1_1Config_a120102b4654bbe5ff2722ed6e1292737}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}{{\footnotesize template$<$class T $>$ }\\T {\bfseries get\+Attr} (const std\+::string \&name, const T \&def) const noexcept}\label{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}{std\+::string {\bfseries get\+Attr\+As\+Str} (const std\+::string \&name, const std\+::string \&def=\char`\"{}\char`\"{}) const noexcept}\label{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_acd4660c288694e027f9ed14a89895b5e}{int {\bfseries get\+Attr\+As\+Int} (const std\+::string \&name, int def=0) const }\label{classtheoria_1_1config_1_1Config_acd4660c288694e027f9ed14a89895b5e}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a7607c7ba217b44f91417acaf98936478}{double {\bfseries get\+Attr\+As\+Dbl} (const std\+::string \&name, double def=0.\+0) const }\label{classtheoria_1_1config_1_1Config_a7607c7ba217b44f91417acaf98936478}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a9015778d5985ada7d8045e5dfa8e69f6}{bool {\bfseries get\+Attr\+As\+Bool} (const std\+::string \&name, bool def=false) const }\label{classtheoria_1_1config_1_1Config_a9015778d5985ada7d8045e5dfa8e69f6}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a2d8c81f013dd5e87e43f1f4a21162201}{virtual bool {\bfseries is\+Array} () const }\label{classtheoria_1_1config_1_1Config_a2d8c81f013dd5e87e43f1f4a21162201}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_aa8d858b3ab9b56a8c566b7e890843e08}{virtual void {\bfseries to\+T\+O\+M\+L} (std\+::ostream \&out) const }\label{classtheoria_1_1config_1_1Config_aa8d858b3ab9b56a8c566b7e890843e08}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a26d27af57132772eae7ff0c3b2311556}{Attrs\+::const\+\_\+iterator {\bfseries begin\+Attr} () const }\label{classtheoria_1_1config_1_1Config_a26d27af57132772eae7ff0c3b2311556}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a9f037f8ab8d97a71f066c2f359574d68}{Attrs\+::const\+\_\+iterator {\bfseries end\+Attr} () const }\label{classtheoria_1_1config_1_1Config_a9f037f8ab8d97a71f066c2f359574d68}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}{using {\bfseries Text} = std\+::string}\label{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}{using {\bfseries Attrs} = std\+::vector$<$ \hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr} $>$}\label{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}{using {\bfseries Children} = std\+::vector$<$ \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$}\label{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}{{\bfseries Config} (const std\+::string \&name, const std\+::string \&desc)}\label{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}{void {\bfseries add\+Attr} (const std\+::string \&name, const std\+::string \&value, const std\+::string \&type=\char`\"{}\char`\"{})}\label{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}{void {\bfseries add\+Child} (\hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child, bool allow\+Dups=false)}\label{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}{Attrs\+::iterator {\bfseries find\+Attr} (const std\+::string \&name)}\label{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}{Attrs\+::iterator {\bfseries end\+Attr} ()}\label{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}{void {\bfseries set\+Name} (const std\+::string \&name)}\label{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}{void {\bfseries set\+Desc} (const std\+::string \&desc)}\label{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a3a4838b605d99ce710ec0ad4c5285e5d}{std\+::string {\bfseries \+\_\+name}}\label{classtheoria_1_1config_1_1Config_a3a4838b605d99ce710ec0ad4c5285e5d}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_ab73d2f2163ddb788e877900ed075273e}{Text {\bfseries \+\_\+desc}}\label{classtheoria_1_1config_1_1Config_ab73d2f2163ddb788e877900ed075273e}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_aecbf5fc3dcb43d90e8ebffd0650c3831}{\hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries \+\_\+parent}}\label{classtheoria_1_1config_1_1Config_aecbf5fc3dcb43d90e8ebffd0650c3831}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a51f52887f1e69984334896dc61b5846f}{Children {\bfseries \+\_\+children}}\label{classtheoria_1_1config_1_1Config_a51f52887f1e69984334896dc61b5846f}
+
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a9ffb513d50db0712eb085f22c2c102b2}{Attrs {\bfseries \+\_\+attrs}}\label{classtheoria_1_1config_1_1Config_a9ffb513d50db0712eb085f22c2c102b2}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}{class {\bfseries Config\+Builder}}\label{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/theoria/config/Config.\+h\item 
+src/config/Config.\+cpp\end{DoxyCompactItemize}

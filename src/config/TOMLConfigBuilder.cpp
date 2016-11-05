@@ -1,6 +1,7 @@
 #include <theoria/config/TOMLConfigBuilder.h>
 #include <theoria/config/Config.h>
 #include <theoria/except/except.h>
+#include <utility>
 #include <cpptoml.h>
 
 using namespace theoria ;

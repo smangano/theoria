@@ -14,6 +14,7 @@ desc="""
       Creates the chain of ConfigVarResolver's used by the ConfigBuilder. The cofiguration specifies the ordered
       list of resolvers to chain together.
 """
+kind="Component"
 [[ConfigVarResolverBuilder.Resolver]]         
 type="ConfigVarResolver"
 subtype="CmdLineResolver"

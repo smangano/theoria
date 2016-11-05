@@ -2,6 +2,8 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
+#include <sstream>
+
 namespace theoria { namespace util {
 
 /* Convert a string to a T

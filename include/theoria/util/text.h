@@ -1,3 +1,6 @@
+#include <string>
+#include <unordered_map>
+
 namespace Theoria { namespace Util {
 
 
@@ -6,7 +9,7 @@ class TextSpace
 {
 private:
 
-    static std::unorderd_map<uint32_t, std::string> s_tokenspace ;
+    static std::unordered_map<uint32_t, std::string> s_tokenspace ;
     static const int s_ns = ns ;
 
 public:
