@@ -1,34 +1,12 @@
-#include <theoria/core/Component.h>
-#include <theoria/core/Dependencies.h>
-#include <theoria/core/RegisterThis.h>
-#include <theoria/core/primitives.h>
+#include <theoria/core/CoreComponents.h>
 #include <theoria/config/Builder.h>
 #include <theoria/config/Config.h>
 #include <theoria/config/Resolve.h>
 
-namespace theoria { namespace core {
+using namespace theoria;
+using namespace core;
 
-class ConfigVarResolverBuilderComp : public Component
-{
-public:
-
-    
-    ConfigVarResolverBuilderComp(CompId id) :
-        Component(id) {} 
-
-    static Component* factory(CompId id) ; 
-
-	Dependencies init(const config::Config& config) override;
-    void finalize(std::vector<Component*>& dependencies) override ;
-    void appLifeCycle(AppLifeCycle state) override ;
-
-private:
-
-    static RegisterThis<ConfigVarResolverBuilderComp> rt ; 
-} ;
-
-RegisterThis<ConfigVarResolverBuilderComp> 
-    ConfigVarResolverBuilderComp::rt {"ConfigVarResolverBuilder", "ConfigVarResolverBuilder"} ; 
+DLL_PUBLIC RegisterThis<ConfigVarResolverBuilderComp> ConfigVarResolverBuilderComp::rt("ConfigVarResolverBuilder") ; 
 
 Component* ConfigVarResolverBuilderComp::factory(CompId id) 
 {
@@ -39,7 +17,6 @@ Dependencies ConfigVarResolverBuilderComp::init(const config::Config& config)
 {
     using Config = config::Config ;
     using ConfigArray = config::ConfigArray ;
-
     Config::ConstConfigList children = config.getChildren() ;
     if (!children[0]->isArray())
         throw RUNTIME_ERROR("ConfigVarResolverBuilder expects a array of Resolver specifications.") ;
@@ -94,4 +71,3 @@ void ConfigVarResolverBuilderComp::appLifeCycle(AppLifeCycle state)
         Registry::instance().release(this) ;
 }
 
-}} //namespace theoria::core

@@ -1,6 +1,8 @@
+#include <theoria/core/CoreComponents.h>
 #include <theoria/config/Config.h>
 #include <theoria/config/TOMLConfigBuilder.h>
 #include <theoria/core/Registry.h>
+#include <theoria/core/Component.h>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
@@ -27,15 +29,28 @@ subtype="ConfigResolver"
 class TestConfigVarResolverBuilderComp : public ::testing::Test
 {
     virtual void SetUp() {
+        core::Registry::instance().registerFactory("ConfigVarResolverBuilder", core::ConfigVarResolverBuilderComp::factory) ;
         std::istringstream iss(ConfigVarResolverBuilderTOML) ;
-        config = config::TOMLConfigBuilder().parse(iss) ; 
+        cfg = config::TOMLConfigBuilder().parse(iss) ; 
+        builder = core::Registry::instance().createComponent("ConfigVarResolverBuilder") ;
     }
 
     virtual void TearDown() {
         core::Registry::instance().reset() ;
     }
 
-    std::unique_ptr<const config::Config> config ;
+public:
+
+    std::unique_ptr<const config::Config> cfg ;
+    core::Component* builder ;
 } ;
+
+TEST_F(TestConfigVarResolverBuilderComp, TestInit) {
+    const config::Config* configVarResolverBuilder = cfg->getChild("ConfigVarResolverBuilder") ;
+    ASSERT_NE(configVarResolverBuilder, nullptr) ;
+    core::Dependencies deps = builder->init(*configVarResolverBuilder) ;
+}
+
+
 
 } //namespace theoria
