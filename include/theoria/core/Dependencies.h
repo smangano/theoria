@@ -63,14 +63,17 @@ public:
 	Dependencies() {} 
 	Dependencies(Dependencies&& other) noexcept :
         _deps(std::move(other._deps)) {} 
+	Dependencies(const Dependencies& other) noexcept :
+        _deps(other._deps) {} 
 
     Dependencies& operator = (Dependencies&& other) = default ;
+    Dependencies& operator = (Dependencies& other) = default ;
 
 	/**
      * Add a dependent to a component of the given type. If there are multiple components of this type it will pick the first one that
      * has existing dependencies otherwise the first one it sees.
      */
-	Dependencies& loose(const std::string type, bool optional=false) {
+	Dependencies& loose(const TypeName& type, bool optional=false) {
         _deps.push_back(Dependent(type,"",optional)) ;
         return *this;
     }
@@ -79,7 +82,7 @@ public:
      * Add a dependent to a component of the given type  such that the type matches it's subtype . Such a component can be thought of as the default component of that
      * type and there can be only 0 or 1. 
      */
-    Dependencies& def(const std::string name, bool optional=false) {
+    Dependencies& def(const TypeName& name, bool optional=false) {
         _deps.push_back(Dependent(name,name, optional)) ;
         return *this;
     }
@@ -88,7 +91,7 @@ public:
 	 * Add a dependent with the specified type and subtype. There can be only 0 or 1. This is a strict dependency because the dependent is anouncing that one and only
      * one implementation will do
      */
-    Dependencies& strict(TypeName& type, SubTypeName& name, bool optional=false) {
+    Dependencies& strict(const TypeName& type,const  SubTypeName& name, bool optional=false) {
         _deps.push_back(Dependent(type,name, optional)) ; 
         return *this;
     }

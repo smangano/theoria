@@ -45,6 +45,7 @@ class AppConfigResolverTest : public ::testing::Test
 
     virtual void TearDown() {
         delete _builder ;
+        Registry::instance().reset() ;
     }
 
 public:
@@ -58,8 +59,7 @@ protected:
 } ;
 
 TEST_F(AppConfigResolverTest, TestLookup) {
-    Config* config = const_cast<Config*>(builder().testConfigWithMultipleChildren()) ;
-    std::unique_ptr<Config> p(config) ;
+    std::unique_ptr<const Config> p(builder().testConfigWithMultipleChildren()) ;
     Registry::instance()._setAppConfig(p) ;
     AppConfigResolver appConfigResolver ;
 

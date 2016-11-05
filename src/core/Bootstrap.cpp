@@ -18,11 +18,13 @@
 using namespace theoria ;
 using namespace core ;
 
-std::unique_ptr<config::Config> Bootstrap::loadConfig() const
+using Config = config::Config ;
+
+std::unique_ptr<const config::Config> Bootstrap::loadConfig() const
 {
     std::string filename = findConfig() ;
     config::TOMLConfigBuilder builder ;
-    return std::unique_ptr<config::Config>(builder.parse_file(filename)) ;
+    return builder.parse_file(filename) ;
 }
 
 std::string Bootstrap::findConfig() const
@@ -39,45 +41,49 @@ std::string Bootstrap::findConfig() const
         filename = os::join_path(dir, "bootstrap.toml") ;
         if (os::exists(filename)) 
             break ;
+        filename = "" ;
     }
     if (filename == "")
         throw RUNTIME_ERROR("boostrap.toml not found whils searching %s. Can't proceed.", path.c_str()) ; 
     return filename ;
 }
 
-//shake Theoria's booty, shake it's booty...
-void Bootstrap::boot(config::Config& bootConfig)
+void Bootstrap::createCoreComponents(ConstConfigList& componentConfigs, std::vector<Component*>& coreComponents)
 {
-    using Config = config::Config ;
-
-    auto componentConfigs = 
-        bootConfig.getChildren( [] (const Config* child) {return child->getAttrAsStr("kind", "Component") == "Component";} ) ;
-
-    std::vector<Component*> coreComponents ;
-    std::unordered_map<CompId, Dependencies> coreCompDeps ;
-
-    //First create all core components
     for (const Config* compConfig : componentConfigs) {
         Component * comp =_createCoreComp(*compConfig) ;
         coreComponents.push_back(comp) ;
     }
-    
-    //Then initialize core components
+}
+
+void Bootstrap::initializeCoreComponent(
+    ConstConfigList& componentConfigs, 
+    const std::vector<Component*>& coreComponents,
+    std::unordered_map<CompId, Dependencies>& coreCompDeps )
+{
     int numComps = componentConfigs.size() ;
     for (int i=0; i<numComps; ++i) {
         Dependencies&& deps = coreComponents[i]->init(*componentConfigs[i]) ;
         coreCompDeps[coreComponents[i]->id()] = std::move(deps) ;
     }
-    //Fire INITIALIZED AppLifeCycle  Event
+}
+
+void Bootstrap::initializeAppLifeCycle(const std::vector<Component*>& coreComponents)
+{
     for (Component* comp : coreComponents)
         comp->appLifeCycle(AppLifeCycle::INITIALIZED) ;
+}
 
-    //Satisfy deps and finalize core components
+void Bootstrap::satisfyAndFinalize( std::unordered_map<CompId, Dependencies>& coreCompDeps)
+{
     for (auto& compId_deps : coreCompDeps) {
         auto compDeps = Registry::instance().satisfy(compId_deps.second) ;
         Registry::instance().component(compId_deps.first)->finalize(compDeps) ;
     }
-    //Fire FINALIZED AppLifeCycle  Event
+}
+
+void Bootstrap::finalizeAppLifeCycle(const std::vector<Component*>& coreComponents)
+{
     for (Component* comp : coreComponents)
         comp->appLifeCycle(AppLifeCycle::FINALIZED) ;
 }
@@ -93,5 +99,35 @@ Component *  Bootstrap::_createCoreComp(const config::Config& compConfig)
         component = Registry::instance().createComponent(compType, compSubType) ; 
     return component ;
 }
+
+//shake Theoria's booty, shake it's booty...
+// LCOV_EXCL_START
+void Bootstrap::boot(const config::Config& bootConfig)
+{
+
+    using Config = config::Config ;
+
+    auto componentConfigs = 
+        bootConfig.getChildren( [] (const Config* child) {return child->getAttrAsStr("kind", "Component") == "Component";} ) ;
+
+    std::vector<Component*> coreComponents ;
+    std::unordered_map<CompId, Dependencies> coreCompDeps ;
+
+    //First create all core components
+    createCoreComponents(componentConfigs, coreComponents) ;
+    
+    //Then initialize core components
+    initializeCoreComponent(componentConfigs, coreComponents, coreCompDeps);
+
+    //Fire INITIALIZED AppLifeCycle  Event
+    initializeAppLifeCycle(coreComponents) ;
+
+    //Satisfy deps and finalize core components
+    satisfyAndFinalize(coreCompDeps) ;
+
+    //Fire FINALIZED AppLifeCycle  Event
+    finalizeAppLifeCycle(coreComponents) ;
+}
+// LCOV_EXCL_STOP
 
 

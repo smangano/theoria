@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -1184,10 +1184,10 @@
 <span class="lineNum">    1122 </span>            :  public:
 <a name="1123"><span class="lineNum">    1123 </span>            :   typedef T element_type;</a>
 <a name="1124"><span class="lineNum">    1124 </span>            : </a>
-<span class="lineNum">    1125 </span><span class="lineCov">        373 :   explicit scoped_ptr(T* p = NULL) : ptr_(p) {}</span>
-<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">        532 :   ~scoped_ptr() { reset(); }</span></a>
+<span class="lineNum">    1125 </span><span class="lineCov">        418 :   explicit scoped_ptr(T* p = NULL) : ptr_(p) {}</span>
+<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">        611 :   ~scoped_ptr() { reset(); }</span></a>
 <a name="1127"><span class="lineNum">    1127 </span>            : </a>
-<a name="1128"><span class="lineNum">    1128 </span><span class="lineCov">        612 :   T&amp; operator*() const { return *ptr_; }</span></a>
+<a name="1128"><span class="lineNum">    1128 </span><span class="lineCov">        680 :   T&amp; operator*() const { return *ptr_; }</span></a>
 <span class="lineNum">    1129 </span><span class="lineNoCov">          0 :   T* operator-&gt;() const { return ptr_; }</span>
 <span class="lineNum">    1130 </span><span class="lineNoCov">          0 :   T* get() const { return ptr_; }</span>
 <span class="lineNum">    1131 </span>            : 
@@ -1197,14 +1197,14 @@
 <span class="lineNum">    1135 </span>            :     return ptr;
 <a name="1136"><span class="lineNum">    1136 </span>            :   }</a>
 <span class="lineNum">    1137 </span>            : 
-<span class="lineNum">    1138 </span><span class="lineCov">        532 :   void reset(T* p = NULL) {</span>
-<span class="lineNum">    1139 </span><span class="lineCov">        532 :     if (p != ptr_) {</span>
-<span class="lineNum">    1140 </span><span class="lineCov">        159 :       if (IsTrue(sizeof(T) &gt; 0)) {  // Makes sure T is a complete type.</span>
-<span class="lineNum">    1141 </span><span class="lineCov">        159 :         delete ptr_;</span>
+<span class="lineNum">    1138 </span><span class="lineCov">        611 :   void reset(T* p = NULL) {</span>
+<span class="lineNum">    1139 </span><span class="lineCov">        611 :     if (p != ptr_) {</span>
+<span class="lineNum">    1140 </span><span class="lineCov">        193 :       if (IsTrue(sizeof(T) &gt; 0)) {  // Makes sure T is a complete type.</span>
+<span class="lineNum">    1141 </span><span class="lineCov">        193 :         delete ptr_;</span>
 <span class="lineNum">    1142 </span>            :       }
-<span class="lineNum">    1143 </span><span class="lineCov">        159 :       ptr_ = p;</span>
+<span class="lineNum">    1143 </span><span class="lineCov">        193 :       ptr_ = p;</span>
 <span class="lineNum">    1144 </span>            :     }
-<span class="lineNum">    1145 </span><span class="lineCov">        532 :   }</span>
+<span class="lineNum">    1145 </span><span class="lineCov">        611 :   }</span>
 <span class="lineNum">    1146 </span>            : 
 <span class="lineNum">    1147 </span>            :   friend void swap(scoped_ptr&amp; a, scoped_ptr&amp; b) {
 <span class="lineNum">    1148 </span>            :     using std::swap;

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">16.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-27 02:13:02</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -61,20 +61,21 @@
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : #include &lt;theoria/config/Parser.h&gt;</a>
-<span class="lineNum">       2 </span>            : #include &lt;theoria/except/except.h&gt;
-<span class="lineNum">       3 </span>            : 
-<span class="lineNum">       4 </span>            : #include &lt;fstream&gt;
-<span class="lineNum">       5 </span>            : 
-<span class="lineNum">       6 </span>            : using namespace theoria ;
-<a name="7"><span class="lineNum">       7 </span>            : using namespace config ;</a>
-<span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span><span class="lineNoCov">          0 : Config* ConfigParser::parse_file(const std::string&amp; filename) </span>
-<span class="lineNum">      10 </span>            : {
-<span class="lineNum">      11 </span><span class="lineNoCov">          0 :     std::ifstream ifs(filename.c_str()) ;</span>
-<span class="lineNum">      12 </span><span class="lineNoCov">          0 :     if (!ifs.good()) </span>
-<span class="lineNum">      13 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not open config file [%s]&quot;, filename.c_str()) ;</span>
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 :     return parse(ifs) ;</span>
-<span class="lineNum">      15 </span>            : }
+<span class="lineNum">       2 </span>            : #include &lt;theoria/config/Config.h&gt;
+<span class="lineNum">       3 </span>            : #include &lt;theoria/except/except.h&gt;
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span>            : #include &lt;fstream&gt;
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span>            : using namespace theoria ;
+<a name="8"><span class="lineNum">       8 </span>            : using namespace config ;</a>
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : std::unique_ptr&lt;const Config&gt; ConfigParser::parse_file(const std::string&amp; filename) </span>
+<span class="lineNum">      11 </span>            : {
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 :     std::ifstream ifs(filename.c_str()) ;</span>
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :     if (!ifs.good()) </span>
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Could not open config file [%s]&quot;, filename.c_str()) ;</span></a>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :     return parse(ifs) ;</span>
+<span class="lineNum">      16 </span><span class="lineCov">          3 : }</span>
 </pre>
       </td>
     </tr>

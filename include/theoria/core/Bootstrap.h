@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 namespace theoria { 
 
@@ -25,10 +26,12 @@ class Bootstrap
 {
 public:
 
+    using ConstConfigList = std::vector<const config::Config*> ;
+
     /*
      * Load bootstrap config
      */
-    std::unique_ptr<config::Config> loadConfig() const ;
+    std::unique_ptr<const config::Config> loadConfig() const ;
 
     /*
      * Find the location of the bootstrap.toml file. This location 
@@ -41,10 +44,18 @@ public:
      * Bootstrap theoria by processing the bootstrap config and
      * registering the required core components
      */
-    void boot(config::Config& bootConfig) ;
+    void boot(const config::Config& bootConfig) ;
+
+/*private*/
 
     Component *  _createCoreComp(const config::Config& compConfig) ;
     Dependencies _initCoreComp(Component * component) ;
+    
+    void createCoreComponents(ConstConfigList& componentConfigs, std::vector<Component*>& coreComponents) ;
+    void initializeCoreComponent(ConstConfigList& componentConfigs, const std::vector<Component*>& coreComponents, std::unordered_map<CompId, Dependencies>& coreCompDeps ) ;
+    void initializeAppLifeCycle(const std::vector<Component*>& coreComponents) ;
+    void satisfyAndFinalize( std::unordered_map<CompId, Dependencies>& coreCompDeps) ;
+    void finalizeAppLifeCycle(const std::vector<Component*>& coreComponents) ;
 
 } ;
 

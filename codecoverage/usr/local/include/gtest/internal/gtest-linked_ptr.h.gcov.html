@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/include/gtest/internal/gtest-linked_ptr.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">usr/local/include/gtest/internal</a> - gtest-linked_ptr.h<span style="font-size: 80%;"> (source / <a href="gtest-linked_ptr.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryLo">34.1 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-10-29 21:37:38</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryLo">26.1 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // Copyright 2003 Google Inc.</a>
+<span class="lineNum">       2 </span>            : // All rights reserved.
+<span class="lineNum">       3 </span>            : //
+<span class="lineNum">       4 </span>            : // Redistribution and use in source and binary forms, with or without
+<span class="lineNum">       5 </span>            : // modification, are permitted provided that the following conditions are
+<span class="lineNum">       6 </span>            : // met:
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : //     * Redistributions of source code must retain the above copyright
+<span class="lineNum">       9 </span>            : // notice, this list of conditions and the following disclaimer.
+<span class="lineNum">      10 </span>            : //     * Redistributions in binary form must reproduce the above
+<span class="lineNum">      11 </span>            : // copyright notice, this list of conditions and the following disclaimer
+<span class="lineNum">      12 </span>            : // in the documentation and/or other materials provided with the
+<span class="lineNum">      13 </span>            : // distribution.
+<span class="lineNum">      14 </span>            : //     * Neither the name of Google Inc. nor the names of its
+<span class="lineNum">      15 </span>            : // contributors may be used to endorse or promote products derived from
+<span class="lineNum">      16 </span>            : // this software without specific prior written permission.
+<span class="lineNum">      17 </span>            : //
+<span class="lineNum">      18 </span>            : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+<span class="lineNum">      19 </span>            : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+<span class="lineNum">      20 </span>            : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+<span class="lineNum">      21 </span>            : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+<span class="lineNum">      22 </span>            : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+<span class="lineNum">      23 </span>            : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+<span class="lineNum">      24 </span>            : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+<span class="lineNum">      25 </span>            : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+<span class="lineNum">      26 </span>            : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+<span class="lineNum">      27 </span>            : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+<span class="lineNum">      28 </span>            : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<span class="lineNum">      29 </span>            : //
+<span class="lineNum">      30 </span>            : // Authors: Dan Egnor (egnor@google.com)
+<span class="lineNum">      31 </span>            : //
+<span class="lineNum">      32 </span>            : // A &quot;smart&quot; pointer type with reference tracking.  Every pointer to a
+<span class="lineNum">      33 </span>            : // particular object is kept on a circular linked list.  When the last pointer
+<span class="lineNum">      34 </span>            : // to an object is destroyed or reassigned, the object is deleted.
+<span class="lineNum">      35 </span>            : //
+<span class="lineNum">      36 </span>            : // Used properly, this deletes the object when the last reference goes away.
+<span class="lineNum">      37 </span>            : // There are several caveats:
+<span class="lineNum">      38 </span>            : // - Like all reference counting schemes, cycles lead to leaks.
+<span class="lineNum">      39 </span>            : // - Each smart pointer is actually two pointers (8 bytes instead of 4).
+<span class="lineNum">      40 </span>            : // - Every time a pointer is assigned, the entire list of pointers to that
+<span class="lineNum">      41 </span>            : //   object is traversed.  This class is therefore NOT SUITABLE when there
+<span class="lineNum">      42 </span>            : //   will often be more than two or three pointers to a particular object.
+<span class="lineNum">      43 </span>            : // - References are only tracked as long as linked_ptr&lt;&gt; objects are copied.
+<span class="lineNum">      44 </span>            : //   If a linked_ptr&lt;&gt; is converted to a raw pointer and back, BAD THINGS
+<span class="lineNum">      45 </span>            : //   will happen (double deletion).
+<span class="lineNum">      46 </span>            : //
+<span class="lineNum">      47 </span>            : // A good use of this class is storing object references in STL containers.
+<span class="lineNum">      48 </span>            : // You can safely put linked_ptr&lt;&gt; in a vector&lt;&gt;.
+<span class="lineNum">      49 </span>            : // Other uses may not be as good.
+<span class="lineNum">      50 </span>            : //
+<span class="lineNum">      51 </span>            : // Note: If you use an incomplete type with linked_ptr&lt;&gt;, the class
+<span class="lineNum">      52 </span>            : // *containing* linked_ptr&lt;&gt; must have a constructor and destructor (even
+<span class="lineNum">      53 </span>            : // if they do nothing!).
+<span class="lineNum">      54 </span>            : //
+<span class="lineNum">      55 </span>            : // Bill Gibbons suggested we use something like this.
+<span class="lineNum">      56 </span>            : //
+<span class="lineNum">      57 </span>            : // Thread Safety:
+<span class="lineNum">      58 </span>            : //   Unlike other linked_ptr implementations, in this implementation
+<span class="lineNum">      59 </span>            : //   a linked_ptr object is thread-safe in the sense that:
+<span class="lineNum">      60 </span>            : //     - it's safe to copy linked_ptr objects concurrently,
+<span class="lineNum">      61 </span>            : //     - it's safe to copy *from* a linked_ptr and read its underlying
+<span class="lineNum">      62 </span>            : //       raw pointer (e.g. via get()) concurrently, and
+<span class="lineNum">      63 </span>            : //     - it's safe to write to two linked_ptrs that point to the same
+<span class="lineNum">      64 </span>            : //       shared object concurrently.
+<span class="lineNum">      65 </span>            : // TODO(wan@google.com): rename this to safe_linked_ptr to avoid
+<span class="lineNum">      66 </span>            : // confusion with normal linked_ptr.
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : #ifndef GTEST_INCLUDE_GTEST_INTERNAL_GTEST_LINKED_PTR_H_
+<span class="lineNum">      69 </span>            : #define GTEST_INCLUDE_GTEST_INTERNAL_GTEST_LINKED_PTR_H_
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : #include &lt;stdlib.h&gt;
+<span class="lineNum">      72 </span>            : #include &lt;assert.h&gt;
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : #include &quot;gtest/internal/gtest-port.h&quot;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : namespace testing {
+<span class="lineNum">      77 </span>            : namespace internal {
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : // Protects copying of all linked_ptr objects.
+<span class="lineNum">      80 </span>            : GTEST_API_ GTEST_DECLARE_STATIC_MUTEX_(g_linked_ptr_mutex);
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : // This is used internally by all instances of linked_ptr&lt;&gt;.  It needs to be
+<span class="lineNum">      83 </span>            : // a non-template class because different types of linked_ptr&lt;&gt; can refer to
+<span class="lineNum">      84 </span>            : // the same object (linked_ptr&lt;Superclass&gt;(obj) vs linked_ptr&lt;Subclass&gt;(obj)).
+<span class="lineNum">      85 </span>            : // So, it needs to be possible for different types of linked_ptr to participate
+<span class="lineNum">      86 </span>            : // in the same circular linked list, so we need a single class type here.
+<span class="lineNum">      87 </span>            : //
+<span class="lineNum">      88 </span>            : // DO NOT USE THIS CLASS DIRECTLY YOURSELF.  Use linked_ptr&lt;T&gt;.
+<span class="lineNum">      89 </span>            : class linked_ptr_internal {
+<a name="90"><span class="lineNum">      90 </span>            :  public:</a>
+<span class="lineNum">      91 </span>            :   // Create a new circle that includes only this instance.
+<span class="lineNum">      92 </span><span class="lineCov">          1 :   void join_new() {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     next_ = this;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :   }</span>
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            :   // Many linked_ptr operations may change p.link_ for some linked_ptr
+<span class="lineNum">      97 </span>            :   // variable p in the same circle as this object.  Therefore we need
+<span class="lineNum">      98 </span>            :   // to prevent two such operations from occurring concurrently.
+<span class="lineNum">      99 </span>            :   //
+<span class="lineNum">     100 </span>            :   // Note that different types of linked_ptr objects can coexist in a
+<span class="lineNum">     101 </span>            :   // circle (e.g. linked_ptr&lt;Base&gt;, linked_ptr&lt;Derived1&gt;, and
+<span class="lineNum">     102 </span>            :   // linked_ptr&lt;Derived2&gt;).  Therefore we must use a single mutex to
+<span class="lineNum">     103 </span>            :   // protect all linked_ptr objects.  This can create serious
+<span class="lineNum">     104 </span>            :   // contention in production code, but is acceptable in a testing
+<span class="lineNum">     105 </span>            :   // framework.
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<span class="lineNum">     107 </span>            :   // Join an existing circle.
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :   void join(linked_ptr_internal const* ptr)</span>
+<span class="lineNum">     109 </span>            :       GTEST_LOCK_EXCLUDED_(g_linked_ptr_mutex) {
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     MutexLock lock(&amp;g_linked_ptr_mutex);</span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     linked_ptr_internal const* p = ptr;</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     while (p-&gt;next_ != ptr) {</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 :       assert(p-&gt;next_ != this &amp;&amp;</span>
+<span class="lineNum">     115 </span>            :              &quot;Trying to join() a linked ring we are already in. &quot;
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :              &quot;Is GMock thread safety enabled?&quot;);</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :       p = p-&gt;next_;</span>
+<span class="lineNum">     118 </span>            :     }
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     p-&gt;next_ = this;</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     next_ = ptr;</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     122 </span>            : 
+<a name="123"><span class="lineNum">     123 </span>            :   // Leave whatever circle we're part of.  Returns true if we were the</a>
+<span class="lineNum">     124 </span>            :   // last member of the circle.  Once this is done, you can join() another.
+<span class="lineNum">     125 </span><span class="lineCov">          1 :   bool depart()</span>
+<span class="lineNum">     126 </span>            :       GTEST_LOCK_EXCLUDED_(g_linked_ptr_mutex) {
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     MutexLock lock(&amp;g_linked_ptr_mutex);</span>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     if (next_ == this) return true;</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     linked_ptr_internal const* p = next_;</span>
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     while (p-&gt;next_ != this) {</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :       assert(p-&gt;next_ != next_ &amp;&amp;</span>
+<span class="lineNum">     133 </span>            :              &quot;Trying to depart() a linked ring we are not in. &quot;
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :              &quot;Is GMock thread safety enabled?&quot;);</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :       p = p-&gt;next_;</span>
+<span class="lineNum">     136 </span>            :     }
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     p-&gt;next_ = next_;</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     return false;</span>
+<span class="lineNum">     139 </span>            :   }
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span>            :  private:
+<span class="lineNum">     142 </span>            :   mutable linked_ptr_internal const* next_;
+<span class="lineNum">     143 </span>            : };
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     146 </span>            : class linked_ptr {
+<span class="lineNum">     147 </span>            :  public:
+<span class="lineNum">     148 </span>            :   typedef T element_type;
+<span class="lineNum">     149 </span>            : 
+<a name="150"><span class="lineNum">     150 </span>            :   // Take over ownership of a raw pointer.  This should happen as soon as</a>
+<a name="151"><span class="lineNum">     151 </span>            :   // possible after the object is created.</a>
+<span class="lineNum">     152 </span><span class="lineCov">          1 :   explicit linked_ptr(T* ptr = NULL) { capture(ptr); }</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   ~linked_ptr() { depart(); }</span>
+<span class="lineNum">     154 </span>            : 
+<a name="155"><span class="lineNum">     155 </span>            :   // Copy an existing linked_ptr&lt;&gt;, adding ourselves to the list of references.</a>
+<span class="lineNum">     156 </span>            :   template &lt;typename U&gt; linked_ptr(linked_ptr&lt;U&gt; const&amp; ptr) { copy(&amp;ptr); }
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :   linked_ptr(linked_ptr const&amp; ptr) {  // NOLINT</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     assert(&amp;ptr != this);</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :     copy(&amp;ptr);</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            :   // Assignment releases the old value and acquires the new.
+<span class="lineNum">     163 </span>            :   template &lt;typename U&gt; linked_ptr&amp; operator=(linked_ptr&lt;U&gt; const&amp; ptr) {
+<span class="lineNum">     164 </span>            :     depart();
+<span class="lineNum">     165 </span>            :     copy(&amp;ptr);
+<span class="lineNum">     166 </span>            :     return *this;
+<span class="lineNum">     167 </span>            :   }
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            :   linked_ptr&amp; operator=(linked_ptr const&amp; ptr) {
+<span class="lineNum">     170 </span>            :     if (&amp;ptr != this) {
+<span class="lineNum">     171 </span>            :       depart();
+<span class="lineNum">     172 </span>            :       copy(&amp;ptr);
+<span class="lineNum">     173 </span>            :     }
+<span class="lineNum">     174 </span>            :     return *this;
+<span class="lineNum">     175 </span>            :   }
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            :   // Smart pointer members.
+<span class="lineNum">     178 </span>            :   void reset(T* ptr = NULL) {
+<span class="lineNum">     179 </span>            :     depart();
+<a name="180"><span class="lineNum">     180 </span>            :     capture(ptr);</a>
+<a name="181"><span class="lineNum">     181 </span>            :   }</a>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :   T* get() const { return value_; }</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :   T* operator-&gt;() const { return value_; }</span>
+<span class="lineNum">     184 </span>            :   T&amp; operator*() const { return *value_; }
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            :   bool operator==(T* p) const { return value_ == p; }
+<span class="lineNum">     187 </span>            :   bool operator!=(T* p) const { return value_ != p; }
+<span class="lineNum">     188 </span>            :   template &lt;typename U&gt;
+<span class="lineNum">     189 </span>            :   bool operator==(linked_ptr&lt;U&gt; const&amp; ptr) const {
+<span class="lineNum">     190 </span>            :     return value_ == ptr.get();
+<span class="lineNum">     191 </span>            :   }
+<span class="lineNum">     192 </span>            :   template &lt;typename U&gt;
+<span class="lineNum">     193 </span>            :   bool operator!=(linked_ptr&lt;U&gt; const&amp; ptr) const {
+<span class="lineNum">     194 </span>            :     return value_ != ptr.get();
+<span class="lineNum">     195 </span>            :   }
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            :  private:
+<span class="lineNum">     198 </span>            :   template &lt;typename U&gt;
+<span class="lineNum">     199 </span>            :   friend class linked_ptr;
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span>            :   T* value_;
+<a name="202"><span class="lineNum">     202 </span>            :   linked_ptr_internal link_;</a>
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span><span class="lineCov">          1 :   void depart() {</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     if (link_.depart()) delete value_;</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span><span class="lineCov">          1 :   void capture(T* ptr) {</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     value_ = ptr;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     link_.join_new();</span>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :   }</span></a>
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :   template &lt;typename U&gt; void copy(linked_ptr&lt;U&gt; const* ptr) {</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :     value_ = ptr-&gt;get();</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     if (value_)</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :       link_.join(&amp;ptr-&gt;link_);</span>
+<span class="lineNum">     217 </span>            :     else
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :       link_.join_new();</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :   }</span>
+<span class="lineNum">     220 </span>            : };
+<span class="lineNum">     221 </span>            : 
+<span class="lineNum">     222 </span>            : template&lt;typename T&gt; inline
+<span class="lineNum">     223 </span>            : bool operator==(T* ptr, const linked_ptr&lt;T&gt;&amp; x) {
+<span class="lineNum">     224 </span>            :   return ptr == x.get();
+<span class="lineNum">     225 </span>            : }
+<span class="lineNum">     226 </span>            : 
+<span class="lineNum">     227 </span>            : template&lt;typename T&gt; inline
+<span class="lineNum">     228 </span>            : bool operator!=(T* ptr, const linked_ptr&lt;T&gt;&amp; x) {
+<span class="lineNum">     229 </span>            :   return ptr != x.get();
+<span class="lineNum">     230 </span>            : }
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span>            : // A function to convert T* into linked_ptr&lt;T&gt;
+<span class="lineNum">     233 </span>            : // Doing e.g. make_linked_ptr(new FooBarBaz&lt;type&gt;(arg)) is a shorter notation
+<span class="lineNum">     234 </span>            : // for linked_ptr&lt;FooBarBaz&lt;type&gt; &gt;(new FooBarBaz&lt;type&gt;(arg))
+<span class="lineNum">     235 </span>            : template &lt;typename T&gt;
+<span class="lineNum">     236 </span>            : linked_ptr&lt;T&gt; make_linked_ptr(T* ptr) {
+<span class="lineNum">     237 </span>            :   return linked_ptr&lt;T&gt;(ptr);
+<span class="lineNum">     238 </span>            : }
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            : }  // namespace internal
+<span class="lineNum">     241 </span>            : }  // namespace testing
+<span class="lineNum">     242 </span>            : 
+<span class="lineNum">     243 </span>            : #endif  // GTEST_INCLUDE_GTEST_INTERNAL_GTEST_LINKED_PTR_H_
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

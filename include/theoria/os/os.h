@@ -33,6 +33,12 @@ std::string join_path(
  */
 bool exists(const std::string& filename) ;
 
+/* Test if dirname exists
+ *
+ */
+bool dir_exists(const std::string& dirname) ;
+
+
 /* Return the OS specific path to search for bootstrap.toml when it is not provided by
  * command line option or env var
  */

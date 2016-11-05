@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -72,74 +72,74 @@
 <span class="lineNum">      10 </span>            : 
 <a name="11"><span class="lineNum">      11 </span>            : using Result = ConfigVariableResolver::Result ;</a>
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span><span class="lineCov">         63 : ConfigVariableResolver::~ConfigVariableResolver() </span>
+<span class="lineNum">      13 </span><span class="lineCov">         21 : ConfigVariableResolver::~ConfigVariableResolver() </span>
 <span class="lineNum">      14 </span>            : {
-<span class="lineNum">      15 </span><span class="lineCov">         63 :     delete _next ;</span>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">         63 : }</span></a>
+<span class="lineNum">      15 </span><span class="lineCov">         21 :     delete _next ;</span>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">         21 : }</span></a>
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">         84 : std::string ConfigVariableResolver::resolve(const std::string&amp; var) const </span>
+<span class="lineNum">      18 </span><span class="lineCov">         28 : std::string ConfigVariableResolver::resolve(const std::string&amp; var) const </span>
 <span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineCov">         84 :     if (var.size() &lt; 2 || var[0] != '$') </span>
+<span class="lineNum">      20 </span><span class="lineCov">         28 :     if (var.size() &lt; 2 || var[0] != '$') </span>
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;resolve expects variables with leading '$' - got [%s] instead&quot;, var.c_str()) ;</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         84 :     Result r ;</span>
-<span class="lineNum">      24 </span><span class="lineCov">         84 :     if (var.size() &gt; 2 &amp;&amp; var[1] == '$')</span>
-<span class="lineNum">      25 </span><span class="lineCov">         36 :        r = resolveLast(var.substr(2)) ;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         28 :     Result r ;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         28 :     if (var.size() &gt; 2 &amp;&amp; var[1] == '$')</span>
+<span class="lineNum">      25 </span><span class="lineCov">         12 :        r = resolveLast(var.substr(2)) ;</span>
 <span class="lineNum">      26 </span>            :     else
-<span class="lineNum">      27 </span><span class="lineCov">         48 :        r = resolveFirst(var.substr(1)) ;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         84 :     return r.first != nullptr ? r.second : var ;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         16 :        r = resolveFirst(var.substr(1)) ;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         28 :     return r.first != nullptr ? r.second : var ;</span>
 <a name="29"><span class="lineNum">      29 </span>            : }</a>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         48 : Result ConfigVariableResolver::resolveFirst(const std::string&amp; name) const </span>
+<span class="lineNum">      31 </span><span class="lineCov">         16 : Result ConfigVariableResolver::resolveFirst(const std::string&amp; name) const </span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         48 :     const ConfigVariableResolver* resolver = this ;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        114 :     while(resolver) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">         66 :         Result result = resolver-&gt;lookup(name) ;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         66 :         if (result.first != nullptr)</span>
-<span class="lineNum">      37 </span><span class="lineCov">         48 :             return result ; </span>
-<span class="lineNum">      38 </span><span class="lineCov">         18 :         resolver = resolver-&gt;_next ;</span>
-<span class="lineNum">      39 </span><span class="lineCov">         18 :     }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         16 :     const ConfigVariableResolver* resolver = this ;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         38 :     while(resolver) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         22 :         Result result = resolver-&gt;lookup(name) ;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         22 :         if (result.first != nullptr)</span>
+<span class="lineNum">      37 </span><span class="lineCov">         16 :             return result ; </span>
+<span class="lineNum">      38 </span><span class="lineCov">          6 :         resolver = resolver-&gt;_next ;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          6 :     }</span>
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 :     return Result(nullptr, &quot;&quot;) ;</span>
 <a name="41"><span class="lineNum">      41 </span>            : }</a>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">         36 : Result ConfigVariableResolver::resolveLast(const std::string&amp; name) const </span>
+<span class="lineNum">      43 </span><span class="lineCov">         12 : Result ConfigVariableResolver::resolveLast(const std::string&amp; name) const </span>
 <span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineCov">         36 :     Result result(nullptr, &quot;&quot;) ;</span>
-<span class="lineNum">      46 </span><span class="lineCov">         36 :     const ConfigVariableResolver* resolver = this ;</span>
-<span class="lineNum">      47 </span><span class="lineCov">        138 :     while(resolver) {</span>
-<span class="lineNum">      48 </span><span class="lineCov">         72 :         Result temp = resolver-&gt;lookup(name) ;</span>
-<span class="lineNum">      49 </span><span class="lineCov">         66 :         if (temp.first != nullptr)</span>
-<span class="lineNum">      50 </span><span class="lineCov">         51 :             result = temp ;</span>
-<span class="lineNum">      51 </span><span class="lineCov">         66 :         resolver = resolver-&gt;_next ;</span>
-<span class="lineNum">      52 </span><span class="lineCov">         66 :     }</span>
-<span class="lineNum">      53 </span><span class="lineCov">         30 :     return result ;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         12 :     Result result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      46 </span><span class="lineCov">         12 :     const ConfigVariableResolver* resolver = this ;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         46 :     while(resolver) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">         24 :         Result temp = resolver-&gt;lookup(name) ;</span>
+<span class="lineNum">      49 </span><span class="lineCov">         22 :         if (temp.first != nullptr)</span>
+<span class="lineNum">      50 </span><span class="lineCov">         17 :             result = temp ;</span>
+<span class="lineNum">      51 </span><span class="lineCov">         22 :         resolver = resolver-&gt;_next ;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         22 :     }</span>
+<span class="lineNum">      53 </span><span class="lineCov">         10 :     return result ;</span>
 <a name="54"><span class="lineNum">      54 </span>            : }</a>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">         30 : void ConfigVariableResolver::append(ConfigVariableResolver* resolver)</span>
+<span class="lineNum">      56 </span><span class="lineCov">         10 : void ConfigVariableResolver::append(ConfigVariableResolver* resolver)</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">         30 :     if (! resolver)</span>
+<span class="lineNum">      58 </span><span class="lineCov">         10 :     if (! resolver)</span>
 <span class="lineNum">      59 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't append resolver to chain at [%s]: nullptr was provided in append!&quot;, name().c_str()) ;</span>
-<span class="lineNum">      60 </span><span class="lineCov">         30 :     if (resolver-&gt;_next)</span>
+<span class="lineNum">      60 </span><span class="lineCov">         10 :     if (resolver-&gt;_next)</span>
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't append resolver [%s] to chain at [%s]: appending resolver already part of a chain is not supported&quot;, resolver-&gt;name().c_str(), name().c_str()) ;</span>
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span><span class="lineCov">         30 :     ConfigVariableResolver * p = this ;</span>
-<span class="lineNum">      64 </span><span class="lineCov">         30 :     ConfigVariableResolver * prev = nullptr ;</span>
-<span class="lineNum">      65 </span><span class="lineCov">        102 :     while(p) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">         42 :         if (p == resolver)</span>
+<span class="lineNum">      63 </span><span class="lineCov">         10 :     ConfigVariableResolver * p = this ;</span>
+<span class="lineNum">      64 </span><span class="lineCov">         10 :     ConfigVariableResolver * prev = nullptr ;</span>
+<span class="lineNum">      65 </span><span class="lineCov">         34 :     while(p) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         14 :         if (p == resolver)</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;Can't append resolver [%s] to resolver chain: Already exists!&quot;, resolver-&gt;name().c_str()) ;</span>
-<span class="lineNum">      68 </span><span class="lineCov">         42 :         prev = p ;</span>
-<span class="lineNum">      69 </span><span class="lineCov">         42 :         p = p-&gt;_next ;</span>
+<span class="lineNum">      68 </span><span class="lineCov">         14 :         prev = p ;</span>
+<span class="lineNum">      69 </span><span class="lineCov">         14 :         p = p-&gt;_next ;</span>
 <span class="lineNum">      70 </span>            :     }
-<span class="lineNum">      71 </span><span class="lineCov">         30 :     prev-&gt;_next = resolver ;</span>
-<span class="lineNum">      72 </span><span class="lineCov">         30 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">         10 :     prev-&gt;_next = resolver ;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span>            : //////////////////////////
 <a name="75"><span class="lineNum">      75 </span>            : //EnvVarResolver</a>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">         54 : Result EnvVarResolver::lookup(const std::string&amp; name) const  </span>
+<span class="lineNum">      77 </span><span class="lineCov">         18 : Result EnvVarResolver::lookup(const std::string&amp; name) const  </span>
 <span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span><span class="lineCov">         54 :     const char * value = std::getenv(name.c_str()) ;</span>
-<span class="lineNum">      80 </span><span class="lineCov">         54 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      79 </span><span class="lineCov">         18 :     const char * value = std::getenv(name.c_str()) ;</span>
+<span class="lineNum">      80 </span><span class="lineCov">         18 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
 <span class="lineNum">      81 </span>            :     
 <a name="82"><span class="lineNum">      82 </span>            : }</a>
 <span class="lineNum">      83 </span>            : 
@@ -151,10 +151,10 @@
 <span class="lineNum">      89 </span>            : //////////////////////////
 <a name="90"><span class="lineNum">      90 </span>            : //CmdLineResolver</a>
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">         72 : Result CmdLineResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">      92 </span><span class="lineCov">         24 : Result CmdLineResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">      93 </span>            : {
-<span class="lineNum">      94 </span><span class="lineCov">         72 :     const char * value = util::CommandLine::instance().variableAsPtr(name) ;</span>
-<span class="lineNum">      95 </span><span class="lineCov">         72 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
+<span class="lineNum">      94 </span><span class="lineCov">         24 :     const char * value = util::CommandLine::instance().variableAsPtr(name) ;</span>
+<span class="lineNum">      95 </span><span class="lineCov">         24 :     return value != nullptr ?  Result(this, value) : Result(nullptr, &quot;&quot;) ;</span>
 <a name="96"><span class="lineNum">      96 </span>            : }</a>
 <span class="lineNum">      97 </span>            : 
 <span class="lineNum">      98 </span><span class="lineNoCov">          0 : std::string CmdLineResolver::name() const </span>
@@ -165,9 +165,9 @@
 <span class="lineNum">     103 </span>            : //////////////////////////
 <a name="104"><span class="lineNum">     104 </span>            : //DisallowResolver </a>
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">          6 : Result DisallowResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">     106 </span><span class="lineCov">          2 : Result DisallowResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span><span class="lineCov">          6 :     throw RUNTIME_ERROR(&quot;Resolving variables disallowed while trying to resolve variable with name: [%s]&quot;, name.c_str()) ;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          2 :     throw RUNTIME_ERROR(&quot;Resolving variables disallowed while trying to resolve variable with name: [%s]&quot;, name.c_str()) ;</span>
 <a name="109"><span class="lineNum">     109 </span>            : }</a>
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span><span class="lineNoCov">          0 : std::string DisallowResolver::name() const </span>
@@ -178,9 +178,9 @@
 <span class="lineNum">     116 </span>            : //////////////////////////
 <a name="117"><span class="lineNum">     117 </span>            : // DisableResolver</a>
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">          6 : Result DisableResolver::lookup(const std::string&amp; name) const</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 : Result DisableResolver::lookup(const std::string&amp; name) const</span>
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineCov">          6 :     return Result(this, name) ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 :     return Result(this, name) ;</span>
 <span class="lineNum">     122 </span>            : }
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <span class="lineNum">     124 </span>            : 

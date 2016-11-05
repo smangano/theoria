@@ -29,6 +29,17 @@ std::string join_path(
     return result ;
 }
 
+bool dir_exists(const std::string& dirname) 
+{
+    struct stat buffer ;
+    int status = stat(dirname.c_str(), &buffer) ;
+    if (status == 0) {
+        if (buffer.st_mode & (S_IFDIR)) 
+            return true ;
+    }
+    return false ;
+}
+
 bool exists(const std::string& filename) 
 {
     struct stat buffer ;

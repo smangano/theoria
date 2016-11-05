@@ -1,5 +1,7 @@
 #include "theoria/core/Registry.h"
 #include "theoria/core/Component.h"
+#include "theoria/core/RegisterThis.h"
+#include "theoria/config/Config.h"
 #include <gtest/gtest.h>
 
 #include <ostream>
@@ -7,34 +9,13 @@
 using namespace theoria ;
 using namespace core ;
 
+#include "fixtures/core/mockComponents.cpp"
+
 class RegistryTest : public ::testing::Test 
 {
     virtual void TearDown() {
         Registry::instance().reset() ;
     } 
-} ;
-
-struct MockComponent : public Component
-{
-    MockComponent(CompId id):
-        Component(id, "MockCompoent") {}
-
-    static Component* factory(CompId id) {
-        return new MockComponent(id) ;
-    }
-
-
-} ;
-
-struct MockComponent2 : public MockComponent
-{
-    MockComponent2(CompId id):
-        MockComponent(id) {_name = "MockComponent2";}
-
-    static Component* factory(CompId id) {
-        return new MockComponent2(id) ;
-    }
-
 } ;
 
 TEST_F(RegistryTest, RegisterFactoryByTypenameOnly) 

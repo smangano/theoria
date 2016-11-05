@@ -2,6 +2,7 @@
 
 #include <string>
 #include <istream>
+#include <memory>
 
 namespace theoria { namespace config {
 
@@ -26,12 +27,12 @@ public:
      *        parse_file directly. A stream-based interface is useful
      *        for writing unit tests using istringstream.
      */
-    virtual Config* parse_file(const std::string& filename) ;
+    virtual std::unique_ptr<const Config> parse_file(const std::string& filename) ;
 
     /* 
      * Parse the stream and return a Config
      */
-    virtual Config* parse(std::istream& stream)  = 0 ;
+    virtual std::unique_ptr<const Config> parse(std::istream& stream)  = 0 ;
 } ;
 
 }}

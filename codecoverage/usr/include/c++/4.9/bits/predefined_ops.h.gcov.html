@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntry">51</td>
-            <td class="headerCovTableEntryLo">62.7 %</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntryLo">71.4 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -243,20 +243,20 @@
 <span class="lineNum">     181 </span>            :     {
 <a name="182"><span class="lineNum">     182 </span>            :       _Value&amp; _M_value;</a>
 <span class="lineNum">     183 </span>            : 
-<span class="lineNum">     184 </span><span class="lineCov">        141 :       _Iter_equals_val(_Value&amp; __value)</span>
-<span class="lineNum">     185 </span><span class="lineCov">        141 :         : _M_value(__value)</span>
-<span class="lineNum">     186 </span><span class="lineCov">        141 :       { }</span>
+<span class="lineNum">     184 </span><span class="lineCov">        104 :       _Iter_equals_val(_Value&amp; __value)</span>
+<span class="lineNum">     185 </span><span class="lineCov">        104 :         : _M_value(__value)</span>
+<span class="lineNum">     186 </span><span class="lineCov">        104 :       { }</span>
 <span class="lineNum">     187 </span>            : 
 <a name="188"><span class="lineNum">     188 </span>            :       template&lt;typename _Iterator&gt;</a>
 <span class="lineNum">     189 </span>            :         bool
-<span class="lineNum">     190 </span><span class="lineCov">        327 :         operator()(_Iterator __it)</span>
-<span class="lineNum">     191 </span><span class="lineCov">        327 :         { return *__it == _M_value; }</span>
+<span class="lineNum">     190 </span><span class="lineCov">        481 :         operator()(_Iterator __it)</span>
+<span class="lineNum">     191 </span><span class="lineCov">        481 :         { return *__it == _M_value; }</span>
 <span class="lineNum">     192 </span>            :     };
 <span class="lineNum">     193 </span>            : 
 <a name="194"><span class="lineNum">     194 </span>            :   template&lt;typename _Value&gt;</a>
 <span class="lineNum">     195 </span>            :     inline _Iter_equals_val&lt;_Value&gt;
-<span class="lineNum">     196 </span><span class="lineCov">        141 :     __iter_equals_val(_Value&amp; __val)</span>
-<span class="lineNum">     197 </span><span class="lineCov">        141 :     { return _Iter_equals_val&lt;_Value&gt;(__val); }</span>
+<span class="lineNum">     196 </span><span class="lineCov">        104 :     __iter_equals_val(_Value&amp; __val)</span>
+<span class="lineNum">     197 </span><span class="lineCov">        104 :     { return _Iter_equals_val&lt;_Value&gt;(__val); }</span>
 <span class="lineNum">     198 </span>            : 
 <span class="lineNum">     199 </span>            :   template&lt;typename _Iterator1&gt;
 <span class="lineNum">     200 </span>            :     struct _Iter_equals_iter
@@ -279,24 +279,24 @@
 <span class="lineNum">     217 </span>            :     { return _Iter_equals_iter&lt;_Iterator&gt;(__it); }
 <a name="218"><span class="lineNum">     218 </span>            : </a>
 <span class="lineNum">     219 </span>            :   template&lt;typename _Predicate&gt;
-<span class="lineNum">     220 </span><span class="lineCov">        189 :     struct _Iter_pred</span>
+<span class="lineNum">     220 </span><span class="lineCov">        504 :     struct _Iter_pred</span>
 <span class="lineNum">     221 </span>            :     {
 <a name="222"><span class="lineNum">     222 </span>            :       _Predicate _M_pred;</a>
 <span class="lineNum">     223 </span>            : 
-<span class="lineNum">     224 </span><span class="lineCov">        459 :       _Iter_pred(_Predicate __pred)</span>
-<span class="lineNum">     225 </span><span class="lineCov">        126 :         : _M_pred(__pred)</span>
-<span class="lineNum">     226 </span><span class="lineCov">        459 :       { }</span>
+<span class="lineNum">     224 </span><span class="lineCov">        453 :       _Iter_pred(_Predicate __pred)</span>
+<span class="lineNum">     225 </span><span class="lineCov">        189 :         : _M_pred(__pred)</span>
+<span class="lineNum">     226 </span><span class="lineCov">        453 :       { }</span>
 <span class="lineNum">     227 </span>            : 
 <a name="228"><span class="lineNum">     228 </span>            :       template&lt;typename _Iterator&gt;</a>
 <span class="lineNum">     229 </span>            :         bool
-<span class="lineNum">     230 </span><span class="lineCov">       1536 :         operator()(_Iterator __it)</span>
-<span class="lineNum">     231 </span><span class="lineCov">       1536 :         { return bool(_M_pred(*__it)); }</span>
+<span class="lineNum">     230 </span><span class="lineCov">       1825 :         operator()(_Iterator __it)</span>
+<span class="lineNum">     231 </span><span class="lineCov">       1825 :         { return bool(_M_pred(*__it)); }</span>
 <span class="lineNum">     232 </span>            :     };
 <span class="lineNum">     233 </span>            : 
 <a name="234"><span class="lineNum">     234 </span>            :   template&lt;typename _Predicate&gt;</a>
 <span class="lineNum">     235 </span>            :     inline _Iter_pred&lt;_Predicate&gt;
-<span class="lineNum">     236 </span><span class="lineCov">        459 :     __pred_iter(_Predicate __pred)</span>
-<span class="lineNum">     237 </span><span class="lineCov">        459 :     { return _Iter_pred&lt;_Predicate&gt;(__pred); }</span>
+<span class="lineNum">     236 </span><span class="lineCov">        453 :     __pred_iter(_Predicate __pred)</span>
+<span class="lineNum">     237 </span><span class="lineCov">        453 :     { return _Iter_pred&lt;_Predicate&gt;(__pred); }</span>
 <span class="lineNum">     238 </span>            : 
 <span class="lineNum">     239 </span>            :   template&lt;typename _Compare, typename _Value&gt;
 <span class="lineNum">     240 </span>            :     struct _Iter_comp_to_val

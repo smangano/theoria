@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -79,22 +79,22 @@
 <span class="lineNum">      17 </span><span class="lineCov">          1 :     return &quot;AppConfigResolver&quot; ;</span>
 <a name="18"><span class="lineNum">      18 </span>            : }</a>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">          9 : Result AppConfigResolver::lookup(const std::string&amp; name) const </span>
+<span class="lineNum">      20 </span><span class="lineCov">          3 : Result AppConfigResolver::lookup(const std::string&amp; name) const </span>
 <span class="lineNum">      21 </span>            : {
 <span class="lineNum">      22 </span>            :     
-<span class="lineNum">      23 </span><span class="lineCov">          9 :     const Config * config = &amp;core::Registry::instance().appConfig() ; </span>
-<span class="lineNum">      24 </span><span class="lineCov">          9 :     auto names = util::string_split(name, '.') ;</span>
-<span class="lineNum">      25 </span><span class="lineCov">          9 :     int i = 0 ;</span>
-<span class="lineNum">      26 </span><span class="lineCov">         12 :     for (;i&lt;(int)names.size()-1 &amp;&amp; config; i++) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">          3 :         config = config-&gt;getChild(names[i]) ;</span>
+<span class="lineNum">      23 </span><span class="lineCov">          3 :     const Config * config = &amp;core::Registry::instance().appConfig() ; </span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 :     auto names = util::string_split(name, '.') ;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          3 :     int i = 0 ;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          4 :     for (;i&lt;(int)names.size()-1 &amp;&amp; config; i++) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :         config = config-&gt;getChild(names[i]) ;</span>
 <span class="lineNum">      28 </span>            :     }
-<span class="lineNum">      29 </span><span class="lineCov">          9 :     if (config) {</span>
-<span class="lineNum">      30 </span><span class="lineCov">          9 :         auto val = config-&gt;getAttrAsStr(names[i], &quot;\1\1&quot;);</span>
-<span class="lineNum">      31 </span><span class="lineCov">          9 :         if (val != &quot;\1\1&quot;) </span>
-<span class="lineNum">      32 </span><span class="lineCov">          6 :             return Result(this, val) ;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          3 :     if (config) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 :         auto val = config-&gt;getAttrAsStr(names[i], &quot;\1\1&quot;);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          3 :         if (val != &quot;\1\1&quot;) </span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 :             return Result(this, val) ;</span>
 <a name="33"><span class="lineNum">      33 </span>            :     }    </a>
-<span class="lineNum">      34 </span><span class="lineCov">          3 :     return Result(nullptr, &quot;&quot;) ; </span>
-<span class="lineNum">      35 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     return Result(nullptr, &quot;&quot;) ; </span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : 
 </pre>

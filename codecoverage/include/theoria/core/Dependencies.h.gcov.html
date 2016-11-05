@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">14</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryMed">78.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryMed">88.2 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -89,24 +89,24 @@
 <span class="lineNum">      27 </span>            :  *       return  Dependencies().strict(&quot;Type1&quot;, &quot;Impl1&quot;,Dependent::optional).loose(&quot;Type1&quot;,Dependent::optional) ;
 <a name="28"><span class="lineNum">      28 </span>            :  *        </a>
 <span class="lineNum">      29 </span>            :  */
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : class Dependencies</span>
+<span class="lineNum">      30 </span><span class="lineCov">         19 : class Dependencies</span>
 <span class="lineNum">      31 </span>            : {
 <a name="32"><span class="lineNum">      32 </span>            : public:</a>
 <span class="lineNum">      33 </span>            : 
-<a name="34"><span class="lineNum">      34 </span><span class="lineNoCov">          0 :         struct Dependent</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">         47 :         struct Dependent</span></a>
 <span class="lineNum">      35 </span>            :         {
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :                 Dependent(const TypeName&amp; type_, const SubTypeName&amp; subtype_, int optional_ = false)</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :                 : type(type_), subtype(subtype_), optional(optional_) {}</span>
+<span class="lineNum">      36 </span><span class="lineCov">         26 :                 Dependent(const TypeName&amp; type_, const SubTypeName&amp; subtype_, int optional_ = false)</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">         26 :                 : type(type_), subtype(subtype_), optional(optional_) {}</span></a>
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            :         Dependent(const TypeName&amp; type_, int optional_=false)
-<span class="lineNum">      40 </span>            :             : type(type_), subtype(type_), optional(optional_) {}
+<span class="lineNum">      39 </span><span class="lineCov">         13 :         Dependent(const TypeName&amp; type_, int optional_=false)</span>
+<span class="lineNum">      40 </span><span class="lineCov">         13 :             : type(type_), subtype(type_), optional(optional_) {}</span>
 <a name="41"><span class="lineNum">      41 </span>            : </a>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         bool required() const { return !optional; }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          2 :         bool required() const { return !optional; }</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            :         std::string str() const ;
+<a name="45"><span class="lineNum">      45 </span>            :         std::string str() const ;</a>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            :         explicit operator std::string () { return str(); }
+<span class="lineNum">      47 </span><span class="lineCov">          6 :         explicit operator std::string () { return str(); }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            :                 TypeName type ;
 <span class="lineNum">      50 </span>            :                 SubTypeName subtype ;
@@ -122,62 +122,65 @@
 <span class="lineNum">      60 </span>            : 
 <a name="61"><span class="lineNum">      61 </span>            :     using const_iterator = DepsList::const_iterator ;</a>
 <span class="lineNum">      62 </span>            :     
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         Dependencies() {} </span>
-<span class="lineNum">      64 </span>            :         Dependencies(Dependencies&amp;&amp; other) noexcept :
+<span class="lineNum">      63 </span><span class="lineCov">         12 :         Dependencies() {} </span>
+<a name="64"><span class="lineNum">      64 </span>            :         Dependencies(Dependencies&amp;&amp; other) noexcept :</a>
 <span class="lineNum">      65 </span>            :         _deps(std::move(other._deps)) {} 
-<span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span>            :     Dependencies&amp; operator = (Dependencies&amp;&amp; other) = default ;
+<span class="lineNum">      66 </span><span class="lineCov">          2 :         Dependencies(const Dependencies&amp; other) noexcept :</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 :         _deps(other._deps) {} </span>
 <span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span>            :         /**
-<span class="lineNum">      70 </span>            :      * Add a dependent to a component of the given type. If there are multiple components of this type it will pick the first one that
-<a name="71"><span class="lineNum">      71 </span>            :      * has existing dependencies otherwise the first one it sees.</a>
-<span class="lineNum">      72 </span>            :      */
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         Dependencies&amp; loose(const std::string type, bool optional=false) {</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         _deps.push_back(Dependent(type,&quot;&quot;,optional)) ;</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :         return *this;</span>
-<span class="lineNum">      76 </span>            :     }
-<span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            :         /**
-<span class="lineNum">      79 </span>            :      * Add a dependent to a component of the given type  such that the type matches it's subtype . Such a component can be thought of as the default component of that
-<span class="lineNum">      80 </span>            :      * type and there can be only 0 or 1. 
-<span class="lineNum">      81 </span>            :      */
-<span class="lineNum">      82 </span>            :     Dependencies&amp; def(const std::string name, bool optional=false) {
-<span class="lineNum">      83 </span>            :         _deps.push_back(Dependent(name,name, optional)) ;
-<span class="lineNum">      84 </span>            :         return *this;
-<span class="lineNum">      85 </span>            :     }
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span>            :         /**
-<span class="lineNum">      88 </span>            :          * Add a dependent with the specified type and subtype. There can be only 0 or 1. This is a strict dependency because the dependent is anouncing that one and only
-<a name="89"><span class="lineNum">      89 </span>            :      * one implementation will do</a>
-<span class="lineNum">      90 </span>            :      */
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     Dependencies&amp; strict(TypeName&amp; type, SubTypeName&amp; name, bool optional=false) {</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         _deps.push_back(Dependent(type,name, optional)) ; </span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :         return *this;</span>
-<a name="94"><span class="lineNum">      94 </span>            :     }</a>
-<a name="95"><span class="lineNum">      95 </span>            : </a>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     const_iterator begin() const {return _deps.begin();}</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     const_iterator end() const {return _deps.end();}</span>
-<span class="lineNum">      98 </span>            :         
-<span class="lineNum">      99 </span>            :     friend bool operator==(const Dependencies&amp; a, const Dependencies&amp; b) ;
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span>            : private:
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            :         DepsList _deps ;
-<span class="lineNum">     104 </span>            : } ;
+<span class="lineNum">      69 </span>            :     Dependencies&amp; operator = (Dependencies&amp;&amp; other) = default ;
+<span class="lineNum">      70 </span>            :     Dependencies&amp; operator = (Dependencies&amp; other) = default ;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            :         /**
+<span class="lineNum">      73 </span>            :      * Add a dependent to a component of the given type. If there are multiple components of this type it will pick the first one that
+<a name="74"><span class="lineNum">      74 </span>            :      * has existing dependencies otherwise the first one it sees.</a>
+<span class="lineNum">      75 </span>            :      */
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         Dependencies&amp; loose(const TypeName&amp; type, bool optional=false) {</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :         _deps.push_back(Dependent(type,&quot;&quot;,optional)) ;</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :         return *this;</span>
+<span class="lineNum">      79 </span>            :     }
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            :         /**
+<span class="lineNum">      82 </span>            :      * Add a dependent to a component of the given type  such that the type matches it's subtype . Such a component can be thought of as the default component of that
+<span class="lineNum">      83 </span>            :      * type and there can be only 0 or 1. 
+<span class="lineNum">      84 </span>            :      */
+<span class="lineNum">      85 </span>            :     Dependencies&amp; def(const TypeName&amp; name, bool optional=false) {
+<span class="lineNum">      86 </span>            :         _deps.push_back(Dependent(name,name, optional)) ;
+<span class="lineNum">      87 </span>            :         return *this;
+<span class="lineNum">      88 </span>            :     }
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            :         /**
+<span class="lineNum">      91 </span>            :          * Add a dependent with the specified type and subtype. There can be only 0 or 1. This is a strict dependency because the dependent is anouncing that one and only
+<a name="92"><span class="lineNum">      92 </span>            :      * one implementation will do</a>
+<span class="lineNum">      93 </span>            :      */
+<span class="lineNum">      94 </span><span class="lineCov">          2 :     Dependencies&amp; strict(const TypeName&amp; type,const  SubTypeName&amp; name, bool optional=false) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">          2 :         _deps.push_back(Dependent(type,name, optional)) ; </span>
+<span class="lineNum">      96 </span><span class="lineCov">          2 :         return *this;</span>
+<a name="97"><span class="lineNum">      97 </span>            :     }</a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<span class="lineNum">      99 </span><span class="lineCov">          3 :     const_iterator begin() const {return _deps.begin();}</span>
+<span class="lineNum">     100 </span><span class="lineCov">          3 :     const_iterator end() const {return _deps.end();}</span>
+<span class="lineNum">     101 </span>            :         
+<span class="lineNum">     102 </span>            :     friend bool operator==(const Dependencies&amp; a, const Dependencies&amp; b) ;
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : private:
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span>            : inline bool operator==(const Dependencies::Dependent&amp; a, const Dependencies::Dependent&amp; b) 
-<span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span>            :     return a.type == b.type &amp;&amp; a.subtype == b.subtype &amp;&amp; a.optional == b.optional ; 
-<span class="lineNum">     109 </span>            : }
-<span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span>            : inline bool operator==(const Dependencies&amp; a, const Dependencies&amp; b) 
-<span class="lineNum">     112 </span>            : {
-<span class="lineNum">     113 </span>            :     return a._deps == b._deps ;
-<span class="lineNum">     114 </span>            : }
-<span class="lineNum">     115 </span>            : 
-<span class="lineNum">     116 </span>            : }} //namespace theoria::core
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span>            : std::ostream&amp; operator &lt;&lt;(std::ostream&amp; os, const theoria::core::Dependencies::Dependent&amp; dep) ;
+<span class="lineNum">     106 </span>            :         DepsList _deps ;
+<a name="107"><span class="lineNum">     107 </span>            : } ;</a>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 : inline bool operator==(const Dependencies::Dependent&amp; a, const Dependencies::Dependent&amp; b) </span>
+<span class="lineNum">     110 </span>            : {
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     return a.type == b.type &amp;&amp; a.subtype == b.subtype &amp;&amp; a.optional == b.optional ; </span>
+<a name="112"><span class="lineNum">     112 </span>            : }</a>
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span><span class="lineCov">          1 : inline bool operator==(const Dependencies&amp; a, const Dependencies&amp; b) </span>
+<span class="lineNum">     115 </span>            : {
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     return a._deps == b._deps ;</span>
+<span class="lineNum">     117 </span>            : }
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            : }} //namespace theoria::core
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : std::ostream&amp; operator &lt;&lt;(std::ostream&amp; os, const theoria::core::Dependencies::Dependent&amp; dep) ;
 </pre>
       </td>
     </tr>

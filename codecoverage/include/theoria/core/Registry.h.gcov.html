@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">5</td>
             <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">14.3 %</td>
+            <td class="headerCovTableEntryLo">71.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">25.0 %</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -108,7 +108,7 @@
 <span class="lineNum">      46 </span>            :     using ComponentMap = util::densemap&lt;CompId, Component*&gt; ;
 <a name="47"><span class="lineNum">      47 </span>            :     using ComponentXrefMap = std::multimap&lt;CompFactoryKey, CompId&gt; ;</a>
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span><span class="lineCov">         51 :     Registry() {}</span>
+<span class="lineNum">      49 </span><span class="lineCov">         24 :     Registry() {}</span>
 <span class="lineNum">      50 </span>            :     Registry(const Registry&amp;) ;
 <span class="lineNum">      51 </span>            :     void operator=(const Registry&amp;) ;
 <span class="lineNum">      52 </span>            : 
@@ -215,13 +215,13 @@
 <span class="lineNum">     153 </span>            :      * access the component
 <a name="154"><span class="lineNum">     154 </span>            :      *</a>
 <span class="lineNum">     155 </span>            :      */
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     util::Maybe&lt;Component&gt; component(CompId id) </span>
+<span class="lineNum">     156 </span><span class="lineCov">         19 :     util::Maybe&lt;Component&gt; component(CompId id) </span>
 <span class="lineNum">     157 </span>            :     {
 <span class="lineNum">     158 </span>            :         try {
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :             return util::Maybe&lt;Component&gt;(_components.at(id)) ;</span>
+<span class="lineNum">     159 </span><span class="lineCov">         19 :             return util::Maybe&lt;Component&gt;(_components.at(id)) ;</span>
 <span class="lineNum">     160 </span>            :         }
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         catch (...) {</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :             return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          2 :         catch (...) {</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :             return util::Maybe&lt;Component&gt;(nullptr) ;</span>
 <span class="lineNum">     163 </span>            :         }
 <span class="lineNum">     164 </span>            :     }
 <span class="lineNum">     165 </span>            : 
@@ -289,8 +289,8 @@
 <span class="lineNum">     227 </span>            :     friend class Theoria ;
 <span class="lineNum">     228 </span>            :     
 <span class="lineNum">     229 </span>            : 
-<span class="lineNum">     230 </span>            :     void _setBootstrapConfig(std::unique_ptr&lt;config::Config&gt;&amp; pBSConfig) ; 
-<span class="lineNum">     231 </span>            :     void _setAppConfig(std::unique_ptr&lt;config::Config&gt;&amp; pAppConfig) ;
+<span class="lineNum">     230 </span>            :     void _setBootstrapConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pBSConfig) ; 
+<span class="lineNum">     231 </span>            :     void _setAppConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pAppConfig) ;
 <span class="lineNum">     232 </span>            : 
 <span class="lineNum">     233 </span>            :     Component* _createComponent(FactoryMap_iterator iter) ;
 <span class="lineNum">     234 </span>            : 
@@ -298,8 +298,8 @@
 <span class="lineNum">     236 </span>            :     FactoryMap _factories ; 
 <span class="lineNum">     237 </span>            :     ComponentMap _components ;
 <span class="lineNum">     238 </span>            :     ComponentXrefMap _xref ;
-<span class="lineNum">     239 </span>            :     const config::Config * _bootstrapConfig ;
-<span class="lineNum">     240 </span>            :     const config::Config * _appConfig ;
+<span class="lineNum">     239 </span>            :     std::unique_ptr&lt;const config::Config&gt; _bootstrapConfig ;
+<span class="lineNum">     240 </span>            :     std::unique_ptr&lt;const config::Config&gt; _appConfig ;
 <span class="lineNum">     241 </span>            : } ;
 <span class="lineNum">     242 </span>            : 
 <span class="lineNum">     243 </span>            : 

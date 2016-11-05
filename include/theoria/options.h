@@ -1,7 +1,14 @@
 #pragma once
 
+#include <string>
+
 namespace theoria
 {
+    static const std::string dashdash("--") ;
+
+    /*
+     * --bootstrap_path :  The path to search for bootstrap.toml 
+     */
 
     const int OPTS_IDX_NAME = 0;
     const int OPTS_IDX_HELP = 1;
@@ -36,4 +43,8 @@ namespace theoria
     const char * const OPTION_DEFAULT_LOG_LEVEL[] = {"default_log_level", "Set the default logging level", "string", "--default_log_level DEBUG", "DEBUG,INFO, WARN, ERROR, CRITICAL" } ;
 
     const char * const WEB_SERVICE_PORT[] = {"ws_port", "Start web service for ineractivity and use this port", "int", "-ws_port 8900", ""} ; 
-} ;
+
+    inline const char * OPT(std::string& buf, const std::string& opt) {buf = dashdash+opt; return buf.c_str();}
+
+} 
+

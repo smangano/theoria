@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-28 03:47:55</td>
+            <td class="headerValue">2016-10-30 14:46:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -73,14 +73,14 @@
 <span class="lineNum">      11 </span>            : 
 <a name="12"><span class="lineNum">      12 </span>            : /* Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.</a>
 <span class="lineNum">      13 </span>            :  */
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 : class ConfigBuilder </span>
+<span class="lineNum">      14 </span><span class="lineCov">         17 : class ConfigBuilder </span>
 <span class="lineNum">      15 </span>            : {
 <span class="lineNum">      16 </span>            : public:
 <span class="lineNum">      17 </span>            : 
 <a name="18"><span class="lineNum">      18 </span>            :     using ConfigPtr = std::unique_ptr&lt;Config&gt; ;</a>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     ConfigBuilder():</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 :         _resolverChain(nullptr) {}</span>
+<span class="lineNum">      20 </span><span class="lineCov">         17 :     ConfigBuilder():</span>
+<span class="lineNum">      21 </span><span class="lineCov">         17 :         _resolverChain(nullptr) {}</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            :     ConfigBuilder(ConfigVariableResolver* pResolver):
 <a name="24"><span class="lineNum">      24 </span>            :         _resolverChain(pResolver) {}</a>
