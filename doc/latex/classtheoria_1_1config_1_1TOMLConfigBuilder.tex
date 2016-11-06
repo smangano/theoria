@@ -1,6 +1,5 @@
-\hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder}{\section{theoria\+:\+:config\+:\+:T\+O\+M\+L\+Config\+Builder Class Reference}
+\hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder}{}\section{theoria\+:\+:config\+:\+:T\+O\+M\+L\+Config\+Builder Class Reference}
 \label{classtheoria_1_1config_1_1TOMLConfigBuilder}\index{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder@{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder}}
-}
 
 
 Inheritance diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Config\+Builder\+:
@@ -26,25 +25,25 @@ Collaboration diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Config\+Builder\+
 \item 
 std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ \hyperlink{classtheoria_1_1config_1_1TOMLConfigBuilder_afba5445b56e12b39cf1b266627a27f58}{parse\+\_\+file} (const std\+::string \&filename) override
 \item 
-\hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder_ac5a36aebe769d67decc9946ee2a3fbc3}{std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ {\bfseries parse} (std\+::istream \&stream) override}\label{classtheoria_1_1config_1_1TOMLConfigBuilder_ac5a36aebe769d67decc9946ee2a3fbc3}
-
+\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder_ac5a36aebe769d67decc9946ee2a3fbc3}\label{classtheoria_1_1config_1_1TOMLConfigBuilder_ac5a36aebe769d67decc9946ee2a3fbc3}} 
+std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ {\bfseries parse} (std\+::istream \&stream) override
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder_afba5445b56e12b39cf1b266627a27f58}{\index{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder@{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder}!parse\+\_\+file@{parse\+\_\+file}}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLConfigBuilder_afba5445b56e12b39cf1b266627a27f58}\label{classtheoria_1_1config_1_1TOMLConfigBuilder_afba5445b56e12b39cf1b266627a27f58}} 
+\index{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder@{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder}!parse\+\_\+file@{parse\+\_\+file}}
 \index{parse\+\_\+file@{parse\+\_\+file}!theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder@{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder}}
-\subsubsection[{parse\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ const {\bf Config} $>$ T\+O\+M\+L\+Config\+Builder\+::parse\+\_\+file (
-\begin{DoxyParamCaption}
-\item[{const std\+::string \&}]{filename}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classtheoria_1_1config_1_1TOMLConfigBuilder_afba5445b56e12b39cf1b266627a27f58}
-Default implementation opens the file and calls parse(with the file's std\+::ifstream)
+\subsubsection{\texorpdfstring{parse\+\_\+file()}{parse\_file()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ T\+O\+M\+L\+Config\+Builder\+::parse\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Default implementation opens the file and calls parse(with the file\textquotesingle{}s std\+::ifstream)
 
 the file to parse \begin{DoxyReturn}{Returns}
 the resulting \hyperlink{classtheoria_1_1config_1_1Config}{Config} object
 \end{DoxyReturn}
-N\+O\+T\+E\+:\+: If you override parse\+\_\+file in your derived \hyperlink{classtheoria_1_1config_1_1ConfigParser}{Config\+Parser} then you can optionally implement parse or simply stub it out as Theoria will only call parse\+\_\+file directly. A stream-\/based interface is useful for writing unit tests using istringstream. 
+N\+O\+TE\+:\+: If you override parse\+\_\+file in your derived \hyperlink{classtheoria_1_1config_1_1ConfigParser}{Config\+Parser} then you can optionally implement parse or simply stub it out as Theoria will only call parse\+\_\+file directly. A stream-\/based interface is useful for writing unit tests using istringstream. 
 
 Reimplemented from \hyperlink{classtheoria_1_1config_1_1ConfigParser_a4eca80a9831324237f2a2aa9a5018c89}{theoria\+::config\+::\+Config\+Parser}.
 

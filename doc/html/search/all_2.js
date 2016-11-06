@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cmdlineresolver',['CmdLineResolver',['../classtheoria_1_1config_1_1CmdLineResolver.html',1,'theoria::config']]],
+  ['cmdlineresolvercomp',['CmdLineResolverComp',['../classtheoria_1_1core_1_1CmdLineResolverComp.html',1,'theoria::core']]],
   ['commandline',['CommandLine',['../classtheoria_1_1util_1_1CommandLine.html',1,'theoria::util']]],
   ['complifecycle',['compLifeCycle',['../classtheoria_1_1core_1_1Component.html#a92578e2b6253681a21b91e7c22b22975',1,'theoria::core::Component']]],
   ['component',['Component',['../classtheoria_1_1core_1_1Component.html',1,'theoria::core']]],
@@ -13,5 +14,6 @@ var searchData=
   ['configresolverbuilder',['ConfigResolverBuilder',['../classConfigResolverBuilder.html',1,'']]],
   ['configvariableresolver',['ConfigVariableResolver',['../classtheoria_1_1config_1_1ConfigVariableResolver.html',1,'theoria::config']]],
   ['configvarresolverbuildercomp',['ConfigVarResolverBuilderComp',['../classtheoria_1_1core_1_1ConfigVarResolverBuilderComp.html',1,'theoria::core']]],
-  ['constiter',['ConstIter',['../classtheoria_1_1util_1_1densemap_1_1ConstIter.html',1,'theoria::util::densemap']]]
+  ['constiter',['ConstIter',['../classtheoria_1_1util_1_1densemap_1_1ConstIter.html',1,'theoria::util::densemap']]],
+  ['createcomponent',['createComponent',['../classtheoria_1_1core_1_1Registry.html#a846b6ea01b2c4d3d1276796e9ef2b32b',1,'theoria::core::Registry']]]
 ];

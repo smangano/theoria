@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['parse_5ffile',['parse_file',['../classtheoria_1_1config_1_1ConfigParser.html#a4eca80a9831324237f2a2aa9a5018c89',1,'theoria::config::ConfigParser::parse_file()'],['../classtheoria_1_1config_1_1TOMLConfigBuilder.html#afba5445b56e12b39cf1b266627a27f58',1,'theoria::config::TOMLConfigBuilder::parse_file()']]]
+  ['onmessage',['onMessage',['../classtheoria_1_1core_1_1Component.html#a94991dc5bdf509df6d35bb218e4880eb',1,'theoria::core::Component']]],
+  ['opt',['OPT',['../namespacetheoria.html#ad064111544bc341abc915fd30ee47659',1,'theoria']]]
 ];

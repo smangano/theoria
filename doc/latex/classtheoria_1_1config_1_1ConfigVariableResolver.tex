@@ -1,6 +1,9 @@
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver}{\section{theoria\+:\+:config\+:\+:Config\+Variable\+Resolver Class Reference}
+\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver}{}\section{theoria\+:\+:config\+:\+:Config\+Variable\+Resolver Class Reference}
 \label{classtheoria_1_1config_1_1ConfigVariableResolver}\index{theoria\+::config\+::\+Config\+Variable\+Resolver@{theoria\+::config\+::\+Config\+Variable\+Resolver}}
-}
+
+
+{\ttfamily \#include $<$Resolve.\+h$>$}
+
 
 
 Inheritance diagram for theoria\+:\+:config\+:\+:Config\+Variable\+Resolver\+:
@@ -14,30 +17,71 @@ Inheritance diagram for theoria\+:\+:config\+:\+:Config\+Variable\+Resolver\+:
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{using {\bfseries Result} = std\+::pair$<$ const \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Variable\+Resolver} $\ast$, std\+::string $>$}\label{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}
-
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}\label{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}} 
+using {\bfseries Result} = std\+::pair$<$ const \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Variable\+Resolver} $\ast$, std\+::string $>$
 \item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a2d92a11d55181183ce4071566437f01b}{using {\bfseries Result\+Vec} = std\+::vector$<$ Result $>$}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a2d92a11d55181183ce4071566437f01b}
-
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a2d92a11d55181183ce4071566437f01b}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a2d92a11d55181183ce4071566437f01b}} 
+using {\bfseries Result\+Vec} = std\+::vector$<$ Result $>$
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_ad62f7d51564b8928aa7a1833395e5ddf}{std\+::string {\bfseries resolve} (const std\+::string \&var) const }\label{classtheoria_1_1config_1_1ConfigVariableResolver_ad62f7d51564b8928aa7a1833395e5ddf}
-
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_acb155f953e0d353cbd4966ae0d6e50da}\label{classtheoria_1_1config_1_1ConfigVariableResolver_acb155f953e0d353cbd4966ae0d6e50da}} 
+std\+::string {\bfseries resolve} (const std\+::string \&var) const
 \item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a4a0be04e0e88840dd93b09df855d54fd}{Result\+Vec {\bfseries resolve\+All} (const std\+::string \&var) const }\label{classtheoria_1_1config_1_1ConfigVariableResolver_a4a0be04e0e88840dd93b09df855d54fd}
-
-\item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a85e75133c0fdd67dd8b1d8e678f46ca8}{virtual Result {\bfseries lookup} (const std\+::string \&name) const =0}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a85e75133c0fdd67dd8b1d8e678f46ca8}
-
-\item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{virtual std\+::string {\bfseries name} () const =0}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}
-
-\item 
-\hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_aedd40aea06645632c2b380c0181c563b}{void {\bfseries append} (\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Variable\+Resolver} $\ast$resolver)}\label{classtheoria_1_1config_1_1ConfigVariableResolver_aedd40aea06645632c2b380c0181c563b}
-
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a406e1024b865b1749c920c83b774b745}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a406e1024b865b1749c920c83b774b745}} 
+Result\+Vec {\bfseries resolve\+All} (const std\+::string \&var) const
 \end{DoxyCompactItemize}
+\subsection*{is the name of the variable (with no leading \textquotesingle{}\$\textquotesingle{})}
+\label{_amgrpa55251cdd20cd6c833ba352b7e8d9b84}%
+Abstract method that implements local resolution for a specific type of resolver.
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$\char`\"{}\textquotesingle{}resolver\textquotesingle{}\char`\"{}, \char`\"{}\textquotesingle{}value\textquotesingle{}\char`\"{}$>$ if found or std\+::pair$<$\char`\"{}\char`\"{},\char`\"{}\char`\"{}$>$ if not found 
+\end{DoxyReturn}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a85e75133c0fdd67dd8b1d8e678f46ca8}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a85e75133c0fdd67dd8b1d8e678f46ca8}} 
+virtual Result {\bfseries lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{name}) const =0
+\item 
+virtual std\+::string \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{name} () const =0
+\item 
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_aedd40aea06645632c2b380c0181c563b}\label{classtheoria_1_1config_1_1ConfigVariableResolver_aedd40aea06645632c2b380c0181c563b}} 
+void {\bfseries append} (\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Variable\+Resolver} $\ast$resolver)
+\item 
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a2861f6405c8b8e6c8c267dd490c46d2a}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a2861f6405c8b8e6c8c267dd490c46d2a}} 
+const \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Variable\+Resolver} $\ast$ {\bfseries next} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base configuration variable resolver.
+
+Theoria configuration files can contain variables of the form {\itshape \$variable} (\textquotesingle{}first variables\textquotesingle{}) and {\itshape \$\$variable} (\textquotesingle{}last variables \textquotesingle{}) . Resolvers determine how a variable is bound to a value. Resolvers can be chained together in a sequence so that the value of a variable can be determined by walking a list of different resolvers.
+
+{\itshape First Variables} (\$var) are bound by the first resolver that recognizes the variable {\itshape Last Variables} (\$\$var) are bound by the last resolver that recognizes the variable
+
+Example Config\+Variable\+Resolvers are\+: $<$\+Cmd\+Line\+Resolver$>$, $<$\+Env\+Var\+Resolver$>$, $<$\+Config\+Variable\+Resolver$>$, $<$\+Toml\+Resolver$>$
+
+Say you want your project to be configurable from both the command line and environment and you want the command line to take precedence. This means if a variable is give a value on the command line ignore any value in the env.
+
+For this you should use\+: \hyperlink{classtheoria_1_1config_1_1CmdLineResolver}{Cmd\+Line\+Resolver} -\/$>$ \hyperlink{classtheoria_1_1config_1_1EnvVarResolver}{Env\+Var\+Resolver} and variables of the form \$va1, \$var2 and so on. But suppose for some specific variable you don\textquotesingle{}t want the user to change it if it is defined in the env. You can still use the same resolver chain but make this a {\itshape last variable} \$\$special\+Var
+
+A general guideline is to construct your resolver chain such that most variables are \$first and only used \$\$last syntax for special exceptions. Many projects can probably avoid \$\$last variables all together.
+
+Theoria will output a representation of your config file at runtime that shows how variables were resolved. You can also run a project using\+: {\itshape theoria --resolve-\/only} to see the same with out executing the code 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}\label{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}} 
+\index{theoria\+::config\+::\+Config\+Variable\+Resolver@{theoria\+::config\+::\+Config\+Variable\+Resolver}!name@{name}}
+\index{name@{name}!theoria\+::config\+::\+Config\+Variable\+Resolver@{theoria\+::config\+::\+Config\+Variable\+Resolver}}
+\subsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily virtual std\+::string theoria\+::config\+::\+Config\+Variable\+Resolver\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Return name of the resolver 
+
+Implemented in \hyperlink{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}, \hyperlink{classTOMLResolver_1_1TOMLResolverImpl_a5b9f36aca6c20a81b18b078fa74c3c14}{theoria\+::config\+::\+T\+O\+M\+L\+Resolver\+::\+T\+O\+M\+L\+Resolver\+Impl}, \hyperlink{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}{theoria\+::config\+::\+Disable\+Resolver}, \hyperlink{classtheoria_1_1config_1_1DisallowResolver_a8352df79f9e0f17fbfad8801bfdcc99e}{theoria\+::config\+::\+Disallow\+Resolver}, \hyperlink{classtheoria_1_1config_1_1CmdLineResolver_ab42f0d86e62e985ee0bc94947df46a74}{theoria\+::config\+::\+Cmd\+Line\+Resolver}, \hyperlink{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}{theoria\+::config\+::\+Env\+Var\+Resolver}, and \hyperlink{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}{theoria\+::core\+::\+App\+Config\+Resolver}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

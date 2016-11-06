@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cmdlineresolver',['CmdLineResolver',['../classtheoria_1_1config_1_1CmdLineResolver.html',1,'theoria::config']]],
+  ['cmdlineresolvercomp',['CmdLineResolverComp',['../classtheoria_1_1core_1_1CmdLineResolverComp.html',1,'theoria::core']]],
   ['commandline',['CommandLine',['../classtheoria_1_1util_1_1CommandLine.html',1,'theoria::util']]],
   ['component',['Component',['../classtheoria_1_1core_1_1Component.html',1,'theoria::core']]],
   ['componentdata',['ComponentData',['../classtheoria_1_1core_1_1ComponentData.html',1,'theoria::core']]],

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntryLo">12.5 %</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-06 14:59:07</td>
+            <td class="headerValue">2016-11-06 17:28:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntryLo">16.7 %</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -222,9 +222,9 @@
 <span class="lineNum">     160 </span>            : 
 <span class="lineNum">     161 </span>            : union MsgData
 <span class="lineNum">     162 </span>            : {
-<span class="lineNum">     163 </span>            : public:
+<a name="163"><span class="lineNum">     163 </span>            : public:</a>
 <span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span>            :     MsgData() : dp(nullptr) {} 
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     MsgData() : dp(nullptr) {} </span>
 <span class="lineNum">     166 </span>            : 
 <span class="lineNum">     167 </span>            :         const std::pair&lt;int,int&gt; d2 ;
 <span class="lineNum">     168 </span>            :     const long long          dl ;
@@ -236,12 +236,12 @@
 <span class="lineNum">     174 </span>            :  */
 <span class="lineNum">     175 </span>            : class Message
 <span class="lineNum">     176 </span>            : {
-<span class="lineNum">     177 </span>            : public:
+<a name="177"><span class="lineNum">     177 </span>            : public:</a>
 <span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span>            :     Message() :
-<span class="lineNum">     180 </span>            :         origSenderId(-1), origDestId(-1), lastSenderId(-1), msgType(0), msgData() 
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     Message() :</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :         origSenderId(-1), origDestId(-1), lastSenderId(-1), msgType(0), msgData() </span>
 <span class="lineNum">     181 </span>            :     {
-<span class="lineNum">     182 </span>            :     } ;
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     } ;</span>
 <span class="lineNum">     183 </span>            : private:
 <span class="lineNum">     184 </span>            : 
 <span class="lineNum">     185 </span>            :         CompId origSenderId ;
@@ -263,10 +263,10 @@
 <a name="201"><span class="lineNum">     201 </span>            : </a>
 <span class="lineNum">     202 </span>            :         Component() ;
 <span class="lineNum">     203 </span><span class="lineCov">          6 :         Component(CompId id):</span>
-<span class="lineNum">     204 </span><span class="lineCov">          6 :         _id(id) {}</span>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          6 :         _id(id) {}</span></a>
 <span class="lineNum">     205 </span>            : 
-<span class="lineNum">     206 </span>            :         Component(CompId id, const std::string&amp; name):
-<span class="lineNum">     207 </span>            :         _id(id), _name(name) {}
+<span class="lineNum">     206 </span><span class="lineCov">         31 :         Component(CompId id, const std::string&amp; name):</span>
+<span class="lineNum">     207 </span><span class="lineCov">         31 :         _id(id), _name(name) {}</span>
 <span class="lineNum">     208 </span>            : 
 <span class="lineNum">     209 </span>            :     virtual ~Component() ;
 <span class="lineNum">     210 </span>            : 
@@ -298,28 +298,28 @@
 <span class="lineNum">     236 </span>            :      */ 
 <a name="237"><span class="lineNum">     237 </span>            :         virtual void onMessage(Message msg) ;</a>
 <span class="lineNum">     238 </span>            : 
-<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :     CompId id() const {return _id;}</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         47 :     CompId id() const {return _id;}</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 :     const std::string&amp; name() const {return _name;}</span>
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :     void setName(const std::string&amp; name) {_name = name;}</span>
+<span class="lineNum">     241 </span><span class="lineCov">         11 :     const std::string&amp; name() const {return _name;}</span>
+<span class="lineNum">     242 </span><span class="lineCov">         38 :     void setName(const std::string&amp; name) {_name = name;}</span>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
 <span class="lineNum">     244 </span>            :     template &lt;class T&gt;
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 :     T* cast(const std::string&amp; requestor = &quot;Unknown&quot;) </span>
+<span class="lineNum">     245 </span><span class="lineCov">         25 :     T* cast(const std::string&amp; requestor = &quot;Unknown&quot;) </span>
 <span class="lineNum">     246 </span>            :     {
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 :         const std::type_info&amp; ti = typeid(T) ;</span>
-<span class="lineNum">     248 </span><span class="lineNoCov">          0 :         Component * target = this ;</span>
+<span class="lineNum">     247 </span><span class="lineCov">         25 :         const std::type_info&amp; ti = typeid(T) ;</span>
+<span class="lineNum">     248 </span><span class="lineCov">         25 :         Component * target = this ;</span>
 <span class="lineNum">     249 </span>            :         //To avoid possibility of infinite loops we cap this protocol at two attempts
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 :         for (int iTry=0; iTry&lt;2 &amp;&amp; target; ++iTry) { </span>
+<span class="lineNum">     250 </span><span class="lineCov">         70 :         for (int iTry=0; iTry&lt;2 &amp;&amp; target; ++iTry) { </span>
 <span class="lineNum">     251 </span>            :             //First see if the Component is a T
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 :             T* pT = dynamic_cast&lt;T*&gt;(target) ;</span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 :             if (pT) //Okay I'm a T!</span>
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :                 return pT ;</span>
+<span class="lineNum">     252 </span><span class="lineCov">         31 :             T* pT = dynamic_cast&lt;T*&gt;(target) ;</span>
+<span class="lineNum">     253 </span><span class="lineCov">         31 :             if (pT) //Okay I'm a T!</span>
+<span class="lineNum">     254 </span><span class="lineCov">         30 :                 return pT ;</span>
 <span class="lineNum">     255 </span>            :             //Otherwise maybe I own a T. My implementor is then responsible for providing
-<span class="lineNum">     256 </span><span class="lineNoCov">          0 :             target = target-&gt;acquire(ti, reinterpret_cast&lt;void **&gt;(&amp;pT)) ;</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :             if (pT) //Yay, i'm bound. </span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 :                 return pT ;</span>
+<span class="lineNum">     256 </span><span class="lineCov">         22 :             target = target-&gt;acquire(ti, reinterpret_cast&lt;void **&gt;(&amp;pT)) ;</span>
+<span class="lineNum">     257 </span><span class="lineCov">         22 :             if (pT) //Yay, i'm bound. </span>
+<span class="lineNum">     258 </span><span class="lineCov">         12 :                 return pT ;</span>
 <span class="lineNum">     259 </span>            :         }
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't cast Component [%s] to type [%s] as required by [%s]&quot;, name().c_str(), ti.name(), requestor.c_str()) ; </span>
+<span class="lineNum">     260 </span><span class="lineCov">          4 :         throw RUNTIME_ERROR(&quot;Can't cast Component [%s] to type [%s] as required by [%s]&quot;, name().c_str(), ti.name(), requestor.c_str()) ; </span>
 <span class="lineNum">     261 </span>            :     }
 <span class="lineNum">     262 </span>            : 
 <span class="lineNum">     263 </span>            :     /*

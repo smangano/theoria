@@ -45,6 +45,7 @@ RegistryLock::RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepd
         gotLock = registry_lock.try_lock() ;
         if (sleepduration.count() > 0) 
             std::this_thread::sleep_for(sleepduration) ;
+        ntimes-- ;
     }
     if (!gotLock)
         throw RegistryLocked();
@@ -80,6 +81,18 @@ void Registry::registerFactory(const TypeName& type, const SubTypeName& subtype,
 {
     std::lock_guard<std::mutex> guard(registry_lock);
     _factories[std::make_pair(type,subtype)] = factory ;
+}
+
+void Registry::unregisterFactory(const std::string& type) 
+{
+    std::lock_guard<std::mutex> guard(registry_lock);
+    _factories.erase(std::make_pair(type,type)) ;
+}
+
+void Registry::unregisterFactory(const TypeName& type, const SubTypeName& subtype) 
+{
+    std::lock_guard<std::mutex> guard(registry_lock);
+    _factories.erase(std::make_pair(type,subtype)) ;
 }
 
 FactoryMap_iterator Registry::beginFact() 
@@ -198,17 +211,15 @@ void Registry::dump(std::ostream& stream) const
 {
     stream << "Factories {\n" ;
     for (auto f : _factories) {
-        stream << "(" << f.first.first << ", " << f.first.second <<  ") ->" << f.second << "\n" ;
+        stream << "(" << f.first.first << ", " << f.first.second <<  ") -> " << f.second << "\n" ;
     }
     stream << "}\n" ;
 
-    stream << "CompXRefs{\n" ;
+    stream << "CompXRefs {\n" ;
     for (auto f : _xref) {
-        stream << "(" << f.first.first << ", " << f.first.second <<  ") ->" << f.second << "\n" ;
+        stream << "(" << f.first.first << ", " << f.first.second <<  ") -> " << f.second << "\n" ;
     }
-    stream << "}\n" ;
-
-    stream << std::endl ;
+    stream << "}" << std::endl ;
 }
 
 void Registry::_setBootstrapConfig(std::unique_ptr<const config::Config>& pBSConfig) 

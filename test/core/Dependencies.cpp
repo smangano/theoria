@@ -36,6 +36,15 @@ TEST_F(DependentTest, TestStrCast) {
     EXPECT_EQ(static_cast<std::string>(looseOpt), "Optional(Type1)") ;
 }
 
+TEST_F(DependentTest, TestStream) {
+    std::ostringstream oss ;
+    oss << strict ;
+    EXPECT_EQ(oss.str(), "Dependent(Type1:SubType1)") ;
+    oss.str("") ;
+    oss << defaulted ;
+    EXPECT_EQ(oss.str(), "Dependent(Type1:Type1)") ;
+}
+
 TEST_F(DependentTest, TestRequred) {
     EXPECT_TRUE(strict.required()) ;
     EXPECT_FALSE(strictOpt.required()) ;

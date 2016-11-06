@@ -1,5 +1,6 @@
 <map id="theoria::core::ConfigVarResolverBuilderComp" name="theoria::core::ConfigVarResolverBuilderComp">
-<area shape="rect" id="node2" href="$classtheoria_1_1core_1_1Component.html" title="theoria::core::Component" alt="" coords="5,185,175,212"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="50,96,130,123"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="27,5,153,47"/>
+<area shape="rect" id="node2" href="$classtheoria_1_1core_1_1Component.html" title="theoria::core::Component" alt="" coords="381,13,550,39"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="181,13,261,39"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="5,5,132,47"/>
+<area shape="rect" id="node5" href="$classtheoria_1_1core_1_1RegisterThis.html" title="theoria::core::RegisterThis\l\&lt; theoria::core::ConfigVarResolver\lBuilderComp \&gt;" alt="" coords="353,63,577,119"/>
 </map>

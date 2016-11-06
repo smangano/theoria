@@ -11,3 +11,4 @@
 build/*
 tags
 .sconsign.dblite
+doc/doxygen_sqlite3.db

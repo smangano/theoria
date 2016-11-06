@@ -1,3 +1,7 @@
 <map id="theoria::core::Component" name="theoria::core::Component">
-<area shape="rect" id="node2" href="$classtheoria_1_1core_1_1ConfigVarResolverBuilderComp.html" title="theoria::core::ConfigVar\lResolverBuilderComp" alt="" coords="10,80,170,121"/>
+<area shape="rect" id="node2" href="$classtheoria_1_1core_1_1AppConfigResolverComp.html" title="theoria::core::AppConfig\lResolverComp" alt="" coords="262,5,425,47"/>
+<area shape="rect" id="node3" href="$classtheoria_1_1core_1_1CmdLineResolverComp.html" title="theoria::core::CmdLineResolverComp" alt="" coords="223,71,464,98"/>
+<area shape="rect" id="node4" href="$classtheoria_1_1core_1_1ConfigVarResolverBuilderComp.html" title="theoria::core::ConfigVar\lResolverBuilderComp" alt="" coords="263,123,423,164"/>
+<area shape="rect" id="node5" href="$classtheoria_1_1core_1_1EnvVarResolverComp.html" title="theoria::core::EnvVarResolverComp" alt="" coords="227,189,459,215"/>
+<area shape="rect" id="node6" href="$classtheoria_1_1core_1_1TOMLConfigBuilderComp.html" title="theoria::core::TOMLConfig\lBuilderComp" alt="" coords="255,240,431,281"/>
 </map>

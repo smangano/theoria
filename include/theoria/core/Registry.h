@@ -46,7 +46,7 @@ struct RegistryLock
     /*
      * Try to lock registry ntimes with sleep ms between. Raises exception if lock not aquired
      */
-    RegistryLock(int ntimes=1, long sleepms = 0.0) ;
+    RegistryLock(int ntimes, long sleepms = 0.0) ;
 
     /*
      * Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not aquired
@@ -84,21 +84,35 @@ public:
     static Registry& instance() ;
 
     
-    /* Register the default factory for components of type
-     * @type the type name
-     * @factory the function for creating components
+    /** 
+     * Register the default factory for components of type
+     * @param type the type name
+     * @param factory the function for creating components
      */
     void registerFactory(const TypeName& type, ComponentFactory factory) ;
 
-    /*
+    /**
      * Register the factory for components of type and subtype
-     * @type the type name
-     * @subtype the subtype name
-     * @factory the factory function
+     * @param type the type name
+     * @param subtype the subtype name
+     * @param factory the factory function
      */
     void registerFactory(const TypeName& type, const SubTypeName& subtype, ComponentFactory factory) ;
 
-    /*
+    /**
+     * Unregister the factory. Components of this type can no longer be created
+     * @param type the type name
+     */
+    void unregisterFactory(const TypeName& type) ;
+
+    /**
+     * Unregister the factory. Components of this type and subtype can no longer be created
+     * @param type the type name
+     * @param subtype the subtype name
+     */
+    void unregisterFactory(const TypeName& type, const SubTypeName& subtype) ;
+
+    /**
      * Create a component of the specified type. The following type resolution rules are used:
      * 1) If there is only one factory for the specified type, use that.
      * 2) If there are multiple factories and none has been used then use the default factory whose subtype==type
@@ -106,8 +120,8 @@ public:
      *    allow_ambiguity is false)
      * 4) If there are multiple factories use the first one that has already been used
      *
-     * @type the type name to use for look up
-     * @allow_ambiguity if false treat case (3) above as ambiguous and raise an exception
+     * @param type the type name to use for look up
+     * @param allow_ambiguity if false treat case (3) above as ambiguous and raise an exception
      *
      * @execept std::runtime_error if type not found
      */

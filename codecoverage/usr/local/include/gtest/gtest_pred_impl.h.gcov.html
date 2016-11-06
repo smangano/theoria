@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/local/include/gtest/gtest_pred_impl.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">usr/local/include/gtest</a> - gtest_pred_impl.h<span style="font-size: 80%;"> (source / <a href="gtest_pred_impl.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">28.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-11-06 17:28:32</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // Copyright 2006, Google Inc.</a>
+<span class="lineNum">       2 </span>            : // All rights reserved.
+<span class="lineNum">       3 </span>            : //
+<span class="lineNum">       4 </span>            : // Redistribution and use in source and binary forms, with or without
+<span class="lineNum">       5 </span>            : // modification, are permitted provided that the following conditions are
+<span class="lineNum">       6 </span>            : // met:
+<span class="lineNum">       7 </span>            : //
+<span class="lineNum">       8 </span>            : //     * Redistributions of source code must retain the above copyright
+<span class="lineNum">       9 </span>            : // notice, this list of conditions and the following disclaimer.
+<span class="lineNum">      10 </span>            : //     * Redistributions in binary form must reproduce the above
+<span class="lineNum">      11 </span>            : // copyright notice, this list of conditions and the following disclaimer
+<span class="lineNum">      12 </span>            : // in the documentation and/or other materials provided with the
+<span class="lineNum">      13 </span>            : // distribution.
+<span class="lineNum">      14 </span>            : //     * Neither the name of Google Inc. nor the names of its
+<span class="lineNum">      15 </span>            : // contributors may be used to endorse or promote products derived from
+<span class="lineNum">      16 </span>            : // this software without specific prior written permission.
+<span class="lineNum">      17 </span>            : //
+<span class="lineNum">      18 </span>            : // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+<span class="lineNum">      19 </span>            : // &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+<span class="lineNum">      20 </span>            : // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+<span class="lineNum">      21 </span>            : // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+<span class="lineNum">      22 </span>            : // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+<span class="lineNum">      23 </span>            : // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+<span class="lineNum">      24 </span>            : // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+<span class="lineNum">      25 </span>            : // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+<span class="lineNum">      26 </span>            : // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+<span class="lineNum">      27 </span>            : // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+<span class="lineNum">      28 </span>            : // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : // This file is AUTOMATICALLY GENERATED on 10/31/2011 by command
+<span class="lineNum">      31 </span>            : // 'gen_gtest_pred_impl.py 5'.  DO NOT EDIT BY HAND!
+<span class="lineNum">      32 </span>            : //
+<span class="lineNum">      33 </span>            : // Implements a family of generic predicate assertion macros.
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : #ifndef GTEST_INCLUDE_GTEST_GTEST_PRED_IMPL_H_
+<span class="lineNum">      36 </span>            : #define GTEST_INCLUDE_GTEST_GTEST_PRED_IMPL_H_
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : // Makes sure this header is not included before gtest.h.
+<span class="lineNum">      39 </span>            : #ifndef GTEST_INCLUDE_GTEST_GTEST_H_
+<span class="lineNum">      40 </span>            : # error Do not include gtest_pred_impl.h directly.  Include gtest.h instead.
+<span class="lineNum">      41 </span>            : #endif  // GTEST_INCLUDE_GTEST_GTEST_H_
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : // This header implements a family of generic predicate assertion
+<span class="lineNum">      44 </span>            : // macros:
+<span class="lineNum">      45 </span>            : //
+<span class="lineNum">      46 </span>            : //   ASSERT_PRED_FORMAT1(pred_format, v1)
+<span class="lineNum">      47 </span>            : //   ASSERT_PRED_FORMAT2(pred_format, v1, v2)
+<span class="lineNum">      48 </span>            : //   ...
+<span class="lineNum">      49 </span>            : //
+<span class="lineNum">      50 </span>            : // where pred_format is a function or functor that takes n (in the
+<span class="lineNum">      51 </span>            : // case of ASSERT_PRED_FORMATn) values and their source expression
+<span class="lineNum">      52 </span>            : // text, and returns a testing::AssertionResult.  See the definition
+<span class="lineNum">      53 </span>            : // of ASSERT_EQ in gtest.h for an example.
+<span class="lineNum">      54 </span>            : //
+<span class="lineNum">      55 </span>            : // If you don't care about formatting, you can use the more
+<span class="lineNum">      56 </span>            : // restrictive version:
+<span class="lineNum">      57 </span>            : //
+<span class="lineNum">      58 </span>            : //   ASSERT_PRED1(pred, v1)
+<span class="lineNum">      59 </span>            : //   ASSERT_PRED2(pred, v1, v2)
+<span class="lineNum">      60 </span>            : //   ...
+<span class="lineNum">      61 </span>            : //
+<span class="lineNum">      62 </span>            : // where pred is an n-ary function or functor that returns bool,
+<span class="lineNum">      63 </span>            : // and the values v1, v2, ..., must support the &lt;&lt; operator for
+<span class="lineNum">      64 </span>            : // streaming to std::ostream.
+<span class="lineNum">      65 </span>            : //
+<span class="lineNum">      66 </span>            : // We also define the EXPECT_* variations.
+<span class="lineNum">      67 </span>            : //
+<span class="lineNum">      68 </span>            : // For now we only support predicates whose arity is at most 5.
+<span class="lineNum">      69 </span>            : // Please email googletestframework@googlegroups.com if you need
+<span class="lineNum">      70 </span>            : // support for higher arities.
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : // GTEST_ASSERT_ is the basic statement to which all of the assertions
+<span class="lineNum">      73 </span>            : // in this file reduce.  Don't use this in your code.
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : #define GTEST_ASSERT_(expression, on_failure) \
+<span class="lineNum">      76 </span>            :   GTEST_AMBIGUOUS_ELSE_BLOCKER_ \
+<span class="lineNum">      77 </span>            :   if (const ::testing::AssertionResult gtest_ar = (expression)) \
+<span class="lineNum">      78 </span>            :     ; \
+<span class="lineNum">      79 </span>            :   else \
+<span class="lineNum">      80 </span>            :     on_failure(gtest_ar.failure_message())
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span>            : // Helper function for implementing {EXPECT|ASSERT}_PRED1.  Don't use
+<span class="lineNum">      84 </span>            : // this in your code.
+<span class="lineNum">      85 </span>            : template &lt;typename Pred,
+<span class="lineNum">      86 </span>            :           typename T1&gt;
+<span class="lineNum">      87 </span>            : AssertionResult AssertPred1Helper(const char* pred_text,
+<span class="lineNum">      88 </span>            :                                   const char* e1,
+<span class="lineNum">      89 </span>            :                                   Pred pred,
+<span class="lineNum">      90 </span>            :                                   const T1&amp; v1) {
+<span class="lineNum">      91 </span>            :   if (pred(v1)) return AssertionSuccess();
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            :   return AssertionFailure() &lt;&lt; pred_text &lt;&lt; &quot;(&quot;
+<span class="lineNum">      94 </span>            :                             &lt;&lt; e1 &lt;&lt; &quot;) evaluates to false, where&quot;
+<span class="lineNum">      95 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e1 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v1;
+<span class="lineNum">      96 </span>            : }
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED_FORMAT1.
+<span class="lineNum">      99 </span>            : // Don't use this in your code.
+<span class="lineNum">     100 </span>            : #define GTEST_PRED_FORMAT1_(pred_format, v1, on_failure)\
+<span class="lineNum">     101 </span>            :   GTEST_ASSERT_(pred_format(#v1, v1), \
+<span class="lineNum">     102 </span>            :                 on_failure)
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED1.  Don't use
+<span class="lineNum">     105 </span>            : // this in your code.
+<span class="lineNum">     106 </span>            : #define GTEST_PRED1_(pred, v1, on_failure)\
+<span class="lineNum">     107 </span>            :   GTEST_ASSERT_(::testing::AssertPred1Helper(#pred, \
+<span class="lineNum">     108 </span>            :                                              #v1, \
+<span class="lineNum">     109 </span>            :                                              pred, \
+<span class="lineNum">     110 </span>            :                                              v1), on_failure)
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : // Unary predicate assertion macros.
+<span class="lineNum">     113 </span>            : #define EXPECT_PRED_FORMAT1(pred_format, v1) \
+<span class="lineNum">     114 </span>            :   GTEST_PRED_FORMAT1_(pred_format, v1, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     115 </span>            : #define EXPECT_PRED1(pred, v1) \
+<span class="lineNum">     116 </span>            :   GTEST_PRED1_(pred, v1, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     117 </span>            : #define ASSERT_PRED_FORMAT1(pred_format, v1) \
+<span class="lineNum">     118 </span>            :   GTEST_PRED_FORMAT1_(pred_format, v1, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     119 </span>            : #define ASSERT_PRED1(pred, v1) \
+<span class="lineNum">     120 </span>            :   GTEST_PRED1_(pred, v1, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : // Helper function for implementing {EXPECT|ASSERT}_PRED2.  Don't use
+<span class="lineNum">     125 </span>            : // this in your code.
+<span class="lineNum">     126 </span>            : template &lt;typename Pred,
+<a name="127"><span class="lineNum">     127 </span>            :           typename T1,</a>
+<span class="lineNum">     128 </span>            :           typename T2&gt;
+<span class="lineNum">     129 </span><span class="lineCov">          4 : AssertionResult AssertPred2Helper(const char* pred_text,</span>
+<span class="lineNum">     130 </span>            :                                   const char* e1,
+<span class="lineNum">     131 </span>            :                                   const char* e2,
+<span class="lineNum">     132 </span>            :                                   Pred pred,
+<span class="lineNum">     133 </span>            :                                   const T1&amp; v1,
+<span class="lineNum">     134 </span>            :                                   const T2&amp; v2) {
+<span class="lineNum">     135 </span><span class="lineCov">          4 :   if (pred(v1, v2)) return AssertionSuccess();</span>
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :   return AssertionFailure() &lt;&lt; pred_text &lt;&lt; &quot;(&quot;</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :                             &lt;&lt; e1 &lt;&lt; &quot;, &quot;</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :                             &lt;&lt; e2 &lt;&lt; &quot;) evaluates to false, where&quot;</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e1 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v1</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e2 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v2;</span>
+<span class="lineNum">     142 </span>            : }
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED_FORMAT2.
+<span class="lineNum">     145 </span>            : // Don't use this in your code.
+<span class="lineNum">     146 </span>            : #define GTEST_PRED_FORMAT2_(pred_format, v1, v2, on_failure)\
+<span class="lineNum">     147 </span>            :   GTEST_ASSERT_(pred_format(#v1, #v2, v1, v2), \
+<span class="lineNum">     148 </span>            :                 on_failure)
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED2.  Don't use
+<span class="lineNum">     151 </span>            : // this in your code.
+<span class="lineNum">     152 </span>            : #define GTEST_PRED2_(pred, v1, v2, on_failure)\
+<span class="lineNum">     153 </span>            :   GTEST_ASSERT_(::testing::AssertPred2Helper(#pred, \
+<span class="lineNum">     154 </span>            :                                              #v1, \
+<span class="lineNum">     155 </span>            :                                              #v2, \
+<span class="lineNum">     156 </span>            :                                              pred, \
+<span class="lineNum">     157 </span>            :                                              v1, \
+<span class="lineNum">     158 </span>            :                                              v2), on_failure)
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            : // Binary predicate assertion macros.
+<span class="lineNum">     161 </span>            : #define EXPECT_PRED_FORMAT2(pred_format, v1, v2) \
+<span class="lineNum">     162 </span>            :   GTEST_PRED_FORMAT2_(pred_format, v1, v2, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     163 </span>            : #define EXPECT_PRED2(pred, v1, v2) \
+<span class="lineNum">     164 </span>            :   GTEST_PRED2_(pred, v1, v2, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     165 </span>            : #define ASSERT_PRED_FORMAT2(pred_format, v1, v2) \
+<span class="lineNum">     166 </span>            :   GTEST_PRED_FORMAT2_(pred_format, v1, v2, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     167 </span>            : #define ASSERT_PRED2(pred, v1, v2) \
+<span class="lineNum">     168 </span>            :   GTEST_PRED2_(pred, v1, v2, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            : 
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : // Helper function for implementing {EXPECT|ASSERT}_PRED3.  Don't use
+<span class="lineNum">     173 </span>            : // this in your code.
+<span class="lineNum">     174 </span>            : template &lt;typename Pred,
+<span class="lineNum">     175 </span>            :           typename T1,
+<span class="lineNum">     176 </span>            :           typename T2,
+<span class="lineNum">     177 </span>            :           typename T3&gt;
+<span class="lineNum">     178 </span>            : AssertionResult AssertPred3Helper(const char* pred_text,
+<span class="lineNum">     179 </span>            :                                   const char* e1,
+<span class="lineNum">     180 </span>            :                                   const char* e2,
+<span class="lineNum">     181 </span>            :                                   const char* e3,
+<span class="lineNum">     182 </span>            :                                   Pred pred,
+<span class="lineNum">     183 </span>            :                                   const T1&amp; v1,
+<span class="lineNum">     184 </span>            :                                   const T2&amp; v2,
+<span class="lineNum">     185 </span>            :                                   const T3&amp; v3) {
+<span class="lineNum">     186 </span>            :   if (pred(v1, v2, v3)) return AssertionSuccess();
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            :   return AssertionFailure() &lt;&lt; pred_text &lt;&lt; &quot;(&quot;
+<span class="lineNum">     189 </span>            :                             &lt;&lt; e1 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     190 </span>            :                             &lt;&lt; e2 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     191 </span>            :                             &lt;&lt; e3 &lt;&lt; &quot;) evaluates to false, where&quot;
+<span class="lineNum">     192 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e1 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v1
+<span class="lineNum">     193 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e2 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v2
+<span class="lineNum">     194 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e3 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v3;
+<span class="lineNum">     195 </span>            : }
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED_FORMAT3.
+<span class="lineNum">     198 </span>            : // Don't use this in your code.
+<span class="lineNum">     199 </span>            : #define GTEST_PRED_FORMAT3_(pred_format, v1, v2, v3, on_failure)\
+<span class="lineNum">     200 </span>            :   GTEST_ASSERT_(pred_format(#v1, #v2, #v3, v1, v2, v3), \
+<span class="lineNum">     201 </span>            :                 on_failure)
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED3.  Don't use
+<span class="lineNum">     204 </span>            : // this in your code.
+<span class="lineNum">     205 </span>            : #define GTEST_PRED3_(pred, v1, v2, v3, on_failure)\
+<span class="lineNum">     206 </span>            :   GTEST_ASSERT_(::testing::AssertPred3Helper(#pred, \
+<span class="lineNum">     207 </span>            :                                              #v1, \
+<span class="lineNum">     208 </span>            :                                              #v2, \
+<span class="lineNum">     209 </span>            :                                              #v3, \
+<span class="lineNum">     210 </span>            :                                              pred, \
+<span class="lineNum">     211 </span>            :                                              v1, \
+<span class="lineNum">     212 </span>            :                                              v2, \
+<span class="lineNum">     213 </span>            :                                              v3), on_failure)
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            : // Ternary predicate assertion macros.
+<span class="lineNum">     216 </span>            : #define EXPECT_PRED_FORMAT3(pred_format, v1, v2, v3) \
+<span class="lineNum">     217 </span>            :   GTEST_PRED_FORMAT3_(pred_format, v1, v2, v3, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     218 </span>            : #define EXPECT_PRED3(pred, v1, v2, v3) \
+<span class="lineNum">     219 </span>            :   GTEST_PRED3_(pred, v1, v2, v3, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     220 </span>            : #define ASSERT_PRED_FORMAT3(pred_format, v1, v2, v3) \
+<span class="lineNum">     221 </span>            :   GTEST_PRED_FORMAT3_(pred_format, v1, v2, v3, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     222 </span>            : #define ASSERT_PRED3(pred, v1, v2, v3) \
+<span class="lineNum">     223 </span>            :   GTEST_PRED3_(pred, v1, v2, v3, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : 
+<span class="lineNum">     226 </span>            : 
+<span class="lineNum">     227 </span>            : // Helper function for implementing {EXPECT|ASSERT}_PRED4.  Don't use
+<span class="lineNum">     228 </span>            : // this in your code.
+<span class="lineNum">     229 </span>            : template &lt;typename Pred,
+<span class="lineNum">     230 </span>            :           typename T1,
+<span class="lineNum">     231 </span>            :           typename T2,
+<span class="lineNum">     232 </span>            :           typename T3,
+<span class="lineNum">     233 </span>            :           typename T4&gt;
+<span class="lineNum">     234 </span>            : AssertionResult AssertPred4Helper(const char* pred_text,
+<span class="lineNum">     235 </span>            :                                   const char* e1,
+<span class="lineNum">     236 </span>            :                                   const char* e2,
+<span class="lineNum">     237 </span>            :                                   const char* e3,
+<span class="lineNum">     238 </span>            :                                   const char* e4,
+<span class="lineNum">     239 </span>            :                                   Pred pred,
+<span class="lineNum">     240 </span>            :                                   const T1&amp; v1,
+<span class="lineNum">     241 </span>            :                                   const T2&amp; v2,
+<span class="lineNum">     242 </span>            :                                   const T3&amp; v3,
+<span class="lineNum">     243 </span>            :                                   const T4&amp; v4) {
+<span class="lineNum">     244 </span>            :   if (pred(v1, v2, v3, v4)) return AssertionSuccess();
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span>            :   return AssertionFailure() &lt;&lt; pred_text &lt;&lt; &quot;(&quot;
+<span class="lineNum">     247 </span>            :                             &lt;&lt; e1 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     248 </span>            :                             &lt;&lt; e2 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     249 </span>            :                             &lt;&lt; e3 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     250 </span>            :                             &lt;&lt; e4 &lt;&lt; &quot;) evaluates to false, where&quot;
+<span class="lineNum">     251 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e1 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v1
+<span class="lineNum">     252 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e2 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v2
+<span class="lineNum">     253 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e3 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v3
+<span class="lineNum">     254 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e4 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v4;
+<span class="lineNum">     255 </span>            : }
+<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     257 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED_FORMAT4.
+<span class="lineNum">     258 </span>            : // Don't use this in your code.
+<span class="lineNum">     259 </span>            : #define GTEST_PRED_FORMAT4_(pred_format, v1, v2, v3, v4, on_failure)\
+<span class="lineNum">     260 </span>            :   GTEST_ASSERT_(pred_format(#v1, #v2, #v3, #v4, v1, v2, v3, v4), \
+<span class="lineNum">     261 </span>            :                 on_failure)
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED4.  Don't use
+<span class="lineNum">     264 </span>            : // this in your code.
+<span class="lineNum">     265 </span>            : #define GTEST_PRED4_(pred, v1, v2, v3, v4, on_failure)\
+<span class="lineNum">     266 </span>            :   GTEST_ASSERT_(::testing::AssertPred4Helper(#pred, \
+<span class="lineNum">     267 </span>            :                                              #v1, \
+<span class="lineNum">     268 </span>            :                                              #v2, \
+<span class="lineNum">     269 </span>            :                                              #v3, \
+<span class="lineNum">     270 </span>            :                                              #v4, \
+<span class="lineNum">     271 </span>            :                                              pred, \
+<span class="lineNum">     272 </span>            :                                              v1, \
+<span class="lineNum">     273 </span>            :                                              v2, \
+<span class="lineNum">     274 </span>            :                                              v3, \
+<span class="lineNum">     275 </span>            :                                              v4), on_failure)
+<span class="lineNum">     276 </span>            : 
+<span class="lineNum">     277 </span>            : // 4-ary predicate assertion macros.
+<span class="lineNum">     278 </span>            : #define EXPECT_PRED_FORMAT4(pred_format, v1, v2, v3, v4) \
+<span class="lineNum">     279 </span>            :   GTEST_PRED_FORMAT4_(pred_format, v1, v2, v3, v4, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     280 </span>            : #define EXPECT_PRED4(pred, v1, v2, v3, v4) \
+<span class="lineNum">     281 </span>            :   GTEST_PRED4_(pred, v1, v2, v3, v4, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     282 </span>            : #define ASSERT_PRED_FORMAT4(pred_format, v1, v2, v3, v4) \
+<span class="lineNum">     283 </span>            :   GTEST_PRED_FORMAT4_(pred_format, v1, v2, v3, v4, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     284 </span>            : #define ASSERT_PRED4(pred, v1, v2, v3, v4) \
+<span class="lineNum">     285 </span>            :   GTEST_PRED4_(pred, v1, v2, v3, v4, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     286 </span>            : 
+<span class="lineNum">     287 </span>            : 
+<span class="lineNum">     288 </span>            : 
+<span class="lineNum">     289 </span>            : // Helper function for implementing {EXPECT|ASSERT}_PRED5.  Don't use
+<span class="lineNum">     290 </span>            : // this in your code.
+<span class="lineNum">     291 </span>            : template &lt;typename Pred,
+<span class="lineNum">     292 </span>            :           typename T1,
+<span class="lineNum">     293 </span>            :           typename T2,
+<span class="lineNum">     294 </span>            :           typename T3,
+<span class="lineNum">     295 </span>            :           typename T4,
+<span class="lineNum">     296 </span>            :           typename T5&gt;
+<span class="lineNum">     297 </span>            : AssertionResult AssertPred5Helper(const char* pred_text,
+<span class="lineNum">     298 </span>            :                                   const char* e1,
+<span class="lineNum">     299 </span>            :                                   const char* e2,
+<span class="lineNum">     300 </span>            :                                   const char* e3,
+<span class="lineNum">     301 </span>            :                                   const char* e4,
+<span class="lineNum">     302 </span>            :                                   const char* e5,
+<span class="lineNum">     303 </span>            :                                   Pred pred,
+<span class="lineNum">     304 </span>            :                                   const T1&amp; v1,
+<span class="lineNum">     305 </span>            :                                   const T2&amp; v2,
+<span class="lineNum">     306 </span>            :                                   const T3&amp; v3,
+<span class="lineNum">     307 </span>            :                                   const T4&amp; v4,
+<span class="lineNum">     308 </span>            :                                   const T5&amp; v5) {
+<span class="lineNum">     309 </span>            :   if (pred(v1, v2, v3, v4, v5)) return AssertionSuccess();
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span>            :   return AssertionFailure() &lt;&lt; pred_text &lt;&lt; &quot;(&quot;
+<span class="lineNum">     312 </span>            :                             &lt;&lt; e1 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     313 </span>            :                             &lt;&lt; e2 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     314 </span>            :                             &lt;&lt; e3 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     315 </span>            :                             &lt;&lt; e4 &lt;&lt; &quot;, &quot;
+<span class="lineNum">     316 </span>            :                             &lt;&lt; e5 &lt;&lt; &quot;) evaluates to false, where&quot;
+<span class="lineNum">     317 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e1 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v1
+<span class="lineNum">     318 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e2 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v2
+<span class="lineNum">     319 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e3 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v3
+<span class="lineNum">     320 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e4 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v4
+<span class="lineNum">     321 </span>            :                             &lt;&lt; &quot;\n&quot; &lt;&lt; e5 &lt;&lt; &quot; evaluates to &quot; &lt;&lt; v5;
+<span class="lineNum">     322 </span>            : }
+<span class="lineNum">     323 </span>            : 
+<span class="lineNum">     324 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED_FORMAT5.
+<span class="lineNum">     325 </span>            : // Don't use this in your code.
+<span class="lineNum">     326 </span>            : #define GTEST_PRED_FORMAT5_(pred_format, v1, v2, v3, v4, v5, on_failure)\
+<span class="lineNum">     327 </span>            :   GTEST_ASSERT_(pred_format(#v1, #v2, #v3, #v4, #v5, v1, v2, v3, v4, v5), \
+<span class="lineNum">     328 </span>            :                 on_failure)
+<span class="lineNum">     329 </span>            : 
+<span class="lineNum">     330 </span>            : // Internal macro for implementing {EXPECT|ASSERT}_PRED5.  Don't use
+<span class="lineNum">     331 </span>            : // this in your code.
+<span class="lineNum">     332 </span>            : #define GTEST_PRED5_(pred, v1, v2, v3, v4, v5, on_failure)\
+<span class="lineNum">     333 </span>            :   GTEST_ASSERT_(::testing::AssertPred5Helper(#pred, \
+<span class="lineNum">     334 </span>            :                                              #v1, \
+<span class="lineNum">     335 </span>            :                                              #v2, \
+<span class="lineNum">     336 </span>            :                                              #v3, \
+<span class="lineNum">     337 </span>            :                                              #v4, \
+<span class="lineNum">     338 </span>            :                                              #v5, \
+<span class="lineNum">     339 </span>            :                                              pred, \
+<span class="lineNum">     340 </span>            :                                              v1, \
+<span class="lineNum">     341 </span>            :                                              v2, \
+<span class="lineNum">     342 </span>            :                                              v3, \
+<span class="lineNum">     343 </span>            :                                              v4, \
+<span class="lineNum">     344 </span>            :                                              v5), on_failure)
+<span class="lineNum">     345 </span>            : 
+<span class="lineNum">     346 </span>            : // 5-ary predicate assertion macros.
+<span class="lineNum">     347 </span>            : #define EXPECT_PRED_FORMAT5(pred_format, v1, v2, v3, v4, v5) \
+<span class="lineNum">     348 </span>            :   GTEST_PRED_FORMAT5_(pred_format, v1, v2, v3, v4, v5, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     349 </span>            : #define EXPECT_PRED5(pred, v1, v2, v3, v4, v5) \
+<span class="lineNum">     350 </span>            :   GTEST_PRED5_(pred, v1, v2, v3, v4, v5, GTEST_NONFATAL_FAILURE_)
+<span class="lineNum">     351 </span>            : #define ASSERT_PRED_FORMAT5(pred_format, v1, v2, v3, v4, v5) \
+<span class="lineNum">     352 </span>            :   GTEST_PRED_FORMAT5_(pred_format, v1, v2, v3, v4, v5, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     353 </span>            : #define ASSERT_PRED5(pred, v1, v2, v3, v4, v5) \
+<span class="lineNum">     354 </span>            :   GTEST_PRED5_(pred, v1, v2, v3, v4, v5, GTEST_FATAL_FAILURE_)
+<span class="lineNum">     355 </span>            : 
+<span class="lineNum">     356 </span>            : 
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span>            : #endif  // GTEST_INCLUDE_GTEST_GTEST_PRED_IMPL_H_
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

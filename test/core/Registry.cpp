@@ -288,3 +288,73 @@ TEST_F(RegistryTest, ComponentByDep)
     EXPECT_EQ(maybe3.get(), comp2) ; 
 }
 
+TEST_F(RegistryTest, FactoryMapIteratorWithLocking) 
+{
+    Registry::instance().registerFactory("MockComponent", "MockComponent2", MockComponent2::factory) ; 
+    Registry::instance().registerFactory("MockComponent", MockComponent::factory) ; 
+    int count = 0 ;
+    { //locked
+        RegistryLock lock ; 
+        for (auto iter = Registry::instance().beginFact(), end = Registry::instance().endFact(); iter!=end; ++iter)
+        {
+            count++ ;
+        }
+    } //unlocked
+    EXPECT_EQ(count, 2) ;
+    // Now make sure operations requiring lock don't block
+    Registry::instance().unregisterFactory("MockComponent", "MockComponent2") ; 
+    Registry::instance().unregisterFactory("MockComponent") ; 
+    count = 0 ;
+    { //locked
+        RegistryLock lock ; 
+        for (auto iter = Registry::instance().beginFact(), end = Registry::instance().endFact(); iter!=end; ++iter)
+        {
+            count++ ;
+        }
+    } //unlocked
+    EXPECT_EQ(count, 0) ;
+}
+
+TEST_F(RegistryTest, LockingWithTimeOut)
+{
+    bool reached1 = false ;
+    bool reached2 = false ;
+    { //locked
+        RegistryLock lock ; 
+        reached1 = true ;
+        try {
+            RegistryLock lock2(1,1) ;
+            reached2 = true ;
+
+        } 
+        catch(RegistryLocked ex) 
+        {
+            //empty
+        }
+    } //unlocked
+    EXPECT_TRUE(reached1) ;;
+    EXPECT_FALSE(reached2) ;;
+}
+
+namespace {
+bool contains(const std::string& a, const std::string& b) {return a.find(b) !=  std::string::npos;}
+}
+
+TEST_F(RegistryTest, Dump) 
+{
+    Registry::instance().registerFactory("MockComponent", "MockComponent2", MockComponent2::factory) ; 
+    Registry::instance().registerFactory("MockComponent", MockComponent::factory) ; 
+    Dependencies::Dependent strict("MockComponent", "MockComponent2") ;
+    Registry::instance().createComponent(strict) ;
+    Dependencies::Dependent defaulted("MockComponent") ;
+    Registry::instance().createComponent(defaulted) ;
+    Dependencies::Dependent loose("MockComponent", "") ;
+    Registry::instance().createComponent(loose) ;
+    std::ostringstream oss ;
+    Registry::instance().dump(oss) ;
+    EXPECT_PRED2(contains, oss.str(), "Factories {") ;
+    EXPECT_PRED2(contains, oss.str(), "(MockComponent, MockComponent)") ;
+    EXPECT_PRED2(contains, oss.str(), "(MockComponent, MockComponent2)") ;
+    EXPECT_PRED2(contains, oss.str(), "CompXRefs {") ;
+}
+

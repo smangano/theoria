@@ -1,14 +1,36 @@
-\hypertarget{structtheoria_1_1core_1_1RegistryLock}{\section{theoria\+:\+:core\+:\+:Registry\+Lock Struct Reference}
+\hypertarget{structtheoria_1_1core_1_1RegistryLock}{}\section{theoria\+:\+:core\+:\+:Registry\+Lock Struct Reference}
 \label{structtheoria_1_1core_1_1RegistryLock}\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
-}
 
 
 {\ttfamily \#include $<$Registry.\+h$>$}
 
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}\label{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}} 
+{\bfseries Registry\+Lock} (int ntimes, long sleepms=0.\+0)
+\item 
+\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}\label{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}} 
+{\footnotesize template$<$class Rep , class Period $>$ }\\{\bfseries Registry\+Lock} (int ntimes, std\+::chrono\+::duration$<$ Rep, Period $>$ sleepduration)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db18db201e635254}{test\+Lock} ()
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Used to lock the \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} for iteration in a multi-\/threaded env 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db18db201e635254}\label{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db18db201e635254}} 
+\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}!test\+Lock@{test\+Lock}}
+\index{test\+Lock@{test\+Lock}!theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
+\subsubsection{\texorpdfstring{test\+Lock()}{testLock()}}
+{\footnotesize\ttfamily static bool theoria\+::core\+::\+Registry\+Lock\+::test\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Return true if not locked. Not particularly useful outside of unit test 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
