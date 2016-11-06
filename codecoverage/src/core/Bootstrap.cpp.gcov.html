@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -93,7 +93,7 @@
 <span class="lineNum">      31 </span>            : {
 <span class="lineNum">      32 </span><span class="lineCov">          4 :     const char * envPath = ::getenv(ENV_BOOTSTRAP_CONFIG_PATH) ;</span>
 <span class="lineNum">      33 </span><span class="lineCov">          4 :     envPath = envPath ? envPath : &quot;&quot; ;</span>
-<span class="lineNum">      34 </span><span class="lineCov">          4 :     std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH, envPath) ; </span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 :     std::string path = util::CommandLine::instance().settingAsStr(OPTION_BOOTSTRAP_CONFIG_PATH[0], envPath) ; </span>
 <span class="lineNum">      35 </span><span class="lineCov">          4 :     if (path == &quot;&quot;)</span>
 <span class="lineNum">      36 </span><span class="lineCov">          2 :         path = os::bootstrap_path() ;</span>
 <span class="lineNum">      37 </span>            : 

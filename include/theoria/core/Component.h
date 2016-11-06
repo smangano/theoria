@@ -218,7 +218,7 @@ public:
      * All components received are initialized but not necessarily finalized so do not call 
      * into the component yet (unless you really know what you are doing but you are prob asking for trouble)
      */
-    virtual void finalize(std::vector<Component*>& dependencies) ;
+    virtual void finalize(const std::vector<Component*>& dependencies) ;
 
 	/**
      * This is a place to take action on application lifecycle events. 

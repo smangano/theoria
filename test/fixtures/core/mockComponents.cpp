@@ -29,12 +29,12 @@ struct MockComponent : public ::theoria::core::Component
 
     static void reg() ;    
 
-    void finalize(std::vector<::theoria::core::Component*>& dependencies) override ;
+    void finalize(const std::vector<::theoria::core::Component*>& dependencies) override ;
 
     std::vector<Component*> myDeps ;
 } ;
 
-void MockComponent::finalize(std::vector<Component*>& dependencies)
+void MockComponent::finalize(const std::vector<Component*>& dependencies)
 {
     myDeps = dependencies ;
 }

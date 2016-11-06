@@ -19,12 +19,62 @@ public:
     static Component* factory(CompId id) ; 
 
 	Dependencies init(const config::Config& config) override;
-    void finalize(std::vector<Component*>& dependencies) override ;
+    void finalize(const std::vector<Component*>& dependencies) override ;
     void appLifeCycle(AppLifeCycle state) override ;
 
 public:
 
     static DLL_PUBLIC RegisterThis<ConfigVarResolverBuilderComp> rt ; 
+} ;
+
+
+class EnvVarResolverComp : public Component
+{
+public:
+
+    EnvVarResolverComp(CompId id) : Component(id) {}
+
+    static Component* factory(CompId id) ; 
+    Component* acquire(const std::type_info& typeInfo, void** dest) override ;
+    
+    static DLL_PUBLIC RegisterThis<EnvVarResolverComp> rt ; 
+} ;
+
+class CmdLineResolverComp : public Component
+{
+public:
+
+    CmdLineResolverComp(CompId id) : Component(id) {}
+
+    static Component* factory(CompId id) ; 
+    Component* acquire(const std::type_info& typeInfo, void** dest) override ;
+    
+    static DLL_PUBLIC RegisterThis<CmdLineResolverComp> rt ; 
+} ;
+
+
+class AppConfigResolverComp : public Component
+{
+public:
+
+    AppConfigResolverComp(CompId id) : Component(id) {}
+
+    static Component* factory(CompId id) ; 
+    Component* acquire(const std::type_info& typeInfo, void** dest) override ;
+    
+    static DLL_PUBLIC RegisterThis<AppConfigResolverComp> rt ; 
+} ;
+
+class TOMLConfigBuilderComp : public Component
+{
+public:
+
+    TOMLConfigBuilderComp(CompId id) : Component(id) {}
+
+    static Component* factory(CompId id) ; 
+    Component* acquire(const std::type_info& typeInfo, void** dest) override ;
+    
+    static DLL_PUBLIC RegisterThis<TOMLConfigBuilderComp> rt ; 
 } ;
 
 }}

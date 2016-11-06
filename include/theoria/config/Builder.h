@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <stack>
+#include <vector>
 #include <string>
 
 namespace theoria { namespace config {
@@ -18,10 +19,10 @@ public:
     using ConfigPtr = std::unique_ptr<Config> ;
 
     ConfigBuilder():
-        _resolverChain(nullptr) {}
+        _stack(std::move(this->_vec)), _resolverChain(nullptr) {}
 
     ConfigBuilder(ConfigVariableResolver* pResolver):
-        _resolverChain(pResolver) {}
+        _stack(std::move(this->_vec)), _resolverChain(pResolver) {}
 
     void setResolver(ConfigVariableResolver* pResolver) {_resolverChain = pResolver;}     
 
@@ -88,11 +89,13 @@ public:
 
     Config* releaseAll() ;
 
+    const ConfigVariableResolver* resolver() const {return _resolverChain;}
+
 private:
 
     std::string resolve(const std::string& valueOrVar) ;
-
-    std::stack<ConfigPtr> _stack;
+    std::vector<ConfigPtr> _vec ;
+    std::stack<ConfigPtr, std::vector<ConfigPtr>> _stack;
 
     ConfigVariableResolver* _resolverChain ;
     

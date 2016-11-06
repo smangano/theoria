@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">103</td>
-            <td class="headerCovTableEntry">143</td>
-            <td class="headerCovTableEntryLo">72.0 %</td>
+            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntryLo">66.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
-            <td class="headerCovTableEntry">26</td>
-            <td class="headerCovTableEntryMed">80.8 %</td>
+            <td class="headerCovTableEntry">28</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -68,272 +68,292 @@
 <span class="lineNum">       6 </span>            : #include &lt;algorithm&gt;
 <span class="lineNum">       7 </span>            : #include &lt;iostream&gt;
 <span class="lineNum">       8 </span>            : #include &lt;mutex&gt;
-<span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span>            : using namespace theoria ;
-<span class="lineNum">      11 </span>            : using namespace core ;
-<span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : using FactoryMap_iterator = Registry::FactoryMap_iterator ;
-<span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : static std::mutex registry_lock ;
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : namespace 
-<span class="lineNum">      18 </span>            : {
-<span class="lineNum">      19 </span>            :     //For paractical purposes this should be fine as the upper bound of any reasonable name
-<span class="lineNum">      20 </span><span class="lineCov">          1 :     const std::string _HIGHEST =  { '\xff', '\xff', '\xff' , '\xff', '\xff', '\xff', '\xff', '\xff', '\xff' } ;</span>
-<a name="21"><span class="lineNum">      21 </span>            : }</a>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : RegistryLock::RegistryLock()</span>
-<span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     registry_lock.lock();</span>
-<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : RegistryLock::~RegistryLock()</span>
-<span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     registry_lock.unlock();</span>
-<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">         48 : Registry::~Registry()</span>
-<span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span><span class="lineCov">         52 :     for (auto pair : _components) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">         28 :         delete pair.second ;</span>
-<span class="lineNum">      37 </span>            :     }
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">         24 : }</span></a>
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">        185 : Registry&amp; Registry::instance() </span>
-<span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">        185 :     static Registry TheRegistry ;</span>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">        185 :     return TheRegistry ;</span>
-<a name="45"><span class="lineNum">      45 </span>            : }</a>
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">         23 : void Registry::reset()</span>
-<span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">         23 :     Registry::instance().~Registry() ;</span>
-<span class="lineNum">      50 </span><span class="lineCov">         23 :     new (&amp;Registry::instance()) Registry ;</span>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">         23 : }</span></a>
+<span class="lineNum">       9 </span>            : #include &lt;thread&gt;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : using namespace theoria ;
+<span class="lineNum">      12 </span>            : using namespace core ;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : using FactoryMap_iterator = Registry::FactoryMap_iterator ;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : static std::mutex registry_lock ;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : namespace 
+<span class="lineNum">      19 </span>            : {
+<span class="lineNum">      20 </span>            :     //For paractical purposes this should be fine as the upper bound of any reasonable name
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     const std::string _HIGHEST =  { '\xff', '\xff', '\xff' , '\xff', '\xff', '\xff', '\xff', '\xff', '\xff' } ;</span>
+<span class="lineNum">      22 </span>            : }
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : RegistryLock::RegistryLock()</span>
+<span class="lineNum">      26 </span>            : {
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     registry_lock.lock();</span>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : RegistryLock::~RegistryLock()</span>
+<span class="lineNum">      31 </span>            : {
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     registry_lock.unlock();</span>
+<a name="33"><span class="lineNum">      33 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : RegistryLock::RegistryLock(int ntimes, long sleepms) </span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     : RegistryLock(ntimes, std::chrono::milliseconds(sleepms))</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<span class="lineNum">      40 </span>            : template&lt; class Rep, class Period &gt;
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : RegistryLock::RegistryLock(int ntimes, std::chrono::duration&lt;Rep, Period&gt; sleepduration) </span>
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     bool gotLock = false ;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     while(ntimes&gt;0 &amp;&amp; !gotLock) {</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         gotLock = registry_lock.try_lock() ;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         if (sleepduration.count() &gt; 0) </span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :             std::this_thread::sleep_for(sleepduration) ;</span>
+<span class="lineNum">      48 </span>            :     }
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     if (!gotLock)</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         throw RegistryLocked();</span>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span></a>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">         16 : void Registry::registerFactory(const std::string&amp; type, ComponentFactory factory) </span>
+<span class="lineNum">      53 </span><span class="lineCov">         52 : Registry::~Registry()</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">         16 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">      56 </span><span class="lineCov">         16 :     _factories[std::make_pair(type,type)] = factory ;</span>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">         16 : }</span></a>
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         23 : void Registry::registerFactory(const TypeName&amp; type, const SubTypeName&amp; subtype, ComponentFactory factory) </span>
-<span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">         23 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">      62 </span><span class="lineCov">         23 :     _factories[std::make_pair(type,subtype)] = factory ;</span>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         23 : }</span></a>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">          4 : FactoryMap_iterator Registry::beginFact() </span>
-<span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">          4 :     return _factories.begin() ;</span>
-<a name="68"><span class="lineNum">      68 </span>            : }</a>
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">          8 : FactoryMap_iterator Registry::endFact() </span>
-<span class="lineNum">      71 </span>            : {
-<span class="lineNum">      72 </span><span class="lineCov">          8 :     return _factories.end() ;   </span>
-<a name="73"><span class="lineNum">      73 </span>            : }</a>
-<span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span><span class="lineCov">          6 : FactoryMap_iterator Registry::findFact(const TypeName&amp; type) </span>
-<span class="lineNum">      76 </span>            : {
-<span class="lineNum">      77 </span><span class="lineCov">          6 :     return _factories.lower_bound(std::make_pair(type, std::string())) ;</span>
-<a name="78"><span class="lineNum">      78 </span>            : }</a>
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">          1 : FactoryMap_iterator Registry::findfact(FactoryMap_iterator start, bool (*predicate)(FactoryMap::value_type&amp; v))  </span>
-<span class="lineNum">      81 </span>            : {
-<span class="lineNum">      82 </span><span class="lineCov">          1 :     return std::find_if(start, endFact(), predicate) ;</span>
-<a name="83"><span class="lineNum">      83 </span>            : }</a>
+<span class="lineNum">      55 </span><span class="lineCov">         60 :     for (auto pair : _components) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">         34 :         delete pair.second ;</span>
+<span class="lineNum">      57 </span>            :     }
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         26 : }</span></a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">        211 : Registry&amp; Registry::instance() </span>
+<span class="lineNum">      61 </span>            : {
+<span class="lineNum">      62 </span><span class="lineCov">        211 :     static Registry TheRegistry ;</span>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineCov">        211 :     return TheRegistry ;</span>
+<a name="65"><span class="lineNum">      65 </span>            : }</a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">         25 : void Registry::reset()</span>
+<span class="lineNum">      68 </span>            : {
+<span class="lineNum">      69 </span><span class="lineCov">         25 :     Registry::instance().~Registry() ;</span>
+<span class="lineNum">      70 </span><span class="lineCov">         25 :     new (&amp;Registry::instance()) Registry ;</span>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         25 : }</span></a>
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span><span class="lineCov">         21 : void Registry::registerFactory(const std::string&amp; type, ComponentFactory factory) </span>
+<span class="lineNum">      74 </span>            : {
+<span class="lineNum">      75 </span><span class="lineCov">         21 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">      76 </span><span class="lineCov">         21 :     _factories[std::make_pair(type,type)] = factory ;</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         21 : }</span></a>
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">         32 : void Registry::registerFactory(const TypeName&amp; type, const SubTypeName&amp; subtype, ComponentFactory factory) </span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineCov">         32 :     std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">      82 </span><span class="lineCov">         32 :     _factories[std::make_pair(type,subtype)] = factory ;</span>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">         32 : }</span></a>
 <span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineCov">         19 : Component* Registry::createComponent(const Dependencies::Dependent&amp; dep) noexcept </span>
+<span class="lineNum">      85 </span><span class="lineCov">          4 : FactoryMap_iterator Registry::beginFact() </span>
 <span class="lineNum">      86 </span>            : {
-<span class="lineNum">      87 </span>            :     try { //locked
-<span class="lineNum">      88 </span><span class="lineCov">         19 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">      89 </span>            :         auto range = 
-<span class="lineNum">      90 </span>            :             std::make_pair(
-<span class="lineNum">      91 </span><span class="lineCov">         38 :                 _factories.lower_bound(CompFactoryKey(dep.type, dep.subtype)),</span>
-<span class="lineNum">      92 </span><span class="lineCov">         38 :                 _factories.upper_bound(CompFactoryKey(dep.type, _HIGHEST))</span>
-<span class="lineNum">      93 </span><span class="lineCov">         57 :             ) ;</span>
-<span class="lineNum">      94 </span><span class="lineCov">         19 :         if (range.first == range.second)</span>
-<span class="lineNum">      95 </span><span class="lineCov">          4 :             return nullptr ; //No factory available to satisy dep</span>
-<span class="lineNum">      96 </span><span class="lineCov">         15 :         auto&amp; iter = range.first ;</span>
-<span class="lineNum">      97 </span><span class="lineCov">         15 :         auto&amp; key = iter-&gt;first ;</span>
-<span class="lineNum">      98 </span><span class="lineCov">         15 :         if (dep.subtype != &quot;&quot; &amp;&amp; dep.subtype != key.second) {    </span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 :             return nullptr ; //A default or strict dependency could not be satified</span>
-<span class="lineNum">     100 </span>            :         }
-<span class="lineNum">     101 </span><span class="lineCov">         14 :         return _createComponent(range.first) ;</span>
-<span class="lineNum">     102 </span>            :     } //unlocked
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     catch (...) {</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :         return nullptr ;</span>
-<span class="lineNum">     105 </span>            :     }
-<a name="106"><span class="lineNum">     106 </span>            : }</a>
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineCov">          7 : Component* Registry::createComponent(const std::string&amp; type, int allow_ambiguity) </span>
-<span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span>            :     { //locked
-<span class="lineNum">     111 </span><span class="lineCov">          7 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">     112 </span>            :         auto range = 
-<span class="lineNum">     113 </span>            :             std::make_pair(
-<span class="lineNum">     114 </span><span class="lineCov">         14 :                 _factories.lower_bound(CompFactoryKey(type, std::string())),</span>
-<span class="lineNum">     115 </span><span class="lineCov">         14 :                 _factories.upper_bound(CompFactoryKey(type, _HIGHEST))</span>
-<span class="lineNum">     116 </span><span class="lineCov">         21 :             ) ;</span>
-<span class="lineNum">     117 </span><span class="lineCov">          7 :         if (range.first != range.second) {</span>
-<span class="lineNum">     118 </span><span class="lineCov">          6 :             if (distance(range.first, range.second)  == 1)</span>
-<span class="lineNum">     119 </span>            :             {
-<span class="lineNum">     120 </span><span class="lineCov">          2 :                 return _createComponent(range.first) ;</span>
-<span class="lineNum">     121 </span>            :             }
-<span class="lineNum">     122 </span>            :             else
-<span class="lineNum">     123 </span>            :             {
-<span class="lineNum">     124 </span>            :                 //Check for usage
-<span class="lineNum">     125 </span><span class="lineCov">         11 :                 for (auto iter = range.first; iter != range.second; ++iter) {</span>
-<span class="lineNum">     126 </span><span class="lineCov">          8 :                     if (_xref.find(iter-&gt;first) != _xref.end()) {</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :                         return _createComponent(iter) ;</span>
-<span class="lineNum">     128 </span>            :                     }
-<span class="lineNum">     129 </span>            :                 }
-<span class="lineNum">     130 </span>            :                 //No component's of type have been used so look for the default
-<span class="lineNum">     131 </span><span class="lineCov">          3 :                 auto def = _factories.find(std::make_pair(type, type)) ;</span>
-<span class="lineNum">     132 </span><span class="lineCov">          3 :                 if (def != _factories.end()) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">          1 :                     return _createComponent(def) ;</span>
-<span class="lineNum">     134 </span>            :                 }
-<span class="lineNum">     135 </span><span class="lineCov">          2 :                 if (allow_ambiguity) {</span>
-<span class="lineNum">     136 </span>            :                     //No compelling reason to pick one so use first
-<span class="lineNum">     137 </span><span class="lineCov">          1 :                     return _createComponent(range.first) ;</span>
-<span class="lineNum">     138 </span>            :                 }
-<span class="lineNum">     139 </span>            :                 else {
-<span class="lineNum">     140 </span><span class="lineCov">          1 :                     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] : Ambiguous: [%d] choices&quot;,</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :                                          type.c_str(), std::distance(range.first,range.second)) ;</span>
-<span class="lineNum">     142 </span>            :                 }
-<span class="lineNum">     143 </span>            :             }
-<span class="lineNum">     144 </span><span class="lineCov">          2 :         } </span>
-<span class="lineNum">     145 </span>            :     } //unlocked
-<span class="lineNum">     146 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] : Not Registered&quot;, type.c_str()) ;</span>
-<a name="147"><span class="lineNum">     147 </span>            : }</a>
-<span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineCov">         10 : Component* Registry::createComponent(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
-<span class="lineNum">     150 </span>            : {
-<span class="lineNum">     151 </span>            :     { //locked
-<span class="lineNum">     152 </span><span class="lineCov">         10 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
-<span class="lineNum">     153 </span><span class="lineCov">         10 :         auto iter = _factories.find(std::make_pair(type, subtype)) ;</span>
-<span class="lineNum">     154 </span><span class="lineCov">         10 :         if (iter != _factories.end())</span>
-<span class="lineNum">     155 </span><span class="lineCov">         18 :             return _createComponent(iter) ;</span>
-<span class="lineNum">     156 </span>            :     } //unlocked
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] and subtype [%s]: Not Registered&quot;,</span>
-<span class="lineNum">     159 </span>            :                         type.c_str(), 
-<span class="lineNum">     160 </span>            :                         subtype.c_str()
-<span class="lineNum">     161 </span><span class="lineCov">          1 :                        ) ;</span>
-<a name="162"><span class="lineNum">     162 </span>            : }</a>
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span><span class="lineCov">         28 : Component* Registry::_createComponent(FactoryMap_iterator iter) </span>
-<span class="lineNum">     165 </span>            : {
-<span class="lineNum">     166 </span><span class="lineCov">         28 :     Component* comp = iter-&gt;second(_nextId) ;</span>
-<span class="lineNum">     167 </span><span class="lineCov">         28 :     if (!comp) </span>
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] subtype [%s] : Factory returned nullptr&quot;,</span>
-<span class="lineNum">     169 </span>            :                             iter-&gt;first.first.c_str(),
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 :                             iter-&gt;first.second.c_str()) ;</span>
-<span class="lineNum">     171 </span><span class="lineCov">         28 :     comp-&gt;setName(iter-&gt;first.first + &quot;:&quot; + iter-&gt;first.second) ;</span>
-<span class="lineNum">     172 </span><span class="lineCov">         28 :     _components[comp-&gt;id()] = comp ;</span>
-<span class="lineNum">     173 </span><span class="lineCov">         28 :     _xref.insert(std::make_pair(iter-&gt;first, _nextId++)) ;</span>
-<span class="lineNum">     174 </span><span class="lineCov">         28 :     return comp ;</span>
-<a name="175"><span class="lineNum">     175 </span>            : }</a>
-<span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 : void Registry::dump(std::ostream&amp; stream) const </span>
-<span class="lineNum">     178 </span>            : {
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;Factories {\n&quot; ;</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     for (auto f : _factories) {</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;(&quot; &lt;&lt; f.first.first &lt;&lt; &quot;, &quot; &lt;&lt; f.first.second &lt;&lt;  &quot;) -&gt;&quot; &lt;&lt; f.second &lt;&lt; &quot;\n&quot; ;</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;}\n&quot; ;</span>
-<span class="lineNum">     184 </span>            : 
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;CompXRefs{\n&quot; ;</span>
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 :     for (auto f : _xref) {</span>
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;(&quot; &lt;&lt; f.first.first &lt;&lt; &quot;, &quot; &lt;&lt; f.first.second &lt;&lt;  &quot;) -&gt;&quot; &lt;&lt; f.second &lt;&lt; &quot;\n&quot; ;</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;}\n&quot; ;</span>
-<span class="lineNum">     190 </span>            : 
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     stream &lt;&lt; std::endl ;</span>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     193 </span>            : 
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 : void Registry::_setBootstrapConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pBSConfig) </span>
-<span class="lineNum">     195 </span>            : {
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     if (_bootstrapConfig)</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Bootstrap Config already set.&quot;) ;</span>
-<span class="lineNum">     198 </span><span class="lineNoCov">          0 :     _bootstrapConfig = std::move(pBSConfig) ;</span>
-<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">     200 </span>            : 
-<span class="lineNum">     201 </span><span class="lineCov">          1 : void Registry::_setAppConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pAppConfig) </span>
-<span class="lineNum">     202 </span>            : {
-<span class="lineNum">     203 </span><span class="lineCov">          1 :     if (_appConfig)</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;App Config already set.&quot;) ;</span>
-<span class="lineNum">     205 </span><span class="lineCov">          1 :     _appConfig = std::move(pAppConfig) ;</span>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     207 </span>            : 
-<span class="lineNum">     208 </span><span class="lineNoCov">          0 : const config::Config&amp; Registry::bootConfig() const</span>
-<span class="lineNum">     209 </span>            : {
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 :     if (!_bootstrapConfig)</span>
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Bootstrap Config is not set.&quot;) ;</span>
-<span class="lineNum">     212 </span>            : 
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :     return *_bootstrapConfig ;</span>
-<a name="214"><span class="lineNum">     214 </span>            : }</a>
-<span class="lineNum">     215 </span>            : 
-<span class="lineNum">     216 </span><span class="lineCov">          3 : const config::Config&amp; Registry::appConfig() const </span>
-<span class="lineNum">     217 </span>            : {
-<span class="lineNum">     218 </span><span class="lineCov">          3 :     if (!_appConfig)</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;App Config is not set.&quot;) ;</span>
-<span class="lineNum">     220 </span><span class="lineCov">          3 :     return *_appConfig ;</span>
-<a name="221"><span class="lineNum">     221 </span>            : }</a>
-<span class="lineNum">     222 </span>            : 
-<span class="lineNum">     223 </span><span class="lineCov">          7 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type) </span>
-<span class="lineNum">     224 </span>            : {
-<span class="lineNum">     225 </span><span class="lineCov">          7 :     auto iter = _xref.lower_bound(CompFactoryKey(type, std::string())) ;</span>
-<span class="lineNum">     226 </span><span class="lineCov">          7 :     if (iter != _xref.end() &amp;&amp; iter-&gt;first.first == type)</span>
-<span class="lineNum">     227 </span><span class="lineCov">          6 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
-<span class="lineNum">     228 </span><span class="lineCov">          1 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
-<a name="229"><span class="lineNum">     229 </span>            : }</a>
-<span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span><span class="lineCov">          9 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
-<span class="lineNum">     232 </span>            : {
-<span class="lineNum">     233 </span><span class="lineCov">          9 :     auto iter = _xref.find(CompFactoryKey(type, subtype)) ;</span>
-<span class="lineNum">     234 </span><span class="lineCov">          9 :     if (iter != _xref.end())</span>
-<span class="lineNum">     235 </span><span class="lineCov">          7 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
-<span class="lineNum">     236 </span><span class="lineCov">          2 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
-<a name="237"><span class="lineNum">     237 </span>            : }</a>
-<span class="lineNum">     238 </span>            : 
-<span class="lineNum">     239 </span><span class="lineCov">          4 : util::Maybe&lt;Component&gt; Registry::component(const Dependencies::Dependent&amp; dep)</span>
-<span class="lineNum">     240 </span>            : {
-<span class="lineNum">     241 </span><span class="lineCov">          4 :     if (dep.subtype == &quot;&quot;)</span>
-<span class="lineNum">     242 </span><span class="lineCov">          2 :         return component(dep.type) ;</span>
-<span class="lineNum">     243 </span>            :     else
-<span class="lineNum">     244 </span><span class="lineCov">          2 :         return component(dep.type, dep.subtype) ;</span>
-<a name="245"><span class="lineNum">     245 </span>            : }</a>
-<span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span><span class="lineCov">          3 : std::vector&lt;Component*&gt; Registry::satisfy(const Dependencies&amp; deps, CompId id) </span>
-<span class="lineNum">     248 </span>            : {
-<span class="lineNum">     249 </span><span class="lineCov">          3 :     std::vector&lt;Component*&gt; satisfaction ;</span>
-<span class="lineNum">     250 </span><span class="lineCov">          4 :     for(const Dependencies::Dependent&amp; dep : deps) </span>
-<span class="lineNum">     251 </span>            :     {
-<span class="lineNum">     252 </span>            :         try
-<span class="lineNum">     253 </span>            :         {
-<span class="lineNum">     254 </span><span class="lineCov">          1 :             auto comp = component(dep) ;</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 :             if (!comp &amp;&amp; dep.required()) {</span>
-<span class="lineNum">     256 </span>            :                 //Attempt to satsify by creating it on the fly    
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :                 comp.reset(createComponent(dep)) ;  </span>
-<span class="lineNum">     258 </span><span class="lineNoCov">          0 :                 *comp ; //May trigger exception as required dep could not be satisfied</span>
-<span class="lineNum">     259 </span>            :             }
-<span class="lineNum">     260 </span><span class="lineCov">          1 :             satisfaction.push_back(comp.get()) ;</span>
-<span class="lineNum">     261 </span>            :         }
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :         catch (const std::runtime_error&amp; err) {</span>
-<span class="lineNum">     263 </span>            :             //&quot;I can't get no satisfaction
-<span class="lineNum">     264 </span>            :             // I can't get me no satisfaction
-<span class="lineNum">     265 </span>            :             // And I try and I try and I try t-t-t-t-try try
-<span class="lineNum">     266 </span>            :             // I can't get no I can't get me no&quot;
-<span class="lineNum">     267 </span>            :             //-- The Rolling Stones.
-<span class="lineNum">     268 </span><span class="lineNoCov">          0 :             std::string name = id &gt;= 0 ? component(id)-&gt;name() : std::string(&quot;Unknown&quot;) ;</span>
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;Dependency  [%s] for component [%s#%d] could not be satisfied&quot;,</span>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 :                 dep.str().c_str(), name.c_str(), id) ;</span>
-<span class="lineNum">     271 </span>            :         }
-<a name="272"><span class="lineNum">     272 </span>            :     }</a>
-<span class="lineNum">     273 </span><span class="lineCov">          3 :     return satisfaction ;</span>
-<span class="lineNum">     274 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      87 </span><span class="lineCov">          4 :     return _factories.begin() ;</span>
+<a name="88"><span class="lineNum">      88 </span>            : }</a>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span><span class="lineCov">          8 : FactoryMap_iterator Registry::endFact() </span>
+<span class="lineNum">      91 </span>            : {
+<span class="lineNum">      92 </span><span class="lineCov">          8 :     return _factories.end() ;   </span>
+<a name="93"><span class="lineNum">      93 </span>            : }</a>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span><span class="lineCov">          6 : FactoryMap_iterator Registry::findFact(const TypeName&amp; type) </span>
+<span class="lineNum">      96 </span>            : {
+<span class="lineNum">      97 </span><span class="lineCov">          6 :     return _factories.lower_bound(std::make_pair(type, std::string())) ;</span>
+<a name="98"><span class="lineNum">      98 </span>            : }</a>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span><span class="lineCov">          1 : FactoryMap_iterator Registry::findfact(FactoryMap_iterator start, bool (*predicate)(FactoryMap::value_type&amp; v))  </span>
+<span class="lineNum">     101 </span>            : {
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     return std::find_if(start, endFact(), predicate) ;</span>
+<a name="103"><span class="lineNum">     103 </span>            : }</a>
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span><span class="lineCov">         23 : Component* Registry::createComponent(const Dependencies::Dependent&amp; dep) noexcept </span>
+<span class="lineNum">     106 </span>            : {
+<span class="lineNum">     107 </span>            :     try { //locked
+<span class="lineNum">     108 </span><span class="lineCov">         23 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">     109 </span>            :         auto range = 
+<span class="lineNum">     110 </span>            :             std::make_pair(
+<span class="lineNum">     111 </span><span class="lineCov">         46 :                 _factories.lower_bound(CompFactoryKey(dep.type, dep.subtype)),</span>
+<span class="lineNum">     112 </span><span class="lineCov">         46 :                 _factories.upper_bound(CompFactoryKey(dep.type, _HIGHEST))</span>
+<span class="lineNum">     113 </span><span class="lineCov">         69 :             ) ;</span>
+<span class="lineNum">     114 </span><span class="lineCov">         23 :         if (range.first == range.second)</span>
+<span class="lineNum">     115 </span><span class="lineCov">          4 :             return nullptr ; //No factory available to satisy dep</span>
+<span class="lineNum">     116 </span><span class="lineCov">         19 :         auto&amp; iter = range.first ;</span>
+<span class="lineNum">     117 </span><span class="lineCov">         19 :         auto&amp; key = iter-&gt;first ;</span>
+<span class="lineNum">     118 </span><span class="lineCov">         19 :         if (dep.subtype != &quot;&quot; &amp;&amp; dep.subtype != key.second) {    </span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :             return nullptr ; //A default or strict dependency could not be satified</span>
+<span class="lineNum">     120 </span>            :         }
+<span class="lineNum">     121 </span><span class="lineCov">         18 :         return _createComponent(range.first) ;</span>
+<span class="lineNum">     122 </span>            :     } //unlocked
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     catch (...) {</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         return nullptr ;</span>
+<span class="lineNum">     125 </span>            :     }
+<a name="126"><span class="lineNum">     126 </span>            : }</a>
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span><span class="lineCov">          9 : Component* Registry::createComponent(const std::string&amp; type, int allow_ambiguity) </span>
+<span class="lineNum">     129 </span>            : {
+<span class="lineNum">     130 </span>            :     { //locked
+<span class="lineNum">     131 </span><span class="lineCov">          9 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">     132 </span>            :         auto range = 
+<span class="lineNum">     133 </span>            :             std::make_pair(
+<span class="lineNum">     134 </span><span class="lineCov">         18 :                 _factories.lower_bound(CompFactoryKey(type, std::string())),</span>
+<span class="lineNum">     135 </span><span class="lineCov">         18 :                 _factories.upper_bound(CompFactoryKey(type, _HIGHEST))</span>
+<span class="lineNum">     136 </span><span class="lineCov">         27 :             ) ;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          9 :         if (range.first != range.second) {</span>
+<span class="lineNum">     138 </span><span class="lineCov">          8 :             if (distance(range.first, range.second)  == 1)</span>
+<span class="lineNum">     139 </span>            :             {
+<span class="lineNum">     140 </span><span class="lineCov">          4 :                 return _createComponent(range.first) ;</span>
+<span class="lineNum">     141 </span>            :             }
+<span class="lineNum">     142 </span>            :             else
+<span class="lineNum">     143 </span>            :             {
+<span class="lineNum">     144 </span>            :                 //Check for usage
+<span class="lineNum">     145 </span><span class="lineCov">         11 :                 for (auto iter = range.first; iter != range.second; ++iter) {</span>
+<span class="lineNum">     146 </span><span class="lineCov">          8 :                     if (_xref.find(iter-&gt;first) != _xref.end()) {</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :                         return _createComponent(iter) ;</span>
+<span class="lineNum">     148 </span>            :                     }
+<span class="lineNum">     149 </span>            :                 }
+<span class="lineNum">     150 </span>            :                 //No component's of type have been used so look for the default
+<span class="lineNum">     151 </span><span class="lineCov">          3 :                 auto def = _factories.find(std::make_pair(type, type)) ;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          3 :                 if (def != _factories.end()) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :                     return _createComponent(def) ;</span>
+<span class="lineNum">     154 </span>            :                 }
+<span class="lineNum">     155 </span><span class="lineCov">          2 :                 if (allow_ambiguity) {</span>
+<span class="lineNum">     156 </span>            :                     //No compelling reason to pick one so use first
+<span class="lineNum">     157 </span><span class="lineCov">          1 :                     return _createComponent(range.first) ;</span>
+<span class="lineNum">     158 </span>            :                 }
+<span class="lineNum">     159 </span>            :                 else {
+<span class="lineNum">     160 </span><span class="lineCov">          1 :                     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] : Ambiguous: [%d] choices&quot;,</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :                                          type.c_str(), std::distance(range.first,range.second)) ;</span>
+<span class="lineNum">     162 </span>            :                 }
+<span class="lineNum">     163 </span>            :             }
+<span class="lineNum">     164 </span><span class="lineCov">          2 :         } </span>
+<span class="lineNum">     165 </span>            :     } //unlocked
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] : Not Registered&quot;, type.c_str()) ;</span>
+<a name="167"><span class="lineNum">     167 </span>            : }</a>
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span><span class="lineCov">         10 : Component* Registry::createComponent(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
+<span class="lineNum">     170 </span>            : {
+<span class="lineNum">     171 </span>            :     { //locked
+<span class="lineNum">     172 </span><span class="lineCov">         10 :         std::lock_guard&lt;std::mutex&gt; guard(registry_lock);</span>
+<span class="lineNum">     173 </span><span class="lineCov">         10 :         auto iter = _factories.find(std::make_pair(type, subtype)) ;</span>
+<span class="lineNum">     174 </span><span class="lineCov">         10 :         if (iter != _factories.end())</span>
+<span class="lineNum">     175 </span><span class="lineCov">         18 :             return _createComponent(iter) ;</span>
+<span class="lineNum">     176 </span>            :     } //unlocked
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] and subtype [%s]: Not Registered&quot;,</span>
+<span class="lineNum">     179 </span>            :                         type.c_str(), 
+<span class="lineNum">     180 </span>            :                         subtype.c_str()
+<span class="lineNum">     181 </span><span class="lineCov">          1 :                        ) ;</span>
+<a name="182"><span class="lineNum">     182 </span>            : }</a>
+<span class="lineNum">     183 </span>            : 
+<span class="lineNum">     184 </span><span class="lineCov">         34 : Component* Registry::_createComponent(FactoryMap_iterator iter) </span>
+<span class="lineNum">     185 </span>            : {
+<span class="lineNum">     186 </span><span class="lineCov">         34 :     Component* comp = iter-&gt;second(_nextId) ;</span>
+<span class="lineNum">     187 </span><span class="lineCov">         34 :     if (!comp) </span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Registry failed to create component of type [%s] subtype [%s] : Factory returned nullptr&quot;,</span>
+<span class="lineNum">     189 </span>            :                             iter-&gt;first.first.c_str(),
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :                             iter-&gt;first.second.c_str()) ;</span>
+<span class="lineNum">     191 </span><span class="lineCov">         34 :     comp-&gt;setName(iter-&gt;first.first + &quot;:&quot; + iter-&gt;first.second) ;</span>
+<span class="lineNum">     192 </span><span class="lineCov">         34 :     _components[comp-&gt;id()] = comp ;</span>
+<span class="lineNum">     193 </span><span class="lineCov">         34 :     _xref.insert(std::make_pair(iter-&gt;first, _nextId++)) ;</span>
+<span class="lineNum">     194 </span><span class="lineCov">         34 :     return comp ;</span>
+<a name="195"><span class="lineNum">     195 </span>            : }</a>
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 : void Registry::dump(std::ostream&amp; stream) const </span>
+<span class="lineNum">     198 </span>            : {
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;Factories {\n&quot; ;</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :     for (auto f : _factories) {</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;(&quot; &lt;&lt; f.first.first &lt;&lt; &quot;, &quot; &lt;&lt; f.first.second &lt;&lt;  &quot;) -&gt;&quot; &lt;&lt; f.second &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;}\n&quot; ;</span>
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;CompXRefs{\n&quot; ;</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :     for (auto f : _xref) {</span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;(&quot; &lt;&lt; f.first.first &lt;&lt; &quot;, &quot; &lt;&lt; f.first.second &lt;&lt;  &quot;) -&gt;&quot; &lt;&lt; f.second &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;}\n&quot; ;</span>
+<span class="lineNum">     210 </span>            : 
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     stream &lt;&lt; std::endl ;</span>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     213 </span>            : 
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 : void Registry::_setBootstrapConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pBSConfig) </span>
+<span class="lineNum">     215 </span>            : {
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :     if (_bootstrapConfig)</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Bootstrap Config already set.&quot;) ;</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :     _bootstrapConfig = std::move(pBSConfig) ;</span>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     220 </span>            : 
+<span class="lineNum">     221 </span><span class="lineCov">          1 : void Registry::_setAppConfig(std::unique_ptr&lt;const config::Config&gt;&amp; pAppConfig) </span>
+<span class="lineNum">     222 </span>            : {
+<span class="lineNum">     223 </span><span class="lineCov">          1 :     if (_appConfig)</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;App Config already set.&quot;) ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     _appConfig = std::move(pAppConfig) ;</span>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 : const config::Config&amp; Registry::bootConfig() const</span>
+<span class="lineNum">     229 </span>            : {
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :     if (!_bootstrapConfig)</span>
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Bootstrap Config is not set.&quot;) ;</span>
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     return *_bootstrapConfig ;</span>
+<a name="234"><span class="lineNum">     234 </span>            : }</a>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineCov">          3 : const config::Config&amp; Registry::appConfig() const </span>
+<span class="lineNum">     237 </span>            : {
+<span class="lineNum">     238 </span><span class="lineCov">          3 :     if (!_appConfig)</span>
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;App Config is not set.&quot;) ;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          3 :     return *_appConfig ;</span>
+<a name="241"><span class="lineNum">     241 </span>            : }</a>
+<span class="lineNum">     242 </span>            : 
+<span class="lineNum">     243 </span><span class="lineCov">          7 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type) </span>
+<span class="lineNum">     244 </span>            : {
+<span class="lineNum">     245 </span><span class="lineCov">          7 :     auto iter = _xref.lower_bound(CompFactoryKey(type, std::string())) ;</span>
+<span class="lineNum">     246 </span><span class="lineCov">          7 :     if (iter != _xref.end() &amp;&amp; iter-&gt;first.first == type)</span>
+<span class="lineNum">     247 </span><span class="lineCov">          6 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<a name="249"><span class="lineNum">     249 </span>            : }</a>
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span><span class="lineCov">          9 : util::Maybe&lt;Component&gt;  Registry::component(const TypeName&amp; type, const SubTypeName&amp; subtype) </span>
+<span class="lineNum">     252 </span>            : {
+<span class="lineNum">     253 </span><span class="lineCov">          9 :     auto iter = _xref.find(CompFactoryKey(type, subtype)) ;</span>
+<span class="lineNum">     254 </span><span class="lineCov">          9 :     if (iter != _xref.end())</span>
+<span class="lineNum">     255 </span><span class="lineCov">          7 :         return util::Maybe&lt;Component&gt;(component(iter-&gt;second)) ;</span>
+<span class="lineNum">     256 </span><span class="lineCov">          2 :     return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<a name="257"><span class="lineNum">     257 </span>            : }</a>
+<span class="lineNum">     258 </span>            : 
+<span class="lineNum">     259 </span><span class="lineCov">          4 : util::Maybe&lt;Component&gt; Registry::component(const Dependencies::Dependent&amp; dep)</span>
+<span class="lineNum">     260 </span>            : {
+<span class="lineNum">     261 </span><span class="lineCov">          4 :     if (dep.subtype == &quot;&quot;)</span>
+<span class="lineNum">     262 </span><span class="lineCov">          2 :         return component(dep.type) ;</span>
+<span class="lineNum">     263 </span>            :     else
+<span class="lineNum">     264 </span><span class="lineCov">          2 :         return component(dep.type, dep.subtype) ;</span>
+<a name="265"><span class="lineNum">     265 </span>            : }</a>
+<span class="lineNum">     266 </span>            : 
+<span class="lineNum">     267 </span><span class="lineCov">          3 : std::vector&lt;Component*&gt; Registry::satisfy(const Dependencies&amp; deps, CompId id) </span>
+<span class="lineNum">     268 </span>            : {
+<span class="lineNum">     269 </span><span class="lineCov">          3 :     std::vector&lt;Component*&gt; satisfaction ;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          4 :     for(const Dependencies::Dependent&amp; dep : deps) </span>
+<span class="lineNum">     271 </span>            :     {
+<span class="lineNum">     272 </span>            :         try
+<span class="lineNum">     273 </span>            :         {
+<span class="lineNum">     274 </span><span class="lineCov">          1 :             auto comp = component(dep) ;</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :             if (!comp &amp;&amp; dep.required()) {</span>
+<span class="lineNum">     276 </span>            :                 //Attempt to satsify by creating it on the fly    
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 comp.reset(createComponent(dep)) ;  </span>
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                 *comp ; //May trigger exception as required dep could not be satisfied</span>
+<span class="lineNum">     279 </span>            :             }
+<span class="lineNum">     280 </span><span class="lineCov">          1 :             satisfaction.push_back(comp.get()) ;</span>
+<span class="lineNum">     281 </span>            :         }
+<span class="lineNum">     282 </span><span class="lineNoCov">          0 :         catch (const std::runtime_error&amp; err) {</span>
+<span class="lineNum">     283 </span>            :             //&quot;I can't get no satisfaction
+<span class="lineNum">     284 </span>            :             // I can't get me no satisfaction
+<span class="lineNum">     285 </span>            :             // And I try and I try and I try t-t-t-t-try try
+<span class="lineNum">     286 </span>            :             // I can't get no I can't get me no&quot;
+<span class="lineNum">     287 </span>            :             //-- The Rolling Stones.
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :             std::string name = id &gt;= 0 ? component(id)-&gt;name() : std::string(&quot;Unknown&quot;) ;</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :             throw RUNTIME_ERROR(&quot;Dependency  [%s] for component [%s#%d] could not be satisfied&quot;,</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :                 dep.str().c_str(), name.c_str(), id) ;</span>
+<span class="lineNum">     291 </span>            :         }
+<a name="292"><span class="lineNum">     292 </span>            :     }</a>
+<span class="lineNum">     293 </span><span class="lineCov">          3 :     return satisfaction ;</span>
+<span class="lineNum">     294 </span><span class="lineCov">          3 : }</span>
 </pre>
       </td>
     </tr>

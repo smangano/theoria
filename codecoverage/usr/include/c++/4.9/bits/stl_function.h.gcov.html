@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">57.1 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -164,7 +164,7 @@
 <span class="lineNum">     102 </span>            :    *  This is one of the @link functors functor base classes@endlink.
 <a name="103"><span class="lineNum">     103 </span>            :    */</a>
 <span class="lineNum">     104 </span>            :   template&lt;typename _Arg, typename _Result&gt;
-<span class="lineNum">     105 </span><span class="lineCov">         28 :     struct unary_function</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     struct unary_function</span>
 <span class="lineNum">     106 </span>            :     {
 <span class="lineNum">     107 </span>            :       /// @c argument_type is the type of the argument
 <span class="lineNum">     108 </span>            :       typedef _Arg      argument_type;   
@@ -402,8 +402,8 @@
 <span class="lineNum">     340 </span>            :     struct equal_to : public binary_function&lt;_Tp, _Tp, bool&gt;
 <a name="341"><span class="lineNum">     341 </span>            :     {</a>
 <span class="lineNum">     342 </span>            :       bool
-<span class="lineNum">     343 </span><span class="lineCov">        192 :       operator()(const _Tp&amp; __x, const _Tp&amp; __y) const</span>
-<span class="lineNum">     344 </span><span class="lineCov">        192 :       { return __x == __y; }</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :       operator()(const _Tp&amp; __x, const _Tp&amp; __y) const</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :       { return __x == __y; }</span>
 <span class="lineNum">     345 </span>            :     };
 <span class="lineNum">     346 </span>            : 
 <span class="lineNum">     347 </span>            :   /// One of the @link comparison_functors comparison functors@endlink.
@@ -429,8 +429,8 @@
 <span class="lineNum">     367 </span>            :     struct less : public binary_function&lt;_Tp, _Tp, bool&gt;
 <a name="368"><span class="lineNum">     368 </span>            :     {</a>
 <span class="lineNum">     369 </span>            :       bool
-<span class="lineNum">     370 </span><span class="lineCov">        216 :       operator()(const _Tp&amp; __x, const _Tp&amp; __y) const</span>
-<span class="lineNum">     371 </span><span class="lineCov">        216 :       { return __x &lt; __y; }</span>
+<span class="lineNum">     370 </span><span class="lineCov">        321 :       operator()(const _Tp&amp; __x, const _Tp&amp; __y) const</span>
+<span class="lineNum">     371 </span><span class="lineCov">        321 :       { return __x &lt; __y; }</span>
 <span class="lineNum">     372 </span>            :     };
 <span class="lineNum">     373 </span>            : 
 <span class="lineNum">     374 </span>            :   /// One of the @link comparison_functors comparison functors@endlink.
@@ -906,14 +906,14 @@
 <span class="lineNum">     844 </span>            :       { return __x.first; }
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <span class="lineNum">     846 </span>            :       const typename _Pair::first_type&amp;
-<span class="lineNum">     847 </span><span class="lineCov">        255 :       operator()(const _Pair&amp; __x) const</span>
-<span class="lineNum">     848 </span><span class="lineCov">        255 :       { return __x.first; }</span>
+<span class="lineNum">     847 </span><span class="lineCov">        371 :       operator()(const _Pair&amp; __x) const</span>
+<span class="lineNum">     848 </span><span class="lineCov">        371 :       { return __x.first; }</span>
 <span class="lineNum">     849 </span>            : 
 <span class="lineNum">     850 </span>            : #if __cplusplus &gt;= 201103L
 <a name="851"><span class="lineNum">     851 </span>            :       template&lt;typename _Pair2&gt;</a>
 <span class="lineNum">     852 </span>            :         typename _Pair2::first_type&amp;
-<span class="lineNum">     853 </span><span class="lineCov">         41 :         operator()(_Pair2&amp; __x) const</span>
-<span class="lineNum">     854 </span><span class="lineCov">         41 :         { return __x.first; }</span>
+<span class="lineNum">     853 </span><span class="lineCov">         52 :         operator()(_Pair2&amp; __x) const</span>
+<span class="lineNum">     854 </span><span class="lineCov">         52 :         { return __x.first; }</span>
 <span class="lineNum">     855 </span>            : 
 <span class="lineNum">     856 </span>            :       template&lt;typename _Pair2&gt;
 <span class="lineNum">     857 </span>            :         const typename _Pair2::first_type&amp;

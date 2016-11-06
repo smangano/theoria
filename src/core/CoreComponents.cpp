@@ -1,7 +1,9 @@
 #include <theoria/core/CoreComponents.h>
+#include <theoria/core/AppConfigResolver.h>
 #include <theoria/config/Builder.h>
 #include <theoria/config/Config.h>
 #include <theoria/config/Resolve.h>
+#include <theoria/config/TOMLConfigBuilder.h>
 
 using namespace theoria;
 using namespace core;
@@ -41,7 +43,7 @@ Dependencies ConfigVarResolverBuilderComp::init(const config::Config& config)
  * The ConfigVarResolverBuilderComp job is to wire up ConfigBuilder to 
  * chain of resolvers. 
  */
-void ConfigVarResolverBuilderComp::finalize(std::vector<Component*>& dependencies) 
+void ConfigVarResolverBuilderComp::finalize(const std::vector<Component*>& dependencies) 
 {
     
     using ConfigBuilder = config::ConfigBuilder ;
@@ -54,6 +56,7 @@ void ConfigVarResolverBuilderComp::finalize(std::vector<Component*>& dependencie
         ConfigVariableResolver* resolver = dependencies[i]->cast<ConfigVariableResolver>(requestor) ;
         if (!prev) {
             builder->setResolver(resolver) ;
+            prev = resolver ;
         }
         else {
             prev->append(resolver);
@@ -69,5 +72,81 @@ void ConfigVarResolverBuilderComp::appLifeCycle(AppLifeCycle state)
     //itself
     if (state == AppLifeCycle::FINALIZED) 
         Registry::instance().release(this) ;
+}
+
+// 
+// EnvVarResolverComp
+//
+RegisterThis<EnvVarResolverComp> EnvVarResolverComp::rt("ConfigVariableResolver", "EnvVarResolver") ;
+
+Component* EnvVarResolverComp::factory(CompId id) 
+{
+    return new EnvVarResolverComp(id) ;
+}
+
+Component* EnvVarResolverComp::acquire(const std::type_info& typeInfo, void** dest)
+{
+    static config::EnvVarResolver resolver ;
+    *dest = nullptr ;
+    if (typeInfo == typeid(config::ConfigVariableResolver))
+        *dest = &resolver ;
+    return nullptr ;
+}
+
+// 
+// CmdLineResolverComp
+//
+RegisterThis<CmdLineResolverComp> CmdLineResolverComp::rt("ConfigVariableResolver", "CmdLineResolver") ;
+
+Component* CmdLineResolverComp::factory(CompId id) 
+{
+    return new CmdLineResolverComp(id) ;
+}
+
+Component* CmdLineResolverComp::acquire(const std::type_info& typeInfo, void** dest)
+{
+    static config::CmdLineResolver resolver ;
+    *dest = nullptr ;
+    if (typeInfo == typeid(config::ConfigVariableResolver))
+        *dest = &resolver ;
+    return nullptr ;
+}
+
+//
+// AppConfigResolverComp
+//
+RegisterThis<AppConfigResolverComp> AppConfigResolverComp::rt("ConfigVariableResolver", "AppConfigResolver") ;
+
+Component* AppConfigResolverComp::factory(CompId id) 
+{
+    return new AppConfigResolverComp(id) ;
+}
+
+Component* AppConfigResolverComp::acquire(const std::type_info& typeInfo, void** dest)
+{
+    static AppConfigResolver resolver ;
+    *dest = nullptr ;
+    if (typeInfo == typeid(config::ConfigVariableResolver))
+        *dest = &resolver ;
+    return nullptr ;
+}
+
+// 
+// TOMLConfigBuilderComp
+//
+RegisterThis<TOMLConfigBuilderComp> TOMLConfigBuilderComp::rt("ConfigBuilder", "TOMLConfigBuilder") ;
+
+Component* TOMLConfigBuilderComp::factory(CompId id) 
+{
+    return new TOMLConfigBuilderComp(id) ;
+}
+
+Component* TOMLConfigBuilderComp::acquire(const std::type_info& typeInfo, void** dest)
+{
+    static config::TOMLConfigBuilder builder ;
+    *dest = nullptr ;
+    if (typeInfo == typeid(config::ConfigBuilder))
+        *dest = &builder ;
+    return nullptr ;
 }
 

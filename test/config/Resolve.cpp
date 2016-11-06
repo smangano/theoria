@@ -28,7 +28,12 @@ public:
     }
 
     virtual void TearDown() {
-        delete _resolver ;
+        const ConfigVariableResolver* next = _resolver ;
+        while(next) {
+            auto temp = next ;
+            next = next->next() ;
+            delete temp ;
+        }
 
     }
 
@@ -57,7 +62,12 @@ class CmdLineResolverTest : public ResolveTestBase
     }
 
     virtual void TearDown() {
-        delete _resolver ;
+        const ConfigVariableResolver* next = _resolver ;
+        while(next) {
+            auto temp = next ;
+            next = next->next() ;
+            delete temp ;
+        }
         _cl.reset() ;
         CommandLine::reset() ;
     }
@@ -91,7 +101,12 @@ class ChainedResolverTest : public ResolveTestBase
     }
 
     virtual void TearDown() {
-        delete _resolver ;
+        const ConfigVariableResolver* next = _resolver ;
+        while(next) {
+            auto temp = next ;
+            next = next->next() ;
+            delete temp ;
+        }
         _cl.reset() ;
         CommandLine::reset() ;
     }

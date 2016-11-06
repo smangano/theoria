@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">79</td>
-            <td class="headerCovTableEntry">81</td>
-            <td class="headerCovTableEntryHi">97.5 %</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntryMed">86.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryMed">80.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -83,29 +83,29 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            :         using value_type = std::pair&lt;KEY,T&gt; ;
 <span class="lineNum">      23 </span>            : 
-<a name="24"><span class="lineNum">      24 </span>            :         ConstIter() {}</a>
+<span class="lineNum">      24 </span>            :         ConstIter() {}
 <span class="lineNum">      25 </span>            :         ConstIter(const ConstIter&amp; other) : _impl(other._impl), _end(other._end) {}
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          5 :         ConstIter(typename Impl::const_iterator iter, typename Impl::const_iterator end) : _impl(iter), _end(end) {} </span></a>
-<a name="27"><span class="lineNum">      27 </span>            :         const ConstIter&amp; operator =(const ConstIter&amp; other) {if (this != &amp;other) {_impl = other._impl; _end = other._end;} return *this ;}</a>
-<span class="lineNum">      28 </span><span class="lineCov">          1 :         bool operator == (const ConstIter&amp; other) const { return _impl == other._impl; }</span>
-<span class="lineNum">      29 </span><span class="lineCov">          4 :         bool operator != (const ConstIter&amp; other) const { return _impl != other._impl; }</span>
-<a name="30"><span class="lineNum">      30 </span>            : </a>
+<span class="lineNum">      26 </span>            :         ConstIter(typename Impl::const_iterator iter, typename Impl::const_iterator end) : _impl(iter), _end(end) {} 
+<span class="lineNum">      27 </span>            :         const ConstIter&amp; operator =(const ConstIter&amp; other) {if (this != &amp;other) {_impl = other._impl; _end = other._end;} return *this ;}
+<span class="lineNum">      28 </span>            :         bool operator == (const ConstIter&amp; other) const { return _impl == other._impl; }
+<span class="lineNum">      29 </span>            :         bool operator != (const ConstIter&amp; other) const { return _impl != other._impl; }
+<span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            :         const value_type&amp; operator *() const  {return **_impl; }
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          3 :         const value_type* operator -&gt;() const  {return *_impl;}</span></a>
+<span class="lineNum">      32 </span>            :         const value_type* operator -&gt;() const  {return *_impl;}
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          3 :         ConstIter operator++() {return ConstIter(advance(false), _end); }</span>
+<span class="lineNum">      34 </span>            :         ConstIter operator++() {return ConstIter(advance(false), _end); }
 <span class="lineNum">      35 </span>            :         ConstIter operator++(int) {return ConstIter(advance(true), _end); }
-<a name="36"><span class="lineNum">      36 </span>            :    </a>
+<span class="lineNum">      36 </span>            :    
 <span class="lineNum">      37 </span>            :     private:
-<span class="lineNum">      38 </span><span class="lineCov">          3 :         typename Impl::const_iterator advance(bool postfix) </span>
+<span class="lineNum">      38 </span>            :         typename Impl::const_iterator advance(bool postfix) 
 <span class="lineNum">      39 </span>            :         {
-<span class="lineNum">      40 </span><span class="lineCov">          3 :             auto temp = _impl ;</span>
-<span class="lineNum">      41 </span><span class="lineCov">          6 :             while (++_impl != _end) {</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :                 if (*_impl != nullptr)</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 :                     break ;</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :                 temp = _impl ;</span>
+<span class="lineNum">      40 </span>            :             auto temp = _impl ;
+<span class="lineNum">      41 </span>            :             while (++_impl != _end) {
+<span class="lineNum">      42 </span>            :                 if (*_impl != nullptr)
+<span class="lineNum">      43 </span>            :                     break ;
+<span class="lineNum">      44 </span>            :                 temp = _impl ;
 <span class="lineNum">      45 </span>            :             }
-<span class="lineNum">      46 </span><span class="lineCov">          3 :             return postfix ? temp : _impl ;</span>
+<span class="lineNum">      46 </span>            :             return postfix ? temp : _impl ;
 <span class="lineNum">      47 </span>            :         }
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            :         typename Impl::const_iterator _impl ;
@@ -119,35 +119,35 @@
 <span class="lineNum">      57 </span>            :         using value_type = std::pair&lt;KEY,T&gt; ;
 <span class="lineNum">      58 </span>            :  
 <a name="59"><span class="lineNum">      59 </span>            :         Iter() {}</a>
-<a name="60"><span class="lineNum">      60 </span>            :         Iter(const Iter&amp; other) : _impl(other._impl), _end(other._end) {}</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        100 :         Iter(typename Impl::iterator iter, typename Impl::iterator end) : _impl(iter), _end(end) {init();} </span></a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          4 :         const Iter&amp; operator =(const Iter&amp; other) {if (this != &amp;other) {_impl = other._impl; _end = other._end;} return *this ;}</span></a>
-<span class="lineNum">      63 </span><span class="lineCov">          7 :         bool operator == (const Iter&amp; other) const { return _impl == other._impl; }</span>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         62 :         bool operator != (const Iter&amp; other) const { return _impl != other._impl; }</span></a>
+<span class="lineNum">      60 </span>            :         Iter(const Iter&amp; other) : _impl(other._impl), _end(other._end) {}
+<span class="lineNum">      61 </span><span class="lineCov">         86 :         Iter(typename Impl::iterator iter, typename Impl::iterator end) : _impl(iter), _end(end) {init();} </span>
+<a name="62"><span class="lineNum">      62 </span>            :         const Iter&amp; operator =(const Iter&amp; other) {if (this != &amp;other) {_impl = other._impl; _end = other._end;} return *this ;}</a>
+<span class="lineNum">      63 </span>            :         bool operator == (const Iter&amp; other) const { return _impl == other._impl; }
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         60 :         bool operator != (const Iter&amp; other) const { return _impl != other._impl; }</span></a>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">         28 :         value_type&amp; operator *()  {return **_impl; }</span>
+<span class="lineNum">      66 </span><span class="lineCov">         34 :         value_type&amp; operator *()  {return **_impl; }</span>
 <span class="lineNum">      67 </span>            :         const value_type&amp; operator *() const  {return **_impl; }
-<a name="68"><span class="lineNum">      68 </span>            : </a>
+<span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            :         const value_type* operator -&gt;() const  {return *_impl;}
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">         11 :         value_type* operator -&gt;() {return *_impl;}</span></a>
+<a name="70"><span class="lineNum">      70 </span>            :         value_type* operator -&gt;() {return *_impl;}</a>
 <span class="lineNum">      71 </span>            : 
 <span class="lineNum">      72 </span><span class="lineCov">         34 :         Iter operator++() {return Iter(advance(false),_end ); }</span>
 <span class="lineNum">      73 </span>            :         Iter operator++(int) {return Iter(advance(true), _end); }
 <span class="lineNum">      74 </span>            :    
 <a name="75"><span class="lineNum">      75 </span>            :     private:</a>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">        100 :         void init()</span>
+<span class="lineNum">      77 </span><span class="lineCov">         86 :         void init()</span>
 <span class="lineNum">      78 </span>            :         {
-<span class="lineNum">      79 </span><span class="lineCov">        100 :             while(_impl != _end &amp;&amp; *_impl == nullptr) ++_impl ;</span>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">        100 :         }</span></a>
+<span class="lineNum">      79 </span><span class="lineCov">         86 :             while(_impl != _end &amp;&amp; *_impl == nullptr) ++_impl ;</span>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">         86 :         }</span></a>
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span><span class="lineCov">         34 :         typename Impl::iterator advance(bool postfix) </span>
 <span class="lineNum">      83 </span>            :         {
 <span class="lineNum">      84 </span><span class="lineCov">         34 :             auto temp = _impl ;</span>
-<span class="lineNum">      85 </span><span class="lineCov">        848 :             while (++_impl != _end) {</span>
-<span class="lineNum">      86 </span><span class="lineCov">        797 :                 if (*_impl != nullptr)</span>
-<span class="lineNum">      87 </span><span class="lineCov">         17 :                     break ;</span>
-<span class="lineNum">      88 </span><span class="lineCov">        780 :                 temp = _impl ;</span>
+<span class="lineNum">      85 </span><span class="lineCov">        852 :             while (++_impl != _end) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">        802 :                 if (*_impl != nullptr)</span>
+<span class="lineNum">      87 </span><span class="lineCov">         18 :                     break ;</span>
+<span class="lineNum">      88 </span><span class="lineCov">        784 :                 temp = _impl ;</span>
 <span class="lineNum">      89 </span>            :             }
 <span class="lineNum">      90 </span><span class="lineCov">         34 :             return postfix ? temp : _impl ;</span>
 <span class="lineNum">      91 </span>            :         }
@@ -173,58 +173,58 @@
 <span class="lineNum">     111 </span>            : private:
 <a name="112"><span class="lineNum">     112 </span>            : </a>
 <span class="lineNum">     113 </span>            :     inline
-<span class="lineNum">     114 </span><span class="lineCov">         33 :     void _growFor(const key_type&amp; k) </span>
+<span class="lineNum">     114 </span><span class="lineCov">         34 :     void _growFor(const key_type&amp; k) </span>
 <span class="lineNum">     115 </span>            :     {
-<span class="lineNum">     116 </span><span class="lineCov">         33 :         _impl.resize(k + 50) ;</span>
-<span class="lineNum">     117 </span><span class="lineCov">         33 :     }</span>
+<span class="lineNum">     116 </span><span class="lineCov">         34 :         _impl.resize(k + 50) ;</span>
+<span class="lineNum">     117 </span><span class="lineCov">         34 :     }</span>
 <span class="lineNum">     118 </span>            : 
 <a name="119"><span class="lineNum">     119 </span>            : public:</a>
 <span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span><span class="lineCov">         32 :     densemap() : _impl(), _sz(0) {}</span>
+<span class="lineNum">     121 </span><span class="lineCov">         26 :     densemap() : _impl(), _sz(0) {}</span>
 <span class="lineNum">     122 </span>            :     explicit densemap(int n) : _impl(n), _sz(0) {}
-<a name="123"><span class="lineNum">     123 </span>            :     explicit densemap(allocator_type alloc) : _impl(alloc), _sz(0) {}</a>
+<span class="lineNum">     123 </span>            :     explicit densemap(allocator_type alloc) : _impl(alloc), _sz(0) {}
 <span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span><span class="lineCov">         14 :     densemap(const densemap&amp; other) : _impl(other._impl.size()), _sz(other._sz) {_copy(other._impl);}</span>
+<span class="lineNum">     125 </span>            :     densemap(const densemap&amp; other) : _impl(other._impl.size()), _sz(other._sz) {_copy(other._impl);}
 <span class="lineNum">     126 </span>            :     densemap(const densemap&amp; other, allocator_type alloc) : _impl(other._impl.size, alloc), _sz(other._sz)
 <span class="lineNum">     127 </span>            :     {_copy(other._impl);}
-<a name="128"><span class="lineNum">     128 </span>            : </a>
+<span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            :     template &lt;typename InputIter&gt;
-<span class="lineNum">     130 </span><span class="lineCov">          7 :     densemap(InputIter first, InputIter last) </span>
-<span class="lineNum">     131 </span><span class="lineCov">          7 :     {</span>
-<span class="lineNum">     132 </span><span class="lineCov">          7 :         int i = 0 ;</span>
-<span class="lineNum">     133 </span><span class="lineCov">         28 :         for (auto iter=first; iter!=last; ++i,++iter)</span>
+<span class="lineNum">     130 </span>            :     densemap(InputIter first, InputIter last) 
+<span class="lineNum">     131 </span>            :     {
+<span class="lineNum">     132 </span>            :         int i = 0 ;
+<span class="lineNum">     133 </span>            :         for (auto iter=first; iter!=last; ++i,++iter)
 <span class="lineNum">     134 </span>            :         {   
-<span class="lineNum">     135 </span><span class="lineCov">         21 :             _impl.push_back(new std::pair&lt;KEY,T&gt;(i, *iter)) ;   </span>
+<span class="lineNum">     135 </span>            :             _impl.push_back(new std::pair&lt;KEY,T&gt;(i, *iter)) ;   
 <span class="lineNum">     136 </span>            :         }
-<span class="lineNum">     137 </span><span class="lineCov">          7 :         _sz = i ;   </span>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          7 :     }</span></a>
+<span class="lineNum">     137 </span>            :         _sz = i ;   
+<span class="lineNum">     138 </span>            :     }
 <span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span><span class="lineCov">          7 :     densemap(std::initializer_list&lt;value_type&gt; il, size_type n = 50) </span>
-<span class="lineNum">     141 </span><span class="lineCov">          7 :         : _impl(n)</span>
+<span class="lineNum">     140 </span>            :     densemap(std::initializer_list&lt;value_type&gt; il, size_type n = 50) 
+<span class="lineNum">     141 </span>            :         : _impl(n)
 <span class="lineNum">     142 </span>            :     {
-<span class="lineNum">     143 </span><span class="lineCov">         28 :         for (auto iter = il.begin(), end = il.end(); iter != end; ++iter)</span>
+<span class="lineNum">     143 </span>            :         for (auto iter = il.begin(), end = il.end(); iter != end; ++iter)
 <span class="lineNum">     144 </span>            :         {
-<span class="lineNum">     145 </span><span class="lineCov">         21 :             if (static_cast&lt;typename Impl::size_type&gt;(iter-&gt;first) &gt;= _impl.size())</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :                  _growFor(iter-&gt;first) ;</span>
-<span class="lineNum">     147 </span><span class="lineCov">         21 :             _impl[iter-&gt;first] = new value_type(iter-&gt;first, iter-&gt;second) ;</span>
+<span class="lineNum">     145 </span>            :             if (static_cast&lt;typename Impl::size_type&gt;(iter-&gt;first) &gt;= _impl.size())
+<span class="lineNum">     146 </span>            :                  _growFor(iter-&gt;first) ;
+<span class="lineNum">     147 </span>            :             _impl[iter-&gt;first] = new value_type(iter-&gt;first, iter-&gt;second) ;
 <span class="lineNum">     148 </span>            :         }
-<span class="lineNum">     149 </span><span class="lineCov">          7 :         _sz = il.size() ; </span>
-<span class="lineNum">     150 </span><span class="lineCov">          7 :     }</span>
+<span class="lineNum">     149 </span>            :         _sz = il.size() ; 
+<span class="lineNum">     150 </span>            :     }
 <span class="lineNum">     151 </span>            : 
 <a name="152"><span class="lineNum">     152 </span>            :     ~densemap() ;</a>
 <span class="lineNum">     153 </span>            : 
-<span class="lineNum">     154 </span><span class="lineCov">         32 :     mapped_type at(const key_type&amp; key) </span>
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     mapped_type at(const key_type&amp; key) </span>
 <span class="lineNum">     155 </span>            :     {
-<span class="lineNum">     156 </span><span class="lineCov">         32 :         auto p = _impl.at(key) ;</span>
-<span class="lineNum">     157 </span><span class="lineCov">         29 :         if (!p) {</span>
-<span class="lineNum">     158 </span><span class="lineCov">          5 :             throw std::out_of_range(str(key)) ;</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :         auto p = _impl.at(key) ;</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         if (!p) {</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :             throw std::out_of_range(str(key)) ;</span>
 <span class="lineNum">     159 </span>            :         }
-<span class="lineNum">     160 </span><span class="lineCov">         24 :         return p-&gt;second ;</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         return p-&gt;second ;</span>
 <a name="161"><span class="lineNum">     161 </span>            :     }    </a>
 <span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span><span class="lineCov">         28 :     iterator begin() noexcept </span>
+<span class="lineNum">     163 </span><span class="lineCov">         26 :     iterator begin() noexcept </span>
 <span class="lineNum">     164 </span>            :     {
-<span class="lineNum">     165 </span><span class="lineCov">         28 :         return Iter(_impl.begin(), _impl.end()) ;</span>
+<span class="lineNum">     165 </span><span class="lineCov">         26 :         return Iter(_impl.begin(), _impl.end()) ;</span>
 <span class="lineNum">     166 </span>            :     }
 <span class="lineNum">     167 </span>            : 
 <span class="lineNum">     168 </span>            :     const_iterator begin() const noexcept
@@ -232,9 +232,9 @@
 <span class="lineNum">     170 </span>            :         return  Iter(_impl.begin(), _impl.end()) ;
 <a name="171"><span class="lineNum">     171 </span>            :     }</a>
 <span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span><span class="lineCov">         33 :     iterator end() noexcept </span>
+<span class="lineNum">     173 </span><span class="lineCov">         26 :     iterator end() noexcept </span>
 <span class="lineNum">     174 </span>            :     {
-<span class="lineNum">     175 </span><span class="lineCov">         33 :         return Iter(_impl.end(), _impl.end()) ;</span>
+<span class="lineNum">     175 </span><span class="lineCov">         26 :         return Iter(_impl.end(), _impl.end()) ;</span>
 <span class="lineNum">     176 </span>            :     }
 <span class="lineNum">     177 </span>            : 
 <span class="lineNum">     178 </span>            :     const_iterator end() const noexcept
@@ -246,25 +246,25 @@
 <span class="lineNum">     184 </span>            : 
 <span class="lineNum">     185 </span>            :     size_type bucket_count() const noexcept {return static_cast&lt;size_type&gt;(_impl.size());}
 <span class="lineNum">     186 </span>            : 
-<a name="187"><span class="lineNum">     187 </span>            :     size_type bucket_size() const noexcept {return 1;}</a>
+<span class="lineNum">     187 </span>            :     size_type bucket_size() const noexcept {return 1;}
 <span class="lineNum">     188 </span>            : 
-<span class="lineNum">     189 </span><span class="lineCov">          1 :     const_iterator cbegin() const noexcept </span>
+<span class="lineNum">     189 </span>            :     const_iterator cbegin() const noexcept 
 <span class="lineNum">     190 </span>            :     {
-<span class="lineNum">     191 </span><span class="lineCov">          1 :         return  ConstIter(_impl.cbegin(), _impl.cend()) ;</span>
-<a name="192"><span class="lineNum">     192 </span>            :     }</a>
+<span class="lineNum">     191 </span>            :         return  ConstIter(_impl.cbegin(), _impl.cend()) ;
+<span class="lineNum">     192 </span>            :     }
 <span class="lineNum">     193 </span>            : 
-<span class="lineNum">     194 </span><span class="lineCov">          1 :     const_iterator cend() const noexcept </span>
+<span class="lineNum">     194 </span>            :     const_iterator cend() const noexcept 
 <span class="lineNum">     195 </span>            :     {
-<span class="lineNum">     196 </span><span class="lineCov">          1 :         return  ConstIter(_impl.cend(), _impl.cend()) ;</span>
+<span class="lineNum">     196 </span>            :         return  ConstIter(_impl.cend(), _impl.cend()) ;
 <span class="lineNum">     197 </span>            :     }
 <span class="lineNum">     198 </span>            :    
 <span class="lineNum">     199 </span>            :     void clear() noexcept {_impl.clear() ; _sz= 0 ;}
 <span class="lineNum">     200 </span>            : 
 <span class="lineNum">     201 </span>            :     size_t count(const key_type&amp; k) const noexcept { return k &lt; _sz &amp;&amp; _impl[k] != nullptr;}
 <span class="lineNum">     202 </span>            : 
-<a name="203"><span class="lineNum">     203 </span>            :     bool empty() const noexcept {return _sz == 0;}</a>
+<span class="lineNum">     203 </span>            :     bool empty() const noexcept {return _sz == 0;}
 <span class="lineNum">     204 </span>            : 
-<span class="lineNum">     205 </span><span class="lineCov">          5 :     iterator find(const key_type&amp; k) {return k &lt; _sz &amp;&amp; _impl[k] ? iterator(_impl.begin() + k, _impl.end()) : iterator(_impl.end(), _impl.end()) ; }</span>
+<span class="lineNum">     205 </span>            :     iterator find(const key_type&amp; k) {return k &lt; _sz &amp;&amp; _impl[k] ? iterator(_impl.begin() + k, _impl.end()) : iterator(_impl.end(), _impl.end()) ; }
 <span class="lineNum">     206 </span>            :     const_iterator find(const key_type&amp; k) const {return k &lt; _sz &amp;&amp; _impl[k] ? const_iterator(_impl.cbegin() + k, _impl.cend()) : const_iterator(_impl.cend(), _impl.cend()) ; }
 <span class="lineNum">     207 </span>            : 
 <span class="lineNum">     208 </span>            :     std::pair&lt;iterator, bool&gt; insert(value_type&amp; val) 
@@ -279,9 +279,9 @@
 <span class="lineNum">     217 </span>            :             _sz++ ;
 <span class="lineNum">     218 </span>            :         } 
 <span class="lineNum">     219 </span>            :         return std::make_pair(iterator(_impl.begin() + val.first, _impl.end()), stat) ;
-<a name="220"><span class="lineNum">     220 </span>            :     }</a>
+<span class="lineNum">     220 </span>            :     }
 <span class="lineNum">     221 </span>            :     
-<span class="lineNum">     222 </span><span class="lineCov">         10 :     size_t size() const noexcept {return _sz;}</span>
+<span class="lineNum">     222 </span>            :     size_t size() const noexcept {return _sz;}
 <span class="lineNum">     223 </span>            : 
 <span class="lineNum">     224 </span>            :     mapped_type&amp; operator[] (const key_type&amp; k)
 <span class="lineNum">     225 </span>            :     {
@@ -293,15 +293,15 @@
 <span class="lineNum">     231 </span>            :         return _impl[k]-&gt;second ;   
 <a name="232"><span class="lineNum">     232 </span>            :     }  </a>
 <span class="lineNum">     233 </span>            : 
-<span class="lineNum">     234 </span><span class="lineCov">         42 :     mapped_type&amp; operator[] (key_type&amp;&amp; k)</span>
+<span class="lineNum">     234 </span><span class="lineCov">         34 :     mapped_type&amp; operator[] (key_type&amp;&amp; k)</span>
 <span class="lineNum">     235 </span>            :     {
-<span class="lineNum">     236 </span><span class="lineCov">         42 :         if (static_cast&lt;size_type&gt;(k) &gt;= _sz) _growFor(k) ;</span>
-<span class="lineNum">     237 </span><span class="lineCov">         42 :         if (!_impl[k]) </span>
+<span class="lineNum">     236 </span><span class="lineCov">         34 :         if (static_cast&lt;size_type&gt;(k) &gt;= _sz) _growFor(k) ;</span>
+<span class="lineNum">     237 </span><span class="lineCov">         34 :         if (!_impl[k]) </span>
 <span class="lineNum">     238 </span>            :         {
-<span class="lineNum">     239 </span><span class="lineCov">         31 :              _impl[k] = new value_type(k, mapped_type()) ;</span>
-<span class="lineNum">     240 </span><span class="lineCov">         31 :              _sz++ ;</span>
+<span class="lineNum">     239 </span><span class="lineCov">         34 :              _impl[k] = new value_type(k, mapped_type()) ;</span>
+<span class="lineNum">     240 </span><span class="lineCov">         34 :              _sz++ ;</span>
 <span class="lineNum">     241 </span>            :         }
-<span class="lineNum">     242 </span><span class="lineCov">         42 :         return _impl[k]-&gt;second ;   </span>
+<span class="lineNum">     242 </span><span class="lineCov">         34 :         return _impl[k]-&gt;second ;   </span>
 <span class="lineNum">     243 </span>            :     }  
 <span class="lineNum">     244 </span>            : 
 <span class="lineNum">     245 </span>            :     key_type add(mapped_type value){
@@ -319,21 +319,21 @@
 <span class="lineNum">     257 </span>            : } ;
 <a name="258"><span class="lineNum">     258 </span>            : </a>
 <span class="lineNum">     259 </span>            : template &lt;typename KEY, typename T, typename Alloc&gt;
-<span class="lineNum">     260 </span><span class="lineCov">         59 : densemap&lt;KEY,T,Alloc&gt;::~densemap()</span>
+<span class="lineNum">     260 </span><span class="lineCov">         26 : densemap&lt;KEY,T,Alloc&gt;::~densemap()</span>
 <span class="lineNum">     261 </span>            : {
-<span class="lineNum">     262 </span><span class="lineCov">         59 :     const int size = _impl.size() ;</span>
-<span class="lineNum">     263 </span><span class="lineCov">       1644 :     for (int i=0; i&lt;size;++i)</span>
-<span class="lineNum">     264 </span><span class="lineCov">       1585 :         delete _impl[i] ;</span>
-<span class="lineNum">     265 </span><span class="lineCov">         59 : }</span>
-<a name="266"><span class="lineNum">     266 </span>            : </a>
+<span class="lineNum">     262 </span><span class="lineCov">         26 :     const int size = _impl.size() ;</span>
+<span class="lineNum">     263 </span><span class="lineCov">       1095 :     for (int i=0; i&lt;size;++i)</span>
+<span class="lineNum">     264 </span><span class="lineCov">       1069 :         delete _impl[i] ;</span>
+<span class="lineNum">     265 </span><span class="lineCov">         26 : }</span>
+<span class="lineNum">     266 </span>            : 
 <span class="lineNum">     267 </span>            : template &lt;typename KEY, typename T, typename Alloc&gt;
-<span class="lineNum">     268 </span><span class="lineCov">         14 : void densemap&lt;KEY,T,Alloc&gt;::_copy(const Impl&amp; other)</span>
+<span class="lineNum">     268 </span>            : void densemap&lt;KEY,T,Alloc&gt;::_copy(const Impl&amp; other)
 <span class="lineNum">     269 </span>            : {
-<span class="lineNum">     270 </span><span class="lineCov">         14 :     const int size = other.size() ;</span>
-<span class="lineNum">     271 </span><span class="lineCov">         35 :     for (int i=0; i&lt;size;++i)</span>
-<span class="lineNum">     272 </span><span class="lineCov">         21 :         if (other[i])</span>
-<span class="lineNum">     273 </span><span class="lineCov">         21 :             _impl[i] = new value_type(*other[i]);</span>
-<span class="lineNum">     274 </span><span class="lineCov">         14 : }</span>
+<span class="lineNum">     270 </span>            :     const int size = other.size() ;
+<span class="lineNum">     271 </span>            :     for (int i=0; i&lt;size;++i)
+<span class="lineNum">     272 </span>            :         if (other[i])
+<span class="lineNum">     273 </span>            :             _impl[i] = new value_type(*other[i]);
+<span class="lineNum">     274 </span>            : }
 <span class="lineNum">     275 </span>            : 
 <span class="lineNum">     276 </span>            : 
 <span class="lineNum">     277 </span>            : }} //theoria::util

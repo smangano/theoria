@@ -6,7 +6,7 @@
 
 namespace theoria { namespace config {
 
-/* Base configuration variable resolver.
+/** Base configuration variable resolver.
  * 
  * Theoria configuration files can contain variables of the form _$variable_ ('first variables') and
  * _$$variable_ ('last variables ') . Resolvers determine how a variable is bound to a value. 
@@ -43,7 +43,7 @@ public:
 
     virtual ~ConfigVariableResolver() ; 
 
-    /*
+    /**
      * Resolve variable
      * @var is the variable and it must begin with '$' character 
      *
@@ -51,7 +51,7 @@ public:
      */
     std::string resolve(const std::string& var) const ;
 
-    /*
+    /**
      * Resolve variable across all resolvers in the chain and return vector of all successful resolutions
      * in order of precedence as dictated by whether $'var or $$'var' was used.
      *
@@ -63,7 +63,7 @@ public:
      ResultVec resolveAll(const std::string& var) const ;
 
  
-    /*
+    /**
      * Abstract method that implements local resolution for a specific type of resolver. 
      * @name is the name of the variable (with no leading '$') 
      *
@@ -71,13 +71,15 @@ public:
      */
     virtual Result lookup(const std::string& name) const = 0 ;
 
-    /*
+    /**
      * Return name of the resolver
      */
     virtual std::string name() const = 0 ;
 
     
     void append(ConfigVariableResolver* resolver) ;
+
+    const ConfigVariableResolver* next() const { return _next; }
 
 private:
 
@@ -88,7 +90,7 @@ private:
     ConfigVariableResolver* _next ;
 } ;
 
-/*
+/**
  * Resolves variables from the os environment
  */
 class EnvVarResolver : public ConfigVariableResolver
@@ -100,7 +102,7 @@ public:
 
 } ;
 
-/*
+/**
  * Resolves variables set from the theroia command line
  */
 class CmdLineResolver : public ConfigVariableResolver

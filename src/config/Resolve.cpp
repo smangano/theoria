@@ -12,7 +12,7 @@ using Result = ConfigVariableResolver::Result ;
 
 ConfigVariableResolver::~ConfigVariableResolver() 
 {
-    delete _next ;
+    //delete _next ;
 }
 
 std::string ConfigVariableResolver::resolve(const std::string& var) const 

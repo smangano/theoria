@@ -98,7 +98,11 @@ public:
 
     const_iterator begin() const {return _deps.begin();}
     const_iterator end() const {return _deps.end();}
-    	
+  
+    int size() const { return _deps.size(); }
+
+    const Dependent& operator [] (int idx) const {return _deps[idx]; }
+
     friend bool operator==(const Dependencies& a, const Dependencies& b) ;
 
 private:

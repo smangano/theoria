@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntry">51</td>
             <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntryHi">92.3 %</td>
+            <td class="headerCovTableEntryMed">78.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">65</td>
-            <td class="headerCovTableEntry">77</td>
-            <td class="headerCovTableEntryMed">84.4 %</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryLo">59.1 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -558,7 +558,7 @@
 <span class="lineNum">     496 </span>            : 
 <a name="497"><span class="lineNum">     497 </span>            :   /// Derives from @c unary_function, as appropriate.</a>
 <span class="lineNum">     498 </span>            :   template&lt;typename _Res, typename _T1&gt;
-<span class="lineNum">     499 </span><span class="lineCov">         28 :     struct _Maybe_unary_or_binary_function&lt;_Res, _T1&gt;</span>
+<span class="lineNum">     499 </span><span class="lineNoCov">          0 :     struct _Maybe_unary_or_binary_function&lt;_Res, _T1&gt;</span>
 <span class="lineNum">     500 </span>            :     : std::unary_function&lt;_T1, _Res&gt; { };
 <span class="lineNum">     501 </span>            : 
 <span class="lineNum">     502 </span>            :   /// Derives from @c binary_function, as appropriate.
@@ -1825,18 +1825,18 @@
 <span class="lineNum">    1763 </span>            : 
 <a name="1764"><span class="lineNum">    1764 </span>            :   union _Any_data</a>
 <a name="1765"><span class="lineNum">    1765 </span>            :   {</a>
-<span class="lineNum">    1766 </span><span class="lineCov">         56 :     void*       _M_access()       { return &amp;_M_pod_data[0]; }</span>
-<span class="lineNum">    1767 </span><span class="lineCov">         43 :     const void* _M_access() const { return &amp;_M_pod_data[0]; }</span>
+<span class="lineNum">    1766 </span><span class="lineNoCov">          0 :     void*       _M_access()       { return &amp;_M_pod_data[0]; }</span>
+<span class="lineNum">    1767 </span><span class="lineNoCov">          0 :     const void* _M_access() const { return &amp;_M_pod_data[0]; }</span>
 <span class="lineNum">    1768 </span>            : 
 <a name="1769"><span class="lineNum">    1769 </span>            :     template&lt;typename _Tp&gt;</a>
 <span class="lineNum">    1770 </span>            :       _Tp&amp;
-<span class="lineNum">    1771 </span><span class="lineCov">         56 :       _M_access()</span>
-<span class="lineNum">    1772 </span><span class="lineCov">         56 :       { return *static_cast&lt;_Tp*&gt;(_M_access()); }</span>
+<span class="lineNum">    1771 </span><span class="lineCov">         20 :       _M_access()</span>
+<span class="lineNum">    1772 </span><span class="lineCov">         20 :       { return *static_cast&lt;_Tp*&gt;(_M_access()); }</span>
 <span class="lineNum">    1773 </span>            : 
 <a name="1774"><span class="lineNum">    1774 </span>            :     template&lt;typename _Tp&gt;</a>
 <span class="lineNum">    1775 </span>            :       const _Tp&amp;
-<span class="lineNum">    1776 </span><span class="lineCov">         43 :       _M_access() const</span>
-<span class="lineNum">    1777 </span><span class="lineCov">         43 :       { return *static_cast&lt;const _Tp*&gt;(_M_access()); }</span>
+<span class="lineNum">    1776 </span><span class="lineCov">         18 :       _M_access() const</span>
+<span class="lineNum">    1777 </span><span class="lineCov">         18 :       { return *static_cast&lt;const _Tp*&gt;(_M_access()); }</span>
 <span class="lineNum">    1778 </span>            : 
 <span class="lineNum">    1779 </span>            :     _Nocopy_types _M_unused;
 <span class="lineNum">    1780 </span>            :     char _M_pod_data[sizeof(_Nocopy_types)];
@@ -1916,12 +1916,12 @@
 <span class="lineNum">    1854 </span>            : 
 <a name="1855"><span class="lineNum">    1855 </span>            :         // Retrieve a pointer to the function object</a>
 <span class="lineNum">    1856 </span>            :         static _Functor*
-<span class="lineNum">    1857 </span><span class="lineCov">         28 :         _M_get_pointer(const _Any_data&amp; __source)</span>
+<span class="lineNum">    1857 </span><span class="lineCov">         13 :         _M_get_pointer(const _Any_data&amp; __source)</span>
 <span class="lineNum">    1858 </span>            :         {
 <span class="lineNum">    1859 </span>            :           const _Functor* __ptr =
-<span class="lineNum">    1860 </span><span class="lineCov">         28 :             __stored_locally? std::__addressof(__source._M_access&lt;_Functor&gt;())</span>
-<span class="lineNum">    1861 </span><span class="lineCov">         28 :             /* have stored a pointer */ : __source._M_access&lt;_Functor*&gt;();</span>
-<span class="lineNum">    1862 </span><span class="lineCov">         28 :           return const_cast&lt;_Functor*&gt;(__ptr);</span>
+<span class="lineNum">    1860 </span><span class="lineCov">         13 :             __stored_locally? std::__addressof(__source._M_access&lt;_Functor&gt;())</span>
+<span class="lineNum">    1861 </span><span class="lineCov">         13 :             /* have stored a pointer */ : __source._M_access&lt;_Functor*&gt;();</span>
+<span class="lineNum">    1862 </span><span class="lineCov">         13 :           return const_cast&lt;_Functor*&gt;(__ptr);</span>
 <span class="lineNum">    1863 </span>            :         }
 <span class="lineNum">    1864 </span>            : 
 <span class="lineNum">    1865 </span>            :         // Clone a location-invariant function object that fits within
@@ -1935,11 +1935,11 @@
 <span class="lineNum">    1873 </span>            :         // Clone a function object that is not location-invariant or
 <a name="1874"><span class="lineNum">    1874 </span>            :         // that cannot fit into an _Any_data structure.</a>
 <span class="lineNum">    1875 </span>            :         static void
-<span class="lineNum">    1876 </span><span class="lineCov">         15 :         _M_clone(_Any_data&amp; __dest, const _Any_data&amp; __source, false_type)</span>
+<span class="lineNum">    1876 </span><span class="lineCov">          5 :         _M_clone(_Any_data&amp; __dest, const _Any_data&amp; __source, false_type)</span>
 <span class="lineNum">    1877 </span>            :         {
-<span class="lineNum">    1878 </span><span class="lineCov">         15 :           __dest._M_access&lt;_Functor*&gt;() =</span>
-<span class="lineNum">    1879 </span><span class="lineCov">         15 :             new _Functor(*__source._M_access&lt;_Functor*&gt;());</span>
-<span class="lineNum">    1880 </span><span class="lineCov">         15 :         }</span>
+<span class="lineNum">    1878 </span><span class="lineCov">          5 :           __dest._M_access&lt;_Functor*&gt;() =</span>
+<span class="lineNum">    1879 </span><span class="lineCov">          5 :             new _Functor(*__source._M_access&lt;_Functor*&gt;());</span>
+<span class="lineNum">    1880 </span><span class="lineCov">          5 :         }</span>
 <span class="lineNum">    1881 </span>            : 
 <span class="lineNum">    1882 </span>            :         // Destroying a location-invariant object may still require
 <span class="lineNum">    1883 </span>            :         // destruction.
@@ -1951,17 +1951,17 @@
 <span class="lineNum">    1889 </span>            : 
 <a name="1890"><span class="lineNum">    1890 </span>            :         // Destroying an object located on the heap.</a>
 <span class="lineNum">    1891 </span>            :         static void
-<span class="lineNum">    1892 </span><span class="lineCov">         28 :         _M_destroy(_Any_data&amp; __victim, false_type)</span>
+<span class="lineNum">    1892 </span><span class="lineCov">         10 :         _M_destroy(_Any_data&amp; __victim, false_type)</span>
 <span class="lineNum">    1893 </span>            :         {
-<span class="lineNum">    1894 </span><span class="lineCov">         28 :           delete __victim._M_access&lt;_Functor*&gt;();</span>
-<span class="lineNum">    1895 </span><span class="lineCov">         28 :         }</span>
+<span class="lineNum">    1894 </span><span class="lineCov">         10 :           delete __victim._M_access&lt;_Functor*&gt;();</span>
+<span class="lineNum">    1895 </span><span class="lineCov">         10 :         }</span>
 <span class="lineNum">    1896 </span>            : 
 <a name="1897"><span class="lineNum">    1897 </span>            :       public:</a>
 <span class="lineNum">    1898 </span>            :         static bool
-<span class="lineNum">    1899 </span><span class="lineCov">         43 :         _M_manager(_Any_data&amp; __dest, const _Any_data&amp; __source,</span>
+<span class="lineNum">    1899 </span><span class="lineCov">         15 :         _M_manager(_Any_data&amp; __dest, const _Any_data&amp; __source,</span>
 <span class="lineNum">    1900 </span>            :                    _Manager_operation __op)
 <span class="lineNum">    1901 </span>            :         {
-<span class="lineNum">    1902 </span><span class="lineCov">         43 :           switch (__op)</span>
+<span class="lineNum">    1902 </span><span class="lineCov">         15 :           switch (__op)</span>
 <span class="lineNum">    1903 </span>            :             {
 <span class="lineNum">    1904 </span>            : #ifdef __GXX_RTTI
 <span class="lineNum">    1905 </span>            :             case __get_type_info:
@@ -1973,19 +1973,19 @@
 <span class="lineNum">    1911 </span><span class="lineNoCov">          0 :               break;</span>
 <span class="lineNum">    1912 </span>            : 
 <span class="lineNum">    1913 </span>            :             case __clone_functor:
-<span class="lineNum">    1914 </span><span class="lineCov">         15 :               _M_clone(__dest, __source, _Local_storage());</span>
-<span class="lineNum">    1915 </span><span class="lineCov">         15 :               break;</span>
+<span class="lineNum">    1914 </span><span class="lineCov">          5 :               _M_clone(__dest, __source, _Local_storage());</span>
+<span class="lineNum">    1915 </span><span class="lineCov">          5 :               break;</span>
 <span class="lineNum">    1916 </span>            : 
 <span class="lineNum">    1917 </span>            :             case __destroy_functor:
-<span class="lineNum">    1918 </span><span class="lineCov">         28 :               _M_destroy(__dest, _Local_storage());</span>
-<span class="lineNum">    1919 </span><span class="lineCov">         28 :               break;</span>
+<span class="lineNum">    1918 </span><span class="lineCov">         10 :               _M_destroy(__dest, _Local_storage());</span>
+<span class="lineNum">    1919 </span><span class="lineCov">         10 :               break;</span>
 <span class="lineNum">    1920 </span>            :             }
-<span class="lineNum">    1921 </span><span class="lineCov">         43 :           return false;</span>
+<span class="lineNum">    1921 </span><span class="lineCov">         15 :           return false;</span>
 <span class="lineNum">    1922 </span>            :         }
 <a name="1923"><span class="lineNum">    1923 </span>            : </a>
 <span class="lineNum">    1924 </span>            :         static void
-<span class="lineNum">    1925 </span><span class="lineCov">         13 :         _M_init_functor(_Any_data&amp; __functor, _Functor&amp;&amp; __f)</span>
-<span class="lineNum">    1926 </span><span class="lineCov">         13 :         { _M_init_functor(__functor, std::move(__f), _Local_storage()); }</span>
+<span class="lineNum">    1925 </span><span class="lineCov">          5 :         _M_init_functor(_Any_data&amp; __functor, _Functor&amp;&amp; __f)</span>
+<span class="lineNum">    1926 </span><span class="lineCov">          5 :         { _M_init_functor(__functor, std::move(__f), _Local_storage()); }</span>
 <span class="lineNum">    1927 </span>            : 
 <span class="lineNum">    1928 </span>            :         template&lt;typename _Signature&gt;
 <span class="lineNum">    1929 </span>            :           static bool
@@ -2004,8 +2004,8 @@
 <span class="lineNum">    1942 </span>            : 
 <a name="1943"><span class="lineNum">    1943 </span>            :         template&lt;typename _Tp&gt;</a>
 <span class="lineNum">    1944 </span>            :           static bool
-<span class="lineNum">    1945 </span><span class="lineCov">         13 :           _M_not_empty_function(const _Tp&amp;)</span>
-<span class="lineNum">    1946 </span><span class="lineCov">         13 :           { return true; }</span>
+<span class="lineNum">    1945 </span><span class="lineCov">          5 :           _M_not_empty_function(const _Tp&amp;)</span>
+<span class="lineNum">    1946 </span><span class="lineCov">          5 :           { return true; }</span>
 <span class="lineNum">    1947 </span>            : 
 <span class="lineNum">    1948 </span>            :       private:
 <span class="lineNum">    1949 </span>            :         static void
@@ -2013,8 +2013,8 @@
 <span class="lineNum">    1951 </span>            :         { new (__functor._M_access()) _Functor(std::move(__f)); }
 <a name="1952"><span class="lineNum">    1952 </span>            : </a>
 <span class="lineNum">    1953 </span>            :         static void
-<span class="lineNum">    1954 </span><span class="lineCov">         13 :         _M_init_functor(_Any_data&amp; __functor, _Functor&amp;&amp; __f, false_type)</span>
-<span class="lineNum">    1955 </span><span class="lineCov">         13 :         { __functor._M_access&lt;_Functor*&gt;() = new _Functor(std::move(__f)); }</span>
+<span class="lineNum">    1954 </span><span class="lineCov">          5 :         _M_init_functor(_Any_data&amp; __functor, _Functor&amp;&amp; __f, false_type)</span>
+<span class="lineNum">    1955 </span><span class="lineCov">          5 :         { __functor._M_access&lt;_Functor*&gt;() = new _Functor(std::move(__f)); }</span>
 <span class="lineNum">    1956 </span>            :       };
 <span class="lineNum">    1957 </span>            : 
 <span class="lineNum">    1958 </span>            :     template&lt;typename _Functor&gt;
@@ -2052,13 +2052,13 @@
 <span class="lineNum">    1990 </span>            :         }
 <a name="1991"><span class="lineNum">    1991 </span>            :       };</a>
 <span class="lineNum">    1992 </span>            : 
-<a name="1993"><span class="lineNum">    1993 </span><span class="lineCov">         28 :     _Function_base() : _M_manager(0) { }</span></a>
+<a name="1993"><span class="lineNum">    1993 </span><span class="lineNoCov">          0 :     _Function_base() : _M_manager(0) { }</span></a>
 <span class="lineNum">    1994 </span>            : 
-<span class="lineNum">    1995 </span><span class="lineCov">         28 :     ~_Function_base()</span>
+<span class="lineNum">    1995 </span><span class="lineNoCov">          0 :     ~_Function_base()</span>
 <span class="lineNum">    1996 </span>            :     {
-<span class="lineNum">    1997 </span><span class="lineCov">         28 :       if (_M_manager)</span>
-<span class="lineNum">    1998 </span><span class="lineCov">         28 :         _M_manager(_M_functor, _M_functor, __destroy_functor);</span>
-<span class="lineNum">    1999 </span><span class="lineCov">         28 :     }</span>
+<span class="lineNum">    1997 </span><span class="lineNoCov">          0 :       if (_M_manager)</span>
+<span class="lineNum">    1998 </span><span class="lineNoCov">          0 :         _M_manager(_M_functor, _M_functor, __destroy_functor);</span>
+<span class="lineNum">    1999 </span><span class="lineNoCov">          0 :     }</span>
 <a name="2000"><span class="lineNum">    2000 </span>            : </a>
 <span class="lineNum">    2001 </span>            : 
 <span class="lineNum">    2002 </span><span class="lineCov">         43 :     bool _M_empty() const { return !_M_manager; }</span>
@@ -2081,10 +2081,10 @@
 <span class="lineNum">    2019 </span>            : 
 <a name="2020"><span class="lineNum">    2020 </span>            :     public:</a>
 <span class="lineNum">    2021 </span>            :       static _Res
-<span class="lineNum">    2022 </span><span class="lineCov">         28 :       _M_invoke(const _Any_data&amp; __functor, _ArgTypes... __args)</span>
+<span class="lineNum">    2022 </span><span class="lineCov">         13 :       _M_invoke(const _Any_data&amp; __functor, _ArgTypes... __args)</span>
 <span class="lineNum">    2023 </span>            :       {
-<span class="lineNum">    2024 </span><span class="lineCov">         28 :         return (*_Base::_M_get_pointer(__functor))(</span>
-<span class="lineNum">    2025 </span><span class="lineCov">         56 :             std::forward&lt;_ArgTypes&gt;(__args)...);</span>
+<span class="lineNum">    2024 </span><span class="lineCov">         13 :         return (*_Base::_M_get_pointer(__functor))(</span>
+<span class="lineNum">    2025 </span><span class="lineCov">         26 :             std::forward&lt;_ArgTypes&gt;(__args)...);</span>
 <span class="lineNum">    2026 </span>            :       }
 <span class="lineNum">    2027 </span>            :     };
 <span class="lineNum">    2028 </span>            : 
@@ -2201,7 +2201,7 @@
 <span class="lineNum">    2139 </span>            :    *  Polymorphic function wrapper.
 <a name="2140"><span class="lineNum">    2140 </span>            :    */</a>
 <span class="lineNum">    2141 </span>            :   template&lt;typename _Res, typename... _ArgTypes&gt;
-<span class="lineNum">    2142 </span><span class="lineCov">         28 :     class function&lt;_Res(_ArgTypes...)&gt;</span>
+<span class="lineNum">    2142 </span><span class="lineNoCov">          0 :     class function&lt;_Res(_ArgTypes...)&gt;</span>
 <span class="lineNum">    2143 </span>            :     : public _Maybe_unary_or_binary_function&lt;_Res, _ArgTypes...&gt;,
 <span class="lineNum">    2144 </span>            :       private _Function_base
 <span class="lineNum">    2145 </span>            :     {
@@ -2477,19 +2477,19 @@
 <span class="lineNum">    2415 </span>            : 
 <a name="2416"><span class="lineNum">    2416 </span>            :   template&lt;typename _Res, typename... _ArgTypes&gt;</a>
 <span class="lineNum">    2417 </span>            :     template&lt;typename _Functor, typename&gt;
-<span class="lineNum">    2418 </span><span class="lineCov">         13 :       function&lt;_Res(_ArgTypes...)&gt;::</span>
+<span class="lineNum">    2418 </span><span class="lineCov">          5 :       function&lt;_Res(_ArgTypes...)&gt;::</span>
 <span class="lineNum">    2419 </span>            :       function(_Functor __f)
-<span class="lineNum">    2420 </span><span class="lineCov">         13 :       : _Function_base()</span>
+<span class="lineNum">    2420 </span><span class="lineCov">          5 :       : _Function_base()</span>
 <span class="lineNum">    2421 </span>            :       {
 <span class="lineNum">    2422 </span>            :         typedef _Function_handler&lt;_Signature_type, _Functor&gt; _My_handler;
 <span class="lineNum">    2423 </span>            : 
-<span class="lineNum">    2424 </span><span class="lineCov">         13 :         if (_My_handler::_M_not_empty_function(__f))</span>
+<span class="lineNum">    2424 </span><span class="lineCov">          5 :         if (_My_handler::_M_not_empty_function(__f))</span>
 <span class="lineNum">    2425 </span>            :           {
-<span class="lineNum">    2426 </span><span class="lineCov">         13 :             _My_handler::_M_init_functor(_M_functor, std::move(__f));</span>
-<span class="lineNum">    2427 </span><span class="lineCov">         13 :             _M_invoker = &amp;_My_handler::_M_invoke;</span>
-<span class="lineNum">    2428 </span><span class="lineCov">         13 :             _M_manager = &amp;_My_handler::_M_manager;</span>
+<span class="lineNum">    2426 </span><span class="lineCov">          5 :             _My_handler::_M_init_functor(_M_functor, std::move(__f));</span>
+<span class="lineNum">    2427 </span><span class="lineCov">          5 :             _M_invoker = &amp;_My_handler::_M_invoke;</span>
+<span class="lineNum">    2428 </span><span class="lineCov">          5 :             _M_manager = &amp;_My_handler::_M_manager;</span>
 <span class="lineNum">    2429 </span>            :           }
-<span class="lineNum">    2430 </span><span class="lineCov">         13 :       }</span>
+<span class="lineNum">    2430 </span><span class="lineCov">          5 :       }</span>
 <span class="lineNum">    2431 </span>            : 
 <a name="2432"><span class="lineNum">    2432 </span>            :   template&lt;typename _Res, typename... _ArgTypes&gt;</a>
 <span class="lineNum">    2433 </span>            :     _Res

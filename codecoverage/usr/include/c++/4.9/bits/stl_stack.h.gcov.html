@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">14</td>
-            <td class="headerCovTableEntry">14</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -156,9 +156,9 @@
 <span class="lineNum">      94 </span>            :    *  which is a typedef for the second Sequence parameter, and @c
 <span class="lineNum">      95 </span>            :    *  push, @c pop, and @c top, which are standard %stack/FILO
 <span class="lineNum">      96 </span>            :    *  operations.
-<a name="97"><span class="lineNum">      97 </span>            :   */</a>
+<span class="lineNum">      97 </span>            :   */
 <span class="lineNum">      98 </span>            :   template&lt;typename _Tp, typename _Sequence = deque&lt;_Tp&gt; &gt;
-<span class="lineNum">      99 </span><span class="lineCov">         17 :     class stack</span>
+<span class="lineNum">      99 </span>            :     class stack
 <span class="lineNum">     100 </span>            :     {
 <span class="lineNum">     101 </span>            :       // concept requirements
 <span class="lineNum">     102 </span>            :       typedef typename _Sequence::value_type _Sequence_value_type;
@@ -200,31 +200,31 @@
 <span class="lineNum">     138 </span>            :       : c(__c) { }
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <span class="lineNum">     140 </span>            :       explicit
-<span class="lineNum">     141 </span><span class="lineCov">         17 :       stack(_Sequence&amp;&amp; __c = _Sequence())</span>
-<span class="lineNum">     142 </span><span class="lineCov">         17 :       : c(std::move(__c)) { }</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :       stack(_Sequence&amp;&amp; __c = _Sequence())</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :       : c(std::move(__c)) { }</span>
 <span class="lineNum">     143 </span>            : #endif
 <span class="lineNum">     144 </span>            : 
 <span class="lineNum">     145 </span>            :       /**
 <span class="lineNum">     146 </span>            :        *  Returns true if the %stack is empty.
-<a name="147"><span class="lineNum">     147 </span>            :        */</a>
+<span class="lineNum">     147 </span>            :        */
 <span class="lineNum">     148 </span>            :       bool
-<span class="lineNum">     149 </span><span class="lineCov">         18 :       empty() const</span>
-<span class="lineNum">     150 </span><span class="lineCov">         18 :       { return c.empty(); }</span>
+<span class="lineNum">     149 </span>            :       empty() const
+<span class="lineNum">     150 </span>            :       { return c.empty(); }
 <span class="lineNum">     151 </span>            : 
-<a name="152"><span class="lineNum">     152 </span>            :       /**  Returns the number of elements in the %stack.  */</a>
+<span class="lineNum">     152 </span>            :       /**  Returns the number of elements in the %stack.  */
 <span class="lineNum">     153 </span>            :       size_type
-<span class="lineNum">     154 </span><span class="lineCov">         18 :       size() const</span>
-<span class="lineNum">     155 </span><span class="lineCov">         18 :       { return c.size(); }</span>
+<span class="lineNum">     154 </span>            :       size() const
+<span class="lineNum">     155 </span>            :       { return c.size(); }
 <span class="lineNum">     156 </span>            : 
 <span class="lineNum">     157 </span>            :       /**
 <span class="lineNum">     158 </span>            :        *  Returns a read/write reference to the data at the first
 <span class="lineNum">     159 </span>            :        *  element of the %stack.
-<a name="160"><span class="lineNum">     160 </span>            :        */</a>
+<span class="lineNum">     160 </span>            :        */
 <span class="lineNum">     161 </span>            :       reference
-<span class="lineNum">     162 </span><span class="lineCov">        192 :       top()</span>
+<span class="lineNum">     162 </span>            :       top()
 <span class="lineNum">     163 </span>            :       {
 <span class="lineNum">     164 </span>            :         __glibcxx_requires_nonempty();
-<span class="lineNum">     165 </span><span class="lineCov">        192 :         return c.back();</span>
+<span class="lineNum">     165 </span>            :         return c.back();
 <span class="lineNum">     166 </span>            :       }
 <span class="lineNum">     167 </span>            : 
 <span class="lineNum">     168 </span>            :       /**
@@ -251,10 +251,10 @@
 <span class="lineNum">     189 </span>            :       push(const value_type&amp; __x)
 <span class="lineNum">     190 </span>            :       { c.push_back(__x); }
 <span class="lineNum">     191 </span>            : 
-<a name="192"><span class="lineNum">     192 </span>            : #if __cplusplus &gt;= 201103L</a>
+<span class="lineNum">     192 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     193 </span>            :       void
-<span class="lineNum">     194 </span><span class="lineCov">         51 :       push(value_type&amp;&amp; __x)</span>
-<span class="lineNum">     195 </span><span class="lineCov">         51 :       { c.push_back(std::move(__x)); }</span>
+<span class="lineNum">     194 </span>            :       push(value_type&amp;&amp; __x)
+<span class="lineNum">     195 </span>            :       { c.push_back(std::move(__x)); }
 <span class="lineNum">     196 </span>            : 
 <span class="lineNum">     197 </span>            :       template&lt;typename... _Args&gt;
 <span class="lineNum">     198 </span>            :         void
@@ -272,13 +272,13 @@
 <span class="lineNum">     210 </span>            :        *  Note that no data is returned, and if the first element's
 <span class="lineNum">     211 </span>            :        *  data is needed, it should be retrieved before pop() is
 <span class="lineNum">     212 </span>            :        *  called.
-<a name="213"><span class="lineNum">     213 </span>            :        */</a>
+<span class="lineNum">     213 </span>            :        */
 <span class="lineNum">     214 </span>            :       void
-<span class="lineNum">     215 </span><span class="lineCov">         51 :       pop()</span>
+<span class="lineNum">     215 </span>            :       pop()
 <span class="lineNum">     216 </span>            :       {
 <span class="lineNum">     217 </span>            :         __glibcxx_requires_nonempty();
-<span class="lineNum">     218 </span><span class="lineCov">         51 :         c.pop_back();</span>
-<span class="lineNum">     219 </span><span class="lineCov">         51 :       }</span>
+<span class="lineNum">     218 </span>            :         c.pop_back();
+<span class="lineNum">     219 </span>            :       }
 <span class="lineNum">     220 </span>            : 
 <span class="lineNum">     221 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     222 </span>            :       void

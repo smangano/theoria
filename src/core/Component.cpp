@@ -15,7 +15,7 @@ Dependencies Component::init(const config::Config& config)
     return Dependencies();
 }
 
-void Component::finalize(std::vector<Component*>& dependencies) 
+void Component::finalize(const std::vector<Component*>& dependencies) 
 {
 }
 

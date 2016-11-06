@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -107,12 +107,12 @@
 <span class="lineNum">      45 </span>            :   // __atomic_add_dispatch
 <a name="46"><span class="lineNum">      46 </span>            : #ifdef _GLIBCXX_ATOMIC_BUILTINS</a>
 <span class="lineNum">      47 </span>            :   static inline _Atomic_word 
-<span class="lineNum">      48 </span><span class="lineCov">        693 :   __exchange_and_add(volatile _Atomic_word* __mem, int __val)</span>
-<span class="lineNum">      49 </span><span class="lineCov">        693 :   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }</span>
+<span class="lineNum">      48 </span><span class="lineCov">        935 :   __exchange_and_add(volatile _Atomic_word* __mem, int __val)</span>
+<span class="lineNum">      49 </span><span class="lineCov">        935 :   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }</span>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
 <span class="lineNum">      51 </span>            :   static inline void
-<span class="lineNum">      52 </span><span class="lineCov">        384 :   __atomic_add(volatile _Atomic_word* __mem, int __val)</span>
-<span class="lineNum">      53 </span><span class="lineCov">        384 :   { __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }</span>
+<span class="lineNum">      52 </span><span class="lineCov">        522 :   __atomic_add(volatile _Atomic_word* __mem, int __val)</span>
+<span class="lineNum">      53 </span><span class="lineCov">        522 :   { __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }</span>
 <span class="lineNum">      54 </span>            : #else
 <span class="lineNum">      55 </span>            :   _Atomic_word
 <span class="lineNum">      56 </span>            :   __attribute__ ((__unused__))
@@ -137,11 +137,11 @@
 <span class="lineNum">      75 </span>            : 
 <a name="76"><span class="lineNum">      76 </span>            :   static inline _Atomic_word</a>
 <span class="lineNum">      77 </span>            :   __attribute__ ((__unused__))
-<span class="lineNum">      78 </span><span class="lineCov">        693 :   __exchange_and_add_dispatch(_Atomic_word* __mem, int __val)</span>
+<span class="lineNum">      78 </span><span class="lineCov">        935 :   __exchange_and_add_dispatch(_Atomic_word* __mem, int __val)</span>
 <span class="lineNum">      79 </span>            :   {
 <span class="lineNum">      80 </span>            : #ifdef __GTHREADS
-<span class="lineNum">      81 </span><span class="lineCov">        693 :     if (__gthread_active_p())</span>
-<span class="lineNum">      82 </span><span class="lineCov">        693 :       return __exchange_and_add(__mem, __val);</span>
+<span class="lineNum">      81 </span><span class="lineCov">        935 :     if (__gthread_active_p())</span>
+<span class="lineNum">      82 </span><span class="lineCov">        935 :       return __exchange_and_add(__mem, __val);</span>
 <span class="lineNum">      83 </span>            :     else
 <span class="lineNum">      84 </span><span class="lineNoCov">          0 :       return __exchange_and_add_single(__mem, __val);</span>
 <span class="lineNum">      85 </span>            : #else
@@ -151,17 +151,17 @@
 <span class="lineNum">      89 </span>            : 
 <a name="90"><span class="lineNum">      90 </span>            :   static inline void</a>
 <span class="lineNum">      91 </span>            :   __attribute__ ((__unused__))
-<span class="lineNum">      92 </span><span class="lineCov">        384 :   __atomic_add_dispatch(_Atomic_word* __mem, int __val)</span>
+<span class="lineNum">      92 </span><span class="lineCov">        522 :   __atomic_add_dispatch(_Atomic_word* __mem, int __val)</span>
 <span class="lineNum">      93 </span>            :   {
 <span class="lineNum">      94 </span>            : #ifdef __GTHREADS
-<span class="lineNum">      95 </span><span class="lineCov">        384 :     if (__gthread_active_p())</span>
-<span class="lineNum">      96 </span><span class="lineCov">        384 :       __atomic_add(__mem, __val);</span>
+<span class="lineNum">      95 </span><span class="lineCov">        522 :     if (__gthread_active_p())</span>
+<span class="lineNum">      96 </span><span class="lineCov">        522 :       __atomic_add(__mem, __val);</span>
 <span class="lineNum">      97 </span>            :     else
 <span class="lineNum">      98 </span><span class="lineNoCov">          0 :       __atomic_add_single(__mem, __val);</span>
 <span class="lineNum">      99 </span>            : #else
 <span class="lineNum">     100 </span>            :     __atomic_add_single(__mem, __val);
 <span class="lineNum">     101 </span>            : #endif
-<span class="lineNum">     102 </span><span class="lineCov">        384 :   }</span>
+<span class="lineNum">     102 </span><span class="lineCov">        522 :   }</span>
 <span class="lineNum">     103 </span>            : 
 <span class="lineNum">     104 </span>            : _GLIBCXX_END_NAMESPACE_VERSION
 <span class="lineNum">     105 </span>            : } // namespace

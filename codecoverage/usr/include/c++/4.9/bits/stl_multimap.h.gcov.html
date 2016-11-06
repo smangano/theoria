@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -154,7 +154,7 @@
 <span class="lineNum">      92 </span>            :   template &lt;typename _Key, typename _Tp,
 <a name="93"><span class="lineNum">      93 </span>            :             typename _Compare = std::less&lt;_Key&gt;,</a>
 <span class="lineNum">      94 </span>            :             typename _Alloc = std::allocator&lt;std::pair&lt;const _Key, _Tp&gt; &gt; &gt;
-<span class="lineNum">      95 </span><span class="lineCov">         24 :     class multimap</span>
+<span class="lineNum">      95 </span><span class="lineCov">         26 :     class multimap</span>
 <span class="lineNum">      96 </span>            :     {
 <span class="lineNum">      97 </span>            :     public:
 <span class="lineNum">      98 </span>            :       typedef _Key                                          key_type;
@@ -219,8 +219,8 @@
 <span class="lineNum">     157 </span>            :       /**
 <a name="158"><span class="lineNum">     158 </span>            :        *  @brief  Default constructor creates no elements.</a>
 <span class="lineNum">     159 </span>            :        */
-<span class="lineNum">     160 </span><span class="lineCov">         24 :       multimap()</span>
-<span class="lineNum">     161 </span><span class="lineCov">         24 :       : _M_t() { }</span>
+<span class="lineNum">     160 </span><span class="lineCov">         26 :       multimap()</span>
+<span class="lineNum">     161 </span><span class="lineCov">         26 :       : _M_t() { }</span>
 <span class="lineNum">     162 </span>            : 
 <span class="lineNum">     163 </span>            :       /**
 <span class="lineNum">     164 </span>            :        *  @brief  Creates a %multimap with no elements.
@@ -604,8 +604,8 @@
 <span class="lineNum">     542 </span>            :                std::enable_if&lt;std::is_constructible&lt;value_type,
 <a name="543"><span class="lineNum">     543 </span>            :                                                     _Pair&amp;&amp;&gt;::value&gt;::type&gt;</a>
 <span class="lineNum">     544 </span>            :         iterator
-<span class="lineNum">     545 </span><span class="lineCov">         28 :         insert(_Pair&amp;&amp; __x)</span>
-<span class="lineNum">     546 </span><span class="lineCov">         28 :         { return _M_t._M_insert_equal(std::forward&lt;_Pair&gt;(__x)); }</span>
+<span class="lineNum">     545 </span><span class="lineCov">         34 :         insert(_Pair&amp;&amp; __x)</span>
+<span class="lineNum">     546 </span><span class="lineCov">         34 :         { return _M_t._M_insert_equal(std::forward&lt;_Pair&gt;(__x)); }</span>
 <span class="lineNum">     547 </span>            : #endif
 <span class="lineNum">     548 </span>            : 
 <span class="lineNum">     549 </span>            :       /**

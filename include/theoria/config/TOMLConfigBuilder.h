@@ -6,11 +6,12 @@
 
 namespace theoria { namespace config {
 
-class TOMLConfigBuilder : public ConfigParser, private ConfigBuilder 
+class TOMLConfigBuilder : public ConfigParser, public ConfigBuilder 
 {
 public:
 
     TOMLConfigBuilder() {};
+    ~TOMLConfigBuilder() ;
 
     std::unique_ptr<const Config> parse_file(const std::string& filename) override ; 
     std::unique_ptr<const Config> parse(std::istream& stream) override ; 

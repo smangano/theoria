@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-10-30 14:46:34</td>
+            <td class="headerValue">2016-11-06 14:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">39</td>
-            <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntryLo">73.6 %</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntryLo">66.0 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -171,57 +171,57 @@
 <span class="lineNum">     109 </span>            :   /// This is an overload used by find algos for the RAI case.
 <a name="110"><span class="lineNum">     110 </span>            :   template&lt;typename _RandomAccessIterator, typename _Predicate&gt;</a>
 <span class="lineNum">     111 </span>            :     _RandomAccessIterator
-<span class="lineNum">     112 </span><span class="lineCov">        556 :     __find_if(_RandomAccessIterator __first, _RandomAccessIterator __last,</span>
+<span class="lineNum">     112 </span><span class="lineCov">        584 :     __find_if(_RandomAccessIterator __first, _RandomAccessIterator __last,</span>
 <span class="lineNum">     113 </span>            :               _Predicate __pred, random_access_iterator_tag)
 <span class="lineNum">     114 </span>            :     {
 <span class="lineNum">     115 </span>            :       typename iterator_traits&lt;_RandomAccessIterator&gt;::difference_type
-<span class="lineNum">     116 </span><span class="lineCov">        556 :         __trip_count = (__last - __first) &gt;&gt; 2;</span>
+<span class="lineNum">     116 </span><span class="lineCov">        584 :         __trip_count = (__last - __first) &gt;&gt; 2;</span>
 <span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span><span class="lineCov">        951 :       for (; __trip_count &gt; 0; --__trip_count)</span>
+<span class="lineNum">     118 </span><span class="lineCov">       1331 :       for (; __trip_count &gt; 0; --__trip_count)</span>
 <span class="lineNum">     119 </span>            :         {
-<span class="lineNum">     120 </span><span class="lineCov">        509 :           if (__pred(__first))</span>
-<span class="lineNum">     121 </span><span class="lineCov">         36 :             return __first;</span>
-<span class="lineNum">     122 </span><span class="lineCov">        473 :           ++__first;</span>
+<span class="lineNum">     120 </span><span class="lineCov">        893 :           if (__pred(__first))</span>
+<span class="lineNum">     121 </span><span class="lineCov">         63 :             return __first;</span>
+<span class="lineNum">     122 </span><span class="lineCov">        830 :           ++__first;</span>
 <span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineCov">        473 :           if (__pred(__first))</span>
-<span class="lineNum">     125 </span><span class="lineCov">         50 :             return __first;</span>
-<span class="lineNum">     126 </span><span class="lineCov">        423 :           ++__first;</span>
+<span class="lineNum">     124 </span><span class="lineCov">        830 :           if (__pred(__first))</span>
+<span class="lineNum">     125 </span><span class="lineCov">         49 :             return __first;</span>
+<span class="lineNum">     126 </span><span class="lineCov">        781 :           ++__first;</span>
 <span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineCov">        423 :           if (__pred(__first))</span>
-<span class="lineNum">     129 </span><span class="lineCov">         11 :             return __first;</span>
-<span class="lineNum">     130 </span><span class="lineCov">        412 :           ++__first;</span>
+<span class="lineNum">     128 </span><span class="lineCov">        781 :           if (__pred(__first))</span>
+<span class="lineNum">     129 </span><span class="lineCov">         10 :             return __first;</span>
+<span class="lineNum">     130 </span><span class="lineCov">        771 :           ++__first;</span>
 <span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span><span class="lineCov">        412 :           if (__pred(__first))</span>
-<span class="lineNum">     133 </span><span class="lineCov">         17 :             return __first;</span>
-<span class="lineNum">     134 </span><span class="lineCov">        395 :           ++__first;</span>
+<span class="lineNum">     132 </span><span class="lineCov">        771 :           if (__pred(__first))</span>
+<span class="lineNum">     133 </span><span class="lineCov">         24 :             return __first;</span>
+<span class="lineNum">     134 </span><span class="lineCov">        747 :           ++__first;</span>
 <span class="lineNum">     135 </span>            :         }
 <span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span><span class="lineCov">        442 :       switch (__last - __first)</span>
+<span class="lineNum">     137 </span><span class="lineCov">        438 :       switch (__last - __first)</span>
 <span class="lineNum">     138 </span>            :         {
 <span class="lineNum">     139 </span>            :         case 3:
-<span class="lineNum">     140 </span><span class="lineCov">         79 :           if (__pred(__first))</span>
-<span class="lineNum">     141 </span><span class="lineCov">         10 :             return __first;</span>
-<span class="lineNum">     142 </span><span class="lineCov">         69 :           ++__first;</span>
+<span class="lineNum">     140 </span><span class="lineCov">         69 :           if (__pred(__first))</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :             return __first;</span>
+<span class="lineNum">     142 </span><span class="lineCov">         68 :           ++__first;</span>
 <span class="lineNum">     143 </span>            :         case 2:
-<span class="lineNum">     144 </span><span class="lineCov">        137 :           if (__pred(__first))</span>
-<span class="lineNum">     145 </span><span class="lineCov">         22 :             return __first;</span>
-<span class="lineNum">     146 </span><span class="lineCov">        115 :           ++__first;</span>
+<span class="lineNum">     144 </span><span class="lineCov">        106 :           if (__pred(__first))</span>
+<span class="lineNum">     145 </span><span class="lineCov">          3 :             return __first;</span>
+<span class="lineNum">     146 </span><span class="lineCov">        103 :           ++__first;</span>
 <span class="lineNum">     147 </span>            :         case 1:
-<span class="lineNum">     148 </span><span class="lineCov">        271 :           if (__pred(__first))</span>
-<span class="lineNum">     149 </span><span class="lineCov">         28 :             return __first;</span>
-<span class="lineNum">     150 </span><span class="lineCov">        243 :           ++__first;</span>
+<span class="lineNum">     148 </span><span class="lineCov">        241 :           if (__pred(__first))</span>
+<span class="lineNum">     149 </span><span class="lineCov">         10 :             return __first;</span>
+<span class="lineNum">     150 </span><span class="lineCov">        231 :           ++__first;</span>
 <span class="lineNum">     151 </span>            :         case 0:
 <span class="lineNum">     152 </span>            :         default:
-<span class="lineNum">     153 </span><span class="lineCov">        382 :           return __last;</span>
+<span class="lineNum">     153 </span><span class="lineCov">        424 :           return __last;</span>
 <span class="lineNum">     154 </span>            :         }
 <span class="lineNum">     155 </span>            :     }
 <span class="lineNum">     156 </span>            : 
 <a name="157"><span class="lineNum">     157 </span>            :   template&lt;typename _Iterator, typename _Predicate&gt;</a>
 <span class="lineNum">     158 </span>            :     inline _Iterator
-<span class="lineNum">     159 </span><span class="lineCov">        557 :     __find_if(_Iterator __first, _Iterator __last, _Predicate __pred)</span>
+<span class="lineNum">     159 </span><span class="lineCov">        585 :     __find_if(_Iterator __first, _Iterator __last, _Predicate __pred)</span>
 <span class="lineNum">     160 </span>            :     {
 <span class="lineNum">     161 </span>            :       return __find_if(__first, __last, __pred,
-<span class="lineNum">     162 </span><span class="lineCov">        557 :                        std::__iterator_category(__first));</span>
+<span class="lineNum">     162 </span><span class="lineCov">        585 :                        std::__iterator_category(__first));</span>
 <span class="lineNum">     163 </span>            :     }
 <span class="lineNum">     164 </span>            : 
 <span class="lineNum">     165 </span>            :   /// Provided for stable_partition to use.
@@ -3829,7 +3829,7 @@
 <span class="lineNum">    3767 </span>            :   */
 <a name="3768"><span class="lineNum">    3768 </span>            :   template&lt;typename _InputIterator, typename _Tp&gt;</a>
 <span class="lineNum">    3769 </span>            :     inline _InputIterator
-<span class="lineNum">    3770 </span><span class="lineCov">         93 :     find(_InputIterator __first, _InputIterator __last,</span>
+<span class="lineNum">    3770 </span><span class="lineCov">        125 :     find(_InputIterator __first, _InputIterator __last,</span>
 <span class="lineNum">    3771 </span>            :          const _Tp&amp; __val)
 <span class="lineNum">    3772 </span>            :     {
 <span class="lineNum">    3773 </span>            :       // concept requirements
@@ -3838,7 +3838,7 @@
 <span class="lineNum">    3776 </span>            :                 typename iterator_traits&lt;_InputIterator&gt;::value_type, _Tp&gt;)
 <span class="lineNum">    3777 </span>            :       __glibcxx_requires_valid_range(__first, __last);
 <span class="lineNum">    3778 </span>            :       return std::__find_if(__first, __last,
-<span class="lineNum">    3779 </span><span class="lineCov">         93 :                             __gnu_cxx::__ops::__iter_equals_val(__val));</span>
+<span class="lineNum">    3779 </span><span class="lineCov">        125 :                             __gnu_cxx::__ops::__iter_equals_val(__val));</span>
 <span class="lineNum">    3780 </span>            :     }
 <span class="lineNum">    3781 </span>            : 
 <span class="lineNum">    3782 </span>            :   /**
@@ -3853,7 +3853,7 @@
 <span class="lineNum">    3791 </span>            :   */
 <a name="3792"><span class="lineNum">    3792 </span>            :   template&lt;typename _InputIterator, typename _Predicate&gt;</a>
 <span class="lineNum">    3793 </span>            :     inline _InputIterator
-<span class="lineNum">    3794 </span><span class="lineCov">        453 :     find_if(_InputIterator __first, _InputIterator __last,</span>
+<span class="lineNum">    3794 </span><span class="lineCov">        449 :     find_if(_InputIterator __first, _InputIterator __last,</span>
 <span class="lineNum">    3795 </span>            :             _Predicate __pred)
 <span class="lineNum">    3796 </span>            :     {
 <span class="lineNum">    3797 </span>            :       // concept requirements
@@ -3863,7 +3863,7 @@
 <span class="lineNum">    3801 </span>            :       __glibcxx_requires_valid_range(__first, __last);
 <span class="lineNum">    3802 </span>            : 
 <span class="lineNum">    3803 </span>            :       return std::__find_if(__first, __last,
-<span class="lineNum">    3804 </span><span class="lineCov">        453 :                             __gnu_cxx::__ops::__pred_iter(__pred));</span>
+<span class="lineNum">    3804 </span><span class="lineCov">        449 :                             __gnu_cxx::__ops::__pred_iter(__pred));</span>
 <span class="lineNum">    3805 </span>            :     }
 <span class="lineNum">    3806 </span>            : 
 <span class="lineNum">    3807 </span>            :   /**
