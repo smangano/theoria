@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">21</td>
-            <td class="headerCovTableEntryLo">4.8 %</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntryLo">72.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-06 17:28:32</td>
+            <td class="headerValue">2016-11-07 04:22:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">28.6 %</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryMed">80.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -66,54 +66,160 @@
 <span class="lineNum">       4 </span>            : #include &lt;theoria/config/Config.h&gt;
 <span class="lineNum">       5 </span>            : 
 <span class="lineNum">       6 </span>            : #include &lt;theoria/error.h&gt;
-<span class="lineNum">       7 </span>            : 
-<span class="lineNum">       8 </span>            : #include &lt;iostream&gt;
-<span class="lineNum">       9 </span>            : #include &lt;cstdlib&gt;
-<span class="lineNum">      10 </span>            : 
-<span class="lineNum">      11 </span>            : using namespace theoria;
-<a name="12"><span class="lineNum">      12 </span>            : using namespace core;</a>
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 : Theoria::Theoria()</span>
-<span class="lineNum">      15 </span>            : {
-<a name="16"><span class="lineNum">      16 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 : void Theoria::help()</span>
-<span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     std::cout &lt;&lt; &quot;TODO: help system&quot; &lt;&lt; std::endl ;</span>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : void Theoria::show_config(bool exit) </span>
-<span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     Registry::instance().appConfig().toTOML(std::cout) ;</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     if (exit)</span>
-<span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         std::cout &lt;&lt; &quot;\nExiting theoria due to user option&quot; &lt;&lt; std::endl ;</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         std::exit(0) ;</span>
-<span class="lineNum">      30 </span>            :     }
-<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">       7 </span>            : #include &lt;theoria/options.h&gt;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : #include &lt;iomanip&gt;
+<span class="lineNum">      10 </span>            : #include &lt;cstdlib&gt;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : using namespace theoria;
+<span class="lineNum">      13 </span>            : using namespace core;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : namespace theoria { 
+<span class="lineNum">      16 </span>            :     /*
+<span class="lineNum">      17 </span>            :      * Format of these constant arrays
+<span class="lineNum">      18 </span>            :      *
+<span class="lineNum">      19 </span>            :      * const char * const OPT = {&quot;name&quot;, &quot;help string&quot;, &quot;optarg&quot;, &quot;type&quot;, &quot;example&quot;, &quot;choices&quot;} 
+<span class="lineNum">      20 </span>            :      * where:
+<span class="lineNum">      21 </span>            :      *          name - name of the --option
+<span class="lineNum">      22 </span>            :      *          help string - displayed when user requests help
+<span class="lineNum">      23 </span>            :      *          type - switch (option takes no args), string, int, double, date (YYYY-MM-DD) , datetime (YYYY-MM-DD HH:MM:SS), interval with units (e.g. 10.5h, 1s, 100ms, 700us)
+<span class="lineNum">      24 </span>            :      */
+<span class="lineNum">      25 </span>            :      extern const OPTS_TYPE ALL_OPTIONS[] = {
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            :         {&quot;bootstrap_path&quot;,    &quot;Path to bootstrap.ini&quot;, &quot;path&quot;, &quot;string&quot;, &quot;--bootstrap_path /home/jsmith/theoria/boot.toml&quot;, &quot;&quot;}, 
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            :         {&quot;default_log_level&quot;, &quot;Set the default logging level&quot;, &quot;level&quot;, &quot;string&quot;, &quot;--default_log_level DEBUG&quot;, &quot;DEBUG,INFO, WARN, ERROR, CRITICAL&quot; }, 
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            :         {&quot;help&quot;,              &quot;Display help for theoria or a particular option&quot;, &quot;[option]&quot;,  &quot;string&quot;, &quot;--help or -help option&quot;, &quot;&quot;}, 
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : void Theoria::init()</span>
-<span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span>            :     Bootstrap bs ;    
+<span class="lineNum">      33 </span>            :         {&quot;init_only&quot;,         &quot;Used to test changes to bootstrap.toml&quot;, &quot;&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;},
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            :         {&quot;pause_after_app_init&quot;, &quot;Intializes all app components and pauses waiting for operator iteraction&quot;, &quot;&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;}, 
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span>            :     try {
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         auto bsConfig = bs.loadConfig() ;</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :         bs.boot(*bsConfig) ;</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :         Registry::instance()._setBootstrapConfig(bsConfig) ;</span>
-<span class="lineNum">      41 </span>            :     }
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     catch (const std::runtime_error&amp; err) {</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         std::cerr &lt;&lt; err.what() &lt;&lt; std::endl ; </span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         std::exit(ERR_BOOTSTRAP) ;</span>
-<span class="lineNum">      45 </span>            :     }
+<span class="lineNum">      37 </span>            :         {&quot;pause_after_app_finalize&quot;, &quot;Finalizes all app components and pauses waiting for operator interaction&quot;, &quot;&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;}, 
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            :         {&quot;show_config&quot;, &quot;Displays config file after variable resolution&quot;, &quot;&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;}, 
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            :         {&quot;show_config_only&quot;, &quot;Exits after displaying config file after variable resolution&quot;, &quot;&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;}, 
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            :         {&quot;ws_port&quot;, &quot;Start web service for ineractivity and use this port&quot;, &quot;port&quot;, &quot;int&quot;, &quot;-ws_port 8900&quot;, &quot;&quot;},  
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            :         } ;
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            :     //At this point registry should have a ConfigParser Component
-<span class="lineNum">      48 </span>            : 
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span></a>
-<span class="lineNum">      50 </span>            : 
-<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 : void Theoria::run()</span></a>
-<span class="lineNum">      52 </span>            : {
-<span class="lineNum">      53 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      47 </span>            :     const char * const * OPTION_BOOTSTRAP_CONFIG_PATH = ALL_OPTIONS[0];
+<span class="lineNum">      48 </span>            :     const char * const * OPTION_DEFAULT_LOG_LEVEL = ALL_OPTIONS[1] ;
+<span class="lineNum">      49 </span>            :     const char * const * OPTION_HELP = ALL_OPTIONS[2] ;
+<span class="lineNum">      50 </span>            :     const char * const * OPTION_INIT_ONLY = ALL_OPTIONS[3] ;
+<span class="lineNum">      51 </span>            :     const char * const * OPTION_PAUSE_AFTER_APP_INIT = ALL_OPTIONS[4] ;
+<span class="lineNum">      52 </span>            :     const char * const * OPTION_PAUSE_AFTER_APP_FINALIZE = ALL_OPTIONS[5];
+<span class="lineNum">      53 </span>            :     const char * const * OPTION_SHOW_CONFIG  = ALL_OPTIONS[6];
+<span class="lineNum">      54 </span>            :     const char * const * OPTION_SHOW_CONFIG_ONLY = ALL_OPTIONS[7];
+<span class="lineNum">      55 </span>            :     const char * const * WEB_SERVICE_PORT = ALL_OPTIONS[8] ;
+<span class="lineNum">      56 </span>            : }
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : namespace {
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : struct Options
+<span class="lineNum">      61 </span>            : {
+<a name="62"><span class="lineNum">      62 </span>            : } ;    </a>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span><span class="lineCov">          1 : std::ostream&amp; operator &lt;&lt; (std::ostream&amp; os, const Options&amp; options) </span>
+<span class="lineNum">      65 </span>            : {
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     int i = 0 ;</span>
+<span class="lineNum">      67 </span><span class="lineCov">         10 :     for (auto opt : theoria::ALL_OPTIONS) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">         18 :         std::string buf1, buf2 ;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          9 :         os &lt;&lt; &quot;[&quot; &lt;&lt; OPT(buf1, opt) &lt;&lt; OPT_ARG(buf2,opt) &lt;&lt; &quot;] &quot; ;  </span>
+<span class="lineNum">      70 </span><span class="lineCov">          9 :         i++ ;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          9 :         if (i % 3 == 0) </span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 :             os &lt;&lt; &quot;\n               &quot; ;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     return os ;</span>
+<span class="lineNum">      75 </span>            : }
+<span class="lineNum">      76 </span>            : 
+<a name="77"><span class="lineNum">      77 </span>            : struct Arg</a>
+<span class="lineNum">      78 </span>            : {
+<span class="lineNum">      79 </span><span class="lineCov">         10 :     Arg(const char * const *opt_) : opt(opt_) {}</span>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            :     const char * const *opt ;
+<a name="82"><span class="lineNum">      82 </span>            : };</a>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineCov">         10 : std::ostream&amp; operator &lt;&lt; (std::ostream&amp; os, const  Arg&amp; arg)</span>
+<span class="lineNum">      85 </span>            : {
+<span class="lineNum">      86 </span><span class="lineCov">         10 :     if (arg.opt[OPTS_IDX_ARG] != std::string())</span>
+<span class="lineNum">      87 </span><span class="lineCov">          5 :         os &lt;&lt; &quot;&lt;&quot; &lt;&lt; arg.opt[OPTS_IDX_ARG] &lt;&lt; &quot;&gt;&quot; ;</span>
+<span class="lineNum">      88 </span><span class="lineCov">         10 :     return os ;</span>
+<span class="lineNum">      89 </span>            : }
+<span class="lineNum">      90 </span>            : 
+<a name="91"><span class="lineNum">      91 </span>            : } //namespace</a>
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span><span class="lineCov">          3 : Theoria::Theoria()</span>
+<span class="lineNum">      94 </span>            : {
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          3 : }</span></a>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">          1 : void Theoria::help(std::ostream&amp; out)</span>
+<span class="lineNum">      98 </span>            : {
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     out &lt;&lt; &quot;usage: theoria &quot; &lt;&lt; Options() &lt;&lt; &quot;appconfigName &quot; &lt;&lt; &quot;[-- [user settings]]\n&quot; &lt;&lt; std::endl ;</span>
+<span class="lineNum">     100 </span><span class="lineCov">         10 :     for (auto opt : ALL_OPTIONS) </span>
+<span class="lineNum">     101 </span><span class="lineCov">          9 :         help(opt, out) ;</span>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span><span class="lineCov">          2 : void Theoria::help(const std::string&amp; optionName, std::ostream&amp; out) </span>
+<span class="lineNum">     105 </span>            : {
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          2 :     int nopts = sizeof(ALL_OPTIONS)/sizeof(ALL_OPTIONS[0]) ;</span></a>
+<span class="lineNum">     107 </span>            :     auto iter = std::find_if(&amp;ALL_OPTIONS[0], &amp;ALL_OPTIONS[nopts], 
+<span class="lineNum">     108 </span><span class="lineCov">         32 :                     [optionName](const char * const * opt) {return optionName == opt[OPTS_IDX_NAME];}) ;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 :     if (iter == &amp;ALL_OPTIONS[nopts]) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :         out &lt;&lt; &quot;'&quot; &lt;&lt; optionName &lt;&lt; &quot;' is not a valid theoria option&quot; &lt;&lt; std::endl ;</span>
+<span class="lineNum">     111 </span>            :     }
+<span class="lineNum">     112 </span>            :     else
+<span class="lineNum">     113 </span>            :     {
+<span class="lineNum">     114 </span><span class="lineCov">          1 :         help(*iter, out) ;</span>
+<span class="lineNum">     115 </span>            :     }
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          2 : }</span></a>
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span><span class="lineCov">         10 : void Theoria::help(const char * const *opt, std::ostream&amp; out) </span>
+<span class="lineNum">     119 </span>            : {
+<span class="lineNum">     120 </span><span class="lineCov">         10 :     out &lt;&lt; opt[OPTS_IDX_NAME] &lt;&lt; &quot; &quot; &lt;&lt; Arg(opt) &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">         10 :     out &lt;&lt; std::setw(4) &lt;&lt; std::setiosflags(std::ios::left) &lt;&lt; opt[OPTS_IDX_HELP] &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     122 </span><span class="lineCov">         10 :     if (opt[OPTS_IDX_EXAMPLE] != std::string()) </span>
+<span class="lineNum">     123 </span><span class="lineCov">          5 :          out &lt;&lt;  std::setw(4) &lt;&lt; std::setiosflags(std::ios::left) &lt;&lt; &quot; &quot; &lt;&lt; &quot;Example: &quot; &lt;&lt; opt[OPTS_IDX_EXAMPLE] &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     124 </span><span class="lineCov">         10 :     if (opt[OPTS_IDX_CHOICES] != std::string()) </span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :          out &lt;&lt; std::setw(4) &lt;&lt; std::setiosflags(std::ios::left) &lt;&lt; &quot; &quot; &lt;&lt; &quot;Choices: &quot; &lt;&lt; opt[OPTS_IDX_CHOICES] &lt;&lt; &quot;\n&quot; ;</span>
+<span class="lineNum">     126 </span><span class="lineCov">         10 :     out &lt;&lt; &quot;\n&quot; ;</span>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         10 : }</span></a>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : void Theoria::show_config(bool exit, std::ostream&amp; out) </span>
+<span class="lineNum">     130 </span>            : {
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     Registry::instance().appConfig().toTOML(out) ;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :     if (exit)</span>
+<span class="lineNum">     133 </span>            :     {
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :         out &lt;&lt; &quot;\nExiting theoria due to user option&quot; &lt;&lt; std::endl ;</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         std::exit(0) ;</span>
+<span class="lineNum">     136 </span>            :     }
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : void Theoria::init()</span>
+<span class="lineNum">     140 </span>            : {
+<span class="lineNum">     141 </span>            :     Bootstrap bs ;    
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            :     try {
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         auto bsConfig = bs.loadConfig() ;</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         bs.boot(*bsConfig) ;</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :         Registry::instance()._setBootstrapConfig(bsConfig) ;</span>
+<span class="lineNum">     147 </span>            :     }
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     catch (const std::runtime_error&amp; err) {</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :         std::cerr &lt;&lt; err.what() &lt;&lt; std::endl ; </span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :         std::exit(ERR_BOOTSTRAP) ;</span>
+<span class="lineNum">     151 </span>            :     }
+<span class="lineNum">     152 </span>            : 
+<span class="lineNum">     153 </span>            :     //At this point registry should have a ConfigParser Component
+<span class="lineNum">     154 </span>            : 
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">     156 </span>            : 
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 : void Theoria::run()</span></a>
+<span class="lineNum">     158 </span>            : {
+<span class="lineNum">     159 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     160 </span>            : 
 </pre>
       </td>
     </tr>

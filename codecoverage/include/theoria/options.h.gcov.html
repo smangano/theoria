@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-06 17:28:32</td>
+            <td class="headerValue">2016-11-07 04:22:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -66,7 +66,7 @@
 <span class="lineNum">       4 </span>            : 
 <span class="lineNum">       5 </span>            : namespace theoria
 <span class="lineNum">       6 </span>            : {
-<span class="lineNum">       7 </span><span class="lineCov">          2 :     static const std::string dashdash(&quot;--&quot;) ;</span>
+<span class="lineNum">       7 </span><span class="lineCov">          3 :     static const std::string dashdash(&quot;--&quot;) ;</span>
 <span class="lineNum">       8 </span>            : 
 <span class="lineNum">       9 </span>            :     /*
 <span class="lineNum">      10 </span>            :      * --bootstrap_path :  The path to search for bootstrap.toml 
@@ -74,55 +74,33 @@
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            :     const int OPTS_IDX_NAME = 0;
 <span class="lineNum">      14 </span>            :     const int OPTS_IDX_HELP = 1;
-<span class="lineNum">      15 </span>            :     const int OPTS_IDX_TYPE = 2;
-<span class="lineNum">      16 </span>            :     const int OPTS_IDX_EXAMPLE = 3;
-<span class="lineNum">      17 </span>            :     const int OPTS_IDX_CHOICES = 4;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            :     /*
-<span class="lineNum">      20 </span>            :      * Format of these constant arrays
-<span class="lineNum">      21 </span>            :      *
-<span class="lineNum">      22 </span>            :      * const char * const OPT = {&quot;name&quot;, &quot;help string&quot;, &quot;type&quot;, &quot;example&quot;, &quot;choices&quot;} 
-<span class="lineNum">      23 </span>            :      * where:
-<span class="lineNum">      24 </span>            :      *          name - name of the --option
-<span class="lineNum">      25 </span>            :      *          help string - displayed when user requests help
-<span class="lineNum">      26 </span>            :      *          type - switch (option takes no args), string, int, double, date (YYYY-MM-DD) , datetime (YYYY-MM-DD HH:MM:SS), interval with units (e.g. 10.5h, 1s, 100ms, 700us)
-<span class="lineNum">      27 </span>            :      */
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            :     const char * const OPTION_BOOTSTRAP_CONFIG_PATH[] = 
-<span class="lineNum">      30 </span>            :         {&quot;bootstrap_path&quot; , &quot;Path to bootstrap.ini&quot;, &quot;string&quot;, &quot;--bootstrap_path /home/jsmith/theoria/boot.toml&quot;, &quot;&quot;} ;
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            :     const char * const OPTION_HELP[] = 
-<span class="lineNum">      33 </span>            :         {&quot;help&quot;, &quot;Display help for theoria or a particular option&quot;, &quot;string&quot;, &quot;--help or -help option&quot;, &quot;&quot;} ;
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span>            :     const char * const OPTION_INIT_ONLY[] = 
-<span class="lineNum">      36 </span>            :         {&quot;init_only&quot;, &quot;Used to test changes to bootstrap.toml&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;}  ;
-<span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span>            :     const char * const OPTION_SHOW_CONFIG[] = 
-<span class="lineNum">      39 </span>            :         {&quot;show_config&quot;, &quot;Displays config file after variable resolution&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;} ;
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            :     const char * const OPTION_SHOW_CONFIG_ONLY[] = 
-<span class="lineNum">      42 </span>            :         {&quot;show_config_only&quot;, &quot;Exits after displaying config file after variable resolution&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;} ;
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            :     const char * const OPTION_PAUSE_AFTER_APP_INIT[] = 
-<span class="lineNum">      45 </span>            :         {&quot;pause_after_app_init&quot;, &quot;Intializes all app components and pauses waiting for operator iteraction&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;} ;
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            :     const char * const OPTION_PAUSE_AFTER_APP_FINALIZE[] = 
-<span class="lineNum">      48 </span>            :         {&quot;pause_after_app_finalize&quot;, &quot;Finalizes all app components and pauses waiting for operator interaction&quot;, &quot;switch&quot;, &quot;&quot;, &quot;&quot;} ;
-<span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            :     const char * const OPTION_DEFAULT_LOG_LEVEL[] = 
-<span class="lineNum">      51 </span>            :         {&quot;default_log_level&quot;, &quot;Set the default logging level&quot;, &quot;string&quot;, &quot;--default_log_level DEBUG&quot;, &quot;DEBUG,INFO, WARN, ERROR, CRITICAL&quot; } ;
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            :     const char * const WEB_SERVICE_PORT[] = 
-<span class="lineNum">      54 </span>            :         {&quot;ws_port&quot;, &quot;Start web service for ineractivity and use this port&quot;, &quot;int&quot;, &quot;-ws_port 8900&quot;, &quot;&quot;} ; 
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            :     /**
-<a name="58"><span class="lineNum">      58 </span>            :      * Build a --option string</a>
-<span class="lineNum">      59 </span>            :      */
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     inline const char * OPT(std::string&amp; buf, const std::string&amp; opt) {buf = dashdash+opt; return buf.c_str();}</span>
-<span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span>            : } 
-<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      15 </span>            :     const int OPTS_IDX_ARG = 2 ;
+<span class="lineNum">      16 </span>            :     const int OPTS_IDX_TYPE = 3;
+<span class="lineNum">      17 </span>            :     const int OPTS_IDX_EXAMPLE = 4;
+<span class="lineNum">      18 </span>            :     const int OPTS_IDX_CHOICES = 5;
+<span class="lineNum">      19 </span>            :     const int OPTS_SZ = 6 ;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            :     typedef const char * OPTS_TYPE[OPTS_SZ] ;
+<span class="lineNum">      22 </span>            :     extern const OPTS_TYPE ALL_OPTIONS[] ;
+<span class="lineNum">      23 </span>            :     extern const char * const * OPTION_BOOTSTRAP_CONFIG_PATH ;
+<span class="lineNum">      24 </span>            :     extern const char * const * OPTION_DEFAULT_LOG_LEVEL ;
+<span class="lineNum">      25 </span>            :     extern const char * const * OPTION_HELP ;
+<span class="lineNum">      26 </span>            :     extern const char * const * OPTION_INIT_ONLY ;
+<span class="lineNum">      27 </span>            :     extern const char * const * OPTION_PAUSE_AFTER_APP_INIT ;
+<span class="lineNum">      28 </span>            :     extern const char * const * OPTION_PAUSE_AFTER_APP_FINALIZE ;
+<span class="lineNum">      29 </span>            :     extern const char * const * OPTION_SHOW_CONFIG ;
+<span class="lineNum">      30 </span>            :     extern const char * const * OPTION_SHOW_CONFIG_ONLY ;
+<span class="lineNum">      31 </span>            :     extern const char * const * WEB_SERVICE_PORT ;
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            :     /**
+<a name="34"><span class="lineNum">      34 </span>            :      * Build a --option string</a>
+<a name="35"><span class="lineNum">      35 </span>            :      */</a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">         10 :     inline const char * OPT(std::string&amp; buf, const std::string&amp; opt) {buf = dashdash+opt; return buf.c_str();}</span></a>
+<span class="lineNum">      37 </span><span class="lineCov">          9 :     inline const char * OPT(std::string&amp; buf, const char* const * opt) {return OPT(buf, opt[OPTS_IDX_NAME]); }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          9 :     inline const char * OPT_ARG(std::string&amp; buf, const char* const * opt) {return opt[OPTS_IDX_ARG];}</span>
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : } 
+<span class="lineNum">      41 </span>            : 
 </pre>
       </td>
     </tr>

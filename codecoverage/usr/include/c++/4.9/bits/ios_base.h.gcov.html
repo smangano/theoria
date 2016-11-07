@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryLo">16.7 %</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntryLo">10.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-06 17:28:32</td>
+            <td class="headerValue">2016-11-07 04:22:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryLo">20.0 %</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryLo">12.5 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -136,10 +136,10 @@
 <span class="lineNum">      74 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Fmtflags
 <span class="lineNum">      75 </span>            :   operator&amp;(_Ios_Fmtflags __a, _Ios_Fmtflags __b)
 <span class="lineNum">      76 </span>            :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) &amp; static_cast&lt;int&gt;(__b)); }
-<span class="lineNum">      77 </span>            : 
+<a name="77"><span class="lineNum">      77 </span>            : </a>
 <span class="lineNum">      78 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Fmtflags
-<span class="lineNum">      79 </span>            :   operator|(_Ios_Fmtflags __a, _Ios_Fmtflags __b)
-<span class="lineNum">      80 </span>            :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :   operator|(_Ios_Fmtflags __a, _Ios_Fmtflags __b)</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :   { return _Ios_Fmtflags(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Fmtflags
 <span class="lineNum">      83 </span>            :   operator^(_Ios_Fmtflags __a, _Ios_Fmtflags __b)
@@ -148,10 +148,10 @@
 <span class="lineNum">      86 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Fmtflags
 <span class="lineNum">      87 </span>            :   operator~(_Ios_Fmtflags __a)
 <span class="lineNum">      88 </span>            :   { return _Ios_Fmtflags(~static_cast&lt;int&gt;(__a)); }
-<span class="lineNum">      89 </span>            : 
+<a name="89"><span class="lineNum">      89 </span>            : </a>
 <span class="lineNum">      90 </span>            :   inline const _Ios_Fmtflags&amp;
-<span class="lineNum">      91 </span>            :   operator|=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b)
-<span class="lineNum">      92 </span>            :   { return __a = __a | __b; }
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :   operator|=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b)</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :   { return __a = __a | __b; }</span>
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span>            :   inline const _Ios_Fmtflags&amp;
 <span class="lineNum">      95 </span>            :   operator&amp;=(_Ios_Fmtflags&amp; __a, _Ios_Fmtflags __b)
@@ -178,8 +178,8 @@
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) &amp; static_cast&lt;int&gt;(__b)); }</span>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
 <span class="lineNum">     118 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Openmode
-<span class="lineNum">     119 </span><span class="lineCov">        204 :   operator|(_Ios_Openmode __a, _Ios_Openmode __b)</span>
-<span class="lineNum">     120 </span><span class="lineCov">        204 :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
+<span class="lineNum">     119 </span><span class="lineCov">        210 :   operator|(_Ios_Openmode __a, _Ios_Openmode __b)</span>
+<span class="lineNum">     120 </span><span class="lineCov">        210 :   { return _Ios_Openmode(static_cast&lt;int&gt;(__a) | static_cast&lt;int&gt;(__b)); }</span>
 <span class="lineNum">     121 </span>            : 
 <span class="lineNum">     122 </span>            :   inline _GLIBCXX_CONSTEXPR _Ios_Openmode
 <span class="lineNum">     123 </span>            :   operator^(_Ios_Openmode __a, _Ios_Openmode __b)
@@ -635,13 +635,13 @@
 <span class="lineNum">     573 </span>            :      *
 <span class="lineNum">     574 </span>            :      *  This function sets additional flags in format control.  Flags that
 <span class="lineNum">     575 </span>            :      *  were previously set remain set.
-<span class="lineNum">     576 </span>            :     */
+<a name="576"><span class="lineNum">     576 </span>            :     */</a>
 <span class="lineNum">     577 </span>            :     fmtflags
-<span class="lineNum">     578 </span>            :     setf(fmtflags __fmtfl)
+<span class="lineNum">     578 </span><span class="lineNoCov">          0 :     setf(fmtflags __fmtfl)</span>
 <span class="lineNum">     579 </span>            :     {
-<span class="lineNum">     580 </span>            :       fmtflags __old = _M_flags;
-<span class="lineNum">     581 </span>            :       _M_flags |= __fmtfl;
-<span class="lineNum">     582 </span>            :       return __old;
+<span class="lineNum">     580 </span><span class="lineNoCov">          0 :       fmtflags __old = _M_flags;</span>
+<span class="lineNum">     581 </span><span class="lineNoCov">          0 :       _M_flags |= __fmtfl;</span>
+<span class="lineNum">     582 </span><span class="lineNoCov">          0 :       return __old;</span>
 <span class="lineNum">     583 </span>            :     }
 <span class="lineNum">     584 </span>            : 
 <span class="lineNum">     585 </span>            :     /**

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-06 17:28:32</td>
+            <td class="headerValue">2016-11-07 04:22:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -276,14 +276,14 @@
 <span class="lineNum">     214 </span>            :   */
 <a name="215"><span class="lineNum">     215 </span>            :   template&lt;typename _Tp&gt;</a>
 <span class="lineNum">     216 </span>            :     inline const _Tp&amp;
-<span class="lineNum">     217 </span><span class="lineCov">        431 :     max(const _Tp&amp; __a, const _Tp&amp; __b)</span>
+<span class="lineNum">     217 </span><span class="lineCov">        437 :     max(const _Tp&amp; __a, const _Tp&amp; __b)</span>
 <span class="lineNum">     218 </span>            :     {
 <span class="lineNum">     219 </span>            :       // concept requirements
 <span class="lineNum">     220 </span>            :       __glibcxx_function_requires(_LessThanComparableConcept&lt;_Tp&gt;)
 <span class="lineNum">     221 </span>            :       //return  __a &lt; __b ? __b : __a;
-<span class="lineNum">     222 </span><span class="lineCov">        431 :       if (__a &lt; __b)</span>
-<span class="lineNum">     223 </span><span class="lineCov">        203 :         return __b;</span>
-<span class="lineNum">     224 </span><span class="lineCov">        228 :       return __a;</span>
+<span class="lineNum">     222 </span><span class="lineCov">        437 :       if (__a &lt; __b)</span>
+<span class="lineNum">     223 </span><span class="lineCov">        205 :         return __b;</span>
+<span class="lineNum">     224 </span><span class="lineCov">        232 :       return __a;</span>
 <span class="lineNum">     225 </span>            :     }
 <span class="lineNum">     226 </span>            : 
 <span class="lineNum">     227 </span>            :   /**
