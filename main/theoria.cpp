@@ -17,7 +17,14 @@ int main(int argc, const char ** argv)
 
         if (cmdline.hasSetting(OPTION_HELP[OPTS_IDX_NAME])) 
         {
-            theoria.help() ;
+            if (cmdline.settingAsStr(OPTION_HELP[OPTS_IDX_NAME]) != std::string())
+            {
+                theoria.help(cmdline.settingAsStr(OPTION_HELP[OPTS_IDX_NAME])) ;
+            }
+            else
+            {
+                theoria.help() ;
+            }
         }
         else
         if (cmdline.hasSetting(OPTION_SHOW_CONFIG[OPTS_IDX_NAME]) || cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY[OPTS_IDX_NAME])) 

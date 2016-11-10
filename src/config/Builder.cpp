@@ -104,6 +104,7 @@ void ConfigBuilder::setDesc(const std::string& name)
 
 ConfigPtr& ConfigBuilder::top() 
 {
+    if (_stack.empty()) throw RUNTIME_ERROR("Empty ConfigBuilder stack") ;
     return  _stack.top() ;
 }
 
