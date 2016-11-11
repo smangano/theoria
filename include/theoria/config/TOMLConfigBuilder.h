@@ -6,6 +6,9 @@
 
 namespace theoria { namespace config {
 
+/**
+ * A ConfigParser that builds Config hierarchy from TOML representation
+ */
 class TOMLConfigBuilder : public ConfigParser, public ConfigBuilder 
 {
 public:

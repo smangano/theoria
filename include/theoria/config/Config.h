@@ -328,14 +328,57 @@ public:
     using const_iterator = Children::const_iterator ;
 
     virtual void toTOML(std::ostream& out) const ;
+    /**
+     * Returns true to indicate this is an array
+     */
     virtual bool isArray() const ;
-    bool hasElement(const Config* child) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
+
+    /**
+     * Test if a node is in this array
+     * @param elem the node to search for
+     */
+    bool hasElement(const Config* elem) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
+
+    /**
+     * Return the size of the array
+     * @return number of nodes
+     */
     int numElements() const {return _children.size();}
+
+    /**
+     * Return all nodes as a list
+     */
     ConstConfigList getElements() const {return ConstConfigList(_children.cbegin(), _children.cend()) ;}
+
+    /**
+     * Return all nodes that satisfy predicate
+     * @param predicate - a function returning true for nodes to include
+     */
     ConstConfigList getElements(const ConfigPredicate& predicate) const {return getChildren(predicate);}
+
+    /**
+     * Return node at a specific index
+     * @param index 0 based index
+     * @return the node at the specified index
+     * @throw std::out_of_range if index is < 0 or >= size 
+     */
     const Config* at(int index) const { return _children.at(index) ; }
+    
+    /**
+     * Return node at a specific index
+     * @param index 0-based index. Undefined behavior if node is out of range.
+     * @return the node at specified index
+     */
     const Config* operator[](int index) const { return _children[index] ; }
+    
+    /**
+     * Iterator to first node
+     */
     const_iterator begin() const {return _children.cbegin(); }
+
+    /**
+     * Iterator past last node
+     */
     const_iterator end() const {return _children.cend(); }
 
 protected:

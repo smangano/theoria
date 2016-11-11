@@ -6,7 +6,8 @@
 
 namespace theoria { namespace config {
 
-/** Base configuration variable resolver.
+/** 
+ * Base configuration variable resolver.
  * 
  * Theoria configuration files can contain variables of the form _$variable_ ('first variables') and
  * _$$variable_ ('last variables ') . Resolvers determine how a variable is bound to a value. 
@@ -35,12 +36,25 @@ class ConfigVariableResolver
 {
 public:
 
+    /**
+     * The result type is a pair consiting of the resolver that dtermined the value and the value itself
+     */
     using Result = std::pair<const ConfigVariableResolver*, std::string> ;
+
+    /**
+     * A vector of resolver results
+     */
     using ResultVec = std::vector<Result> ;
 
+    /**
+     * Default constructor sets next resolver to nullptr
+     */
     ConfigVariableResolver() :
         _next(nullptr) {}
 
+    /**
+     * Destructore
+     */
     virtual ~ConfigVariableResolver() ; 
 
     /**
@@ -76,9 +90,15 @@ public:
      */
     virtual std::string name() const = 0 ;
 
-    
+    /**
+     * Append resolver to this one to form a resolver chain
+     */
     void append(ConfigVariableResolver* resolver) ;
 
+    /**
+     * Return next resolver in the chain
+     * @return resolver or nullptr
+     */
     const ConfigVariableResolver* next() const { return _next; }
 
 private:

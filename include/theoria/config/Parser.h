@@ -8,6 +8,11 @@ namespace theoria { namespace config {
 
 class Config ;
 
+/**
+ * Interface for parsing a config file or text in a stream. 
+ * Parser implementations are responsible for converting some structured textual format (e.g., TOML, XML, JSON, etc.)
+ * and converting it into Config representation.
+ */
 class ConfigParser
 {
 public:
@@ -18,7 +23,7 @@ public:
      * Default implementation opens the file and calls
      * parse(with the file's std::ifstream)
      *
-     * @filename the file to parse
+     * @param filename the file to parse
      * @return the resulting Config object
      *
      * NOTE:: If you override parse_file in your derived 
@@ -29,8 +34,9 @@ public:
      */
     virtual std::unique_ptr<const Config> parse_file(const std::string& filename) ;
 
-    /* 
+    /** 
      * Parse the stream and return a Config
+     * @parma stream - an input stream to parse
      */
     virtual std::unique_ptr<const Config> parse(std::istream& stream)  = 0 ;
 } ;
