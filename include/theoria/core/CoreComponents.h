@@ -8,6 +8,9 @@
 
 namespace theoria { namespace core {
 
+/**
+ *
+ */
 class ConfigVarResolverBuilderComp : public Component
 {
 public:
@@ -28,6 +31,9 @@ public:
 } ;
 
 
+/**
+ * Component wrapper to a EnvVarResolver
+ */
 class EnvVarResolverComp : public Component
 {
 public:
@@ -52,7 +58,9 @@ public:
     static DLL_PUBLIC RegisterThis<CmdLineResolverComp> rt ; 
 } ;
 
-
+/**
+ * Component wrapper to a AppConfigResolver
+ */
 class AppConfigResolverComp : public Component
 {
 public:
@@ -65,6 +73,9 @@ public:
     static DLL_PUBLIC RegisterThis<AppConfigResolverComp> rt ; 
 } ;
 
+/**
+ * Component wrapper to TOMLConfigBuilder
+ */
 class TOMLConfigBuilderComp : public Component
 {
 public:

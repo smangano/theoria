@@ -34,7 +34,7 @@ namespace theoria { namespace core {
  * Once all components in you application are initialized, Theoria satisfies dependencies by calling finalize() and handing
  * your componet its dependents in the same order as requested. Optional dependents may be null if Theoria could not aquire them
  *
- *
+ * Components also receive life-cycle notifications. @see appLifeCycle and @compLifeCycle for details.
  */
 class Component 
 {
@@ -77,11 +77,26 @@ public:
      */ 
 	virtual void onMessage(Message msg) ;
 
+    /**
+     * Return components unique id. Uniquieness is per application invocation so this is not a GUID nor is it guranteed idemponent between distinct runs of the app.
+     */
     CompId id() const {return _id;}
 
+    /**
+     * The component's name (usually from configuration)
+     */
     const std::string& name() const {return _name;}
+
+    /**
+     * Set or change the components name
+     */
     void setName(const std::string& name) {_name = name;}
 
+    /**
+     * A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T
+     * or if it can acquire a T. 
+     * @See acquire
+     */
     template <class T>
     T* cast(const std::string& requestor = "Unknown") 
     {
@@ -101,13 +116,19 @@ public:
         throw RUNTIME_ERROR("Can't cast Component [%s] to type [%s] as required by [%s]", name().c_str(), ti.name(), requestor.c_str()) ; 
     }
 
-    /*
+    /**
      * Override in your component if you want to control how other components acquire interfaces
      * from you. Your are responsible for using the typeInfo to return a suitable object
      * in destination. If you can't do this you can optionally return another Component that
      * you think can.
      *
-     * Default impl sets *dest to nullptr and returns nullptr 
+     * Default impl sets *dest to nullptr and returns nullptr
+     *
+     * @param type_info the type_info of he type you wish to acquire
+     * @param the dest where a pointer to the impl of type_info will be stored if available
+     * @return nullptr if this call already satisfied the request by populating dest or if it can't satify request
+     *         a pointer to another component if this component belives that the returned component can 
+     *         satisfy the request
      */
     virtual Component* acquire(const std::type_info& typeInfo, void** dest) ;
 

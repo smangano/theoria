@@ -1,6 +1,8 @@
 
 
-//Builds a chain of resolvers. Used by Config Builder
+/* @Deprecated
+ * Builds a chain of resolvers. Used by Config Builder
+ */
 class ConfigResolverBuilder : public core::Component 
 {
 public:
@@ -11,10 +13,13 @@ public:
      * resolver list returned by <build>
      * @inherit
      */
-	virtual Dependencies init(const Config& config) overide;
+	Dependencies init(const Config& config) overide;
    
-    virtual void finalize(ComponentList dependencies) ;
-
+    /**
+     * Receives a ConfigBuilder  and one or more resolvers and wires the resolvers as 
+     * the builders resolver chain in the order they appear
+     */
+    void finalize(ComponentList dependencies) override ;
     config::ConfigVariableResolver* build() const {return _resolvers;}
 
 private:

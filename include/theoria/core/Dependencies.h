@@ -6,7 +6,7 @@
 
 namespace theoria { namespace core {
 
-/*
+/**
  * class Dependencies
  * -----------------
  * Used by components during initialization to advertise there requirements for other components. 
@@ -31,11 +31,24 @@ class Dependencies
 {
 public:
 
+    /**
+     * Represents a single dependent component via it's type and subtype
+     */
 	struct Dependent
 	{
+        /**
+         * Use to construct a strict depenedency where both type and subtype must be satsified
+         * or a losse dependency if subtype is empty string
+         * @prarm type
+         * @param subtype
+         * @param optional set this to true to tell theoria it is okay if dependency can't be resolved
+         */
 		Dependent(const TypeName& type_, const SubTypeName& subtype_, int optional_ = false)
         	: type(type_), subtype(subtype_), optional(optional_) {}
 
+        /**
+         * Use to specify a default dependency where type == subtype. 
+         */
         Dependent(const TypeName& type_, int optional_=false)
             : type(type_), subtype(type_), optional(optional_) {}
 
