@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -69,7 +69,7 @@
 <span class="lineNum">       7 </span>            : 
 <span class="lineNum">       8 </span>            : namespace theoria { namespace util {
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span>            : /*
+<span class="lineNum">      10 </span>            : /**
 <span class="lineNum">      11 </span>            :  * Pseudo-Singleton that captures command line arguments of Theoria applications
 <span class="lineNum">      12 </span>            :  *
 <span class="lineNum">      13 </span>            :  * CommandLine consists of:
@@ -98,103 +98,168 @@
 <span class="lineNum">      36 </span>            :  *      theoria config.toml -- a=1 b=2 c=3
 <span class="lineNum">      37 </span>            :  *      theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
 <span class="lineNum">      38 </span>            :  */
-<a name="39"><span class="lineNum">      39 </span>            : </a>
+<span class="lineNum">      39 </span>            : class CommandLine {
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">         27 : class CommandLine {</span>
+<span class="lineNum">      41 </span>            :     using SymbolTbl = std::unordered_map&lt;std::string, std::string&gt; ;
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            :     using SymbolTbl = std::unordered_map&lt;std::string, std::string&gt; ;
+<span class="lineNum">      43 </span>            : public:
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : public:
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            :     CommandLine(int argc, const char * argv[], bool allowMissingConfig=false) ;
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            :     using const_iterator = SymbolTbl::const_iterator ;
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            :     static const CommandLine&amp; instance() ;
-<span class="lineNum">      52 </span>            :     static void reset() ; 
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            :     /* Find var if it exists
-<a name="55"><span class="lineNum">      55 </span>            :      * @return const_iterator to std::pair&lt;var,value&gt; else &lt;endVars&gt;</a>
-<span class="lineNum">      56 </span>            :      */
-<span class="lineNum">      57 </span><span class="lineCov">         32 :     const_iterator findVar(const std::string&amp; var) const { return _variables.find(var) ; }</span>
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            :     /* Test if variable exists
-<span class="lineNum">      60 </span>            :      * @var the variable
-<a name="61"><span class="lineNum">      61 </span>            :      * @return true if exists</a>
-<span class="lineNum">      62 </span>            :      */
-<span class="lineNum">      63 </span><span class="lineCov">          1 :     bool hasVariable(const std::string&amp; var) const { return findVar(var) != endVars() ; }</span>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            :     /*
-<span class="lineNum">      66 </span>            :      * Iterate over all variables
-<a name="67"><span class="lineNum">      67 </span>            :      * @return iterator to std::pair&lt;name,value&gt;  or end()</a>
-<a name="68"><span class="lineNum">      68 </span>            :      */</a>
-<span class="lineNum">      69 </span><span class="lineCov">          7 :     const_iterator beginVars() const { return _variables.cbegin(); } </span>
-<span class="lineNum">      70 </span><span class="lineCov">         37 :     const_iterator endVars() const { return _variables.cend(); }</span>
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span>            :     /*
-<span class="lineNum">      73 </span>            :      * Get variable value or nullptr as const char *
-<span class="lineNum">      74 </span>            :      * @return value or nullptr if not present
-<span class="lineNum">      75 </span>            :      */
-<span class="lineNum">      76 </span>            :     const char * variableAsPtr(const std::string&amp; name) const noexcept ;
-<span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            :     /*
-<span class="lineNum">      79 </span>            :      * Get variable value as std::string
-<span class="lineNum">      80 </span>            :      * @return value or def if not present
-<span class="lineNum">      81 </span>            :      */
-<span class="lineNum">      82 </span>            :     const std::string&amp; variableAsStr(const std::string&amp; name, const std::string&amp; def = &quot;&quot;) const ;
-<span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span>            :     /*
-<span class="lineNum">      85 </span>            :      * Get variable value as int64_t
-<span class="lineNum">      86 </span>            :      * @return value or def if not present
-<span class="lineNum">      87 </span>            :      * @throw std::runtime_error if can't convert to an integer
-<span class="lineNum">      88 </span>            :      */
-<span class="lineNum">      89 </span>            :     int64_t variableAsInt(const std::string&amp; name, int64_t def=0) const ;
-<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      45 </span>            :     /**
+<span class="lineNum">      46 </span>            :      * Constructor takes argc and argv form main() (with first arg dropped)
+<span class="lineNum">      47 </span>            :      * to initialize the command line object.
+<span class="lineNum">      48 </span>            :      * It does not validate the actual values but does check that they conform to the 
+<span class="lineNum">      49 </span>            :      * order expected by theoria
+<span class="lineNum">      50 </span>            :      */
+<span class="lineNum">      51 </span>            :     CommandLine(int argc, const char * argv[], bool allowMissingConfig=false) ;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            :     /**
+<span class="lineNum">      54 </span>            :      * The iterator type for settings and variables
+<span class="lineNum">      55 </span>            :      */
+<span class="lineNum">      56 </span>            :     using const_iterator = SymbolTbl::const_iterator ;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            :     /**
+<span class="lineNum">      59 </span>            :      * The instance constructed in main (or first instance)
+<span class="lineNum">      60 </span>            :      */
+<span class="lineNum">      61 </span>            :     static const CommandLine&amp; instance() ;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            :     /**
+<span class="lineNum">      64 </span>            :      * Reset the first instance
+<span class="lineNum">      65 </span>            :      */
+<span class="lineNum">      66 </span>            :     static void reset() ; 
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            :     /**
+<span class="lineNum">      69 </span>            :      * Find var if it exists
+<a name="70"><span class="lineNum">      70 </span>            :      * @return const_iterator to std::pair&lt;var,value&gt; else endVars()</a>
+<span class="lineNum">      71 </span>            :      */
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     const_iterator findVar(const std::string&amp; var) const { return _variables.find(var) ; }</span>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            :     /**
+<span class="lineNum">      75 </span>            :      * Test if variable exists
+<span class="lineNum">      76 </span>            :      * @param var the variable
+<span class="lineNum">      77 </span>            :      * @return true if exists
+<span class="lineNum">      78 </span>            :      */
+<span class="lineNum">      79 </span>            :     bool hasVariable(const std::string&amp; var) const { return findVar(var) != endVars() ; }
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            :     /**
+<span class="lineNum">      82 </span>            :      * Iterate over all variables
+<span class="lineNum">      83 </span>            :      * @return iterator to std::pair&lt;name,value&gt;  or end()
+<span class="lineNum">      84 </span>            :      */
+<span class="lineNum">      85 </span>            :     const_iterator beginVars() const { return _variables.cbegin(); } 
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            :     /**
+<a name="88"><span class="lineNum">      88 </span>            :      * The end of variables iterator</a>
+<span class="lineNum">      89 </span>            :      */
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     const_iterator endVars() const { return _variables.cend(); }</span>
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span>            :     /*
-<span class="lineNum">      93 </span>            :      * Get variable value as double
-<span class="lineNum">      94 </span>            :      * @return value or def if not present
-<span class="lineNum">      95 </span>            :      * @throw std::runtime_error if can't convert to a double
-<span class="lineNum">      96 </span>            :      */
-<span class="lineNum">      97 </span>            :     double variableAsDbl(const std::string&amp; name, double def = 0) const ;
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span>            :     /*
-<span class="lineNum">     100 </span>            :      * Get variable value as bool
-<span class="lineNum">     101 </span>            :      * @return value or def if not present
-<span class="lineNum">     102 </span>            :      * @throw std::runtime_error if can't convert to a bool 
-<span class="lineNum">     103 </span>            :      */
-<a name="104"><span class="lineNum">     104 </span>            :     bool variableAsBool(const std::string&amp; name, bool def) const ;</a>
-<span class="lineNum">     105 </span>            : 
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          2 :     int numVars() const {return _variables.size();} </span></a>
-<a name="107"><span class="lineNum">     107 </span>            :     </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         36 :     const_iterator findSetting(const std::string&amp; name) const { return _settings.find(name) ; }</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          5 :     bool hasSetting(const std::string&amp; name) const { return findSetting(name) != endSettings() ; }</span></a>
-<span class="lineNum">     110 </span><span class="lineCov">          5 :     const_iterator beginSettings() const {return _settings.cbegin(); }</span>
-<span class="lineNum">     111 </span><span class="lineCov">         39 :     const_iterator endSettings() const {return _settings.cend(); }</span>
-<span class="lineNum">     112 </span>            :     const char * settingAsPtr(const std::string&amp; name) const noexcept ;
-<span class="lineNum">     113 </span>            :     const std::string&amp; settingAsStr(const std::string&amp; name, const std::string&amp; def) const ;
-<span class="lineNum">     114 </span>            :     int64_t settingAsInt(const std::string&amp; name, int64_t def) const ;
-<a name="115"><span class="lineNum">     115 </span>            :     double settingAsDbl(const std::string&amp; name, double def) const ;</a>
-<span class="lineNum">     116 </span>            :     bool settingAsBool(const std::string&amp; name, bool def) const ;
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          4 :     int numSettings() const {return _settings.size();} </span></a>
+<span class="lineNum">      92 </span>            :     /**
+<span class="lineNum">      93 </span>            :      * Get variable value or nullptr as const char *
+<span class="lineNum">      94 </span>            :      * @return value or nullptr if not present
+<span class="lineNum">      95 </span>            :      */
+<span class="lineNum">      96 </span>            :     const char * variableAsPtr(const std::string&amp; name) const noexcept ;
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            :     /**
+<span class="lineNum">      99 </span>            :      * Get variable value as std::string
+<span class="lineNum">     100 </span>            :      * @return value or def if not present
+<span class="lineNum">     101 </span>            :      */
+<span class="lineNum">     102 </span>            :     const std::string&amp; variableAsStr(const std::string&amp; name, const std::string&amp; def = &quot;&quot;) const ;
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            :     /**
+<span class="lineNum">     105 </span>            :      * Get variable value as int64_t
+<span class="lineNum">     106 </span>            :      * @return value or def if not present
+<span class="lineNum">     107 </span>            :      * @throw std::runtime_error if can't convert to an integer
+<span class="lineNum">     108 </span>            :      */
+<span class="lineNum">     109 </span>            :     int64_t variableAsInt(const std::string&amp; name, int64_t def=0) const ;
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            :     /**
+<span class="lineNum">     113 </span>            :      * Get variable value as double
+<span class="lineNum">     114 </span>            :      * @return value or def if not present
+<span class="lineNum">     115 </span>            :      * @throw std::runtime_error if can't convert to a double
+<span class="lineNum">     116 </span>            :      */
+<span class="lineNum">     117 </span>            :     double variableAsDbl(const std::string&amp; name, double def = 0) const ;
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">         10 :     const std::string&amp; configFilename() const {return _configFileName;}</span>
-<span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span>            : private:
-<span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span>            :     CommandLine() ; 
-<span class="lineNum">     125 </span>            :     CommandLine(const CommandLine&amp;) ;
-<span class="lineNum">     126 </span>            :     CommandLine&amp; operator =(const CommandLine&amp;) ;
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span>            :     SymbolTbl _settings ;
-<span class="lineNum">     130 </span>            :     SymbolTbl _variables ;
-<span class="lineNum">     131 </span>            :     std::string _configFileName ;
-<span class="lineNum">     132 </span>            : } ;
-<span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span>            : }} //-namespace theoria::util 
+<span class="lineNum">     119 </span>            :     /**
+<span class="lineNum">     120 </span>            :      * Get variable value as bool
+<span class="lineNum">     121 </span>            :      * @return value or def if not present
+<span class="lineNum">     122 </span>            :      * @throw std::runtime_error if can't convert to a bool 
+<span class="lineNum">     123 </span>            :      */
+<span class="lineNum">     124 </span>            :     bool variableAsBool(const std::string&amp; name, bool def) const ;
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            :     /**
+<span class="lineNum">     127 </span>            :      * Return the number of variables
+<span class="lineNum">     128 </span>            :      */
+<span class="lineNum">     129 </span>            :     int numVars() const {return _variables.size();} 
+<span class="lineNum">     130 </span>            :    
+<span class="lineNum">     131 </span>            :     /**
+<a name="132"><span class="lineNum">     132 </span>            :      * Iterator to the named setting if it exists otherwise endSettings()</a>
+<span class="lineNum">     133 </span>            :      */
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     const_iterator findSetting(const std::string&amp; name) const { return _settings.find(name) ; }</span>
+<span class="lineNum">     135 </span>            :    
+<span class="lineNum">     136 </span>            :     /**
+<span class="lineNum">     137 </span>            :      * True if a setting with specified name exists
+<span class="lineNum">     138 </span>            :      */
+<span class="lineNum">     139 </span>            :     bool hasSetting(const std::string&amp; name) const { return findSetting(name) != endSettings() ; }
+<span class="lineNum">     140 </span>            :    
+<span class="lineNum">     141 </span>            :     /**
+<span class="lineNum">     142 </span>            :      * Iterator to the first setting
+<span class="lineNum">     143 </span>            :      */
+<span class="lineNum">     144 </span>            :     const_iterator beginSettings() const {return _settings.cbegin(); }
+<span class="lineNum">     145 </span>            :    
+<span class="lineNum">     146 </span>            :     /**
+<a name="147"><span class="lineNum">     147 </span>            :      * End of settings</a>
+<span class="lineNum">     148 </span>            :      */
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     const_iterator endSettings() const {return _settings.cend(); }</span>
+<span class="lineNum">     150 </span>            :    
+<span class="lineNum">     151 </span>            :     /**
+<span class="lineNum">     152 </span>            :      * Return a settting as a const char * if it exists otherwise return nullptr
+<span class="lineNum">     153 </span>            :      */
+<span class="lineNum">     154 </span>            :     const char * settingAsPtr(const std::string&amp; name) const noexcept ;
+<span class="lineNum">     155 </span>            :    
+<span class="lineNum">     156 </span>            :     /**
+<span class="lineNum">     157 </span>            :      * Return a settting as a string if it exists otherwise return def
+<span class="lineNum">     158 </span>            :      */
+<span class="lineNum">     159 </span>            :     const std::string&amp; settingAsStr(const std::string&amp; name, const std::string&amp; def) const ;
+<span class="lineNum">     160 </span>            :    
+<span class="lineNum">     161 </span>            :     /**
+<span class="lineNum">     162 </span>            :      * Return a settting as a 64bit integer if it exists otherwise return def
+<span class="lineNum">     163 </span>            :      */
+<span class="lineNum">     164 </span>            :     int64_t settingAsInt(const std::string&amp; name, int64_t def) const ;
+<span class="lineNum">     165 </span>            :    
+<span class="lineNum">     166 </span>            :     /**
+<span class="lineNum">     167 </span>            :      * Return a setting as double if it exists otherwise return def
+<span class="lineNum">     168 </span>            :      */
+<span class="lineNum">     169 </span>            :     double settingAsDbl(const std::string&amp; name, double def) const ;
+<span class="lineNum">     170 </span>            :    
+<span class="lineNum">     171 </span>            :     /**
+<span class="lineNum">     172 </span>            :      * Return a setting as a bool if it exists otherwise return def
+<span class="lineNum">     173 </span>            :      */
+<span class="lineNum">     174 </span>            :     bool settingAsBool(const std::string&amp; name, bool def) const ;
+<span class="lineNum">     175 </span>            :    
+<span class="lineNum">     176 </span>            :     /**
+<span class="lineNum">     177 </span>            :      * The numbber of settings passed on the command line
+<span class="lineNum">     178 </span>            :      */
+<span class="lineNum">     179 </span>            :     int numSettings() const {return _settings.size();} 
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            :     /**
+<span class="lineNum">     182 </span>            :      * The name of the app config file bassed on the command line
+<span class="lineNum">     183 </span>            :      */
+<span class="lineNum">     184 </span>            :     const std::string&amp; configFilename() const {return _configFileName;}
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            : private:
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            : 
+<span class="lineNum">     189 </span>            :     CommandLine() ; 
+<span class="lineNum">     190 </span>            :     CommandLine(const CommandLine&amp;) ;
+<span class="lineNum">     191 </span>            :     CommandLine&amp; operator =(const CommandLine&amp;) ;
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            :     SymbolTbl _settings ;
+<span class="lineNum">     195 </span>            :     SymbolTbl _variables ;
+<span class="lineNum">     196 </span>            :     std::string _configFileName ;
+<span class="lineNum">     197 </span>            : } ;
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span>            : }} //-namespace theoria::util 
 </pre>
       </td>
     </tr>

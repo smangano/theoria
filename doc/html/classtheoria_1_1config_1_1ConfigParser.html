@@ -69,6 +69,8 @@ $(function() {
 <div class="title">theoria::config::ConfigParser Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Parser_8h_source.html">Parser.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for theoria::config::ConfigParser:</div>
 <div class="dyncontent">
@@ -82,11 +84,46 @@ Inheritance diagram for theoria::config::ConfigParser:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4eca80a9831324237f2a2aa9a5018c89"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigParser.html#a4eca80a9831324237f2a2aa9a5018c89">parse_file</a> (const std::string &amp;filename)</td></tr>
 <tr class="separator:a4eca80a9831324237f2a2aa9a5018c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0ccd3cc2202c3d588a977c611dfa988"><td class="memItemLeft" align="right" valign="top"><a id="af0ccd3cc2202c3d588a977c611dfa988"></a>
-virtual std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (std::istream &amp;stream)=0</td></tr>
+<tr class="memitem:af0ccd3cc2202c3d588a977c611dfa988"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigParser.html#af0ccd3cc2202c3d588a977c611dfa988">parse</a> (std::istream &amp;stream)=0</td></tr>
 <tr class="separator:af0ccd3cc2202c3d588a977c611dfa988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for parsing a config file or text in a stream. Parser implementations are responsible for converting some structured textual format (e.g., TOML, XML, JSON, etc.) and converting it into <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> representation. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af0ccd3cc2202c3d588a977c611dfa988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ccd3cc2202c3d588a977c611dfa988">&sect;&nbsp;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt;const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a>&gt; theoria::config::ConfigParser::parse </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parse the stream and return a <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>an input stream to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classtheoria_1_1config_1_1TOMLConfigBuilder.html#ac5a36aebe769d67decc9946ee2a3fbc3">theoria::config::TOMLConfigBuilder</a>.</p>
+
+</div>
+</div>
 <a id="a4eca80a9831324237f2a2aa9a5018c89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4eca80a9831324237f2a2aa9a5018c89">&sect;&nbsp;</a></span>parse_file()</h2>
 
@@ -111,7 +148,13 @@ virtual std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1
 </table>
 </div><div class="memdoc">
 <p>Default implementation opens the file and calls parse(with the file's std::ifstream)</p>
-<p>the file to parse </p><dl class="section return"><dt>Returns</dt><dd>the resulting <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> object</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the file to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the resulting <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> object</dd></dl>
 <p>NOTE:: If you override parse_file in your derived <a class="el" href="classtheoria_1_1config_1_1ConfigParser.html">ConfigParser</a> then you can optionally implement parse or simply stub it out as Theoria will only call parse_file directly. A stream-based interface is useful for writing unit tests using istringstream. </p>
 
 <p>Reimplemented in <a class="el" href="classtheoria_1_1config_1_1TOMLConfigBuilder.html#afba5445b56e12b39cf1b266627a27f58">theoria::config::TOMLConfigBuilder</a>.</p>
@@ -125,7 +168,7 @@ virtual std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

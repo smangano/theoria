@@ -2,8 +2,11 @@
 \label{classConfigResolverBuilder}\index{Config\+Resolver\+Builder@{Config\+Resolver\+Builder}}
 
 
-Inheritance diagram for Config\+Resolver\+Builder\+:
-\nopagebreak
+{\ttfamily \#include $<$Config\+Resolver\+Builder.\+h$>$}
+
+
+
+Inheritance diagram for Config\+Resolver\+Builder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +15,7 @@ Inheritance diagram for Config\+Resolver\+Builder\+:
 \end{figure}
 
 
-Collaboration diagram for Config\+Resolver\+Builder\+:
-\nopagebreak
+Collaboration diagram for Config\+Resolver\+Builder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,16 +25,27 @@ Collaboration diagram for Config\+Resolver\+Builder\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classConfigResolverBuilder_a63ae6487bfd38e5a13de3a369d1509ec}\label{classConfigResolverBuilder_a63ae6487bfd38e5a13de3a369d1509ec}} 
-virtual Dependencies {\bfseries init} (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} \&config) overide
+\mbox{\Hypertarget{classConfigResolverBuilder_a4e217cbe1d663a83d098e224cc4d7cb8}\label{classConfigResolverBuilder_a4e217cbe1d663a83d098e224cc4d7cb8}} 
+Dependencies {\bfseries init} (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} \&config) overide
 \item 
-\mbox{\Hypertarget{classConfigResolverBuilder_a591ec176049f29c3a51fbad2501f1ab0}\label{classConfigResolverBuilder_a591ec176049f29c3a51fbad2501f1ab0}} 
-virtual void {\bfseries finalize} (Component\+List dependencies)
+void \hyperlink{classConfigResolverBuilder_a77c367a65b4e8fb6285b63fba0bdbef0}{finalize} (Component\+List dependencies) override
 \item 
 \mbox{\Hypertarget{classConfigResolverBuilder_aaab8623502528a6de4129b1016f02224}\label{classConfigResolverBuilder_aaab8623502528a6de4129b1016f02224}} 
 config\+::\+Config\+Variable\+Resolver $\ast$ {\bfseries build} () const
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Builds a chain of resolvers. Used by Config Builder 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConfigResolverBuilder_a77c367a65b4e8fb6285b63fba0bdbef0}\label{classConfigResolverBuilder_a77c367a65b4e8fb6285b63fba0bdbef0}} 
+\index{Config\+Resolver\+Builder@{Config\+Resolver\+Builder}!finalize@{finalize}}
+\index{finalize@{finalize}!Config\+Resolver\+Builder@{Config\+Resolver\+Builder}}
+\subsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void Config\+Resolver\+Builder\+::finalize (\begin{DoxyParamCaption}\item[{Component\+List}]{dependencies }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Receives a Config\+Builder and one or more resolvers and wires the resolvers as the builders resolver chain in the order they appear 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

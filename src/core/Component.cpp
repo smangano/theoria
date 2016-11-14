@@ -33,6 +33,6 @@ Component* Component::acquire(const std::type_info& typeInfo, void** dest)
     return nullptr ;
 }
 
-void Component::onMessage(Message msg) 
+void Component::onMessage(const Message& msg) 
 {
 }

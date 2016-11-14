@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:
-\nopagebreak
+Inheritance diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ Inheritance diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:
 \end{figure}
 
 
-Collaboration diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:
-\nopagebreak
+Collaboration diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,8 +25,7 @@ Collaboration diagram for theoria\+:\+:config\+:\+:Env\+Var\+Resolver\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1EnvVarResolver_abe8584760283bca6c2ebda1116c8159b}\label{classtheoria_1_1config_1_1EnvVarResolver_abe8584760283bca6c2ebda1116c8159b}} 
-Result {\bfseries lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}{name}) const override
+\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} \hyperlink{classtheoria_1_1config_1_1EnvVarResolver_abe8584760283bca6c2ebda1116c8159b}{lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}{name}) const override
 \item 
 virtual std\+::string \hyperlink{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}{name} () const override
 \end{DoxyCompactItemize}
@@ -39,13 +36,23 @@ virtual std\+::string \hyperlink{classtheoria_1_1config_1_1EnvVarResolver_ab2c25
 Resolves variables from the os environment 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1EnvVarResolver_abe8584760283bca6c2ebda1116c8159b}\label{classtheoria_1_1config_1_1EnvVarResolver_abe8584760283bca6c2ebda1116c8159b}} 
+\index{theoria\+::config\+::\+Env\+Var\+Resolver@{theoria\+::config\+::\+Env\+Var\+Resolver}!lookup@{lookup}}
+\index{lookup@{lookup}!theoria\+::config\+::\+Env\+Var\+Resolver@{theoria\+::config\+::\+Env\+Var\+Resolver}}
+\subsubsection{\texorpdfstring{lookup()}{lookup()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} Env\+Var\+Resolver\+::lookup (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Resolve name by looking at env variable with same name 
+
+Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
+
 \mbox{\Hypertarget{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}\label{classtheoria_1_1config_1_1EnvVarResolver_ab2c250e1b7866dcd618dc90f3c3eab19}} 
 \index{theoria\+::config\+::\+Env\+Var\+Resolver@{theoria\+::config\+::\+Env\+Var\+Resolver}!name@{name}}
 \index{name@{name}!theoria\+::config\+::\+Env\+Var\+Resolver@{theoria\+::config\+::\+Env\+Var\+Resolver}}
 \subsubsection{\texorpdfstring{name()}{name()}}
 {\footnotesize\ttfamily std\+::string Env\+Var\+Resolver\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Return name of the resolver 
+Returns \char`\"{}\+Env\+Var\+Resolver\char`\"{} 
 
 Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
 

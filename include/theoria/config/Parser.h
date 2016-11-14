@@ -36,7 +36,7 @@ public:
 
     /** 
      * Parse the stream and return a Config
-     * @parma stream - an input stream to parse
+     * @param stream  an input stream to parse
      */
     virtual std::unique_ptr<const Config> parse(std::istream& stream)  = 0 ;
 } ;

@@ -39,22 +39,25 @@ class RegistryLocked : public std::exception
  */
 struct RegistryLock
 {
-    /*
+    /**
      * Lock registry or block if already locked
      */
     RegistryLock() ;
-    /*
+
+    /**
      * Try to lock registry ntimes with sleep ms between. Raises exception if lock not aquired
      */
     RegistryLock(int ntimes, long sleepms = 0.0) ;
 
-    /*
+    /**
      * Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not aquired
      */
     template< class Rep, class Period >
     RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) ;
     
-    
+    /**
+     * Destructor releases lock
+     */
     ~RegistryLock() ;
 
     /**
@@ -63,6 +66,13 @@ struct RegistryLock
     static bool testLock() ;
 };
 
+
+/**
+ * The Registry manages Theoria Compoents and their factories. It is the central mechanism that enables dependency injection 
+ * as well as on demand access to components.
+ *
+ * The registry is the only Singleton within Theoria and you can leverage it to avoid creating Singletons within your own application.
+ */
 class Registry
 {
 private:
@@ -77,10 +87,19 @@ private:
 
 public:
 
+    /**
+     * Destructor
+     */
     ~Registry() ;
 
+    /**
+     * Type of iterator over component factories
+     */
     using FactoryMap_iterator = FactoryMap::iterator;
 
+    /**
+     * Singleton accessor
+     */
     static Registry& instance() ;
 
     
@@ -123,71 +142,96 @@ public:
      * @param type the type name to use for look up
      * @param allow_ambiguity if false treat case (3) above as ambiguous and raise an exception
      *
-     * @execept std::runtime_error if type not found
+     * @throw std::runtime_error if type not found
      */
     Component* createComponent(const TypeName& type, int allow_ambiguity = true) ;
 
-    /*
+    /**
      * Create a component of the specified type and subtype. 
      *
-     * @type the type name to use for look up (primary key)
-     * @subtype the sub type name to use for look up (secondary key)
+     * @param type the type name to use for look up (primary key)
+     * @param subtype the sub type name to use for look up (secondary key)
      *
      * @throw std::runtime_error if factory for both type and subtype does not exist
      */
     Component* createComponent(const TypeName& type, const SubTypeName& subtype) ;
 
-    /* Create a component that could satisfy a dependency, if possible
+    /**
+     * Create a component that could satisfy a dependency, if possible
      *
-     * @dep the dependency that needs to be satisfied
+     * @param dep the dependency that needs to be satisfied
      * @return the component or nullptr if could not satisfy or otherwise failed to create 
      */
     Component* createComponent(const Dependencies::Dependent& dep) noexcept ;
 
-    /* Begin iterator over factories.
+    /**
+     * Begin iterator over factories.
      *
      * Thread Safety: Requires RegistryLock()
      */
     FactoryMap_iterator beginFact() ;
 
-    /* End iterator over factories.
+    /**
+     * End iterator over factories.
      *
      * Thread Safety: Requires RegistryLock()
      */
     FactoryMap_iterator endFact() ;
 
-    /* Find factory by type.
-     * @type the type name to find
+    /**
+     * Find factory by type.
+     * @param type the type name to find
      * @return first entry for type or endFact()
      *
      * Thread Safety: Requires RegistryLock()
      */
     FactoryMap_iterator findFact(const TypeName& type) ;
 
-    /* Find factory by predicate.
-     * @start where to start searching
-     * @predicate test criteria
+    /**
+     * Find factory by predicate.
+     * @param start where to start searching
+     * @param predicate test criteria
      * @return first entry at or after start that satisfies predicate or endFact()
      *
      * Thread Safety: Requires RegistryLock()
      */
     FactoryMap_iterator findfact(FactoryMap::iterator start, bool (*predicate)(FactoryMap::value_type& v))  ;
 
+    /**
+     * Iterator to first component
+     */
     ComponentMap::iterator beginComp() ;
+
+    /**
+     * Iterator to _past-the-end_ component
+     */
     ComponentMap::iterator endComp() ;
 
+    /**
+     * Iterator o first component (as const)
+     */
     ComponentMap::const_iterator beginComp() const ;
+
+    /**
+     * Iterator to _past-the-end_ component (as const)
+     */
     ComponentMap::const_iterator endComp() const ;
 
+    /**
+     * Dump the registry
+     * @param stream destionation of dump
+     */
     void dump(std::ostream& stream) const ;
 
-    /*
-     * Very dangerous. Only know use-case is unit-testing.
+    /**
+     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     * Very dangerous. Only valid use-case is unit-testing.
      * Wipes the entire state of the Registry
+     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      */
     void reset() ;
 
-    /*
+    /**
      * If you know a component's id then this is the fastest and safest way to
      * access the component
      *
@@ -202,58 +246,95 @@ public:
         }
     }
 
-    /* Return component with the specified type. If multiple subtypes exist it will return
+    /**
+     * Return component with the specified type. If multiple subtypes exist it will return
      * the first one it finds
      *
-     * @type the type name of the component
-     * @return Option evaluates to true if found, false otherwise.
-     *         Derfef *option returns a reference to component or raises exception
-     *         See Option.h for more behavior
+     * @param type the type name of the component
+     * @return Maybe evaluates to true if found, false otherwise.
+     *         Derfef *Maybe returns a reference to component or raises exception
+     *         @see <theoria/util/Maybe.h> for more behavior
      */
     util::Maybe<Component> component(const TypeName& type) ;
+
+
+    /**
+     * Return component with the specified type and subtype. 
+     * 
+     *
+     * @param type the type name of the component
+     * @param subtype the subtype of the component
+     * @return Maybe evaluates to true if found, false otherwise.
+     *         Derfef *Maybe returns a reference to component or raises exception
+     *         @see <theoria/util/Maybe.h> for more behavior
+     */
     util::Maybe<Component> component(const TypeName& type, const SubTypeName& subtype) ;
  
-    /* Get a component that is suitable for satisfying dep
+    /**
+     * Get a component that is suitable for satisfying dep
      *
-     * @dep a dependency
+     * @param dep a dependency
+     * @return a Maybe<T> which is bound if the operation was successful
      */
     util::Maybe<Component> component(const Dependencies::Dependent& dep) ;
 
+    /**
+     * Get component as T via dynamic cast
+     * @param id the id of the component
+     * @return a Maybe<T> which is bound if the operation was successful
+     */
     template <typename T>
     util::Maybe<T> componentAs(CompId id) {
         return util::Maybe<T>(component(id).get()) ;
     }
 
+    /**
+     * Get component as T via dynamic cast
+     * @param type the type of the component
+     * @return a Maybe<T> which is bound if the operation was successful
+     */
     template <typename T>
     util::Maybe<T> componentAs(const TypeName& type) {
         return util::Maybe<T>(component(type).get()) ;
     }
 
+    /**
+     * Get component as T via dynamic cast
+     * @param type the type of the component
+     * @param subtype of the compoent
+     * @return a Maybe<T> which is bound if the operation was successful
+     */
     template <typename T>
     util::Maybe<T> componentAs(const TypeName& type, const SubTypeName& subtype) {
         return util::Maybe<T>(component(type, subtype).get()) ;
     }
 
-
+    /**
+     * Access to theoria bootstrap config
+     */
     const config::Config& bootConfig() const ; 
+
+    /**
+     * Access to the application config
+     */
     const config::Config& appConfig() const ; 
   
-    /* Satisfy dependencies as required by deps, creating components if necessary
+    /**
+     * Satisfy dependencies as required by deps, creating components if necessary
      *
-     * @deps  the dependencies to satisfy
-     * @compId optional compId of requesting component. Used for informational purposes
+     * @param deps  the dependencies to satisfy
+     * @param compId optional compId of requesting component. Used for informational purposes
      * @return the vector components which satisfy (possibly nullptr if could not satisfy)
-     *
      */
     std::vector<Component*> satisfy(const Dependencies& deps, CompId compId=-1) ;
 
-    /*
+    /**
      * At the moment does nothing but reserved to allow resources
      * to be freed when no longer needed
      */
     void release(Component* component) {};
 
-    /*
+    /**
      * At the moment does nothing but reserved to allow dynamic
      * dependency tracking in cases where dependencies are not
      * fully known after initialization. For example, 

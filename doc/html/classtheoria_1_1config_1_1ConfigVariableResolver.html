@@ -89,20 +89,20 @@ Inheritance diagram for theoria::config::ConfigVariableResolver:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:af27a85262d802c9ad4ecb1179efaf447"><td class="memItemLeft" align="right" valign="top"><a id="af27a85262d802c9ad4ecb1179efaf447"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Result</b> = std::pair&lt; const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *, std::string &gt;</td></tr>
+<tr class="memitem:af27a85262d802c9ad4ecb1179efaf447"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#af27a85262d802c9ad4ecb1179efaf447">Result</a> = std::pair&lt; const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *, std::string &gt;</td></tr>
 <tr class="separator:af27a85262d802c9ad4ecb1179efaf447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d92a11d55181183ce4071566437f01b"><td class="memItemLeft" align="right" valign="top"><a id="a2d92a11d55181183ce4071566437f01b"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>ResultVec</b> = std::vector&lt; Result &gt;</td></tr>
+<tr class="memitem:a2d92a11d55181183ce4071566437f01b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a2d92a11d55181183ce4071566437f01b">ResultVec</a> = std::vector&lt; <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#af27a85262d802c9ad4ecb1179efaf447">Result</a> &gt;</td></tr>
 <tr class="separator:a2d92a11d55181183ce4071566437f01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acb155f953e0d353cbd4966ae0d6e50da"><td class="memItemLeft" align="right" valign="top"><a id="acb155f953e0d353cbd4966ae0d6e50da"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>resolve</b> (const std::string &amp;var) const</td></tr>
+<tr class="memitem:a90e26596be3efc1597909fd615a6a286"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a90e26596be3efc1597909fd615a6a286">ConfigVariableResolver</a> ()</td></tr>
+<tr class="separator:a90e26596be3efc1597909fd615a6a286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac395c02cf0dc162c093bfda494e3af0b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#ac395c02cf0dc162c093bfda494e3af0b">~ConfigVariableResolver</a> ()</td></tr>
+<tr class="separator:ac395c02cf0dc162c093bfda494e3af0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb155f953e0d353cbd4966ae0d6e50da"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#acb155f953e0d353cbd4966ae0d6e50da">resolve</a> (const std::string &amp;var) const</td></tr>
 <tr class="separator:acb155f953e0d353cbd4966ae0d6e50da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a406e1024b865b1749c920c83b774b745"><td class="memItemLeft" align="right" valign="top"><a id="a406e1024b865b1749c920c83b774b745"></a>
-ResultVec&#160;</td><td class="memItemRight" valign="bottom"><b>resolveAll</b> (const std::string &amp;var) const</td></tr>
+<tr class="memitem:a406e1024b865b1749c920c83b774b745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a2d92a11d55181183ce4071566437f01b">ResultVec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a406e1024b865b1749c920c83b774b745">resolveAll</a> (const std::string &amp;var) const</td></tr>
 <tr class="separator:a406e1024b865b1749c920c83b774b745"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
@@ -111,27 +111,127 @@ is the name of the variable (with no leading '$')</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>std::pair&lt;"'resolver'", "'value'"&gt; if found or std::pair&lt;"",""&gt; if not found </dd></dl>
 </td></tr>
 <tr class="memitem:a85e75133c0fdd67dd8b1d8e678f46ca8"><td class="memItemLeft" align="right" valign="top"><a id="a85e75133c0fdd67dd8b1d8e678f46ca8"></a>
-virtual Result&#160;</td><td class="memItemRight" valign="bottom"><b>lookup</b> (const std::string &amp;<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a026bda729faf988eaef334a45ec92303">name</a>) const =0</td></tr>
+virtual <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#af27a85262d802c9ad4ecb1179efaf447">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lookup</b> (const std::string &amp;<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a026bda729faf988eaef334a45ec92303">name</a>) const =0</td></tr>
 <tr class="separator:a85e75133c0fdd67dd8b1d8e678f46ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a026bda729faf988eaef334a45ec92303"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a026bda729faf988eaef334a45ec92303">name</a> () const =0</td></tr>
 <tr class="separator:a026bda729faf988eaef334a45ec92303"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedd40aea06645632c2b380c0181c563b"><td class="memItemLeft" align="right" valign="top"><a id="aedd40aea06645632c2b380c0181c563b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>append</b> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *resolver)</td></tr>
+<tr class="memitem:aedd40aea06645632c2b380c0181c563b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#aedd40aea06645632c2b380c0181c563b">append</a> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *resolver)</td></tr>
 <tr class="separator:aedd40aea06645632c2b380c0181c563b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2861f6405c8b8e6c8c267dd490c46d2a"><td class="memItemLeft" align="right" valign="top"><a id="a2861f6405c8b8e6c8c267dd490c46d2a"></a>
-const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>next</b> () const</td></tr>
+<tr class="memitem:a2861f6405c8b8e6c8c267dd490c46d2a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a2861f6405c8b8e6c8c267dd490c46d2a">next</a> () const</td></tr>
 <tr class="separator:a2861f6405c8b8e6c8c267dd490c46d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base configuration variable resolver.</p>
 <p>Theoria configuration files can contain variables of the form <em>$variable</em> ('first variables') and <em>$$variable</em> ('last variables ') . Resolvers determine how a variable is bound to a value. Resolvers can be chained together in a sequence so that the value of a variable can be determined by walking a list of different resolvers.</p>
 <p><em>First Variables</em> ($var) are bound by the first resolver that recognizes the variable <em>Last Variables</em> ($$var) are bound by the last resolver that recognizes the variable</p>
-<p>Example ConfigVariableResolvers are: &lt;CmdLineResolver&gt;, &lt;EnvVarResolver&gt;, &lt;ConfigVariableResolver&gt;, &lt;TomlResolver&gt;</p>
-<p>Say you want your project to be configurable from both the command line and environment and you want the command line to take precedence. This means if a variable is give a value on the command line ignore any value in the env.</p>
+<p>Example ConfigVariableResolvers are:</p><pre class="fragment">&lt;CmdLineResolver&gt;, &lt;EnvVarResolver&gt;, &lt;ConfigVariableResolver&gt;, &lt;TomlResolver&gt; </pre><p>Say you want your project to be configurable from both the command line and environment and you want the command line to take precedence. This means if a variable is give a value on the command line ignore any value in the env.</p>
 <p>For this you should use: <a class="el" href="classtheoria_1_1config_1_1CmdLineResolver.html">CmdLineResolver</a> -&gt; <a class="el" href="classtheoria_1_1config_1_1EnvVarResolver.html">EnvVarResolver</a> and variables of the form $va1, $var2 and so on. But suppose for some specific variable you don't want the user to change it if it is defined in the env. You can still use the same resolver chain but make this a <em>last variable</em> $$specialVar</p>
 <p>A general guideline is to construct your resolver chain such that most variables are $first and only used $$last syntax for special exceptions. Many projects can probably avoid $$last variables all together.</p>
 <p>Theoria will output a representation of your config file at runtime that shows how variables were resolved. You can also run a project using: <em>theoria &ndash;resolve-only</em> to see the same with out executing the code </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af27a85262d802c9ad4ecb1179efaf447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af27a85262d802c9ad4ecb1179efaf447">&sect;&nbsp;</a></span>Result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#af27a85262d802c9ad4ecb1179efaf447">theoria::config::ConfigVariableResolver::Result</a> =  std::pair&lt;const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a>*, std::string&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The result type is a pair consiting of the resolver that dtermined the value and the value itself </p>
+
+</div>
+</div>
+<a id="a2d92a11d55181183ce4071566437f01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d92a11d55181183ce4071566437f01b">&sect;&nbsp;</a></span>ResultVec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a2d92a11d55181183ce4071566437f01b">theoria::config::ConfigVariableResolver::ResultVec</a> =  std::vector&lt;<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#af27a85262d802c9ad4ecb1179efaf447">Result</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A vector of resolver results </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a90e26596be3efc1597909fd615a6a286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e26596be3efc1597909fd615a6a286">&sect;&nbsp;</a></span>ConfigVariableResolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">theoria::config::ConfigVariableResolver::ConfigVariableResolver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default constructor sets next resolver to nullptr </p>
+
+</div>
+</div>
+<a id="ac395c02cf0dc162c093bfda494e3af0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac395c02cf0dc162c093bfda494e3af0b">&sect;&nbsp;</a></span>~ConfigVariableResolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConfigVariableResolver::~ConfigVariableResolver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Destructore </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aedd40aea06645632c2b380c0181c563b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd40aea06645632c2b380c0181c563b">&sect;&nbsp;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigVariableResolver::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td>
+          <td class="paramname"><em>resolver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Append resolver to this one to form a resolver chain </p>
+
+</div>
+</div>
 <a id="a026bda729faf988eaef334a45ec92303"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a026bda729faf988eaef334a45ec92303">&sect;&nbsp;</a></span>name()</h2>
 
@@ -156,7 +256,84 @@ const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html"
 </div><div class="memdoc">
 <p>Return name of the resolver </p>
 
-<p>Implemented in <a class="el" href="classtheoria_1_1config_1_1TOMLResolver.html#a6b50ff1e396f74183318915e602837fc">theoria::config::TOMLResolver</a>, <a class="el" href="classTOMLResolver_1_1TOMLResolverImpl.html#a5b9f36aca6c20a81b18b078fa74c3c14">theoria::config::TOMLResolver::TOMLResolverImpl</a>, <a class="el" href="classtheoria_1_1config_1_1DisableResolver.html#ae7caa7a59ad2921ec2cba0544ed26ad0">theoria::config::DisableResolver</a>, <a class="el" href="classtheoria_1_1config_1_1DisallowResolver.html#a8352df79f9e0f17fbfad8801bfdcc99e">theoria::config::DisallowResolver</a>, <a class="el" href="classtheoria_1_1config_1_1CmdLineResolver.html#ab42f0d86e62e985ee0bc94947df46a74">theoria::config::CmdLineResolver</a>, <a class="el" href="classtheoria_1_1config_1_1EnvVarResolver.html#ab2c250e1b7866dcd618dc90f3c3eab19">theoria::config::EnvVarResolver</a>, and <a class="el" href="classtheoria_1_1core_1_1AppConfigResolver.html#ad7c8c08e622613c6505418774a71abda">theoria::core::AppConfigResolver</a>.</p>
+<p>Implemented in <a class="el" href="classtheoria_1_1config_1_1TOMLResolver.html#a6b50ff1e396f74183318915e602837fc">theoria::config::TOMLResolver</a>, <a class="el" href="classtheoria_1_1config_1_1DisableResolver.html#ae7caa7a59ad2921ec2cba0544ed26ad0">theoria::config::DisableResolver</a>, <a class="el" href="classtheoria_1_1config_1_1DisallowResolver.html#a8352df79f9e0f17fbfad8801bfdcc99e">theoria::config::DisallowResolver</a>, <a class="el" href="classtheoria_1_1config_1_1CmdLineResolver.html#ab42f0d86e62e985ee0bc94947df46a74">theoria::config::CmdLineResolver</a>, <a class="el" href="classTOMLResolver_1_1TOMLResolverImpl.html#a5b9f36aca6c20a81b18b078fa74c3c14">theoria::config::TOMLResolver::TOMLResolverImpl</a>, <a class="el" href="classtheoria_1_1config_1_1EnvVarResolver.html#ab2c250e1b7866dcd618dc90f3c3eab19">theoria::config::EnvVarResolver</a>, and <a class="el" href="classtheoria_1_1core_1_1AppConfigResolver.html#ad7c8c08e622613c6505418774a71abda">theoria::core::AppConfigResolver</a>.</p>
+
+</div>
+</div>
+<a id="a2861f6405c8b8e6c8c267dd490c46d2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2861f6405c8b8e6c8c267dd490c46d2a">&sect;&nbsp;</a></span>next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a>* theoria::config::ConfigVariableResolver::next </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return next resolver in the chain </p><dl class="section return"><dt>Returns</dt><dd>resolver or nullptr </dd></dl>
+
+</div>
+</div>
+<a id="acb155f953e0d353cbd4966ae0d6e50da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb155f953e0d353cbd4966ae0d6e50da">&sect;&nbsp;</a></span>resolve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ConfigVariableResolver::resolve </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Resolve variable </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var</td><td>is the variable and it must begin with '$' character</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the value of the variable. If <em>var</em> is not found then the <em>var</em> itself is returned </dd></dl>
+
+</div>
+</div>
+<a id="a406e1024b865b1749c920c83b774b745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406e1024b865b1749c920c83b774b745">&sect;&nbsp;</a></span>resolveAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html#a2d92a11d55181183ce4071566437f01b">ResultVec</a> theoria::config::ConfigVariableResolver::resolveAll </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Resolve variable across all resolvers in the chain and return vector of all successful resolutions in order of precedence as dictated by whether $'var or $$'var' was used.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var</td><td>is the variable and it must begin with '$'</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of resolutions such that the first entry is the value that would have been resolved the second is the alternative and so on. </dd></dl>
 
 </div>
 </div>
@@ -167,7 +344,7 @@ const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html"
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

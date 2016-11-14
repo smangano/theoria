@@ -65,40 +65,67 @@ $(function() {
 <div class="title">ConfigResolverBuilder Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="ConfigResolverBuilder_8h_source.html">ConfigResolverBuilder.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ConfigResolverBuilder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfigResolverBuilder__inherit__graph.png" border="0" usemap="#ConfigResolverBuilder_inherit__map" alt="Inheritance graph"/></div>
-<map name="ConfigResolverBuilder_inherit__map" id="ConfigResolverBuilder_inherit__map">
-</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for ConfigResolverBuilder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfigResolverBuilder__coll__graph.png" border="0" usemap="#ConfigResolverBuilder_coll__map" alt="Collaboration graph"/></div>
-<map name="ConfigResolverBuilder_coll__map" id="ConfigResolverBuilder_coll__map">
-</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a63ae6487bfd38e5a13de3a369d1509ec"><td class="memItemLeft" align="right" valign="top"><a id="a63ae6487bfd38e5a13de3a369d1509ec"></a>
-virtual Dependencies&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &amp;config) overide</td></tr>
-<tr class="separator:a63ae6487bfd38e5a13de3a369d1509ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a591ec176049f29c3a51fbad2501f1ab0"><td class="memItemLeft" align="right" valign="top"><a id="a591ec176049f29c3a51fbad2501f1ab0"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>finalize</b> (ComponentList dependencies)</td></tr>
-<tr class="separator:a591ec176049f29c3a51fbad2501f1ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e217cbe1d663a83d098e224cc4d7cb8"><td class="memItemLeft" align="right" valign="top"><a id="a4e217cbe1d663a83d098e224cc4d7cb8"></a>
+Dependencies&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &amp;config) overide</td></tr>
+<tr class="separator:a4e217cbe1d663a83d098e224cc4d7cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c367a65b4e8fb6285b63fba0bdbef0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigResolverBuilder.html#a77c367a65b4e8fb6285b63fba0bdbef0">finalize</a> (ComponentList dependencies) override</td></tr>
+<tr class="separator:a77c367a65b4e8fb6285b63fba0bdbef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaab8623502528a6de4129b1016f02224"><td class="memItemLeft" align="right" valign="top"><a id="aaab8623502528a6de4129b1016f02224"></a>
 config::ConfigVariableResolver *&#160;</td><td class="memItemRight" valign="bottom"><b>build</b> () const</td></tr>
 <tr class="separator:aaab8623502528a6de4129b1016f02224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Builds a chain of resolvers. Used by Config Builder </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a77c367a65b4e8fb6285b63fba0bdbef0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c367a65b4e8fb6285b63fba0bdbef0">&sect;&nbsp;</a></span>finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigResolverBuilder::finalize </td>
+          <td>(</td>
+          <td class="paramtype">ComponentList&#160;</td>
+          <td class="paramname"><em>dependencies</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Receives a ConfigBuilder and one or more resolvers and wires the resolvers as the builders resolver chain in the order they appear </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/theoria/core/<a class="el" href="ConfigResolverBuilder_8h_source.html">ConfigResolverBuilder.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

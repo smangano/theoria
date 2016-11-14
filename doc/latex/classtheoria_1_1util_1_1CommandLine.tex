@@ -1,89 +1,299 @@
 \hypertarget{classtheoria_1_1util_1_1CommandLine}{}\section{theoria\+:\+:util\+:\+:Command\+Line Class Reference}
 \label{classtheoria_1_1util_1_1CommandLine}\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+
+
+{\ttfamily \#include $<$Command\+Line.\+h$>$}
+
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}\label{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}} 
-using {\bfseries const\+\_\+iterator} = Symbol\+Tbl\+::const\+\_\+iterator
+using \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} = Symbol\+Tbl\+::const\+\_\+iterator
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a7e753aa91c5a0018a1bec3439839852d}\label{classtheoria_1_1util_1_1CommandLine_a7e753aa91c5a0018a1bec3439839852d}} 
-{\bfseries Command\+Line} (int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]}, bool allow\+Missing\+Config=false)
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a7e753aa91c5a0018a1bec3439839852d}{Command\+Line} (int argc, const char $\ast$argv\mbox{[}$\,$\mbox{]}, bool allow\+Missing\+Config=false)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_adedd9cbacd108ee1b5454570a200f497}\label{classtheoria_1_1util_1_1CommandLine_adedd9cbacd108ee1b5454570a200f497}} 
-const\+\_\+iterator {\bfseries find\+Var} (const std\+::string \&var) const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_adedd9cbacd108ee1b5454570a200f497}{find\+Var} (const std\+::string \&var) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_adb659582b2ce6b2ef9666562ac05bd5f}\label{classtheoria_1_1util_1_1CommandLine_adb659582b2ce6b2ef9666562ac05bd5f}} 
-bool {\bfseries has\+Variable} (const std\+::string \&var) const
+bool \hyperlink{classtheoria_1_1util_1_1CommandLine_adb659582b2ce6b2ef9666562ac05bd5f}{has\+Variable} (const std\+::string \&var) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a65446583fe4fe7d3a9ae1ed4dd23185e}\label{classtheoria_1_1util_1_1CommandLine_a65446583fe4fe7d3a9ae1ed4dd23185e}} 
-const\+\_\+iterator {\bfseries begin\+Vars} () const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_a65446583fe4fe7d3a9ae1ed4dd23185e}{begin\+Vars} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}\label{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}} 
-const\+\_\+iterator {\bfseries end\+Vars} () const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}{end\+Vars} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a26dab1188ed94478a4eaaf1b9e1ed19e}\label{classtheoria_1_1util_1_1CommandLine_a26dab1188ed94478a4eaaf1b9e1ed19e}} 
-const char $\ast$ {\bfseries variable\+As\+Ptr} (const std\+::string \&name) const noexcept
+const char $\ast$ \hyperlink{classtheoria_1_1util_1_1CommandLine_a26dab1188ed94478a4eaaf1b9e1ed19e}{variable\+As\+Ptr} (const std\+::string \&name) const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_aa9310fbfe3b1397bb9288eee7aae4abc}\label{classtheoria_1_1util_1_1CommandLine_aa9310fbfe3b1397bb9288eee7aae4abc}} 
-const std\+::string \& {\bfseries variable\+As\+Str} (const std\+::string \&name, const std\+::string \&def=\char`\"{}\char`\"{}) const
+const std\+::string \& \hyperlink{classtheoria_1_1util_1_1CommandLine_aa9310fbfe3b1397bb9288eee7aae4abc}{variable\+As\+Str} (const std\+::string \&name, const std\+::string \&def=\char`\"{}\char`\"{}) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a182748d9cfb606cbf45ee7dc7e016a52}\label{classtheoria_1_1util_1_1CommandLine_a182748d9cfb606cbf45ee7dc7e016a52}} 
-int64\+\_\+t {\bfseries variable\+As\+Int} (const std\+::string \&name, int64\+\_\+t def=0) const
+int64\+\_\+t \hyperlink{classtheoria_1_1util_1_1CommandLine_a182748d9cfb606cbf45ee7dc7e016a52}{variable\+As\+Int} (const std\+::string \&name, int64\+\_\+t def=0) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a42fbe66f3bcf121ad631df39d09606ef}\label{classtheoria_1_1util_1_1CommandLine_a42fbe66f3bcf121ad631df39d09606ef}} 
-double {\bfseries variable\+As\+Dbl} (const std\+::string \&name, double def=0) const
+double \hyperlink{classtheoria_1_1util_1_1CommandLine_a42fbe66f3bcf121ad631df39d09606ef}{variable\+As\+Dbl} (const std\+::string \&name, double def=0) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}\label{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}} 
-bool {\bfseries variable\+As\+Bool} (const std\+::string \&name, bool def) const
+bool \hyperlink{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}{variable\+As\+Bool} (const std\+::string \&name, bool def) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}\label{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}} 
-int {\bfseries num\+Vars} () const
+int \hyperlink{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}{num\+Vars} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abb86432416368ace970920f3fc4fe9c6}\label{classtheoria_1_1util_1_1CommandLine_abb86432416368ace970920f3fc4fe9c6}} 
-const\+\_\+iterator {\bfseries find\+Setting} (const std\+::string \&name) const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_abb86432416368ace970920f3fc4fe9c6}{find\+Setting} (const std\+::string \&name) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a011dfbb3035341128a4e4e4f4a466cff}\label{classtheoria_1_1util_1_1CommandLine_a011dfbb3035341128a4e4e4f4a466cff}} 
-bool {\bfseries has\+Setting} (const std\+::string \&name) const
+bool \hyperlink{classtheoria_1_1util_1_1CommandLine_a011dfbb3035341128a4e4e4f4a466cff}{has\+Setting} (const std\+::string \&name) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae0758c3259074eddfc06c4a77ac3a1a9}\label{classtheoria_1_1util_1_1CommandLine_ae0758c3259074eddfc06c4a77ac3a1a9}} 
-const\+\_\+iterator {\bfseries begin\+Settings} () const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_ae0758c3259074eddfc06c4a77ac3a1a9}{begin\+Settings} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}\label{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}} 
-const\+\_\+iterator {\bfseries end\+Settings} () const
+\hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} \hyperlink{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}{end\+Settings} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}\label{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}} 
-const char $\ast$ {\bfseries setting\+As\+Ptr} (const std\+::string \&name) const noexcept
+const char $\ast$ \hyperlink{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}{setting\+As\+Ptr} (const std\+::string \&name) const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}\label{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}} 
-const std\+::string \& {\bfseries setting\+As\+Str} (const std\+::string \&name, const std\+::string \&def) const
+const std\+::string \& \hyperlink{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}{setting\+As\+Str} (const std\+::string \&name, const std\+::string \&def) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abec4516f24ea88f83f1cabb16157cf8f}\label{classtheoria_1_1util_1_1CommandLine_abec4516f24ea88f83f1cabb16157cf8f}} 
-int64\+\_\+t {\bfseries setting\+As\+Int} (const std\+::string \&name, int64\+\_\+t def) const
+int64\+\_\+t \hyperlink{classtheoria_1_1util_1_1CommandLine_abec4516f24ea88f83f1cabb16157cf8f}{setting\+As\+Int} (const std\+::string \&name, int64\+\_\+t def) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae2ff2d5845f93ac135e9e4a1ff65b403}\label{classtheoria_1_1util_1_1CommandLine_ae2ff2d5845f93ac135e9e4a1ff65b403}} 
-double {\bfseries setting\+As\+Dbl} (const std\+::string \&name, double def) const
+double \hyperlink{classtheoria_1_1util_1_1CommandLine_ae2ff2d5845f93ac135e9e4a1ff65b403}{setting\+As\+Dbl} (const std\+::string \&name, double def) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a745baeae69017e95c9c9cbe4633be2d6}\label{classtheoria_1_1util_1_1CommandLine_a745baeae69017e95c9c9cbe4633be2d6}} 
-bool {\bfseries setting\+As\+Bool} (const std\+::string \&name, bool def) const
+bool \hyperlink{classtheoria_1_1util_1_1CommandLine_a745baeae69017e95c9c9cbe4633be2d6}{setting\+As\+Bool} (const std\+::string \&name, bool def) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_aa0f4075a16a8c490e5e27596534ca485}\label{classtheoria_1_1util_1_1CommandLine_aa0f4075a16a8c490e5e27596534ca485}} 
-int {\bfseries num\+Settings} () const
+int \hyperlink{classtheoria_1_1util_1_1CommandLine_aa0f4075a16a8c490e5e27596534ca485}{num\+Settings} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abac7c59a7bf3989959f0023455f3257e}\label{classtheoria_1_1util_1_1CommandLine_abac7c59a7bf3989959f0023455f3257e}} 
-const std\+::string \& {\bfseries config\+Filename} () const
+const std\+::string \& \hyperlink{classtheoria_1_1util_1_1CommandLine_abac7c59a7bf3989959f0023455f3257e}{config\+Filename} () const
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a361f672089b8bd3cb794645ee4629b72}\label{classtheoria_1_1util_1_1CommandLine_a361f672089b8bd3cb794645ee4629b72}} 
-static const \hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} \& {\bfseries instance} ()
+static const \hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} \& \hyperlink{classtheoria_1_1util_1_1CommandLine_a361f672089b8bd3cb794645ee4629b72}{instance} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7aa099f28c4f1e}\label{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7aa099f28c4f1e}} 
-static void {\bfseries reset} ()
+static void \hyperlink{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7aa099f28c4f1e}{reset} ()
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Pseudo-\/\+Singleton that captures command line arguments of Theoria applications
+
+\hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} consists of\+: \begin{DoxyVerb} config file - e.g., myapp.toml
+ settings passed as: [--setting value] or [--someFlag] 
+ settings are terminated by optionak -- (mandatory if variables are specified)
+ variables passed as: var1=value
+
+ Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
+ However, user defined settings are allowed. To avoid conflict with future extensions of theoria
+ user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
+
+
+ Variables are typically user defined settings that parameterize the config file. 
+ See <theoria::config::CmdLineResolver>
+\end{DoxyVerb}
+
+
+Example legal command lines\+: \begin{DoxyVerb} theoria config.toml
+ theoria config.xml
+ theoria config.toml --setting1
+ theoria config.toml --setting1 97
+ theoria config.toml --setting1 --setting2 17
+ theoria config.toml --setting1 --setting2 17 --
+ theoria config.toml -- a=1 b=2 c=3
+ theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]\end{DoxyVerb}
+ 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}\label{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{const\+\_\+iterator}{const\_iterator}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{theoria\+::util\+::\+Command\+Line\+::const\+\_\+iterator} =  Symbol\+Tbl\+::const\+\_\+iterator}
+
+The iterator type for settings and variables 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a7e753aa91c5a0018a1bec3439839852d}\label{classtheoria_1_1util_1_1CommandLine_a7e753aa91c5a0018a1bec3439839852d}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!Command\+Line@{Command\+Line}}
+\index{Command\+Line@{Command\+Line}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{Command\+Line()}{CommandLine()}}
+{\footnotesize\ttfamily Command\+Line\+::\+Command\+Line (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{const char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{bool}]{allow\+Missing\+Config = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Constructor takes argc and argv form main() (with first arg dropped) to initialize the command line object. It does not validate the actual values but does check that they conform to the order expected by theoria 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae0758c3259074eddfc06c4a77ac3a1a9}\label{classtheoria_1_1util_1_1CommandLine_ae0758c3259074eddfc06c4a77ac3a1a9}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!begin\+Settings@{begin\+Settings}}
+\index{begin\+Settings@{begin\+Settings}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{begin\+Settings()}{beginSettings()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::begin\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterator to the first setting \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a65446583fe4fe7d3a9ae1ed4dd23185e}\label{classtheoria_1_1util_1_1CommandLine_a65446583fe4fe7d3a9ae1ed4dd23185e}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!begin\+Vars@{begin\+Vars}}
+\index{begin\+Vars@{begin\+Vars}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{begin\+Vars()}{beginVars()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::begin\+Vars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterate over all variables \begin{DoxyReturn}{Returns}
+iterator to std\+::pair$<$name,value$>$ or end() 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abac7c59a7bf3989959f0023455f3257e}\label{classtheoria_1_1util_1_1CommandLine_abac7c59a7bf3989959f0023455f3257e}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!config\+Filename@{config\+Filename}}
+\index{config\+Filename@{config\+Filename}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{config\+Filename()}{configFilename()}}
+{\footnotesize\ttfamily const std\+::string\& theoria\+::util\+::\+Command\+Line\+::config\+Filename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The name of the app config file bassed on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}\label{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!end\+Settings@{end\+Settings}}
+\index{end\+Settings@{end\+Settings}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{end\+Settings()}{endSettings()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::end\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+End of settings \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}\label{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!end\+Vars@{end\+Vars}}
+\index{end\+Vars@{end\+Vars}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{end\+Vars()}{endVars()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::end\+Vars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The end of variables iterator \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abb86432416368ace970920f3fc4fe9c6}\label{classtheoria_1_1util_1_1CommandLine_abb86432416368ace970920f3fc4fe9c6}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!find\+Setting@{find\+Setting}}
+\index{find\+Setting@{find\+Setting}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{find\+Setting()}{findSetting()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::find\+Setting (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterator to the named setting if it exists otherwise \hyperlink{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}{end\+Settings()} \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_adedd9cbacd108ee1b5454570a200f497}\label{classtheoria_1_1util_1_1CommandLine_adedd9cbacd108ee1b5454570a200f497}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!find\+Var@{find\+Var}}
+\index{find\+Var@{find\+Var}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{find\+Var()}{findVar()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}{const\+\_\+iterator} theoria\+::util\+::\+Command\+Line\+::find\+Var (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Find var if it exists \begin{DoxyReturn}{Returns}
+const\+\_\+iterator to std\+::pair$<$var,value$>$ else \hyperlink{classtheoria_1_1util_1_1CommandLine_add5993c46a68548f70a75b2eb9431558}{end\+Vars()} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a011dfbb3035341128a4e4e4f4a466cff}\label{classtheoria_1_1util_1_1CommandLine_a011dfbb3035341128a4e4e4f4a466cff}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!has\+Setting@{has\+Setting}}
+\index{has\+Setting@{has\+Setting}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{has\+Setting()}{hasSetting()}}
+{\footnotesize\ttfamily bool theoria\+::util\+::\+Command\+Line\+::has\+Setting (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+True if a setting with specified name exists \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_adb659582b2ce6b2ef9666562ac05bd5f}\label{classtheoria_1_1util_1_1CommandLine_adb659582b2ce6b2ef9666562ac05bd5f}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!has\+Variable@{has\+Variable}}
+\index{has\+Variable@{has\+Variable}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{has\+Variable()}{hasVariable()}}
+{\footnotesize\ttfamily bool theoria\+::util\+::\+Command\+Line\+::has\+Variable (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test if variable exists 
+\begin{DoxyParams}{Parameters}
+{\em var} & the variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if exists 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a361f672089b8bd3cb794645ee4629b72}\label{classtheoria_1_1util_1_1CommandLine_a361f672089b8bd3cb794645ee4629b72}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!instance@{instance}}
+\index{instance@{instance}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily const \hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} \& Command\+Line\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+The instance constructed in main (or first instance) \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_aa0f4075a16a8c490e5e27596534ca485}\label{classtheoria_1_1util_1_1CommandLine_aa0f4075a16a8c490e5e27596534ca485}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!num\+Settings@{num\+Settings}}
+\index{num\+Settings@{num\+Settings}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{num\+Settings()}{numSettings()}}
+{\footnotesize\ttfamily int theoria\+::util\+::\+Command\+Line\+::num\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The numbber of settings passed on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}\label{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!num\+Vars@{num\+Vars}}
+\index{num\+Vars@{num\+Vars}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{num\+Vars()}{numVars()}}
+{\footnotesize\ttfamily int theoria\+::util\+::\+Command\+Line\+::num\+Vars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of variables \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7aa099f28c4f1e}\label{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7aa099f28c4f1e}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!reset@{reset}}
+\index{reset@{reset}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Command\+Line\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Reset the first instance \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a745baeae69017e95c9c9cbe4633be2d6}\label{classtheoria_1_1util_1_1CommandLine_a745baeae69017e95c9c9cbe4633be2d6}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Bool@{setting\+As\+Bool}}
+\index{setting\+As\+Bool@{setting\+As\+Bool}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{setting\+As\+Bool()}{settingAsBool()}}
+{\footnotesize\ttfamily bool Command\+Line\+::setting\+As\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{def }\end{DoxyParamCaption}) const}
+
+Return a setting as a bool if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae2ff2d5845f93ac135e9e4a1ff65b403}\label{classtheoria_1_1util_1_1CommandLine_ae2ff2d5845f93ac135e9e4a1ff65b403}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Dbl@{setting\+As\+Dbl}}
+\index{setting\+As\+Dbl@{setting\+As\+Dbl}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{setting\+As\+Dbl()}{settingAsDbl()}}
+{\footnotesize\ttfamily double Command\+Line\+::setting\+As\+Dbl (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{double}]{def }\end{DoxyParamCaption}) const}
+
+Return a setting as double if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abec4516f24ea88f83f1cabb16157cf8f}\label{classtheoria_1_1util_1_1CommandLine_abec4516f24ea88f83f1cabb16157cf8f}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Int@{setting\+As\+Int}}
+\index{setting\+As\+Int@{setting\+As\+Int}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{setting\+As\+Int()}{settingAsInt()}}
+{\footnotesize\ttfamily int64\+\_\+t Command\+Line\+::setting\+As\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int64\+\_\+t}]{def }\end{DoxyParamCaption}) const}
+
+Return a settting as a 64bit integer if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}\label{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Ptr@{setting\+As\+Ptr}}
+\index{setting\+As\+Ptr@{setting\+As\+Ptr}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{setting\+As\+Ptr()}{settingAsPtr()}}
+{\footnotesize\ttfamily const char $\ast$ Command\+Line\+::setting\+As\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Return a settting as a const char $\ast$ if it exists otherwise return nullptr \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}\label{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Str@{setting\+As\+Str}}
+\index{setting\+As\+Str@{setting\+As\+Str}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{setting\+As\+Str()}{settingAsStr()}}
+{\footnotesize\ttfamily const std\+::string \& Command\+Line\+::setting\+As\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{def }\end{DoxyParamCaption}) const}
+
+Return a settting as a string if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}\label{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Bool@{variable\+As\+Bool}}
+\index{variable\+As\+Bool@{variable\+As\+Bool}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{variable\+As\+Bool()}{variableAsBool()}}
+{\footnotesize\ttfamily bool Command\+Line\+::variable\+As\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{def }\end{DoxyParamCaption}) const}
+
+Get variable value as bool \begin{DoxyReturn}{Returns}
+value or def if not present 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if can\textquotesingle{}t convert to a bool \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a42fbe66f3bcf121ad631df39d09606ef}\label{classtheoria_1_1util_1_1CommandLine_a42fbe66f3bcf121ad631df39d09606ef}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Dbl@{variable\+As\+Dbl}}
+\index{variable\+As\+Dbl@{variable\+As\+Dbl}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{variable\+As\+Dbl()}{variableAsDbl()}}
+{\footnotesize\ttfamily double Command\+Line\+::variable\+As\+Dbl (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{double}]{def = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+Get variable value as double \begin{DoxyReturn}{Returns}
+value or def if not present 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if can\textquotesingle{}t convert to a double \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a182748d9cfb606cbf45ee7dc7e016a52}\label{classtheoria_1_1util_1_1CommandLine_a182748d9cfb606cbf45ee7dc7e016a52}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Int@{variable\+As\+Int}}
+\index{variable\+As\+Int@{variable\+As\+Int}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{variable\+As\+Int()}{variableAsInt()}}
+{\footnotesize\ttfamily int64\+\_\+t Command\+Line\+::variable\+As\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int64\+\_\+t}]{def = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+Get variable value as int64\+\_\+t \begin{DoxyReturn}{Returns}
+value or def if not present 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if can\textquotesingle{}t convert to an integer \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a26dab1188ed94478a4eaaf1b9e1ed19e}\label{classtheoria_1_1util_1_1CommandLine_a26dab1188ed94478a4eaaf1b9e1ed19e}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Ptr@{variable\+As\+Ptr}}
+\index{variable\+As\+Ptr@{variable\+As\+Ptr}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{variable\+As\+Ptr()}{variableAsPtr()}}
+{\footnotesize\ttfamily const char $\ast$ Command\+Line\+::variable\+As\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Get variable value or nullptr as const char $\ast$ \begin{DoxyReturn}{Returns}
+value or nullptr if not present 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_aa9310fbfe3b1397bb9288eee7aae4abc}\label{classtheoria_1_1util_1_1CommandLine_aa9310fbfe3b1397bb9288eee7aae4abc}} 
+\index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Str@{variable\+As\+Str}}
+\index{variable\+As\+Str@{variable\+As\+Str}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
+\subsubsection{\texorpdfstring{variable\+As\+Str()}{variableAsStr()}}
+{\footnotesize\ttfamily const std\+::string \& Command\+Line\+::variable\+As\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{def = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption}) const}
+
+Get variable value as std\+::string \begin{DoxyReturn}{Returns}
+value or def if not present 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,21 +1,78 @@
 \hypertarget{classtheoria_1_1core_1_1Theoria}{}\section{theoria\+:\+:core\+:\+:Theoria Class Reference}
 \label{classtheoria_1_1core_1_1Theoria}\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+
+
+{\ttfamily \#include $<$Theoria.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_ae8537946e39ac2ec084332edd6ef0a9a}\label{classtheoria_1_1core_1_1Theoria_ae8537946e39ac2ec084332edd6ef0a9a}} 
-void {\bfseries help} ()
+\hyperlink{classtheoria_1_1core_1_1Theoria_a9a99e8952d6224eade9318098221d144}{Theoria} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a353a71a3b26b77d814c99756a749bbdf}\label{classtheoria_1_1core_1_1Theoria_a353a71a3b26b77d814c99756a749bbdf}} 
-void {\bfseries show\+\_\+config} (bool exit)
+void \hyperlink{classtheoria_1_1core_1_1Theoria_aff22e3f956bf86e02fdc53ed491f937d}{help} (std\+::ostream \&out=std\+::cout)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a7c08abec5d2655e8779f81622406ccb7}\label{classtheoria_1_1core_1_1Theoria_a7c08abec5d2655e8779f81622406ccb7}} 
-void {\bfseries init} ()
+void \hyperlink{classtheoria_1_1core_1_1Theoria_aad692a4d64908cba9a10ba8453535f83}{help} (const std\+::string \&option\+Name, std\+::ostream \&out=std\+::cout)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a2792aa50eb3ec9a2bea5288097052a3f}\label{classtheoria_1_1core_1_1Theoria_a2792aa50eb3ec9a2bea5288097052a3f}} 
-void {\bfseries run} ()
+void \hyperlink{classtheoria_1_1core_1_1Theoria_a6e8f92e0bc4cabe69a0675797d158b9f}{help} (const char $\ast$const $\ast$opt, std\+::ostream \&out=std\+::cout)
+\item 
+void \hyperlink{classtheoria_1_1core_1_1Theoria_aa8290357bebef4260863997d1756f10a}{show\+\_\+config} (bool exit, std\+::ostream \&out=std\+::cout)
+\item 
+void \hyperlink{classtheoria_1_1core_1_1Theoria_a7c08abec5d2655e8779f81622406ccb7}{init} ()
+\item 
+void \hyperlink{classtheoria_1_1core_1_1Theoria_a2792aa50eb3ec9a2bea5288097052a3f}{run} ()
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Implements the top-\/level operation of the theoria app container 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a9a99e8952d6224eade9318098221d144}\label{classtheoria_1_1core_1_1Theoria_a9a99e8952d6224eade9318098221d144}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!Theoria@{Theoria}}
+\index{Theoria@{Theoria}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{Theoria()}{Theoria()}}
+{\footnotesize\ttfamily Theoria\+::\+Theoria (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_aff22e3f956bf86e02fdc53ed491f937d}\label{classtheoria_1_1core_1_1Theoria_aff22e3f956bf86e02fdc53ed491f937d}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!help@{help}}
+\index{help@{help}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{help()}{help()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Theoria\+::help (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption})}
+
+Display theoria help and exit \mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_aad692a4d64908cba9a10ba8453535f83}\label{classtheoria_1_1core_1_1Theoria_aad692a4d64908cba9a10ba8453535f83}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!help@{help}}
+\index{help@{help}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{help()}{help()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Theoria\+::help (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{option\+Name,  }\item[{std\+::ostream \&}]{out = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption})}
+
+Display help for particular option name \mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a6e8f92e0bc4cabe69a0675797d158b9f}\label{classtheoria_1_1core_1_1Theoria_a6e8f92e0bc4cabe69a0675797d158b9f}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!help@{help}}
+\index{help@{help}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{help()}{help()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Theoria\+::help (\begin{DoxyParamCaption}\item[{const char $\ast$const $\ast$}]{opt,  }\item[{std\+::ostream \&}]{out = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption})}
+
+Display help for particular option (see theroria/options.\+h) \mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a7c08abec5d2655e8779f81622406ccb7}\label{classtheoria_1_1core_1_1Theoria_a7c08abec5d2655e8779f81622406ccb7}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!init@{init}}
+\index{init@{init}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Theoria\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} container by processing the bootstrap.\+toml file. \mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_a2792aa50eb3ec9a2bea5288097052a3f}\label{classtheoria_1_1core_1_1Theoria_a2792aa50eb3ec9a2bea5288097052a3f}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!run@{run}}
+\index{run@{run}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Theoria\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Run user\textquotesingle{}s application as defined by their config file \mbox{\Hypertarget{classtheoria_1_1core_1_1Theoria_aa8290357bebef4260863997d1756f10a}\label{classtheoria_1_1core_1_1Theoria_aa8290357bebef4260863997d1756f10a}} 
+\index{theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}!show\+\_\+config@{show\+\_\+config}}
+\index{show\+\_\+config@{show\+\_\+config}!theoria\+::core\+::\+Theoria@{theoria\+::core\+::\+Theoria}}
+\subsubsection{\texorpdfstring{show\+\_\+config()}{show\_config()}}
+{\footnotesize\ttfamily void Theoria\+::show\+\_\+config (\begin{DoxyParamCaption}\item[{bool}]{exit,  }\item[{std\+::ostream \&}]{out = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption})}
+
+Resolve the apps config, output the result Will exit if --show\+\_\+config\+\_\+only 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

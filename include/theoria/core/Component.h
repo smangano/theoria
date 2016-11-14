@@ -11,6 +11,8 @@ namespace theoria { namespace config { class Config ; }}
 
 namespace theoria { namespace core {
 
+class Message ;
+
 /** 
  * Components are the soul of Theoria. Components are used to implement the 
  * meaty parts of your application. Things that contain significant business logic,
@@ -34,19 +36,32 @@ namespace theoria { namespace core {
  * Once all components in you application are initialized, Theoria satisfies dependencies by calling finalize() and handing
  * your componet its dependents in the same order as requested. Optional dependents may be null if Theoria could not aquire them
  *
- * Components also receive life-cycle notifications. @see appLifeCycle and @compLifeCycle for details.
+ * Components also receive life-cycle notifications. @see appLifeCycle and @see compLifeCycle for details.
  */
 class Component 
 {
 public:
 
+    /**
+     * Empty component
+     */
 	Component() ;
+
+    /**
+     * Construct component with specified id
+     */
 	Component(CompId id):
         _id(id) {}
 
+    /**
+     * Construct component with specified id and name
+     */
 	Component(CompId id, const std::string& name):
         _id(id), _name(name) {}
 
+    /**
+     * Destructor
+     */
     virtual ~Component() ;
 
 	/**
@@ -75,7 +90,7 @@ public:
 	/**
 	 * If your coponent is a member of a event loop, async messages arrive here 
      */ 
-	virtual void onMessage(Message msg) ;
+	virtual void onMessage(const Message& msg) ;
 
     /**
      * Return components unique id. Uniquieness is per application invocation so this is not a GUID nor is it guranteed idemponent between distinct runs of the app.
@@ -95,7 +110,7 @@ public:
     /**
      * A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T
      * or if it can acquire a T. 
-     * @See acquire
+     * @see acquire
      */
     template <class T>
     T* cast(const std::string& requestor = "Unknown") 
@@ -124,8 +139,8 @@ public:
      *
      * Default impl sets *dest to nullptr and returns nullptr
      *
-     * @param type_info the type_info of he type you wish to acquire
-     * @param the dest where a pointer to the impl of type_info will be stored if available
+     * @param typeInfo the type_info of he type you wish to acquire
+     * @param dest the dest where a pointer to the impl of type_info will be stored if available
      * @return nullptr if this call already satisfied the request by populating dest or if it can't satify request
      *         a pointer to another component if this component belives that the returned component can 
      *         satisfy the request
@@ -134,7 +149,14 @@ public:
 
 protected:
 
+    /**
+     * Unique id
+     */
 	CompId _id ;
+
+    /**
+     * Name
+     */
 	std::string _name ;
 };
 

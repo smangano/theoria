@@ -10,7 +10,6 @@ using namespace config ;
 
 TOMLConfigBuilder::~TOMLConfigBuilder()
 {
-    std::cout << "Delete TOMLConfigBuilder" << ((void*)this) << std::endl;
 }
 
 std::unique_ptr<const Config> TOMLConfigBuilder::parse(std::istream& stream)

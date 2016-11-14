@@ -17,6 +17,9 @@ class ConfigBuilder
 {
 public:
 
+    /**
+     * Type of pointer to Config
+     */
     using ConfigPtr = std::unique_ptr<Config> ;
     
     /**
@@ -25,7 +28,7 @@ public:
     ConfigBuilder():
         _stack(std::move(this->_vec)), _resolverChain(nullptr) {}
 
-    /*
+    /**
      * Construct a builder with resolver as head
      * @param pResolver pointer to resolver
      */
@@ -93,8 +96,8 @@ public:
 
     /**
      * Pop a node off the stack and attach it as a chile to the new top node
-     * @allowDups - Normally Config nodes must be unique by name. Set true to override.  NOTE: if parent is 
-     *              an array dups will automatically to be allowed even if allowDups==false
+     * @param allowDups Normally Config nodes must be unique by name. Set true to override.  
+     *                  NOTE: if parent is an array dups will automatically to be allowed even if allowDups==false
      */
     void popAsChild(bool allowDups=false); 
 
@@ -111,7 +114,7 @@ public:
 
     /**
      * Change the description of the node on the top of the stack
-     * @param the new description for the node
+     * @param desc the new description for the node
      */
     void setDesc(const std::string& desc) ;
 

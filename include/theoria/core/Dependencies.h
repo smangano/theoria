@@ -39,9 +39,9 @@ public:
         /**
          * Use to construct a strict depenedency where both type and subtype must be satsified
          * or a losse dependency if subtype is empty string
-         * @prarm type
-         * @param subtype
-         * @param optional set this to true to tell theoria it is okay if dependency can't be resolved
+         * @param type_ the typename
+         * @param subtype_ the subtype name
+         * @param optional_ set this to true to tell theoria it is okay if dependency can't be resolved
          */
 		Dependent(const TypeName& type_, const SubTypeName& subtype_, int optional_ = false)
         	: type(type_), subtype(subtype_), optional(optional_) {}
@@ -53,14 +53,34 @@ public:
             : type(type_), subtype(type_), optional(optional_) {}
 
 
+        /**
+         * Return true if this is a required dependent
+         */
         bool required() const { return !optional; }
 
+        /**
+         * Convert to dependent to a string
+         */
         std::string str() const ;
 
+        /**
+         * Explicit string conversion
+         */
         explicit operator std::string () { return str(); }
 
+        /**
+         * The type
+         */
 		TypeName type ;
+
+        /**
+         * The subtype, or empty
+         */
 		SubTypeName subtype ;
+
+        /**
+         * Optionality
+         */
 		bool optional ;
 
 	} ;
@@ -71,15 +91,36 @@ private:
 
 public:
 
+    /**
+     * Iterator over dependencies
+     */
     using const_iterator = DepsList::const_iterator ;
-    
+   
+    /**
+     * Empty dependencies
+     */
 	Dependencies() {} 
+    
+    /**
+     * Move copy constructor
+     */
 	Dependencies(Dependencies&& other) noexcept :
         _deps(std::move(other._deps)) {} 
+
+    /**
+     * Copy constructor
+     */
 	Dependencies(const Dependencies& other) noexcept :
         _deps(other._deps) {} 
 
+    /**
+     * Move Assignment
+     */
     Dependencies& operator = (Dependencies&& other) = default ;
+
+    /**
+     * Assignment
+     */
     Dependencies& operator = (Dependencies& other) = default ;
 
 	/**
@@ -109,13 +150,29 @@ public:
         return *this;
     }
 
+    /**
+     * Iterator to first dependent
+     */
     const_iterator begin() const {return _deps.begin();}
+
+    /**
+     * Iterator to the _past-the-end_ dependent
+     */
     const_iterator end() const {return _deps.end();}
-  
+ 
+    /**
+     * Number of dependents
+     */
     int size() const { return _deps.size(); }
 
+    /**
+     * Access to the i'th dep[endent
+     */
     const Dependent& operator [] (int idx) const {return _deps[idx]; }
 
+    /**
+     * Equality
+     */
     friend bool operator==(const Dependencies& a, const Dependencies& b) ;
 
 private:
@@ -123,11 +180,17 @@ private:
 	DepsList _deps ;
 } ;
 
+/**
+ * Two dependents are equal if there data members are equal
+ */
 inline bool operator==(const Dependencies::Dependent& a, const Dependencies::Dependent& b) 
 {
     return a.type == b.type && a.subtype == b.subtype && a.optional == b.optional ; 
 }
 
+/**
+ * Dependencies equal if all dependents are equal
+ */
 inline bool operator==(const Dependencies& a, const Dependencies& b) 
 {
     return a._deps == b._deps ;

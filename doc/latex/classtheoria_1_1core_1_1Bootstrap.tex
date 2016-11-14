@@ -1,5 +1,9 @@
 \hypertarget{classtheoria_1_1core_1_1Bootstrap}{}\section{theoria\+:\+:core\+:\+:Bootstrap Class Reference}
 \label{classtheoria_1_1core_1_1Bootstrap}\index{theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}}
+
+
+{\ttfamily \#include $<$Bootstrap.\+h$>$}
+
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -9,14 +13,11 @@ using {\bfseries Const\+Config\+List} = std\+::vector$<$ const \hyperlink{classt
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_a3ed8e5694e2a5d9136ad00c8eeb13022}\label{classtheoria_1_1core_1_1Bootstrap_a3ed8e5694e2a5d9136ad00c8eeb13022}} 
-std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} $>$ {\bfseries load\+Config} () const
+std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} $>$ \hyperlink{classtheoria_1_1core_1_1Bootstrap_a3ed8e5694e2a5d9136ad00c8eeb13022}{load\+Config} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_a8bc0d6ee72439172ca309df9fb7bf094}\label{classtheoria_1_1core_1_1Bootstrap_a8bc0d6ee72439172ca309df9fb7bf094}} 
-std\+::string {\bfseries find\+Config} () const
+std\+::string \hyperlink{classtheoria_1_1core_1_1Bootstrap_a8bc0d6ee72439172ca309df9fb7bf094}{find\+Config} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_acfcc189dd0c09ed9052917ef7ce24565}\label{classtheoria_1_1core_1_1Bootstrap_acfcc189dd0c09ed9052917ef7ce24565}} 
-void {\bfseries boot} (const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \&boot\+Config)
+void \hyperlink{classtheoria_1_1core_1_1Bootstrap_acfcc189dd0c09ed9052917ef7ce24565}{boot} (const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \&boot\+Config)
 \item 
 \mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_a6154c7bce057f6fe41a98ab52b33b32e}\label{classtheoria_1_1core_1_1Bootstrap_a6154c7bce057f6fe41a98ab52b33b32e}} 
 \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries \+\_\+create\+Core\+Comp} (const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \&comp\+Config)
@@ -40,6 +41,30 @@ void {\bfseries satisfy\+And\+Finalize} (std\+::unordered\+\_\+map$<$ Comp\+Id, 
 void {\bfseries finalize\+App\+Life\+Cycle} (const std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$$>$ \&core\+Components)
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\hyperlink{classtheoria_1_1core_1_1Bootstrap}{Bootstrap} is responsible for setting up the components that are required by theoria to implement its feature set. As some features may be enabled, disabled or tweaked by user a bootstrap.\+toml file is used to configure \hyperlink{classtheoria_1_1core_1_1Bootstrap}{Bootstrap} 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_acfcc189dd0c09ed9052917ef7ce24565}\label{classtheoria_1_1core_1_1Bootstrap_acfcc189dd0c09ed9052917ef7ce24565}} 
+\index{theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}!boot@{boot}}
+\index{boot@{boot}!theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}}
+\subsubsection{\texorpdfstring{boot()}{boot()}}
+{\footnotesize\ttfamily void Bootstrap\+::boot (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \&}]{boot\+Config }\end{DoxyParamCaption})}
+
+\hyperlink{classtheoria_1_1core_1_1Bootstrap}{Bootstrap} theoria by processing the bootstrap config and registering the required core components \mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_a8bc0d6ee72439172ca309df9fb7bf094}\label{classtheoria_1_1core_1_1Bootstrap_a8bc0d6ee72439172ca309df9fb7bf094}} 
+\index{theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}!find\+Config@{find\+Config}}
+\index{find\+Config@{find\+Config}!theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}}
+\subsubsection{\texorpdfstring{find\+Config()}{findConfig()}}
+{\footnotesize\ttfamily std\+::string Bootstrap\+::find\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Find the location of the bootstrap.\+toml file. This location is configurable via command line, env var and OS specific locations. See theoria docs for details \mbox{\Hypertarget{classtheoria_1_1core_1_1Bootstrap_a3ed8e5694e2a5d9136ad00c8eeb13022}\label{classtheoria_1_1core_1_1Bootstrap_a3ed8e5694e2a5d9136ad00c8eeb13022}} 
+\index{theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}!load\+Config@{load\+Config}}
+\index{load\+Config@{load\+Config}!theoria\+::core\+::\+Bootstrap@{theoria\+::core\+::\+Bootstrap}}
+\subsubsection{\texorpdfstring{load\+Config()}{loadConfig()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} $>$ Bootstrap\+::load\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Load bootstrap config 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

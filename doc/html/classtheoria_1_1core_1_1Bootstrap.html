@@ -70,6 +70,8 @@ $(function() {
 <div class="title">theoria::core::Bootstrap Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Bootstrap_8h_source.html">Bootstrap.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -79,14 +81,11 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>ConstConfigList</b> 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3ed8e5694e2a5d9136ad00c8eeb13022"><td class="memItemLeft" align="right" valign="top"><a id="a3ed8e5694e2a5d9136ad00c8eeb13022"></a>
-std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>loadConfig</b> () const</td></tr>
+<tr class="memitem:a3ed8e5694e2a5d9136ad00c8eeb13022"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Bootstrap.html#a3ed8e5694e2a5d9136ad00c8eeb13022">loadConfig</a> () const</td></tr>
 <tr class="separator:a3ed8e5694e2a5d9136ad00c8eeb13022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bc0d6ee72439172ca309df9fb7bf094"><td class="memItemLeft" align="right" valign="top"><a id="a8bc0d6ee72439172ca309df9fb7bf094"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>findConfig</b> () const</td></tr>
+<tr class="memitem:a8bc0d6ee72439172ca309df9fb7bf094"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Bootstrap.html#a8bc0d6ee72439172ca309df9fb7bf094">findConfig</a> () const</td></tr>
 <tr class="separator:a8bc0d6ee72439172ca309df9fb7bf094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfcc189dd0c09ed9052917ef7ce24565"><td class="memItemLeft" align="right" valign="top"><a id="acfcc189dd0c09ed9052917ef7ce24565"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>boot</b> (const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;bootConfig)</td></tr>
+<tr class="memitem:acfcc189dd0c09ed9052917ef7ce24565"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Bootstrap.html#acfcc189dd0c09ed9052917ef7ce24565">boot</a> (const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;bootConfig)</td></tr>
 <tr class="separator:acfcc189dd0c09ed9052917ef7ce24565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6154c7bce057f6fe41a98ab52b33b32e"><td class="memItemLeft" align="right" valign="top"><a id="a6154c7bce057f6fe41a98ab52b33b32e"></a>
 <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_createCoreComp</b> (const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;compConfig)</td></tr>
@@ -110,6 +109,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>satisfyAndFinalize</b
 void&#160;</td><td class="memItemRight" valign="bottom"><b>finalizeAppLifeCycle</b> (const std::vector&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&gt; &amp;coreComponents)</td></tr>
 <tr class="separator:a4a41a82a056bb7143fc7ff0f4df8c01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classtheoria_1_1core_1_1Bootstrap.html">Bootstrap</a> is responsible for setting up the components that are required by theoria to implement its feature set. As some features may be enabled, disabled or tweaked by user a bootstrap.toml file is used to configure <a class="el" href="classtheoria_1_1core_1_1Bootstrap.html">Bootstrap</a> </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acfcc189dd0c09ed9052917ef7ce24565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfcc189dd0c09ed9052917ef7ce24565">&sect;&nbsp;</a></span>boot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bootstrap::boot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;&#160;</td>
+          <td class="paramname"><em>bootConfig</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="classtheoria_1_1core_1_1Bootstrap.html">Bootstrap</a> theoria by processing the bootstrap config and registering the required core components </p>
+
+</div>
+</div>
+<a id="a8bc0d6ee72439172ca309df9fb7bf094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc0d6ee72439172ca309df9fb7bf094">&sect;&nbsp;</a></span>findConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Bootstrap::findConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find the location of the bootstrap.toml file. This location is configurable via command line, env var and OS specific locations. See theoria docs for details </p>
+
+</div>
+</div>
+<a id="a3ed8e5694e2a5d9136ad00c8eeb13022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed8e5694e2a5d9136ad00c8eeb13022">&sect;&nbsp;</a></span>loadConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &gt; Bootstrap::loadConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Load bootstrap config </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/theoria/core/<a class="el" href="Bootstrap_8h_source.html">Bootstrap.h</a></li>
 <li>src/core/Bootstrap.cpp</li>
@@ -117,7 +174,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>finalizeAppLifeCycle<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

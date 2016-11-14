@@ -59,6 +59,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -66,6 +67,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:afcc67236902b4e9949cae14f36e033f1"><td class="memItemLeft" align="right" valign="top"><a id="afcc67236902b4e9949cae14f36e033f1"></a>
+typedef const char *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_TYPE</b>[OPTS_SZ]</td></tr>
+<tr class="separator:afcc67236902b4e9949cae14f36e033f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2461ee397964667138bdba02d62d209e"><td class="memItemLeft" align="right" valign="top"><a id="a2461ee397964667138bdba02d62d209e"></a>
@@ -73,6 +80,12 @@ static const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>d
 <tr class="separator:a2461ee397964667138bdba02d62d209e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad064111544bc341abc915fd30ee47659"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetheoria.html#ad064111544bc341abc915fd30ee47659">OPT</a> (std::string &amp;buf, const std::string &amp;opt)</td></tr>
 <tr class="separator:ad064111544bc341abc915fd30ee47659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d5a54b09f9bbacd06a09c1ec6ad988"><td class="memItemLeft" align="right" valign="top"><a id="a85d5a54b09f9bbacd06a09c1ec6ad988"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>OPT</b> (std::string &amp;buf, const char *const *opt)</td></tr>
+<tr class="separator:a85d5a54b09f9bbacd06a09c1ec6ad988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1bb243314deb7a5330558aa907aaaf"><td class="memItemLeft" align="right" valign="top"><a id="a5f1bb243314deb7a5330558aa907aaaf"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>OPT_ARG</b> (std::string &amp;buf, const char *const *opt)</td></tr>
+<tr class="separator:a5f1bb243314deb7a5330558aa907aaaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -88,33 +101,50 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_NAME</b
 <tr class="memitem:a9133a4566be1cd42d5d082a923054c79"><td class="memItemLeft" align="right" valign="top"><a id="a9133a4566be1cd42d5d082a923054c79"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_HELP</b> = 1</td></tr>
 <tr class="separator:a9133a4566be1cd42d5d082a923054c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b5f7da2bf9eeacfbb27c4cd62139f1c"><td class="memItemLeft" align="right" valign="top"><a id="a9b5f7da2bf9eeacfbb27c4cd62139f1c"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_ARG</b> = 2</td></tr>
+<tr class="separator:a9b5f7da2bf9eeacfbb27c4cd62139f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac650aebc62d28bc7dcc33e589b0731ef"><td class="memItemLeft" align="right" valign="top"><a id="ac650aebc62d28bc7dcc33e589b0731ef"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_TYPE</b> = 2</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_TYPE</b> = 3</td></tr>
 <tr class="separator:ac650aebc62d28bc7dcc33e589b0731ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a667f962fdb5023b71417fc4d0d313159"><td class="memItemLeft" align="right" valign="top"><a id="a667f962fdb5023b71417fc4d0d313159"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_EXAMPLE</b> = 3</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_EXAMPLE</b> = 4</td></tr>
 <tr class="separator:a667f962fdb5023b71417fc4d0d313159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2548c16ea9d8d9cfcdb25060c745e188"><td class="memItemLeft" align="right" valign="top"><a id="a2548c16ea9d8d9cfcdb25060c745e188"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_CHOICES</b> = 4</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_CHOICES</b> = 5</td></tr>
 <tr class="separator:a2548c16ea9d8d9cfcdb25060c745e188"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2d39d9395bcae45b1b410a1f6ba726d"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_BOOTSTRAP_CONFIG_PATH</b> []</td></tr>
-<tr class="separator:ac2d39d9395bcae45b1b410a1f6ba726d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2025e71f1a88a463cb39c47fb03db315"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_HELP</b> []</td></tr>
-<tr class="separator:a2025e71f1a88a463cb39c47fb03db315"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0c25e32f0c1dde3f8b94e8a8b39faae"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_INIT_ONLY</b> []</td></tr>
-<tr class="separator:aa0c25e32f0c1dde3f8b94e8a8b39faae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac31be1a3cdbbc6459bd19438ec31ea9e"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_SHOW_CONFIG</b> []</td></tr>
-<tr class="separator:ac31be1a3cdbbc6459bd19438ec31ea9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345844cd02fed47bf1d1b953b58c2aa1"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_SHOW_CONFIG_ONLY</b> []</td></tr>
-<tr class="separator:a345844cd02fed47bf1d1b953b58c2aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3521632cc98bdc312f3078d5d4fea0d3"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_PAUSE_AFTER_APP_INIT</b> []</td></tr>
-<tr class="separator:a3521632cc98bdc312f3078d5d4fea0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a687e27177f877c3a06bedf5935a3ac4c"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_PAUSE_AFTER_APP_FINALIZE</b> []</td></tr>
-<tr class="separator:a687e27177f877c3a06bedf5935a3ac4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc6860b135ea114d248cafdecdc68bc3"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_DEFAULT_LOG_LEVEL</b> []</td></tr>
-<tr class="separator:adc6860b135ea114d248cafdecdc68bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c1b4e850fda39d42d2690d74c4cb3d2"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>WEB_SERVICE_PORT</b> []</td></tr>
-<tr class="separator:a9c1b4e850fda39d42d2690d74c4cb3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a977122a149e2e024858359270fe404d2"><td class="memItemLeft" align="right" valign="top"><a id="a977122a149e2e024858359270fe404d2"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_SZ</b> = 6</td></tr>
+<tr class="separator:a977122a149e2e024858359270fe404d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cf57d3879e75d0b7f451a09dac6a1c0"><td class="memItemLeft" align="right" valign="top">const OPTS_TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ALL_OPTIONS</b> []</td></tr>
+<tr class="separator:a9cf57d3879e75d0b7f451a09dac6a1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeadced67d3add9b0a162608928227f19"><td class="memItemLeft" align="right" valign="top"><a id="aeadced67d3add9b0a162608928227f19"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_BOOTSTRAP_CONFIG_PATH</b> = ALL_OPTIONS[0]</td></tr>
+<tr class="separator:aeadced67d3add9b0a162608928227f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb123cfbbdf0d865c7a235a200ffcc1"><td class="memItemLeft" align="right" valign="top"><a id="aeeb123cfbbdf0d865c7a235a200ffcc1"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_DEFAULT_LOG_LEVEL</b> = ALL_OPTIONS[1]</td></tr>
+<tr class="separator:aeeb123cfbbdf0d865c7a235a200ffcc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01dafa27a6256ef701e8129fd6755927"><td class="memItemLeft" align="right" valign="top"><a id="a01dafa27a6256ef701e8129fd6755927"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_HELP</b> = ALL_OPTIONS[2]</td></tr>
+<tr class="separator:a01dafa27a6256ef701e8129fd6755927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29159304325e0d7dad9dbed4d1edba51"><td class="memItemLeft" align="right" valign="top"><a id="a29159304325e0d7dad9dbed4d1edba51"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_INIT_ONLY</b> = ALL_OPTIONS[3]</td></tr>
+<tr class="separator:a29159304325e0d7dad9dbed4d1edba51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a845dc188b3c4a214d3d8f498c319f398"><td class="memItemLeft" align="right" valign="top"><a id="a845dc188b3c4a214d3d8f498c319f398"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_PAUSE_AFTER_APP_INIT</b> = ALL_OPTIONS[4]</td></tr>
+<tr class="separator:a845dc188b3c4a214d3d8f498c319f398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7099617a2180fe82d1171ec9b0d6cc4c"><td class="memItemLeft" align="right" valign="top"><a id="a7099617a2180fe82d1171ec9b0d6cc4c"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_PAUSE_AFTER_APP_FINALIZE</b> = ALL_OPTIONS[5]</td></tr>
+<tr class="separator:a7099617a2180fe82d1171ec9b0d6cc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a941d5a7684d11181cab0a75afbd66139"><td class="memItemLeft" align="right" valign="top"><a id="a941d5a7684d11181cab0a75afbd66139"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_SHOW_CONFIG</b> = ALL_OPTIONS[6]</td></tr>
+<tr class="separator:a941d5a7684d11181cab0a75afbd66139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ab2a48f89fcaf37a68aeb173bc6506"><td class="memItemLeft" align="right" valign="top"><a id="ac0ab2a48f89fcaf37a68aeb173bc6506"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>OPTION_SHOW_CONFIG_ONLY</b> = ALL_OPTIONS[7]</td></tr>
+<tr class="separator:ac0ab2a48f89fcaf37a68aeb173bc6506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12fddb10230df9c3b7d3223104ab9f98"><td class="memItemLeft" align="right" valign="top"><a id="a12fddb10230df9c3b7d3223104ab9f98"></a>
+const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><b>WEB_SERVICE_PORT</b> = ALL_OPTIONS[8]</td></tr>
+<tr class="separator:a12fddb10230df9c3b7d3223104ab9f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Theoria - A C++ Application Container for the Real and Virtual World</p>
@@ -159,136 +189,24 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPTS_IDX_CHOICES
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ac2d39d9395bcae45b1b410a1f6ba726d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2d39d9395bcae45b1b410a1f6ba726d">&sect;&nbsp;</a></span>OPTION_BOOTSTRAP_CONFIG_PATH</h2>
+<a id="a9cf57d3879e75d0b7f451a09dac6a1c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cf57d3879e75d0b7f451a09dac6a1c0">&sect;&nbsp;</a></span>ALL_OPTIONS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* const theoria::OPTION_BOOTSTRAP_CONFIG_PATH[]</td>
+          <td class="memname">const OPTS_TYPE theoria::ALL_OPTIONS</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;bootstrap_path&quot;</span> , <span class="stringliteral">&quot;Path to bootstrap.ini&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--bootstrap_path /home/jsmith/theoria/boot.toml&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="adc6860b135ea114d248cafdecdc68bc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc6860b135ea114d248cafdecdc68bc3">&sect;&nbsp;</a></span>OPTION_DEFAULT_LOG_LEVEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_DEFAULT_LOG_LEVEL[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;default_log_level&quot;</span>, <span class="stringliteral">&quot;Set the default logging level&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--default_log_level DEBUG&quot;</span>, <span class="stringliteral">&quot;DEBUG,INFO, WARN, ERROR, CRITICAL&quot;</span> }</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a2025e71f1a88a463cb39c47fb03db315"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2025e71f1a88a463cb39c47fb03db315">&sect;&nbsp;</a></span>OPTION_HELP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_HELP[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;help&quot;</span>, <span class="stringliteral">&quot;Display help for theoria or a particular option&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--help or -help option&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="aa0c25e32f0c1dde3f8b94e8a8b39faae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0c25e32f0c1dde3f8b94e8a8b39faae">&sect;&nbsp;</a></span>OPTION_INIT_ONLY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_INIT_ONLY[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;init_only&quot;</span>, <span class="stringliteral">&quot;Used to test changes to bootstrap.toml&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a687e27177f877c3a06bedf5935a3ac4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a687e27177f877c3a06bedf5935a3ac4c">&sect;&nbsp;</a></span>OPTION_PAUSE_AFTER_APP_FINALIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_PAUSE_AFTER_APP_FINALIZE[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;pause_after_app_finalize&quot;</span>, <span class="stringliteral">&quot;Finalizes all app components and pauses waiting for operator interaction&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a3521632cc98bdc312f3078d5d4fea0d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3521632cc98bdc312f3078d5d4fea0d3">&sect;&nbsp;</a></span>OPTION_PAUSE_AFTER_APP_INIT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_PAUSE_AFTER_APP_INIT[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;pause_after_app_init&quot;</span>, <span class="stringliteral">&quot;Intializes all app components and pauses waiting for operator iteraction&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="ac31be1a3cdbbc6459bd19438ec31ea9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac31be1a3cdbbc6459bd19438ec31ea9e">&sect;&nbsp;</a></span>OPTION_SHOW_CONFIG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_SHOW_CONFIG[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;show_config&quot;</span>, <span class="stringliteral">&quot;Displays config file after variable resolution&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a345844cd02fed47bf1d1b953b58c2aa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a345844cd02fed47bf1d1b953b58c2aa1">&sect;&nbsp;</a></span>OPTION_SHOW_CONFIG_ONLY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::OPTION_SHOW_CONFIG_ONLY[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;show_config_only&quot;</span>, <span class="stringliteral">&quot;Exits after displaying config file after variable resolution&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a9c1b4e850fda39d42d2690d74c4cb3d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c1b4e850fda39d42d2690d74c4cb3d2">&sect;&nbsp;</a></span>WEB_SERVICE_PORT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const theoria::WEB_SERVICE_PORT[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">        {<span class="stringliteral">&quot;ws_port&quot;</span>, <span class="stringliteral">&quot;Start web service for ineractivity and use this port&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;-ws_port 8900&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;bootstrap_path&quot;</span>,    <span class="stringliteral">&quot;Path to bootstrap.ini&quot;</span>, <span class="stringliteral">&quot;path&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--bootstrap_path /home/jsmith/theoria/boot.toml&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;default_log_level&quot;</span>, <span class="stringliteral">&quot;Set the default logging level&quot;</span>, <span class="stringliteral">&quot;level&quot;</span>, <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--default_log_level DEBUG&quot;</span>, <span class="stringliteral">&quot;DEBUG,INFO, WARN, ERROR, CRITICAL&quot;</span> }, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;help&quot;</span>,              <span class="stringliteral">&quot;Display help for theoria or a particular option&quot;</span>, <span class="stringliteral">&quot;[option]&quot;</span>,  <span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;--help or -help option&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;init_only&quot;</span>,         <span class="stringliteral">&quot;Used to test changes to bootstrap.toml&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>},</div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;pause_after_app_init&quot;</span>, <span class="stringliteral">&quot;Intializes all app components and pauses waiting for operator iteraction&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;pause_after_app_finalize&quot;</span>, <span class="stringliteral">&quot;Finalizes all app components and pauses waiting for operator interaction&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;show_config&quot;</span>, <span class="stringliteral">&quot;Displays config file after variable resolution&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;show_config_only&quot;</span>, <span class="stringliteral">&quot;Exits after displaying config file after variable resolution&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;switch&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>}, </div><div class="line"></div><div class="line">        {<span class="stringliteral">&quot;ws_port&quot;</span>, <span class="stringliteral">&quot;Start web service for ineractivity and use this port&quot;</span>, <span class="stringliteral">&quot;port&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;-ws_port 8900&quot;</span>, <span class="stringliteral">&quot;&quot;</span>},  </div><div class="line"></div><div class="line">        }</div></div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

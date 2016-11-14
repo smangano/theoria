@@ -7,11 +7,13 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}\label{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}} 
-{\bfseries Registry\+Lock} (int ntimes, long sleepms=0.\+0)
+\hyperlink{structtheoria_1_1core_1_1RegistryLock_af71616cf187018a4cf9da5fb0b7bd3b7}{Registry\+Lock} ()
 \item 
-\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}\label{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}} 
-{\footnotesize template$<$class Rep , class Period $>$ }\\{\bfseries Registry\+Lock} (int ntimes, std\+::chrono\+::duration$<$ Rep, Period $>$ sleepduration)
+\hyperlink{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}{Registry\+Lock} (int ntimes, long sleepms=0.\+0)
+\item 
+{\footnotesize template$<$class Rep , class Period $>$ }\\\hyperlink{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}{Registry\+Lock} (int ntimes, std\+::chrono\+::duration$<$ Rep, Period $>$ sleepduration)
+\item 
+\hyperlink{structtheoria_1_1core_1_1RegistryLock_a374ac63681fd8b4fa891897eeeb75465}{$\sim$\+Registry\+Lock} ()
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -22,6 +24,34 @@ static bool \hyperlink{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db
 
 \subsection{Detailed Description}
 Used to lock the \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} for iteration in a multi-\/threaded env 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_af71616cf187018a4cf9da5fb0b7bd3b7}\label{structtheoria_1_1core_1_1RegistryLock_af71616cf187018a4cf9da5fb0b7bd3b7}} 
+\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}!Registry\+Lock@{Registry\+Lock}}
+\index{Registry\+Lock@{Registry\+Lock}!theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
+\subsubsection{\texorpdfstring{Registry\+Lock()}{RegistryLock()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Registry\+Lock\+::\+Registry\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Lock registry or block if already locked \mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}\label{structtheoria_1_1core_1_1RegistryLock_a207ca3d063dd8aa9864a69c8bfc7d37d}} 
+\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}!Registry\+Lock@{Registry\+Lock}}
+\index{Registry\+Lock@{Registry\+Lock}!theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
+\subsubsection{\texorpdfstring{Registry\+Lock()}{RegistryLock()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Registry\+Lock\+::\+Registry\+Lock (\begin{DoxyParamCaption}\item[{int}]{ntimes,  }\item[{long}]{sleepms = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+Try to lock registry ntimes with sleep ms between. Raises exception if lock not aquired \mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}\label{structtheoria_1_1core_1_1RegistryLock_a125ee48beb0368158dc4a38716196d5c}} 
+\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}!Registry\+Lock@{Registry\+Lock}}
+\index{Registry\+Lock@{Registry\+Lock}!theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
+\subsubsection{\texorpdfstring{Registry\+Lock()}{RegistryLock()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Rep , class Period $>$ \\
+Registry\+Lock\+::\+Registry\+Lock (\begin{DoxyParamCaption}\item[{int}]{ntimes,  }\item[{std\+::chrono\+::duration$<$ Rep, Period $>$}]{sleepduration }\end{DoxyParamCaption})}
+
+Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not aquired \mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a374ac63681fd8b4fa891897eeeb75465}\label{structtheoria_1_1core_1_1RegistryLock_a374ac63681fd8b4fa891897eeeb75465}} 
+\index{theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}!````~Registry\+Lock@{$\sim$\+Registry\+Lock}}
+\index{````~Registry\+Lock@{$\sim$\+Registry\+Lock}!theoria\+::core\+::\+Registry\+Lock@{theoria\+::core\+::\+Registry\+Lock}}
+\subsubsection{\texorpdfstring{$\sim$\+Registry\+Lock()}{~RegistryLock()}}
+{\footnotesize\ttfamily Registry\+Lock\+::$\sim$\+Registry\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor releases lock 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db18db201e635254}\label{structtheoria_1_1core_1_1RegistryLock_a28e3a44cfa3ef223db18db201e635254}} 

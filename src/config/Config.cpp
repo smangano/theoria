@@ -76,6 +76,9 @@ bool Config::isArray() const
     return false ;
 }
 
+/**
+ * Wrapper to assist streaming a toml name
+ */
 struct toTomlName
 {
     toTomlName(const Config& c_) : c(c_) {}

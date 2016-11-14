@@ -13,7 +13,14 @@ class AppConfigResolver : public config::ConfigVariableResolver
 {
 public:
 
+    /**
+     * Look up name in app config
+     */
     Result lookup(const std::string& name) const override;
+
+    /**
+     * Returns "AppConfigResolver"
+     */
     virtual std::string name() const override ;
 } ;
 

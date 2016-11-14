@@ -2,8 +2,11 @@
 \label{classtheoria_1_1config_1_1ConfigParser}\index{theoria\+::config\+::\+Config\+Parser@{theoria\+::config\+::\+Config\+Parser}}
 
 
-Inheritance diagram for theoria\+:\+:config\+:\+:Config\+Parser\+:
-\nopagebreak
+{\ttfamily \#include $<$Parser.\+h$>$}
+
+
+
+Inheritance diagram for theoria\+:\+:config\+:\+:Config\+Parser\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,12 +18,29 @@ Inheritance diagram for theoria\+:\+:config\+:\+:Config\+Parser\+:
 \item 
 virtual std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ \hyperlink{classtheoria_1_1config_1_1ConfigParser_a4eca80a9831324237f2a2aa9a5018c89}{parse\+\_\+file} (const std\+::string \&filename)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigParser_af0ccd3cc2202c3d588a977c611dfa988}\label{classtheoria_1_1config_1_1ConfigParser_af0ccd3cc2202c3d588a977c611dfa988}} 
-virtual std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ {\bfseries parse} (std\+::istream \&stream)=0
+virtual std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $>$ \hyperlink{classtheoria_1_1config_1_1ConfigParser_af0ccd3cc2202c3d588a977c611dfa988}{parse} (std\+::istream \&stream)=0
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Interface for parsing a config file or text in a stream. Parser implementations are responsible for converting some structured textual format (e.\+g., T\+O\+ML, X\+ML, J\+S\+ON, etc.) and converting it into \hyperlink{classtheoria_1_1config_1_1Config}{Config} representation. 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigParser_af0ccd3cc2202c3d588a977c611dfa988}\label{classtheoria_1_1config_1_1ConfigParser_af0ccd3cc2202c3d588a977c611dfa988}} 
+\index{theoria\+::config\+::\+Config\+Parser@{theoria\+::config\+::\+Config\+Parser}!parse@{parse}}
+\index{parse@{parse}!theoria\+::config\+::\+Config\+Parser@{theoria\+::config\+::\+Config\+Parser}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$const \hyperlink{classtheoria_1_1config_1_1Config}{Config}$>$ theoria\+::config\+::\+Config\+Parser\+::parse (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Parse the stream and return a \hyperlink{classtheoria_1_1config_1_1Config}{Config} 
+\begin{DoxyParams}{Parameters}
+{\em stream} & an input stream to parse \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classtheoria_1_1config_1_1TOMLConfigBuilder_ac5a36aebe769d67decc9946ee2a3fbc3}{theoria\+::config\+::\+T\+O\+M\+L\+Config\+Builder}.
+
 \mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigParser_a4eca80a9831324237f2a2aa9a5018c89}\label{classtheoria_1_1config_1_1ConfigParser_a4eca80a9831324237f2a2aa9a5018c89}} 
 \index{theoria\+::config\+::\+Config\+Parser@{theoria\+::config\+::\+Config\+Parser}!parse\+\_\+file@{parse\+\_\+file}}
 \index{parse\+\_\+file@{parse\+\_\+file}!theoria\+::config\+::\+Config\+Parser@{theoria\+::config\+::\+Config\+Parser}}
@@ -29,7 +49,12 @@ virtual std\+::unique\+\_\+ptr$<$ const \hyperlink{classtheoria_1_1config_1_1Con
 
 Default implementation opens the file and calls parse(with the file\textquotesingle{}s std\+::ifstream)
 
-the file to parse \begin{DoxyReturn}{Returns}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the file to parse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 the resulting \hyperlink{classtheoria_1_1config_1_1Config}{Config} object
 \end{DoxyReturn}
 N\+O\+TE\+:\+: If you override parse\+\_\+file in your derived \hyperlink{classtheoria_1_1config_1_1ConfigParser}{Config\+Parser} then you can optionally implement parse or simply stub it out as Theoria will only call parse\+\_\+file directly. A stream-\/based interface is useful for writing unit tests using istringstream. 

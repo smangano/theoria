@@ -1,5 +1,12 @@
 #pragma once
 
+#include <theoria/core/primitives.h>
+#include <theoria/core/Dependencies.h>
+#include <theoria/except/except.h>
+
+#include <string>
+
+namespace theoria { namespace core {
 /**
  * Data associated with a component for documentation purposes 
  */
@@ -182,3 +189,4 @@ private:
     MsgData msgData ;  
 } ; 
 
+}}

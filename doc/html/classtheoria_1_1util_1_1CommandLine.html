@@ -71,91 +71,794 @@ $(function() {
 <div class="title">theoria::util::CommandLine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="CommandLine_8h_source.html">CommandLine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a729aa00feedd8257d4caafc73ac6ee63"><td class="memItemLeft" align="right" valign="top"><a id="a729aa00feedd8257d4caafc73ac6ee63"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> = SymbolTbl::const_iterator</td></tr>
+<tr class="memitem:a729aa00feedd8257d4caafc73ac6ee63"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> = SymbolTbl::const_iterator</td></tr>
 <tr class="separator:a729aa00feedd8257d4caafc73ac6ee63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7e753aa91c5a0018a1bec3439839852d"><td class="memItemLeft" align="right" valign="top"><a id="a7e753aa91c5a0018a1bec3439839852d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CommandLine</b> (int argc, const char *argv[], bool allowMissingConfig=false)</td></tr>
+<tr class="memitem:a7e753aa91c5a0018a1bec3439839852d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a7e753aa91c5a0018a1bec3439839852d">CommandLine</a> (int argc, const char *argv[], bool allowMissingConfig=false)</td></tr>
 <tr class="separator:a7e753aa91c5a0018a1bec3439839852d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adedd9cbacd108ee1b5454570a200f497"><td class="memItemLeft" align="right" valign="top"><a id="adedd9cbacd108ee1b5454570a200f497"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>findVar</b> (const std::string &amp;var) const</td></tr>
+<tr class="memitem:adedd9cbacd108ee1b5454570a200f497"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#adedd9cbacd108ee1b5454570a200f497">findVar</a> (const std::string &amp;var) const</td></tr>
 <tr class="separator:adedd9cbacd108ee1b5454570a200f497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb659582b2ce6b2ef9666562ac05bd5f"><td class="memItemLeft" align="right" valign="top"><a id="adb659582b2ce6b2ef9666562ac05bd5f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasVariable</b> (const std::string &amp;var) const</td></tr>
+<tr class="memitem:adb659582b2ce6b2ef9666562ac05bd5f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#adb659582b2ce6b2ef9666562ac05bd5f">hasVariable</a> (const std::string &amp;var) const</td></tr>
 <tr class="separator:adb659582b2ce6b2ef9666562ac05bd5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65446583fe4fe7d3a9ae1ed4dd23185e"><td class="memItemLeft" align="right" valign="top"><a id="a65446583fe4fe7d3a9ae1ed4dd23185e"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>beginVars</b> () const</td></tr>
+<tr class="memitem:a65446583fe4fe7d3a9ae1ed4dd23185e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a65446583fe4fe7d3a9ae1ed4dd23185e">beginVars</a> () const</td></tr>
 <tr class="separator:a65446583fe4fe7d3a9ae1ed4dd23185e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add5993c46a68548f70a75b2eb9431558"><td class="memItemLeft" align="right" valign="top"><a id="add5993c46a68548f70a75b2eb9431558"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>endVars</b> () const</td></tr>
+<tr class="memitem:add5993c46a68548f70a75b2eb9431558"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#add5993c46a68548f70a75b2eb9431558">endVars</a> () const</td></tr>
 <tr class="separator:add5993c46a68548f70a75b2eb9431558"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26dab1188ed94478a4eaaf1b9e1ed19e"><td class="memItemLeft" align="right" valign="top"><a id="a26dab1188ed94478a4eaaf1b9e1ed19e"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>variableAsPtr</b> (const std::string &amp;name) const noexcept</td></tr>
+<tr class="memitem:a26dab1188ed94478a4eaaf1b9e1ed19e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a26dab1188ed94478a4eaaf1b9e1ed19e">variableAsPtr</a> (const std::string &amp;name) const noexcept</td></tr>
 <tr class="separator:a26dab1188ed94478a4eaaf1b9e1ed19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9310fbfe3b1397bb9288eee7aae4abc"><td class="memItemLeft" align="right" valign="top"><a id="aa9310fbfe3b1397bb9288eee7aae4abc"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>variableAsStr</b> (const std::string &amp;name, const std::string &amp;def=&quot;&quot;) const</td></tr>
+<tr class="memitem:aa9310fbfe3b1397bb9288eee7aae4abc"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#aa9310fbfe3b1397bb9288eee7aae4abc">variableAsStr</a> (const std::string &amp;name, const std::string &amp;def=&quot;&quot;) const</td></tr>
 <tr class="separator:aa9310fbfe3b1397bb9288eee7aae4abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a182748d9cfb606cbf45ee7dc7e016a52"><td class="memItemLeft" align="right" valign="top"><a id="a182748d9cfb606cbf45ee7dc7e016a52"></a>
-int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>variableAsInt</b> (const std::string &amp;name, int64_t def=0) const</td></tr>
+<tr class="memitem:a182748d9cfb606cbf45ee7dc7e016a52"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a182748d9cfb606cbf45ee7dc7e016a52">variableAsInt</a> (const std::string &amp;name, int64_t def=0) const</td></tr>
 <tr class="separator:a182748d9cfb606cbf45ee7dc7e016a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42fbe66f3bcf121ad631df39d09606ef"><td class="memItemLeft" align="right" valign="top"><a id="a42fbe66f3bcf121ad631df39d09606ef"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>variableAsDbl</b> (const std::string &amp;name, double def=0) const</td></tr>
+<tr class="memitem:a42fbe66f3bcf121ad631df39d09606ef"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a42fbe66f3bcf121ad631df39d09606ef">variableAsDbl</a> (const std::string &amp;name, double def=0) const</td></tr>
 <tr class="separator:a42fbe66f3bcf121ad631df39d09606ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d4d9be7adcf9ac15a1e5469535e97e9"><td class="memItemLeft" align="right" valign="top"><a id="a6d4d9be7adcf9ac15a1e5469535e97e9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>variableAsBool</b> (const std::string &amp;name, bool def) const</td></tr>
+<tr class="memitem:a6d4d9be7adcf9ac15a1e5469535e97e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a6d4d9be7adcf9ac15a1e5469535e97e9">variableAsBool</a> (const std::string &amp;name, bool def) const</td></tr>
 <tr class="separator:a6d4d9be7adcf9ac15a1e5469535e97e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe3bbdaa5b4abb7bf86996304b451253"><td class="memItemLeft" align="right" valign="top"><a id="abe3bbdaa5b4abb7bf86996304b451253"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>numVars</b> () const</td></tr>
+<tr class="memitem:abe3bbdaa5b4abb7bf86996304b451253"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#abe3bbdaa5b4abb7bf86996304b451253">numVars</a> () const</td></tr>
 <tr class="separator:abe3bbdaa5b4abb7bf86996304b451253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb86432416368ace970920f3fc4fe9c6"><td class="memItemLeft" align="right" valign="top"><a id="abb86432416368ace970920f3fc4fe9c6"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>findSetting</b> (const std::string &amp;name) const</td></tr>
+<tr class="memitem:abb86432416368ace970920f3fc4fe9c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#abb86432416368ace970920f3fc4fe9c6">findSetting</a> (const std::string &amp;name) const</td></tr>
 <tr class="separator:abb86432416368ace970920f3fc4fe9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a011dfbb3035341128a4e4e4f4a466cff"><td class="memItemLeft" align="right" valign="top"><a id="a011dfbb3035341128a4e4e4f4a466cff"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSetting</b> (const std::string &amp;name) const</td></tr>
+<tr class="memitem:a011dfbb3035341128a4e4e4f4a466cff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a011dfbb3035341128a4e4e4f4a466cff">hasSetting</a> (const std::string &amp;name) const</td></tr>
 <tr class="separator:a011dfbb3035341128a4e4e4f4a466cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0758c3259074eddfc06c4a77ac3a1a9"><td class="memItemLeft" align="right" valign="top"><a id="ae0758c3259074eddfc06c4a77ac3a1a9"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>beginSettings</b> () const</td></tr>
+<tr class="memitem:ae0758c3259074eddfc06c4a77ac3a1a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ae0758c3259074eddfc06c4a77ac3a1a9">beginSettings</a> () const</td></tr>
 <tr class="separator:ae0758c3259074eddfc06c4a77ac3a1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae33c86c2a60d2470827b2206893c8f7b"><td class="memItemLeft" align="right" valign="top"><a id="ae33c86c2a60d2470827b2206893c8f7b"></a>
-const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>endSettings</b> () const</td></tr>
+<tr class="memitem:ae33c86c2a60d2470827b2206893c8f7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ae33c86c2a60d2470827b2206893c8f7b">endSettings</a> () const</td></tr>
 <tr class="separator:ae33c86c2a60d2470827b2206893c8f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5b4089e23a04d31c3edcf3d659ab8d9"><td class="memItemLeft" align="right" valign="top"><a id="ad5b4089e23a04d31c3edcf3d659ab8d9"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>settingAsPtr</b> (const std::string &amp;name) const noexcept</td></tr>
+<tr class="memitem:ad5b4089e23a04d31c3edcf3d659ab8d9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ad5b4089e23a04d31c3edcf3d659ab8d9">settingAsPtr</a> (const std::string &amp;name) const noexcept</td></tr>
 <tr class="separator:ad5b4089e23a04d31c3edcf3d659ab8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac398ce852930a3974f9ed6a1c5255975"><td class="memItemLeft" align="right" valign="top"><a id="ac398ce852930a3974f9ed6a1c5255975"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>settingAsStr</b> (const std::string &amp;name, const std::string &amp;def) const</td></tr>
+<tr class="memitem:ac398ce852930a3974f9ed6a1c5255975"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ac398ce852930a3974f9ed6a1c5255975">settingAsStr</a> (const std::string &amp;name, const std::string &amp;def) const</td></tr>
 <tr class="separator:ac398ce852930a3974f9ed6a1c5255975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abec4516f24ea88f83f1cabb16157cf8f"><td class="memItemLeft" align="right" valign="top"><a id="abec4516f24ea88f83f1cabb16157cf8f"></a>
-int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>settingAsInt</b> (const std::string &amp;name, int64_t def) const</td></tr>
+<tr class="memitem:abec4516f24ea88f83f1cabb16157cf8f"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#abec4516f24ea88f83f1cabb16157cf8f">settingAsInt</a> (const std::string &amp;name, int64_t def) const</td></tr>
 <tr class="separator:abec4516f24ea88f83f1cabb16157cf8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2ff2d5845f93ac135e9e4a1ff65b403"><td class="memItemLeft" align="right" valign="top"><a id="ae2ff2d5845f93ac135e9e4a1ff65b403"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>settingAsDbl</b> (const std::string &amp;name, double def) const</td></tr>
+<tr class="memitem:ae2ff2d5845f93ac135e9e4a1ff65b403"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ae2ff2d5845f93ac135e9e4a1ff65b403">settingAsDbl</a> (const std::string &amp;name, double def) const</td></tr>
 <tr class="separator:ae2ff2d5845f93ac135e9e4a1ff65b403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a745baeae69017e95c9c9cbe4633be2d6"><td class="memItemLeft" align="right" valign="top"><a id="a745baeae69017e95c9c9cbe4633be2d6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>settingAsBool</b> (const std::string &amp;name, bool def) const</td></tr>
+<tr class="memitem:a745baeae69017e95c9c9cbe4633be2d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a745baeae69017e95c9c9cbe4633be2d6">settingAsBool</a> (const std::string &amp;name, bool def) const</td></tr>
 <tr class="separator:a745baeae69017e95c9c9cbe4633be2d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f4075a16a8c490e5e27596534ca485"><td class="memItemLeft" align="right" valign="top"><a id="aa0f4075a16a8c490e5e27596534ca485"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>numSettings</b> () const</td></tr>
+<tr class="memitem:aa0f4075a16a8c490e5e27596534ca485"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#aa0f4075a16a8c490e5e27596534ca485">numSettings</a> () const</td></tr>
 <tr class="separator:aa0f4075a16a8c490e5e27596534ca485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abac7c59a7bf3989959f0023455f3257e"><td class="memItemLeft" align="right" valign="top"><a id="abac7c59a7bf3989959f0023455f3257e"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>configFilename</b> () const</td></tr>
+<tr class="memitem:abac7c59a7bf3989959f0023455f3257e"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#abac7c59a7bf3989959f0023455f3257e">configFilename</a> () const</td></tr>
 <tr class="separator:abac7c59a7bf3989959f0023455f3257e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a361f672089b8bd3cb794645ee4629b72"><td class="memItemLeft" align="right" valign="top"><a id="a361f672089b8bd3cb794645ee4629b72"></a>
-static const <a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+<tr class="memitem:a361f672089b8bd3cb794645ee4629b72"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a361f672089b8bd3cb794645ee4629b72">instance</a> ()</td></tr>
 <tr class="separator:a361f672089b8bd3cb794645ee4629b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a52772e7e3b17d0dd7aa099f28c4f1e"><td class="memItemLeft" align="right" valign="top"><a id="a1a52772e7e3b17d0dd7aa099f28c4f1e"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memitem:a1a52772e7e3b17d0dd7aa099f28c4f1e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a1a52772e7e3b17d0dd7aa099f28c4f1e">reset</a> ()</td></tr>
 <tr class="separator:a1a52772e7e3b17d0dd7aa099f28c4f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Pseudo-Singleton that captures command line arguments of Theoria applications</p>
+<p><a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> consists of: </p><pre class="fragment"> config file - e.g., myapp.toml
+ settings passed as: [--setting value] or [--someFlag] 
+ settings are terminated by optionak -- (mandatory if variables are specified)
+ variables passed as: var1=value
+
+ Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
+ However, user defined settings are allowed. To avoid conflict with future extensions of theoria
+ user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
+
+
+ Variables are typically user defined settings that parameterize the config file. 
+ See &lt;theoria::config::CmdLineResolver&gt;
+</pre><p>Example legal command lines: </p><pre class="fragment"> theoria config.toml
+ theoria config.xml
+ theoria config.toml --setting1
+ theoria config.toml --setting1 97
+ theoria config.toml --setting1 --setting2 17
+ theoria config.toml --setting1 --setting2 17 --
+ theoria config.toml -- a=1 b=2 c=3
+ theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]</pre> </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a729aa00feedd8257d4caafc73ac6ee63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729aa00feedd8257d4caafc73ac6ee63">&sect;&nbsp;</a></span>const_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">theoria::util::CommandLine::const_iterator</a> =  SymbolTbl::const_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The iterator type for settings and variables </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7e753aa91c5a0018a1bec3439839852d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e753aa91c5a0018a1bec3439839852d">&sect;&nbsp;</a></span>CommandLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommandLine::CommandLine </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allowMissingConfig</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructor takes argc and argv form main() (with first arg dropped) to initialize the command line object. It does not validate the actual values but does check that they conform to the order expected by theoria </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae0758c3259074eddfc06c4a77ac3a1a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0758c3259074eddfc06c4a77ac3a1a9">&sect;&nbsp;</a></span>beginSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::beginSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator to the first setting </p>
+
+</div>
+</div>
+<a id="a65446583fe4fe7d3a9ae1ed4dd23185e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65446583fe4fe7d3a9ae1ed4dd23185e">&sect;&nbsp;</a></span>beginVars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::beginVars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterate over all variables </p><dl class="section return"><dt>Returns</dt><dd>iterator to std::pair&lt;name,value&gt; or end() </dd></dl>
+
+</div>
+</div>
+<a id="abac7c59a7bf3989959f0023455f3257e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac7c59a7bf3989959f0023455f3257e">&sect;&nbsp;</a></span>configFilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; theoria::util::CommandLine::configFilename </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The name of the app config file bassed on the command line </p>
+
+</div>
+</div>
+<a id="ae33c86c2a60d2470827b2206893c8f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33c86c2a60d2470827b2206893c8f7b">&sect;&nbsp;</a></span>endSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::endSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>End of settings </p>
+
+</div>
+</div>
+<a id="add5993c46a68548f70a75b2eb9431558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add5993c46a68548f70a75b2eb9431558">&sect;&nbsp;</a></span>endVars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::endVars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The end of variables iterator </p>
+
+</div>
+</div>
+<a id="abb86432416368ace970920f3fc4fe9c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb86432416368ace970920f3fc4fe9c6">&sect;&nbsp;</a></span>findSetting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::findSetting </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator to the named setting if it exists otherwise <a class="el" href="classtheoria_1_1util_1_1CommandLine.html#ae33c86c2a60d2470827b2206893c8f7b">endSettings()</a> </p>
+
+</div>
+</div>
+<a id="adedd9cbacd108ee1b5454570a200f497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adedd9cbacd108ee1b5454570a200f497">&sect;&nbsp;</a></span>findVar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html#a729aa00feedd8257d4caafc73ac6ee63">const_iterator</a> theoria::util::CommandLine::findVar </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Find var if it exists </p><dl class="section return"><dt>Returns</dt><dd>const_iterator to std::pair&lt;var,value&gt; else <a class="el" href="classtheoria_1_1util_1_1CommandLine.html#add5993c46a68548f70a75b2eb9431558">endVars()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a011dfbb3035341128a4e4e4f4a466cff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a011dfbb3035341128a4e4e4f4a466cff">&sect;&nbsp;</a></span>hasSetting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool theoria::util::CommandLine::hasSetting </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>True if a setting with specified name exists </p>
+
+</div>
+</div>
+<a id="adb659582b2ce6b2ef9666562ac05bd5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb659582b2ce6b2ef9666562ac05bd5f">&sect;&nbsp;</a></span>hasVariable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool theoria::util::CommandLine::hasVariable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Test if variable exists </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">var</td><td>the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if exists </dd></dl>
+
+</div>
+</div>
+<a id="a361f672089b8bd3cb794645ee4629b72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a361f672089b8bd3cb794645ee4629b72">&sect;&nbsp;</a></span>instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> &amp; CommandLine::instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The instance constructed in main (or first instance) </p>
+
+</div>
+</div>
+<a id="aa0f4075a16a8c490e5e27596534ca485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0f4075a16a8c490e5e27596534ca485">&sect;&nbsp;</a></span>numSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int theoria::util::CommandLine::numSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The numbber of settings passed on the command line </p>
+
+</div>
+</div>
+<a id="abe3bbdaa5b4abb7bf86996304b451253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3bbdaa5b4abb7bf86996304b451253">&sect;&nbsp;</a></span>numVars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int theoria::util::CommandLine::numVars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the number of variables </p>
+
+</div>
+</div>
+<a id="a1a52772e7e3b17d0dd7aa099f28c4f1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a52772e7e3b17d0dd7aa099f28c4f1e">&sect;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommandLine::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reset the first instance </p>
+
+</div>
+</div>
+<a id="a745baeae69017e95c9c9cbe4633be2d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a745baeae69017e95c9c9cbe4633be2d6">&sect;&nbsp;</a></span>settingAsBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CommandLine::settingAsBool </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return a setting as a bool if it exists otherwise return def </p>
+
+</div>
+</div>
+<a id="ae2ff2d5845f93ac135e9e4a1ff65b403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ff2d5845f93ac135e9e4a1ff65b403">&sect;&nbsp;</a></span>settingAsDbl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CommandLine::settingAsDbl </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return a setting as double if it exists otherwise return def </p>
+
+</div>
+</div>
+<a id="abec4516f24ea88f83f1cabb16157cf8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec4516f24ea88f83f1cabb16157cf8f">&sect;&nbsp;</a></span>settingAsInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t CommandLine::settingAsInt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return a settting as a 64bit integer if it exists otherwise return def </p>
+
+</div>
+</div>
+<a id="ad5b4089e23a04d31c3edcf3d659ab8d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b4089e23a04d31c3edcf3d659ab8d9">&sect;&nbsp;</a></span>settingAsPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * CommandLine::settingAsPtr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return a settting as a const char * if it exists otherwise return nullptr </p>
+
+</div>
+</div>
+<a id="ac398ce852930a3974f9ed6a1c5255975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac398ce852930a3974f9ed6a1c5255975">&sect;&nbsp;</a></span>settingAsStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CommandLine::settingAsStr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return a settting as a string if it exists otherwise return def </p>
+
+</div>
+</div>
+<a id="a6d4d9be7adcf9ac15a1e5469535e97e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4d9be7adcf9ac15a1e5469535e97e9">&sect;&nbsp;</a></span>variableAsBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CommandLine::variableAsBool </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>def</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get variable value as bool </p><dl class="section return"><dt>Returns</dt><dd>value or def if not present </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if can't convert to a bool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42fbe66f3bcf121ad631df39d09606ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42fbe66f3bcf121ad631df39d09606ef">&sect;&nbsp;</a></span>variableAsDbl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CommandLine::variableAsDbl </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>def</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get variable value as double </p><dl class="section return"><dt>Returns</dt><dd>value or def if not present </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if can't convert to a double </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a182748d9cfb606cbf45ee7dc7e016a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182748d9cfb606cbf45ee7dc7e016a52">&sect;&nbsp;</a></span>variableAsInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t CommandLine::variableAsInt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>def</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get variable value as int64_t </p><dl class="section return"><dt>Returns</dt><dd>value or def if not present </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if can't convert to an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a26dab1188ed94478a4eaaf1b9e1ed19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26dab1188ed94478a4eaaf1b9e1ed19e">&sect;&nbsp;</a></span>variableAsPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * CommandLine::variableAsPtr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get variable value or nullptr as const char * </p><dl class="section return"><dt>Returns</dt><dd>value or nullptr if not present </dd></dl>
+
+</div>
+</div>
+<a id="aa9310fbfe3b1397bb9288eee7aae4abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9310fbfe3b1397bb9288eee7aae4abc">&sect;&nbsp;</a></span>variableAsStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; CommandLine::variableAsStr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>def</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get variable value as std::string </p><dl class="section return"><dt>Returns</dt><dd>value or def if not present </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/theoria/util/<a class="el" href="CommandLine_8h_source.html">CommandLine.h</a></li>
 <li>src/util/CommandLine.cpp</li>
@@ -163,7 +866,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

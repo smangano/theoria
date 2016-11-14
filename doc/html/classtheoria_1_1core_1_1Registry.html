@@ -72,15 +72,18 @@ $(function() {
 <div class="title">theoria::core::Registry Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Registry_8h_source.html">Registry.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae131721f32d396fad4d2d48b0438dca1"><td class="memItemLeft" align="right" valign="top"><a id="ae131721f32d396fad4d2d48b0438dca1"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>FactoryMap_iterator</b> = FactoryMap::iterator</td></tr>
+<tr class="memitem:ae131721f32d396fad4d2d48b0438dca1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a> = FactoryMap::iterator</td></tr>
 <tr class="separator:ae131721f32d396fad4d2d48b0438dca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac28e339aef39d9d97f1975623c8d8314"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ac28e339aef39d9d97f1975623c8d8314">~Registry</a> ()</td></tr>
+<tr class="separator:ac28e339aef39d9d97f1975623c8d8314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7cd0cefa7207f2f6c602723cc32ee49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ac7cd0cefa7207f2f6c602723cc32ee49">registerFactory</a> (const TypeName &amp;type, ComponentFactory factory)</td></tr>
 <tr class="separator:ac7cd0cefa7207f2f6c602723cc32ee49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a861b9906b6e10bdebc74ec7397ea971a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a861b9906b6e10bdebc74ec7397ea971a">registerFactory</a> (const TypeName &amp;type, const SubTypeName &amp;subtype, ComponentFactory factory)</td></tr>
@@ -91,86 +94,61 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aabfbd64902458b12cfd7bd20cf400837"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846b6ea01b2c4d3d1276796e9ef2b32b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a846b6ea01b2c4d3d1276796e9ef2b32b">createComponent</a> (const TypeName &amp;type, int allow_ambiguity=true)</td></tr>
 <tr class="separator:a846b6ea01b2c4d3d1276796e9ef2b32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22ddcd3c1f46bd171cb9d704889a8a07"><td class="memItemLeft" align="right" valign="top"><a id="a22ddcd3c1f46bd171cb9d704889a8a07"></a>
-<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createComponent</b> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
+<tr class="memitem:a22ddcd3c1f46bd171cb9d704889a8a07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a22ddcd3c1f46bd171cb9d704889a8a07">createComponent</a> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
 <tr class="separator:a22ddcd3c1f46bd171cb9d704889a8a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab152e6e19be2b33f13bb82e77aca917"><td class="memItemLeft" align="right" valign="top"><a id="aab152e6e19be2b33f13bb82e77aca917"></a>
-<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createComponent</b> (const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;dep) noexcept</td></tr>
+<tr class="memitem:aab152e6e19be2b33f13bb82e77aca917"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#aab152e6e19be2b33f13bb82e77aca917">createComponent</a> (const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;dep) noexcept</td></tr>
 <tr class="separator:aab152e6e19be2b33f13bb82e77aca917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7c747a611355e212e026e128acd322"><td class="memItemLeft" align="right" valign="top"><a id="a0a7c747a611355e212e026e128acd322"></a>
-FactoryMap_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>beginFact</b> ()</td></tr>
+<tr class="memitem:a0a7c747a611355e212e026e128acd322"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a0a7c747a611355e212e026e128acd322">beginFact</a> ()</td></tr>
 <tr class="separator:a0a7c747a611355e212e026e128acd322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac88948c696663ae6f7ba3ece5c2fdcc9"><td class="memItemLeft" align="right" valign="top"><a id="ac88948c696663ae6f7ba3ece5c2fdcc9"></a>
-FactoryMap_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>endFact</b> ()</td></tr>
+<tr class="memitem:ac88948c696663ae6f7ba3ece5c2fdcc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ac88948c696663ae6f7ba3ece5c2fdcc9">endFact</a> ()</td></tr>
 <tr class="separator:ac88948c696663ae6f7ba3ece5c2fdcc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54ee3016a6f14b3bedfecd3566caf0b5"><td class="memItemLeft" align="right" valign="top"><a id="a54ee3016a6f14b3bedfecd3566caf0b5"></a>
-FactoryMap_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>findFact</b> (const TypeName &amp;type)</td></tr>
+<tr class="memitem:a54ee3016a6f14b3bedfecd3566caf0b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a54ee3016a6f14b3bedfecd3566caf0b5">findFact</a> (const TypeName &amp;type)</td></tr>
 <tr class="separator:a54ee3016a6f14b3bedfecd3566caf0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a044928d257bed09b8c288c41e5c95a26"><td class="memItemLeft" align="right" valign="top"><a id="a044928d257bed09b8c288c41e5c95a26"></a>
-FactoryMap_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>findfact</b> (FactoryMap::iterator start, bool(*predicate)(FactoryMap::value_type &amp;v))</td></tr>
+<tr class="memitem:a044928d257bed09b8c288c41e5c95a26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a044928d257bed09b8c288c41e5c95a26">findfact</a> (FactoryMap::iterator start, bool(*predicate)(FactoryMap::value_type &amp;v))</td></tr>
 <tr class="separator:a044928d257bed09b8c288c41e5c95a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18f0cf6b2c11daeac894231aabc2d6c3"><td class="memItemLeft" align="right" valign="top"><a id="a18f0cf6b2c11daeac894231aabc2d6c3"></a>
-<a class="el" href="classtheoria_1_1util_1_1densemap_1_1Iter.html">ComponentMap::iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>beginComp</b> ()</td></tr>
+<tr class="memitem:a18f0cf6b2c11daeac894231aabc2d6c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a4ee170442110252d3033534246f9677f">ComponentMap::iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a18f0cf6b2c11daeac894231aabc2d6c3">beginComp</a> ()</td></tr>
 <tr class="separator:a18f0cf6b2c11daeac894231aabc2d6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66ed200d29e49b9eb762a29f580c102a"><td class="memItemLeft" align="right" valign="top"><a id="a66ed200d29e49b9eb762a29f580c102a"></a>
-<a class="el" href="classtheoria_1_1util_1_1densemap_1_1Iter.html">ComponentMap::iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endComp</b> ()</td></tr>
+<tr class="memitem:a66ed200d29e49b9eb762a29f580c102a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a4ee170442110252d3033534246f9677f">ComponentMap::iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a66ed200d29e49b9eb762a29f580c102a">endComp</a> ()</td></tr>
 <tr class="separator:a66ed200d29e49b9eb762a29f580c102a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82497b1f2b7bf529b15633dfaf9bd1e6"><td class="memItemLeft" align="right" valign="top"><a id="a82497b1f2b7bf529b15633dfaf9bd1e6"></a>
-<a class="el" href="classtheoria_1_1util_1_1densemap_1_1ConstIter.html">ComponentMap::const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>beginComp</b> () const</td></tr>
+<tr class="memitem:a82497b1f2b7bf529b15633dfaf9bd1e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a8c2937f8e4ba47abf344d9f9f23f0c88">ComponentMap::const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a82497b1f2b7bf529b15633dfaf9bd1e6">beginComp</a> () const</td></tr>
 <tr class="separator:a82497b1f2b7bf529b15633dfaf9bd1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27b24a7a567677cb23aef0d3510b0a20"><td class="memItemLeft" align="right" valign="top"><a id="a27b24a7a567677cb23aef0d3510b0a20"></a>
-<a class="el" href="classtheoria_1_1util_1_1densemap_1_1ConstIter.html">ComponentMap::const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>endComp</b> () const</td></tr>
+<tr class="memitem:a27b24a7a567677cb23aef0d3510b0a20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a8c2937f8e4ba47abf344d9f9f23f0c88">ComponentMap::const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a27b24a7a567677cb23aef0d3510b0a20">endComp</a> () const</td></tr>
 <tr class="separator:a27b24a7a567677cb23aef0d3510b0a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c4d191d20916e4821bee32680a804e6"><td class="memItemLeft" align="right" valign="top"><a id="a1c4d191d20916e4821bee32680a804e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dump</b> (std::ostream &amp;stream) const</td></tr>
+<tr class="memitem:a1c4d191d20916e4821bee32680a804e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a1c4d191d20916e4821bee32680a804e6">dump</a> (std::ostream &amp;stream) const</td></tr>
 <tr class="separator:a1c4d191d20916e4821bee32680a804e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66ab76f6173d7e7c99a0c47dc2bfd70"><td class="memItemLeft" align="right" valign="top"><a id="af66ab76f6173d7e7c99a0c47dc2bfd70"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memitem:af66ab76f6173d7e7c99a0c47dc2bfd70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#af66ab76f6173d7e7c99a0c47dc2bfd70">reset</a> ()</td></tr>
 <tr class="separator:af66ab76f6173d7e7c99a0c47dc2bfd70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33f5edc42d5a194a7682bf0bf20cbf52"><td class="memItemLeft" align="right" valign="top"><a id="a33f5edc42d5a194a7682bf0bf20cbf52"></a>
-<a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>component</b> (CompId id)</td></tr>
+<tr class="memitem:a33f5edc42d5a194a7682bf0bf20cbf52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a33f5edc42d5a194a7682bf0bf20cbf52">component</a> (CompId id)</td></tr>
 <tr class="separator:a33f5edc42d5a194a7682bf0bf20cbf52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7daaf0e52575c5dfbdb33c81953142f5"><td class="memItemLeft" align="right" valign="top"><a id="a7daaf0e52575c5dfbdb33c81953142f5"></a>
-<a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>component</b> (const TypeName &amp;type)</td></tr>
+<tr class="memitem:a7daaf0e52575c5dfbdb33c81953142f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a7daaf0e52575c5dfbdb33c81953142f5">component</a> (const TypeName &amp;type)</td></tr>
 <tr class="separator:a7daaf0e52575c5dfbdb33c81953142f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a3cafd6ebd46a88fb5afb877a4b04ad"><td class="memItemLeft" align="right" valign="top"><a id="a5a3cafd6ebd46a88fb5afb877a4b04ad"></a>
-<a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>component</b> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
+<tr class="memitem:a5a3cafd6ebd46a88fb5afb877a4b04ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a5a3cafd6ebd46a88fb5afb877a4b04ad">component</a> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
 <tr class="separator:a5a3cafd6ebd46a88fb5afb877a4b04ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a535f463285f3232258573c4e8ae2d9f9"><td class="memItemLeft" align="right" valign="top"><a id="a535f463285f3232258573c4e8ae2d9f9"></a>
-<a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>component</b> (const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;dep)</td></tr>
+<tr class="memitem:a535f463285f3232258573c4e8ae2d9f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a535f463285f3232258573c4e8ae2d9f9">component</a> (const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;dep)</td></tr>
 <tr class="separator:a535f463285f3232258573c4e8ae2d9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea2d62c83c04fddd8959bed80c556ca3"><td class="memTemplParams" colspan="2"><a id="aea2d62c83c04fddd8959bed80c556ca3"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aea2d62c83c04fddd8959bed80c556ca3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>componentAs</b> (CompId id)</td></tr>
+<tr class="memitem:aea2d62c83c04fddd8959bed80c556ca3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aea2d62c83c04fddd8959bed80c556ca3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#aea2d62c83c04fddd8959bed80c556ca3">componentAs</a> (CompId id)</td></tr>
 <tr class="separator:aea2d62c83c04fddd8959bed80c556ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90b05bb2e88d6bed56173d74e4e96802"><td class="memTemplParams" colspan="2"><a id="a90b05bb2e88d6bed56173d74e4e96802"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a90b05bb2e88d6bed56173d74e4e96802"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>componentAs</b> (const TypeName &amp;type)</td></tr>
+<tr class="memitem:a90b05bb2e88d6bed56173d74e4e96802"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a90b05bb2e88d6bed56173d74e4e96802"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a90b05bb2e88d6bed56173d74e4e96802">componentAs</a> (const TypeName &amp;type)</td></tr>
 <tr class="separator:a90b05bb2e88d6bed56173d74e4e96802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4140c9c7405974759ee43eb07a05a087"><td class="memTemplParams" colspan="2"><a id="a4140c9c7405974759ee43eb07a05a087"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a4140c9c7405974759ee43eb07a05a087"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>componentAs</b> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
+<tr class="memitem:a4140c9c7405974759ee43eb07a05a087"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4140c9c7405974759ee43eb07a05a087"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a4140c9c7405974759ee43eb07a05a087">componentAs</a> (const TypeName &amp;type, const SubTypeName &amp;subtype)</td></tr>
 <tr class="separator:a4140c9c7405974759ee43eb07a05a087"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac998e5555375fc21fd7ad6aa3b0a87da"><td class="memItemLeft" align="right" valign="top"><a id="ac998e5555375fc21fd7ad6aa3b0a87da"></a>
-const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bootConfig</b> () const</td></tr>
+<tr class="memitem:ac998e5555375fc21fd7ad6aa3b0a87da"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ac998e5555375fc21fd7ad6aa3b0a87da">bootConfig</a> () const</td></tr>
 <tr class="separator:ac998e5555375fc21fd7ad6aa3b0a87da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d1514b8e21145742c0a850e00a90bf9"><td class="memItemLeft" align="right" valign="top"><a id="a9d1514b8e21145742c0a850e00a90bf9"></a>
-const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>appConfig</b> () const</td></tr>
+<tr class="memitem:a9d1514b8e21145742c0a850e00a90bf9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#a9d1514b8e21145742c0a850e00a90bf9">appConfig</a> () const</td></tr>
 <tr class="separator:a9d1514b8e21145742c0a850e00a90bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa8dbdd7993478eea310fa111e36d40a"><td class="memItemLeft" align="right" valign="top"><a id="aaa8dbdd7993478eea310fa111e36d40a"></a>
-std::vector&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>satisfy</b> (const <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> &amp;deps, CompId compId=-1)</td></tr>
+<tr class="memitem:aaa8dbdd7993478eea310fa111e36d40a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#aaa8dbdd7993478eea310fa111e36d40a">satisfy</a> (const <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> &amp;deps, CompId compId=-1)</td></tr>
 <tr class="separator:aaa8dbdd7993478eea310fa111e36d40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adead32a72f8f70bac8f01645dc912720"><td class="memItemLeft" align="right" valign="top"><a id="adead32a72f8f70bac8f01645dc912720"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>release</b> (<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *component)</td></tr>
+<tr class="memitem:adead32a72f8f70bac8f01645dc912720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#adead32a72f8f70bac8f01645dc912720">release</a> (<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *<a class="el" href="classtheoria_1_1core_1_1Registry.html#a33f5edc42d5a194a7682bf0bf20cbf52">component</a>)</td></tr>
 <tr class="separator:adead32a72f8f70bac8f01645dc912720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5ada88f383f823f983810b70f80d67b"><td class="memItemLeft" align="right" valign="top"><a id="ad5ada88f383f823f983810b70f80d67b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addDep</b> (<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *from, <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *to)</td></tr>
+<tr class="memitem:ad5ada88f383f823f983810b70f80d67b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ad5ada88f383f823f983810b70f80d67b">addDep</a> (<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *from, <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *to)</td></tr>
 <tr class="separator:ad5ada88f383f823f983810b70f80d67b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac36dbf9ae74e19b9fe30f57910e3d93a"><td class="memItemLeft" align="right" valign="top"><a id="ac36dbf9ae74e19b9fe30f57910e3d93a"></a>
-static <a class="el" href="classtheoria_1_1core_1_1Registry.html">Registry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+<tr class="memitem:ac36dbf9ae74e19b9fe30f57910e3d93a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classtheoria_1_1core_1_1Registry.html">Registry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ac36dbf9ae74e19b9fe30f57910e3d93a">instance</a> ()</td></tr>
 <tr class="separator:ac36dbf9ae74e19b9fe30f57910e3d93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -179,9 +157,409 @@ Friends</h2></td></tr>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>Theoria</b></td></tr>
 <tr class="separator:a03f09b9a4f49119b0c16c42ded7cba64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="classtheoria_1_1core_1_1Registry.html">Registry</a> manages <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> Compoents and their factories. It is the central mechanism that enables dependency injection as well as on demand access to components.</p>
+<p>The registry is the only Singleton within <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> and you can leverage it to avoid creating Singletons within your own application. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ae131721f32d396fad4d2d48b0438dca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae131721f32d396fad4d2d48b0438dca1">&sect;&nbsp;</a></span>FactoryMap_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">theoria::core::Registry::FactoryMap_iterator</a> =  FactoryMap::iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type of iterator over component factories </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac28e339aef39d9d97f1975623c8d8314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac28e339aef39d9d97f1975623c8d8314">&sect;&nbsp;</a></span>~Registry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Registry::~Registry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Destructor </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad5ada88f383f823f983810b70f80d67b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5ada88f383f823f983810b70f80d67b">&sect;&nbsp;</a></span>addDep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void theoria::core::Registry::addDep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>At the moment does nothing but reserved to allow dynamic dependency tracking in cases where dependencies are not fully known after initialization. For example, When builder components wire things up on their own </p>
+
+</div>
+</div>
+<a id="a9d1514b8e21145742c0a850e00a90bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d1514b8e21145742c0a850e00a90bf9">&sect;&nbsp;</a></span>appConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp; Registry::appConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access to the application config </p>
+
+</div>
+</div>
+<a id="a18f0cf6b2c11daeac894231aabc2d6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f0cf6b2c11daeac894231aabc2d6c3">&sect;&nbsp;</a></span>beginComp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a4ee170442110252d3033534246f9677f">ComponentMap::iterator</a> theoria::core::Registry::beginComp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterator to first component </p>
+
+</div>
+</div>
+<a id="a82497b1f2b7bf529b15633dfaf9bd1e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82497b1f2b7bf529b15633dfaf9bd1e6">&sect;&nbsp;</a></span>beginComp() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a8c2937f8e4ba47abf344d9f9f23f0c88">ComponentMap::const_iterator</a> theoria::core::Registry::beginComp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterator o first component (as const) </p>
+
+</div>
+</div>
+<a id="a0a7c747a611355e212e026e128acd322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7c747a611355e212e026e128acd322">&sect;&nbsp;</a></span>beginFact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a> Registry::beginFact </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Begin iterator over factories.</p>
+<p>Thread Safety: Requires RegistryLock() </p>
+
+</div>
+</div>
+<a id="ac998e5555375fc21fd7ad6aa3b0a87da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac998e5555375fc21fd7ad6aa3b0a87da">&sect;&nbsp;</a></span>bootConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classtheoria_1_1config_1_1Config.html">config::Config</a> &amp; Registry::bootConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Access to theoria bootstrap config </p>
+
+</div>
+</div>
+<a id="a33f5edc42d5a194a7682bf0bf20cbf52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33f5edc42d5a194a7682bf0bf20cbf52">&sect;&nbsp;</a></span>component() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt;<a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a>&gt; theoria::core::Registry::component </td>
+          <td>(</td>
+          <td class="paramtype">CompId&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>If you know a component's id then this is the fastest and safest way to access the component </p>
+
+</div>
+</div>
+<a id="a7daaf0e52575c5dfbdb33c81953142f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7daaf0e52575c5dfbdb33c81953142f5">&sect;&nbsp;</a></span>component() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt; Registry::component </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return component with the specified type. If multiple subtypes exist it will return the first one it finds</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type name of the component </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maybe evaluates to true if found, false otherwise. Derfef *Maybe returns a reference to component or raises exception </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>&lt;<a class="el" href="Maybe_8h_source.html">theoria/util/Maybe.h</a>&gt; for more behavior </dd></dl>
+
+</div>
+</div>
+<a id="a5a3cafd6ebd46a88fb5afb877a4b04ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3cafd6ebd46a88fb5afb877a4b04ad">&sect;&nbsp;</a></span>component() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt; Registry::component </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SubTypeName &amp;&#160;</td>
+          <td class="paramname"><em>subtype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return component with the specified type and subtype.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type name of the component </td></tr>
+    <tr><td class="paramname">subtype</td><td>the subtype of the component </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maybe evaluates to true if found, false otherwise. Derfef *Maybe returns a reference to component or raises exception </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>&lt;<a class="el" href="Maybe_8h_source.html">theoria/util/Maybe.h</a>&gt; for more behavior </dd></dl>
+
+</div>
+</div>
+<a id="a535f463285f3232258573c4e8ae2d9f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a535f463285f3232258573c4e8ae2d9f9">&sect;&nbsp;</a></span>component() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> &gt; Registry::component </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;&#160;</td>
+          <td class="paramname"><em>dep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get a component that is suitable for satisfying dep</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dep</td><td>a dependency </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a Maybe&lt;T&gt; which is bound if the operation was successful </dd></dl>
+
+</div>
+</div>
+<a id="aea2d62c83c04fddd8959bed80c556ca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea2d62c83c04fddd8959bed80c556ca3">&sect;&nbsp;</a></span>componentAs() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt;T&gt; theoria::core::Registry::componentAs </td>
+          <td>(</td>
+          <td class="paramtype">CompId&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get component as T via dynamic cast </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the id of the component </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a Maybe&lt;T&gt; which is bound if the operation was successful </dd></dl>
+
+</div>
+</div>
+<a id="a90b05bb2e88d6bed56173d74e4e96802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b05bb2e88d6bed56173d74e4e96802">&sect;&nbsp;</a></span>componentAs() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt;T&gt; theoria::core::Registry::componentAs </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get component as T via dynamic cast </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type of the component </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a Maybe&lt;T&gt; which is bound if the operation was successful </dd></dl>
+
+</div>
+</div>
+<a id="a4140c9c7405974759ee43eb07a05a087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4140c9c7405974759ee43eb07a05a087">&sect;&nbsp;</a></span>componentAs() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1Maybe.html">util::Maybe</a>&lt;T&gt; theoria::core::Registry::componentAs </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SubTypeName &amp;&#160;</td>
+          <td class="paramname"><em>subtype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get component as T via dynamic cast </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type of the component </td></tr>
+    <tr><td class="paramname">subtype</td><td>of the compoent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a Maybe&lt;T&gt; which is bound if the operation was successful </dd></dl>
+
+</div>
+</div>
 <a id="a846b6ea01b2c4d3d1276796e9ef2b32b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a846b6ea01b2c4d3d1276796e9ef2b32b">&sect;&nbsp;</a></span>createComponent()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a846b6ea01b2c4d3d1276796e9ef2b32b">&sect;&nbsp;</a></span>createComponent() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,7 +591,256 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Theoria</b></td></tr
   </table>
   </dd>
 </dl>
-<p>std::runtime_error if type not found </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if type not found </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22ddcd3c1f46bd171cb9d704889a8a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ddcd3c1f46bd171cb9d704889a8a07">&sect;&nbsp;</a></span>createComponent() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> * Registry::createComponent </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SubTypeName &amp;&#160;</td>
+          <td class="paramname"><em>subtype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a component of the specified type and subtype.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type name to use for look up (primary key) </td></tr>
+    <tr><td class="paramname">subtype</td><td>the sub type name to use for look up (secondary key)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if factory for both type and subtype does not exist </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aab152e6e19be2b33f13bb82e77aca917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab152e6e19be2b33f13bb82e77aca917">&sect;&nbsp;</a></span>createComponent() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> * Registry::createComponent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtheoria_1_1core_1_1Dependencies_1_1Dependent.html">Dependencies::Dependent</a> &amp;&#160;</td>
+          <td class="paramname"><em>dep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Create a component that could satisfy a dependency, if possible</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dep</td><td>the dependency that needs to be satisfied </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the component or nullptr if could not satisfy or otherwise failed to create </dd></dl>
+
+</div>
+</div>
+<a id="a1c4d191d20916e4821bee32680a804e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4d191d20916e4821bee32680a804e6">&sect;&nbsp;</a></span>dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Registry::dump </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dump the registry </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>destionation of dump </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a66ed200d29e49b9eb762a29f580c102a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66ed200d29e49b9eb762a29f580c102a">&sect;&nbsp;</a></span>endComp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a4ee170442110252d3033534246f9677f">ComponentMap::iterator</a> theoria::core::Registry::endComp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterator to <em>past-the-end</em> component </p>
+
+</div>
+</div>
+<a id="a27b24a7a567677cb23aef0d3510b0a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b24a7a567677cb23aef0d3510b0a20">&sect;&nbsp;</a></span>endComp() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1util_1_1densemap.html#a8c2937f8e4ba47abf344d9f9f23f0c88">ComponentMap::const_iterator</a> theoria::core::Registry::endComp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterator to <em>past-the-end</em> component (as const) </p>
+
+</div>
+</div>
+<a id="ac88948c696663ae6f7ba3ece5c2fdcc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88948c696663ae6f7ba3ece5c2fdcc9">&sect;&nbsp;</a></span>endFact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a> Registry::endFact </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>End iterator over factories.</p>
+<p>Thread Safety: Requires RegistryLock() </p>
+
+</div>
+</div>
+<a id="a54ee3016a6f14b3bedfecd3566caf0b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54ee3016a6f14b3bedfecd3566caf0b5">&sect;&nbsp;</a></span>findFact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a> Registry::findFact </td>
+          <td>(</td>
+          <td class="paramtype">const TypeName &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find factory by type. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the type name to find </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>first entry for type or <a class="el" href="classtheoria_1_1core_1_1Registry.html#ac88948c696663ae6f7ba3ece5c2fdcc9">endFact()</a></dd></dl>
+<p>Thread Safety: Requires RegistryLock() </p>
+
+</div>
+</div>
+<a id="a044928d257bed09b8c288c41e5c95a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a044928d257bed09b8c288c41e5c95a26">&sect;&nbsp;</a></span>findfact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Registry.html#ae131721f32d396fad4d2d48b0438dca1">FactoryMap_iterator</a> Registry::findfact </td>
+          <td>(</td>
+          <td class="paramtype">FactoryMap::iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool(*)(FactoryMap::value_type &amp;v)&#160;</td>
+          <td class="paramname"><em>predicate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find factory by predicate. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>where to start searching </td></tr>
+    <tr><td class="paramname">predicate</td><td>test criteria </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>first entry at or after start that satisfies predicate or <a class="el" href="classtheoria_1_1core_1_1Registry.html#ac88948c696663ae6f7ba3ece5c2fdcc9">endFact()</a></dd></dl>
+<p>Thread Safety: Requires RegistryLock() </p>
+
+</div>
+</div>
+<a id="ac36dbf9ae74e19b9fe30f57910e3d93a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac36dbf9ae74e19b9fe30f57910e3d93a">&sect;&nbsp;</a></span>instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1core_1_1Registry.html">Registry</a> &amp; Registry::instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Singleton accessor </p>
 
 </div>
 </div>
@@ -294,6 +921,88 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Theoria</b></td></tr
 
 </div>
 </div>
+<a id="adead32a72f8f70bac8f01645dc912720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adead32a72f8f70bac8f01645dc912720">&sect;&nbsp;</a></span>release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void theoria::core::Registry::release </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>At the moment does nothing but reserved to allow resources to be freed when no longer needed </p>
+
+</div>
+</div>
+<a id="af66ab76f6173d7e7c99a0c47dc2bfd70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66ab76f6173d7e7c99a0c47dc2bfd70">&sect;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Registry::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Very dangerous. Only valid use-case is unit-testing. Wipes the entire state of the <a class="el" href="classtheoria_1_1core_1_1Registry.html">Registry</a> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! </p>
+
+</div>
+</div>
+<a id="aaa8dbdd7993478eea310fa111e36d40a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8dbdd7993478eea310fa111e36d40a">&sect;&nbsp;</a></span>satisfy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a> * &gt; Registry::satisfy </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> &amp;&#160;</td>
+          <td class="paramname"><em>deps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CompId&#160;</td>
+          <td class="paramname"><em>compId</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Satisfy dependencies as required by deps, creating components if necessary</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deps</td><td>the dependencies to satisfy </td></tr>
+    <tr><td class="paramname">compId</td><td>optional compId of requesting component. Used for informational purposes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the vector components which satisfy (possibly nullptr if could not satisfy) </dd></dl>
+
+</div>
+</div>
 <a id="a07940fe9f04fa89130432610d02aa0df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07940fe9f04fa89130432610d02aa0df">&sect;&nbsp;</a></span>unregisterFactory() <span class="overload">[1/2]</span></h2>
 
@@ -360,7 +1069,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Theoria</b></td></tr
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

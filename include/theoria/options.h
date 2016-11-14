@@ -6,10 +6,6 @@ namespace theoria
 {
     static const std::string dashdash("--") ;
 
-    /*
-     * --bootstrap_path :  The path to search for bootstrap.toml 
-     */
-
     const int OPTS_IDX_NAME = 0;
     const int OPTS_IDX_HELP = 1;
     const int OPTS_IDX_ARG = 2 ;

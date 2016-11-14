@@ -1,6 +1,7 @@
 
 
-/* @Deprecated
+/**
+ * @Deprecated
  * Builds a chain of resolvers. Used by Config Builder
  */
 class ConfigResolverBuilder : public core::Component 

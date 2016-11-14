@@ -2,8 +2,11 @@
 \label{classtheoria_1_1config_1_1Config}\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
 
 
-Inheritance diagram for theoria\+:\+:config\+:\+:Config\+:
-\nopagebreak
+{\ttfamily \#include $<$Config.\+h$>$}
+
+
+
+Inheritance diagram for theoria\+:\+:config\+:\+:Config\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +15,7 @@ Inheritance diagram for theoria\+:\+:config\+:\+:Config\+:
 \end{figure}
 
 
-Collaboration diagram for theoria\+:\+:config\+:\+:Config\+:
-\nopagebreak
+Collaboration diagram for theoria\+:\+:config\+:\+:Config\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,125 +30,92 @@ struct \hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}\label{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}} 
-using {\bfseries Const\+Config\+List} = std\+::vector$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$
+using \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} = std\+::vector$<$ const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}\label{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}} 
-using {\bfseries Config\+Predicate} = std\+::function$<$ bool(const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$)$>$
+using \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} = std\+::function$<$ bool(const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$)$>$
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a633738ea60f5d4d0d244bc7d05c9d17f}\label{classtheoria_1_1config_1_1Config_a633738ea60f5d4d0d244bc7d05c9d17f}} 
-Attrs\+::const\+\_\+iterator {\bfseries find\+Attr} (const std\+::string \&name) const
+\hyperlink{classtheoria_1_1config_1_1Config_abd0c571c116924871e30444b192b792a}{Config} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}\label{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}} 
-const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries get\+Parent} () const noexcept
+virtual \hyperlink{classtheoria_1_1config_1_1Config_a543dce59b66475c5108088ee4ce1cdfc}{$\sim$\+Config} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad9a5e883dc4918b1b9d00c1a53979149}\label{classtheoria_1_1config_1_1Config_ad9a5e883dc4918b1b9d00c1a53979149}} 
-bool {\bfseries has\+Child} (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child) const
+Attrs\+::const\+\_\+iterator \hyperlink{classtheoria_1_1config_1_1Config_a633738ea60f5d4d0d244bc7d05c9d17f}{find\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad67efbe126c02048be83ebb40f7d7bce}\label{classtheoria_1_1config_1_1Config_ad67efbe126c02048be83ebb40f7d7bce}} 
-int {\bfseries num\+Children} () const
+const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ \hyperlink{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}{get\+Parent} () const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}\label{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}} 
-Const\+Config\+List {\bfseries get\+Children} () const
+bool \hyperlink{classtheoria_1_1config_1_1Config_ad9a5e883dc4918b1b9d00c1a53979149}{has\+Child} (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a6433b53d322bd5bc78f67c8a8d9f2700}\label{classtheoria_1_1config_1_1Config_a6433b53d322bd5bc78f67c8a8d9f2700}} 
-Const\+Config\+List {\bfseries get\+Children} (const Config\+Predicate \&predicate) const
+int \hyperlink{classtheoria_1_1config_1_1Config_ad67efbe126c02048be83ebb40f7d7bce}{num\+Children} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_af8e4621be24f1860b1fed707628db7e9}\label{classtheoria_1_1config_1_1Config_af8e4621be24f1860b1fed707628db7e9}} 
-const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries get\+Child} (const std\+::string \&name) const
+\hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} \hyperlink{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}{get\+Children} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_afe6803a6e3e6600ab4ce33a7417ffaa9}\label{classtheoria_1_1config_1_1Config_afe6803a6e3e6600ab4ce33a7417ffaa9}} 
-Const\+Config\+List {\bfseries get\+Siblings} () const
+\hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} \hyperlink{classtheoria_1_1config_1_1Config_a6433b53d322bd5bc78f67c8a8d9f2700}{get\+Children} (const \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} \&predicate) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}\label{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}} 
-Const\+Config\+List {\bfseries get\+Siblings} (const Config\+Predicate \&predicate) const
+const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ \hyperlink{classtheoria_1_1config_1_1Config_af8e4621be24f1860b1fed707628db7e9}{get\+Child} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}\label{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}} 
-bool {\bfseries is\+Root} () const noexcept
+\hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} \hyperlink{classtheoria_1_1config_1_1Config_afe6803a6e3e6600ab4ce33a7417ffaa9}{get\+Siblings} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}\label{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}} 
-bool {\bfseries is\+Leaf} () const noexcept
+\hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} \hyperlink{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}{get\+Siblings} (const \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} \&predicate) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}\label{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}} 
-const std\+::string \& {\bfseries name} () const noexcept
+bool \hyperlink{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}{is\+Root} () const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}\label{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}} 
-std\+::string {\bfseries desc} () const noexcept
+bool \hyperlink{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}{is\+Leaf} () const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}\label{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}} 
-bool {\bfseries has\+Attr} (const std\+::string \&name) const
+const std\+::string \& \hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name} () const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a733766f29f0b75b7bf1224971968d52c}\label{classtheoria_1_1config_1_1Config_a733766f29f0b75b7bf1224971968d52c}} 
-int {\bfseries num\+Attr} () const
+std\+::string \hyperlink{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}{desc} () const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a0170adaf1d64ada4eafb43758e520837}\label{classtheoria_1_1config_1_1Config_a0170adaf1d64ada4eafb43758e520837}} 
-{\footnotesize template$<$class T $>$ }\\T {\bfseries get\+Attr} (const std\+::string \&name) const
+bool \hyperlink{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}{has\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}\label{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}} 
-{\footnotesize template$<$class T $>$ }\\T {\bfseries get\+Attr} (const std\+::string \&name, const T \&def) const noexcept
+int \hyperlink{classtheoria_1_1config_1_1Config_a733766f29f0b75b7bf1224971968d52c}{num\+Attr} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}\label{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}} 
-std\+::string {\bfseries get\+Attr\+As\+Str} (const std\+::string \&name, const std\+::string \&def=\char`\"{}\char`\"{}) const noexcept
+{\footnotesize template$<$class T $>$ }\\T \hyperlink{classtheoria_1_1config_1_1Config_a0170adaf1d64ada4eafb43758e520837}{get\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a991d0271d01d4f77f25a980399e88a60}\label{classtheoria_1_1config_1_1Config_a991d0271d01d4f77f25a980399e88a60}} 
-int {\bfseries get\+Attr\+As\+Int} (const std\+::string \&name, int def=0) const
+{\footnotesize template$<$class T $>$ }\\T \hyperlink{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}{get\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, const T \&def) const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a9920f07e7a493ad3c5d5712abc85f301}\label{classtheoria_1_1config_1_1Config_a9920f07e7a493ad3c5d5712abc85f301}} 
-double {\bfseries get\+Attr\+As\+Dbl} (const std\+::string \&name, double def=0.\+0) const
+std\+::string \hyperlink{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}{get\+Attr\+As\+Str} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, const std\+::string \&def=\char`\"{}\char`\"{}) const noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}\label{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}} 
-bool {\bfseries get\+Attr\+As\+Bool} (const std\+::string \&name, bool def=false) const
+int \hyperlink{classtheoria_1_1config_1_1Config_a991d0271d01d4f77f25a980399e88a60}{get\+Attr\+As\+Int} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, int def=0) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a1c634f42efd6c6d4463136ec24a1e7e5}\label{classtheoria_1_1config_1_1Config_a1c634f42efd6c6d4463136ec24a1e7e5}} 
-virtual bool {\bfseries is\+Array} () const
+double \hyperlink{classtheoria_1_1config_1_1Config_a9920f07e7a493ad3c5d5712abc85f301}{get\+Attr\+As\+Dbl} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, double def=0.\+0) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a6fe5db76067cd30d5b5ed02c49770d6f}\label{classtheoria_1_1config_1_1Config_a6fe5db76067cd30d5b5ed02c49770d6f}} 
-virtual void {\bfseries to\+T\+O\+ML} (std\+::ostream \&out) const
+bool \hyperlink{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}{get\+Attr\+As\+Bool} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, bool def=false) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}\label{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}} 
-Attrs\+::const\+\_\+iterator {\bfseries begin\+Attr} () const
+virtual bool \hyperlink{classtheoria_1_1config_1_1Config_a1c634f42efd6c6d4463136ec24a1e7e5}{is\+Array} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}\label{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}} 
-Attrs\+::const\+\_\+iterator {\bfseries end\+Attr} () const
+virtual void \hyperlink{classtheoria_1_1config_1_1Config_a6fe5db76067cd30d5b5ed02c49770d6f}{to\+T\+O\+ML} (std\+::ostream \&out) const
+\item 
+Attrs\+::const\+\_\+iterator \hyperlink{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}{begin\+Attr} () const
+\item 
+Attrs\+::const\+\_\+iterator \hyperlink{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}{end\+Attr} () const
 \end{DoxyCompactItemize}
 \subsection*{Protected Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}\label{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}} 
-using {\bfseries Text} = std\+::string
+using \hyperlink{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}{Text} = std\+::string
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}\label{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}} 
-using {\bfseries Attrs} = std\+::vector$<$ \hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr} $>$
+using \hyperlink{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}{Attrs} = std\+::vector$<$ \hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr} $>$
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}\label{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}} 
-using {\bfseries Children} = std\+::vector$<$ \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$
+using \hyperlink{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}{Children} = std\+::vector$<$ \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ $>$
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}\label{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}} 
-{\bfseries Config} (const std\+::string \&name, const std\+::string \&desc)
+\hyperlink{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}{Config} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}{desc})
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}\label{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}} 
-void {\bfseries add\+Attr} (const std\+::string \&name, const std\+::string \&value, const std\+::string \&type=\char`\"{}\char`\"{})
+void \hyperlink{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}{add\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name}, const std\+::string \&value, const std\+::string \&type=\char`\"{}\char`\"{})
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}\label{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}} 
-void {\bfseries add\+Child} (\hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child, bool allow\+Dups=false)
+void \hyperlink{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}{add\+Child} (\hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$child, bool allow\+Dups=false)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}\label{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}} 
-Attrs\+::iterator {\bfseries find\+Attr} (const std\+::string \&name)
+Attrs\+::iterator \hyperlink{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}{find\+Attr} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name})
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}\label{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}} 
-Attrs\+::iterator {\bfseries end\+Attr} ()
+Attrs\+::iterator \hyperlink{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}{end\+Attr} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}\label{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}} 
-void {\bfseries set\+Name} (const std\+::string \&name)
+void \hyperlink{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}{set\+Name} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}{name})
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}\label{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}} 
-void {\bfseries set\+Desc} (const std\+::string \&desc)
+void \hyperlink{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}{set\+Desc} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}{desc})
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -155,24 +124,420 @@ void {\bfseries set\+Desc} (const std\+::string \&desc)
 std\+::string {\bfseries \+\_\+name}
 \item 
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ab73d2f2163ddb788e877900ed075273e}\label{classtheoria_1_1config_1_1Config_ab73d2f2163ddb788e877900ed075273e}} 
-Text {\bfseries \+\_\+desc}
+\hyperlink{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}{Text} {\bfseries \+\_\+desc}
 \item 
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_aecbf5fc3dcb43d90e8ebffd0650c3831}\label{classtheoria_1_1config_1_1Config_aecbf5fc3dcb43d90e8ebffd0650c3831}} 
 \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ {\bfseries \+\_\+parent}
 \item 
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a51f52887f1e69984334896dc61b5846f}\label{classtheoria_1_1config_1_1Config_a51f52887f1e69984334896dc61b5846f}} 
-Children {\bfseries \+\_\+children}
+\hyperlink{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}{Children} {\bfseries \+\_\+children}
 \item 
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a9ffb513d50db0712eb085f22c2c102b2}\label{classtheoria_1_1config_1_1Config_a9ffb513d50db0712eb085f22c2c102b2}} 
-Attrs {\bfseries \+\_\+attrs}
+\hyperlink{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}{Attrs} {\bfseries \+\_\+attrs}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}\label{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}} 
-class {\bfseries Config\+Builder}
+class \hyperlink{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}{Config\+Builder}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+class \hyperlink{classtheoria_1_1config_1_1Config}{Config}
+
+A hierarchical data structure representing runtime configuration. \hyperlink{classtheoria_1_1config_1_1Config}{Config} is the result of parsing a file in some format supported by a config builder and resolving variable references using some chain of Config\+Variable\+Resolvers.
+
+Thus when a \hyperlink{classtheoria_1_1config_1_1Config}{Config} object arrives at a component\textquotesingle{}s init it is fully specified (variable free) provided the variables could be resolved. 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}\label{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Attrs@{Attrs}}
+\index{Attrs@{Attrs}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Attrs}{Attrs}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1config_1_1Config_a3590578a57d530fe1e51d25b0e492f7d}{theoria\+::config\+::\+Config\+::\+Attrs} =  std\+::vector$<$\hyperlink{structtheoria_1_1config_1_1Config_1_1Attr}{Attr}$>$\hspace{0.3cm}{\ttfamily [protected]}}
+
+The type of container of attributes \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}\label{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Children@{Children}}
+\index{Children@{Children}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Children}{Children}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1config_1_1Config_acc6cccfd7dd23be9bbd053c55a1e8eb7}{theoria\+::config\+::\+Config\+::\+Children} =  std\+::vector$<$\hyperlink{classtheoria_1_1config_1_1Config}{Config}$\ast$$>$\hspace{0.3cm}{\ttfamily [protected]}}
+
+The type of container of children \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}\label{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Config\+Predicate@{Config\+Predicate}}
+\index{Config\+Predicate@{Config\+Predicate}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Config\+Predicate}{ConfigPredicate}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{theoria\+::config\+::\+Config\+::\+Config\+Predicate} =  std\+::function$<$bool (const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$)$>$}
+
+The type used for a predicate on a \hyperlink{classtheoria_1_1config_1_1Config}{Config} node \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}\label{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Const\+Config\+List@{Const\+Config\+List}}
+\index{Const\+Config\+List@{Const\+Config\+List}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Const\+Config\+List}{ConstConfigList}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{theoria\+::config\+::\+Config\+::\+Const\+Config\+List} =  std\+::vector$<$const \hyperlink{classtheoria_1_1config_1_1Config}{Config}$\ast$$>$}
+
+The type used for a list of \hyperlink{classtheoria_1_1config_1_1Config}{Config} nodes \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}\label{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Text@{Text}}
+\index{Text@{Text}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Text}{Text}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1config_1_1Config_ac1325f2d355e7c617dcd16d561ee2429}{theoria\+::config\+::\+Config\+::\+Text} =  std\+::string\hspace{0.3cm}{\ttfamily [protected]}}
+
+Type of long text strings 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_abd0c571c116924871e30444b192b792a}\label{classtheoria_1_1config_1_1Config_abd0c571c116924871e30444b192b792a}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Config@{Config}}
+\index{Config@{Config}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Config()}{Config()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Config\+::\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Construct an empty config node (no attrs, no children) \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a543dce59b66475c5108088ee4ce1cdfc}\label{classtheoria_1_1config_1_1Config_a543dce59b66475c5108088ee4ce1cdfc}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!````~Config@{$\sim$\+Config}}
+\index{````~Config@{$\sim$\+Config}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{$\sim$\+Config()}{~Config()}}
+{\footnotesize\ttfamily Config\+::$\sim$\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Destructor \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}\label{classtheoria_1_1config_1_1Config_a232146edc23baa804dbc82ffd3158f49}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Config@{Config}}
+\index{Config@{Config}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Config()}{Config()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Config\+::\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Constructor initailizing nae and description of config node 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}\label{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!add\+Attr@{add\+Attr}}
+\index{add\+Attr@{add\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{add\+Attr()}{addAttr()}}
+{\footnotesize\ttfamily void Config\+::add\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{value,  }\item[{const std\+::string \&}]{type = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Adds an attribute to this config node 
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the attribute \\
+\hline
+{\em value} & value of the attribute \\
+\hline
+{\em type} & optional type of the attribute \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}\label{classtheoria_1_1config_1_1Config_ad96085447d36129bb53057c28bc43e4b}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!add\+Child@{add\+Child}}
+\index{add\+Child@{add\+Child}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{add\+Child()}{addChild()}}
+{\footnotesize\ttfamily void Config\+::add\+Child (\begin{DoxyParamCaption}\item[{\hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$}]{child,  }\item[{bool}]{allow\+Dups = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Add a child config node. 
+\begin{DoxyParams}{Parameters}
+{\em child} & the child to add \\
+\hline
+{\em allow\+Dups} & true if nodes with duplicate naes are allowed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}\label{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!begin\+Attr@{begin\+Attr}}
+\index{begin\+Attr@{begin\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{begin\+Attr()}{beginAttr()}}
+{\footnotesize\ttfamily Attrs\+::const\+\_\+iterator theoria\+::config\+::\+Config\+::begin\+Attr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return iterator over all attributes \begin{DoxySeeAlso}{See also}
+\hyperlink{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}{end\+Attr} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}\label{classtheoria_1_1config_1_1Config_a4d6b2e26d1139819769eaf6bb959b034}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!desc@{desc}}
+\index{desc@{desc}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{desc()}{desc()}}
+{\footnotesize\ttfamily std\+::string theoria\+::config\+::\+Config\+::desc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+The nodes desc. \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}\label{classtheoria_1_1config_1_1Config_a3d4ea72c3b43c8674456fdc263d39e39}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!end\+Attr@{end\+Attr}}
+\index{end\+Attr@{end\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{end\+Attr()}{endAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Attrs\+::const\+\_\+iterator theoria\+::config\+::\+Config\+::end\+Attr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return bounding iterator past last attribute \begin{DoxySeeAlso}{See also}
+\hyperlink{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}{begin\+Attr} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}\label{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!end\+Attr@{end\+Attr}}
+\index{end\+Attr@{end\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{end\+Attr()}{endAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Attrs\+::iterator theoria\+::config\+::\+Config\+::end\+Attr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+End of attributes \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a633738ea60f5d4d0d244bc7d05c9d17f}\label{classtheoria_1_1config_1_1Config_a633738ea60f5d4d0d244bc7d05c9d17f}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!find\+Attr@{find\+Attr}}
+\index{find\+Attr@{find\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{find\+Attr()}{findAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Attrs\+::const\+\_\+iterator theoria\+::config\+::\+Config\+::find\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Find an attribute by name \begin{DoxyReturn}{Returns}
+a const iterator to the attribute or \hyperlink{classtheoria_1_1config_1_1Config_adc788e451cd49c6b2c85948bf8f9fb21}{end\+Attr()} if not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}\label{classtheoria_1_1config_1_1Config_a5c3e05b3d7119443b0bcb61eb0404829}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!find\+Attr@{find\+Attr}}
+\index{find\+Attr@{find\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{find\+Attr()}{findAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Attrs\+::iterator theoria\+::config\+::\+Config\+::find\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Find attribute \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a0170adaf1d64ada4eafb43758e520837}\label{classtheoria_1_1config_1_1Config_a0170adaf1d64ada4eafb43758e520837}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr@{get\+Attr}}
+\index{get\+Attr@{get\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr()}{getAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T theoria\+::config\+::\+Config\+::get\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the attribute of specified name as the givent type T \begin{DoxyReturn}{Returns}
+the attribute value as type T 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if no such attribute \\
+\hline
+{\em std\+::runtime\+\_\+error} & if no legal conversion possible \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}\label{classtheoria_1_1config_1_1Config_ad05bba9dcd7dc78b999f2825fd99f8e0}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr@{get\+Attr}}
+\index{get\+Attr@{get\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr()}{getAttr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T theoria\+::config\+::\+Config\+::get\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const T \&}]{def }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get the attribute of specified name as the given type T or def if no such attribute 
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the attribue \\
+\hline
+{\em def} & default value if no such attribute \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::rumtimer} & error if attribute exusts but can\textquotesingle{}t be convereted to type T \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}\label{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr\+As\+Bool@{get\+Attr\+As\+Bool}}
+\index{get\+Attr\+As\+Bool@{get\+Attr\+As\+Bool}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr\+As\+Bool()}{getAttrAsBool()}}
+{\footnotesize\ttfamily bool theoria\+::config\+::\+Config\+::get\+Attr\+As\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{def = {\ttfamily false} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of the attribute of specified name as a boolean or default if no such attribute exists 
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the attribute \\
+\hline
+{\em def} & the default value if name does not exist \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if conversion to bool not possible \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a9920f07e7a493ad3c5d5712abc85f301}\label{classtheoria_1_1config_1_1Config_a9920f07e7a493ad3c5d5712abc85f301}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr\+As\+Dbl@{get\+Attr\+As\+Dbl}}
+\index{get\+Attr\+As\+Dbl@{get\+Attr\+As\+Dbl}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr\+As\+Dbl()}{getAttrAsDbl()}}
+{\footnotesize\ttfamily double theoria\+::config\+::\+Config\+::get\+Attr\+As\+Dbl (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{double}]{def = {\ttfamily 0.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of the attribute of specified name as a double or default if no such attribute exists 
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the attribute \\
+\hline
+{\em def} & the default value if name does not exist \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if conversion to double not possible \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a991d0271d01d4f77f25a980399e88a60}\label{classtheoria_1_1config_1_1Config_a991d0271d01d4f77f25a980399e88a60}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr\+As\+Int@{get\+Attr\+As\+Int}}
+\index{get\+Attr\+As\+Int@{get\+Attr\+As\+Int}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr\+As\+Int()}{getAttrAsInt()}}
+{\footnotesize\ttfamily int theoria\+::config\+::\+Config\+::get\+Attr\+As\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{def = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of the attribute of specified name as an int or default if no such attribute exists 
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the attribute \\
+\hline
+{\em def} & the default value if name does not exist \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if conversion to int not possible \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}\label{classtheoria_1_1config_1_1Config_a45702e009219115ee14b11ad1f0a851a}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Attr\+As\+Str@{get\+Attr\+As\+Str}}
+\index{get\+Attr\+As\+Str@{get\+Attr\+As\+Str}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Attr\+As\+Str()}{getAttrAsStr()}}
+{\footnotesize\ttfamily std\+::string theoria\+::config\+::\+Config\+::get\+Attr\+As\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{def = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get the value of the attribute of specified name as a string or default if no such attribute exists 
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the attribute \\
+\hline
+{\em def} & default value if name does not exist This function will always return some value -\/ never throws \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_af8e4621be24f1860b1fed707628db7e9}\label{classtheoria_1_1config_1_1Config_af8e4621be24f1860b1fed707628db7e9}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Child@{get\+Child}}
+\index{get\+Child@{get\+Child}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Child()}{getChild()}}
+{\footnotesize\ttfamily const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ Config\+::get\+Child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+Return child with given name. \begin{DoxyReturn}{Returns}
+child ptr or nullptrt if no such child 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}\label{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Children@{get\+Children}}
+\index{get\+Children@{get\+Children}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Children()}{getChildren()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} theoria\+::config\+::\+Config\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return all children in a list \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a6433b53d322bd5bc78f67c8a8d9f2700}\label{classtheoria_1_1config_1_1Config_a6433b53d322bd5bc78f67c8a8d9f2700}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Children@{get\+Children}}
+\index{get\+Children@{get\+Children}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Children()}{getChildren()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} Config\+::get\+Children (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} \&}]{predicate }\end{DoxyParamCaption}) const}
+
+Return only those children that satisfy the predicate 
+\begin{DoxyParams}{Parameters}
+{\em predicate} & bool (const Config$\ast$) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}\label{classtheoria_1_1config_1_1Config_ac30090b5eedf4126046d7ace48b5fa40}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Parent@{get\+Parent}}
+\index{get\+Parent@{get\+Parent}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Parent()}{getParent()}}
+{\footnotesize\ttfamily const \hyperlink{classtheoria_1_1config_1_1Config}{Config}$\ast$ theoria\+::config\+::\+Config\+::get\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+The parent of this config node or nullptr if this is the top-\/level node \begin{DoxyReturn}{Returns}
+parent 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_afe6803a6e3e6600ab4ce33a7417ffaa9}\label{classtheoria_1_1config_1_1Config_afe6803a6e3e6600ab4ce33a7417ffaa9}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Siblings@{get\+Siblings}}
+\index{get\+Siblings@{get\+Siblings}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Siblings()}{getSiblings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} Config\+::get\+Siblings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return siblings of this node (nodes at same level other than this) \begin{DoxyReturn}{Returns}
+list of sinlings (possibly empty) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}\label{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Siblings@{get\+Siblings}}
+\index{get\+Siblings@{get\+Siblings}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Siblings()}{getSiblings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} Config\+::get\+Siblings (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} \&}]{predicate }\end{DoxyParamCaption}) const}
+
+Return siblings of this node (nodes at same level other than this) that satisfy predicate \begin{DoxyReturn}{Returns}
+list of sinlings (possibly empty) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}\label{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!has\+Attr@{has\+Attr}}
+\index{has\+Attr@{has\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{has\+Attr()}{hasAttr()}}
+{\footnotesize\ttfamily bool theoria\+::config\+::\+Config\+::has\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test if node has a attribute with given name \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad9a5e883dc4918b1b9d00c1a53979149}\label{classtheoria_1_1config_1_1Config_ad9a5e883dc4918b1b9d00c1a53979149}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!has\+Child@{has\+Child}}
+\index{has\+Child@{has\+Child}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{has\+Child()}{hasChild()}}
+{\footnotesize\ttfamily bool theoria\+::config\+::\+Config\+::has\+Child (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$}]{child }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test if node has children \begin{DoxyReturn}{Returns}
+true if node has children 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a1c634f42efd6c6d4463136ec24a1e7e5}\label{classtheoria_1_1config_1_1Config_a1c634f42efd6c6d4463136ec24a1e7e5}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!is\+Array@{is\+Array}}
+\index{is\+Array@{is\+Array}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{is\+Array()}{isArray()}}
+{\footnotesize\ttfamily bool Config\+::is\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Test to descriminate between a normal \hyperlink{classtheoria_1_1config_1_1Config}{Config} node and a \hyperlink{classtheoria_1_1config_1_1ConfigArray}{Config\+Array} (arry of nodes) \begin{DoxyReturn}{Returns}
+false as \hyperlink{classtheoria_1_1config_1_1Config}{Config} base is normal node 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classtheoria_1_1config_1_1ConfigArray}{Config\+Array} 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \hyperlink{classtheoria_1_1config_1_1ConfigArray_aa225cf405229bccfcfdf2042e44da4f7}{theoria\+::config\+::\+Config\+Array}.
+
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}\label{classtheoria_1_1config_1_1Config_ad5c77fb1f86a7df2dce21972f921da33}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!is\+Leaf@{is\+Leaf}}
+\index{is\+Leaf@{is\+Leaf}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{is\+Leaf()}{isLeaf()}}
+{\footnotesize\ttfamily bool theoria\+::config\+::\+Config\+::is\+Leaf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Test if this node is a leaf (no children) \begin{DoxyReturn}{Returns}
+true if leaf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}\label{classtheoria_1_1config_1_1Config_ad50b474daddfbec84d7e610f7687fb04}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!is\+Root@{is\+Root}}
+\index{is\+Root@{is\+Root}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{is\+Root()}{isRoot()}}
+{\footnotesize\ttfamily bool theoria\+::config\+::\+Config\+::is\+Root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Test if this node is root \begin{DoxyReturn}{Returns}
+true if root (no parent) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}\label{classtheoria_1_1config_1_1Config_af4929f1c9b86576fdc439051a10f89cd}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!name@{name}}
+\index{name@{name}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const std\+::string\& theoria\+::config\+::\+Config\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+The name of the node \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a733766f29f0b75b7bf1224971968d52c}\label{classtheoria_1_1config_1_1Config_a733766f29f0b75b7bf1224971968d52c}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!num\+Attr@{num\+Attr}}
+\index{num\+Attr@{num\+Attr}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{num\+Attr()}{numAttr()}}
+{\footnotesize\ttfamily int theoria\+::config\+::\+Config\+::num\+Attr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The number of attributes of this node \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ad67efbe126c02048be83ebb40f7d7bce}\label{classtheoria_1_1config_1_1Config_ad67efbe126c02048be83ebb40f7d7bce}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!num\+Children@{num\+Children}}
+\index{num\+Children@{num\+Children}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{num\+Children()}{numChildren()}}
+{\footnotesize\ttfamily int theoria\+::config\+::\+Config\+::num\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of children of this node \begin{DoxyReturn}{Returns}
+integer number of children 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}\label{classtheoria_1_1config_1_1Config_adf4e6820b56f6ae52678b493819504ac}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!set\+Desc@{set\+Desc}}
+\index{set\+Desc@{set\+Desc}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{set\+Desc()}{setDesc()}}
+{\footnotesize\ttfamily void theoria\+::config\+::\+Config\+::set\+Desc (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Set or change attribute\textquotesingle{}s desc \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}\label{classtheoria_1_1config_1_1Config_a75b3cca96301a65a4eef01d5c36166c6}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{set\+Name()}{setName()}}
+{\footnotesize\ttfamily void theoria\+::config\+::\+Config\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Set or change attribute\textquotesingle{}s name \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a6fe5db76067cd30d5b5ed02c49770d6f}\label{classtheoria_1_1config_1_1Config_a6fe5db76067cd30d5b5ed02c49770d6f}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!to\+T\+O\+ML@{to\+T\+O\+ML}}
+\index{to\+T\+O\+ML@{to\+T\+O\+ML}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{to\+T\+O\+M\+L()}{toTOML()}}
+{\footnotesize\ttfamily void Config\+::to\+T\+O\+ML (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write the T\+O\+ML (\href{http://github.com/toml-lang/toml}{\tt http\+://github.\+com/toml-\/lang/toml}) to provided stream N\+O\+TE\+: The source format need not have been T\+O\+ML to use this conversion 
+
+Reimplemented in \hyperlink{classtheoria_1_1config_1_1ConfigArray_a1c73dba526ebd747682bc961676f5158}{theoria\+::config\+::\+Config\+Array}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}\label{classtheoria_1_1config_1_1Config_a3d61732fded713b38fc7f9fe3d80e2ae}} 
+\index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!Config\+Builder@{Config\+Builder}}
+\index{Config\+Builder@{Config\+Builder}!theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}}
+\subsubsection{\texorpdfstring{Config\+Builder}{ConfigBuilder}}
+{\footnotesize\ttfamily friend class \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder}\hspace{0.3cm}{\ttfamily [friend]}}
+
+A \hyperlink{classtheoria_1_1config_1_1Config}{Config} is contructed by a \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} therefor only \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} has ability to mutate configs. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

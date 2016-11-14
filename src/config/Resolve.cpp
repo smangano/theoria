@@ -129,8 +129,9 @@ std::string DisableResolver::name() const
 
 
 
-/////////////////////////
-//TOMLResolver
+/**
+ * TOMLResolver implementation
+ */
 
 class TOMLResolver::TOMLResolverImpl :  public ConfigVariableResolver
 {

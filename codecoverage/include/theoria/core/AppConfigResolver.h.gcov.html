@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -66,21 +66,28 @@
 <span class="lineNum">       4 </span>            : 
 <span class="lineNum">       5 </span>            : namespace theoria { namespace core {
 <span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span>            : /*
-<span class="lineNum">       8 </span>            :  * Resolve variables from your config file at the top level
+<span class="lineNum">       7 </span>            : /**
+<span class="lineNum">       8 </span>            :  * Resolve variables from your application's config file at the top level
 <span class="lineNum">       9 </span>            :  * or nested using dot notation: E.g., $a.b
 <a name="10"><span class="lineNum">      10 </span>            :  */</a>
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span><span class="lineCov">          4 : class AppConfigResolver : public config::ConfigVariableResolver</span>
+<span class="lineNum">      12 </span><span class="lineNoCov">          0 : class AppConfigResolver : public config::ConfigVariableResolver</span>
 <span class="lineNum">      13 </span>            : {
 <span class="lineNum">      14 </span>            : public:
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            :     Result lookup(const std::string&amp; name) const override;
-<span class="lineNum">      17 </span>            :     virtual std::string name() const override ;
-<span class="lineNum">      18 </span>            : } ;
-<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      16 </span>            :     /**
+<span class="lineNum">      17 </span>            :      * Look up name in app config
+<span class="lineNum">      18 </span>            :      */
+<span class="lineNum">      19 </span>            :     Result lookup(const std::string&amp; name) const override;
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            : }} //theoria::core
+<span class="lineNum">      21 </span>            :     /**
+<span class="lineNum">      22 </span>            :      * Returns &quot;AppConfigResolver&quot;
+<span class="lineNum">      23 </span>            :      */
+<span class="lineNum">      24 </span>            :     virtual std::string name() const override ;
+<span class="lineNum">      25 </span>            : } ;
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : }} //theoria::core
 </pre>
       </td>
     </tr>

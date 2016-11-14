@@ -14,10 +14,17 @@
 
 namespace theoria { namespace core {
 
+/**
+ * Implements the top-level operation of the theoria app container
+ */
 class Theoria
 {
 public:
 
+
+    /**
+     * Constructor
+     */
     Theoria() ;
 
     /**

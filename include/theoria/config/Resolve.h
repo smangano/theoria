@@ -17,7 +17,7 @@ namespace theoria { namespace config {
  * _First Variables_ ($var)  are bound by the first resolver that recognizes the variable
  * _Last Variables_ ($$var) are bound by the last resolver that recognizes the variable 
  *
- * Example ConfigVariableResolvers are: <CmdLineResolver>, <EnvVarResolver>, <ConfigVariableResolver>, <TomlResolver>  
+ * Example ConfigVariableResolvers are: \verbatim <CmdLineResolver>, <EnvVarResolver>, <ConfigVariableResolver>, <TomlResolver> \endverbatim  
  *
  * Say you want your project to be configurable from both the command line and environment and you want the command line
  * to take precedence. This means if a variable is give a value on the command line ignore any value in the env.
@@ -59,7 +59,7 @@ public:
 
     /**
      * Resolve variable
-     * @var is the variable and it must begin with '$' character 
+     * @param var is the variable and it must begin with '$' character 
      *
      * @return the value of the variable.  If _var_ is not found then the _var_ itself is returned
      */
@@ -69,7 +69,7 @@ public:
      * Resolve variable across all resolvers in the chain and return vector of all successful resolutions
      * in order of precedence as dictated by whether $'var or $$'var' was used.
      *
-     * @var is the variable and it must begin with '$' 
+     * @param var is the variable and it must begin with '$' 
      * 
      * @return vector of resolutions such that the first entry is the value that would have been resolved
      * the second is the alternative and so on. 
@@ -117,7 +117,15 @@ class EnvVarResolver : public ConfigVariableResolver
 {
 public:
 
+
+    /**
+     * Resolve name by looking at env variable with same name
+     */
     Result lookup(const std::string& name) const override ;
+
+    /**
+     * Returns "EnvVarResolver"
+     */
     virtual std::string name() const override ;
 
 } ;
@@ -129,50 +137,85 @@ class CmdLineResolver : public ConfigVariableResolver
 {
 public:
 
+    /**
+     * Look up name in command line variables
+     */
     Result lookup(const std::string& name) const override;
+
+    /**
+     * Return "CmdLineResolver"
+     */
     virtual std::string name() const override ;
 
 } ;
 
-/*
+/**
  * Raises runtime error "Variables have been disallowed"
  */
 class DisallowResolver : public ConfigVariableResolver
 {
 public:
 
+    /**
+     * Always throws
+     *@throw std::runtime_error
+     */
     Result lookup(const std::string& name) const override;
+
+    /**
+     * Return "DisallowResolver"
+     */
     virtual std::string name() const override ;
 
 } ;
 
-/*
+/**
  * Disables resolution by simply returning the variable name
  */
 class DisableResolver : public ConfigVariableResolver
 {
 public:
 
+    /**
+     * Return name un resolved
+     */
     Result lookup(const std::string& name) const override;
+
+    /**
+     * Return "DisableResolver"
+     */
     virtual std::string name() const override ;
 
 } ;
 
-/* Resolves variables from a TOML file. Supports
-   nested access using dot notation: E.g., $a.b
-   You can use this resolver even if your App's
-   config is not TOML
-*/
-
-
+/**
+ * Resolves variables from a TOML file. Supports
+ * nested access using dot notation: E.g., $a.b
+ * You can use this resolver even if your App's
+ * config is not TOML
+ */
 class TOMLResolver : public ConfigVariableResolver
 {
 public:
-    
+   
+    /**
+     * Use spefied TOLM file as source for resolver
+     */
     TOMLResolver(const std::string& tomlFilePath) ;
+
+    /**
+     * Use TOLM  supplied by a stream as source for resolver. Typically a std::istringstream
+     */
     TOMLResolver(std::istream& is) ;
 
+    /**
+     * Implement look on the TOML representation
+     */
     Result lookup(const std::string& name) const override;
+
+    /**
+     * Return "TOMLResolver"
+     */ 
     virtual std::string name() const override ;
 
 

@@ -2,8 +2,11 @@
 \label{classtheoria_1_1config_1_1DisableResolver}\index{theoria\+::config\+::\+Disable\+Resolver@{theoria\+::config\+::\+Disable\+Resolver}}
 
 
-Inheritance diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:
-\nopagebreak
+{\ttfamily \#include $<$Resolve.\+h$>$}
+
+
+
+Inheritance diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +15,7 @@ Inheritance diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:
 \end{figure}
 
 
-Collaboration diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:
-\nopagebreak
+Collaboration diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,22 +25,34 @@ Collaboration diagram for theoria\+:\+:config\+:\+:Disable\+Resolver\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1DisableResolver_ae366903d552dd3a34a380e4918525cd1}\label{classtheoria_1_1config_1_1DisableResolver_ae366903d552dd3a34a380e4918525cd1}} 
-Result {\bfseries lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}{name}) const override
+\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} \hyperlink{classtheoria_1_1config_1_1DisableResolver_ae366903d552dd3a34a380e4918525cd1}{lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}{name}) const override
 \item 
 virtual std\+::string \hyperlink{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}{name} () const override
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+Disables resolution by simply returning the variable name 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1DisableResolver_ae366903d552dd3a34a380e4918525cd1}\label{classtheoria_1_1config_1_1DisableResolver_ae366903d552dd3a34a380e4918525cd1}} 
+\index{theoria\+::config\+::\+Disable\+Resolver@{theoria\+::config\+::\+Disable\+Resolver}!lookup@{lookup}}
+\index{lookup@{lookup}!theoria\+::config\+::\+Disable\+Resolver@{theoria\+::config\+::\+Disable\+Resolver}}
+\subsubsection{\texorpdfstring{lookup()}{lookup()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} Disable\+Resolver\+::lookup (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Return name un resolved 
+
+Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
+
 \mbox{\Hypertarget{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}\label{classtheoria_1_1config_1_1DisableResolver_ae7caa7a59ad2921ec2cba0544ed26ad0}} 
 \index{theoria\+::config\+::\+Disable\+Resolver@{theoria\+::config\+::\+Disable\+Resolver}!name@{name}}
 \index{name@{name}!theoria\+::config\+::\+Disable\+Resolver@{theoria\+::config\+::\+Disable\+Resolver}}
 \subsubsection{\texorpdfstring{name()}{name()}}
 {\footnotesize\ttfamily std\+::string Disable\+Resolver\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Return name of the resolver 
+Return \char`\"{}\+Disable\+Resolver\char`\"{} 
 
 Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
 

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">33.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -72,98 +72,146 @@
 <span class="lineNum">      10 </span>            : class Config ;
 <span class="lineNum">      11 </span>            : class ConfigVariableResolver ;
 <span class="lineNum">      12 </span>            : 
-<a name="13"><span class="lineNum">      13 </span>            : /* Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.</a>
-<span class="lineNum">      14 </span>            :  */
-<span class="lineNum">      15 </span><span class="lineCov">         20 : class ConfigBuilder </span>
-<span class="lineNum">      16 </span>            : {
-<span class="lineNum">      17 </span>            : public:
-<span class="lineNum">      18 </span>            : 
-<a name="19"><span class="lineNum">      19 </span>            :     using ConfigPtr = std::unique_ptr&lt;Config&gt; ;</a>
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">         20 :     ConfigBuilder():</span>
-<span class="lineNum">      22 </span><span class="lineCov">         20 :         _stack(std::move(this-&gt;_vec)), _resolverChain(nullptr) {}</span>
-<span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span>            :     ConfigBuilder(ConfigVariableResolver* pResolver):
-<a name="25"><span class="lineNum">      25 </span>            :         _stack(std::move(this-&gt;_vec)), _resolverChain(pResolver) {}</a>
-<span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">          1 :     void setResolver(ConfigVariableResolver* pResolver) {_resolverChain = pResolver;}     </span>
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            :     /* Create a config node with name and description and push on to the node stack
-<span class="lineNum">      30 </span>            :      * @name the name of the node
-<span class="lineNum">      31 </span>            :      * @desc the node descrition
-<span class="lineNum">      32 </span>            :      */
-<span class="lineNum">      33 </span>            :     void pushConfig(const std::string&amp; name, const std::string&amp; desc=&quot;&quot;) ;
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span>            :     /* Push an existing node to augment
-<span class="lineNum">      36 </span>            :      * @config a Config node
-<span class="lineNum">      37 </span>            :      */
-<span class="lineNum">      38 </span>            :     void pushConfig(Config* config) ;
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            :     /* Create a ConfigArray node with name and push on to the node stack
-<span class="lineNum">      41 </span>            :      * @name the name of the array
-<span class="lineNum">      42 </span>            :      */
-<span class="lineNum">      43 </span>            :     void pushConfigArray(const std::string&amp; name) ;
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            :     /* Add a attribute to the config node on top of the stack
-<span class="lineNum">      46 </span>            :      * @name attribute name
-<span class="lineNum">      47 </span>            :      * @value attribute value
-<span class="lineNum">      48 </span>            :      * @type optional type hint
-<span class="lineNum">      49 </span>            :      */
-<span class="lineNum">      50 </span>            :     void addAttr(const std::string&amp; name, const std::string value, const std::string type=&quot;&quot;) ;
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            :     /* Change attributes name
-<span class="lineNum">      53 </span>            :      */
-<span class="lineNum">      54 </span>            :     void setAttrName(const std::string&amp; name, const std::string&amp; newName) ;
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            :     /* Change attributes value
-<span class="lineNum">      57 </span>            :      */
-<span class="lineNum">      58 </span>            :     void setAttrValue(const std::string&amp; name, const std::string&amp; newValue) ;
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span>            :     /* Change attributes type 
-<span class="lineNum">      61 </span>            :      */
-<span class="lineNum">      62 </span>            :     void setAttrType(const std::string&amp; name, const std::string&amp; newType) ;
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span>            :     /* Change attribute's source to variable within resolver
-<span class="lineNum">      65 </span>            :     */
-<span class="lineNum">      66 </span>            :     void setAttrSource(const std::string&amp; name, const std::string&amp; variableName, const std::string&amp; resolverName) ;
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            :     /* Pop a node off the stack and attach it as a chile to the new top node
-<span class="lineNum">      69 </span>            :      * @allowDups - Normally Config nodes must be unique by name. Set true to override.  NOTE: if parent is 
-<span class="lineNum">      70 </span>            :      *              an array dups will automatically to be allowed even if allowDups==false
-<span class="lineNum">      71 </span>            :      */
-<span class="lineNum">      72 </span>            :     void popAsChild(bool allowDups=false); 
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            :     /* Pop the top node. It will be lost if you need not save somewhere by first calling top
+<span class="lineNum">      13 </span>            : /**
+<span class="lineNum">      14 </span>            :  * Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.
+<span class="lineNum">      15 </span>            :  */
+<span class="lineNum">      16 </span>            : class ConfigBuilder 
+<span class="lineNum">      17 </span>            : {
+<span class="lineNum">      18 </span>            : public:
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            :     /**
+<span class="lineNum">      21 </span>            :      * Type of pointer to Config
+<span class="lineNum">      22 </span>            :      */
+<span class="lineNum">      23 </span>            :     using ConfigPtr = std::unique_ptr&lt;Config&gt; ;
+<span class="lineNum">      24 </span>            :     
+<span class="lineNum">      25 </span>            :     /**
+<a name="26"><span class="lineNum">      26 </span>            :      * Construct a builder with no initial resolver</a>
+<span class="lineNum">      27 </span>            :      */
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     ConfigBuilder():</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         _stack(std::move(this-&gt;_vec)), _resolverChain(nullptr) {}</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            :     /**
+<span class="lineNum">      32 </span>            :      * Construct a builder with resolver as head
+<span class="lineNum">      33 </span>            :      * @param pResolver pointer to resolver
+<span class="lineNum">      34 </span>            :      */
+<span class="lineNum">      35 </span>            :     ConfigBuilder(ConfigVariableResolver* pResolver):
+<span class="lineNum">      36 </span>            :         _stack(std::move(this-&gt;_vec)), _resolverChain(pResolver) {}
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            :     /**
+<span class="lineNum">      39 </span>            :      * Set the head resolver. Overwrites previous resolver
+<a name="40"><span class="lineNum">      40 </span>            :      * @param pResolver the new resolver</a>
+<span class="lineNum">      41 </span>            :      */
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     void setResolver(ConfigVariableResolver* pResolver) {_resolverChain = pResolver;}     </span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            :     /** 
+<span class="lineNum">      45 </span>            :      * Create a config node with name and description and push on to the node stack
+<span class="lineNum">      46 </span>            :      * @param name the name of the node
+<span class="lineNum">      47 </span>            :      * @param desc the node descrition
+<span class="lineNum">      48 </span>            :      */
+<span class="lineNum">      49 </span>            :     void pushConfig(const std::string&amp; name, const std::string&amp; desc=&quot;&quot;) ;
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            :     /**
+<span class="lineNum">      52 </span>            :      * Push an existing node to augment
+<span class="lineNum">      53 </span>            :      * @param config a Config node
+<span class="lineNum">      54 </span>            :      */
+<span class="lineNum">      55 </span>            :     void pushConfig(Config* config) ;
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :     /**
+<span class="lineNum">      58 </span>            :      * Create a ConfigArray node with name and push on to the node stack
+<span class="lineNum">      59 </span>            :      * @param name the name of the array
+<span class="lineNum">      60 </span>            :      */
+<span class="lineNum">      61 </span>            :     void pushConfigArray(const std::string&amp; name) ;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            :     /**
+<span class="lineNum">      64 </span>            :      * Add a attribute to the config node on top of the stack
+<span class="lineNum">      65 </span>            :      * @param name attribute name
+<span class="lineNum">      66 </span>            :      * @param value attribute value
+<span class="lineNum">      67 </span>            :      * @param type optional type hint
+<span class="lineNum">      68 </span>            :      */
+<span class="lineNum">      69 </span>            :     void addAttr(const std::string&amp; name, const std::string value, const std::string type=&quot;&quot;) ;
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            :     /**
+<span class="lineNum">      72 </span>            :      * Change attributes name
+<span class="lineNum">      73 </span>            :      * @param name current name
+<span class="lineNum">      74 </span>            :      * @param newName the new attribute name
 <span class="lineNum">      75 </span>            :      */
-<span class="lineNum">      76 </span>            :     void pop() ;
+<span class="lineNum">      76 </span>            :     void setAttrName(const std::string&amp; name, const std::string&amp; newName) ;
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            :     /* Change the name of the node on the top of the stack
-<span class="lineNum">      79 </span>            :      */
-<span class="lineNum">      80 </span>            :     void setName(const std::string&amp; name) ;
-<span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span>            :     /* Change the description of the node on the top of the stack
-<span class="lineNum">      83 </span>            :      */
-<span class="lineNum">      84 </span>            :     void setDesc(const std::string&amp; name) ;
-<span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span>            :     /* The node on top of the stack
-<span class="lineNum">      87 </span>            :      */
-<span class="lineNum">      88 </span>            :     ConfigPtr&amp; top() ;
-<span class="lineNum">      89 </span>            : 
-<a name="90"><span class="lineNum">      90 </span>            :     Config* releaseAll() ;</a>
+<span class="lineNum">      78 </span>            :     /**
+<span class="lineNum">      79 </span>            :      * Change attributes value
+<span class="lineNum">      80 </span>            :      * @param name the name of the attribute to change
+<span class="lineNum">      81 </span>            :      * @param newValue the value to change to
+<span class="lineNum">      82 </span>            :      */
+<span class="lineNum">      83 </span>            :     void setAttrValue(const std::string&amp; name, const std::string&amp; newValue) ;
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            :     /** 
+<span class="lineNum">      86 </span>            :      * Change attributes type
+<span class="lineNum">      87 </span>            :      * @param name the name of the attribute to change
+<span class="lineNum">      88 </span>            :      * @param newType the type name to change to (string, int, bool, double)
+<span class="lineNum">      89 </span>            :      */
+<span class="lineNum">      90 </span>            :     void setAttrType(const std::string&amp; name, const std::string&amp; newType) ;
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">          4 :     const ConfigVariableResolver* resolver() const {return _resolverChain;}</span>
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span>            : private:
-<span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span>            :     std::string resolve(const std::string&amp; valueOrVar) ;
-<span class="lineNum">      97 </span>            :     std::vector&lt;ConfigPtr&gt; _vec ;
-<span class="lineNum">      98 </span>            :     std::stack&lt;ConfigPtr, std::vector&lt;ConfigPtr&gt;&gt; _stack;
-<span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span>            :     ConfigVariableResolver* _resolverChain ;
-<span class="lineNum">     101 </span>            :     
-<span class="lineNum">     102 </span>            : }; 
+<span class="lineNum">      92 </span>            :     /** 
+<span class="lineNum">      93 </span>            :      * Change attribute's source to variable within resolver
+<span class="lineNum">      94 </span>            :      */
+<span class="lineNum">      95 </span>            :     void setAttrSource(const std::string&amp; name, const std::string&amp; variableName, const std::string&amp; resolverName) ;
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span>            :     /**
+<span class="lineNum">      98 </span>            :      * Pop a node off the stack and attach it as a chile to the new top node
+<span class="lineNum">      99 </span>            :      * @param allowDups Normally Config nodes must be unique by name. Set true to override.  
+<span class="lineNum">     100 </span>            :      *                  NOTE: if parent is an array dups will automatically to be allowed even if allowDups==false
+<span class="lineNum">     101 </span>            :      */
+<span class="lineNum">     102 </span>            :     void popAsChild(bool allowDups=false); 
 <span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span>            : }}
+<span class="lineNum">     104 </span>            :     /**
+<span class="lineNum">     105 </span>            :      * Pop the top node. It will be lost if you need not save somewhere by first calling top
+<span class="lineNum">     106 </span>            :      */
+<span class="lineNum">     107 </span>            :     void pop() ;
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            :     /**
+<span class="lineNum">     110 </span>            :      * Change the name of the node on the top of the stack
+<span class="lineNum">     111 </span>            :      * @param name the new name for node
+<span class="lineNum">     112 </span>            :      */
+<span class="lineNum">     113 </span>            :     void setName(const std::string&amp; name) ;
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            :     /**
+<span class="lineNum">     116 </span>            :      * Change the description of the node on the top of the stack
+<span class="lineNum">     117 </span>            :      * @param desc the new description for the node
+<span class="lineNum">     118 </span>            :      */
+<span class="lineNum">     119 </span>            :     void setDesc(const std::string&amp; desc) ;
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            :     /**
+<span class="lineNum">     122 </span>            :      * The node on top of the stack
+<span class="lineNum">     123 </span>            :      * @return top node on the config stack 
+<span class="lineNum">     124 </span>            :      * @throw std::runtime_error if stack is empty
+<span class="lineNum">     125 </span>            :      */
+<span class="lineNum">     126 </span>            :     ConfigPtr&amp; top() ;
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     /**
+<span class="lineNum">     129 </span>            :      * Call popChild repeatedly until stack is empty then release the top element from its owning unique ptr and return it.
+<span class="lineNum">     130 </span>            :      * @return the root node (the node deepest in the stack when this function was called) or nullptr if stack empty
+<span class="lineNum">     131 </span>            :      */
+<span class="lineNum">     132 </span>            :     Config* releaseAll() ;
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            :     /**
+<span class="lineNum">     135 </span>            :      * Return the head resolver of this builder's resolver chain. 
+<span class="lineNum">     136 </span>            :      * Normally variable resolution is taken care of automatically so this method not typically required. 
+<span class="lineNum">     137 </span>            :      * Useful for unit testing.
+<span class="lineNum">     138 </span>            :      * @return the head resolver
+<span class="lineNum">     139 </span>            :      */
+<span class="lineNum">     140 </span>            :     const ConfigVariableResolver* resolver() const {return _resolverChain;}
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            : private:
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            :     std::string resolve(const std::string&amp; valueOrVar) ;
+<span class="lineNum">     145 </span>            :     std::vector&lt;ConfigPtr&gt; _vec ;
+<span class="lineNum">     146 </span>            :     std::stack&lt;ConfigPtr, std::vector&lt;ConfigPtr&gt;&gt; _stack;
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span>            :     ConfigVariableResolver* _resolverChain ;
+<span class="lineNum">     149 </span>            :     
+<span class="lineNum">     150 </span>            : }; 
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            : }}
 </pre>
       </td>
     </tr>

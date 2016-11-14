@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">164</td>
-            <td class="headerCovTableEntry">175</td>
-            <td class="headerCovTableEntryHi">93.7 %</td>
+            <td class="headerCovTableEntry">74</td>
+            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntryLo">57.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">243</td>
-            <td class="headerCovTableEntry">273</td>
-            <td class="headerCovTableEntryMed">89.0 %</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntry">191</td>
+            <td class="headerCovTableEntryLo">37.7 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -138,72 +138,72 @@
 <span class="lineNum">      76 </span>            :       typedef typename __gnu_cxx::__alloc_traits&lt;_Tp_alloc_type&gt;::pointer
 <a name="77"><span class="lineNum">      77 </span>            :         pointer;</a>
 <span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span><span class="lineCov">        350 :       struct _Vector_impl </span>
+<span class="lineNum">      79 </span><span class="lineCov">        163 :       struct _Vector_impl </span>
 <span class="lineNum">      80 </span>            :       : public _Tp_alloc_type
 <span class="lineNum">      81 </span>            :       {
 <span class="lineNum">      82 </span>            :         pointer _M_start;
 <span class="lineNum">      83 </span>            :         pointer _M_finish;
 <a name="84"><span class="lineNum">      84 </span>            :         pointer _M_end_of_storage;</a>
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineCov">        253 :         _Vector_impl()</span>
-<span class="lineNum">      87 </span><span class="lineCov">        253 :         : _Tp_alloc_type(), _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        253 :         { }</span></a>
+<span class="lineNum">      86 </span><span class="lineCov">        163 :         _Vector_impl()</span>
+<span class="lineNum">      87 </span><span class="lineCov">        163 :         : _Tp_alloc_type(), _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">        163 :         { }</span></a>
 <span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">         65 :         _Vector_impl(_Tp_alloc_type const&amp; __a) _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">      91 </span><span class="lineCov">         65 :         : _Tp_alloc_type(__a), _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
-<span class="lineNum">      92 </span><span class="lineCov">         65 :         { }</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         _Vector_impl(_Tp_alloc_type const&amp; __a) _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         : _Tp_alloc_type(__a), _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         { }</span>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <span class="lineNum">      94 </span>            : #if __cplusplus &gt;= 201103L
-<span class="lineNum">      95 </span><span class="lineCov">         20 :         _Vector_impl(_Tp_alloc_type&amp;&amp; __a) noexcept</span>
-<span class="lineNum">      96 </span><span class="lineCov">         20 :         : _Tp_alloc_type(std::move(__a)),</span>
-<span class="lineNum">      97 </span><span class="lineCov">         20 :           _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
-<span class="lineNum">      98 </span><span class="lineCov">         20 :         { }</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :         _Vector_impl(_Tp_alloc_type&amp;&amp; __a) noexcept</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :         : _Tp_alloc_type(std::move(__a)),</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :           _M_start(0), _M_finish(0), _M_end_of_storage(0)</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         { }</span>
 <a name="99"><span class="lineNum">      99 </span>            : #endif</a>
 <span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineCov">         42 :         void _M_swap_data(_Vector_impl&amp; __x) _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     101 </span><span class="lineCov">         10 :         void _M_swap_data(_Vector_impl&amp; __x) _GLIBCXX_NOEXCEPT</span>
 <span class="lineNum">     102 </span>            :         {
-<span class="lineNum">     103 </span><span class="lineCov">         42 :           std::swap(_M_start, __x._M_start);</span>
-<span class="lineNum">     104 </span><span class="lineCov">         42 :           std::swap(_M_finish, __x._M_finish);</span>
-<span class="lineNum">     105 </span><span class="lineCov">         42 :           std::swap(_M_end_of_storage, __x._M_end_of_storage);</span>
-<span class="lineNum">     106 </span><span class="lineCov">         42 :         }</span>
+<span class="lineNum">     103 </span><span class="lineCov">         10 :           std::swap(_M_start, __x._M_start);</span>
+<span class="lineNum">     104 </span><span class="lineCov">         10 :           std::swap(_M_finish, __x._M_finish);</span>
+<span class="lineNum">     105 </span><span class="lineCov">         10 :           std::swap(_M_end_of_storage, __x._M_end_of_storage);</span>
+<span class="lineNum">     106 </span><span class="lineCov">         10 :         }</span>
 <span class="lineNum">     107 </span>            :       };
 <span class="lineNum">     108 </span>            :       
 <span class="lineNum">     109 </span>            :     public:
 <span class="lineNum">     110 </span>            :       typedef _Alloc allocator_type;
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <span class="lineNum">     112 </span>            :       _Tp_alloc_type&amp;
-<span class="lineNum">     113 </span><span class="lineCov">       1113 :       _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     114 </span><span class="lineCov">       1113 :       { return *static_cast&lt;_Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
+<span class="lineNum">     113 </span><span class="lineCov">        556 :       _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     114 </span><span class="lineCov">        556 :       { return *static_cast&lt;_Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <span class="lineNum">     116 </span>            :       const _Tp_alloc_type&amp;
-<span class="lineNum">     117 </span><span class="lineCov">        581 :       _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     118 </span><span class="lineCov">        581 :       { return *static_cast&lt;const _Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
+<span class="lineNum">     117 </span><span class="lineCov">        356 :       _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     118 </span><span class="lineCov">        356 :       { return *static_cast&lt;const _Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <span class="lineNum">     120 </span>            :       allocator_type
-<span class="lineNum">     121 </span><span class="lineCov">         11 :       get_allocator() const _GLIBCXX_NOEXCEPT</span>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         11 :       { return allocator_type(_M_get_Tp_allocator()); }</span></a>
+<span class="lineNum">     121 </span><span class="lineCov">          5 :       get_allocator() const _GLIBCXX_NOEXCEPT</span>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          5 :       { return allocator_type(_M_get_Tp_allocator()); }</span></a>
 <span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineCov">        253 :       _Vector_base()</span>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        253 :       : _M_impl() { }</span></a>
+<span class="lineNum">     124 </span><span class="lineCov">        163 :       _Vector_base()</span>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        163 :       : _M_impl() { }</span></a>
 <span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span><span class="lineCov">         42 :       _Vector_base(const allocator_type&amp; __a) _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     128 </span><span class="lineCov">         42 :       : _M_impl(__a) { }</span>
+<span class="lineNum">     127 </span><span class="lineCov">          5 :       _Vector_base(const allocator_type&amp; __a) _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     128 </span><span class="lineCov">          5 :       : _M_impl(__a) { }</span>
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span>            :       _Vector_base(size_t __n)
 <span class="lineNum">     131 </span>            :       : _M_impl()
-<a name="132"><span class="lineNum">     132 </span>            :       { _M_create_storage(__n); }</a>
+<span class="lineNum">     132 </span>            :       { _M_create_storage(__n); }
 <span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span><span class="lineCov">         23 :       _Vector_base(size_t __n, const allocator_type&amp; __a)</span>
-<span class="lineNum">     135 </span><span class="lineCov">         23 :       : _M_impl(__a)</span>
-<span class="lineNum">     136 </span><span class="lineCov">         23 :       { _M_create_storage(__n); }</span>
+<span class="lineNum">     134 </span>            :       _Vector_base(size_t __n, const allocator_type&amp; __a)
+<span class="lineNum">     135 </span>            :       : _M_impl(__a)
+<span class="lineNum">     136 </span>            :       { _M_create_storage(__n); }
 <span class="lineNum">     137 </span>            : 
 <span class="lineNum">     138 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     139 </span>            :       _Vector_base(_Tp_alloc_type&amp;&amp; __a) noexcept
 <a name="140"><span class="lineNum">     140 </span>            :       : _M_impl(std::move(__a)) { }</a>
 <span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span><span class="lineCov">         20 :       _Vector_base(_Vector_base&amp;&amp; __x) noexcept</span>
-<span class="lineNum">     143 </span><span class="lineCov">         20 :       : _M_impl(std::move(__x._M_get_Tp_allocator()))</span>
-<span class="lineNum">     144 </span><span class="lineCov">         20 :       { this-&gt;_M_impl._M_swap_data(__x._M_impl); }</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :       _Vector_base(_Vector_base&amp;&amp; __x) noexcept</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :       : _M_impl(std::move(__x._M_get_Tp_allocator()))</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :       { this-&gt;_M_impl._M_swap_data(__x._M_impl); }</span>
 <span class="lineNum">     145 </span>            : 
 <span class="lineNum">     146 </span>            :       _Vector_base(_Vector_base&amp;&amp; __x, const allocator_type&amp; __a)
 <span class="lineNum">     147 </span>            :       : _M_impl(__a)
@@ -218,36 +218,36 @@
 <span class="lineNum">     156 </span>            :       }
 <a name="157"><span class="lineNum">     157 </span>            : #endif</a>
 <span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineCov">        350 :       ~_Vector_base() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     160 </span><span class="lineCov">        350 :       { _M_deallocate(this-&gt;_M_impl._M_start, this-&gt;_M_impl._M_end_of_storage</span>
-<span class="lineNum">     161 </span><span class="lineCov">        700 :                       - this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     159 </span><span class="lineCov">        163 :       ~_Vector_base() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     160 </span><span class="lineCov">        163 :       { _M_deallocate(this-&gt;_M_impl._M_start, this-&gt;_M_impl._M_end_of_storage</span>
+<span class="lineNum">     161 </span><span class="lineCov">        326 :                       - this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     162 </span>            : 
 <span class="lineNum">     163 </span>            :     public:
 <span class="lineNum">     164 </span>            :       _Vector_impl _M_impl;
 <a name="165"><span class="lineNum">     165 </span>            : </a>
 <span class="lineNum">     166 </span>            :       pointer
-<span class="lineNum">     167 </span><span class="lineCov">        357 :       _M_allocate(size_t __n)</span>
+<span class="lineNum">     167 </span><span class="lineCov">        178 :       _M_allocate(size_t __n)</span>
 <span class="lineNum">     168 </span>            :       {
 <span class="lineNum">     169 </span>            :         typedef __gnu_cxx::__alloc_traits&lt;_Tp_alloc_type&gt; _Tr;
-<span class="lineNum">     170 </span><span class="lineCov">        357 :         return __n != 0 ? _Tr::allocate(_M_impl, __n) : 0;</span>
+<span class="lineNum">     170 </span><span class="lineCov">        178 :         return __n != 0 ? _Tr::allocate(_M_impl, __n) : 0;</span>
 <span class="lineNum">     171 </span>            :       }
 <a name="172"><span class="lineNum">     172 </span>            : </a>
 <span class="lineNum">     173 </span>            :       void
-<span class="lineNum">     174 </span><span class="lineCov">        653 :       _M_deallocate(pointer __p, size_t __n)</span>
+<span class="lineNum">     174 </span><span class="lineCov">        341 :       _M_deallocate(pointer __p, size_t __n)</span>
 <span class="lineNum">     175 </span>            :       {
 <span class="lineNum">     176 </span>            :         typedef __gnu_cxx::__alloc_traits&lt;_Tp_alloc_type&gt; _Tr;
-<span class="lineNum">     177 </span><span class="lineCov">        653 :         if (__p)</span>
-<span class="lineNum">     178 </span><span class="lineCov">        347 :           _Tr::deallocate(_M_impl, __p, __n);</span>
-<span class="lineNum">     179 </span><span class="lineCov">        653 :       }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        341 :         if (__p)</span>
+<span class="lineNum">     178 </span><span class="lineCov">        178 :           _Tr::deallocate(_M_impl, __p, __n);</span>
+<span class="lineNum">     179 </span><span class="lineCov">        341 :       }</span>
 <span class="lineNum">     180 </span>            : 
-<a name="181"><span class="lineNum">     181 </span>            :     private:</a>
+<span class="lineNum">     181 </span>            :     private:
 <span class="lineNum">     182 </span>            :       void
-<span class="lineNum">     183 </span><span class="lineCov">         23 :       _M_create_storage(size_t __n)</span>
+<span class="lineNum">     183 </span>            :       _M_create_storage(size_t __n)
 <span class="lineNum">     184 </span>            :       {
-<span class="lineNum">     185 </span><span class="lineCov">         23 :         this-&gt;_M_impl._M_start = this-&gt;_M_allocate(__n);</span>
-<span class="lineNum">     186 </span><span class="lineCov">         23 :         this-&gt;_M_impl._M_finish = this-&gt;_M_impl._M_start;</span>
-<span class="lineNum">     187 </span><span class="lineCov">         23 :         this-&gt;_M_impl._M_end_of_storage = this-&gt;_M_impl._M_start + __n;</span>
-<span class="lineNum">     188 </span><span class="lineCov">         23 :       }</span>
+<span class="lineNum">     185 </span>            :         this-&gt;_M_impl._M_start = this-&gt;_M_allocate(__n);
+<span class="lineNum">     186 </span>            :         this-&gt;_M_impl._M_finish = this-&gt;_M_impl._M_start;
+<span class="lineNum">     187 </span>            :         this-&gt;_M_impl._M_end_of_storage = this-&gt;_M_impl._M_start + __n;
+<span class="lineNum">     188 </span>            :       }
 <span class="lineNum">     189 </span>            :     };
 <span class="lineNum">     190 </span>            : 
 <span class="lineNum">     191 </span>            : 
@@ -312,19 +312,19 @@
 <span class="lineNum">     250 </span>            :       /**
 <a name="251"><span class="lineNum">     251 </span>            :        *  @brief  Creates a %vector with no elements.</a>
 <span class="lineNum">     252 </span>            :        */
-<span class="lineNum">     253 </span><span class="lineCov">        253 :       vector()</span>
+<span class="lineNum">     253 </span><span class="lineCov">        163 :       vector()</span>
 <span class="lineNum">     254 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     255 </span>            :       noexcept(is_nothrow_default_constructible&lt;_Alloc&gt;::value)
 <span class="lineNum">     256 </span>            : #endif
-<span class="lineNum">     257 </span><span class="lineCov">        253 :       : _Base() { }</span>
+<span class="lineNum">     257 </span><span class="lineCov">        163 :       : _Base() { }</span>
 <span class="lineNum">     258 </span>            : 
 <span class="lineNum">     259 </span>            :       /**
 <span class="lineNum">     260 </span>            :        *  @brief  Creates a %vector with no elements.
 <span class="lineNum">     261 </span>            :        *  @param  __a  An allocator object.
 <a name="262"><span class="lineNum">     262 </span>            :        */</a>
 <span class="lineNum">     263 </span>            :       explicit
-<span class="lineNum">     264 </span><span class="lineCov">         11 :       vector(const allocator_type&amp; __a) _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     265 </span><span class="lineCov">         11 :       : _Base(__a) { }</span>
+<span class="lineNum">     264 </span><span class="lineCov">          5 :       vector(const allocator_type&amp; __a) _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     265 </span><span class="lineCov">          5 :       : _Base(__a) { }</span>
 <span class="lineNum">     266 </span>            : 
 <span class="lineNum">     267 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     268 </span>            :       /**
@@ -334,11 +334,11 @@
 <span class="lineNum">     272 </span>            :        *
 <span class="lineNum">     273 </span>            :        *  This constructor fills the %vector with @a __n default
 <span class="lineNum">     274 </span>            :        *  constructed elements.
-<a name="275"><span class="lineNum">     275 </span>            :        */</a>
+<span class="lineNum">     275 </span>            :        */
 <span class="lineNum">     276 </span>            :       explicit
-<span class="lineNum">     277 </span><span class="lineCov">         21 :       vector(size_type __n, const allocator_type&amp; __a = allocator_type())</span>
-<span class="lineNum">     278 </span><span class="lineCov">         21 :       : _Base(__n, __a)</span>
-<span class="lineNum">     279 </span><span class="lineCov">         21 :       { _M_default_initialize(__n); }</span>
+<span class="lineNum">     277 </span>            :       vector(size_type __n, const allocator_type&amp; __a = allocator_type())
+<span class="lineNum">     278 </span>            :       : _Base(__n, __a)
+<span class="lineNum">     279 </span>            :       { _M_default_initialize(__n); }
 <span class="lineNum">     280 </span>            : 
 <span class="lineNum">     281 </span>            :       /**
 <span class="lineNum">     282 </span>            :        *  @brief  Creates a %vector with copies of an exemplar element.
@@ -375,16 +375,16 @@
 <span class="lineNum">     313 </span>            :        *  The newly-created %vector uses a copy of the allocation
 <span class="lineNum">     314 </span>            :        *  object used by @a __x.  All the elements of @a __x are copied,
 <span class="lineNum">     315 </span>            :        *  but any extra memory in
-<a name="316"><span class="lineNum">     316 </span>            :        *  @a __x (for fast expansion) will not be copied.</a>
+<span class="lineNum">     316 </span>            :        *  @a __x (for fast expansion) will not be copied.
 <span class="lineNum">     317 </span>            :        */
-<span class="lineNum">     318 </span><span class="lineCov">          2 :       vector(const vector&amp; __x)</span>
+<span class="lineNum">     318 </span>            :       vector(const vector&amp; __x)
 <span class="lineNum">     319 </span>            :       : _Base(__x.size(),
-<span class="lineNum">     320 </span><span class="lineCov">          2 :         _Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))</span>
-<span class="lineNum">     321 </span><span class="lineCov">          2 :       { this-&gt;_M_impl._M_finish =</span>
+<span class="lineNum">     320 </span>            :         _Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))
+<span class="lineNum">     321 </span>            :       { this-&gt;_M_impl._M_finish =
 <span class="lineNum">     322 </span>            :           std::__uninitialized_copy_a(__x.begin(), __x.end(),
 <span class="lineNum">     323 </span>            :                                       this-&gt;_M_impl._M_start,
-<span class="lineNum">     324 </span><span class="lineCov">          2 :                                       _M_get_Tp_allocator());</span>
-<span class="lineNum">     325 </span><span class="lineCov">          2 :       }</span>
+<span class="lineNum">     324 </span>            :                                       _M_get_Tp_allocator());
+<span class="lineNum">     325 </span>            :       }
 <span class="lineNum">     326 </span>            : 
 <span class="lineNum">     327 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     328 </span>            :       /**
@@ -394,8 +394,8 @@
 <span class="lineNum">     332 </span>            :        *  The newly-created %vector contains the exact contents of @a __x.
 <a name="333"><span class="lineNum">     333 </span>            :        *  The contents of @a __x are a valid, but unspecified %vector.</a>
 <span class="lineNum">     334 </span>            :        */
-<span class="lineNum">     335 </span><span class="lineCov">         20 :       vector(vector&amp;&amp; __x) noexcept</span>
-<span class="lineNum">     336 </span><span class="lineCov">         20 :       : _Base(std::move(__x)) { }</span>
+<span class="lineNum">     335 </span><span class="lineNoCov">          0 :       vector(vector&amp;&amp; __x) noexcept</span>
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :       : _Base(std::move(__x)) { }</span>
 <span class="lineNum">     337 </span>            : 
 <span class="lineNum">     338 </span>            :       /// Copy constructor with alternative allocator
 <span class="lineNum">     339 </span>            :       vector(const vector&amp; __x, const allocator_type&amp; __a)
@@ -430,15 +430,15 @@
 <span class="lineNum">     368 </span>            :        *  initializer_list @a __l.
 <span class="lineNum">     369 </span>            :        *
 <span class="lineNum">     370 </span>            :        *  This will call the element type's copy constructor N times
-<a name="371"><span class="lineNum">     371 </span>            :        *  (where N is @a __l.size()) and do no memory reallocation.</a>
+<span class="lineNum">     371 </span>            :        *  (where N is @a __l.size()) and do no memory reallocation.
 <span class="lineNum">     372 </span>            :        */
-<span class="lineNum">     373 </span><span class="lineCov">         18 :       vector(initializer_list&lt;value_type&gt; __l,</span>
+<span class="lineNum">     373 </span>            :       vector(initializer_list&lt;value_type&gt; __l,
 <span class="lineNum">     374 </span>            :              const allocator_type&amp; __a = allocator_type())
-<span class="lineNum">     375 </span><span class="lineCov">         18 :       : _Base(__a)</span>
+<span class="lineNum">     375 </span>            :       : _Base(__a)
 <span class="lineNum">     376 </span>            :       {
-<span class="lineNum">     377 </span><span class="lineCov">         18 :         _M_range_initialize(__l.begin(), __l.end(),</span>
-<span class="lineNum">     378 </span><span class="lineCov">         36 :                             random_access_iterator_tag());</span>
-<span class="lineNum">     379 </span><span class="lineCov">         18 :       }</span>
+<span class="lineNum">     377 </span>            :         _M_range_initialize(__l.begin(), __l.end(),
+<span class="lineNum">     378 </span>            :                             random_access_iterator_tag());
+<span class="lineNum">     379 </span>            :       }
 <span class="lineNum">     380 </span>            : #endif
 <span class="lineNum">     381 </span>            : 
 <span class="lineNum">     382 </span>            :       /**
@@ -460,10 +460,10 @@
 <span class="lineNum">     398 </span>            : #if __cplusplus &gt;= 201103L
 <a name="399"><span class="lineNum">     399 </span>            :       template&lt;typename _InputIterator,</a>
 <span class="lineNum">     400 </span>            :                typename = std::_RequireInputIter&lt;_InputIterator&gt;&gt;
-<span class="lineNum">     401 </span><span class="lineCov">         13 :         vector(_InputIterator __first, _InputIterator __last,</span>
+<span class="lineNum">     401 </span><span class="lineNoCov">          0 :         vector(_InputIterator __first, _InputIterator __last,</span>
 <span class="lineNum">     402 </span>            :                const allocator_type&amp; __a = allocator_type())
-<span class="lineNum">     403 </span><span class="lineCov">         13 :         : _Base(__a)</span>
-<span class="lineNum">     404 </span><span class="lineCov">         13 :         { _M_initialize_dispatch(__first, __last, __false_type()); }</span>
+<span class="lineNum">     403 </span><span class="lineNoCov">          0 :         : _Base(__a)</span>
+<span class="lineNum">     404 </span><span class="lineNoCov">          0 :         { _M_initialize_dispatch(__first, __last, __false_type()); }</span>
 <span class="lineNum">     405 </span>            : #else
 <span class="lineNum">     406 </span>            :       template&lt;typename _InputIterator&gt;
 <span class="lineNum">     407 </span>            :         vector(_InputIterator __first, _InputIterator __last,
@@ -482,9 +482,9 @@
 <span class="lineNum">     420 </span>            :        *  not touched in any way.  Managing the pointer is the user's
 <a name="421"><span class="lineNum">     421 </span>            :        *  responsibility.</a>
 <span class="lineNum">     422 </span>            :        */
-<span class="lineNum">     423 </span><span class="lineCov">        350 :       ~vector() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     424 </span><span class="lineCov">        350 :       { std::_Destroy(this-&gt;_M_impl._M_start, this-&gt;_M_impl._M_finish,</span>
-<span class="lineNum">     425 </span><span class="lineCov">        700 :                       _M_get_Tp_allocator()); }</span>
+<span class="lineNum">     423 </span><span class="lineCov">        163 :       ~vector() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     424 </span><span class="lineCov">        163 :       { std::_Destroy(this-&gt;_M_impl._M_start, this-&gt;_M_impl._M_finish,</span>
+<span class="lineNum">     425 </span><span class="lineCov">        326 :                       _M_get_Tp_allocator()); }</span>
 <span class="lineNum">     426 </span>            : 
 <span class="lineNum">     427 </span>            :       /**
 <span class="lineNum">     428 </span>            :        *  @brief  %Vector assignment operator.
@@ -507,14 +507,14 @@
 <span class="lineNum">     445 </span>            :        *  @a __x is a valid, but unspecified %vector.
 <a name="446"><span class="lineNum">     446 </span>            :        */</a>
 <span class="lineNum">     447 </span>            :       vector&amp;
-<span class="lineNum">     448 </span><span class="lineCov">         11 :       operator=(vector&amp;&amp; __x) noexcept(_Alloc_traits::_S_nothrow_move())</span>
+<span class="lineNum">     448 </span><span class="lineCov">          5 :       operator=(vector&amp;&amp; __x) noexcept(_Alloc_traits::_S_nothrow_move())</span>
 <span class="lineNum">     449 </span>            :       {
 <span class="lineNum">     450 </span>            :         constexpr bool __move_storage =
 <span class="lineNum">     451 </span>            :           _Alloc_traits::_S_propagate_on_move_assign()
-<span class="lineNum">     452 </span><span class="lineCov">         11 :           || _Alloc_traits::_S_always_equal();</span>
-<span class="lineNum">     453 </span><span class="lineCov">         11 :         _M_move_assign(std::move(__x),</span>
-<span class="lineNum">     454 </span><span class="lineCov">         11 :                        integral_constant&lt;bool, __move_storage&gt;());</span>
-<span class="lineNum">     455 </span><span class="lineCov">         11 :         return *this;</span>
+<span class="lineNum">     452 </span><span class="lineCov">          5 :           || _Alloc_traits::_S_always_equal();</span>
+<span class="lineNum">     453 </span><span class="lineCov">          5 :         _M_move_assign(std::move(__x),</span>
+<span class="lineNum">     454 </span><span class="lineCov">          5 :                        integral_constant&lt;bool, __move_storage&gt;());</span>
+<span class="lineNum">     455 </span><span class="lineCov">          5 :         return *this;</span>
 <span class="lineNum">     456 </span>            :       }
 <span class="lineNum">     457 </span>            : 
 <span class="lineNum">     458 </span>            :       /**
@@ -606,8 +606,8 @@
 <span class="lineNum">     544 </span>            :        *  element order.
 <a name="545"><span class="lineNum">     545 </span>            :        */</a>
 <span class="lineNum">     546 </span>            :       iterator
-<span class="lineNum">     547 </span><span class="lineCov">        143 :       begin() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     548 </span><span class="lineCov">        143 :       { return iterator(this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     547 </span><span class="lineCov">        100 :       begin() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     548 </span><span class="lineCov">        100 :       { return iterator(this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     549 </span>            : 
 <span class="lineNum">     550 </span>            :       /**
 <span class="lineNum">     551 </span>            :        *  Returns a read-only (constant) iterator that points to the
@@ -615,8 +615,8 @@
 <span class="lineNum">     553 </span>            :        *  element order.
 <a name="554"><span class="lineNum">     554 </span>            :        */</a>
 <span class="lineNum">     555 </span>            :       const_iterator
-<span class="lineNum">     556 </span><span class="lineCov">         52 :       begin() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     557 </span><span class="lineCov">         52 :       { return const_iterator(this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     556 </span><span class="lineCov">          2 :       begin() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     557 </span><span class="lineCov">          2 :       { return const_iterator(this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     558 </span>            : 
 <span class="lineNum">     559 </span>            :       /**
 <span class="lineNum">     560 </span>            :        *  Returns a read/write iterator that points one past the last
@@ -624,8 +624,8 @@
 <span class="lineNum">     562 </span>            :        *  element order.
 <a name="563"><span class="lineNum">     563 </span>            :        */</a>
 <span class="lineNum">     564 </span>            :       iterator
-<span class="lineNum">     565 </span><span class="lineCov">        481 :       end() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     566 </span><span class="lineCov">        481 :       { return iterator(this-&gt;_M_impl._M_finish); }</span>
+<span class="lineNum">     565 </span><span class="lineCov">        172 :       end() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     566 </span><span class="lineCov">        172 :       { return iterator(this-&gt;_M_impl._M_finish); }</span>
 <span class="lineNum">     567 </span>            : 
 <span class="lineNum">     568 </span>            :       /**
 <span class="lineNum">     569 </span>            :        *  Returns a read-only (constant) iterator that points one past
@@ -633,8 +633,8 @@
 <span class="lineNum">     571 </span>            :        *  ordinary element order.
 <a name="572"><span class="lineNum">     572 </span>            :        */</a>
 <span class="lineNum">     573 </span>            :       const_iterator
-<span class="lineNum">     574 </span><span class="lineCov">        109 :       end() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     575 </span><span class="lineCov">        109 :       { return const_iterator(this-&gt;_M_impl._M_finish); }</span>
+<span class="lineNum">     574 </span><span class="lineNoCov">          0 :       end() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     575 </span><span class="lineNoCov">          0 :       { return const_iterator(this-&gt;_M_impl._M_finish); }</span>
 <span class="lineNum">     576 </span>            : 
 <span class="lineNum">     577 </span>            :       /**
 <span class="lineNum">     578 </span>            :        *  Returns a read/write reverse iterator that points to the
@@ -679,8 +679,8 @@
 <span class="lineNum">     617 </span>            :        *  element order.
 <a name="618"><span class="lineNum">     618 </span>            :        */</a>
 <span class="lineNum">     619 </span>            :       const_iterator
-<span class="lineNum">     620 </span><span class="lineCov">        259 :       cbegin() const noexcept</span>
-<span class="lineNum">     621 </span><span class="lineCov">        259 :       { return const_iterator(this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     620 </span><span class="lineNoCov">          0 :       cbegin() const noexcept</span>
+<span class="lineNum">     621 </span><span class="lineNoCov">          0 :       { return const_iterator(this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     622 </span>            : 
 <span class="lineNum">     623 </span>            :       /**
 <span class="lineNum">     624 </span>            :        *  Returns a read-only (constant) iterator that points one past
@@ -688,8 +688,8 @@
 <span class="lineNum">     626 </span>            :        *  ordinary element order.
 <a name="627"><span class="lineNum">     627 </span>            :        */</a>
 <span class="lineNum">     628 </span>            :       const_iterator
-<span class="lineNum">     629 </span><span class="lineCov">        426 :       cend() const noexcept</span>
-<span class="lineNum">     630 </span><span class="lineCov">        426 :       { return const_iterator(this-&gt;_M_impl._M_finish); }</span>
+<span class="lineNum">     629 </span><span class="lineNoCov">          0 :       cend() const noexcept</span>
+<span class="lineNum">     630 </span><span class="lineNoCov">          0 :       { return const_iterator(this-&gt;_M_impl._M_finish); }</span>
 <span class="lineNum">     631 </span>            : 
 <span class="lineNum">     632 </span>            :       /**
 <span class="lineNum">     633 </span>            :        *  Returns a read-only (constant) reverse iterator that points
@@ -713,13 +713,13 @@
 <span class="lineNum">     651 </span>            :       // [23.2.4.2] capacity
 <a name="652"><span class="lineNum">     652 </span>            :       /**  Returns the number of elements in the %vector.  */</a>
 <span class="lineNum">     653 </span>            :       size_type
-<span class="lineNum">     654 </span><span class="lineCov">       1816 :       size() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     655 </span><span class="lineCov">       1816 :       { return size_type(this-&gt;_M_impl._M_finish - this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     654 </span><span class="lineCov">         50 :       size() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     655 </span><span class="lineCov">         50 :       { return size_type(this-&gt;_M_impl._M_finish - this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     656 </span>            : 
 <a name="657"><span class="lineNum">     657 </span>            :       /**  Returns the size() of the largest possible %vector.  */</a>
 <span class="lineNum">     658 </span>            :       size_type
-<span class="lineNum">     659 </span><span class="lineCov">        568 :       max_size() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     660 </span><span class="lineCov">        568 :       { return _Alloc_traits::max_size(_M_get_Tp_allocator()); }</span>
+<span class="lineNum">     659 </span><span class="lineCov">        396 :       max_size() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     660 </span><span class="lineCov">        396 :       { return _Alloc_traits::max_size(_M_get_Tp_allocator()); }</span>
 <span class="lineNum">     661 </span>            : 
 <span class="lineNum">     662 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     663 </span>            :       /**
@@ -732,13 +732,13 @@
 <span class="lineNum">     670 </span>            :        *  default constructed elements are appended.
 <a name="671"><span class="lineNum">     671 </span>            :        */</a>
 <span class="lineNum">     672 </span>            :       void
-<span class="lineNum">     673 </span><span class="lineCov">         42 :       resize(size_type __new_size)</span>
+<span class="lineNum">     673 </span><span class="lineCov">         37 :       resize(size_type __new_size)</span>
 <span class="lineNum">     674 </span>            :       {
-<span class="lineNum">     675 </span><span class="lineCov">         42 :         if (__new_size &gt; size())</span>
-<span class="lineNum">     676 </span><span class="lineCov">         40 :           _M_default_append(__new_size - size());</span>
-<span class="lineNum">     677 </span><span class="lineCov">          2 :         else if (__new_size &lt; size())</span>
+<span class="lineNum">     675 </span><span class="lineCov">         37 :         if (__new_size &gt; size())</span>
+<span class="lineNum">     676 </span><span class="lineCov">         37 :           _M_default_append(__new_size - size());</span>
+<span class="lineNum">     677 </span><span class="lineNoCov">          0 :         else if (__new_size &lt; size())</span>
 <span class="lineNum">     678 </span><span class="lineNoCov">          0 :           _M_erase_at_end(this-&gt;_M_impl._M_start + __new_size);</span>
-<span class="lineNum">     679 </span><span class="lineCov">         42 :       }</span>
+<span class="lineNum">     679 </span><span class="lineCov">         37 :       }</span>
 <span class="lineNum">     680 </span>            : 
 <span class="lineNum">     681 </span>            :       /**
 <span class="lineNum">     682 </span>            :        *  @brief  Resizes the %vector to the specified number of elements.
@@ -791,19 +791,19 @@
 <span class="lineNum">     729 </span>            :       /**
 <span class="lineNum">     730 </span>            :        *  Returns the total number of elements that the %vector can
 <span class="lineNum">     731 </span>            :        *  hold before needing to allocate more memory.
-<a name="732"><span class="lineNum">     732 </span>            :        */</a>
+<span class="lineNum">     732 </span>            :        */
 <span class="lineNum">     733 </span>            :       size_type
-<span class="lineNum">     734 </span><span class="lineCov">          3 :       capacity() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     734 </span>            :       capacity() const _GLIBCXX_NOEXCEPT
 <span class="lineNum">     735 </span>            :       { return size_type(this-&gt;_M_impl._M_end_of_storage
-<span class="lineNum">     736 </span><span class="lineCov">          3 :                          - this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     736 </span>            :                          - this-&gt;_M_impl._M_start); }
 <span class="lineNum">     737 </span>            : 
 <span class="lineNum">     738 </span>            :       /**
 <span class="lineNum">     739 </span>            :        *  Returns true if the %vector is empty.  (Thus begin() would
 <span class="lineNum">     740 </span>            :        *  equal end().)
-<a name="741"><span class="lineNum">     741 </span>            :        */</a>
+<span class="lineNum">     741 </span>            :        */
 <span class="lineNum">     742 </span>            :       bool
-<span class="lineNum">     743 </span><span class="lineCov">         24 :       empty() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     744 </span><span class="lineCov">         24 :       { return begin() == end(); }</span>
+<span class="lineNum">     743 </span>            :       empty() const _GLIBCXX_NOEXCEPT
+<span class="lineNum">     744 </span>            :       { return begin() == end(); }
 <span class="lineNum">     745 </span>            : 
 <span class="lineNum">     746 </span>            :       /**
 <span class="lineNum">     747 </span>            :        *  @brief  Attempt to preallocate enough memory for specified number of
@@ -838,8 +838,8 @@
 <span class="lineNum">     776 </span>            :        *  see at().)
 <a name="777"><span class="lineNum">     777 </span>            :        */</a>
 <span class="lineNum">     778 </span>            :       reference
-<span class="lineNum">     779 </span><span class="lineCov">       2054 :       operator[](size_type __n) _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     780 </span><span class="lineCov">       2054 :       { return *(this-&gt;_M_impl._M_start + __n); }</span>
+<span class="lineNum">     779 </span><span class="lineNoCov">          0 :       operator[](size_type __n) _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     780 </span><span class="lineNoCov">          0 :       { return *(this-&gt;_M_impl._M_start + __n); }</span>
 <span class="lineNum">     781 </span>            : 
 <span class="lineNum">     782 </span>            :       /**
 <span class="lineNum">     783 </span>            :        *  @brief  Subscript access to the data contained in the %vector.
@@ -853,20 +853,20 @@
 <span class="lineNum">     791 </span>            :        *  see at().)
 <a name="792"><span class="lineNum">     792 </span>            :        */</a>
 <span class="lineNum">     793 </span>            :       const_reference
-<span class="lineNum">     794 </span><span class="lineCov">         77 :       operator[](size_type __n) const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     795 </span><span class="lineCov">         77 :       { return *(this-&gt;_M_impl._M_start + __n); }</span>
+<span class="lineNum">     794 </span><span class="lineCov">         20 :       operator[](size_type __n) const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     795 </span><span class="lineCov">         20 :       { return *(this-&gt;_M_impl._M_start + __n); }</span>
 <span class="lineNum">     796 </span>            : 
 <span class="lineNum">     797 </span>            :     protected:
 <a name="798"><span class="lineNum">     798 </span>            :       /// Safety check used only from at().</a>
 <span class="lineNum">     799 </span>            :       void
-<span class="lineNum">     800 </span><span class="lineCov">         39 :       _M_range_check(size_type __n) const</span>
+<span class="lineNum">     800 </span><span class="lineNoCov">          0 :       _M_range_check(size_type __n) const</span>
 <span class="lineNum">     801 </span>            :       {
-<span class="lineNum">     802 </span><span class="lineCov">         39 :         if (__n &gt;= this-&gt;size())</span>
-<span class="lineNum">     803 </span><span class="lineCov">          3 :           __throw_out_of_range_fmt(__N(&quot;vector::_M_range_check: __n &quot;</span>
+<span class="lineNum">     802 </span><span class="lineNoCov">          0 :         if (__n &gt;= this-&gt;size())</span>
+<span class="lineNum">     803 </span><span class="lineNoCov">          0 :           __throw_out_of_range_fmt(__N(&quot;vector::_M_range_check: __n &quot;</span>
 <span class="lineNum">     804 </span>            :                                        &quot;(which is %zu) &gt;= this-&gt;size() &quot;
 <span class="lineNum">     805 </span>            :                                        &quot;(which is %zu)&quot;),
-<span class="lineNum">     806 </span><span class="lineCov">          3 :                                    __n, this-&gt;size());</span>
-<span class="lineNum">     807 </span><span class="lineCov">         36 :       }</span>
+<span class="lineNum">     806 </span><span class="lineNoCov">          0 :                                    __n, this-&gt;size());</span>
+<span class="lineNum">     807 </span><span class="lineNoCov">          0 :       }</span>
 <span class="lineNum">     808 </span>            : 
 <span class="lineNum">     809 </span>            :     public:
 <span class="lineNum">     810 </span>            :       /**
@@ -881,10 +881,10 @@
 <span class="lineNum">     819 </span>            :        *  function throws out_of_range if the check fails.
 <a name="820"><span class="lineNum">     820 </span>            :        */</a>
 <span class="lineNum">     821 </span>            :       reference
-<span class="lineNum">     822 </span><span class="lineCov">         35 :       at(size_type __n)</span>
+<span class="lineNum">     822 </span><span class="lineNoCov">          0 :       at(size_type __n)</span>
 <span class="lineNum">     823 </span>            :       {
-<span class="lineNum">     824 </span><span class="lineCov">         35 :         _M_range_check(__n);</span>
-<span class="lineNum">     825 </span><span class="lineCov">         32 :         return (*this)[__n]; </span>
+<span class="lineNum">     824 </span><span class="lineNoCov">          0 :         _M_range_check(__n);</span>
+<span class="lineNum">     825 </span><span class="lineNoCov">          0 :         return (*this)[__n]; </span>
 <span class="lineNum">     826 </span>            :       }
 <span class="lineNum">     827 </span>            : 
 <span class="lineNum">     828 </span>            :       /**
@@ -897,12 +897,12 @@
 <span class="lineNum">     835 </span>            :        *  This function provides for safer data access.  The parameter
 <span class="lineNum">     836 </span>            :        *  is first checked that it is in the range of the vector.  The
 <span class="lineNum">     837 </span>            :        *  function throws out_of_range if the check fails.
-<a name="838"><span class="lineNum">     838 </span>            :        */</a>
+<span class="lineNum">     838 </span>            :        */
 <span class="lineNum">     839 </span>            :       const_reference
-<span class="lineNum">     840 </span><span class="lineCov">          4 :       at(size_type __n) const</span>
+<span class="lineNum">     840 </span>            :       at(size_type __n) const
 <span class="lineNum">     841 </span>            :       {
-<span class="lineNum">     842 </span><span class="lineCov">          4 :         _M_range_check(__n);</span>
-<span class="lineNum">     843 </span><span class="lineCov">          4 :         return (*this)[__n];</span>
+<span class="lineNum">     842 </span>            :         _M_range_check(__n);
+<span class="lineNum">     843 </span>            :         return (*this)[__n];
 <span class="lineNum">     844 </span>            :       }
 <span class="lineNum">     845 </span>            : 
 <span class="lineNum">     846 </span>            :       /**
@@ -926,8 +926,8 @@
 <span class="lineNum">     864 </span>            :        *  element of the %vector.
 <a name="865"><span class="lineNum">     865 </span>            :        */</a>
 <span class="lineNum">     866 </span>            :       reference
-<span class="lineNum">     867 </span><span class="lineCov">        256 :       back() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     868 </span><span class="lineCov">        256 :       { return *(end() - 1); }</span>
+<span class="lineNum">     867 </span><span class="lineCov">         10 :       back() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     868 </span><span class="lineCov">         10 :       { return *(end() - 1); }</span>
 <span class="lineNum">     869 </span>            :       
 <span class="lineNum">     870 </span>            :       /**
 <span class="lineNum">     871 </span>            :        *  Returns a read-only (constant) reference to the data at the
@@ -972,26 +972,26 @@
 <span class="lineNum">     910 </span>            :        *  available.
 <a name="911"><span class="lineNum">     911 </span>            :        */</a>
 <span class="lineNum">     912 </span>            :       void
-<span class="lineNum">     913 </span><span class="lineCov">         55 :       push_back(const value_type&amp; __x)</span>
+<span class="lineNum">     913 </span><span class="lineCov">         44 :       push_back(const value_type&amp; __x)</span>
 <span class="lineNum">     914 </span>            :       {
-<span class="lineNum">     915 </span><span class="lineCov">         55 :         if (this-&gt;_M_impl._M_finish != this-&gt;_M_impl._M_end_of_storage)</span>
+<span class="lineNum">     915 </span><span class="lineCov">         44 :         if (this-&gt;_M_impl._M_finish != this-&gt;_M_impl._M_end_of_storage)</span>
 <span class="lineNum">     916 </span>            :           {
-<span class="lineNum">     917 </span><span class="lineCov">          1 :             _Alloc_traits::construct(this-&gt;_M_impl, this-&gt;_M_impl._M_finish,</span>
-<span class="lineNum">     918 </span><span class="lineCov">          1 :                                      __x);</span>
-<span class="lineNum">     919 </span><span class="lineCov">          1 :             ++this-&gt;_M_impl._M_finish;</span>
+<span class="lineNum">     917 </span><span class="lineNoCov">          0 :             _Alloc_traits::construct(this-&gt;_M_impl, this-&gt;_M_impl._M_finish,</span>
+<span class="lineNum">     918 </span><span class="lineNoCov">          0 :                                      __x);</span>
+<span class="lineNum">     919 </span><span class="lineNoCov">          0 :             ++this-&gt;_M_impl._M_finish;</span>
 <span class="lineNum">     920 </span>            :           }
 <span class="lineNum">     921 </span>            :         else
 <span class="lineNum">     922 </span>            : #if __cplusplus &gt;= 201103L
-<span class="lineNum">     923 </span><span class="lineCov">         54 :           _M_emplace_back_aux(__x);</span>
+<span class="lineNum">     923 </span><span class="lineCov">         44 :           _M_emplace_back_aux(__x);</span>
 <span class="lineNum">     924 </span>            : #else
 <span class="lineNum">     925 </span>            :           _M_insert_aux(end(), __x);
 <span class="lineNum">     926 </span>            : #endif
-<span class="lineNum">     927 </span><span class="lineCov">         55 :       }</span>
+<span class="lineNum">     927 </span><span class="lineCov">         44 :       }</span>
 <span class="lineNum">     928 </span>            : 
 <a name="929"><span class="lineNum">     929 </span>            : #if __cplusplus &gt;= 201103L</a>
 <span class="lineNum">     930 </span>            :       void
-<span class="lineNum">     931 </span><span class="lineCov">        225 :       push_back(value_type&amp;&amp; __x)</span>
-<span class="lineNum">     932 </span><span class="lineCov">        225 :       { emplace_back(std::move(__x)); }</span>
+<span class="lineNum">     931 </span><span class="lineCov">        126 :       push_back(value_type&amp;&amp; __x)</span>
+<span class="lineNum">     932 </span><span class="lineCov">        126 :       { emplace_back(std::move(__x)); }</span>
 <span class="lineNum">     933 </span>            : 
 <span class="lineNum">     934 </span>            :       template&lt;typename... _Args&gt;
 <span class="lineNum">     935 </span>            :         void
@@ -1008,11 +1008,11 @@
 <span class="lineNum">     946 </span>            :        *  called.
 <a name="947"><span class="lineNum">     947 </span>            :        */</a>
 <span class="lineNum">     948 </span>            :       void
-<span class="lineNum">     949 </span><span class="lineCov">         65 :       pop_back() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     949 </span><span class="lineNoCov">          0 :       pop_back() _GLIBCXX_NOEXCEPT</span>
 <span class="lineNum">     950 </span>            :       {
-<span class="lineNum">     951 </span><span class="lineCov">         65 :         --this-&gt;_M_impl._M_finish;</span>
-<span class="lineNum">     952 </span><span class="lineCov">         65 :         _Alloc_traits::destroy(this-&gt;_M_impl, this-&gt;_M_impl._M_finish);</span>
-<span class="lineNum">     953 </span><span class="lineCov">         65 :       }</span>
+<span class="lineNum">     951 </span><span class="lineNoCov">          0 :         --this-&gt;_M_impl._M_finish;</span>
+<span class="lineNum">     952 </span><span class="lineNoCov">          0 :         _Alloc_traits::destroy(this-&gt;_M_impl, this-&gt;_M_impl._M_finish);</span>
+<span class="lineNum">     953 </span><span class="lineNoCov">          0 :       }</span>
 <span class="lineNum">     954 </span>            : 
 <span class="lineNum">     955 </span>            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     956 </span>            :       /**
@@ -1268,32 +1268,32 @@
 <span class="lineNum">    1206 </span>            :        *  elements, and that if the elements themselves are pointers, the
 <span class="lineNum">    1207 </span>            :        *  pointed-to memory is not touched in any way.  Managing the pointer is
 <span class="lineNum">    1208 </span>            :        *  the user's responsibility.
-<a name="1209"><span class="lineNum">    1209 </span>            :        */</a>
+<span class="lineNum">    1209 </span>            :        */
 <span class="lineNum">    1210 </span>            :       void
-<span class="lineNum">    1211 </span><span class="lineNoCov">          0 :       clear() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">    1212 </span><span class="lineNoCov">          0 :       { _M_erase_at_end(this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">    1211 </span>            :       clear() _GLIBCXX_NOEXCEPT
+<span class="lineNum">    1212 </span>            :       { _M_erase_at_end(this-&gt;_M_impl._M_start); }
 <span class="lineNum">    1213 </span>            : 
 <span class="lineNum">    1214 </span>            :     protected:
 <span class="lineNum">    1215 </span>            :       /**
 <span class="lineNum">    1216 </span>            :        *  Memory expansion handler.  Uses the member allocation function to
 <span class="lineNum">    1217 </span>            :        *  obtain @a n bytes of memory, and then copies [first,last) into it.
 <span class="lineNum">    1218 </span>            :        */
-<a name="1219"><span class="lineNum">    1219 </span>            :       template&lt;typename _ForwardIterator&gt;</a>
+<span class="lineNum">    1219 </span>            :       template&lt;typename _ForwardIterator&gt;
 <span class="lineNum">    1220 </span>            :         pointer
-<span class="lineNum">    1221 </span><span class="lineCov">          1 :         _M_allocate_and_copy(size_type __n,</span>
+<span class="lineNum">    1221 </span>            :         _M_allocate_and_copy(size_type __n,
 <span class="lineNum">    1222 </span>            :                              _ForwardIterator __first, _ForwardIterator __last)
 <span class="lineNum">    1223 </span>            :         {
-<span class="lineNum">    1224 </span><span class="lineCov">          1 :           pointer __result = this-&gt;_M_allocate(__n);</span>
+<span class="lineNum">    1224 </span>            :           pointer __result = this-&gt;_M_allocate(__n);
 <span class="lineNum">    1225 </span>            :           __try
 <span class="lineNum">    1226 </span>            :             {
-<span class="lineNum">    1227 </span><span class="lineCov">          1 :               std::__uninitialized_copy_a(__first, __last, __result,</span>
-<span class="lineNum">    1228 </span><span class="lineCov">          1 :                                           _M_get_Tp_allocator());</span>
-<span class="lineNum">    1229 </span><span class="lineCov">          1 :               return __result;</span>
+<span class="lineNum">    1227 </span>            :               std::__uninitialized_copy_a(__first, __last, __result,
+<span class="lineNum">    1228 </span>            :                                           _M_get_Tp_allocator());
+<span class="lineNum">    1229 </span>            :               return __result;
 <span class="lineNum">    1230 </span>            :             }
-<span class="lineNum">    1231 </span><span class="lineNoCov">          0 :           __catch(...)</span>
+<span class="lineNum">    1231 </span>            :           __catch(...)
 <span class="lineNum">    1232 </span>            :             {
-<span class="lineNum">    1233 </span><span class="lineNoCov">          0 :               _M_deallocate(__result, __n);</span>
-<span class="lineNum">    1234 </span><span class="lineNoCov">          0 :               __throw_exception_again;</span>
+<span class="lineNum">    1233 </span>            :               _M_deallocate(__result, __n);
+<span class="lineNum">    1234 </span>            :               __throw_exception_again;
 <span class="lineNum">    1235 </span>            :             }
 <span class="lineNum">    1236 </span>            :         }
 <span class="lineNum">    1237 </span>            : 
@@ -1317,13 +1317,13 @@
 <span class="lineNum">    1255 </span>            :       // Called by the range constructor to implement [23.1.1]/9
 <a name="1256"><span class="lineNum">    1256 </span>            :       template&lt;typename _InputIterator&gt;</a>
 <span class="lineNum">    1257 </span>            :         void
-<span class="lineNum">    1258 </span><span class="lineCov">         13 :         _M_initialize_dispatch(_InputIterator __first, _InputIterator __last,</span>
+<span class="lineNum">    1258 </span><span class="lineNoCov">          0 :         _M_initialize_dispatch(_InputIterator __first, _InputIterator __last,</span>
 <span class="lineNum">    1259 </span>            :                                __false_type)
 <span class="lineNum">    1260 </span>            :         {
 <span class="lineNum">    1261 </span>            :           typedef typename std::iterator_traits&lt;_InputIterator&gt;::
 <span class="lineNum">    1262 </span>            :             iterator_category _IterCategory;
-<span class="lineNum">    1263 </span><span class="lineCov">         13 :           _M_range_initialize(__first, __last, _IterCategory());</span>
-<span class="lineNum">    1264 </span><span class="lineCov">         13 :         }</span>
+<span class="lineNum">    1263 </span><span class="lineNoCov">          0 :           _M_range_initialize(__first, __last, _IterCategory());</span>
+<span class="lineNum">    1264 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">    1265 </span>            : 
 <span class="lineNum">    1266 </span>            :       // Called by the second initialize_dispatch above
 <span class="lineNum">    1267 </span>            :       template&lt;typename _InputIterator&gt;
@@ -1342,17 +1342,17 @@
 <span class="lineNum">    1280 </span>            :       // Called by the second initialize_dispatch above
 <a name="1281"><span class="lineNum">    1281 </span>            :       template&lt;typename _ForwardIterator&gt;</a>
 <span class="lineNum">    1282 </span>            :         void
-<span class="lineNum">    1283 </span><span class="lineCov">         31 :         _M_range_initialize(_ForwardIterator __first,</span>
+<span class="lineNum">    1283 </span><span class="lineNoCov">          0 :         _M_range_initialize(_ForwardIterator __first,</span>
 <span class="lineNum">    1284 </span>            :                             _ForwardIterator __last, std::forward_iterator_tag)
 <span class="lineNum">    1285 </span>            :         {
-<span class="lineNum">    1286 </span><span class="lineCov">         31 :           const size_type __n = std::distance(__first, __last);</span>
-<span class="lineNum">    1287 </span><span class="lineCov">         31 :           this-&gt;_M_impl._M_start = this-&gt;_M_allocate(__n);</span>
-<span class="lineNum">    1288 </span><span class="lineCov">         31 :           this-&gt;_M_impl._M_end_of_storage = this-&gt;_M_impl._M_start + __n;</span>
-<span class="lineNum">    1289 </span><span class="lineCov">         31 :           this-&gt;_M_impl._M_finish =</span>
+<span class="lineNum">    1286 </span><span class="lineNoCov">          0 :           const size_type __n = std::distance(__first, __last);</span>
+<span class="lineNum">    1287 </span><span class="lineNoCov">          0 :           this-&gt;_M_impl._M_start = this-&gt;_M_allocate(__n);</span>
+<span class="lineNum">    1288 </span><span class="lineNoCov">          0 :           this-&gt;_M_impl._M_end_of_storage = this-&gt;_M_impl._M_start + __n;</span>
+<span class="lineNum">    1289 </span><span class="lineNoCov">          0 :           this-&gt;_M_impl._M_finish =</span>
 <span class="lineNum">    1290 </span>            :             std::__uninitialized_copy_a(__first, __last,
 <span class="lineNum">    1291 </span>            :                                         this-&gt;_M_impl._M_start,
-<span class="lineNum">    1292 </span><span class="lineCov">         31 :                                         _M_get_Tp_allocator());</span>
-<span class="lineNum">    1293 </span><span class="lineCov">         31 :         }</span>
+<span class="lineNum">    1292 </span><span class="lineNoCov">          0 :                                         _M_get_Tp_allocator());</span>
+<span class="lineNum">    1293 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">    1294 </span>            : 
 <span class="lineNum">    1295 </span>            :       // Called by the first initialize_dispatch above and by the
 <span class="lineNum">    1296 </span>            :       // vector(n,value,a) constructor.
@@ -1365,14 +1365,14 @@
 <span class="lineNum">    1303 </span>            :       }
 <span class="lineNum">    1304 </span>            : 
 <span class="lineNum">    1305 </span>            : #if __cplusplus &gt;= 201103L
-<a name="1306"><span class="lineNum">    1306 </span>            :       // Called by the vector(n) constructor.</a>
+<span class="lineNum">    1306 </span>            :       // Called by the vector(n) constructor.
 <span class="lineNum">    1307 </span>            :       void
-<span class="lineNum">    1308 </span><span class="lineCov">         21 :       _M_default_initialize(size_type __n)</span>
+<span class="lineNum">    1308 </span>            :       _M_default_initialize(size_type __n)
 <span class="lineNum">    1309 </span>            :       {
-<span class="lineNum">    1310 </span><span class="lineCov">         21 :         std::__uninitialized_default_n_a(this-&gt;_M_impl._M_start, __n, </span>
-<span class="lineNum">    1311 </span><span class="lineCov">         21 :                                          _M_get_Tp_allocator());</span>
-<span class="lineNum">    1312 </span><span class="lineCov">         21 :         this-&gt;_M_impl._M_finish = this-&gt;_M_impl._M_end_of_storage;</span>
-<span class="lineNum">    1313 </span><span class="lineCov">         21 :       }</span>
+<span class="lineNum">    1310 </span>            :         std::__uninitialized_default_n_a(this-&gt;_M_impl._M_start, __n, 
+<span class="lineNum">    1311 </span>            :                                          _M_get_Tp_allocator());
+<span class="lineNum">    1312 </span>            :         this-&gt;_M_impl._M_finish = this-&gt;_M_impl._M_end_of_storage;
+<span class="lineNum">    1313 </span>            :       }
 <span class="lineNum">    1314 </span>            : #endif
 <span class="lineNum">    1315 </span>            : 
 <span class="lineNum">    1316 </span>            :       // Internal assign functions follow.  The *_aux functions do the actual
@@ -1481,13 +1481,13 @@
 <span class="lineNum">    1419 </span>            : 
 <a name="1420"><span class="lineNum">    1420 </span>            :       // Called by the latter.</a>
 <span class="lineNum">    1421 </span>            :       size_type
-<span class="lineNum">    1422 </span><span class="lineCov">        284 :       _M_check_len(size_type __n, const char* __s) const</span>
+<span class="lineNum">    1422 </span><span class="lineCov">        198 :       _M_check_len(size_type __n, const char* __s) const</span>
 <span class="lineNum">    1423 </span>            :       {
-<span class="lineNum">    1424 </span><span class="lineCov">        284 :         if (max_size() - size() &lt; __n)</span>
+<span class="lineNum">    1424 </span><span class="lineCov">        198 :         if (max_size() - size() &lt; __n)</span>
 <span class="lineNum">    1425 </span><span class="lineNoCov">          0 :           __throw_length_error(__N(__s));</span>
 <span class="lineNum">    1426 </span>            : 
-<span class="lineNum">    1427 </span><span class="lineCov">        284 :         const size_type __len = size() + std::max(size(), __n);</span>
-<span class="lineNum">    1428 </span><span class="lineCov">        284 :         return (__len &lt; size() || __len &gt; max_size()) ? max_size() : __len;</span>
+<span class="lineNum">    1427 </span><span class="lineCov">        198 :         const size_type __len = size() + std::max(size(), __n);</span>
+<span class="lineNum">    1428 </span><span class="lineCov">        198 :         return (__len &lt; size() || __len &gt; max_size()) ? max_size() : __len;</span>
 <span class="lineNum">    1429 </span>            :       }
 <span class="lineNum">    1430 </span>            : 
 <span class="lineNum">    1431 </span>            :       // Internal erase functions follow.
@@ -1513,13 +1513,13 @@
 <span class="lineNum">    1451 </span>            :       // moved, either because the source's allocator will move too
 <a name="1452"><span class="lineNum">    1452 </span>            :       // or because the allocators are equal.</a>
 <span class="lineNum">    1453 </span>            :       void
-<span class="lineNum">    1454 </span><span class="lineCov">         11 :       _M_move_assign(vector&amp;&amp; __x, std::true_type) noexcept</span>
+<span class="lineNum">    1454 </span><span class="lineCov">          5 :       _M_move_assign(vector&amp;&amp; __x, std::true_type) noexcept</span>
 <span class="lineNum">    1455 </span>            :       {
-<span class="lineNum">    1456 </span><span class="lineCov">         11 :         vector __tmp(get_allocator());</span>
-<span class="lineNum">    1457 </span><span class="lineCov">         11 :         this-&gt;_M_impl._M_swap_data(__tmp._M_impl);</span>
-<span class="lineNum">    1458 </span><span class="lineCov">         11 :         this-&gt;_M_impl._M_swap_data(__x._M_impl);</span>
-<span class="lineNum">    1459 </span><span class="lineCov">         11 :         std::__alloc_on_move(_M_get_Tp_allocator(), __x._M_get_Tp_allocator());</span>
-<span class="lineNum">    1460 </span><span class="lineCov">         11 :       }</span>
+<span class="lineNum">    1456 </span><span class="lineCov">          5 :         vector __tmp(get_allocator());</span>
+<span class="lineNum">    1457 </span><span class="lineCov">          5 :         this-&gt;_M_impl._M_swap_data(__tmp._M_impl);</span>
+<span class="lineNum">    1458 </span><span class="lineCov">          5 :         this-&gt;_M_impl._M_swap_data(__x._M_impl);</span>
+<span class="lineNum">    1459 </span><span class="lineCov">          5 :         std::__alloc_on_move(_M_get_Tp_allocator(), __x._M_get_Tp_allocator());</span>
+<span class="lineNum">    1460 </span><span class="lineCov">          5 :       }</span>
 <span class="lineNum">    1461 </span>            : 
 <span class="lineNum">    1462 </span>            :       // Do move assignment when it might not be possible to move source
 <span class="lineNum">    1463 </span>            :       // object's memory, resulting in a linear-time operation.
@@ -1568,11 +1568,11 @@
 <span class="lineNum">    1506 </span>            :    *  vectors.  Vectors are considered equivalent if their sizes are equal,
 <span class="lineNum">    1507 </span>            :    *  and if corresponding elements compare equal.
 <span class="lineNum">    1508 </span>            :   */
-<a name="1509"><span class="lineNum">    1509 </span>            :   template&lt;typename _Tp, typename _Alloc&gt;</a>
+<span class="lineNum">    1509 </span>            :   template&lt;typename _Tp, typename _Alloc&gt;
 <span class="lineNum">    1510 </span>            :     inline bool
-<span class="lineNum">    1511 </span><span class="lineCov">          8 :     operator==(const vector&lt;_Tp, _Alloc&gt;&amp; __x, const vector&lt;_Tp, _Alloc&gt;&amp; __y)</span>
-<span class="lineNum">    1512 </span><span class="lineCov">          8 :     { return (__x.size() == __y.size()</span>
-<span class="lineNum">    1513 </span><span class="lineCov">          8 :               &amp;&amp; std::equal(__x.begin(), __x.end(), __y.begin())); }</span>
+<span class="lineNum">    1511 </span>            :     operator==(const vector&lt;_Tp, _Alloc&gt;&amp; __x, const vector&lt;_Tp, _Alloc&gt;&amp; __y)
+<span class="lineNum">    1512 </span>            :     { return (__x.size() == __y.size()
+<span class="lineNum">    1513 </span>            :               &amp;&amp; std::equal(__x.begin(), __x.end(), __y.begin())); }
 <span class="lineNum">    1514 </span>            : 
 <span class="lineNum">    1515 </span>            :   /**
 <span class="lineNum">    1516 </span>            :    *  @brief  Vector ordering relation.

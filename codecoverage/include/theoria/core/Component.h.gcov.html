@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryLo">12.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">16.7 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -73,272 +73,156 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : namespace theoria { namespace core {
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : /*
-<span class="lineNum">      15 </span>            :  * Data associated with a component 
-<span class="lineNum">      16 </span>            :  */
-<span class="lineNum">      17 </span>            : class ComponentData
-<span class="lineNum">      18 </span>            : {
-<span class="lineNum">      19 </span>            :     using BaseList = std::vector&lt;CompId&gt; ;
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            : public:
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            :     using baseid_const_iterator = BaseList::const_iterator ;
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            :     /*
-<span class="lineNum">      26 </span>            :      * Components can be linked to base implementations to support
-<span class="lineNum">      27 </span>            :      * the Theoria's concept of _dynamic inheritance_.
-<span class="lineNum">      28 </span>            :      */
-<span class="lineNum">      29 </span>            :     baseid_const_iterator beginBaseId() const ;
-<span class="lineNum">      30 </span>            :     baseid_const_iterator endBaseId() const ;
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            :     /*
-<span class="lineNum">      33 </span>            :      * Component's id
-<span class="lineNum">      34 </span>            :      */
-<span class="lineNum">      35 </span>            :     CompId id() const {return  _id; }
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span>            :     /*
-<span class="lineNum">      38 </span>            :      * Component's Type name
-<span class="lineNum">      39 </span>            :      */
-<span class="lineNum">      40 </span>            :     TypeName type() const {return _type;}
-<span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span>            :     /*
-<span class="lineNum">      43 </span>            :      * List of component's immediate base type names
-<span class="lineNum">      44 </span>            :      */
-<span class="lineNum">      45 </span>            :     TypeNameList baseTypes() const ;
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            :     /*
-<span class="lineNum">      48 </span>            :      * List of all components ancestor types acquired using breadth first traversal with dupes
-<span class="lineNum">      49 </span>            :      * eliminated
-<span class="lineNum">      50 </span>            :      */
-<span class="lineNum">      51 </span>            :     TypeNameList ancestorTypes() const ;
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            :     /*
-<span class="lineNum">      54 </span>            :      * Component's description. May contain markdown (http://daringfireball.net/projects/markdown/).
-<span class="lineNum">      55 </span>            :      */
-<span class="lineNum">      56 </span>            :     Text desc() const {return _desc ;} 
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            :     
-<span class="lineNum">      59 </span>            : private:
-<span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span>            :         CompId _id ;
-<span class="lineNum">      62 </span>            :         BaseList _bases ;
-<span class="lineNum">      63 </span>            :         std::string _type ;
-<span class="lineNum">      64 </span>            :         std::string _name ;
-<span class="lineNum">      65 </span>            :         Text _desc ;
-<span class="lineNum">      66 </span>            : } ;
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : /*
-<span class="lineNum">      69 </span>            : class: CompState
-<span class="lineNum">      70 </span>            : desc:  A component is always in some state or composition of states. CompState models a non-empty
-<span class="lineNum">      71 </span>            :        state list where the primary state is on the the first and secondary states are later in the list. 
-<span class="lineNum">      72 </span>            : **/
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            : //        STATE                                | Value     | Typical Usage
-<span class="lineNum">      75 </span>            : //--------------------------------------------------------------------------------------------------------
-<span class="lineNum">      76 </span>            : const int OKAY_STATE                                                =  0 ; //  | Everything is Okay
-<span class="lineNum">      77 </span>            : const int WARN_STATE                                                    =  1 ; //  | Possible issue. Not critical
-<span class="lineNum">      78 </span>            : const int ERROR_STATE                                                   =  2 ; //  | Component encountered an error. Probably serious
-<span class="lineNum">      79 </span>            : const int DISABLED_STATE                                                =  3 ; //  | The component has been disabled
-<span class="lineNum">      80 </span>            : const int CONNECTED_STATE                                               =  4 ; //  | The component is connected to some external resource
-<span class="lineNum">      81 </span>            : const int DISCONNECTED_STATE                                    =  5 ; //  | The component is disconnected from an external resource
-<span class="lineNum">      82 </span>            : const int STARTED_STATE                                                 =  6 ; //  | The component has started processing (may be used in assoc with threading)
-<span class="lineNum">      83 </span>            : const int STOPPED_STATE                                                 =  7 ; //  | The component has stopped processing (may be used in assoc with threading)
-<span class="lineNum">      84 </span>            : const int INIT_STATE                                                    =  8 ; //  | The component initialized successfully
-<span class="lineNum">      85 </span>            : const int WAITING_STATE                                                 =  9 ; //  | The component is waiting on something
-<span class="lineNum">      86 </span>            : const int READY_STATE                                                   = 10 ; //  | The component is ready to perform its intended function
-<span class="lineNum">      87 </span>            : const int EXCEPTION_STATE                                       = 11 ; //  | The component raised an exception
+<span class="lineNum">      14 </span>            : class Message ;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : /** 
+<span class="lineNum">      17 </span>            :  * Components are the soul of Theoria. Components are used to implement the 
+<span class="lineNum">      18 </span>            :  * meaty parts of your application. Things that contain significant business logic,
+<span class="lineNum">      19 </span>            :  * are generally long-lived, manage complex data structures, processes or algorithms, etc.
+<span class="lineNum">      20 </span>            :  * Components support a rich lifecycle, can be dynamically configured and dynamically wired up
+<span class="lineNum">      21 </span>            :  * to other components.
+<span class="lineNum">      22 </span>            :  *
+<span class="lineNum">      23 </span>            :  * Components consume config data to customize themselves to a particular use. Config data is provided 
+<span class="lineNum">      24 </span>            :  * in the init() method and it is the first stage of a components lifecycle. Often this 
+<span class="lineNum">      25 </span>            :  * cofiguration will provide information that will tell a component what other components it
+<span class="lineNum">      26 </span>            :  * requires but other times the configuration data will be simple paramters like a host/port
+<span class="lineNum">      27 </span>            :  * or locale info, or user settings, etc.  
+<span class="lineNum">      28 </span>            :  *
+<span class="lineNum">      29 </span>            :  * In response to configuraation a component is expected to return its requirements for other components. It does this
+<span class="lineNum">      30 </span>            :  * by returning Dependencies. Dependencies are a way of conveying very general or very specific requirements that 
+<span class="lineNum">      31 </span>            :  * of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we
+<span class="lineNum">      32 </span>            :  * use Type to mean &quot;the need of a component that provides some service&quot; and Subtype to mean a very specific implematation of that
+<span class="lineNum">      33 </span>            :  * service. In addition, Dependencies convey whether a service is absolutly required or is optional. An absolute requirement must 
+<span class="lineNum">      34 </span>            :  * be fullfiled for the application to progress.
+<span class="lineNum">      35 </span>            :  *
+<span class="lineNum">      36 </span>            :  * Once all components in you application are initialized, Theoria satisfies dependencies by calling finalize() and handing
+<span class="lineNum">      37 </span>            :  * your componet its dependents in the same order as requested. Optional dependents may be null if Theoria could not aquire them
+<span class="lineNum">      38 </span>            :  *
+<span class="lineNum">      39 </span>            :  * Components also receive life-cycle notifications. @see appLifeCycle and @see compLifeCycle for details.
+<span class="lineNum">      40 </span>            :  */
+<span class="lineNum">      41 </span>            : class Component 
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span>            : public:
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            :     /**
+<span class="lineNum">      46 </span>            :      * Empty component
+<span class="lineNum">      47 </span>            :      */
+<span class="lineNum">      48 </span>            :         Component() ;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            :     /**
+<a name="51"><span class="lineNum">      51 </span>            :      * Construct component with specified id</a>
+<span class="lineNum">      52 </span>            :      */
+<span class="lineNum">      53 </span><span class="lineCov">          6 :         Component(CompId id):</span>
+<span class="lineNum">      54 </span><span class="lineCov">          6 :         _id(id) {}</span>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            :     /**
+<span class="lineNum">      57 </span>            :      * Construct component with specified id and name
+<span class="lineNum">      58 </span>            :      */
+<span class="lineNum">      59 </span>            :         Component(CompId id, const std::string&amp; name):
+<span class="lineNum">      60 </span>            :         _id(id), _name(name) {}
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            :     /**
+<span class="lineNum">      63 </span>            :      * Destructor
+<span class="lineNum">      64 </span>            :      */
+<span class="lineNum">      65 </span>            :     virtual ~Component() ;
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            :         /**
+<span class="lineNum">      68 </span>            :      * Initialize component from its configuration and return the Components dependencies
+<span class="lineNum">      69 </span>            :      */
+<span class="lineNum">      70 </span>            :         virtual Dependencies init(const config::Config&amp; config) ;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            :         /**
+<span class="lineNum">      73 </span>            :      * Receive the components you required in init(). Optional components will be nullptrs.
+<span class="lineNum">      74 </span>            :      * All components received are initialized but not necessarily finalized so do not call 
+<span class="lineNum">      75 </span>            :      * into the component yet (unless you really know what you are doing but you are prob asking for trouble)
+<span class="lineNum">      76 </span>            :      */
+<span class="lineNum">      77 </span>            :     virtual void finalize(const std::vector&lt;Component*&gt;&amp; dependencies) ;
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            :         /**
+<span class="lineNum">      80 </span>            :      * This is a place to take action on application lifecycle events. 
+<span class="lineNum">      81 </span>            :      */
+<span class="lineNum">      82 </span>            :     virtual void appLifeCycle(AppLifeCycle state) ;
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            :         /**
+<span class="lineNum">      85 </span>            :      * This is a place to take action on events related to components you depend on
+<span class="lineNum">      86 </span>            :      */
+<span class="lineNum">      87 </span>            :     virtual void compLifeCycle(CompLifeCycle state, CompId id) ;
 <span class="lineNum">      88 </span>            : 
-<span class="lineNum">      89 </span>            : const int USER_STATE_START                      = 1000 ;
-<span class="lineNum">      90 </span>            : 
-<span class="lineNum">      91 </span>            : /**
-<span class="lineNum">      92 </span>            :  * class CompState - component state management. State management is an integral aspect of component visualization
-<span class="lineNum">      93 </span>            :  */
-<span class="lineNum">      94 </span>            : class CompState
-<span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span>            :         /**
-<span class="lineNum">      98 </span>            :      * Set primary state
-<span class="lineNum">      99 </span>            :          */
-<span class="lineNum">     100 </span>            :         void set(int state) ;
-<span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span>            :         /**
-<span class="lineNum">     103 </span>            :          * Clear state vector and set primary state to state (OKAY by default)
-<span class="lineNum">     104 </span>            :          */
-<span class="lineNum">     105 </span>            :         void clear(int state = OKAY_STATE) ;
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            :         /**
-<span class="lineNum">     108 </span>            :          * Push state making it primary 
-<span class="lineNum">     109 </span>            :          */
-<span class="lineNum">     110 </span>            :         void push(int state) ;
-<span class="lineNum">     111 </span>            : 
-<span class="lineNum">     112 </span>            :         /**
-<span class="lineNum">     113 </span>            :          * Pop and discard primary state. Then only if state vector is empty set
-<span class="lineNum">     114 </span>            :      * primary to 'state' (default OKAY) otherwise ignore 'state'
-<span class="lineNum">     115 </span>            :      */
-<span class="lineNum">     116 </span>            :      void pop(int state = OKAY_STATE) ;
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span>            :          /**
-<span class="lineNum">     119 </span>            :           * Get the 'index'th state. Default primary
-<span class="lineNum">     120 </span>            :       */
-<span class="lineNum">     121 </span>            :          int get(int index=0)  const ;
-<span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span>            :          /**
-<span class="lineNum">     124 </span>            :       * Test that primary state is OKAY
-<span class="lineNum">     125 </span>            :           */
-<span class="lineNum">     126 </span>            :          bool isOKAY() const ;
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span>            :          /**
-<span class="lineNum">     129 </span>            :           * Return true if one of the states is 'state'
-<span class="lineNum">     130 </span>            :           */
-<span class="lineNum">     131 </span>            :          bool has(int state) const ;
-<span class="lineNum">     132 </span>            : 
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            :         /**
+<span class="lineNum">      91 </span>            :          * If your coponent is a member of a event loop, async messages arrive here 
+<span class="lineNum">      92 </span>            :      */ 
+<span class="lineNum">      93 </span>            :         virtual void onMessage(const Message&amp; msg) ;
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :     /**
+<a name="96"><span class="lineNum">      96 </span>            :      * Return components unique id. Uniquieness is per application invocation so this is not a GUID nor is it guranteed idemponent between distinct runs of the app.</a>
+<span class="lineNum">      97 </span>            :      */
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     CompId id() const {return _id;}</span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            :     /**
+<a name="101"><span class="lineNum">     101 </span>            :      * The component's name (usually from configuration)</a>
+<span class="lineNum">     102 </span>            :      */
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     const std::string&amp; name() const {return _name;}</span>
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            :     /**
+<a name="106"><span class="lineNum">     106 </span>            :      * Set or change the components name</a>
+<span class="lineNum">     107 </span>            :      */
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     void setName(const std::string&amp; name) {_name = name;}</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            :     /**
+<span class="lineNum">     111 </span>            :      * A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T
+<span class="lineNum">     112 </span>            :      * or if it can acquire a T. 
+<span class="lineNum">     113 </span>            :      * @see acquire
+<a name="114"><span class="lineNum">     114 </span>            :      */</a>
+<span class="lineNum">     115 </span>            :     template &lt;class T&gt;
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     T* cast(const std::string&amp; requestor = &quot;Unknown&quot;) </span>
+<span class="lineNum">     117 </span>            :     {
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         const std::type_info&amp; ti = typeid(T) ;</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :         Component * target = this ;</span>
+<span class="lineNum">     120 </span>            :         //To avoid possibility of infinite loops we cap this protocol at two attempts
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         for (int iTry=0; iTry&lt;2 &amp;&amp; target; ++iTry) { </span>
+<span class="lineNum">     122 </span>            :             //First see if the Component is a T
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :             T* pT = dynamic_cast&lt;T*&gt;(target) ;</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :             if (pT) //Okay I'm a T!</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                 return pT ;</span>
+<span class="lineNum">     126 </span>            :             //Otherwise maybe I own a T. My implementor is then responsible for providing
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :             target = target-&gt;acquire(ti, reinterpret_cast&lt;void **&gt;(&amp;pT)) ;</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 :             if (pT) //Yay, i'm bound. </span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :                 return pT ;</span>
+<span class="lineNum">     130 </span>            :         }
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Can't cast Component [%s] to type [%s] as required by [%s]&quot;, name().c_str(), ti.name(), requestor.c_str()) ; </span>
+<span class="lineNum">     132 </span>            :     }
 <span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            :          /**
-<span class="lineNum">     135 </span>            :           * Return index of 'state' or -1 if no such state exists
-<span class="lineNum">     136 </span>            :       */
-<span class="lineNum">     137 </span>            :          int find(int state) const ;
-<span class="lineNum">     138 </span>            : 
-<span class="lineNum">     139 </span>            :          /**
-<span class="lineNum">     140 </span>            :       * Return true if any state in 'states' exists
-<span class="lineNum">     141 </span>            :       */
-<span class="lineNum">     142 </span>            :      bool hasOne(int states[]) const ;
-<span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span>            :          /**
-<span class="lineNum">     145 </span>            :       * Return true if all states in 'states' exist
-<span class="lineNum">     146 </span>            :       */
-<span class="lineNum">     147 </span>            :      bool hasAll(int states[]) const ;
-<span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span>            :          /**
-<span class="lineNum">     150 </span>            :       * Return true if no state in 'states' exists
-<span class="lineNum">     151 </span>            :       */
-<span class="lineNum">     152 </span>            :          bool hasNone(int states[]) const ;
-<span class="lineNum">     153 </span>            : 
-<span class="lineNum">     154 </span>            : private:
-<span class="lineNum">     155 </span>            : 
-<span class="lineNum">     156 </span>            :         std::vector&lt;int&gt; _states ;
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            : };
-<span class="lineNum">     159 </span>            : 
-<span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span>            : union MsgData
-<span class="lineNum">     162 </span>            : {
-<a name="163"><span class="lineNum">     163 </span>            : public:</a>
-<span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span><span class="lineCov">          1 :     MsgData() : dp(nullptr) {} </span>
-<span class="lineNum">     166 </span>            : 
-<span class="lineNum">     167 </span>            :         const std::pair&lt;int,int&gt; d2 ;
-<span class="lineNum">     168 </span>            :     const long long          dl ;
-<span class="lineNum">     169 </span>            :     const void *             dp ;
-<span class="lineNum">     170 </span>            : } ;
-<span class="lineNum">     171 </span>            : 
-<span class="lineNum">     172 </span>            : /**
-<span class="lineNum">     173 </span>            :  * Placeholder for concept that needs much more thought
-<span class="lineNum">     174 </span>            :  */
-<span class="lineNum">     175 </span>            : class Message
-<span class="lineNum">     176 </span>            : {
-<a name="177"><span class="lineNum">     177 </span>            : public:</a>
-<span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span><span class="lineCov">          1 :     Message() :</span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 :         origSenderId(-1), origDestId(-1), lastSenderId(-1), msgType(0), msgData() </span>
-<span class="lineNum">     181 </span>            :     {
-<span class="lineNum">     182 </span><span class="lineCov">          1 :     } ;</span>
-<span class="lineNum">     183 </span>            : private:
-<span class="lineNum">     184 </span>            : 
-<span class="lineNum">     185 </span>            :         CompId origSenderId ;
-<span class="lineNum">     186 </span>            :     CompId origDestId ;
-<span class="lineNum">     187 </span>            :         CompId lastSenderId ;
-<span class="lineNum">     188 </span>            :     int    msgType ;
-<span class="lineNum">     189 </span>            :     MsgData msgData ;  
-<span class="lineNum">     190 </span>            : } ; 
-<span class="lineNum">     191 </span>            : 
-<span class="lineNum">     192 </span>            : /* Components are the soul of Theoria. Components are used to implement the 
-<span class="lineNum">     193 </span>            :  * meaty parts of your application. Things that contain significant business logic,
-<span class="lineNum">     194 </span>            :  * are generally long-lived, manage complex data structures, processes or algorithms, etc.
-<span class="lineNum">     195 </span>            :  * Components support a rich lifecycle, can be dynamically configured and dynamically wired up
-<span class="lineNum">     196 </span>            :  * to other components. 
-<span class="lineNum">     197 </span>            :  */
-<span class="lineNum">     198 </span>            : class Component 
-<span class="lineNum">     199 </span>            : {
-<span class="lineNum">     200 </span>            : public:
-<a name="201"><span class="lineNum">     201 </span>            : </a>
-<span class="lineNum">     202 </span>            :         Component() ;
-<span class="lineNum">     203 </span><span class="lineCov">          6 :         Component(CompId id):</span>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          6 :         _id(id) {}</span></a>
-<span class="lineNum">     205 </span>            : 
-<span class="lineNum">     206 </span><span class="lineCov">         31 :         Component(CompId id, const std::string&amp; name):</span>
-<span class="lineNum">     207 </span><span class="lineCov">         31 :         _id(id), _name(name) {}</span>
-<span class="lineNum">     208 </span>            : 
-<span class="lineNum">     209 </span>            :     virtual ~Component() ;
-<span class="lineNum">     210 </span>            : 
-<span class="lineNum">     211 </span>            :         /**
-<span class="lineNum">     212 </span>            :      * Initialize component from its configuration and return the Components dependencies
-<span class="lineNum">     213 </span>            :      */
-<span class="lineNum">     214 </span>            :         virtual Dependencies init(const config::Config&amp; config) ;
-<span class="lineNum">     215 </span>            : 
-<span class="lineNum">     216 </span>            :         /**
-<span class="lineNum">     217 </span>            :      * Receive the components you required in init(). Optional components will be nullptrs.
-<span class="lineNum">     218 </span>            :      * All components received are initialized but not necessarily finalized so do not call 
-<span class="lineNum">     219 </span>            :      * into the component yet (unless you really know what you are doing but you are prob asking for trouble)
-<span class="lineNum">     220 </span>            :      */
-<span class="lineNum">     221 </span>            :     virtual void finalize(const std::vector&lt;Component*&gt;&amp; dependencies) ;
-<span class="lineNum">     222 </span>            : 
-<span class="lineNum">     223 </span>            :         /**
-<span class="lineNum">     224 </span>            :      * This is a place to take action on application lifecycle events. 
-<span class="lineNum">     225 </span>            :      */
-<span class="lineNum">     226 </span>            :     virtual void appLifeCycle(AppLifeCycle state) ;
-<span class="lineNum">     227 </span>            : 
-<span class="lineNum">     228 </span>            :         /**
-<span class="lineNum">     229 </span>            :      * This is a place to take action on events related to components you depend on
-<span class="lineNum">     230 </span>            :      */
-<span class="lineNum">     231 </span>            :     virtual void compLifeCycle(CompLifeCycle state, CompId id) ;
-<span class="lineNum">     232 </span>            : 
-<span class="lineNum">     233 </span>            : 
-<span class="lineNum">     234 </span>            :         /**
-<span class="lineNum">     235 </span>            :          * If your coponent is a member of a event loop, async messages arrive here 
-<span class="lineNum">     236 </span>            :      */ 
-<a name="237"><span class="lineNum">     237 </span>            :         virtual void onMessage(Message msg) ;</a>
-<span class="lineNum">     238 </span>            : 
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         47 :     CompId id() const {return _id;}</span></a>
-<a name="240"><span class="lineNum">     240 </span>            : </a>
-<span class="lineNum">     241 </span><span class="lineCov">         11 :     const std::string&amp; name() const {return _name;}</span>
-<span class="lineNum">     242 </span><span class="lineCov">         38 :     void setName(const std::string&amp; name) {_name = name;}</span>
-<a name="243"><span class="lineNum">     243 </span>            : </a>
-<span class="lineNum">     244 </span>            :     template &lt;class T&gt;
-<span class="lineNum">     245 </span><span class="lineCov">         25 :     T* cast(const std::string&amp; requestor = &quot;Unknown&quot;) </span>
-<span class="lineNum">     246 </span>            :     {
-<span class="lineNum">     247 </span><span class="lineCov">         25 :         const std::type_info&amp; ti = typeid(T) ;</span>
-<span class="lineNum">     248 </span><span class="lineCov">         25 :         Component * target = this ;</span>
-<span class="lineNum">     249 </span>            :         //To avoid possibility of infinite loops we cap this protocol at two attempts
-<span class="lineNum">     250 </span><span class="lineCov">         70 :         for (int iTry=0; iTry&lt;2 &amp;&amp; target; ++iTry) { </span>
-<span class="lineNum">     251 </span>            :             //First see if the Component is a T
-<span class="lineNum">     252 </span><span class="lineCov">         31 :             T* pT = dynamic_cast&lt;T*&gt;(target) ;</span>
-<span class="lineNum">     253 </span><span class="lineCov">         31 :             if (pT) //Okay I'm a T!</span>
-<span class="lineNum">     254 </span><span class="lineCov">         30 :                 return pT ;</span>
-<span class="lineNum">     255 </span>            :             //Otherwise maybe I own a T. My implementor is then responsible for providing
-<span class="lineNum">     256 </span><span class="lineCov">         22 :             target = target-&gt;acquire(ti, reinterpret_cast&lt;void **&gt;(&amp;pT)) ;</span>
-<span class="lineNum">     257 </span><span class="lineCov">         22 :             if (pT) //Yay, i'm bound. </span>
-<span class="lineNum">     258 </span><span class="lineCov">         12 :                 return pT ;</span>
-<span class="lineNum">     259 </span>            :         }
-<span class="lineNum">     260 </span><span class="lineCov">          4 :         throw RUNTIME_ERROR(&quot;Can't cast Component [%s] to type [%s] as required by [%s]&quot;, name().c_str(), ti.name(), requestor.c_str()) ; </span>
-<span class="lineNum">     261 </span>            :     }
-<span class="lineNum">     262 </span>            : 
-<span class="lineNum">     263 </span>            :     /*
-<span class="lineNum">     264 </span>            :      * Override in your component if you want to control how other components acquire interfaces
-<span class="lineNum">     265 </span>            :      * from you. Your are responsible for using the typeInfo to return a suitable object
-<span class="lineNum">     266 </span>            :      * in destination. If you can't do this you can optionally return another Component that
-<span class="lineNum">     267 </span>            :      * you think can.
-<span class="lineNum">     268 </span>            :      *
-<span class="lineNum">     269 </span>            :      * Default impl sets *dest to nullptr and returns nullptr 
-<span class="lineNum">     270 </span>            :      */
-<span class="lineNum">     271 </span>            :     virtual Component* acquire(const std::type_info&amp; typeInfo, void** dest) ;
-<span class="lineNum">     272 </span>            : 
-<span class="lineNum">     273 </span>            : protected:
-<span class="lineNum">     274 </span>            : 
-<span class="lineNum">     275 </span>            :         CompId _id ;
-<span class="lineNum">     276 </span>            :         std::string _name ;
-<span class="lineNum">     277 </span>            : };
-<span class="lineNum">     278 </span>            : 
-<span class="lineNum">     279 </span>            : }} //namespace theoria::core    
+<span class="lineNum">     134 </span>            :     /**
+<span class="lineNum">     135 </span>            :      * Override in your component if you want to control how other components acquire interfaces
+<span class="lineNum">     136 </span>            :      * from you. Your are responsible for using the typeInfo to return a suitable object
+<span class="lineNum">     137 </span>            :      * in destination. If you can't do this you can optionally return another Component that
+<span class="lineNum">     138 </span>            :      * you think can.
+<span class="lineNum">     139 </span>            :      *
+<span class="lineNum">     140 </span>            :      * Default impl sets *dest to nullptr and returns nullptr
+<span class="lineNum">     141 </span>            :      *
+<span class="lineNum">     142 </span>            :      * @param typeInfo the type_info of he type you wish to acquire
+<span class="lineNum">     143 </span>            :      * @param dest the dest where a pointer to the impl of type_info will be stored if available
+<span class="lineNum">     144 </span>            :      * @return nullptr if this call already satisfied the request by populating dest or if it can't satify request
+<span class="lineNum">     145 </span>            :      *         a pointer to another component if this component belives that the returned component can 
+<span class="lineNum">     146 </span>            :      *         satisfy the request
+<span class="lineNum">     147 </span>            :      */
+<span class="lineNum">     148 </span>            :     virtual Component* acquire(const std::type_info&amp; typeInfo, void** dest) ;
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : protected:
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            :     /**
+<span class="lineNum">     153 </span>            :      * Unique id
+<span class="lineNum">     154 </span>            :      */
+<span class="lineNum">     155 </span>            :         CompId _id ;
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            :     /**
+<span class="lineNum">     158 </span>            :      * Name
+<span class="lineNum">     159 </span>            :      */
+<span class="lineNum">     160 </span>            :         std::string _name ;
+<span class="lineNum">     161 </span>            : };
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            : }} //namespace theoria::core    
 </pre>
       </td>
     </tr>

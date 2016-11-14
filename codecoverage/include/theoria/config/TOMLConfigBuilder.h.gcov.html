@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -68,26 +68,29 @@
 <span class="lineNum">       6 </span>            : 
 <span class="lineNum">       7 </span>            : namespace theoria { namespace config {
 <span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span>            : class TOMLConfigBuilder : public ConfigParser, public ConfigBuilder 
-<span class="lineNum">      10 </span>            : {
-<a name="11"><span class="lineNum">      11 </span>            : public:</a>
-<span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span><span class="lineCov">         13 :     TOMLConfigBuilder() {};</span>
-<span class="lineNum">      14 </span>            :     ~TOMLConfigBuilder() ;
+<span class="lineNum">       9 </span>            : /**
+<span class="lineNum">      10 </span>            :  * A ConfigParser that builds Config hierarchy from TOML representation
+<span class="lineNum">      11 </span>            :  */
+<span class="lineNum">      12 </span>            : class TOMLConfigBuilder : public ConfigParser, public ConfigBuilder 
+<span class="lineNum">      13 </span>            : {
+<a name="14"><span class="lineNum">      14 </span>            : public:</a>
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            :     std::unique_ptr&lt;const Config&gt; parse_file(const std::string&amp; filename) override ; 
-<span class="lineNum">      17 </span>            :     std::unique_ptr&lt;const Config&gt; parse(std::istream&amp; stream) override ; 
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 :     TOMLConfigBuilder() {};</span>
+<span class="lineNum">      17 </span>            :     ~TOMLConfigBuilder() ;
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : private:
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            :     void _recursive_build(cpptoml::table&amp; table) ;
-<span class="lineNum">      22 </span>            :     void _addAttr(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) ;
-<span class="lineNum">      23 </span>            :     void _addAttrWithResolve(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) ;
-<span class="lineNum">      24 </span>            :     std::pair&lt;std::string, std::string&gt; _getValueAndTypeAsString(const cpptoml::table&amp; owner,const std::string&amp; name) ;
-<span class="lineNum">      25 </span>            :     
-<span class="lineNum">      26 </span>            : } ;
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : }}
+<span class="lineNum">      19 </span>            :     std::unique_ptr&lt;const Config&gt; parse_file(const std::string&amp; filename) override ; 
+<span class="lineNum">      20 </span>            :     std::unique_ptr&lt;const Config&gt; parse(std::istream&amp; stream) override ; 
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : private:
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            :     void _recursive_build(cpptoml::table&amp; table) ;
+<span class="lineNum">      25 </span>            :     void _addAttr(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) ;
+<span class="lineNum">      26 </span>            :     void _addAttrWithResolve(const std::string&amp; name, const std::string&amp; value, const std::string&amp; type) ;
+<span class="lineNum">      27 </span>            :     std::pair&lt;std::string, std::string&gt; _getValueAndTypeAsString(const cpptoml::table&amp; owner,const std::string&amp; name) ;
+<span class="lineNum">      28 </span>            :     
+<span class="lineNum">      29 </span>            : } ;
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : }}
 </pre>
       </td>
     </tr>

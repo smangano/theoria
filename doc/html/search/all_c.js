@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['registerfactory',['registerFactory',['../classtheoria_1_1core_1_1Registry.html#ac7cd0cefa7207f2f6c602723cc32ee49',1,'theoria::core::Registry::registerFactory(const TypeName &amp;type, ComponentFactory factory)'],['../classtheoria_1_1core_1_1Registry.html#a861b9906b6e10bdebc74ec7397ea971a',1,'theoria::core::Registry::registerFactory(const TypeName &amp;type, const SubTypeName &amp;subtype, ComponentFactory factory)']]],
-  ['registerthis',['RegisterThis',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registerthis_3c_20theoria_3a_3acore_3a_3aappconfigresolvercomp_20_3e',['RegisterThis&lt; theoria::core::AppConfigResolverComp &gt;',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registerthis_3c_20theoria_3a_3acore_3a_3acmdlineresolvercomp_20_3e',['RegisterThis&lt; theoria::core::CmdLineResolverComp &gt;',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registerthis_3c_20theoria_3a_3acore_3a_3aconfigvarresolverbuildercomp_20_3e',['RegisterThis&lt; theoria::core::ConfigVarResolverBuilderComp &gt;',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registerthis_3c_20theoria_3a_3acore_3a_3aenvvarresolvercomp_20_3e',['RegisterThis&lt; theoria::core::EnvVarResolverComp &gt;',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registerthis_3c_20theoria_3a_3acore_3a_3atomlconfigbuildercomp_20_3e',['RegisterThis&lt; theoria::core::TOMLConfigBuilderComp &gt;',['../classtheoria_1_1core_1_1RegisterThis.html',1,'theoria::core']]],
-  ['registry',['Registry',['../classtheoria_1_1core_1_1Registry.html',1,'theoria::core']]],
-  ['registrylock',['RegistryLock',['../structtheoria_1_1core_1_1RegistryLock.html',1,'theoria::core']]],
-  ['registrylocked',['RegistryLocked',['../classtheoria_1_1core_1_1RegistryLocked.html',1,'theoria::core']]]
+  ['mapped_5ftype',['mapped_type',['../classtheoria_1_1util_1_1densemap.html#a8c1e5a57a1e76089bd675da3fa3347d8',1,'theoria::util::densemap']]],
+  ['maybe',['Maybe',['../classtheoria_1_1util_1_1Maybe.html#aff51836d12cb53b458316be21391e847',1,'theoria::util::Maybe::Maybe(T *obj)'],['../classtheoria_1_1util_1_1Maybe.html#a20f1e97e3620fed19c579ffdc9063bf8',1,'theoria::util::Maybe::Maybe(T *obj, const char *where)'],['../classtheoria_1_1util_1_1Maybe.html#a077b3ce153debaf6adb797ebf494745b',1,'theoria::util::Maybe::Maybe(Base *obj)'],['../classtheoria_1_1util_1_1Maybe.html#a955e6b90184ad9e054038ebbd8dab3c6',1,'theoria::util::Maybe::Maybe(Base *obj, const char *where)']]],
+  ['maybe',['Maybe',['../classtheoria_1_1util_1_1Maybe.html',1,'theoria::util']]],
+  ['message',['Message',['../classtheoria_1_1core_1_1Message.html',1,'theoria::core']]],
+  ['msgdata',['MsgData',['../uniontheoria_1_1core_1_1MsgData.html',1,'theoria::core']]]
 ];

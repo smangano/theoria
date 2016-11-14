@@ -2,8 +2,11 @@
 \label{classtheoria_1_1config_1_1TOMLResolver}\index{theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}}
 
 
-Inheritance diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Resolver\+:
-\nopagebreak
+{\ttfamily \#include $<$Resolve.\+h$>$}
+
+
+
+Inheritance diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +15,7 @@ Inheritance diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Resolver\+:
 \end{figure}
 
 
-Collaboration diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Resolver\+:
-\nopagebreak
+Collaboration diagram for theoria\+:\+:config\+:\+:T\+O\+M\+L\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,28 +30,53 @@ class \hyperlink{classTOMLResolver_1_1TOMLResolverImpl}{T\+O\+M\+L\+Resolver\+Im
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a94a2659c23a5c85d05fb62e67c8c7810}\label{classtheoria_1_1config_1_1TOMLResolver_a94a2659c23a5c85d05fb62e67c8c7810}} 
-{\bfseries T\+O\+M\+L\+Resolver} (const std\+::string \&toml\+File\+Path)
+\hyperlink{classtheoria_1_1config_1_1TOMLResolver_a94a2659c23a5c85d05fb62e67c8c7810}{T\+O\+M\+L\+Resolver} (const std\+::string \&toml\+File\+Path)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a2772b7d149cabddd2b622b786720420f}\label{classtheoria_1_1config_1_1TOMLResolver_a2772b7d149cabddd2b622b786720420f}} 
-{\bfseries T\+O\+M\+L\+Resolver} (std\+::istream \&is)
+\hyperlink{classtheoria_1_1config_1_1TOMLResolver_a2772b7d149cabddd2b622b786720420f}{T\+O\+M\+L\+Resolver} (std\+::istream \&is)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a42daff166eca2c9c9dd77868faf0122d}\label{classtheoria_1_1config_1_1TOMLResolver_a42daff166eca2c9c9dd77868faf0122d}} 
-Result {\bfseries lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}{name}) const override
+\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} \hyperlink{classtheoria_1_1config_1_1TOMLResolver_a42daff166eca2c9c9dd77868faf0122d}{lookup} (const std\+::string \&\hyperlink{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}{name}) const override
 \item 
 virtual std\+::string \hyperlink{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}{name} () const override
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+Resolves variables from a T\+O\+ML file. Supports nested access using dot notation\+: E.\+g., \$a.\+b You can use this resolver even if your App\textquotesingle{}s config is not T\+O\+ML 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a94a2659c23a5c85d05fb62e67c8c7810}\label{classtheoria_1_1config_1_1TOMLResolver_a94a2659c23a5c85d05fb62e67c8c7810}} 
+\index{theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}!T\+O\+M\+L\+Resolver@{T\+O\+M\+L\+Resolver}}
+\index{T\+O\+M\+L\+Resolver@{T\+O\+M\+L\+Resolver}!theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}}
+\subsubsection{\texorpdfstring{T\+O\+M\+L\+Resolver()}{TOMLResolver()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily T\+O\+M\+L\+Resolver\+::\+T\+O\+M\+L\+Resolver (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{toml\+File\+Path }\end{DoxyParamCaption})}
+
+Use spefied T\+O\+LM file as source for resolver \mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a2772b7d149cabddd2b622b786720420f}\label{classtheoria_1_1config_1_1TOMLResolver_a2772b7d149cabddd2b622b786720420f}} 
+\index{theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}!T\+O\+M\+L\+Resolver@{T\+O\+M\+L\+Resolver}}
+\index{T\+O\+M\+L\+Resolver@{T\+O\+M\+L\+Resolver}!theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}}
+\subsubsection{\texorpdfstring{T\+O\+M\+L\+Resolver()}{TOMLResolver()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily T\+O\+M\+L\+Resolver\+::\+T\+O\+M\+L\+Resolver (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is }\end{DoxyParamCaption})}
+
+Use T\+O\+LM supplied by a stream as source for resolver. Typically a std\+::istringstream 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a42daff166eca2c9c9dd77868faf0122d}\label{classtheoria_1_1config_1_1TOMLResolver_a42daff166eca2c9c9dd77868faf0122d}} 
+\index{theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}!lookup@{lookup}}
+\index{lookup@{lookup}!theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}}
+\subsubsection{\texorpdfstring{lookup()}{lookup()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} T\+O\+M\+L\+Resolver\+::lookup (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Implement look on the T\+O\+ML representation 
+
+Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
+
 \mbox{\Hypertarget{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}\label{classtheoria_1_1config_1_1TOMLResolver_a6b50ff1e396f74183318915e602837fc}} 
 \index{theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}!name@{name}}
 \index{name@{name}!theoria\+::config\+::\+T\+O\+M\+L\+Resolver@{theoria\+::config\+::\+T\+O\+M\+L\+Resolver}}
 \subsubsection{\texorpdfstring{name()}{name()}}
 {\footnotesize\ttfamily std\+::string T\+O\+M\+L\+Resolver\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Return name of the resolver 
+Return \char`\"{}\+T\+O\+M\+L\+Resolver\char`\"{} 
 
 Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
 

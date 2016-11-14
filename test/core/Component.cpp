@@ -1,5 +1,6 @@
 #include <theoria/core/Component.h>
 #include <theoria/config/Config.h>
+#include <theoria/core/wip.h>
 #include <gtest/gtest.h>
 #include <memory>
 #include <typeinfo>

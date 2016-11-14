@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-14 03:09:56</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -68,78 +68,170 @@
 <span class="lineNum">       6 </span>            : #include &lt;theoria/core/RegisterThis.h&gt;
 <span class="lineNum">       7 </span>            : #include &lt;theoria/util/visibility.h&gt;
 <span class="lineNum">       8 </span>            : 
-<a name="9"><span class="lineNum">       9 </span>            : namespace theoria { namespace core {</a>
+<span class="lineNum">       9 </span>            : namespace theoria { namespace core {
 <span class="lineNum">      10 </span>            : 
-<span class="lineNum">      11 </span><span class="lineCov">          4 : class ConfigVarResolverBuilderComp : public Component</span>
-<span class="lineNum">      12 </span>            : {
-<span class="lineNum">      13 </span>            : public:
-<a name="14"><span class="lineNum">      14 </span>            : </a>
-<span class="lineNum">      15 </span>            :     
-<span class="lineNum">      16 </span><span class="lineCov">          2 :     ConfigVarResolverBuilderComp(CompId id) :</span>
-<span class="lineNum">      17 </span><span class="lineCov">          2 :         Component(id) {} </span>
+<span class="lineNum">      11 </span>            : /**
+<span class="lineNum">      12 </span>            :  * A component responsible for wiring a ConfigBuilder to one or more Resolvers 
+<a name="13"><span class="lineNum">      13 </span>            :  * based on configuration</a>
+<span class="lineNum">      14 </span>            :  */
+<span class="lineNum">      15 </span><span class="lineCov">          4 : class ConfigVarResolverBuilderComp : public Component</span>
+<span class="lineNum">      16 </span>            : {
+<span class="lineNum">      17 </span>            : public:
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            :     static Component* factory(CompId id) ; 
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            :         Dependencies init(const config::Config&amp; config) override;
-<span class="lineNum">      22 </span>            :     void finalize(const std::vector&lt;Component*&gt;&amp; dependencies) override ;
-<span class="lineNum">      23 </span>            :     void appLifeCycle(AppLifeCycle state) override ;
+<span class="lineNum">      19 </span>            :     /**
+<a name="20"><span class="lineNum">      20 </span>            :      * Component constructor</a>
+<span class="lineNum">      21 </span>            :      */
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     ConfigVarResolverBuilderComp(CompId id) :</span>
+<span class="lineNum">      23 </span><span class="lineCov">          2 :         Component(id) {} </span>
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : public:
-<span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            :     static DLL_PUBLIC RegisterThis&lt;ConfigVarResolverBuilderComp&gt; rt ; 
-<span class="lineNum">      28 </span>            : } ;
-<a name="29"><span class="lineNum">      29 </span>            : </a>
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">          2 : class EnvVarResolverComp : public Component</span>
-<span class="lineNum">      32 </span>            : {
-<a name="33"><span class="lineNum">      33 </span>            : public:</a>
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">          1 :     EnvVarResolverComp(CompId id) : Component(id) {}</span>
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span>            :     static Component* factory(CompId id) ; 
-<span class="lineNum">      38 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
-<span class="lineNum">      39 </span>            :     
-<span class="lineNum">      40 </span>            :     static DLL_PUBLIC RegisterThis&lt;EnvVarResolverComp&gt; rt ; 
-<a name="41"><span class="lineNum">      41 </span>            : } ;</a>
+<span class="lineNum">      25 </span>            :     /**
+<span class="lineNum">      26 </span>            :      *Factory for this component
+<span class="lineNum">      27 </span>            :      */
+<span class="lineNum">      28 </span>            :     static Component* factory(CompId id) ; 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            :     /**
+<span class="lineNum">      31 </span>            :      * Uses configuration of the form:
+<span class="lineNum">      32 </span>            :      *  ConfigVarResolverBuilder
+<span class="lineNum">      33 </span>            :      *      [Resolver1, Resolver2, ...]
+<span class="lineNum">      34 </span>            :      *  to build Dependencies between the default ConfigBuilder and the ordered sequence of resolvers.
+<span class="lineNum">      35 </span>            :      */
+<span class="lineNum">      36 </span>            :         Dependencies init(const config::Config&amp; config) override;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            :     /**
+<span class="lineNum">      39 </span>            :      * Wires up Builder and resolvers in order presented in dependencies
+<span class="lineNum">      40 </span>            :      */
+<span class="lineNum">      41 </span>            :     void finalize(const std::vector&lt;Component*&gt;&amp; dependencies) override ;
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">          2 : class CmdLineResolverComp : public Component</span>
-<span class="lineNum">      44 </span>            : {
-<a name="45"><span class="lineNum">      45 </span>            : public:</a>
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">          1 :     CmdLineResolverComp(CompId id) : Component(id) {}</span>
+<span class="lineNum">      43 </span>            :     /**
+<span class="lineNum">      44 </span>            :      * When state is FINALIZED this component releases itself from Registry as it serves
+<span class="lineNum">      45 </span>            :      * no purpose afterward
+<span class="lineNum">      46 </span>            :      */
+<span class="lineNum">      47 </span>            :     void appLifeCycle(AppLifeCycle state) override ;
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            :     static Component* factory(CompId id) ; 
-<span class="lineNum">      50 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
-<span class="lineNum">      51 </span>            :     
-<span class="lineNum">      52 </span>            :     static DLL_PUBLIC RegisterThis&lt;CmdLineResolverComp&gt; rt ; 
-<span class="lineNum">      53 </span>            : } ;
-<a name="54"><span class="lineNum">      54 </span>            : </a>
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">          2 : class AppConfigResolverComp : public Component</span>
-<span class="lineNum">      57 </span>            : {
-<a name="58"><span class="lineNum">      58 </span>            : public:</a>
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     AppConfigResolverComp(CompId id) : Component(id) {}</span>
-<span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span>            :     static Component* factory(CompId id) ; 
-<span class="lineNum">      63 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
-<span class="lineNum">      64 </span>            :     
-<span class="lineNum">      65 </span>            :     static DLL_PUBLIC RegisterThis&lt;AppConfigResolverComp&gt; rt ; 
-<a name="66"><span class="lineNum">      66 </span>            : } ;</a>
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">          2 : class TOMLConfigBuilderComp : public Component</span>
-<span class="lineNum">      69 </span>            : {
-<a name="70"><span class="lineNum">      70 </span>            : public:</a>
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">          1 :     TOMLConfigBuilderComp(CompId id) : Component(id) {}</span>
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            :     static Component* factory(CompId id) ; 
-<span class="lineNum">      75 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
-<span class="lineNum">      76 </span>            :     
-<span class="lineNum">      77 </span>            :     static DLL_PUBLIC RegisterThis&lt;TOMLConfigBuilderComp&gt; rt ; 
-<span class="lineNum">      78 </span>            : } ;
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span>            : }}
+<span class="lineNum">      49 </span>            : public:
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            :     /**
+<span class="lineNum">      52 </span>            :      * Register factory
+<span class="lineNum">      53 </span>            :      */
+<span class="lineNum">      54 </span>            :     static DLL_PUBLIC RegisterThis&lt;ConfigVarResolverBuilderComp&gt; rt ; 
+<span class="lineNum">      55 </span>            : } ;
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /**
+<a name="59"><span class="lineNum">      59 </span>            :  * Component wrapper to a EnvVarResolver</a>
+<span class="lineNum">      60 </span>            :  */
+<span class="lineNum">      61 </span><span class="lineCov">          2 : class EnvVarResolverComp : public Component</span>
+<span class="lineNum">      62 </span>            : {
+<span class="lineNum">      63 </span>            : public:
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            :     /**
+<a name="66"><span class="lineNum">      66 </span>            :      * Component constructor</a>
+<span class="lineNum">      67 </span>            :      */
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     EnvVarResolverComp(CompId id) : Component(id) {}</span>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :     /**
+<span class="lineNum">      71 </span>            :      * Factory for this component
+<span class="lineNum">      72 </span>            :      */
+<span class="lineNum">      73 </span>            :     static Component* factory(CompId id) ; 
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            :     /**
+<span class="lineNum">      76 </span>            :      * Used to acquire underlying resolver
+<span class="lineNum">      77 </span>            :      */
+<span class="lineNum">      78 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
+<span class="lineNum">      79 </span>            :     
+<span class="lineNum">      80 </span>            :    
+<span class="lineNum">      81 </span>            :     /**
+<span class="lineNum">      82 </span>            :      * Register factory
+<span class="lineNum">      83 </span>            :      */
+<span class="lineNum">      84 </span>            :     static DLL_PUBLIC RegisterThis&lt;EnvVarResolverComp&gt; rt ; 
+<span class="lineNum">      85 </span>            : } ;
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            : /**
+<a name="88"><span class="lineNum">      88 </span>            :  * Component wrapper to CmdLineResolver</a>
+<span class="lineNum">      89 </span>            :  */
+<span class="lineNum">      90 </span><span class="lineCov">          2 : class CmdLineResolverComp : public Component</span>
+<span class="lineNum">      91 </span>            : {
+<span class="lineNum">      92 </span>            : public:
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     /**
+<a name="95"><span class="lineNum">      95 </span>            :      * Component constructor</a>
+<span class="lineNum">      96 </span>            :      */
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     CmdLineResolverComp(CompId id) : Component(id) {}</span>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            :     /**
+<span class="lineNum">     100 </span>            :      * Factory for this component
+<span class="lineNum">     101 </span>            :      */
+<span class="lineNum">     102 </span>            :     static Component* factory(CompId id) ; 
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            :     /**
+<span class="lineNum">     105 </span>            :      * Used to acquire underlying resolver
+<span class="lineNum">     106 </span>            :      */
+<span class="lineNum">     107 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
+<span class="lineNum">     108 </span>            :    
+<span class="lineNum">     109 </span>            :     /**
+<span class="lineNum">     110 </span>            :      * Register factory
+<span class="lineNum">     111 </span>            :      */
+<span class="lineNum">     112 </span>            :     static DLL_PUBLIC RegisterThis&lt;CmdLineResolverComp&gt; rt ; 
+<span class="lineNum">     113 </span>            : } ;
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            : /**
+<a name="116"><span class="lineNum">     116 </span>            :  * Component wrapper to a AppConfigResolver</a>
+<span class="lineNum">     117 </span>            :  */
+<span class="lineNum">     118 </span><span class="lineCov">          2 : class AppConfigResolverComp : public Component</span>
+<span class="lineNum">     119 </span>            : {
+<span class="lineNum">     120 </span>            : public:
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            :     /**
+<a name="123"><span class="lineNum">     123 </span>            :      * Component constructor</a>
+<span class="lineNum">     124 </span>            :      */
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     AppConfigResolverComp(CompId id) : Component(id) {}</span>
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            :     /**
+<span class="lineNum">     128 </span>            :      * Factory for this component
+<span class="lineNum">     129 </span>            :      */
+<span class="lineNum">     130 </span>            :     static Component* factory(CompId id) ; 
+<span class="lineNum">     131 </span>            : 
+<span class="lineNum">     132 </span>            :     /**
+<span class="lineNum">     133 </span>            :      * Used to acquire underlying resolver
+<span class="lineNum">     134 </span>            :      */
+<span class="lineNum">     135 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
+<span class="lineNum">     136 </span>            :     
+<span class="lineNum">     137 </span>            :    
+<span class="lineNum">     138 </span>            :     /**
+<span class="lineNum">     139 </span>            :      * Register factory
+<span class="lineNum">     140 </span>            :      */
+<span class="lineNum">     141 </span>            :     static DLL_PUBLIC RegisterThis&lt;AppConfigResolverComp&gt; rt ; 
+<span class="lineNum">     142 </span>            : } ;
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            : /**
+<a name="145"><span class="lineNum">     145 </span>            :  * Component wrapper to TOMLConfigBuilder</a>
+<span class="lineNum">     146 </span>            :  */
+<span class="lineNum">     147 </span><span class="lineCov">          2 : class TOMLConfigBuilderComp : public Component</span>
+<span class="lineNum">     148 </span>            : {
+<span class="lineNum">     149 </span>            : public:
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            :     /**
+<a name="152"><span class="lineNum">     152 </span>            :      * Component constructor</a>
+<span class="lineNum">     153 </span>            :      */
+<span class="lineNum">     154 </span><span class="lineCov">          1 :     TOMLConfigBuilderComp(CompId id) : Component(id) {}</span>
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span>            :     /**
+<span class="lineNum">     157 </span>            :      * Factory for this component
+<span class="lineNum">     158 </span>            :      */
+<span class="lineNum">     159 </span>            :     static Component* factory(CompId id) ; 
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            :     /**
+<span class="lineNum">     162 </span>            :      * Used to acquire underlying resolver
+<span class="lineNum">     163 </span>            :      */
+<span class="lineNum">     164 </span>            :     Component* acquire(const std::type_info&amp; typeInfo, void** dest) override ;
+<span class="lineNum">     165 </span>            :     
+<span class="lineNum">     166 </span>            :     /**
+<span class="lineNum">     167 </span>            :      * Register factory
+<span class="lineNum">     168 </span>            :      */
+<span class="lineNum">     169 </span>            :     static DLL_PUBLIC RegisterThis&lt;TOMLConfigBuilderComp&gt; rt ; 
+<span class="lineNum">     170 </span>            : } ;
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : }}
 </pre>
       </td>
     </tr>

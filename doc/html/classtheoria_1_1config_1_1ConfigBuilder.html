@@ -70,6 +70,8 @@ $(function() {
 <div class="title">theoria::config::ConfigBuilder Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Builder_8h_source.html">Builder.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for theoria::config::ConfigBuilder:</div>
 <div class="dyncontent">
@@ -81,64 +83,581 @@ Inheritance diagram for theoria::config::ConfigBuilder:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a31d4cfc983e8ad468c483822731d790f"><td class="memItemLeft" align="right" valign="top"><a id="a31d4cfc983e8ad468c483822731d790f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>ConfigPtr</b> = std::unique_ptr&lt; <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &gt;</td></tr>
+<tr class="memitem:a31d4cfc983e8ad468c483822731d790f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a31d4cfc983e8ad468c483822731d790f">ConfigPtr</a> = std::unique_ptr&lt; <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> &gt;</td></tr>
 <tr class="separator:a31d4cfc983e8ad468c483822731d790f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adf10af8634fe6ce1af5627e2c1ae8baa"><td class="memItemLeft" align="right" valign="top"><a id="adf10af8634fe6ce1af5627e2c1ae8baa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ConfigBuilder</b> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *pResolver)</td></tr>
+<tr class="memitem:a8344379e6c6faa7bab5292abf60bb7ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a8344379e6c6faa7bab5292abf60bb7ca">ConfigBuilder</a> ()</td></tr>
+<tr class="separator:a8344379e6c6faa7bab5292abf60bb7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf10af8634fe6ce1af5627e2c1ae8baa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#adf10af8634fe6ce1af5627e2c1ae8baa">ConfigBuilder</a> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *pResolver)</td></tr>
 <tr class="separator:adf10af8634fe6ce1af5627e2c1ae8baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff25e4ada86baf419820b610a4707cbe"><td class="memItemLeft" align="right" valign="top"><a id="aff25e4ada86baf419820b610a4707cbe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setResolver</b> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *pResolver)</td></tr>
+<tr class="memitem:aff25e4ada86baf419820b610a4707cbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#aff25e4ada86baf419820b610a4707cbe">setResolver</a> (<a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *pResolver)</td></tr>
 <tr class="separator:aff25e4ada86baf419820b610a4707cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7542393581c33259aae6d07d11391dd"><td class="memItemLeft" align="right" valign="top"><a id="ad7542393581c33259aae6d07d11391dd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushConfig</b> (const std::string &amp;name, const std::string &amp;desc=&quot;&quot;)</td></tr>
+<tr class="memitem:ad7542393581c33259aae6d07d11391dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#ad7542393581c33259aae6d07d11391dd">pushConfig</a> (const std::string &amp;name, const std::string &amp;desc=&quot;&quot;)</td></tr>
 <tr class="separator:ad7542393581c33259aae6d07d11391dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc70e43627e67521bf921152ee3c131"><td class="memItemLeft" align="right" valign="top"><a id="a2dc70e43627e67521bf921152ee3c131"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushConfig</b> (<a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> *config)</td></tr>
+<tr class="memitem:a2dc70e43627e67521bf921152ee3c131"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a2dc70e43627e67521bf921152ee3c131">pushConfig</a> (<a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> *config)</td></tr>
 <tr class="separator:a2dc70e43627e67521bf921152ee3c131"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38baf2a30a0be4a5e99969c07223bc9b"><td class="memItemLeft" align="right" valign="top"><a id="a38baf2a30a0be4a5e99969c07223bc9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushConfigArray</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a38baf2a30a0be4a5e99969c07223bc9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a38baf2a30a0be4a5e99969c07223bc9b">pushConfigArray</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a38baf2a30a0be4a5e99969c07223bc9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac58bdaa4a914c8ad0c4901128e2e7b6b"><td class="memItemLeft" align="right" valign="top"><a id="ac58bdaa4a914c8ad0c4901128e2e7b6b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addAttr</b> (const std::string &amp;name, const std::string value, const std::string type=&quot;&quot;)</td></tr>
+<tr class="memitem:ac58bdaa4a914c8ad0c4901128e2e7b6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#ac58bdaa4a914c8ad0c4901128e2e7b6b">addAttr</a> (const std::string &amp;name, const std::string value, const std::string type=&quot;&quot;)</td></tr>
 <tr class="separator:ac58bdaa4a914c8ad0c4901128e2e7b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a267121aec4f3c65ff88eb36d691ce509"><td class="memItemLeft" align="right" valign="top"><a id="a267121aec4f3c65ff88eb36d691ce509"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAttrName</b> (const std::string &amp;name, const std::string &amp;newName)</td></tr>
+<tr class="memitem:a267121aec4f3c65ff88eb36d691ce509"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a267121aec4f3c65ff88eb36d691ce509">setAttrName</a> (const std::string &amp;name, const std::string &amp;newName)</td></tr>
 <tr class="separator:a267121aec4f3c65ff88eb36d691ce509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcdd668ab4958497e7328b02ad8f8f83"><td class="memItemLeft" align="right" valign="top"><a id="adcdd668ab4958497e7328b02ad8f8f83"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAttrValue</b> (const std::string &amp;name, const std::string &amp;newValue)</td></tr>
+<tr class="memitem:adcdd668ab4958497e7328b02ad8f8f83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#adcdd668ab4958497e7328b02ad8f8f83">setAttrValue</a> (const std::string &amp;name, const std::string &amp;newValue)</td></tr>
 <tr class="separator:adcdd668ab4958497e7328b02ad8f8f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a019902280637cd43d9a69acb678a5967"><td class="memItemLeft" align="right" valign="top"><a id="a019902280637cd43d9a69acb678a5967"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAttrType</b> (const std::string &amp;name, const std::string &amp;newType)</td></tr>
+<tr class="memitem:a019902280637cd43d9a69acb678a5967"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a019902280637cd43d9a69acb678a5967">setAttrType</a> (const std::string &amp;name, const std::string &amp;newType)</td></tr>
 <tr class="separator:a019902280637cd43d9a69acb678a5967"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af30b50a47285d06afae1b74edfb4d762"><td class="memItemLeft" align="right" valign="top"><a id="af30b50a47285d06afae1b74edfb4d762"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAttrSource</b> (const std::string &amp;name, const std::string &amp;variableName, const std::string &amp;resolverName)</td></tr>
+<tr class="memitem:af30b50a47285d06afae1b74edfb4d762"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#af30b50a47285d06afae1b74edfb4d762">setAttrSource</a> (const std::string &amp;name, const std::string &amp;variableName, const std::string &amp;resolverName)</td></tr>
 <tr class="separator:af30b50a47285d06afae1b74edfb4d762"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd995045c0bf17d35da9573cf53ec791"><td class="memItemLeft" align="right" valign="top"><a id="acd995045c0bf17d35da9573cf53ec791"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>popAsChild</b> (bool allowDups=false)</td></tr>
+<tr class="memitem:acd995045c0bf17d35da9573cf53ec791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#acd995045c0bf17d35da9573cf53ec791">popAsChild</a> (bool allowDups=false)</td></tr>
 <tr class="separator:acd995045c0bf17d35da9573cf53ec791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accda8a312be22d56b33adb47d5b266e9"><td class="memItemLeft" align="right" valign="top"><a id="accda8a312be22d56b33adb47d5b266e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> ()</td></tr>
+<tr class="memitem:accda8a312be22d56b33adb47d5b266e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#accda8a312be22d56b33adb47d5b266e9">pop</a> ()</td></tr>
 <tr class="separator:accda8a312be22d56b33adb47d5b266e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19eea792ee2bc01c44806d2a5a9f666c"><td class="memItemLeft" align="right" valign="top"><a id="a19eea792ee2bc01c44806d2a5a9f666c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setName</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a19eea792ee2bc01c44806d2a5a9f666c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a19eea792ee2bc01c44806d2a5a9f666c">setName</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a19eea792ee2bc01c44806d2a5a9f666c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2582791fc33c6c4e700adbb615bb17a1"><td class="memItemLeft" align="right" valign="top"><a id="a2582791fc33c6c4e700adbb615bb17a1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDesc</b> (const std::string &amp;name)</td></tr>
-<tr class="separator:a2582791fc33c6c4e700adbb615bb17a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a394d42770a90532be340a8af46868f79"><td class="memItemLeft" align="right" valign="top"><a id="a394d42770a90532be340a8af46868f79"></a>
-ConfigPtr &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>top</b> ()</td></tr>
+<tr class="memitem:a7aa67220439e90e9fa59082355c8186f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a7aa67220439e90e9fa59082355c8186f">setDesc</a> (const std::string &amp;desc)</td></tr>
+<tr class="separator:a7aa67220439e90e9fa59082355c8186f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a394d42770a90532be340a8af46868f79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a31d4cfc983e8ad468c483822731d790f">ConfigPtr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a394d42770a90532be340a8af46868f79">top</a> ()</td></tr>
 <tr class="separator:a394d42770a90532be340a8af46868f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06911a804a22e89101dab7ca3a08b049"><td class="memItemLeft" align="right" valign="top"><a id="a06911a804a22e89101dab7ca3a08b049"></a>
-<a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>releaseAll</b> ()</td></tr>
+<tr class="memitem:a06911a804a22e89101dab7ca3a08b049"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a06911a804a22e89101dab7ca3a08b049">releaseAll</a> ()</td></tr>
 <tr class="separator:a06911a804a22e89101dab7ca3a08b049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa40d918441c9cbc0b60bdcd39551164f"><td class="memItemLeft" align="right" valign="top"><a id="aa40d918441c9cbc0b60bdcd39551164f"></a>
-const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>resolver</b> () const</td></tr>
+<tr class="memitem:aa40d918441c9cbc0b60bdcd39551164f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#aa40d918441c9cbc0b60bdcd39551164f">resolver</a> () const</td></tr>
 <tr class="separator:aa40d918441c9cbc0b60bdcd39551164f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides support for building config files from hierachical data files like TOML, XML, YAML, etc. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a31d4cfc983e8ad468c483822731d790f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d4cfc983e8ad468c483822731d790f">&sect;&nbsp;</a></span>ConfigPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a31d4cfc983e8ad468c483822731d790f">theoria::config::ConfigBuilder::ConfigPtr</a> =  std::unique_ptr&lt;<a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type of pointer to <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8344379e6c6faa7bab5292abf60bb7ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8344379e6c6faa7bab5292abf60bb7ca">&sect;&nbsp;</a></span>ConfigBuilder() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">theoria::config::ConfigBuilder::ConfigBuilder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a builder with no initial resolver </p>
+
+</div>
+</div>
+<a id="adf10af8634fe6ce1af5627e2c1ae8baa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf10af8634fe6ce1af5627e2c1ae8baa">&sect;&nbsp;</a></span>ConfigBuilder() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">theoria::config::ConfigBuilder::ConfigBuilder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td>
+          <td class="paramname"><em>pResolver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a builder with resolver as head </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pResolver</td><td>pointer to resolver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac58bdaa4a914c8ad0c4901128e2e7b6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac58bdaa4a914c8ad0c4901128e2e7b6b">&sect;&nbsp;</a></span>addAttr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::addAttr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>type</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a attribute to the config node on top of the stack </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>attribute name </td></tr>
+    <tr><td class="paramname">value</td><td>attribute value </td></tr>
+    <tr><td class="paramname">type</td><td>optional type hint </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="accda8a312be22d56b33adb47d5b266e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accda8a312be22d56b33adb47d5b266e9">&sect;&nbsp;</a></span>pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::pop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pop the top node. It will be lost if you need not save somewhere by first calling top </p>
+
+</div>
+</div>
+<a id="acd995045c0bf17d35da9573cf53ec791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd995045c0bf17d35da9573cf53ec791">&sect;&nbsp;</a></span>popAsChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::popAsChild </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allowDups</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pop a node off the stack and attach it as a chile to the new top node </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">allowDups</td><td>Normally <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> nodes must be unique by name. Set true to override. NOTE: if parent is an array dups will automatically to be allowed even if allowDups==false </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad7542393581c33259aae6d07d11391dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7542393581c33259aae6d07d11391dd">&sect;&nbsp;</a></span>pushConfig() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::pushConfig </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>desc</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a config node with name and description and push on to the node stack </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the node </td></tr>
+    <tr><td class="paramname">desc</td><td>the node descrition </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2dc70e43627e67521bf921152ee3c131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc70e43627e67521bf921152ee3c131">&sect;&nbsp;</a></span>pushConfig() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::pushConfig </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Push an existing node to augment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>a <a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> node </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a38baf2a30a0be4a5e99969c07223bc9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38baf2a30a0be4a5e99969c07223bc9b">&sect;&nbsp;</a></span>pushConfigArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::pushConfigArray </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a <a class="el" href="classtheoria_1_1config_1_1ConfigArray.html">ConfigArray</a> node with name and push on to the node stack </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the array </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a06911a804a22e89101dab7ca3a08b049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06911a804a22e89101dab7ca3a08b049">&sect;&nbsp;</a></span>releaseAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1config_1_1Config.html">Config</a> * ConfigBuilder::releaseAll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Call popChild repeatedly until stack is empty then release the top element from its owning unique ptr and return it. </p><dl class="section return"><dt>Returns</dt><dd>the root node (the node deepest in the stack when this function was called) or nullptr if stack empty </dd></dl>
+
+</div>
+</div>
+<a id="aa40d918441c9cbc0b60bdcd39551164f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa40d918441c9cbc0b60bdcd39551164f">&sect;&nbsp;</a></span>resolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a>* theoria::config::ConfigBuilder::resolver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the head resolver of this builder's resolver chain. Normally variable resolution is taken care of automatically so this method not typically required. Useful for unit testing. </p><dl class="section return"><dt>Returns</dt><dd>the head resolver </dd></dl>
+
+</div>
+</div>
+<a id="a267121aec4f3c65ff88eb36d691ce509"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a267121aec4f3c65ff88eb36d691ce509">&sect;&nbsp;</a></span>setAttrName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setAttrName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>newName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change attributes name </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>current name </td></tr>
+    <tr><td class="paramname">newName</td><td>the new attribute name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af30b50a47285d06afae1b74edfb4d762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af30b50a47285d06afae1b74edfb4d762">&sect;&nbsp;</a></span>setAttrSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setAttrSource </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>variableName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>resolverName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change attribute's source to variable within resolver </p>
+
+</div>
+</div>
+<a id="a019902280637cd43d9a69acb678a5967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019902280637cd43d9a69acb678a5967">&sect;&nbsp;</a></span>setAttrType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setAttrType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>newType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change attributes type </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the attribute to change </td></tr>
+    <tr><td class="paramname">newType</td><td>the type name to change to (string, int, bool, double) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adcdd668ab4958497e7328b02ad8f8f83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdd668ab4958497e7328b02ad8f8f83">&sect;&nbsp;</a></span>setAttrValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setAttrValue </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>newValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change attributes value </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the attribute to change </td></tr>
+    <tr><td class="paramname">newValue</td><td>the value to change to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7aa67220439e90e9fa59082355c8186f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa67220439e90e9fa59082355c8186f">&sect;&nbsp;</a></span>setDesc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setDesc </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>desc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change the description of the node on the top of the stack </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desc</td><td>the new description for the node </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a19eea792ee2bc01c44806d2a5a9f666c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19eea792ee2bc01c44806d2a5a9f666c">&sect;&nbsp;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigBuilder::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change the name of the node on the top of the stack </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the new name for node </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aff25e4ada86baf419820b610a4707cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff25e4ada86baf419820b610a4707cbe">&sect;&nbsp;</a></span>setResolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void theoria::config::ConfigBuilder::setResolver </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html">ConfigVariableResolver</a> *&#160;</td>
+          <td class="paramname"><em>pResolver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the head resolver. Overwrites previous resolver </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pResolver</td><td>the new resolver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a394d42770a90532be340a8af46868f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a394d42770a90532be340a8af46868f79">&sect;&nbsp;</a></span>top()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtheoria_1_1config_1_1ConfigBuilder.html#a31d4cfc983e8ad468c483822731d790f">ConfigPtr</a> &amp; ConfigBuilder::top </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The node on top of the stack </p><dl class="section return"><dt>Returns</dt><dd>top node on the config stack </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if stack is empty </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/theoria/config/<a class="el" href="Builder_8h_source.html">Builder.h</a></li>
 <li>src/config/Builder.cpp</li>
@@ -146,7 +665,7 @@ const <a class="el" href="classtheoria_1_1config_1_1ConfigVariableResolver.html"
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 6 2016 18:38:05 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

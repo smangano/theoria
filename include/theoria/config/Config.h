@@ -31,6 +31,9 @@ class Config
 {
 protected:
 
+    /**
+     * Type of long text strings
+     */
     using Text = std::string ; //Placeholder for future Text class
 
     /**
@@ -38,9 +41,16 @@ protected:
      */
     struct Attr
     {
+
+        /**
+         * Constructor
+         */
         Attr(const std::string& name_, const std::string& value_, const std::string& type_ ="", const std::string& src_ = "literal"):
             name(name_), value(value_), type(type_), source(src_) {}
 
+        /**
+         * Quotes values of string type and returns others undecorated
+         */
         std::string decorated_val() const 
         {
             if (type == "string")
@@ -48,6 +58,9 @@ protected:
             return value ;
         }
 
+        /**
+         * Outputs as TOML name = value
+         */
         void toTOML(std::ostream& os) const {
             os << name  << " = " << decorated_val() ;
             if (source != "")
@@ -55,13 +68,36 @@ protected:
             os << "\n" ;
         }
 
+        /**
+         * Attr name
+         */
         std::string name ;    
+
+        /**
+         * Attr value
+         */
         std::string value ;   
+
+        /**
+         * Attr type, if specified
+         */
         std::string type ;    //optional indication of value's type
-        std::string source ;  //"literal" or if value was resolved from a variable then "variable[resolver]"
+
+        /**
+         * Source of the attributes value
+         * "literal" or if value was resolved from a variable then "variable[resolver]" 
+         */
+        std::string source ;  
     } ;
 
+    /**
+     * The type of container of attributes
+     */
     using Attrs = std::vector<Attr>  ;
+
+    /**
+     * The type of container of children
+     */
     using Children = std::vector<Config*> ;
 
  public:
@@ -256,7 +292,7 @@ protected:
     /**
      * Test to descriminate between a normal Config node and a ConfigArray (arry of nodes)
      * @return false as Config base is normal node 
-     * @See ConfigArray
+     * @see ConfigArray
      */
     virtual bool isArray() const ;
 
@@ -289,22 +325,53 @@ protected:
      * ability to mutate configs. 
      */
     friend class ConfigBuilder ; 
+
+    /**
+     * Constructor initailizing nae and description of config node
+     */
     Config(const std::string& name, const std::string& desc) ;
 
-    
+   
+    /**
+     * Adds an attribute to this config node
+     * @param name name of the attribute
+     * @param value value of the attribute
+     * @param type optional type of the attribute
+     */
     void addAttr(const std::string& name, const std::string& value, const std::string& type="") ;
+
+    /**
+     * Add a child config node.
+     * @param child the child to add
+     * @param allowDups true if nodes with duplicate naes are allowed
+     */
     void addChild(Config* child, bool allowDups=false) ;
 
+    /**
+     * Find attribute
+     */
     Attrs::iterator findAttr(const std::string& name) {
         return std::find_if(_attrs.begin(), _attrs.end(), [name](auto x) { return x.name == name; }) ;
     }  
  
+    /**
+     * End of attributes
+     */
     Attrs::iterator endAttr() {
         return _attrs.end() ;
     }
 
+    /**
+     * Set or change attribute's name
+     */
     void setName(const std::string& name) {_name = name;}
+
+    /**
+     * Set or change attribute's desc
+     */
     void setDesc(const std::string& desc) {_desc = desc;}
+
+protected:
 
     std::string _name ;
     Text _desc ; 
@@ -325,9 +392,18 @@ protected:
 class ConfigArray : public Config
 {
 public:
+
+    /**
+     * The type of iterator over elements of array
+     */
     using const_iterator = Children::const_iterator ;
 
+
+    /**
+     * TOML conversion for arrays
+     */
     virtual void toTOML(std::ostream& out) const ;
+
     /**
      * Returns true to indicate this is an array
      */
@@ -337,7 +413,7 @@ public:
      * Test if a node is in this array
      * @param elem the node to search for
      */
-    bool hasElement(const Config* elem) const {return find(_children.cbegin(), _children.cend(), child) != _children.cend();}
+    bool hasElement(const Config* elem) const {return find(_children.cbegin(), _children.cend(), elem) != _children.cend();}
 
     /**
      * Return the size of the array

@@ -1,13 +1,18 @@
 \hypertarget{classtheoria_1_1core_1_1Registry}{}\section{theoria\+:\+:core\+:\+:Registry Class Reference}
 \label{classtheoria_1_1core_1_1Registry}\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+
+
+{\ttfamily \#include $<$Registry.\+h$>$}
+
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}\label{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}} 
-using {\bfseries Factory\+Map\+\_\+iterator} = Factory\+Map\+::iterator
+using \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} = Factory\+Map\+::iterator
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtheoria_1_1core_1_1Registry_ac28e339aef39d9d97f1975623c8d8314}{$\sim$\+Registry} ()
 \item 
 void \hyperlink{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}{register\+Factory} (const Type\+Name \&type, Component\+Factory factory)
 \item 
@@ -19,83 +24,58 @@ void \hyperlink{classtheoria_1_1core_1_1Registry_aabfbd64902458b12cfd7bd20cf4008
 \item 
 \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ \hyperlink{classtheoria_1_1core_1_1Registry_a846b6ea01b2c4d3d1276796e9ef2b32b}{create\+Component} (const Type\+Name \&type, int allow\+\_\+ambiguity=true)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}\label{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}} 
-\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries create\+Component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
+\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ \hyperlink{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}{create\+Component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}\label{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}} 
-\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ {\bfseries create\+Component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep) noexcept
+\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ \hyperlink{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}{create\+Component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep) noexcept
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}\label{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}} 
-Factory\+Map\+\_\+iterator {\bfseries begin\+Fact} ()
+\hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}{begin\+Fact} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}\label{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}} 
-Factory\+Map\+\_\+iterator {\bfseries end\+Fact} ()
+\hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}{end\+Fact} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}\label{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}} 
-Factory\+Map\+\_\+iterator {\bfseries find\+Fact} (const Type\+Name \&type)
+\hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}{find\+Fact} (const Type\+Name \&type)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}\label{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}} 
-Factory\+Map\+\_\+iterator {\bfseries findfact} (Factory\+Map\+::iterator start, bool($\ast$predicate)(Factory\+Map\+::value\+\_\+type \&v))
+\hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}{findfact} (Factory\+Map\+::iterator start, bool($\ast$predicate)(Factory\+Map\+::value\+\_\+type \&v))
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}\label{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}} 
-\hyperlink{classtheoria_1_1util_1_1densemap_1_1Iter}{Component\+Map\+::iterator} {\bfseries begin\+Comp} ()
+\hyperlink{classtheoria_1_1util_1_1densemap_a4ee170442110252d3033534246f9677f}{Component\+Map\+::iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}{begin\+Comp} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}\label{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}} 
-\hyperlink{classtheoria_1_1util_1_1densemap_1_1Iter}{Component\+Map\+::iterator} {\bfseries end\+Comp} ()
+\hyperlink{classtheoria_1_1util_1_1densemap_a4ee170442110252d3033534246f9677f}{Component\+Map\+::iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}{end\+Comp} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a82497b1f2b7bf529b15633dfaf9bd1e6}\label{classtheoria_1_1core_1_1Registry_a82497b1f2b7bf529b15633dfaf9bd1e6}} 
-\hyperlink{classtheoria_1_1util_1_1densemap_1_1ConstIter}{Component\+Map\+::const\+\_\+iterator} {\bfseries begin\+Comp} () const
+\hyperlink{classtheoria_1_1util_1_1densemap_a8c2937f8e4ba47abf344d9f9f23f0c88}{Component\+Map\+::const\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a82497b1f2b7bf529b15633dfaf9bd1e6}{begin\+Comp} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a27b24a7a567677cb23aef0d3510b0a20}\label{classtheoria_1_1core_1_1Registry_a27b24a7a567677cb23aef0d3510b0a20}} 
-\hyperlink{classtheoria_1_1util_1_1densemap_1_1ConstIter}{Component\+Map\+::const\+\_\+iterator} {\bfseries end\+Comp} () const
+\hyperlink{classtheoria_1_1util_1_1densemap_a8c2937f8e4ba47abf344d9f9f23f0c88}{Component\+Map\+::const\+\_\+iterator} \hyperlink{classtheoria_1_1core_1_1Registry_a27b24a7a567677cb23aef0d3510b0a20}{end\+Comp} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a1c4d191d20916e4821bee32680a804e6}\label{classtheoria_1_1core_1_1Registry_a1c4d191d20916e4821bee32680a804e6}} 
-void {\bfseries dump} (std\+::ostream \&stream) const
+void \hyperlink{classtheoria_1_1core_1_1Registry_a1c4d191d20916e4821bee32680a804e6}{dump} (std\+::ostream \&stream) const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}\label{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}} 
-void {\bfseries reset} ()
+void \hyperlink{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}{reset} ()
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}\label{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}} 
-\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (Comp\+Id id)
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}{component} (Comp\+Id id)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}\label{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}} 
-\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const Type\+Name \&type)
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}{component} (const Type\+Name \&type)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}\label{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}} 
-\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}{component} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}\label{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}} 
-\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ {\bfseries component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep)
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}{component} (const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&dep)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}\label{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}} 
-{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (Comp\+Id id)
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ \hyperlink{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}{component\+As} (Comp\+Id id)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}\label{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}} 
-{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (const Type\+Name \&type)
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}{component\+As} (const Type\+Name \&type)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}\label{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}} 
-{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ {\bfseries component\+As} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ T $>$ \hyperlink{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}{component\+As} (const Type\+Name \&type, const Sub\+Type\+Name \&subtype)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac998e5555375fc21fd7ad6aa3b0a87da}\label{classtheoria_1_1core_1_1Registry_ac998e5555375fc21fd7ad6aa3b0a87da}} 
-const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& {\bfseries boot\+Config} () const
+const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& \hyperlink{classtheoria_1_1core_1_1Registry_ac998e5555375fc21fd7ad6aa3b0a87da}{boot\+Config} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a9d1514b8e21145742c0a850e00a90bf9}\label{classtheoria_1_1core_1_1Registry_a9d1514b8e21145742c0a850e00a90bf9}} 
-const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& {\bfseries app\+Config} () const
+const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& \hyperlink{classtheoria_1_1core_1_1Registry_a9d1514b8e21145742c0a850e00a90bf9}{app\+Config} () const
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}\label{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}} 
-std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ $>$ {\bfseries satisfy} (const \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} \&deps, Comp\+Id comp\+Id=-\/1)
+std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ $>$ \hyperlink{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}{satisfy} (const \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} \&deps, Comp\+Id comp\+Id=-\/1)
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}\label{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}} 
-void {\bfseries release} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$component)
+void \hyperlink{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}{release} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$\hyperlink{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}{component})
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}\label{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}} 
-void {\bfseries add\+Dep} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$from, \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$to)
+void \hyperlink{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}{add\+Dep} (\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$from, \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$to)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}\label{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}} 
-static \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} \& {\bfseries instance} ()
+static \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} \& \hyperlink{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}{instance} ()
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -105,11 +85,181 @@ class {\bfseries Theoria}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} manages \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} Compoents and their factories. It is the central mechanism that enables dependency injection as well as on demand access to components.
+
+The registry is the only Singleton within \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} and you can leverage it to avoid creating Singletons within your own application. 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}\label{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!Factory\+Map\+\_\+iterator@{Factory\+Map\+\_\+iterator}}
+\index{Factory\+Map\+\_\+iterator@{Factory\+Map\+\_\+iterator}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{Factory\+Map\+\_\+iterator}{FactoryMap\_iterator}}
+{\footnotesize\ttfamily using \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{theoria\+::core\+::\+Registry\+::\+Factory\+Map\+\_\+iterator} =  Factory\+Map\+::iterator}
+
+Type of iterator over component factories 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac28e339aef39d9d97f1975623c8d8314}\label{classtheoria_1_1core_1_1Registry_ac28e339aef39d9d97f1975623c8d8314}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!````~Registry@{$\sim$\+Registry}}
+\index{````~Registry@{$\sim$\+Registry}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{$\sim$\+Registry()}{~Registry()}}
+{\footnotesize\ttfamily Registry\+::$\sim$\+Registry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}\label{classtheoria_1_1core_1_1Registry_ad5ada88f383f823f983810b70f80d67b}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!add\+Dep@{add\+Dep}}
+\index{add\+Dep@{add\+Dep}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{add\+Dep()}{addDep()}}
+{\footnotesize\ttfamily void theoria\+::core\+::\+Registry\+::add\+Dep (\begin{DoxyParamCaption}\item[{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$}]{from,  }\item[{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+At the moment does nothing but reserved to allow dynamic dependency tracking in cases where dependencies are not fully known after initialization. For example, When builder components wire things up on their own \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a9d1514b8e21145742c0a850e00a90bf9}\label{classtheoria_1_1core_1_1Registry_a9d1514b8e21145742c0a850e00a90bf9}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!app\+Config@{app\+Config}}
+\index{app\+Config@{app\+Config}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{app\+Config()}{appConfig()}}
+{\footnotesize\ttfamily const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& Registry\+::app\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Access to the application config \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}\label{classtheoria_1_1core_1_1Registry_a18f0cf6b2c11daeac894231aabc2d6c3}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!begin\+Comp@{begin\+Comp}}
+\index{begin\+Comp@{begin\+Comp}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{begin\+Comp()}{beginComp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1densemap_a4ee170442110252d3033534246f9677f}{Component\+Map\+::iterator} theoria\+::core\+::\+Registry\+::begin\+Comp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Iterator to first component \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a82497b1f2b7bf529b15633dfaf9bd1e6}\label{classtheoria_1_1core_1_1Registry_a82497b1f2b7bf529b15633dfaf9bd1e6}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!begin\+Comp@{begin\+Comp}}
+\index{begin\+Comp@{begin\+Comp}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{begin\+Comp()}{beginComp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1densemap_a8c2937f8e4ba47abf344d9f9f23f0c88}{Component\+Map\+::const\+\_\+iterator} theoria\+::core\+::\+Registry\+::begin\+Comp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Iterator o first component (as const) \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}\label{classtheoria_1_1core_1_1Registry_a0a7c747a611355e212e026e128acd322}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!begin\+Fact@{begin\+Fact}}
+\index{begin\+Fact@{begin\+Fact}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{begin\+Fact()}{beginFact()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} Registry\+::begin\+Fact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Begin iterator over factories.
+
+Thread Safety\+: Requires Registry\+Lock() \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac998e5555375fc21fd7ad6aa3b0a87da}\label{classtheoria_1_1core_1_1Registry_ac998e5555375fc21fd7ad6aa3b0a87da}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!boot\+Config@{boot\+Config}}
+\index{boot\+Config@{boot\+Config}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{boot\+Config()}{bootConfig()}}
+{\footnotesize\ttfamily const \hyperlink{classtheoria_1_1config_1_1Config}{config\+::\+Config} \& Registry\+::boot\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Access to theoria bootstrap config \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}\label{classtheoria_1_1core_1_1Registry_a33f5edc42d5a194a7682bf0bf20cbf52}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component@{component}}
+\index{component@{component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component()}{component()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$\hyperlink{classtheoria_1_1core_1_1Component}{Component}$>$ theoria\+::core\+::\+Registry\+::component (\begin{DoxyParamCaption}\item[{Comp\+Id}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+If you know a component\textquotesingle{}s id then this is the fastest and safest way to access the component \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}\label{classtheoria_1_1core_1_1Registry_a7daaf0e52575c5dfbdb33c81953142f5}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component@{component}}
+\index{component@{component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component()}{component()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ Registry\+::component (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type }\end{DoxyParamCaption})}
+
+Return component with the specified type. If multiple subtypes exist it will return the first one it finds
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & the type name of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Maybe evaluates to true if found, false otherwise. Derfef $\ast$\+Maybe returns a reference to component or raises exception 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+$<$\hyperlink{Maybe_8h_source}{theoria/util/\+Maybe.\+h}$>$ for more behavior 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}\label{classtheoria_1_1core_1_1Registry_a5a3cafd6ebd46a88fb5afb877a4b04ad}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component@{component}}
+\index{component@{component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component()}{component()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ Registry\+::component (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type,  }\item[{const Sub\+Type\+Name \&}]{subtype }\end{DoxyParamCaption})}
+
+Return component with the specified type and subtype.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & the type name of the component \\
+\hline
+{\em subtype} & the subtype of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Maybe evaluates to true if found, false otherwise. Derfef $\ast$\+Maybe returns a reference to component or raises exception 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+$<$\hyperlink{Maybe_8h_source}{theoria/util/\+Maybe.\+h}$>$ for more behavior 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}\label{classtheoria_1_1core_1_1Registry_a535f463285f3232258573c4e8ae2d9f9}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component@{component}}
+\index{component@{component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component()}{component()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $>$ Registry\+::component (\begin{DoxyParamCaption}\item[{const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&}]{dep }\end{DoxyParamCaption})}
+
+Get a component that is suitable for satisfying dep
+
+
+\begin{DoxyParams}{Parameters}
+{\em dep} & a dependency \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a Maybe$<$\+T$>$ which is bound if the operation was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}\label{classtheoria_1_1core_1_1Registry_aea2d62c83c04fddd8959bed80c556ca3}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component\+As@{component\+As}}
+\index{component\+As@{component\+As}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component\+As()}{componentAs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$T$>$ theoria\+::core\+::\+Registry\+::component\+As (\begin{DoxyParamCaption}\item[{Comp\+Id}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get component as T via dynamic cast 
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a Maybe$<$\+T$>$ which is bound if the operation was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}\label{classtheoria_1_1core_1_1Registry_a90b05bb2e88d6bed56173d74e4e96802}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component\+As@{component\+As}}
+\index{component\+As@{component\+As}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component\+As()}{componentAs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$T$>$ theoria\+::core\+::\+Registry\+::component\+As (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get component as T via dynamic cast 
+\begin{DoxyParams}{Parameters}
+{\em type} & the type of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a Maybe$<$\+T$>$ which is bound if the operation was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}\label{classtheoria_1_1core_1_1Registry_a4140c9c7405974759ee43eb07a05a087}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!component\+As@{component\+As}}
+\index{component\+As@{component\+As}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{component\+As()}{componentAs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classtheoria_1_1util_1_1Maybe}{util\+::\+Maybe}$<$T$>$ theoria\+::core\+::\+Registry\+::component\+As (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type,  }\item[{const Sub\+Type\+Name \&}]{subtype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get component as T via dynamic cast 
+\begin{DoxyParams}{Parameters}
+{\em type} & the type of the component \\
+\hline
+{\em subtype} & of the compoent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a Maybe$<$\+T$>$ which is bound if the operation was successful 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a846b6ea01b2c4d3d1276796e9ef2b32b}\label{classtheoria_1_1core_1_1Registry_a846b6ea01b2c4d3d1276796e9ef2b32b}} 
 \index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!create\+Component@{create\+Component}}
 \index{create\+Component@{create\+Component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
-\subsubsection{\texorpdfstring{create\+Component()}{createComponent()}}
+\subsubsection{\texorpdfstring{create\+Component()}{createComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ Registry\+::create\+Component (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type,  }\item[{int}]{allow\+\_\+ambiguity = {\ttfamily true} }\end{DoxyParamCaption})}
 
 Create a component of the specified type. The following type resolution rules are used\+: 1) If there is only one factory for the specified type, use that. 2) If there are multiple factories and none has been used then use the default factory whose subtype==type 3) If there are multiple factories and none has been used and there is no default, use the first one (unless allow\+\_\+ambiguity is false) 4) If there are multiple factories use the first one that has already been used
@@ -121,7 +271,115 @@ Create a component of the specified type. The following type resolution rules ar
 {\em allow\+\_\+ambiguity} & if false treat case (3) above as ambiguous and raise an exception\\
 \hline
 \end{DoxyParams}
-std\+::runtime\+\_\+error if type not found \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}\label{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}} 
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if type not found \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}\label{classtheoria_1_1core_1_1Registry_a22ddcd3c1f46bd171cb9d704889a8a07}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!create\+Component@{create\+Component}}
+\index{create\+Component@{create\+Component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{create\+Component()}{createComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ Registry\+::create\+Component (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type,  }\item[{const Sub\+Type\+Name \&}]{subtype }\end{DoxyParamCaption})}
+
+Create a component of the specified type and subtype.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & the type name to use for look up (primary key) \\
+\hline
+{\em subtype} & the sub type name to use for look up (secondary key)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if factory for both type and subtype does not exist \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}\label{classtheoria_1_1core_1_1Registry_aab152e6e19be2b33f13bb82e77aca917}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!create\+Component@{create\+Component}}
+\index{create\+Component@{create\+Component}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{create\+Component()}{createComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ Registry\+::create\+Component (\begin{DoxyParamCaption}\item[{const \hyperlink{structtheoria_1_1core_1_1Dependencies_1_1Dependent}{Dependencies\+::\+Dependent} \&}]{dep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Create a component that could satisfy a dependency, if possible
+
+
+\begin{DoxyParams}{Parameters}
+{\em dep} & the dependency that needs to be satisfied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the component or nullptr if could not satisfy or otherwise failed to create 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a1c4d191d20916e4821bee32680a804e6}\label{classtheoria_1_1core_1_1Registry_a1c4d191d20916e4821bee32680a804e6}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!dump@{dump}}
+\index{dump@{dump}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily void Registry\+::dump (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption}) const}
+
+Dump the registry 
+\begin{DoxyParams}{Parameters}
+{\em stream} & destionation of dump \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}\label{classtheoria_1_1core_1_1Registry_a66ed200d29e49b9eb762a29f580c102a}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!end\+Comp@{end\+Comp}}
+\index{end\+Comp@{end\+Comp}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{end\+Comp()}{endComp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1densemap_a4ee170442110252d3033534246f9677f}{Component\+Map\+::iterator} theoria\+::core\+::\+Registry\+::end\+Comp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Iterator to {\itshape past-\/the-\/end} component \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a27b24a7a567677cb23aef0d3510b0a20}\label{classtheoria_1_1core_1_1Registry_a27b24a7a567677cb23aef0d3510b0a20}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!end\+Comp@{end\+Comp}}
+\index{end\+Comp@{end\+Comp}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{end\+Comp()}{endComp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1util_1_1densemap_a8c2937f8e4ba47abf344d9f9f23f0c88}{Component\+Map\+::const\+\_\+iterator} theoria\+::core\+::\+Registry\+::end\+Comp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Iterator to {\itshape past-\/the-\/end} component (as const) \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}\label{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!end\+Fact@{end\+Fact}}
+\index{end\+Fact@{end\+Fact}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{end\+Fact()}{endFact()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} Registry\+::end\+Fact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+End iterator over factories.
+
+Thread Safety\+: Requires Registry\+Lock() \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}\label{classtheoria_1_1core_1_1Registry_a54ee3016a6f14b3bedfecd3566caf0b5}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!find\+Fact@{find\+Fact}}
+\index{find\+Fact@{find\+Fact}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{find\+Fact()}{findFact()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} Registry\+::find\+Fact (\begin{DoxyParamCaption}\item[{const Type\+Name \&}]{type }\end{DoxyParamCaption})}
+
+Find factory by type. 
+\begin{DoxyParams}{Parameters}
+{\em type} & the type name to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+first entry for type or \hyperlink{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}{end\+Fact()}
+\end{DoxyReturn}
+Thread Safety\+: Requires Registry\+Lock() \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}\label{classtheoria_1_1core_1_1Registry_a044928d257bed09b8c288c41e5c95a26}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!findfact@{findfact}}
+\index{findfact@{findfact}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{findfact()}{findfact()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Registry_ae131721f32d396fad4d2d48b0438dca1}{Factory\+Map\+\_\+iterator} Registry\+::findfact (\begin{DoxyParamCaption}\item[{Factory\+Map\+::iterator}]{start,  }\item[{bool($\ast$)(Factory\+Map\+::value\+\_\+type \&v)}]{predicate }\end{DoxyParamCaption})}
+
+Find factory by predicate. 
+\begin{DoxyParams}{Parameters}
+{\em start} & where to start searching \\
+\hline
+{\em predicate} & test criteria \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+first entry at or after start that satisfies predicate or \hyperlink{classtheoria_1_1core_1_1Registry_ac88948c696663ae6f7ba3ece5c2fdcc9}{end\+Fact()}
+\end{DoxyReturn}
+Thread Safety\+: Requires Registry\+Lock() \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}\label{classtheoria_1_1core_1_1Registry_ac36dbf9ae74e19b9fe30f57910e3d93a}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!instance@{instance}}
+\index{instance@{instance}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} \& Registry\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Singleton accessor \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}\label{classtheoria_1_1core_1_1Registry_ac7cd0cefa7207f2f6c602723cc32ee49}} 
 \index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!register\+Factory@{register\+Factory}}
 \index{register\+Factory@{register\+Factory}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
 \subsubsection{\texorpdfstring{register\+Factory()}{registerFactory()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -149,6 +407,36 @@ Register the factory for components of type and subtype
 {\em factory} & the factory function \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}\label{classtheoria_1_1core_1_1Registry_adead32a72f8f70bac8f01645dc912720}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!release@{release}}
+\index{release@{release}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily void theoria\+::core\+::\+Registry\+::release (\begin{DoxyParamCaption}\item[{\hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$}]{component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+At the moment does nothing but reserved to allow resources to be freed when no longer needed \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}\label{classtheoria_1_1core_1_1Registry_af66ab76f6173d7e7c99a0c47dc2bfd70}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!reset@{reset}}
+\index{reset@{reset}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Registry\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Very dangerous. Only valid use-\/case is unit-\/testing. Wipes the entire state of the \hyperlink{classtheoria_1_1core_1_1Registry}{Registry} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}\label{classtheoria_1_1core_1_1Registry_aaa8dbdd7993478eea310fa111e36d40a}} 
+\index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!satisfy@{satisfy}}
+\index{satisfy@{satisfy}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}
+\subsubsection{\texorpdfstring{satisfy()}{satisfy()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classtheoria_1_1core_1_1Component}{Component} $\ast$ $>$ Registry\+::satisfy (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} \&}]{deps,  }\item[{Comp\+Id}]{comp\+Id = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+Satisfy dependencies as required by deps, creating components if necessary
+
+
+\begin{DoxyParams}{Parameters}
+{\em deps} & the dependencies to satisfy \\
+\hline
+{\em comp\+Id} & optional comp\+Id of requesting component. Used for informational purposes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the vector components which satisfy (possibly nullptr if could not satisfy) 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classtheoria_1_1core_1_1Registry_a07940fe9f04fa89130432610d02aa0df}\label{classtheoria_1_1core_1_1Registry_a07940fe9f04fa89130432610d02aa0df}} 
 \index{theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}!unregister\+Factory@{unregister\+Factory}}
 \index{unregister\+Factory@{unregister\+Factory}!theoria\+::core\+::\+Registry@{theoria\+::core\+::\+Registry}}

@@ -2,8 +2,11 @@
 \label{classtheoria_1_1core_1_1AppConfigResolver}\index{theoria\+::core\+::\+App\+Config\+Resolver@{theoria\+::core\+::\+App\+Config\+Resolver}}
 
 
-Inheritance diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:
-\nopagebreak
+{\ttfamily \#include $<$App\+Config\+Resolver.\+h$>$}
+
+
+
+Inheritance diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +15,7 @@ Inheritance diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:
 \end{figure}
 
 
-Collaboration diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:
-\nopagebreak
+Collaboration diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,22 +25,34 @@ Collaboration diagram for theoria\+:\+:core\+:\+:App\+Config\+Resolver\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classtheoria_1_1core_1_1AppConfigResolver_a7922df9559e63ccd91db5177224823fc}\label{classtheoria_1_1core_1_1AppConfigResolver_a7922df9559e63ccd91db5177224823fc}} 
-Result {\bfseries lookup} (const std\+::string \&\hyperlink{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}{name}) const override
+\hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} \hyperlink{classtheoria_1_1core_1_1AppConfigResolver_a7922df9559e63ccd91db5177224823fc}{lookup} (const std\+::string \&\hyperlink{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}{name}) const override
 \item 
 virtual std\+::string \hyperlink{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}{name} () const override
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+Resolve variables from your application\textquotesingle{}s config file at the top level or nested using dot notation\+: E.\+g., \$a.\+b 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtheoria_1_1core_1_1AppConfigResolver_a7922df9559e63ccd91db5177224823fc}\label{classtheoria_1_1core_1_1AppConfigResolver_a7922df9559e63ccd91db5177224823fc}} 
+\index{theoria\+::core\+::\+App\+Config\+Resolver@{theoria\+::core\+::\+App\+Config\+Resolver}!lookup@{lookup}}
+\index{lookup@{lookup}!theoria\+::core\+::\+App\+Config\+Resolver@{theoria\+::core\+::\+App\+Config\+Resolver}}
+\subsubsection{\texorpdfstring{lookup()}{lookup()}}
+{\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_af27a85262d802c9ad4ecb1179efaf447}{Result} App\+Config\+Resolver\+::lookup (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Look up name in app config 
+
+Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
+
 \mbox{\Hypertarget{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}\label{classtheoria_1_1core_1_1AppConfigResolver_ad7c8c08e622613c6505418774a71abda}} 
 \index{theoria\+::core\+::\+App\+Config\+Resolver@{theoria\+::core\+::\+App\+Config\+Resolver}!name@{name}}
 \index{name@{name}!theoria\+::core\+::\+App\+Config\+Resolver@{theoria\+::core\+::\+App\+Config\+Resolver}}
 \subsubsection{\texorpdfstring{name()}{name()}}
 {\footnotesize\ttfamily std\+::string App\+Config\+Resolver\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Return name of the resolver 
+Returns \char`\"{}\+App\+Config\+Resolver\char`\"{} 
 
 Implements \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver_a026bda729faf988eaef334a45ec92303}{theoria\+::config\+::\+Config\+Variable\+Resolver}.
 
