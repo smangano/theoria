@@ -13,11 +13,10 @@ int main(int argc, const char ** argv)
 
         core::Theoria theoria ;
         util::CommandLine cmdline(argc-1, &(argv[1])) ;
-        theoria.init() ;
 
         if (cmdline.hasSetting(OPTION_HELP[OPTS_IDX_NAME])) 
         {
-            if (cmdline.settingAsStr(OPTION_HELP[OPTS_IDX_NAME], "") != std::string())
+            if (cmdline.settingAsStr(OPTION_HELP[OPTS_IDX_NAME], "") != std::string("true"))
             {
                 theoria.help(cmdline.settingAsStr(OPTION_HELP[OPTS_IDX_NAME], "")) ;
             }
@@ -25,8 +24,11 @@ int main(int argc, const char ** argv)
             {
                 theoria.help() ;
             }
+            return 0 ;
         }
-        else
+
+        theoria.init() ;
+
         if (cmdline.hasSetting(OPTION_SHOW_CONFIG[OPTS_IDX_NAME]) || cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY[OPTS_IDX_NAME])) 
         {
             theoria.show_config(cmdline.hasSetting(OPTION_SHOW_CONFIG_ONLY[OPTS_IDX_NAME])) ;
