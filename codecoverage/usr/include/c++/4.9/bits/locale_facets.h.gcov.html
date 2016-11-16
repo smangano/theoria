@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -854,8 +854,8 @@
 <span class="lineNum">     792 </span>            :        *  @return  The uppercase char if convertible, else @a __c.
 <a name="793"><span class="lineNum">     793 </span>            :       */</a>
 <span class="lineNum">     794 </span>            :       char_type
-<span class="lineNum">     795 </span><span class="lineCov">         60 :       toupper(char_type __c) const</span>
-<span class="lineNum">     796 </span><span class="lineCov">         60 :       { return this-&gt;do_toupper(__c); }</span>
+<span class="lineNum">     795 </span><span class="lineCov">         90 :       toupper(char_type __c) const</span>
+<span class="lineNum">     796 </span><span class="lineCov">         90 :       { return this-&gt;do_toupper(__c); }</span>
 <span class="lineNum">     797 </span>            : 
 <span class="lineNum">     798 </span>            :       /**
 <span class="lineNum">     799 </span>            :        *  @brief  Convert array to uppercase.
@@ -2655,8 +2655,8 @@
 <span class="lineNum">    2593 </span>            :   /// Convenience interface to ctype.toupper(__c).
 <a name="2594"><span class="lineNum">    2594 </span>            :   template&lt;typename _CharT&gt;</a>
 <span class="lineNum">    2595 </span>            :     inline _CharT
-<span class="lineNum">    2596 </span><span class="lineCov">         60 :     toupper(_CharT __c, const locale&amp; __loc)</span>
-<span class="lineNum">    2597 </span><span class="lineCov">         60 :     { return use_facet&lt;ctype&lt;_CharT&gt; &gt;(__loc).toupper(__c); }</span>
+<span class="lineNum">    2596 </span><span class="lineCov">         90 :     toupper(_CharT __c, const locale&amp; __loc)</span>
+<span class="lineNum">    2597 </span><span class="lineCov">         90 :     { return use_facet&lt;ctype&lt;_CharT&gt; &gt;(__loc).toupper(__c); }</span>
 <span class="lineNum">    2598 </span>            : 
 <span class="lineNum">    2599 </span>            :   /// Convenience interface to ctype.tolower(__c).
 <span class="lineNum">    2600 </span>            :   template&lt;typename _CharT&gt;

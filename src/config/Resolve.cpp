@@ -158,6 +158,7 @@ TOMLResolver::TOMLResolver(std::istream& iss) :
 {
 }
 
+TOMLResolver::~TOMLResolver() {} 
 
 Result TOMLResolver::lookup(const std::string& name) const 
 {
@@ -166,7 +167,7 @@ Result TOMLResolver::lookup(const std::string& name) const
 
 std::string TOMLResolver::name() const 
 {
-    return "TOMLResolver:" ;
+    return _impl->name() ;
 }
 
 TOMLResolver::TOMLResolverImpl::TOMLResolverImpl(const std::string& tomlFilePath)
@@ -219,7 +220,7 @@ Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
 
         auto boolVal = base->as<bool>() ;
         if (boolVal) {
-            oss << boolVal->get() ;         
+            oss << (boolVal->get() ? "true" : "false") ;         
             return Result(this, oss.str()) ;
         }
 
@@ -233,7 +234,7 @@ Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
                 oss << "T" << std::setw(2) << dt.hour << ":" << std::setw(2)  << dt.minute << ":" << std::setw(2) 
                     << dt.second ;
                 if (dt.microsecond) 
-                    oss << std::setw(6) << dt.microsecond ;
+                    oss << "." << std::setw(6) << dt.microsecond ;
                 if (dt.hour_offset || dt.minute_offset) {
                     if (dt.hour_offset < 0) {
                         oss << "-" ;
@@ -254,6 +255,6 @@ Result TOMLResolver::TOMLResolverImpl::lookup(const std::string& name) const
 
 std::string TOMLResolver::TOMLResolverImpl::name() const 
 {
-    return "TOMLResolver:" ;
+    return "TOMLResolver" ;
 }
 

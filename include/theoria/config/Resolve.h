@@ -198,15 +198,19 @@ class TOMLResolver : public ConfigVariableResolver
 {
 public:
    
+    TOMLResolver() = delete ;
+
     /**
      * Use spefied TOLM file as source for resolver
      */
-    TOMLResolver(const std::string& tomlFilePath) ;
+    explicit TOMLResolver(const std::string& tomlFilePath) ;
 
     /**
      * Use TOLM  supplied by a stream as source for resolver. Typically a std::istringstream
      */
-    TOMLResolver(std::istream& is) ;
+    explicit TOMLResolver(std::istream& is) ;
+
+    ~TOMLResolver() ;
 
     /**
      * Implement look on the TOML representation
@@ -220,6 +224,7 @@ public:
 
 
 private:
+
 
     class TOMLResolverImpl ;
     using ImplPtr = std::unique_ptr<TOMLResolverImpl>  ;

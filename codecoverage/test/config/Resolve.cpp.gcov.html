@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">105</td>
-            <td class="headerCovTableEntry">105</td>
+            <td class="headerCovTableEntry">149</td>
+            <td class="headerCovTableEntry">149</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">57</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntryHi">93.4 %</td>
+            <td class="headerCovTableEntry">85</td>
+            <td class="headerCovTableEntry">90</td>
+            <td class="headerCovTableEntryHi">94.4 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -69,159 +69,229 @@
 <span class="lineNum">       7 </span>            : using namespace config ;
 <a name="8"><span class="lineNum">       8 </span>            : using namespace util ;</a>
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">         20 : class ResolveTestBase : public ::testing::Test</span>
+<span class="lineNum">      10 </span><span class="lineCov">         32 : class ResolveTestBase : public ::testing::Test</span>
 <span class="lineNum">      11 </span>            : {
 <a name="12"><span class="lineNum">      12 </span>            : protected:</a>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">         32 :    ConfigVariableResolver&amp; resolver() {return *_resolver;} </span>
+<span class="lineNum">      14 </span><span class="lineCov">         34 :    ConfigVariableResolver&amp; resolver() {return *_resolver;} </span>
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            :    ConfigVariableResolver*  _resolver ;
 <a name="17"><span class="lineNum">      17 </span>            : } ;</a>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">          4 : class EnvVarResolveTest  : public ResolveTestBase</span>
+<span class="lineNum">      19 </span><span class="lineCov">          6 : class EnvVarResolveTest  : public ResolveTestBase</span>
 <span class="lineNum">      20 </span>            : {
 <a name="21"><span class="lineNum">      21 </span>            : public:</a>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">          2 :     virtual void SetUp() {</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 :        _resolver = new EnvVarResolver() ;  </span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 :        putenv((char*)&quot;EnvVarResolveTest_1=1&quot;);</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :        putenv((char*)&quot;EnvVarResolveTest_2=Foo&quot;);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          3 :     virtual void SetUp() {</span>
+<span class="lineNum">      24 </span><span class="lineCov">          3 :        _resolver = new EnvVarResolver() ;  </span>
+<span class="lineNum">      25 </span><span class="lineCov">          3 :        putenv((char*)&quot;EnvVarResolveTest_1=1&quot;);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          3 :        putenv((char*)&quot;EnvVarResolveTest_2=Foo&quot;);</span>
 <span class="lineNum">      27 </span>            : 
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          2 :     }</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          3 :     }</span></a>
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">          2 :     virtual void TearDown() {</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 :         const ConfigVariableResolver* next = _resolver ;</span>
-<span class="lineNum">      32 </span><span class="lineCov">          6 :         while(next) {</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :             auto temp = next ;</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :             next = next-&gt;next() ;</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :             delete temp ;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 :     virtual void TearDown() {</span>
+<span class="lineNum">      31 </span><span class="lineCov">          3 :         const ConfigVariableResolver* next = _resolver ;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          9 :         while(next) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          3 :             auto temp = next ;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          3 :             next = next-&gt;next() ;</span>
+<span class="lineNum">      35 </span><span class="lineCov">          3 :             delete temp ;</span>
 <span class="lineNum">      36 </span>            :         }
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      39 </span>            : 
 <a name="40"><span class="lineNum">      40 </span>            : } ; </a>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">          5 : TEST_F(EnvVarResolveTest, ResolveFirstTest) {</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :     EXPECT_EQ(std::string(getenv(&quot;EnvVarResolveTest_1&quot;)), std::string(&quot;1&quot;)) ;</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), std::string(getenv(&quot;EnvVarResolveTest_1&quot;)));</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), std::string(getenv(&quot;EnvVarResolveTest_2&quot;)));</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineCov">          5 : TEST_F(EnvVarResolveTest, ResolveLastTest) {</span>
-<span class="lineNum">      49 </span><span class="lineCov">          1 :     EXPECT_EQ(std::string(getenv(&quot;EnvVarResolveTest_1&quot;)), std::string(&quot;1&quot;)) ;</span>
-<span class="lineNum">      50 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), getenv(&quot;EnvVarResolveTest_1&quot;));</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_2&quot;), getenv(&quot;EnvVarResolveTest_2&quot;));</span>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">          4 : class CmdLineResolverTest : public ResolveTestBase</span>
-<a name="55"><span class="lineNum">      55 </span>            : {</a>
+<span class="lineNum">      42 </span><span class="lineCov">          5 : TEST_F(EnvVarResolveTest, Name) {</span>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().name(), &quot;EnvVarResolver&quot;);</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          5 : TEST_F(EnvVarResolveTest, ResolveFirstTest) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 :     EXPECT_EQ(std::string(getenv(&quot;EnvVarResolveTest_1&quot;)), std::string(&quot;1&quot;)) ;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), std::string(getenv(&quot;EnvVarResolveTest_1&quot;)));</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), std::string(getenv(&quot;EnvVarResolveTest_2&quot;)));</span>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span><span class="lineCov">          5 : TEST_F(EnvVarResolveTest, ResolveLastTest) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :     EXPECT_EQ(std::string(getenv(&quot;EnvVarResolveTest_1&quot;)), std::string(&quot;1&quot;)) ;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), getenv(&quot;EnvVarResolveTest_1&quot;));</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_2&quot;), getenv(&quot;EnvVarResolveTest_2&quot;));</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">          2 :     virtual void SetUp() {</span>
-<span class="lineNum">      58 </span><span class="lineCov">          2 :         bool allowMissingConfig = true ;</span>
-<span class="lineNum">      59 </span><span class="lineCov">          2 :         const char * argv[] = {&quot;dummy&quot;, &quot;--&quot;, &quot;test1=1&quot;, &quot;testFoo=foo&quot;} ;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          2 :         _cl.reset(new CommandLine(4, argv, allowMissingConfig )) ;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          2 :         _resolver = new CmdLineResolver() ; </span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          2 :     }</span></a>
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">          2 :     virtual void TearDown() {</span>
-<span class="lineNum">      65 </span><span class="lineCov">          2 :         const ConfigVariableResolver* next = _resolver ;</span>
-<span class="lineNum">      66 </span><span class="lineCov">          6 :         while(next) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">          2 :             auto temp = next ;</span>
-<span class="lineNum">      68 </span><span class="lineCov">          2 :             next = next-&gt;next() ;</span>
-<span class="lineNum">      69 </span><span class="lineCov">          2 :             delete temp ;</span>
-<span class="lineNum">      70 </span>            :         }
-<span class="lineNum">      71 </span><span class="lineCov">          2 :         _cl.reset() ;</span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 :         CommandLine::reset() ;</span>
-<span class="lineNum">      73 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span>            : private:
-<span class="lineNum">      76 </span>            :     std::unique_ptr&lt;CommandLine&gt; _cl ;
-<span class="lineNum">      77 </span>            : };
-<a name="78"><span class="lineNum">      78 </span>            : </a>
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">          5 : TEST_F(CmdLineResolverTest, ResolveFirstTest) {</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineCov">          5 : TEST_F(CmdLineResolverTest, ResolveLastTest) {</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;foo&quot;);</span>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      89 </span>            : 
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         12 : class ChainedResolverTest : public ResolveTestBase</span></a>
-<span class="lineNum">      91 </span>            : {
-<span class="lineNum">      92 </span><span class="lineCov">          6 :     virtual void SetUp() {</span>
-<span class="lineNum">      93 </span><span class="lineCov">          6 :         putenv((char*)&quot;EnvVarResolveTest_1=1&quot;);</span>
-<span class="lineNum">      94 </span><span class="lineCov">          6 :         putenv((char*)&quot;EnvVarResolveTest_2=Foo&quot;);</span>
-<span class="lineNum">      95 </span><span class="lineCov">          6 :         putenv((char*)&quot;testFoo=NotFoo&quot;);</span>
-<span class="lineNum">      96 </span><span class="lineCov">          6 :         bool allowMissingConfig = true ;</span>
-<span class="lineNum">      97 </span><span class="lineCov">          6 :         const char * argv[] = {&quot;dummy&quot;, &quot;--&quot;, &quot;test1=1&quot;, &quot;testFoo=foo&quot;} ;</span>
-<span class="lineNum">      98 </span><span class="lineCov">          6 :         _cl.reset(new CommandLine(4, argv, allowMissingConfig )) ;</span>
-<span class="lineNum">      99 </span><span class="lineCov">          6 :         _resolver = new CmdLineResolver() ; </span>
-<span class="lineNum">     100 </span><span class="lineCov">          6 :         _resolver-&gt;append(new EnvVarResolver()) ;</span>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          6 :     }</span></a>
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span><span class="lineCov">          6 :     virtual void TearDown() {</span>
-<span class="lineNum">     104 </span><span class="lineCov">          6 :         const ConfigVariableResolver* next = _resolver ;</span>
-<span class="lineNum">     105 </span><span class="lineCov">         28 :         while(next) {</span>
-<span class="lineNum">     106 </span><span class="lineCov">         16 :             auto temp = next ;</span>
-<span class="lineNum">     107 </span><span class="lineCov">         16 :             next = next-&gt;next() ;</span>
-<span class="lineNum">     108 </span><span class="lineCov">         16 :             delete temp ;</span>
-<span class="lineNum">     109 </span>            :         }
-<span class="lineNum">     110 </span><span class="lineCov">          6 :         _cl.reset() ;</span>
-<span class="lineNum">     111 </span><span class="lineCov">          6 :         CommandLine::reset() ;</span>
-<span class="lineNum">     112 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span>            : private:
-<span class="lineNum">     115 </span>            :     std::unique_ptr&lt;CommandLine&gt; _cl ;
-<a name="116"><span class="lineNum">     116 </span>            : };</a>
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTest) {</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     122 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
-<span class="lineNum">     123 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTest) {</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     130 </span>            :     //This is key because testFoo is in both resolvers but EnvVarResolver is last in the chain
-<span class="lineNum">     131 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;NotFoo&quot;);</span>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTestWithDissallow) {</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :     resolver().append(new DisallowResolver()) ;</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     139 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
-<span class="lineNum">     140 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTestWithDisallow) {</span>
-<span class="lineNum">     144 </span><span class="lineCov">          1 :     resolver().append(new DisallowResolver()) ;</span>
-<span class="lineNum">     145 </span><span class="lineCov">          2 :     EXPECT_THROW(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), std::runtime_error);</span>
-<span class="lineNum">     146 </span><span class="lineCov">          2 :     EXPECT_THROW(resolver().resolve(&quot;$$testFoo&quot;), std::runtime_error);</span>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTestWithDisable) {</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 :     resolver().append(new DisableResolver()) ;</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
-<span class="lineNum">     154 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
-<span class="lineNum">     155 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          6 : class CmdLineResolverTest : public ResolveTestBase</span>
+<a name="58"><span class="lineNum">      58 </span>            : {</a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineCov">          3 :     virtual void SetUp() {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          3 :         bool allowMissingConfig = true ;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :         const char * argv[] = {&quot;dummy&quot;, &quot;--&quot;, &quot;test1=1&quot;, &quot;testFoo=foo&quot;} ;</span>
+<span class="lineNum">      63 </span><span class="lineCov">          3 :         _cl.reset(new CommandLine(4, argv, allowMissingConfig )) ;</span>
+<span class="lineNum">      64 </span><span class="lineCov">          3 :         _resolver = new CmdLineResolver() ; </span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          3 :     }</span></a>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">          3 :     virtual void TearDown() {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 :         const ConfigVariableResolver* next = _resolver ;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          9 :         while(next) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 :             auto temp = next ;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          3 :             next = next-&gt;next() ;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 :             delete temp ;</span>
+<span class="lineNum">      73 </span>            :         }
+<span class="lineNum">      74 </span><span class="lineCov">          3 :         _cl.reset() ;</span>
+<span class="lineNum">      75 </span><span class="lineCov">          3 :         CommandLine::reset() ;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : private:
+<span class="lineNum">      79 </span>            :     std::unique_ptr&lt;CommandLine&gt; _cl ;
+<span class="lineNum">      80 </span>            : };
+<a name="81"><span class="lineNum">      81 </span>            : </a>
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span><span class="lineCov">          5 : TEST_F(CmdLineResolverTest, Name) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().name(), &quot;CmdLineResolver&quot;);</span>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span><span class="lineCov">          5 : TEST_F(CmdLineResolverTest, ResolveFirstTest) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineCov">          5 : TEST_F(CmdLineResolverTest, ResolveLastTest) {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;foo&quot;);</span>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      96 </span>            : 
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">         12 : class ChainedResolverTest : public ResolveTestBase</span></a>
+<span class="lineNum">      98 </span>            : {
+<span class="lineNum">      99 </span><span class="lineCov">          6 :     virtual void SetUp() {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          6 :         putenv((char*)&quot;EnvVarResolveTest_1=1&quot;);</span>
+<span class="lineNum">     101 </span><span class="lineCov">          6 :         putenv((char*)&quot;EnvVarResolveTest_2=Foo&quot;);</span>
+<span class="lineNum">     102 </span><span class="lineCov">          6 :         putenv((char*)&quot;testFoo=NotFoo&quot;);</span>
+<span class="lineNum">     103 </span><span class="lineCov">          6 :         bool allowMissingConfig = true ;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          6 :         const char * argv[] = {&quot;dummy&quot;, &quot;--&quot;, &quot;test1=1&quot;, &quot;testFoo=foo&quot;} ;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          6 :         _cl.reset(new CommandLine(4, argv, allowMissingConfig )) ;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          6 :         _resolver = new CmdLineResolver() ; </span>
+<span class="lineNum">     107 </span><span class="lineCov">          6 :         _resolver-&gt;append(new EnvVarResolver()) ;</span>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          6 :     }</span></a>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineCov">          6 :     virtual void TearDown() {</span>
+<span class="lineNum">     111 </span><span class="lineCov">          6 :         const ConfigVariableResolver* next = _resolver ;</span>
+<span class="lineNum">     112 </span><span class="lineCov">         28 :         while(next) {</span>
+<span class="lineNum">     113 </span><span class="lineCov">         16 :             auto temp = next ;</span>
+<span class="lineNum">     114 </span><span class="lineCov">         16 :             next = next-&gt;next() ;</span>
+<span class="lineNum">     115 </span><span class="lineCov">         16 :             delete temp ;</span>
+<span class="lineNum">     116 </span>            :         }
+<span class="lineNum">     117 </span><span class="lineCov">          6 :         _cl.reset() ;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          6 :         CommandLine::reset() ;</span>
+<span class="lineNum">     119 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : private:
+<span class="lineNum">     122 </span>            :     std::unique_ptr&lt;CommandLine&gt; _cl ;
+<a name="123"><span class="lineNum">     123 </span>            : };</a>
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTest) {</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     129 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTest) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     137 </span>            :     //This is key because testFoo is in both resolvers but EnvVarResolver is last in the chain
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;NotFoo&quot;);</span>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTestWithDissallow) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     auto disallow = new DisallowResolver() ;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     EXPECT_EQ(disallow-&gt;name(), &quot;DisallowResolver&quot;) ;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     resolver().append(disallow) ;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     148 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTestWithDisallow) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :     resolver().append(new DisallowResolver()) ;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          2 :     EXPECT_THROW(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), std::runtime_error);</span>
+<span class="lineNum">     155 </span><span class="lineCov">          2 :     EXPECT_THROW(resolver().resolve(&quot;$$testFoo&quot;), std::runtime_error);</span>
 <a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTestWithDisable) {</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 :     resolver().append(new DisableResolver()) ;</span>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), &quot;EnvVarResolveTest_1&quot;);</span></a>
-<span class="lineNum">     161 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;testFoo&quot;);</span>
-<span class="lineNum">     162 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveFirstTestWithDisable) {</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     auto disable = new DisableResolver() ;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     EXPECT_EQ(disable-&gt;name(), &quot;DisableResolver&quot;) ;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     resolver().append(disable) ;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$EnvVarResolveTest_2&quot;), &quot;Foo&quot;);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$test1&quot;), &quot;1&quot;);</span>
+<span class="lineNum">     165 </span>            :     //This is key because testFoo is in both resolvers but CmdLineResolver is first in the chain
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$testFoo&quot;), &quot;foo&quot;);</span>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span><span class="lineCov">          5 : TEST_F(ChainedResolverTest, ResolveLastTestWithDisable) {</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     resolver().append(new DisableResolver()) ;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$EnvVarResolveTest_1&quot;), &quot;EnvVarResolveTest_1&quot;);</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     EXPECT_EQ(resolver().resolve(&quot;$$testFoo&quot;), &quot;testFoo&quot;);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     174 </span>            : 
+<span class="lineNum">     175 </span>            : static const char * TOML = \
+<span class="lineNum">     176 </span>            : R&quot;(
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            :     name1 = 10 
+<span class="lineNum">     179 </span>            :     name2 = 20 
+<span class="lineNum">     180 </span>            :     name3 = 3.1415
+<span class="lineNum">     181 </span>            :     name4 = true
+<span class="lineNum">     182 </span>            :     dateTime = 2000-01-01T00:00:00.000100Z
+<span class="lineNum">     183 </span>            :     [table1]
+<span class="lineNum">     184 </span>            :     name1 = 11
+<span class="lineNum">     185 </span>            :     name2 = 21
+<span class="lineNum">     186 </span>            :     name3 = &quot;3.1415&quot;
+<span class="lineNum">     187 </span>            :     name4 = false
+<span class="lineNum">     188 </span>            :     endofworld = 2016-11-08T23:50:50-05:00
+<a name="189"><span class="lineNum">     189 </span>            : )&quot; ;</a>
+<span class="lineNum">     190 </span>            : 
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          8 : class TOMLResolverTest : public ResolveTestBase</span></a>
+<span class="lineNum">     192 </span>            : {
+<span class="lineNum">     193 </span><span class="lineCov">          4 :     virtual void SetUp() {</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineCov">          4 :         std::istringstream iss(TOML) ;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          4 :         _resolver = new TOMLResolver(iss) ; </span>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          4 :     }</span></a>
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span><span class="lineCov">          4 :     virtual void TearDown() {</span>
+<span class="lineNum">     200 </span><span class="lineCov">          4 :         delete _resolver ;</span>
+<span class="lineNum">     201 </span><span class="lineCov">          4 :     }</span>
+<a name="202"><span class="lineNum">     202 </span>            : };</a>
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span><span class="lineCov">          5 : TEST_F(TOMLResolverTest, Name) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;name() , &quot;TOMLResolver&quot;) ;</span>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span><span class="lineCov">          5 : TEST_F(TOMLResolverTest, ResolveFirst) {</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$name1&quot;) , &quot;10&quot;) ;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$name2&quot;) , &quot;20&quot;) ;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$name3&quot;) , &quot;3.1415&quot;) ;</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$name4&quot;) , &quot;true&quot;) ;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$dateTime&quot;) , &quot;2000-01-01T00:00:00.000100&quot;) ;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$table1.name1&quot;) , &quot;11&quot;) ;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$table1.name2&quot;) , &quot;21&quot;) ;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$table1.name3&quot;) , &quot;3.1415&quot;) ;</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$table1.name4&quot;) , &quot;false&quot;) ;</span>
+<span class="lineNum">     218 </span><span class="lineCov">          1 :     EXPECT_EQ(_resolver-&gt;resolve(&quot;$table1.endofworld&quot;) , &quot;2016-11-08T23:50:50-05:00&quot;) ;</span>
+<span class="lineNum">     219 </span><span class="lineCov">          2 :     EXPECT_THROW(_resolver-&gt;resolve(&quot;$&quot;), std::runtime_error) ;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          2 :     EXPECT_THROW(_resolver-&gt;resolve(&quot;&quot;), std::runtime_error) ;</span>
+<span class="lineNum">     221 </span><span class="lineCov">          2 :     EXPECT_THROW(_resolver-&gt;resolve(&quot;_&quot;), std::runtime_error) ;</span>
+<span class="lineNum">     222 </span><span class="lineCov">          2 :     EXPECT_THROW(_resolver-&gt;resolve(&quot;name1&quot;), std::runtime_error) ;</span>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span><span class="lineCov">          5 : TEST_F(TOMLResolverTest, BadTOML) {</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     std::istringstream iss(&quot;blah-1&quot;) ;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          2 :     EXPECT_THROW(TOMLResolver {iss}, std::runtime_error) ; </span>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     229 </span>            : 
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          5 : TEST_F(TOMLResolverTest, BadTOMLFile) {</span></a>
+<span class="lineNum">     231 </span><span class="lineCov">          2 :     EXPECT_THROW( TOMLResolver(&quot;blah.toml&quot;), std::runtime_error) ; </span>
+<span class="lineNum">     232 </span><span class="lineCov">          4 : }</span>
 </pre>
       </td>
     </tr>

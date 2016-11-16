@@ -51,6 +51,18 @@ TEST_F(CommandLineTest, ConfigFileOnlyDashDash) {
 }
 
 TEST_F(CommandLineTest, ConfigFileAndOneBareSetting) {
+    const char * args[3] ;
+    args[0] = "--foo" ;
+    args[1] = "--" ;
+    args[2] = config_file_name ;
+    CommandLine cl(3, args) ;
+    ASSERT_EQ(&CommandLine::instance(), &cl) ;
+    ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;
+    ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;
+    ASSERT_TRUE(CommandLine::instance().hasSetting("foo")) ;
+}
+
+TEST_F(CommandLineTest, ConfigFileAndOneBareUserSetting) {
     const char * args[2] ;
     args[0] = config_file_name ;
     args[1] = "--foo" ;
@@ -62,6 +74,19 @@ TEST_F(CommandLineTest, ConfigFileAndOneBareSetting) {
 }
 
 TEST_F(CommandLineTest, ConfigFileAndOneSetting) {
+    const char * args[3] ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    args[2] = config_file_name ;
+    CommandLine cl(3, args) ;
+    ASSERT_EQ(&CommandLine::instance(), &cl) ;
+    ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;
+    ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;
+    ASSERT_TRUE(CommandLine::instance().hasSetting("foo")) ;
+    ASSERT_EQ(CommandLine::instance().settingAsInt("foo", 0), 10) ;
+}
+
+TEST_F(CommandLineTest, ConfigFileAndOneUserSetting) {
     const char * args[3] ;
     args[0] = config_file_name ;
     args[1] = "--foo" ;
@@ -75,6 +100,21 @@ TEST_F(CommandLineTest, ConfigFileAndOneSetting) {
 }
 
 TEST_F(CommandLineTest, ConfigFileAndOneSettingDashDash) {
+    const char * args[4] ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    args[2] = "--" ;
+    args[3] = config_file_name ;
+    CommandLine cl(4, args) ;
+    ASSERT_EQ(&CommandLine::instance(), &cl) ;
+    ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;
+    ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;
+    ASSERT_TRUE(CommandLine::instance().hasSetting("foo")) ;
+    ASSERT_EQ(CommandLine::instance().settingAsInt("foo", 0), 10) ;
+    ASSERT_EQ(CommandLine::instance().numSettings(), 1) ;
+}
+
+TEST_F(CommandLineTest, ConfigFileAndOneUserSettingDashDash) {
     const char * args[4] ;
     args[0] = config_file_name ;
     args[1] = "--foo" ;
@@ -90,6 +130,25 @@ TEST_F(CommandLineTest, ConfigFileAndOneSettingDashDash) {
 }
 
 TEST_F(CommandLineTest, ConfigFileAndMixedSettings) {
+    const char * args[6] ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    args[2] = "--bar" ;
+    args[3] = "--baz" ;
+    args[4] = "3.14" ;
+    args[5] = config_file_name ;
+    CommandLine cl(6, args) ;
+    ASSERT_EQ(&CommandLine::instance(), &cl) ;
+    ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;
+    ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;
+    ASSERT_TRUE(CommandLine::instance().hasSetting("foo")) ;
+    ASSERT_EQ(CommandLine::instance().settingAsInt("foo", 0), 10) ;
+    ASSERT_EQ(CommandLine::instance().settingAsBool("bar", false), true) ;
+    ASSERT_EQ(CommandLine::instance().settingAsDbl("baz", 0), 3.14) ;
+    ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;
+}
+
+TEST_F(CommandLineTest, ConfigFileAndMixedUserSettings) {
     const char * args[6] ;
     args[0] = config_file_name ;
     args[1] = "--foo" ;
@@ -110,13 +169,13 @@ TEST_F(CommandLineTest, ConfigFileAndMixedSettings) {
 
 TEST_F(CommandLineTest, ConfigFileAndMixedSettingsDashDash) {
     const char * args[7] ;
-    args[0] = config_file_name ;
-    args[1] = "--foo" ;
-    args[2] = "10" ;
-    args[3] = "--bar" ;
-    args[4] = "--baz" ;
-    args[5] = "3.14" ;
-    args[6] = "--" ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    args[2] = "--bar" ;
+    args[3] = "--baz" ;
+    args[4] = "3.14" ;
+    args[5] = "--" ;
+    args[6] = config_file_name ;
     CommandLine cl(7, args) ;
     ASSERT_EQ(&CommandLine::instance(), &cl) ;
     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;
@@ -158,7 +217,7 @@ TEST_F(CommandLineTest, ConfigFileNoSettingsMixedVars) {
     ASSERT_EQ(CommandLine::instance().variableAsStr("c", ""), "hello") ;
 }
 
-TEST_F(CommandLineTest, ConfigFileAndMixedSettingsAndVariables) {
+TEST_F(CommandLineTest, ConfigFileAndMixedUserSettingsAndVariables) {
     const char * args[10] ;
     args[0] = config_file_name ;
     args[1] = "--foo" ;
@@ -169,7 +228,7 @@ TEST_F(CommandLineTest, ConfigFileAndMixedSettingsAndVariables) {
     args[6] = "--" ;
     args[7] = "a=10" ;
     args[8] = "b=3.14" ;
-    args[9] = "c=hello" ;
+    args[9] = "c=true" ;
     CommandLine cl(10, args) ;
     ASSERT_EQ(&CommandLine::instance(), &cl) ;
     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;
@@ -180,7 +239,7 @@ TEST_F(CommandLineTest, ConfigFileAndMixedSettingsAndVariables) {
     ASSERT_EQ(CommandLine::instance().numVars(), 3) ;
     ASSERT_EQ(CommandLine::instance().variableAsInt("a", 0), 10) ;
     ASSERT_EQ(CommandLine::instance().variableAsDbl("b", 0), 3.14) ;
-    ASSERT_EQ(CommandLine::instance().variableAsStr("c", ""), "hello") ;
+    ASSERT_EQ(CommandLine::instance().variableAsBool("c", false), true) ;
 }
 
 TEST_F(CommandLineTest, SettingAsPtr) {
@@ -247,4 +306,66 @@ TEST_F(CommandLineTest, SettingAsBool) {
     ASSERT_EQ(CommandLine::instance().settingAsBool("baz", false), true) ;
     ASSERT_EQ(CommandLine::instance().settingAsBool("bing", true),  false) ;
     ASSERT_THROW(CommandLine::instance().settingAsBool("bam", false),  std::runtime_error) ;
+}
+
+TEST_F(CommandLineTest, HelpOnly) {
+    const char * args[1] ;
+    args[0] = "--help" ;
+    CommandLine cl(1, args) ;
+    ASSERT_EQ(CommandLine::instance().settingAsBool("help", false), true) ;
+}
+
+TEST_F(CommandLineTest, HelpSetting) {
+    const char * args[2] ;
+    args[0] = "--help" ;
+    args[1] = "setting1" ;
+    CommandLine cl(2, args) ;
+    ASSERT_EQ(CommandLine::instance().settingAsStr("help", ""), "setting1") ;
+}
+
+
+TEST_F(CommandLineTest, DupUserSetting) {
+    const char * args[4] ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    args[2] = config_file_name ;
+    args[3] = "--foo" ;
+    ASSERT_THROW(CommandLine(4, args), std::runtime_error) ;
+}
+
+TEST_F(CommandLineTest, NoConfig) {
+    const char * args[2] ;
+    args[0] = "--foo" ;
+    args[1] = "10" ;
+    ASSERT_THROW(CommandLine(2, args), std::runtime_error) ;
+}
+
+TEST_F(CommandLineTest, ConfigFileSettingsAfterVariables) {
+    const char * args[10] ;
+    args[0] = config_file_name ;
+    args[1] = "--foo" ;
+    args[2] = "10" ;
+    args[3] = "--bar" ;
+    args[4] = "--baz" ;
+    args[5] = "3.14" ;
+    args[6] = "--" ;
+    args[7] = "a=10" ;
+    args[8] = "b=3.14" ;
+    args[9] = "--what" ;
+    ASSERT_THROW(CommandLine(10, args), std::runtime_error) ; 
+}
+TEST_F(CommandLineTest, BadVariable) {
+    const char * args[10] ;
+    args[0] = config_file_name ;
+    args[1] = "--foo" ;
+    args[2] = "10" ;
+    args[3] = "--" ;
+    args[4] = "10=10" ;
+    ASSERT_THROW(CommandLine(5, args), std::runtime_error) ; 
+}
+
+TEST_F(CommandLineTest, MissingConfigFile) {
+    const char * args[1] ;
+    args[0] = "blah.blah" ;
+    ASSERT_THROW(CommandLine(1, args), std::runtime_error) ;
 }

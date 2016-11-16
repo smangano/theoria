@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -158,8 +158,8 @@
 <span class="lineNum">      96 </span>            : 
 <a name="97"><span class="lineNum">      97 </span>            :     /** Returns an @e implementation-defined byte string; this is not</a>
 <span class="lineNum">      98 </span>            :      *  portable between compilers!  */
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     const char* name() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     { return __name[0] == '*' ? __name + 1 : __name; }</span>
+<span class="lineNum">      99 </span><span class="lineCov">          4 :     const char* name() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     100 </span><span class="lineCov">          4 :     { return __name[0] == '*' ? __name + 1 : __name; }</span>
 <span class="lineNum">     101 </span>            : 
 <span class="lineNum">     102 </span>            : #if !__GXX_TYPEINFO_EQUALITY_INLINE
 <span class="lineNum">     103 </span>            :     // In old abi, or when weak symbols are not supported, there can
@@ -179,11 +179,11 @@
 <span class="lineNum">     117 </span>            :         ? __name &lt; __arg.__name
 <a name="118"><span class="lineNum">     118 </span>            :         : __builtin_strcmp (__name, __arg.__name) &lt; 0; }</a>
 <span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     bool operator==(const type_info&amp; __arg) const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     120 </span><span class="lineCov">        191 :     bool operator==(const type_info&amp; __arg) const _GLIBCXX_NOEXCEPT</span>
 <span class="lineNum">     121 </span>            :     {
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :       return ((__name == __arg.__name)</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :               || (__name[0] != '*' &amp;&amp;</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :                   __builtin_strcmp (__name, __arg.__name) == 0));</span>
+<span class="lineNum">     122 </span><span class="lineCov">        191 :       return ((__name == __arg.__name)</span>
+<span class="lineNum">     123 </span><span class="lineCov">        193 :               || (__name[0] != '*' &amp;&amp;</span>
+<span class="lineNum">     124 </span><span class="lineCov">        193 :                   __builtin_strcmp (__name, __arg.__name) == 0));</span>
 <span class="lineNum">     125 </span>            :     }
 <span class="lineNum">     126 </span>            :   #else
 <span class="lineNum">     127 </span>            :     // On some targets we can rely on type_info's NTBS being unique,

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">188</td>
-            <td class="headerCovTableEntry">188</td>
+            <td class="headerCovTableEntry">276</td>
+            <td class="headerCovTableEntry">276</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-07 04:22:37</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntry">71</td>
-            <td class="headerCovTableEntryHi">98.6 %</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntry">115</td>
+            <td class="headerCovTableEntryHi">99.1 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -68,17 +68,17 @@
 <span class="lineNum">       6 </span>            : using namespace theoria ;
 <a name="7"><span class="lineNum">       7 </span>            : using namespace theoria::util ;</a>
 <span class="lineNum">       8 </span>            : 
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">         32 : class CommandLineTest : public ::testing::Test </span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">         54 : class CommandLineTest : public ::testing::Test </span></a>
 <span class="lineNum">      10 </span>            : {
-<span class="lineNum">      11 </span><span class="lineCov">         16 :     virtual void SetUp() {</span>
-<span class="lineNum">      12 </span><span class="lineCov">         16 :        tmpnam(config_file_name) ;</span>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">         16 :        config_file = fopen(config_file_name, &quot;w+&quot;) ; </span></a>
-<span class="lineNum">      14 </span><span class="lineCov">         16 :     }</span>
-<span class="lineNum">      15 </span><span class="lineCov">         16 :     virtual void TearDown() {</span>
-<span class="lineNum">      16 </span><span class="lineCov">         16 :         CommandLine::reset() ;</span>
-<span class="lineNum">      17 </span><span class="lineCov">         16 :         fclose(config_file) ;</span>
-<span class="lineNum">      18 </span><span class="lineCov">         16 :         remove(config_file_name) ;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         16 :     }</span>
+<span class="lineNum">      11 </span><span class="lineCov">         27 :     virtual void SetUp() {</span>
+<span class="lineNum">      12 </span><span class="lineCov">         27 :        tmpnam(config_file_name) ;</span>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">         27 :        config_file = fopen(config_file_name, &quot;w+&quot;) ; </span></a>
+<span class="lineNum">      14 </span><span class="lineCov">         27 :     }</span>
+<span class="lineNum">      15 </span><span class="lineCov">         27 :     virtual void TearDown() {</span>
+<span class="lineNum">      16 </span><span class="lineCov">         27 :         CommandLine::reset() ;</span>
+<span class="lineNum">      17 </span><span class="lineCov">         27 :         fclose(config_file) ;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         27 :         remove(config_file_name) ;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         27 :     }</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : protected:
 <span class="lineNum">      22 </span>            : 
@@ -113,203 +113,324 @@
 <a name="51"><span class="lineNum">      51 </span>            : }</a>
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneBareSetting) {</span>
-<span class="lineNum">      54 </span>            :     const char * args[2] ;
-<span class="lineNum">      55 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 :     CommandLine cl(2, args) ;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">      59 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
-<a name="62"><span class="lineNum">      62 </span>            : }</a>
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneSetting) {</span>
-<span class="lineNum">      65 </span>            :     const char * args[3] ;
-<span class="lineNum">      66 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
-<span class="lineNum">      69 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">      54 </span>            :     const char * args[3] ;
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     args[1] = &quot;--&quot; ;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     args[2] = config_file_name ;</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<a name="63"><span class="lineNum">      63 </span>            : }</a>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneBareUserSetting) {</span>
+<span class="lineNum">      66 </span>            :     const char * args[2] ;
+<span class="lineNum">      67 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     CommandLine cl(2, args) ;</span>
 <span class="lineNum">      70 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
-<a name="75"><span class="lineNum">      75 </span>            : }</a>
-<span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneSettingDashDash) {</span>
-<span class="lineNum">      78 </span>            :     const char * args[4] ;
-<span class="lineNum">      79 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">      81 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
-<span class="lineNum">      82 </span><span class="lineCov">          1 :     args[3] = &quot;--&quot; ;</span>
-<span class="lineNum">      83 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 1) ;</span>
-<a name="90"><span class="lineNum">      90 </span>            : }</a>
-<span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedSettings) {</span>
-<span class="lineNum">      93 </span>            :     const char * args[6] ;
-<span class="lineNum">      94 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">      95 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">      96 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
-<span class="lineNum">      97 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
-<span class="lineNum">      99 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
-<span class="lineNum">     100 </span><span class="lineCov">          1 :     CommandLine cl(6, args) ;</span>
-<span class="lineNum">     101 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">     102 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">     103 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
-<span class="lineNum">     105 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
-<span class="lineNum">     107 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
-<span class="lineNum">     108 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
-<a name="109"><span class="lineNum">     109 </span>            : }</a>
-<span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedSettingsDashDash) {</span>
-<span class="lineNum">     112 </span>            :     const char * args[7] ;
-<span class="lineNum">     113 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     115 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
-<span class="lineNum">     116 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
-<span class="lineNum">     118 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 :     args[6] = &quot;--&quot; ;</span>
-<span class="lineNum">     120 </span><span class="lineCov">          1 :     CommandLine cl(7, args) ;</span>
-<span class="lineNum">     121 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">     122 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
-<span class="lineNum">     124 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
-<span class="lineNum">     125 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
-<span class="lineNum">     126 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
-<span class="lineNum">     127 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
-<span class="lineNum">     128 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
-<a name="129"><span class="lineNum">     129 </span>            : }</a>
-<span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileNoSettingsOneVar) {</span>
-<span class="lineNum">     132 </span>            :     const char * args[3] ;
-<span class="lineNum">     133 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     134 </span><span class="lineCov">          1 :     args[1] = &quot;--&quot; ;</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :     args[2] = &quot;a=10&quot; ;</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">     139 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginSettings(), CommandLine::instance().endSettings()) ;</span>
-<span class="lineNum">     140 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasVariable(&quot;a&quot;)) ;</span>
-<span class="lineNum">     141 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
-<a name="142"><span class="lineNum">     142 </span>            : }</a>
-<span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileNoSettingsMixedVars) {</span>
-<span class="lineNum">     145 </span>            :     const char * args[5] ;
-<span class="lineNum">     146 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     147 </span><span class="lineCov">          1 :     args[1] = &quot;--&quot; ;</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 :     args[2] = &quot;a=10&quot; ;</span>
-<span class="lineNum">     149 </span><span class="lineCov">          1 :     args[3] = &quot;b=3.14&quot; ;</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 :     args[4] = &quot;c=hello&quot; ;</span>
-<span class="lineNum">     151 </span><span class="lineCov">          1 :     CommandLine cl(5, args) ;</span>
-<span class="lineNum">     152 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">     153 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">     154 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginSettings(), CommandLine::instance().endSettings()) ;</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numVars(), 3) ;</span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsDbl(&quot;b&quot;, 0), 3.14) ;</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsStr(&quot;c&quot;, &quot;&quot;), &quot;hello&quot;) ;</span>
-<a name="159"><span class="lineNum">     159 </span>            : }</a>
-<span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedSettingsAndVariables) {</span>
-<span class="lineNum">     162 </span>            :     const char * args[10] ;
-<span class="lineNum">     163 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     164 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     165 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
-<span class="lineNum">     166 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
-<span class="lineNum">     167 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
-<span class="lineNum">     168 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
-<span class="lineNum">     169 </span><span class="lineCov">          1 :     args[6] = &quot;--&quot; ;</span>
-<span class="lineNum">     170 </span><span class="lineCov">          1 :     args[7] = &quot;a=10&quot; ;</span>
-<span class="lineNum">     171 </span><span class="lineCov">          1 :     args[8] = &quot;b=3.14&quot; ;</span>
-<span class="lineNum">     172 </span><span class="lineCov">          1 :     args[9] = &quot;c=hello&quot; ;</span>
-<span class="lineNum">     173 </span><span class="lineCov">          1 :     CommandLine cl(10, args) ;</span>
-<span class="lineNum">     174 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
-<span class="lineNum">     175 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
-<span class="lineNum">     176 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
-<span class="lineNum">     177 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
-<span class="lineNum">     178 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
-<span class="lineNum">     179 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
-<span class="lineNum">     180 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numVars(), 3) ;</span>
-<span class="lineNum">     181 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
-<span class="lineNum">     182 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsDbl(&quot;b&quot;, 0), 3.14) ;</span>
-<span class="lineNum">     183 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsStr(&quot;c&quot;, &quot;&quot;), &quot;hello&quot;) ;</span>
-<a name="184"><span class="lineNum">     184 </span>            : }</a>
-<span class="lineNum">     185 </span>            : 
-<span class="lineNum">     186 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsPtr) {</span>
-<span class="lineNum">     187 </span>            :     const char * args[3] ;
-<span class="lineNum">     188 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     190 </span><span class="lineCov">          1 :     args[2] = &quot;test&quot; ;</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
-<span class="lineNum">     192 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().settingAsPtr(&quot;foo&quot;) != nullptr) ;</span>
-<span class="lineNum">     193 </span><span class="lineCov">          1 :     ASSERT_EQ(std::string(CommandLine::instance().settingAsPtr(&quot;foo&quot;)),  &quot;test&quot;) ;</span>
-<span class="lineNum">     194 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().settingAsPtr(&quot;bar&quot;) == nullptr) ;</span>
-<a name="195"><span class="lineNum">     195 </span>            : }</a>
-<span class="lineNum">     196 </span>            : 
-<span class="lineNum">     197 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsStr) {</span>
-<span class="lineNum">     198 </span>            :     const char * args[3] ;
-<span class="lineNum">     199 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     200 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     201 </span><span class="lineCov">          1 :     args[2] = &quot;test&quot; ;</span>
-<span class="lineNum">     202 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
-<span class="lineNum">     203 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsStr(&quot;foo&quot;, &quot;&quot;),  &quot;test&quot;) ;</span>
-<span class="lineNum">     204 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsStr(&quot;bar&quot;, &quot;default&quot;),  &quot;default&quot;) ;</span>
-<a name="205"><span class="lineNum">     205 </span>            : }</a>
-<span class="lineNum">     206 </span>            : 
-<span class="lineNum">     207 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsInt) {</span>
-<span class="lineNum">     208 </span>            :     const char * args[4] ;
-<span class="lineNum">     209 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     210 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     211 </span><span class="lineCov">          1 :     args[2] = &quot;9999999&quot; ;</span>
-<span class="lineNum">     212 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
-<span class="lineNum">     213 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
-<span class="lineNum">     214 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 9999999) ;</span>
-<span class="lineNum">     215 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;bar&quot;, 27),  27) ;</span>
-<span class="lineNum">     216 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsInt(&quot;baz&quot;, 27),  std::runtime_error) ;</span>
-<a name="217"><span class="lineNum">     217 </span>            : }</a>
-<span class="lineNum">     218 </span>            : 
-<span class="lineNum">     219 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsDbl) {</span>
-<span class="lineNum">     220 </span>            :     const char * args[4] ;
-<span class="lineNum">     221 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     222 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     223 </span><span class="lineCov">          1 :     args[2] = &quot;9.9e10&quot; ;</span>
-<span class="lineNum">     224 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
-<span class="lineNum">     225 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
-<span class="lineNum">     226 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;foo&quot;, 0), 9.9e10) ;</span>
-<span class="lineNum">     227 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;bar&quot;, 2.7),  2.7) ;</span>
-<span class="lineNum">     228 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 2.7),  std::runtime_error) ;</span>
-<a name="229"><span class="lineNum">     229 </span>            : }</a>
-<span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsBool) {</span>
-<span class="lineNum">     232 </span>            :     const char * args[11] ;
-<span class="lineNum">     233 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
-<span class="lineNum">     234 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
-<span class="lineNum">     235 </span><span class="lineCov">          1 :     args[2] = &quot;true&quot; ;</span>
-<span class="lineNum">     236 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
-<span class="lineNum">     237 </span><span class="lineCov">          1 :     args[4] = &quot;false&quot; ;</span>
-<span class="lineNum">     238 </span><span class="lineCov">          1 :     args[5] = &quot;--baz&quot; ;</span>
-<span class="lineNum">     239 </span><span class="lineCov">          1 :     args[6] = &quot;1&quot; ;</span>
-<span class="lineNum">     240 </span><span class="lineCov">          1 :     args[7] = &quot;--bing&quot; ;</span>
-<span class="lineNum">     241 </span><span class="lineCov">          1 :     args[8] = &quot;0&quot; ;</span>
-<span class="lineNum">     242 </span><span class="lineCov">          1 :     args[9] = &quot;--bam&quot; ;</span>
-<span class="lineNum">     243 </span><span class="lineCov">          1 :     args[10] = &quot;nada&quot; ;</span>
-<span class="lineNum">     244 </span><span class="lineCov">          1 :     CommandLine cl(11, args) ;</span>
-<span class="lineNum">     245 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;foo&quot;, false), true) ;</span>
-<span class="lineNum">     246 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, true),  false) ;</span>
-<span class="lineNum">     247 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;baz&quot;, false), true) ;</span>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bing&quot;, true),  false) ;</span></a>
-<span class="lineNum">     249 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsBool(&quot;bam&quot;, false),  std::runtime_error) ;</span>
-<span class="lineNum">     250 </span><span class="lineCov">          3 : }</span>
+<a name="74"><span class="lineNum">      74 </span>            : }</a>
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneSetting) {</span>
+<span class="lineNum">      77 </span>            :     const char * args[3] ;
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     args[2] = config_file_name ;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<a name="87"><span class="lineNum">      87 </span>            : }</a>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneUserSetting) {</span>
+<span class="lineNum">      90 </span>            :     const char * args[3] ;
+<span class="lineNum">      91 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<a name="100"><span class="lineNum">     100 </span>            : }</a>
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneSettingDashDash) {</span>
+<span class="lineNum">     103 </span>            :     const char * args[4] ;
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     args[2] = &quot;--&quot; ;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     args[3] = config_file_name ;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 1) ;</span>
+<a name="115"><span class="lineNum">     115 </span>            : }</a>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndOneUserSettingDashDash) {</span>
+<span class="lineNum">     118 </span>            :     const char * args[4] ;
+<span class="lineNum">     119 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :     args[3] = &quot;--&quot; ;</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 1) ;</span>
+<a name="130"><span class="lineNum">     130 </span>            : }</a>
+<span class="lineNum">     131 </span>            : 
+<span class="lineNum">     132 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedSettings) {</span>
+<span class="lineNum">     133 </span>            :     const char * args[6] ;
+<span class="lineNum">     134 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     args[2] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :     args[4] = &quot;3.14&quot; ;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :     args[5] = config_file_name ;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :     CommandLine cl(6, args) ;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
+<a name="149"><span class="lineNum">     149 </span>            : }</a>
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedUserSettings) {</span>
+<span class="lineNum">     152 </span>            :     const char * args[6] ;
+<span class="lineNum">     153 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     CommandLine cl(6, args) ;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">     163 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
+<a name="168"><span class="lineNum">     168 </span>            : }</a>
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedSettingsDashDash) {</span>
+<span class="lineNum">     171 </span>            :     const char * args[7] ;
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     args[2] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :     args[4] = &quot;3.14&quot; ;</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :     args[5] = &quot;--&quot; ;</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     args[6] = config_file_name ;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     CommandLine cl(7, args) ;</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginVars(), CommandLine::instance().endVars()) ;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasSetting(&quot;foo&quot;)) ;</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
+<a name="188"><span class="lineNum">     188 </span>            : }</a>
+<span class="lineNum">     189 </span>            : 
+<span class="lineNum">     190 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileNoSettingsOneVar) {</span>
+<span class="lineNum">     191 </span>            :     const char * args[3] ;
+<span class="lineNum">     192 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          1 :     args[1] = &quot;--&quot; ;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :     args[2] = &quot;a=10&quot; ;</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginSettings(), CommandLine::instance().endSettings()) ;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().hasVariable(&quot;a&quot;)) ;</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
+<a name="201"><span class="lineNum">     201 </span>            : }</a>
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileNoSettingsMixedVars) {</span>
+<span class="lineNum">     204 </span>            :     const char * args[5] ;
+<span class="lineNum">     205 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     206 </span><span class="lineCov">          1 :     args[1] = &quot;--&quot; ;</span>
+<span class="lineNum">     207 </span><span class="lineCov">          1 :     args[2] = &quot;a=10&quot; ;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     args[3] = &quot;b=3.14&quot; ;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     args[4] = &quot;c=hello&quot; ;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          1 :     CommandLine cl(5, args) ;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().beginSettings(), CommandLine::instance().endSettings()) ;</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numVars(), 3) ;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsDbl(&quot;b&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsStr(&quot;c&quot;, &quot;&quot;), &quot;hello&quot;) ;</span>
+<a name="218"><span class="lineNum">     218 </span>            : }</a>
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileAndMixedUserSettingsAndVariables) {</span>
+<span class="lineNum">     221 </span>            :     const char * args[10] ;
+<span class="lineNum">     222 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     223 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     224 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          1 :     args[6] = &quot;--&quot; ;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :     args[7] = &quot;a=10&quot; ;</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :     args[8] = &quot;b=3.14&quot; ;</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     args[9] = &quot;c=true&quot; ;</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :     CommandLine cl(10, args) ;</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :     ASSERT_EQ(&amp;CommandLine::instance(), &amp;cl) ;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numSettings(), 3) ;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().configFilename(), config_file_name) ;</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 10) ;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, false), true) ;</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().numVars(), 3) ;</span>
+<span class="lineNum">     240 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsInt(&quot;a&quot;, 0), 10) ;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsDbl(&quot;b&quot;, 0), 3.14) ;</span>
+<span class="lineNum">     242 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().variableAsBool(&quot;c&quot;, false), true) ;</span>
+<a name="243"><span class="lineNum">     243 </span>            : }</a>
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsPtr) {</span>
+<span class="lineNum">     246 </span>            :     const char * args[3] ;
+<span class="lineNum">     247 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     249 </span><span class="lineCov">          1 :     args[2] = &quot;test&quot; ;</span>
+<span class="lineNum">     250 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().settingAsPtr(&quot;foo&quot;) != nullptr) ;</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :     ASSERT_EQ(std::string(CommandLine::instance().settingAsPtr(&quot;foo&quot;)),  &quot;test&quot;) ;</span>
+<span class="lineNum">     253 </span><span class="lineCov">          1 :     ASSERT_TRUE(CommandLine::instance().settingAsPtr(&quot;bar&quot;) == nullptr) ;</span>
+<a name="254"><span class="lineNum">     254 </span>            : }</a>
+<span class="lineNum">     255 </span>            : 
+<span class="lineNum">     256 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsStr) {</span>
+<span class="lineNum">     257 </span>            :     const char * args[3] ;
+<span class="lineNum">     258 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     260 </span><span class="lineCov">          1 :     args[2] = &quot;test&quot; ;</span>
+<span class="lineNum">     261 </span><span class="lineCov">          1 :     CommandLine cl(3, args) ;</span>
+<span class="lineNum">     262 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsStr(&quot;foo&quot;, &quot;&quot;),  &quot;test&quot;) ;</span>
+<span class="lineNum">     263 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsStr(&quot;bar&quot;, &quot;default&quot;),  &quot;default&quot;) ;</span>
+<a name="264"><span class="lineNum">     264 </span>            : }</a>
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsInt) {</span>
+<span class="lineNum">     267 </span>            :     const char * args[4] ;
+<span class="lineNum">     268 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :     args[2] = &quot;9999999&quot; ;</span>
+<span class="lineNum">     271 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     272 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;foo&quot;, 0), 9999999) ;</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsInt(&quot;bar&quot;, 27),  27) ;</span>
+<span class="lineNum">     275 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsInt(&quot;baz&quot;, 27),  std::runtime_error) ;</span>
+<a name="276"><span class="lineNum">     276 </span>            : }</a>
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsDbl) {</span>
+<span class="lineNum">     279 </span>            :     const char * args[4] ;
+<span class="lineNum">     280 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     281 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :     args[2] = &quot;9.9e10&quot; ;</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :     args[3] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     CommandLine cl(4, args) ;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;foo&quot;, 0), 9.9e10) ;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsDbl(&quot;bar&quot;, 2.7),  2.7) ;</span>
+<span class="lineNum">     287 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsDbl(&quot;baz&quot;, 2.7),  std::runtime_error) ;</span>
+<a name="288"><span class="lineNum">     288 </span>            : }</a>
+<span class="lineNum">     289 </span>            : 
+<span class="lineNum">     290 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, SettingAsBool) {</span>
+<span class="lineNum">     291 </span>            :     const char * args[11] ;
+<span class="lineNum">     292 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     293 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     294 </span><span class="lineCov">          1 :     args[2] = &quot;true&quot; ;</span>
+<span class="lineNum">     295 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     296 </span><span class="lineCov">          1 :     args[4] = &quot;false&quot; ;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :     args[5] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     298 </span><span class="lineCov">          1 :     args[6] = &quot;1&quot; ;</span>
+<span class="lineNum">     299 </span><span class="lineCov">          1 :     args[7] = &quot;--bing&quot; ;</span>
+<span class="lineNum">     300 </span><span class="lineCov">          1 :     args[8] = &quot;0&quot; ;</span>
+<span class="lineNum">     301 </span><span class="lineCov">          1 :     args[9] = &quot;--bam&quot; ;</span>
+<span class="lineNum">     302 </span><span class="lineCov">          1 :     args[10] = &quot;nada&quot; ;</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :     CommandLine cl(11, args) ;</span>
+<span class="lineNum">     304 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;foo&quot;, false), true) ;</span>
+<span class="lineNum">     305 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bar&quot;, true),  false) ;</span>
+<span class="lineNum">     306 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;baz&quot;, false), true) ;</span>
+<span class="lineNum">     307 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;bing&quot;, true),  false) ;</span>
+<span class="lineNum">     308 </span><span class="lineCov">          2 :     ASSERT_THROW(CommandLine::instance().settingAsBool(&quot;bam&quot;, false),  std::runtime_error) ;</span>
+<a name="309"><span class="lineNum">     309 </span>            : }</a>
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, HelpOnly) {</span>
+<span class="lineNum">     312 </span>            :     const char * args[1] ;
+<span class="lineNum">     313 </span><span class="lineCov">          1 :     args[0] = &quot;--help&quot; ;</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :     CommandLine cl(1, args) ;</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsBool(&quot;help&quot;, false), true) ;</span>
+<a name="316"><span class="lineNum">     316 </span>            : }</a>
+<span class="lineNum">     317 </span>            : 
+<span class="lineNum">     318 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, HelpSetting) {</span>
+<span class="lineNum">     319 </span>            :     const char * args[2] ;
+<span class="lineNum">     320 </span><span class="lineCov">          1 :     args[0] = &quot;--help&quot; ;</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :     args[1] = &quot;setting1&quot; ;</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :     CommandLine cl(2, args) ;</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :     ASSERT_EQ(CommandLine::instance().settingAsStr(&quot;help&quot;, &quot;&quot;), &quot;setting1&quot;) ;</span>
+<span class="lineNum">     324 </span>            : }
+<a name="325"><span class="lineNum">     325 </span>            : </a>
+<span class="lineNum">     326 </span>            : 
+<span class="lineNum">     327 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, DupUserSetting) {</span>
+<span class="lineNum">     328 </span>            :     const char * args[4] ;
+<span class="lineNum">     329 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">     331 </span><span class="lineCov">          1 :     args[2] = config_file_name ;</span>
+<span class="lineNum">     332 </span><span class="lineCov">          1 :     args[3] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :     ASSERT_THROW(CommandLine(4, args), std::runtime_error) ;</span>
+<a name="334"><span class="lineNum">     334 </span>            : }</a>
+<span class="lineNum">     335 </span>            : 
+<span class="lineNum">     336 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, NoConfig) {</span>
+<span class="lineNum">     337 </span>            :     const char * args[2] ;
+<span class="lineNum">     338 </span><span class="lineCov">          1 :     args[0] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :     args[1] = &quot;10&quot; ;</span>
+<span class="lineNum">     340 </span><span class="lineCov">          1 :     ASSERT_THROW(CommandLine(2, args), std::runtime_error) ;</span>
+<a name="341"><span class="lineNum">     341 </span>            : }</a>
+<span class="lineNum">     342 </span>            : 
+<span class="lineNum">     343 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, ConfigFileSettingsAfterVariables) {</span>
+<span class="lineNum">     344 </span>            :     const char * args[10] ;
+<span class="lineNum">     345 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :     args[3] = &quot;--bar&quot; ;</span>
+<span class="lineNum">     349 </span><span class="lineCov">          1 :     args[4] = &quot;--baz&quot; ;</span>
+<span class="lineNum">     350 </span><span class="lineCov">          1 :     args[5] = &quot;3.14&quot; ;</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :     args[6] = &quot;--&quot; ;</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :     args[7] = &quot;a=10&quot; ;</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :     args[8] = &quot;b=3.14&quot; ;</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :     args[9] = &quot;--what&quot; ;</span>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          1 :     ASSERT_THROW(CommandLine(10, args), std::runtime_error) ; </span></a>
+<span class="lineNum">     356 </span>            : }
+<span class="lineNum">     357 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, BadVariable) {</span>
+<span class="lineNum">     358 </span>            :     const char * args[10] ;
+<span class="lineNum">     359 </span><span class="lineCov">          1 :     args[0] = config_file_name ;</span>
+<span class="lineNum">     360 </span><span class="lineCov">          1 :     args[1] = &quot;--foo&quot; ;</span>
+<span class="lineNum">     361 </span><span class="lineCov">          1 :     args[2] = &quot;10&quot; ;</span>
+<span class="lineNum">     362 </span><span class="lineCov">          1 :     args[3] = &quot;--&quot; ;</span>
+<span class="lineNum">     363 </span><span class="lineCov">          1 :     args[4] = &quot;10=10&quot; ;</span>
+<span class="lineNum">     364 </span><span class="lineCov">          1 :     ASSERT_THROW(CommandLine(5, args), std::runtime_error) ; </span>
+<a name="365"><span class="lineNum">     365 </span>            : }</a>
+<span class="lineNum">     366 </span>            : 
+<span class="lineNum">     367 </span><span class="lineCov">          5 : TEST_F(CommandLineTest, MissingConfigFile) {</span>
+<span class="lineNum">     368 </span>            :     const char * args[1] ;
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          1 :     args[0] = &quot;blah.blah&quot; ;</span></a>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :     ASSERT_THROW(CommandLine(1, args), std::runtime_error) ;</span>
+<span class="lineNum">     371 </span><span class="lineCov">          3 : }</span>
 </pre>
       </td>
     </tr>

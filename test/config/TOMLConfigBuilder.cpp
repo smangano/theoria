@@ -72,6 +72,10 @@ d=false                                     \n\
 " ;
 
 
+TEST_F(TOMLConfigBuilderTest, ParseBadFile) {
+    EXPECT_THROW(builder().parse_file("fake.toml"), std::runtime_error) ; 
+}
+
 TEST_F(TOMLConfigBuilderTest, TestTOMLWithTableArray) {
    std::istringstream iss(TEST2) ;
    config =  std::move(builder().parse(iss)) ;

@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">21</td>
+            <td class="headerCovTableEntryHi">95.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntryMed">86.4 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -89,22 +89,22 @@
 <span class="lineNum">      27 </span>            :     /**
 <a name="28"><span class="lineNum">      28 </span>            :      * Bind obj to Maybe without recording location where bound</a>
 <span class="lineNum">      29 </span>            :      */
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     explicit Maybe(T* obj): _obj(obj), _where(&quot;&quot;) {} </span>
+<span class="lineNum">      30 </span><span class="lineCov">         29 :     explicit Maybe(T* obj): _obj(obj), _where(&quot;&quot;) {} </span>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            :     /**
-<span class="lineNum">      33 </span>            :      * Bind obj to Maybe and record location where bound if provided
+<a name="33"><span class="lineNum">      33 </span>            :      * Bind obj to Maybe and record location where bound if provided</a>
 <span class="lineNum">      34 </span>            :      */
-<span class="lineNum">      35 </span>            :     explicit Maybe(T* obj, const char *where) : _obj(obj), _where(where?where:&quot;&quot;) {}  
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     explicit Maybe(T* obj, const char *where) : _obj(obj), _where(where?where:&quot;&quot;) {}  </span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            :     /** 
 <span class="lineNum">      38 </span>            :      * Bind an object of type Base* which is maybe a T*. Use dynamic cast
 <span class="lineNum">      39 </span>            :      * to determine if it is the case. 
-<span class="lineNum">      40 </span>            :      */
+<a name="40"><span class="lineNum">      40 </span>            :      */</a>
 <span class="lineNum">      41 </span>            :     template &lt;typename Base&gt;
-<span class="lineNum">      42 </span>            :     explicit Maybe(Base* obj): _obj(nullptr), _where(&quot;&quot;)
+<span class="lineNum">      42 </span><span class="lineCov">          1 :     explicit Maybe(Base* obj): _obj(nullptr), _where(&quot;&quot;)</span>
 <span class="lineNum">      43 </span>            :     {
-<span class="lineNum">      44 </span>            :         _obj = dynamic_cast&lt;T*&gt;(obj) ;
-<span class="lineNum">      45 </span>            :     }
+<span class="lineNum">      44 </span><span class="lineCov">          1 :         _obj = dynamic_cast&lt;T*&gt;(obj) ;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            :     /** 
 <span class="lineNum">      48 </span>            :      * Bind an object of type Base* which is maybe a T*. Use dynamic cast
@@ -119,23 +119,23 @@
 <span class="lineNum">      57 </span>            :     /**
 <a name="58"><span class="lineNum">      58 </span>            :      * True if bound</a>
 <span class="lineNum">      59 </span>            :      */
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     operator bool() const</span>
+<span class="lineNum">      60 </span><span class="lineCov">         24 :     operator bool() const</span>
 <span class="lineNum">      61 </span>            :     {
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :        return _obj != nullptr ; </span>
+<span class="lineNum">      62 </span><span class="lineCov">         24 :        return _obj != nullptr ; </span>
 <span class="lineNum">      63 </span>            :     }
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            :     /**
 <a name="66"><span class="lineNum">      66 </span>            :      * Where bound, if known</a>
 <span class="lineNum">      67 </span>            :      */
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     const char *where() {return _where;}</span>
+<span class="lineNum">      68 </span><span class="lineCov">          5 :     const char *where() {return _where;}</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span>            :     /**
 <a name="71"><span class="lineNum">      71 </span>            :      * Dereference. Throws std::runtime_error if not bound</a>
 <span class="lineNum">      72 </span>            :      */
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     T&amp; operator *() </span>
+<span class="lineNum">      73 </span><span class="lineCov">         16 :     T&amp; operator *() </span>
 <span class="lineNum">      74 </span>            :     {
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :         if (_obj) return *_obj ;</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         throw RUNTIME_ERROR(&quot;Maybe not! Object was not bound at [%s]&quot;, where()) ;</span>
+<span class="lineNum">      75 </span><span class="lineCov">         28 :         if (_obj) return *_obj ;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          4 :         throw RUNTIME_ERROR(&quot;Maybe not! Object was not bound at [%s]&quot;, where()) ;</span>
 <span class="lineNum">      77 </span>            :     }
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            :     /**
@@ -150,7 +150,7 @@
 <span class="lineNum">      88 </span>            :     /**
 <a name="89"><span class="lineNum">      89 </span>            :      * Pointer dereference. Throws std::runtime_error if not bound</a>
 <span class="lineNum">      90 </span>            :      */
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     T* operator -&gt;() {return &amp;(**this);}</span>
+<span class="lineNum">      91 </span><span class="lineCov">          7 :     T* operator -&gt;() {return &amp;(**this);}</span>
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            :     /**
 <span class="lineNum">      94 </span>            :      * Const Pointer dereference. Throws std::runtime_error if not bound
@@ -169,23 +169,23 @@
 <span class="lineNum">     107 </span>            :     }
 <span class="lineNum">     108 </span>            : 
 <span class="lineNum">     109 </span>            :     /**
-<span class="lineNum">     110 </span>            :      * Const dereference but if not bound substitute other instead of throwing exception
+<a name="110"><span class="lineNum">     110 </span>            :      * Const dereference but if not bound substitute other instead of throwing exception</a>
 <span class="lineNum">     111 </span>            :      */
-<span class="lineNum">     112 </span>            :     const T&amp; valueOr(const T&amp; other) const  
+<span class="lineNum">     112 </span><span class="lineCov">          2 :     const T&amp; valueOr(const T&amp; other) const  </span>
 <span class="lineNum">     113 </span>            :     {
-<span class="lineNum">     114 </span>            :         if (_obj) 
-<span class="lineNum">     115 </span>            :             return *_obj ;
-<span class="lineNum">     116 </span>            :         return other ;
+<span class="lineNum">     114 </span><span class="lineCov">          2 :         if (_obj) </span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :             return *_obj ;</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :         return other ;</span>
 <span class="lineNum">     117 </span>            :     }
 <span class="lineNum">     118 </span>            : 
 <span class="lineNum">     119 </span>            :     /**
 <span class="lineNum">     120 </span>            :      * Dynamic cast to Derived. Throws runtime_error if not bound. Throws bad_cast if not Derived.
-<span class="lineNum">     121 </span>            :      */
+<a name="121"><span class="lineNum">     121 </span>            :      */</a>
 <span class="lineNum">     122 </span>            :     template &lt;typename Derived&gt;
-<span class="lineNum">     123 </span>            :     Derived&amp; as() 
+<span class="lineNum">     123 </span><span class="lineCov">          2 :     Derived&amp; as() </span>
 <span class="lineNum">     124 </span>            :     {
-<span class="lineNum">     125 </span>            :         T&amp; self =  **this ;
-<span class="lineNum">     126 </span>            :         return dynamic_cast&lt;Derived&amp;&gt;(self) ;
+<span class="lineNum">     125 </span><span class="lineCov">          2 :         T&amp; self =  **this ;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 :         return dynamic_cast&lt;Derived&amp;&gt;(self) ;</span>
 <span class="lineNum">     127 </span>            :     }
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            :     /**
@@ -223,7 +223,7 @@
 <span class="lineNum">     161 </span>            :     /**
 <a name="162"><span class="lineNum">     162 </span>            :      * Get underlying ptr</a>
 <span class="lineNum">     163 </span>            :      */
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 :     T* get() {return _obj;}</span>
+<span class="lineNum">     164 </span><span class="lineCov">         10 :     T* get() {return _obj;}</span>
 <span class="lineNum">     165 </span>            : 
 <span class="lineNum">     166 </span>            :     /**
 <span class="lineNum">     167 </span>            :      * Get underlying const ptr

@@ -18,8 +18,26 @@ CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)
     if (argc < 1) 
         throw RUNTIME_ERROR("theoria requires at least a config file arg") ;
 
-    //First the config file which is mandatory
-    std::string config_file(argv[0]) ;
+    //First optional settings which may be terminated with --
+    int iSetting = 0 ;
+    while(iSetting < argc && strcmp(argv[iSetting], "--") != 0 && argv[iSetting] == strstr(argv[iSetting], "--")) {
+        const char * setting = argv[iSetting++]+2 ;
+        const char * value = "true" ;
+        if (iSetting < argc && strncmp(argv[iSetting], "--", 2) != 0)
+            value = argv[iSetting++] ;
+        _settings[setting] = value ;
+    }
+    if (iSetting < argc && strcmp(argv[iSetting], "--") == 0)
+        ++iSetting ;
+
+    if (iSetting >= argc) {
+        if (hasSetting("help") || allowMissingConfig)
+            return ;
+        throw RUNTIME_ERROR("Missing config file");
+    }
+
+    //Next the config file which is mandatory
+    std::string config_file(argv[iSetting++]) ;
     if (!allowMissingConfig) {
         FILE* f = fopen(config_file.c_str(), "r") ;
         if (!f)
@@ -28,13 +46,14 @@ CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)
     }
     _configFileName = config_file ;
 
-    //Second optional settings which may be terminated with --
-    int iSetting = 1 ;
+    //Next optional user settings which may be terminated with --
     while(iSetting < argc && strcmp(argv[iSetting], "--") != 0 && argv[iSetting] == strstr(argv[iSetting], "--")) {
         const char * setting = argv[iSetting++]+2 ;
         const char * value = "true" ;
         if (iSetting < argc && strncmp(argv[iSetting], "--", 2) != 0)
             value = argv[iSetting++] ;
+        if (hasSetting(setting)) 
+            throw RUNTIME_ERROR("User setting duplicates existing setting: %s", setting) ;
         _settings[setting] = value ;
     }
    
@@ -48,7 +67,7 @@ CommandLine::CommandLine(int argc, const char*argv[], bool allowMissingConfig)
         const char * p = argv[iSetting++] ;
         std::string name(p, pEq-p) ;
         std::string value(pEq+1) ;
-        if ( name[0] != '_' || ('A' >= name[0] && name[0] <= 'Z') || ('a' >= name[0] && name[0] <= 'z') ) {
+        if ( name[0] == '_' || ('A' <= name[0] && name[0] <= 'Z') || ('a' <= name[0] && name[0] <= 'z') ) {
             _variables[name] = value ;
         }
         else {

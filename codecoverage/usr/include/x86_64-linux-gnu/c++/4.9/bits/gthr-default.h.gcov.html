@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -306,11 +306,11 @@
 <span class="lineNum">     244 </span>            : #endif
 <a name="245"><span class="lineNum">     245 </span>            : </a>
 <span class="lineNum">     246 </span>            : static inline int
-<span class="lineNum">     247 </span><span class="lineCov">       1672 : __gthread_active_p (void)</span>
+<span class="lineNum">     247 </span><span class="lineCov">       2068 : __gthread_active_p (void)</span>
 <span class="lineNum">     248 </span>            : {
 <span class="lineNum">     249 </span>            :   static void *const __gthread_active_ptr
 <span class="lineNum">     250 </span>            :     = __extension__ (void *) &amp;GTHR_ACTIVE_PROXY;
-<span class="lineNum">     251 </span><span class="lineCov">       1672 :   return __gthread_active_ptr != 0;</span>
+<span class="lineNum">     251 </span><span class="lineCov">       2068 :   return __gthread_active_ptr != 0;</span>
 <span class="lineNum">     252 </span>            : }
 <span class="lineNum">     253 </span>            : 
 <span class="lineNum">     254 </span>            : #endif /* FreeBSD or Solaris */

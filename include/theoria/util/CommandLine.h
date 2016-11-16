@@ -12,29 +12,34 @@ namespace theoria { namespace util {
  *
  * CommandLine consists of:
  *
- *      config file - e.g., myapp.toml
- *      settings passed as: [--setting value] or [--someFlag] 
- *      settings are terminated by optionak -- (mandatory if variables are specified)
- *      variables passed as: var1=value
+ *      settings passed as: [--setting value] or [--someFlag] (teminated by -- if last setting takes no args)
+ *      config file - e.g., myapp.toml or myapp.xml
+ *      users settings passed as: [--setting value] or [--someFlag] (user seetings com after the confif file)
+ *      user settings are terminated by optional -- (mandatory if variables are specified)
+ *      variables passed as: var1=value var2=value2 ...
  *
  *      Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
  *      However, user defined settings are allowed. To avoid conflict with future extensions of theoria
- *      user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
+ *      user-defined settings should contain at least one capital letter and/or use underscores (as theoria built-in settings are always
+ *      lowere case and use dashes)
  *
  *
  *      Variables are typically user defined settings that parameterize the config file. 
  *      See <theoria::config::CmdLineResolver>
  *
- * Example legal command lines:
+ * Examples of legal command lines:
  *
  *      theoria config.toml
  *      theoria config.xml
- *      theoria config.toml --setting1
- *      theoria config.toml --setting1 97
- *      theoria config.toml --setting1 --setting2 17
- *      theoria config.toml --setting1 --setting2 17 --
+ *      theoria --setting1 -- config.toml
+ *      theoria --setting1 97 config.toml 
+ *      theoria config.toml --UserSetting1 --UserSetting2 17
+ *      theoria --flag1 config.toml --UserSetting1 --setting2 17 --
  *      theoria config.toml -- a=1 b=2 c=3
- *      theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
+ *      theoria --setting1 10 config.toml --UserSetting1 --UserSetting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
+ *
+ * NOTE: CommandLine is a helper for parsing command line but does not determin what settinsg are sematically valid hence
+ *       is simply a utility. 
  */
 class CommandLine {
 

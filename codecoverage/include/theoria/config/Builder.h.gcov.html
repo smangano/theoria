@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">33.3 %</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryLo">50.0 %</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -73,9 +73,9 @@
 <span class="lineNum">      11 </span>            : class ConfigVariableResolver ;
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : /**
-<span class="lineNum">      14 </span>            :  * Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.
+<a name="14"><span class="lineNum">      14 </span>            :  * Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.</a>
 <span class="lineNum">      15 </span>            :  */
-<span class="lineNum">      16 </span>            : class ConfigBuilder 
+<span class="lineNum">      16 </span><span class="lineCov">         21 : class ConfigBuilder </span>
 <span class="lineNum">      17 </span>            : {
 <span class="lineNum">      18 </span>            : public:
 <span class="lineNum">      19 </span>            : 
@@ -87,8 +87,8 @@
 <span class="lineNum">      25 </span>            :     /**
 <a name="26"><span class="lineNum">      26 </span>            :      * Construct a builder with no initial resolver</a>
 <span class="lineNum">      27 </span>            :      */
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     ConfigBuilder():</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         _stack(std::move(this-&gt;_vec)), _resolverChain(nullptr) {}</span>
+<span class="lineNum">      28 </span><span class="lineCov">         21 :     ConfigBuilder():</span>
+<span class="lineNum">      29 </span><span class="lineCov">         21 :         _stack(std::move(this-&gt;_vec)), _resolverChain(nullptr) {}</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            :     /**
 <span class="lineNum">      32 </span>            :      * Construct a builder with resolver as head
@@ -197,9 +197,9 @@
 <span class="lineNum">     135 </span>            :      * Return the head resolver of this builder's resolver chain. 
 <span class="lineNum">     136 </span>            :      * Normally variable resolution is taken care of automatically so this method not typically required. 
 <span class="lineNum">     137 </span>            :      * Useful for unit testing.
-<span class="lineNum">     138 </span>            :      * @return the head resolver
+<a name="138"><span class="lineNum">     138 </span>            :      * @return the head resolver</a>
 <span class="lineNum">     139 </span>            :      */
-<span class="lineNum">     140 </span>            :     const ConfigVariableResolver* resolver() const {return _resolverChain;}
+<span class="lineNum">     140 </span><span class="lineCov">          4 :     const ConfigVariableResolver* resolver() const {return _resolverChain;}</span>
 <span class="lineNum">     141 </span>            : 
 <span class="lineNum">     142 </span>            : private:
 <span class="lineNum">     143 </span>            : 

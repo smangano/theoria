@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntryLo">37.5 %</td>
+            <td class="headerCovTableEntryMed">87.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2016-11-14 03:09:56</td>
+            <td class="headerValue">2016-11-16 18:44:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntryLo">42.9 %</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -92,7 +92,7 @@
 <span class="lineNum">      30 </span>            : class Component ;
 <a name="31"><span class="lineNum">      31 </span>            : class Theoria ;</a>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">          1 : class RegistryLocked : public std::exception</span>
+<span class="lineNum">      33 </span><span class="lineCov">          4 : class RegistryLocked : public std::exception</span>
 <span class="lineNum">      34 </span>            : {
 <span class="lineNum">      35 </span>            : } ;
 <span class="lineNum">      36 </span>            : 
@@ -298,13 +298,13 @@
 <span class="lineNum">     236 </span>            :      * access the component
 <a name="237"><span class="lineNum">     237 </span>            :      *</a>
 <span class="lineNum">     238 </span>            :      */
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 :     util::Maybe&lt;Component&gt; component(CompId id) </span>
+<span class="lineNum">     239 </span><span class="lineCov">         19 :     util::Maybe&lt;Component&gt; component(CompId id) </span>
 <span class="lineNum">     240 </span>            :     {
 <span class="lineNum">     241 </span>            :         try {
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :             return util::Maybe&lt;Component&gt;(_components.at(id)) ;</span>
+<span class="lineNum">     242 </span><span class="lineCov">         19 :             return util::Maybe&lt;Component&gt;(_components.at(id)) ;</span>
 <span class="lineNum">     243 </span>            :         }
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         catch (...) {</span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 :             return util::Maybe&lt;Component&gt;(nullptr) ;</span>
+<span class="lineNum">     244 </span><span class="lineCov">          2 :         catch (...) {</span>
+<span class="lineNum">     245 </span><span class="lineCov">          1 :             return util::Maybe&lt;Component&gt;(nullptr) ;</span>
 <span class="lineNum">     246 </span>            :         }
 <span class="lineNum">     247 </span>            :     }
 <span class="lineNum">     248 </span>            : 
