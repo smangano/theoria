@@ -1,5 +1,7 @@
 #include <theoria/util/CommandLine.h>
 #include <theoria/core/Theoria.h>
+#include <theoria/core/Registry.h>
+#include <theoria/config/Config.h>
 #include <theoria/options.h>
 
 #include <iostream>
@@ -37,6 +39,7 @@ int main(int argc, const char ** argv)
         if (!cmdline.hasSetting(OPTION_INIT_ONLY[OPTS_IDX_NAME]))
         {
             theoria.run() ;
+            core::Registry::instance().dump(std::cout) ;
         }
     }
 
