@@ -2,8 +2,8 @@ var searchData=
 [
   ['testlock',['testLock',['../structtheoria_1_1core_1_1RegistryLock.html#a28e3a44cfa3ef223db18db201e635254',1,'theoria::core::RegistryLock']]],
   ['text',['Text',['../classtheoria_1_1config_1_1Config.html#ac1325f2d355e7c617dcd16d561ee2429',1,'theoria::config::Config']]],
+  ['theoria',['Theoria',['../classtheoria_1_1core_1_1Theoria.html#a9a99e8952d6224eade9318098221d144',1,'theoria::core::Theoria']]],
   ['theoria',['Theoria',['../classtheoria_1_1core_1_1Theoria.html',1,'theoria::core']]],
-  ['theoria',['theoria',['../namespacetheoria.html',1,'theoria'],['../classtheoria_1_1core_1_1Theoria.html#a9a99e8952d6224eade9318098221d144',1,'theoria::core::Theoria::Theoria()']]],
   ['tomlconfigbuilder',['TOMLConfigBuilder',['../classtheoria_1_1config_1_1TOMLConfigBuilder.html',1,'theoria::config']]],
   ['tomlconfigbuildercomp',['TOMLConfigBuilderComp',['../classtheoria_1_1core_1_1TOMLConfigBuilderComp.html#a7944116685d64329a987f6dd3f0f8f17',1,'theoria::core::TOMLConfigBuilderComp']]],
   ['tomlconfigbuildercomp',['TOMLConfigBuilderComp',['../classtheoria_1_1core_1_1TOMLConfigBuilderComp.html',1,'theoria::core']]],

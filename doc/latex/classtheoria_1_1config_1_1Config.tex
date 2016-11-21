@@ -201,7 +201,7 @@ Destructor \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a232146edc23baa80
 \subsubsection{\texorpdfstring{Config()}{Config()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Config\+::\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-Constructor initailizing nae and description of config node 
+Constructor initializing name and description of config node 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}\label{classtheoria_1_1config_1_1Config_a043dff1e32568ef63eb10c557e6f672d}} 
@@ -229,7 +229,7 @@ Add a child config node.
 \begin{DoxyParams}{Parameters}
 {\em child} & the child to add \\
 \hline
-{\em allow\+Dups} & true if nodes with duplicate naes are allowed \\
+{\em allow\+Dups} & true if nodes with duplicate names are allowed \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}\label{classtheoria_1_1config_1_1Config_a4bd7712d99a507b1da47da9257094051}} 
@@ -284,7 +284,7 @@ Find attribute \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a0170adaf1d64
 {\footnotesize\ttfamily template$<$class T $>$ \\
 T theoria\+::config\+::\+Config\+::get\+Attr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Get the attribute of specified name as the givent type T \begin{DoxyReturn}{Returns}
+Get the attribute of specified name as the given type T \begin{DoxyReturn}{Returns}
 the attribute value as type T 
 \end{DoxyReturn}
 
@@ -303,14 +303,14 @@ T theoria\+::config\+::\+Config\+::get\+Attr (\begin{DoxyParamCaption}\item[{con
 
 Get the attribute of specified name as the given type T or def if no such attribute 
 \begin{DoxyParams}{Parameters}
-{\em name} & the name of the attribue \\
+{\em name} & the name of the attribute \\
 \hline
 {\em def} & default value if no such attribute \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em std\+::rumtimer} & error if attribute exusts but can\textquotesingle{}t be convereted to type T \\
+{\em std\+::run\+\_\+time} & error if attribute exists but can\textquotesingle{}t be converted to type T \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}\label{classtheoria_1_1config_1_1Config_adcfd22ac6dc3293f1306a33591ab53c8}} 
@@ -387,7 +387,7 @@ Get the value of the attribute of specified name as a string or default if no su
 {\footnotesize\ttfamily const \hyperlink{classtheoria_1_1config_1_1Config}{Config} $\ast$ Config\+::get\+Child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
 
 Return child with given name. \begin{DoxyReturn}{Returns}
-child ptr or nullptrt if no such child 
+child ptr or nullptr if no such child 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}\label{classtheoria_1_1config_1_1Config_ab258c41faac01f6dda0ff0c86adc9903}} 
 \index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Children@{get\+Children}}
@@ -425,7 +425,7 @@ parent
 {\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} Config\+::get\+Siblings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Return siblings of this node (nodes at same level other than this) \begin{DoxyReturn}{Returns}
-list of sinlings (possibly empty) 
+list of siblings (possibly empty) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}\label{classtheoria_1_1config_1_1Config_abb60532c082c92c628ae49ed3b2e9457}} 
 \index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!get\+Siblings@{get\+Siblings}}
@@ -434,7 +434,7 @@ list of sinlings (possibly empty)
 {\footnotesize\ttfamily \hyperlink{classtheoria_1_1config_1_1Config_a61230728ffa4d92667a536c8c0f0ca30}{Const\+Config\+List} Config\+::get\+Siblings (\begin{DoxyParamCaption}\item[{const \hyperlink{classtheoria_1_1config_1_1Config_a293ebfd7146d935e232a066f7e6fa279}{Config\+Predicate} \&}]{predicate }\end{DoxyParamCaption}) const}
 
 Return siblings of this node (nodes at same level other than this) that satisfy predicate \begin{DoxyReturn}{Returns}
-list of sinlings (possibly empty) 
+list of siblings (possibly empty) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}\label{classtheoria_1_1config_1_1Config_a01d4128f1f86ad2ff01dfeb3c52c72f4}} 
 \index{theoria\+::config\+::\+Config@{theoria\+::config\+::\+Config}!has\+Attr@{has\+Attr}}
@@ -537,7 +537,7 @@ Reimplemented in \hyperlink{classtheoria_1_1config_1_1ConfigArray_a1c73dba526ebd
 \subsubsection{\texorpdfstring{Config\+Builder}{ConfigBuilder}}
 {\footnotesize\ttfamily friend class \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder}\hspace{0.3cm}{\ttfamily [friend]}}
 
-A \hyperlink{classtheoria_1_1config_1_1Config}{Config} is contructed by a \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} therefor only \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} has ability to mutate configs. 
+A \hyperlink{classtheoria_1_1config_1_1Config}{Config} is constructed by a \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} therefor only \hyperlink{classtheoria_1_1config_1_1ConfigBuilder}{Config\+Builder} has ability to mutate configs. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

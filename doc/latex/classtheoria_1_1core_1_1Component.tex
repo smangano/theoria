@@ -63,13 +63,13 @@ std\+::string \hyperlink{classtheoria_1_1core_1_1Component_ac1eca19b044721b873a0
 
 
 \subsection{Detailed Description}
-Components are the soul of \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria}. Components are used to implement the meaty parts of your application. Things that contain significant business logic, are generally long-\/lived, manage complex data structures, processes or algorithms, etc. Components support a rich lifecycle, can be dynamically configured and dynamically wired up to other components.
+Components are the soul of \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria}. Components are used to implement the meaty parts of your application. Things that contain significant business logic, are generally long-\/lived, manage complex data structures, processes or algorithms, etc. Components support a rich life-\/cycle, can be dynamically configured and dynamically wired up to other components.
 
-Components consume config data to customize themselves to a particular use. Config data is provided in the \hyperlink{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}{init()} method and it is the first stage of a components lifecycle. Often this cofiguration will provide information that will tell a component what other components it requires but other times the configuration data will be simple paramters like a host/port or locale info, or user settings, etc.
+Components consume config data to customize themselves to a particular use. Config data is provided in the \hyperlink{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}{init()} method and it is the first stage of a components life-\/cycle. Often this configuration will provide information that will tell a component what other components it requires but other times the configuration data will be simple parameters like a host/port or locale info, or user settings, etc.
 
-In response to configuraation a component is expected to return its requirements for other components. It does this by returning \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies}. \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} are a way of conveying very general or very specific requirements that of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we use Type to mean \char`\"{}the need of a component that provides some service\char`\"{} and Subtype to mean a very specific implematation of that service. In addition, \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} convey whether a service is absolutly required or is optional. An absolute requirement must be fullfiled for the application to progress.
+In response to configuration a component is expected to return its requirements for other components. It does this by returning \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies}. \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} are a way of conveying very general or very specific requirements that of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we use Type to mean \char`\"{}the need of a component that provides some service\char`\"{} and Subtype to mean a very specific implementation of that service. In addition, \hyperlink{classtheoria_1_1core_1_1Dependencies}{Dependencies} convey whether a service is absolutely required or is optional. An absolute requirement must be fulfilled for the application to progress.
 
-Once all components in you application are initialized, \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} satisfies dependencies by calling \hyperlink{classtheoria_1_1core_1_1Component_afd8acc89e2cd36e92bebe7e6fa530764}{finalize()} and handing your componet its dependents in the same order as requested. Optional dependents may be null if \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} could not aquire them
+Once all components in you application are initialized, \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} satisfies dependencies by calling \hyperlink{classtheoria_1_1core_1_1Component_afd8acc89e2cd36e92bebe7e6fa530764}{finalize()} and handing your component its dependents in the same order as requested. Optional dependents may be null if \hyperlink{classtheoria_1_1core_1_1Theoria}{Theoria} could not acquire them
 
 Components also receive life-\/cycle notifications. \begin{DoxySeeAlso}{See also}
 \hyperlink{classtheoria_1_1core_1_1Component_ae036cde9b803a621149efeff7e0e00fc}{app\+Life\+Cycle} and 
@@ -124,7 +124,7 @@ Default impl sets $\ast$dest to nullptr and returns nullptr
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-nullptr if this call already satisfied the request by populating dest or if it can\textquotesingle{}t satify request a pointer to another component if this component belives that the returned component can satisfy the request 
+nullptr if this call already satisfied the request by populating dest or if it can\textquotesingle{}t satisfy request a pointer to another component if this component believes that the returned component can satisfy the request 
 \end{DoxyReturn}
 
 
@@ -136,7 +136,7 @@ Reimplemented in \hyperlink{classtheoria_1_1core_1_1TOMLConfigBuilderComp_a7cfce
 \subsubsection{\texorpdfstring{app\+Life\+Cycle()}{appLifeCycle()}}
 {\footnotesize\ttfamily void Component\+::app\+Life\+Cycle (\begin{DoxyParamCaption}\item[{App\+Life\+Cycle}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-This is a place to take action on application lifecycle events. 
+This is a place to take action on application life-\/cycle events. 
 
 Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp_ad7d3e9f8ab3a2837526ffc3eda4c6c38}{theoria\+::core\+::\+Config\+Var\+Resolver\+Builder\+Comp}.
 
@@ -147,7 +147,7 @@ Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp
 {\footnotesize\ttfamily template$<$class T $>$ \\
 T$\ast$ theoria\+::core\+::\+Component\+::cast (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{requestor = {\ttfamily \char`\"{}Unknown\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T or if it can acquire a T. \begin{DoxySeeAlso}{See also}
+A cast operation is a request to this component for an implementation of type T. The component can satisfy the request if it is itself a T or if it can acquire a T. \begin{DoxySeeAlso}{See also}
 \hyperlink{classtheoria_1_1core_1_1Component_a18744abc83e088af3c3d42e0a22c35e3}{acquire} 
 \end{DoxySeeAlso}
 \mbox{\Hypertarget{classtheoria_1_1core_1_1Component_a92578e2b6253681a21b91e7c22b22975}\label{classtheoria_1_1core_1_1Component_a92578e2b6253681a21b91e7c22b22975}} 
@@ -172,7 +172,7 @@ Reimplemented in \hyperlink{classtheoria_1_1core_1_1ConfigVarResolverBuilderComp
 \subsubsection{\texorpdfstring{id()}{id()}}
 {\footnotesize\ttfamily Comp\+Id theoria\+::core\+::\+Component\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Return components unique id. Uniquieness is per application invocation so this is not a G\+U\+ID nor is it guranteed idemponent between distinct runs of the app. \mbox{\Hypertarget{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}\label{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}} 
+Return components unique id. Uniqueness is per application invocation so this is not a G\+U\+ID nor is it guaranteed idempotent between distinct runs of the app. \mbox{\Hypertarget{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}\label{classtheoria_1_1core_1_1Component_a7ed45f6e38442a40666ae4556f794f7d}} 
 \index{theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}!init@{init}}
 \index{init@{init}!theoria\+::core\+::\+Component@{theoria\+::core\+::\+Component}}
 \subsubsection{\texorpdfstring{init()}{init()}}

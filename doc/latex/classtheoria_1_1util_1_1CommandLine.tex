@@ -68,14 +68,16 @@ static void \hyperlink{classtheoria_1_1util_1_1CommandLine_a1a52772e7e3b17d0dd7a
 \subsection{Detailed Description}
 Pseudo-\/\+Singleton that captures command line arguments of Theoria applications
 
-\hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} consists of\+: \begin{DoxyVerb} config file - e.g., myapp.toml
- settings passed as: [--setting value] or [--someFlag] 
- settings are terminated by optionak -- (mandatory if variables are specified)
- variables passed as: var1=value
+\hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} consists of\+: \begin{DoxyVerb} settings passed as: [--setting value] or [--someFlag] (terminated by -- if last setting takes no args)
+ config file - e.g., myapp.toml or myapp.xml
+ users settings passed as: [--setting value] or [--someFlag] (user settings com after the config file)
+ user settings are terminated by optional -- (mandatory if variables are specified)
+ variables passed as: var1=value var2=value2 ...
 
  Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
  However, user defined settings are allowed. To avoid conflict with future extensions of theoria
- user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
+ user-defined settings should contain at least one capital letter and/or use underscores (as theoria built-in settings are always
+ lowercase and use dashes)
 
 
  Variables are typically user defined settings that parameterize the config file. 
@@ -83,15 +85,18 @@ Pseudo-\/\+Singleton that captures command line arguments of Theoria application
 \end{DoxyVerb}
 
 
-Example legal command lines\+: \begin{DoxyVerb} theoria config.toml
+Examples of legal command lines\+: \begin{DoxyVerb} theoria config.toml
  theoria config.xml
- theoria config.toml --setting1
- theoria config.toml --setting1 97
- theoria config.toml --setting1 --setting2 17
- theoria config.toml --setting1 --setting2 17 --
+ theoria --setting1 -- config.toml
+ theoria --setting1 97 config.toml 
+ theoria config.toml --UserSetting1 --UserSetting2 17
+ theoria --flag1 config.toml --UserSetting1 --setting2 17 --
  theoria config.toml -- a=1 b=2 c=3
- theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]\end{DoxyVerb}
- 
+ theoria --setting1 10 config.toml --UserSetting1 --UserSetting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
+\end{DoxyVerb}
+
+
+N\+O\+TE\+: \hyperlink{classtheoria_1_1util_1_1CommandLine}{Command\+Line} is a helper for parsing command line but does not determine what settings are semantically valid hence is simply a utility. 
 
 \subsection{Member Typedef Documentation}
 \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}\label{classtheoria_1_1util_1_1CommandLine_a729aa00feedd8257d4caafc73ac6ee63}} 
@@ -133,7 +138,7 @@ iterator to std\+::pair$<$name,value$>$ or end()
 \subsubsection{\texorpdfstring{config\+Filename()}{configFilename()}}
 {\footnotesize\ttfamily const std\+::string\& theoria\+::util\+::\+Command\+Line\+::config\+Filename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-The name of the app config file bassed on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}\label{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}} 
+The name of the app config file based on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}\label{classtheoria_1_1util_1_1CommandLine_ae33c86c2a60d2470827b2206893c8f7b}} 
 \index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!end\+Settings@{end\+Settings}}
 \index{end\+Settings@{end\+Settings}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
 \subsubsection{\texorpdfstring{end\+Settings()}{endSettings()}}
@@ -192,7 +197,7 @@ The instance constructed in main (or first instance) \mbox{\Hypertarget{classthe
 \subsubsection{\texorpdfstring{num\+Settings()}{numSettings()}}
 {\footnotesize\ttfamily int theoria\+::util\+::\+Command\+Line\+::num\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-The numbber of settings passed on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}\label{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}} 
+The number of settings passed on the command line \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}\label{classtheoria_1_1util_1_1CommandLine_abe3bbdaa5b4abb7bf86996304b451253}} 
 \index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!num\+Vars@{num\+Vars}}
 \index{num\+Vars@{num\+Vars}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
 \subsubsection{\texorpdfstring{num\+Vars()}{numVars()}}
@@ -222,19 +227,19 @@ Return a setting as double if it exists otherwise return def \mbox{\Hypertarget{
 \subsubsection{\texorpdfstring{setting\+As\+Int()}{settingAsInt()}}
 {\footnotesize\ttfamily int64\+\_\+t Command\+Line\+::setting\+As\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int64\+\_\+t}]{def }\end{DoxyParamCaption}) const}
 
-Return a settting as a 64bit integer if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}\label{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}} 
+Return a setting as a 64bit integer if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}\label{classtheoria_1_1util_1_1CommandLine_ad5b4089e23a04d31c3edcf3d659ab8d9}} 
 \index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Ptr@{setting\+As\+Ptr}}
 \index{setting\+As\+Ptr@{setting\+As\+Ptr}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
 \subsubsection{\texorpdfstring{setting\+As\+Ptr()}{settingAsPtr()}}
 {\footnotesize\ttfamily const char $\ast$ Command\+Line\+::setting\+As\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
-Return a settting as a const char $\ast$ if it exists otherwise return nullptr \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}\label{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}} 
+Return a setting as a const char $\ast$ if it exists otherwise return nullptr \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}\label{classtheoria_1_1util_1_1CommandLine_ac398ce852930a3974f9ed6a1c5255975}} 
 \index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!setting\+As\+Str@{setting\+As\+Str}}
 \index{setting\+As\+Str@{setting\+As\+Str}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
 \subsubsection{\texorpdfstring{setting\+As\+Str()}{settingAsStr()}}
 {\footnotesize\ttfamily const std\+::string \& Command\+Line\+::setting\+As\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{def }\end{DoxyParamCaption}) const}
 
-Return a settting as a string if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}\label{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}} 
+Return a setting as a string if it exists otherwise return def \mbox{\Hypertarget{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}\label{classtheoria_1_1util_1_1CommandLine_a6d4d9be7adcf9ac15a1e5469535e97e9}} 
 \index{theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}!variable\+As\+Bool@{variable\+As\+Bool}}
 \index{variable\+As\+Bool@{variable\+As\+Bool}!theoria\+::util\+::\+Command\+Line@{theoria\+::util\+::\+Command\+Line}}
 \subsubsection{\texorpdfstring{variable\+As\+Bool()}{variableAsBool()}}

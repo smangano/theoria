@@ -58,7 +58,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacetheoria.html">theoria</a></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a></li>  </ul>
+<li class="navelem"><b>theoria</b></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classtheoria_1_1core_1_1Component.html">Component</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -134,10 +134,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ac1eca19b044721b873a0ec32cf3667a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Components are the soul of <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a>. Components are used to implement the meaty parts of your application. Things that contain significant business logic, are generally long-lived, manage complex data structures, processes or algorithms, etc. Components support a rich lifecycle, can be dynamically configured and dynamically wired up to other components.</p>
-<p>Components consume config data to customize themselves to a particular use. Config data is provided in the <a class="el" href="classtheoria_1_1core_1_1Component.html#a7ed45f6e38442a40666ae4556f794f7d">init()</a> method and it is the first stage of a components lifecycle. Often this cofiguration will provide information that will tell a component what other components it requires but other times the configuration data will be simple paramters like a host/port or locale info, or user settings, etc.</p>
-<p>In response to configuraation a component is expected to return its requirements for other components. It does this by returning <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a>. <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> are a way of conveying very general or very specific requirements that of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we use Type to mean "the need of a component that provides some service" and Subtype to mean a very specific implematation of that service. In addition, <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> convey whether a service is absolutly required or is optional. An absolute requirement must be fullfiled for the application to progress.</p>
-<p>Once all components in you application are initialized, <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> satisfies dependencies by calling <a class="el" href="classtheoria_1_1core_1_1Component.html#afd8acc89e2cd36e92bebe7e6fa530764">finalize()</a> and handing your componet its dependents in the same order as requested. Optional dependents may be null if <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> could not aquire them</p>
+<div class="textblock"><p>Components are the soul of <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a>. Components are used to implement the meaty parts of your application. Things that contain significant business logic, are generally long-lived, manage complex data structures, processes or algorithms, etc. Components support a rich life-cycle, can be dynamically configured and dynamically wired up to other components.</p>
+<p>Components consume config data to customize themselves to a particular use. Config data is provided in the <a class="el" href="classtheoria_1_1core_1_1Component.html#a7ed45f6e38442a40666ae4556f794f7d">init()</a> method and it is the first stage of a components life-cycle. Often this configuration will provide information that will tell a component what other components it requires but other times the configuration data will be simple parameters like a host/port or locale info, or user settings, etc.</p>
+<p>In response to configuration a component is expected to return its requirements for other components. It does this by returning <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a>. <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> are a way of conveying very general or very specific requirements that of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we use Type to mean "the need of a component that provides some service" and Subtype to mean a very specific implementation of that service. In addition, <a class="el" href="classtheoria_1_1core_1_1Dependencies.html">Dependencies</a> convey whether a service is absolutely required or is optional. An absolute requirement must be fulfilled for the application to progress.</p>
+<p>Once all components in you application are initialized, <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> satisfies dependencies by calling <a class="el" href="classtheoria_1_1core_1_1Component.html#afd8acc89e2cd36e92bebe7e6fa530764">finalize()</a> and handing your component its dependents in the same order as requested. Optional dependents may be null if <a class="el" href="classtheoria_1_1core_1_1Theoria.html">Theoria</a> could not acquire them</p>
 <p>Components also receive life-cycle notifications. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classtheoria_1_1core_1_1Component.html#ae036cde9b803a621149efeff7e0e00fc">appLifeCycle</a> and </dd>
 <dd>
 <a class="el" href="classtheoria_1_1core_1_1Component.html#a92578e2b6253681a21b91e7c22b22975">compLifeCycle</a> for details. </dd></dl>
@@ -293,7 +293,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>nullptr if this call already satisfied the request by populating dest or if it can't satify request a pointer to another component if this component belives that the returned component can satisfy the request </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>nullptr if this call already satisfied the request by populating dest or if it can't satisfy request a pointer to another component if this component believes that the returned component can satisfy the request </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classtheoria_1_1core_1_1TOMLConfigBuilderComp.html#a7cfce41f96c49af8e80d884f70ee66fa">theoria::core::TOMLConfigBuilderComp</a>, <a class="el" href="classtheoria_1_1core_1_1AppConfigResolverComp.html#af04af67f66e3bfea44ab76c33d64a51e">theoria::core::AppConfigResolverComp</a>, <a class="el" href="classtheoria_1_1core_1_1CmdLineResolverComp.html#a51c66e964d559b3e13f4386c0bf0e0c0">theoria::core::CmdLineResolverComp</a>, and <a class="el" href="classtheoria_1_1core_1_1EnvVarResolverComp.html#aac22e843f14123d2627f8c8ca0311b80">theoria::core::EnvVarResolverComp</a>.</p>
 
@@ -322,7 +322,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is a place to take action on application lifecycle events. </p>
+<p>This is a place to take action on application life-cycle events. </p>
 
 <p>Reimplemented in <a class="el" href="classtheoria_1_1core_1_1ConfigVarResolverBuilderComp.html#ad7d3e9f8ab3a2837526ffc3eda4c6c38">theoria::core::ConfigVarResolverBuilderComp</a>.</p>
 
@@ -353,7 +353,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T or if it can acquire a T. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classtheoria_1_1core_1_1Component.html#a18744abc83e088af3c3d42e0a22c35e3">acquire</a> </dd></dl>
+<p>A cast operation is a request to this component for an implementation of type T. The component can satisfy the request if it is itself a T or if it can acquire a T. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classtheoria_1_1core_1_1Component.html#a18744abc83e088af3c3d42e0a22c35e3">acquire</a> </dd></dl>
 
 </div>
 </div>
@@ -445,7 +445,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Return components unique id. Uniquieness is per application invocation so this is not a GUID nor is it guranteed idemponent between distinct runs of the app. </p>
+<p>Return components unique id. Uniqueness is per application invocation so this is not a GUID nor is it guaranteed idempotent between distinct runs of the app. </p>
 
 </div>
 </div>
@@ -612,7 +612,7 @@ template&lt;class T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 21 2016 01:48:29 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

@@ -66,7 +66,7 @@ class {\bfseries Config\+Builder}
 
 
 \subsection{Detailed Description}
-An array of configs. Used where order is significan as normally child nodes have no inherent order. In practice, \hyperlink{classtheoria_1_1config_1_1ConfigArray}{Config\+Array} is implemented in terms of \hyperlink{classtheoria_1_1config_1_1Config}{Config}\textquotesingle{}s children with the assumption that the parser that processed the config will add the children in the proper order when ordering matters.
+An array of configs. Used where order is significant as normally child nodes have no inherent order. In practice, \hyperlink{classtheoria_1_1config_1_1ConfigArray}{Config\+Array} is implemented in terms of \hyperlink{classtheoria_1_1config_1_1Config}{Config}\textquotesingle{}s children with the assumption that the parser that processed the config will add the children in the proper order when ordering matters.
 
 For example, a T\+O\+ML parser is not required to present tables in any particular order but must present arrays of tables in the order they appear in the document. This is where the parse must use \hyperlink{classtheoria_1_1config_1_1ConfigArray}{Config\+Array} rather than \hyperlink{classtheoria_1_1config_1_1Config}{Config}. 
 

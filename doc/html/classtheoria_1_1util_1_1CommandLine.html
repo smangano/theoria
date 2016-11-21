@@ -58,7 +58,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacetheoria.html">theoria</a></li><li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a></li>  </ul>
+<li class="navelem"><b>theoria</b></li><li class="navelem"><b>util</b></li><li class="navelem"><a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -135,26 +135,30 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Pseudo-Singleton that captures command line arguments of Theoria applications</p>
-<p><a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> consists of: </p><pre class="fragment"> config file - e.g., myapp.toml
- settings passed as: [--setting value] or [--someFlag] 
- settings are terminated by optionak -- (mandatory if variables are specified)
- variables passed as: var1=value
+<p><a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> consists of: </p><pre class="fragment"> settings passed as: [--setting value] or [--someFlag] (terminated by -- if last setting takes no args)
+ config file - e.g., myapp.toml or myapp.xml
+ users settings passed as: [--setting value] or [--someFlag] (user settings com after the config file)
+ user settings are terminated by optional -- (mandatory if variables are specified)
+ variables passed as: var1=value var2=value2 ...
 
  Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
  However, user defined settings are allowed. To avoid conflict with future extensions of theoria
- user-defined settings should contain at least one capital letter (as theoria built-in settings are always lowere case)
+ user-defined settings should contain at least one capital letter and/or use underscores (as theoria built-in settings are always
+ lowercase and use dashes)
 
 
  Variables are typically user defined settings that parameterize the config file. 
  See &lt;theoria::config::CmdLineResolver&gt;
-</pre><p>Example legal command lines: </p><pre class="fragment"> theoria config.toml
+</pre><p>Examples of legal command lines: </p><pre class="fragment"> theoria config.toml
  theoria config.xml
- theoria config.toml --setting1
- theoria config.toml --setting1 97
- theoria config.toml --setting1 --setting2 17
- theoria config.toml --setting1 --setting2 17 --
+ theoria --setting1 -- config.toml
+ theoria --setting1 97 config.toml 
+ theoria config.toml --UserSetting1 --UserSetting2 17
+ theoria --flag1 config.toml --UserSetting1 --setting2 17 --
  theoria config.toml -- a=1 b=2 c=3
- theoria config.toml --setting1 --setting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]</pre> </div><h2 class="groupheader">Member Typedef Documentation</h2>
+ theoria --setting1 10 config.toml --UserSetting1 --UserSetting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
+</pre><p>NOTE: <a class="el" href="classtheoria_1_1util_1_1CommandLine.html">CommandLine</a> is a helper for parsing command line but does not determine what settings are semantically valid hence is simply a utility. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a729aa00feedd8257d4caafc73ac6ee63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a729aa00feedd8257d4caafc73ac6ee63">&sect;&nbsp;</a></span>const_iterator</h2>
 
@@ -281,7 +285,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The name of the app config file bassed on the command line </p>
+<p>The name of the app config file based on the command line </p>
 
 </div>
 </div>
@@ -499,7 +503,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The numbber of settings passed on the command line </p>
+<p>The number of settings passed on the command line </p>
 
 </div>
 </div>
@@ -638,7 +642,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return a settting as a 64bit integer if it exists otherwise return def </p>
+<p>Return a setting as a 64bit integer if it exists otherwise return def </p>
 
 </div>
 </div>
@@ -665,7 +669,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Return a settting as a const char * if it exists otherwise return nullptr </p>
+<p>Return a setting as a const char * if it exists otherwise return nullptr </p>
 
 </div>
 </div>
@@ -694,7 +698,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return a settting as a string if it exists otherwise return def </p>
+<p>Return a setting as a string if it exists otherwise return def </p>
 
 </div>
 </div>
@@ -866,7 +870,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 14 2016 03:02:30 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 21 2016 01:48:29 for Theoria by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

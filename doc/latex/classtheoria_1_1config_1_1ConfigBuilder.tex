@@ -60,7 +60,7 @@ const \hyperlink{classtheoria_1_1config_1_1ConfigVariableResolver}{Config\+Varia
 
 
 \subsection{Detailed Description}
-Provides support for building config files from hierachical data files like T\+O\+ML, X\+ML, Y\+A\+ML, etc. 
+Provides support for building config files from hierarchical data files like T\+O\+ML, X\+ML, Y\+A\+ML, etc. 
 
 \subsection{Member Typedef Documentation}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigBuilder_a31d4cfc983e8ad468c483822731d790f}\label{classtheoria_1_1config_1_1ConfigBuilder_a31d4cfc983e8ad468c483822731d790f}} 
@@ -119,7 +119,7 @@ Pop the top node. It will be lost if you need not save somewhere by first callin
 \subsubsection{\texorpdfstring{pop\+As\+Child()}{popAsChild()}}
 {\footnotesize\ttfamily void Config\+Builder\+::pop\+As\+Child (\begin{DoxyParamCaption}\item[{bool}]{allow\+Dups = {\ttfamily false} }\end{DoxyParamCaption})}
 
-Pop a node off the stack and attach it as a chile to the new top node 
+Pop a node off the stack and attach it as a child to the new top node 
 \begin{DoxyParams}{Parameters}
 {\em allow\+Dups} & Normally \hyperlink{classtheoria_1_1config_1_1Config}{Config} nodes must be unique by name. Set true to override. N\+O\+TE\+: if parent is an array dups will automatically to be allowed even if allow\+Dups==false \\
 \hline
@@ -134,7 +134,7 @@ Create a config node with name and description and push on to the node stack
 \begin{DoxyParams}{Parameters}
 {\em name} & the name of the node \\
 \hline
-{\em desc} & the node descrition \\
+{\em desc} & the node description \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classtheoria_1_1config_1_1ConfigBuilder_a2dc70e43627e67521bf921152ee3c131}\label{classtheoria_1_1config_1_1ConfigBuilder_a2dc70e43627e67521bf921152ee3c131}} 
