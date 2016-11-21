@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <theoria/core/primitives.h>
@@ -40,7 +49,7 @@ class RegisterThis
 public:
 
     /**
-     * Regsiter TComp of specified type
+     * Register TComp of specified type
      */
     RegisterThis(const TypeName& type)
     {
@@ -48,7 +57,7 @@ public:
     }
 
     /**
-     * Regsiter TComp of specified type and subtype
+     * Register TComp of specified type and subtype
      */
     RegisterThis(const TypeName& type, const SubTypeName& subtype)
     {

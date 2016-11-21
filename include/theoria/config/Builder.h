@@ -11,7 +11,7 @@ class Config ;
 class ConfigVariableResolver ;
 
 /**
- * Provides support for building config files from hierachical data files like TOML, XML, YAML, etc.
+ * Provides support for building config files from hierarchical data files like TOML, XML, YAML, etc.
  */
 class ConfigBuilder 
 {
@@ -44,7 +44,7 @@ public:
     /** 
      * Create a config node with name and description and push on to the node stack
      * @param name the name of the node
-     * @param desc the node descrition
+     * @param desc the node description
      */
     void pushConfig(const std::string& name, const std::string& desc="") ;
 
@@ -95,7 +95,7 @@ public:
     void setAttrSource(const std::string& name, const std::string& variableName, const std::string& resolverName) ;
 
     /**
-     * Pop a node off the stack and attach it as a chile to the new top node
+     * Pop a node off the stack and attach it as a child to the new top node
      * @param allowDups Normally Config nodes must be unique by name. Set true to override.  
      *                  NOTE: if parent is an array dups will automatically to be allowed even if allowDups==false
      */

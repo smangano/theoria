@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <theoria/core/primitives.h>
@@ -45,12 +54,12 @@ struct RegistryLock
     RegistryLock() ;
 
     /**
-     * Try to lock registry ntimes with sleep ms between. Raises exception if lock not aquired
+     * Try to lock registry ntimes with sleep ms between. Raises exception if lock not acquired
      */
     RegistryLock(int ntimes, long sleepms = 0.0) ;
 
     /**
-     * Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not aquired
+     * Try to lock registry ntimes with sleep sleepduration between. Raises exception if lock not acquired
      */
     template< class Rep, class Period >
     RegistryLock(int ntimes, std::chrono::duration<Rep, Period> sleepduration) ;
@@ -68,7 +77,7 @@ struct RegistryLock
 
 
 /**
- * The Registry manages Theoria Compoents and their factories. It is the central mechanism that enables dependency injection 
+ * The Registry manages Theoria Components and their factories. It is the central mechanism that enables dependency injection 
  * as well as on demand access to components.
  *
  * The registry is the only Singleton within Theoria and you can leverage it to avoid creating Singletons within your own application.
@@ -219,7 +228,7 @@ public:
 
     /**
      * Dump the registry
-     * @param stream destionation of dump
+     * @param stream destination of dump
      */
     void dump(std::ostream& stream) const ;
 
@@ -301,7 +310,7 @@ public:
     /**
      * Get component as T via dynamic cast
      * @param type the type of the component
-     * @param subtype of the compoent
+     * @param subtype of the component
      * @return a Maybe<T> which is bound if the operation was successful
      */
     template <typename T>

@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <theoria/core/primitives.h>
@@ -37,8 +46,8 @@ public:
 	struct Dependent
 	{
         /**
-         * Use to construct a strict depenedency where both type and subtype must be satsified
-         * or a losse dependency if subtype is empty string
+         * Use to construct a strict dependency where both type and subtype must be satisfied
+         * or a loose dependency if subtype is empty string
          * @param type_ the typename
          * @param subtype_ the subtype name
          * @param optional_ set this to true to tell theoria it is okay if dependency can't be resolved

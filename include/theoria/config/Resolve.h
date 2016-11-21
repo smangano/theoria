@@ -37,7 +37,7 @@ class ConfigVariableResolver
 public:
 
     /**
-     * The result type is a pair consiting of the resolver that dtermined the value and the value itself
+     * The result type is a pair consisting of the resolver that determined the value and the value itself
      */
     using Result = std::pair<const ConfigVariableResolver*, std::string> ;
 
@@ -53,7 +53,7 @@ public:
         _next(nullptr) {}
 
     /**
-     * Destructore
+     * Destructor
      */
     virtual ~ConfigVariableResolver() ; 
 
@@ -131,7 +131,7 @@ public:
 } ;
 
 /**
- * Resolves variables set from the theroia command line
+ * Resolves variables set from the theoria command line
  */
 class CmdLineResolver : public ConfigVariableResolver
 {
@@ -201,7 +201,7 @@ public:
     TOMLResolver() = delete ;
 
     /**
-     * Use spefied TOLM file as source for resolver
+     * Use specified TOLM file as source for resolver
      */
     explicit TOMLResolver(const std::string& tomlFilePath) ;
 

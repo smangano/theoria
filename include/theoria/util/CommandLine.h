@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriaacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <string>
@@ -12,16 +21,16 @@ namespace theoria { namespace util {
  *
  * CommandLine consists of:
  *
- *      settings passed as: [--setting value] or [--someFlag] (teminated by -- if last setting takes no args)
+ *      settings passed as: [--setting value] or [--someFlag] (terminated by -- if last setting takes no args)
  *      config file - e.g., myapp.toml or myapp.xml
- *      users settings passed as: [--setting value] or [--someFlag] (user seetings com after the confif file)
+ *      users settings passed as: [--setting value] or [--someFlag] (user settings com after the config file)
  *      user settings are terminated by optional -- (mandatory if variables are specified)
  *      variables passed as: var1=value var2=value2 ...
  *
  *      Settings are usually predefined by theoria to change its behavior in some way specified by: theoria --help.
  *      However, user defined settings are allowed. To avoid conflict with future extensions of theoria
  *      user-defined settings should contain at least one capital letter and/or use underscores (as theoria built-in settings are always
- *      lowere case and use dashes)
+ *      lowercase and use dashes)
  *
  *
  *      Variables are typically user defined settings that parameterize the config file. 
@@ -38,7 +47,7 @@ namespace theoria { namespace util {
  *      theoria config.toml -- a=1 b=2 c=3
  *      theoria --setting1 10 config.toml --UserSetting1 --UserSetting2 17 -- a=1 b=2 c=3 d=[1,2,3,4]
  *
- * NOTE: CommandLine is a helper for parsing command line but does not determin what settinsg are sematically valid hence
+ * NOTE: CommandLine is a helper for parsing command line but does not determine what settings are semantically valid hence
  *       is simply a utility. 
  */
 class CommandLine {
@@ -154,17 +163,17 @@ public:
     const_iterator endSettings() const {return _settings.cend(); }
    
     /**
-     * Return a settting as a const char * if it exists otherwise return nullptr
+     * Return a setting as a const char * if it exists otherwise return nullptr
      */
     const char * settingAsPtr(const std::string& name) const noexcept ;
    
     /**
-     * Return a settting as a string if it exists otherwise return def
+     * Return a setting as a string if it exists otherwise return def
      */
     const std::string& settingAsStr(const std::string& name, const std::string& def) const ;
    
     /**
-     * Return a settting as a 64bit integer if it exists otherwise return def
+     * Return a setting as a 64bit integer if it exists otherwise return def
      */
     int64_t settingAsInt(const std::string& name, int64_t def) const ;
    
@@ -179,12 +188,12 @@ public:
     bool settingAsBool(const std::string& name, bool def) const ;
    
     /**
-     * The numbber of settings passed on the command line
+     * The number of settings passed on the command line
      */
     int numSettings() const {return _settings.size();} 
 
     /**
-     * The name of the app config file bassed on the command line
+     * The name of the app config file based on the command line
      */
     const std::string& configFilename() const {return _configFileName;}
 

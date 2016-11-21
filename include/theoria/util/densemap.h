@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <theoria/util/strings.h>
@@ -46,7 +55,7 @@ public:
         ConstIter(typename Impl::const_iterator iter, typename Impl::const_iterator end) : _impl(iter), _end(end) {} 
 
         /**
-         * Assignemet
+         * Assignment
          */
         const ConstIter& operator =(const ConstIter& other) {if (this != &other) {_impl = other._impl; _end = other._end;} return *this ;}
 
@@ -56,7 +65,7 @@ public:
         bool operator == (const ConstIter& other) const { return _impl == other._impl; }
 
         /**
-         * Inequallity test
+         * Inequality test
          */
         bool operator != (const ConstIter& other) const { return _impl != other._impl; }
 
@@ -124,17 +133,17 @@ public:
         Iter(typename Impl::iterator iter, typename Impl::iterator end) : _impl(iter), _end(end) {init();} 
 
         /**
-         * Assignemet
+         * Assignment
          */
         const Iter& operator =(const Iter& other) {if (this != &other) {_impl = other._impl; _end = other._end;} return *this ;}
 
         /**
-         * Equallity test
+         * Equality test
          */
         bool operator == (const Iter& other) const { return _impl == other._impl; }
 
         /**
-         * Inequallity test
+         * Inequality test
          */
         bool operator != (const Iter& other) const { return _impl != other._impl; }
 
@@ -194,7 +203,7 @@ public:
 public:
   
     /**
-     * The type used to indiacte the size of a dense map
+     * The type used to indicate the size of a dense map
      */
     using size_type = KEY ; 
 

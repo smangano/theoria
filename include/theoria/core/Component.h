@@ -1,3 +1,12 @@
+/*
+ * Theoria - A C++ Application Container for the Real and Virtual World
+ *
+ * Copyright (c) 2016 theoriacpp.com
+ * 
+ * This library is released under the Apache License v. 2.0. See LICENSE in top level directory of this project.
+ * or https://github.com/smangano/theoria/blob/master/LICENSE 
+ */
+
 #pragma once
 
 #include <theoria/core/primitives.h>
@@ -17,24 +26,24 @@ class Message ;
  * Components are the soul of Theoria. Components are used to implement the 
  * meaty parts of your application. Things that contain significant business logic,
  * are generally long-lived, manage complex data structures, processes or algorithms, etc.
- * Components support a rich lifecycle, can be dynamically configured and dynamically wired up
+ * Components support a rich life-cycle, can be dynamically configured and dynamically wired up
  * to other components.
  *
  * Components consume config data to customize themselves to a particular use. Config data is provided 
- * in the init() method and it is the first stage of a components lifecycle. Often this 
- * cofiguration will provide information that will tell a component what other components it
- * requires but other times the configuration data will be simple paramters like a host/port
+ * in the init() method and it is the first stage of a components life-cycle. Often this 
+ * configuration will provide information that will tell a component what other components it
+ * requires but other times the configuration data will be simple parameters like a host/port
  * or locale info, or user settings, etc.  
  *
- * In response to configuraation a component is expected to return its requirements for other components. It does this
+ * In response to configuration a component is expected to return its requirements for other components. It does this
  * by returning Dependencies. Dependencies are a way of conveying very general or very specific requirements that 
  * of this component to other components. A specific requirement is communicated as a Type and Subtype. Here we
- * use Type to mean "the need of a component that provides some service" and Subtype to mean a very specific implematation of that
- * service. In addition, Dependencies convey whether a service is absolutly required or is optional. An absolute requirement must 
- * be fullfiled for the application to progress.
+ * use Type to mean "the need of a component that provides some service" and Subtype to mean a very specific implementation of that
+ * service. In addition, Dependencies convey whether a service is absolutely required or is optional. An absolute requirement must 
+ * be fulfilled for the application to progress.
  *
  * Once all components in you application are initialized, Theoria satisfies dependencies by calling finalize() and handing
- * your componet its dependents in the same order as requested. Optional dependents may be null if Theoria could not aquire them
+ * your component its dependents in the same order as requested. Optional dependents may be null if Theoria could not acquire them
  *
  * Components also receive life-cycle notifications. @see appLifeCycle and @see compLifeCycle for details.
  */
@@ -77,7 +86,7 @@ public:
     virtual void finalize(const std::vector<Component*>& dependencies) ;
 
 	/**
-     * This is a place to take action on application lifecycle events. 
+     * This is a place to take action on application life-cycle events. 
      */
     virtual void appLifeCycle(AppLifeCycle state) ;
 
@@ -93,7 +102,7 @@ public:
 	virtual void onMessage(const Message& msg) ;
 
     /**
-     * Return components unique id. Uniquieness is per application invocation so this is not a GUID nor is it guranteed idemponent between distinct runs of the app.
+     * Return components unique id. Uniqueness is per application invocation so this is not a GUID nor is it guaranteed idempotent between distinct runs of the app.
      */
     CompId id() const {return _id;}
 
@@ -108,7 +117,7 @@ public:
     void setName(const std::string& name) {_name = name;}
 
     /**
-     * A cast operation is a request to this component for an implemetation of type T. The component can satisfy the request if it is itself a T
+     * A cast operation is a request to this component for an implementation of type T. The component can satisfy the request if it is itself a T
      * or if it can acquire a T. 
      * @see acquire
      */
@@ -141,8 +150,8 @@ public:
      *
      * @param typeInfo the type_info of he type you wish to acquire
      * @param dest the dest where a pointer to the impl of type_info will be stored if available
-     * @return nullptr if this call already satisfied the request by populating dest or if it can't satify request
-     *         a pointer to another component if this component belives that the returned component can 
+     * @return nullptr if this call already satisfied the request by populating dest or if it can't satisfy request
+     *         a pointer to another component if this component believes that the returned component can 
      *         satisfy the request
      */
     virtual Component* acquire(const std::type_info& typeInfo, void** dest) ;

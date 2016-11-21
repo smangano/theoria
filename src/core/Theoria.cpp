@@ -32,7 +32,7 @@ namespace theoria {
 
         {"init_only",         "Used to test changes to bootstrap.toml", "", "switch", "", ""},
 
-        {"pause_after_app_init", "Intializes all app components and pauses waiting for operator iteraction", "", "switch", "", ""}, 
+        {"pause_after_app_init", "Initializes all app components and pauses waiting for operator interaction", "", "switch", "", ""}, 
 
         {"pause_after_app_finalize", "Finalizes all app components and pauses waiting for operator interaction", "", "switch", "", ""}, 
 
@@ -40,7 +40,7 @@ namespace theoria {
 
         {"show_config_only", "Exits after displaying config file after variable resolution", "", "switch", "", ""}, 
 
-        {"ws_port", "Start web service for ineractivity and use this port", "port", "int", "-ws_port 8900", ""},  
+        {"ws_port", "Start web service for interactivity and use this port", "port", "int", "-ws_port 8900", ""},  
 
         } ;
 

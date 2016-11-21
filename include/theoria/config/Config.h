@@ -165,19 +165,19 @@ protected:
 
     /**
      * Return child with given name.
-     * @return child ptr or nullptrt if no such child
+     * @return child ptr or nullptr if no such child
      */
     const Config* getChild(const std::string& name) const ;
 
     /**
      * Return siblings of this node (nodes at same level other than this)
-     * @return list of sinlings (possibly empty)
+     * @return list of siblings (possibly empty)
      */ 
     ConstConfigList getSiblings() const ;
 
     /**
      * Return siblings of this node (nodes at same level other than this) that satisfy predicate
-     * @return list of sinlings (possibly empty)
+     * @return list of siblings (possibly empty)
      */ 
     ConstConfigList getSiblings(const ConfigPredicate& predicate) const  ;
 
@@ -214,7 +214,7 @@ protected:
     int numAttr() const {return _attrs.size();}
 
     /**
-     * Get the attribute of specified name as the givent type T
+     * Get the attribute of specified name as the given type T
      * @return the attribute value as type T
      * @throw std::runtime_error if no such attribute
      * @throw std::runtime_error if no legal conversion possible
@@ -233,9 +233,9 @@ protected:
 
     /**
      *  Get the attribute of specified name as the given type T or def if no such attribute
-     * @param name  the name of the attribue
+     * @param name  the name of the attribute
      * @param def default value if no such attribute 
-     * @throw std::rumtimer error if attribute exusts but can't be convereted to type T
+     * @throw std::run_time error if attribute exists but can't be converted to type T
      */
     template <class T>
     T getAttr(const std::string& name, const T& def) const noexcept
@@ -321,13 +321,13 @@ protected:
 protected:
     
     /**
-     * A Config is contructed by a ConfigBuilder therefor only ConfigBuilder has
+     * A Config is constructed by a ConfigBuilder therefor only ConfigBuilder has
      * ability to mutate configs. 
      */
     friend class ConfigBuilder ; 
 
     /**
-     * Constructor initailizing nae and description of config node
+     * Constructor initializing name and description of config node
      */
     Config(const std::string& name, const std::string& desc) ;
 
@@ -343,7 +343,7 @@ protected:
     /**
      * Add a child config node.
      * @param child the child to add
-     * @param allowDups true if nodes with duplicate naes are allowed
+     * @param allowDups true if nodes with duplicate names are allowed
      */
     void addChild(Config* child, bool allowDups=false) ;
 
@@ -382,7 +382,7 @@ protected:
 } ;
 
 /** 
- * An array of configs. Used where order is significan as normally child nodes have no inherent order.
+ * An array of configs. Used where order is significant as normally child nodes have no inherent order.
  * In practice, ConfigArray is implemented in terms of Config's children with the assumption that the parser
  * that processed the config will add the children in the proper order when ordering matters.
  *
