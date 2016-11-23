@@ -222,7 +222,7 @@ TEST_F(BootstrapFindConfigTest, findConfigViaOS) {
 
 TEST_F(BootstrapFindConfigTest, findConfigThrows) {
     
-    if (!os::exists("/usr/local/theoria/bootstrap.toml")) {
+    if (!os::exists("/usr/local/share/theoria/bootstrap.toml")) {
         std::string buf ;
         const char* argv[] = {"dummy.toml"} ;
         bool allowMissingConfig = true ;

@@ -28,7 +28,7 @@ init_only
 Used to test changes to bootstrap.toml
 
 pause_after_app_init 
-Intializes all app components and pauses waiting for operator iteraction
+Initializes all app components and pauses waiting for operator interaction
 
 pause_after_app_finalize 
 Finalizes all app components and pauses waiting for operator interaction
@@ -40,7 +40,7 @@ show_config_only
 Exits after displaying config file after variable resolution
 
 ws_port <port>
-Start web service for ineractivity and use this port
+Start web service for interactivity and use this port
     Example: -ws_port 8900
 
 )" ;
